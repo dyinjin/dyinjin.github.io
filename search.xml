@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>搜索技巧</title>
+    <url>/2021/09/10/bing/</url>
+    <content><![CDATA[<h2 id="《》"><a href="#《》" class="headerlink" title="《》"></a>《》</h2><p>专有名词化</p>
+<h2 id="“”"><a href="#“”" class="headerlink" title="“”"></a>“”</h2><p>强制字符匹配</p>
+<h2 id><a href="#" class="headerlink" title="+ -"></a>+ -</h2><p>“+”“-”左面必须留空格，右面不留<br>强制包含<br>强制排除</p>
+<h2 id="intitle"><a href="#intitle" class="headerlink" title="intitle"></a>intitle</h2><p>标题搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“intitle:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="site"><a href="#site" class="headerlink" title="site"></a>site</h2><p>域名内容搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“site:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="filetype"><a href="#filetype" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="filetype-1"><a href="#filetype-1" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="filetype-2"><a href="#filetype-2" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/09/09/hello-world/</url>
+    <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>光影测试</title>
+    <url>/2021/09/11/shaderpack/</url>
+    <content><![CDATA[<p>超良心低配光影介绍<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
+<p>从以下方面进行了系统评测，仅进行相互比较，建议因地制宜的选用<font size="4">基本都是那些实实在在影响感官和游戏体验的点</font><br><img src="/2021/09/11/shaderpack/enter description here.png" align="left"><br>洞穴透光：问题过于普遍<br>水反：水面反光明显程度<br>水透：水下水体透明度<br>水面透：陆上看水下的水体透明度<br>烟：以篝火烟雾为代表的一众粒子效果<br>附魔：附魔紫光效果影响<br>手持：部分光影手持物品会变透明</p>
+<h1 id="chocapic13系列我也不清楚哪个是本来的"><a href="#chocapic13系列我也不清楚哪个是本来的" class="headerlink" title="chocapic13系列我也不清楚哪个是本来的"></a>chocapic13系列<font size="1" color="gray">我也不清楚哪个是本来的</font></h1><p>同系列可快速切换<br><font size="2">类似于只改变了配置</font></p>
+<img src="/2021/09/11/shaderpack/enter description here (1).png" align="left">
+<img src="/2021/09/11/shaderpack/enter description here (2).png" align="left">
+
+<ul>
+<li><p>chocapic13<br>  <em>Chocapic13-Shaders-Mod-1.6.2</em><br>  唯一不自带天空材质的<br>  水面反射效果较弱<br>  <strong>彩色玻璃阴影作实心计算（不透光）</strong><br>  百模组FPS：50|30 <font size="2">峰值|稳定平均值</font></p>
+<img src="/2021/09/11/shaderpack/c131.png" align="center">
+![screenshot](c131.png)
+![screenshot](c132.png)
+![screenshot](c133.png)
+![screenshot](c134.png)</li>
+<li><p>ziipzaaps<br>  <em>Ziipzaaps_Shaders_V2</em><br>  水面较暗<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子很糊</strong><br>  百模组FPS：40|30<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631359184784.png" alt="enter description here"><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631359184785.png" alt="enter description here"></p>
+</li>
+</ul>
+<ul>
+<li>werrus<br><em>Werrus HFPS Shaders V4.0 Ultra</em><br>较好的洞穴漏光修复</li>
+<li><em>烟雾不正常</em>*</li>
+<li><em>彩色玻璃不透光</em>*</li>
+<li><em>影子糊</em>*<br>百模组FPS：50|30</li>
+</ul>
+<ul>
+<li>iteration<br><em>iterationT Next 1.1.0</em><br>较好的洞穴漏光修复</li>
+<li><em>烟雾不正常</em>*</li>
+<li><em>附魔随角度变化不正常</em>*<br>模组（CavesAndCliffsBackport）中遮光玻璃崩坏<br>百模组FPS：20|20</li>
+</ul>
+<ul>
+<li>Seus renew<br><em>SEUS-Renewed-v1.0.1</em><br>较弱的洞穴漏光修复<br>水体透明度较低</li>
+<li><em>粒子效果偏移</em>*</li>
+<li><em>附魔随角度变化不正常</em>*<br>百模组FPS：30|20</li>
+</ul>
+<ul>
+<li>Seus renew fix<br><em>SEUS-Renewed-v1.0.1 [Tweaked+Cloud]</em><br>较弱的洞穴漏光修复<br>水体透明度较低</li>
+<li><em>粒子效果偏移</em>*</li>
+<li><em>附魔随角度变化不正常</em>*<br><font size="2">几乎和上者一致</font><br>百模组FPS：20|20</li>
+</ul>
+<h1 id="BSL系列比较推荐BSL及其standard版"><a href="#BSL系列比较推荐BSL及其standard版" class="headerlink" title="BSL系列比较推荐BSL及其standard版"></a>BSL系列<font size="2">比较推荐BSL及其standard版</font></h1><ul>
+<li>BSL<br><em>BSL_v8.0.01</em><br>较弱的洞穴漏光修复<br>水体表现不错<br>彩色玻璃表现较弱</li>
+<li><em>光源整体发光</em>*<font size="2">比如说火把，它的木杆也明显很亮</font><br>百模组FPS：40|20</li>
+</ul>
+<ul>
+<li>BSL Standard<br><em>BSL Standard v7.0p1</em><br>较弱的洞穴漏光修复<br>水体表现不错</li>
+<li><em>附魔效果整体泛光</em>*</li>
+<li><em>水面过透</em>*<br>百模组FPS：40|30</li>
+</ul>
+<ul>
+<li>Sildurs<br><em>B Sildurs Vibrant Shaders v1.281 Lite/Medium/High/Extreme</em><br><font size="2">建议直接开Extreme，阴影质量提升很多</font><br>较弱的洞穴漏光修复</li>
+<li><em>附魔效果呈不透明紫色</em>*<br>百模组FPS：30|30~50|30</li>
+</ul>
+<h1 id="projectLUMA"><a href="#projectLUMA" class="headerlink" title="projectLUMA"></a>projectLUMA</h1><p>其实不怎么推荐这个</p>
+<ul>
+<li>projectLUMA<br><em>projectLUMA - v1.32 汉化版</em></li>
+<li><em>附魔取消效果</em>*</li>
+<li><em>光源整体发光</em>*<br>百模组FPS：40|20</li>
+</ul>
+<hr>
+<p><font size="6">最后</font><br>个人观点，酌情选用<br><img src="/2021/09/11/shaderpack/end.png" alt="表格"></p>
+<hr>
+<hr>
+<hr>
+<p>本文作markdown 书写训练文<br>小坑：小书匠绑定图床的url前缀填写可省略（不是简单网址，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631329393524.png</span><br></pre></td></tr></table></figure>
+<p>大图使用本地图库时参考了 <a href="https://www.jianshu.com/p/f72aaad7b852">DCBXZ的博客</a><br>大部分“宏定义”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Blog\themes\next\source\css\_variables</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>MC</category>
+      </categories>
+      <tags>
+        <tag>MC</tag>
+      </tags>
+  </entry>
+</search>
