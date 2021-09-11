@@ -3,7 +3,7 @@
   --content-bg-color: #fff;
   --card-bg-color: #f5f5f5;
   --text-color: #3e6560;
-  --blockquote-color: #396542;
+  --blockquote-color: #287738;
   --link-color: #3e6560;
   --link-hover-color: #0e3430;
   --brand-color: #fff;
@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffff4d;
+  background: #7728ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1246,7 +1246,7 @@ pre .javascript .function {
 }
 .sidebar-nav li {
   border-bottom: 1px solid transparent;
-  color: #396542;
+  color: #287738;
   cursor: pointer;
   display: inline-block;
   font-size: 0.875em;
@@ -1571,7 +1571,7 @@ pre .javascript .function {
   position: relative;
 }
 .posts-collapse .collection-year::before {
-  background: #37493a;
+  background: #72bb81;
   border-radius: 50%;
   content: ' ';
   height: 8px;
@@ -1587,7 +1587,7 @@ pre .javascript .function {
   margin: 0 0 0 20px;
 }
 .posts-collapse .collection-header small {
-  color: #37493a;
+  color: #72bb81;
   margin-left: 5px;
 }
 .posts-collapse .post-header {
@@ -1601,7 +1601,7 @@ pre .javascript .function {
   transition-timing-function: ease-in-out;
 }
 .posts-collapse .post-header::before {
-  background: #37493a;
+  background: #72bb81;
   border: 1px solid #fff;
   border-radius: 50%;
   content: ' ';
@@ -1617,7 +1617,7 @@ pre .javascript .function {
   transition-timing-function: ease-in-out;
 }
 .posts-collapse .post-header:hover {
-  border-bottom-color: #396542;
+  border-bottom-color: #287738;
 }
 .posts-collapse .post-header:hover::before {
   background: #0e3430;
@@ -1958,7 +1958,7 @@ pre .javascript .function {
   margin: 5px 10px;
 }
 .category-all-page .category-list-count {
-  color: #37493a;
+  color: #72bb81;
 }
 .category-all-page .category-list-count::before {
   content: ' (';
@@ -2011,7 +2011,7 @@ pre .javascript .function {
   font-weight: 900;
 }
 .event-list .event .event-relative-time {
-  color: #37493a;
+  color: #72bb81;
   display: inline-block;
   font-size: 12px;
   font-weight: normal;
@@ -2047,13 +2047,13 @@ pre .javascript .function {
 }
 .event-list .event-past .event-summary,
 .event-list .event-past .event-details {
-  color: #37493a;
+  color: #72bb81;
   opacity: 0.9;
 }
 .event-list .event-past .event-summary::before,
 .event-list .event-past .event-details::before {
   animation: none;
-  color: #37493a;
+  color: #72bb81;
 }
 @-moz-keyframes dot-flash {
   from {
