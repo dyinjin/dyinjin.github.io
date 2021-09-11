@@ -221,7 +221,7 @@ p {
 }
 a,
 span.exturl {
-  border-bottom: 1px solid #274e2f;
+  border-bottom: 1px solid #7f8f76;
   color: var(--link-color);
   outline: 0;
   text-decoration: none;
@@ -991,7 +991,7 @@ pre .javascript .function {
   margin: 0;
 }
 .site-subtitle {
-  color: #274e2f;
+  color: #72bb81;
   font-size: 0.8125em;
   margin: 10px 0;
 }
@@ -1117,7 +1117,7 @@ pre .javascript .function {
   }
 }
 .sidebar-inner {
-  color: #274e2f;
+  color: #547109;
   padding: 18px 10px;
   text-align: center;
 }
@@ -1136,7 +1136,7 @@ pre .javascript .function {
   display: inline-block;
 }
 .site-author-image {
-  border: 2px solid #223f3b;
+  border: 4px solid #223f3b;
   display: block;
   margin: 0 auto;
   max-width: 96px;
@@ -1149,7 +1149,7 @@ pre .javascript .function {
   text-align: center;
 }
 .site-description {
-  color: #274e2f;
+  color: #9bae8f;
   font-size: 1em;
   margin-top: 5px;
   text-align: center;
@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #0bd9d7;
+  background: #baf1f5;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1246,7 +1246,7 @@ pre .javascript .function {
 }
 .sidebar-nav li {
   border-bottom: 1px solid transparent;
-  color: #72bb81;
+  color: #7f8f76;
   cursor: pointer;
   display: inline-block;
   font-size: 0.875em;
@@ -1368,7 +1368,7 @@ pre .javascript .function {
   font-size: 0.875em;
 }
 .footer {
-  color: #274e2f;
+  color: #547109;
   font-size: 0.875em;
   padding: 20px 0;
 }
@@ -1492,7 +1492,7 @@ pre .javascript .function {
 }
 .post-body .image-caption,
 .post-body .figure .caption {
-  color: #274e2f;
+  color: #547109;
   font-size: 0.875em;
   font-weight: bold;
   line-height: 1;
@@ -1552,7 +1552,7 @@ pre .javascript .function {
   position: relative;
 }
 .posts-collapse .collection-title::before {
-  background: #274e2f;
+  background: #547109;
   border: 1px solid #fff;
   border-radius: 50%;
   content: ' ';
@@ -1790,7 +1790,7 @@ pre .javascript .function {
   margin-left: 5px;
 }
 .posts-expand .post-meta {
-  color: #274e2f;
+  color: #547109;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin: 3px 0 60px 0;
@@ -1801,7 +1801,7 @@ pre .javascript .function {
   margin-top: 2px;
 }
 .posts-expand .post-meta time {
-  border-bottom: 1px dashed #274e2f;
+  border-bottom: 1px dashed #547109;
   cursor: pointer;
 }
 .post-meta .post-meta-item + .post-meta-item::before {
@@ -2166,7 +2166,7 @@ ul.breadcrumb li + li:last-child {
 }
 .search-popup .search-icon,
 .search-popup .popup-btn-close {
-  color: #274e2f;
+  color: #547109;
   font-size: 18px;
   padding: 0 10px;
 }
@@ -2352,7 +2352,7 @@ embed {
 .sidebar a,
 .sidebar span.exturl {
   border-bottom-color: #3e6560;
-  color: #274e2f;
+  color: #547109;
 }
 .sidebar a:hover,
 .sidebar span.exturl:hover {
