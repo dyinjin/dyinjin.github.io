@@ -60,14 +60,14 @@
 
   
   <url>
-    <loc>http://example.com/tags/Hexo/</loc>
+    <loc>http://example.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
     <lastmod>2021-09-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
+    <loc>http://example.com/tags/Hexo/</loc>
     <lastmod>2021-09-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
