@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>搜索技巧</title>
+    <url>/2021/09/10/bing/</url>
+    <content><![CDATA[<h2 id="《》"><a href="#《》" class="headerlink" title="《》"></a>《》</h2><p>专有名词化</p>
+<h2 id="“”"><a href="#“”" class="headerlink" title="“”"></a>“”</h2><p>强制字符匹配</p>
+<h2 id><a href="#" class="headerlink" title="+ -"></a>+ -</h2><p>“+”“-”左面必须留空格，右面不留<br>强制包含<br>强制排除</p>
+<h2 id="intitle"><a href="#intitle" class="headerlink" title="intitle"></a>intitle</h2><p>标题搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“intitle:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="site"><a href="#site" class="headerlink" title="site"></a>site</h2><p>域名内容搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“site:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="filetype"><a href="#filetype" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="filetype-1"><a href="#filetype-1" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>
+<h2 id="filetype-2"><a href="#filetype-2" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/09/09/hello-world/</url>
+    <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>光影测试</title>
     <url>/2021/09/11/shaderpack/</url>
     <content><![CDATA[<p>10个超良心低配光影介绍&amp;测评<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
@@ -77,42 +111,8 @@
         <category>MC</category>
       </categories>
       <tags>
+        <tag>Hexo</tag>
         <tag>MC</tag>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搜索技巧</title>
-    <url>/2021/09/10/bing/</url>
-    <content><![CDATA[<h2 id="《》"><a href="#《》" class="headerlink" title="《》"></a>《》</h2><p>专有名词化</p>
-<h2 id="“”"><a href="#“”" class="headerlink" title="“”"></a>“”</h2><p>强制字符匹配</p>
-<h2 id><a href="#" class="headerlink" title="+ -"></a>+ -</h2><p>“+”“-”左面必须留空格，右面不留<br>强制包含<br>强制排除</p>
-<h2 id="intitle"><a href="#intitle" class="headerlink" title="intitle"></a>intitle</h2><p>标题搜索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“intitle:XXX”</span><br></pre></td></tr></table></figure>
-<h2 id="site"><a href="#site" class="headerlink" title="site"></a>site</h2><p>域名内容搜索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“site:XXX”</span><br></pre></td></tr></table></figure>
-<h2 id="filetype"><a href="#filetype" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>
-<h2 id="filetype-1"><a href="#filetype-1" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>
-<h2 id="filetype-2"><a href="#filetype-2" class="headerlink" title="filetype"></a>filetype</h2><p>特定格式文件搜索</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“filetype:XXX”</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>其它</category>
-      </categories>
-      <tags>
-        <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/09/09/hello-world/</url>
-    <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>其它</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>
