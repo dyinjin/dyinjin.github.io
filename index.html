@@ -182,6 +182,211 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/" class="post-title-link" itemprop="url">计组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-15 20:30:14 / 修改时间：20:59:07" itemprop="dateCreated datePublished" datetime="2021-09-15T20:30:14+08:00">2021-09-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="%E7%AC%AC%E4%B8%89%E7%AB%A0CPU-5.pptx">PPT下载</a></p>
+<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
+<ul>
+<li>操作数的位置<ul>
+<li>堆栈<ul>
+<li>主存开辟（软堆栈）</li>
+<li>CPU中的寄存器组组成（硬堆栈）</li>
+</ul>
+</li>
+<li>寄存器<ul>
+<li>CPU寄存器</li>
+<li>外设寄存器</li>
+</ul>
+</li>
+<li>存储器<ul>
+<li>主存</li>
+<li>外存<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708338099.png" alt="enter description here"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中</p>
+<ul>
+<li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
+<li>直接寻址类<ul>
+<li>直接寻址（主存直接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707836614.png" alt="enter description here"></li>
+<li>寄存器寻址（寄存器直接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707853801.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>间接寻址类<ul>
+<li>间接寻址（主存间接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707880665.png" alt="enter description here"></li>
+<li>寄存器间接寻址方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707899777.png" alt="enter description here"></li>
+<li>自增、减型寄存器间址方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707919302.png" alt="enter description here"><br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707940521.png" alt="enter description here"></li>
+<li>堆栈寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707953170.png" alt="enter description here"></li>
+<li>多重间接寻址（主存多重间接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707985223.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>变址类<ul>
+<li>变址寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708001028.png" alt="enter description here"></li>
+<li>基址寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708022768.png" alt="enter description here"><br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707328350.png" alt="comparison"></li>
+<li>基址加变址方式<br>图略</li>
+<li>相对寻址（浮动编址）<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708063060.png" alt="enter description here"></li>
+<li>页面寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708078233.png" alt="enter description here"><h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1></li>
+</ul>
+</li>
+<li>传送类指令<ul>
+<li>一般传送指令</li>
+<li>堆栈指令</li>
+<li>数据交换指令</li>
+</ul>
+</li>
+<li>输入/输出(I/O)指令<ul>
+<li>外围设备编址<br>  ① 对外围设备单独编址<ul>
+<li>1）单独编址到设备级</li>
+<li>2）单独编址到寄存器级：<br>② 外围设备与主存储器统一编址</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/" class="post-title-link" itemprop="url">汇编2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-15 19:12:37" itemprop="dateCreated datePublished" datetime="2021-09-15T19:12:37+08:00">2021-09-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h1><p>等于“++”</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inc</span> <span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
+<h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>循环<br>先看例子：计算2<sup>12</sup></p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codee</span><br><span class="line"></span><br><span class="line">codee <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	start：<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">2</span></span><br><span class="line">				<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">11</span></span><br><span class="line"><span class="symbol">				s:</span> <span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">				<span class="keyword">loop</span> s</span><br><span class="line"></span><br><span class="line">				 <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">				<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codee ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p>cx(计数寄存器)存放为循环次数，s为标识指令地址（即从哪里开始循环）<br>先向cx存次数，标号：执行循环语句，最后loop+标记<br>本质上是指令指针(IP)的移动，先(cx)减一，再判断其值若不为0则转至s标号处，为0则执行下一条</p>
+<h3 id="汇编中-ffffh-编译器认为是标识符-要写为-0ffffh"><a href="#汇编中-ffffh-编译器认为是标识符-要写为-0ffffh" class="headerlink" title="汇编中 ffffh 编译器认为是标识符,要写为 0ffffh"></a>汇编中 ffffh 编译器认为是标识符,要写为 0ffffh</h3><h2 id="将ffff-0-ffff-b单元的数据的和，结果储存在dx中"><a href="#将ffff-0-ffff-b单元的数据的和，结果储存在dx中" class="headerlink" title="将ffff;0~ffff:b单元的数据的和，结果储存在dx中"></a>将ffff;0~ffff:b单元的数据的和，结果储存在dx中</h2><p>先将8位数据赋值到另一个16位寄存器bx中，再作加:</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0ffffh</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="number">0</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">s:</span>	  <span class="keyword">mov</span> <span class="built_in">al</span>,<span class="built_in">ds</span>:[<span class="built_in">bx</span>]</span><br><span class="line">		   <span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">0</span></span><br><span class="line">		   <span class="keyword">add</span> <span class="built_in">dx</span>,<span class="built_in">ax</span></span><br><span class="line">		   <span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">loop</span> s</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">		<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/Java/1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -334,10 +539,16 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-14 17:26:26 / 修改时间：19:25:06" itemprop="dateCreated datePublished" datetime="2021-09-14T17:26:26+08:00">2021-09-14</time>
+              <time title="创建时间：2021-09-14 17:26:26" itemprop="dateCreated datePublished" datetime="2021-09-14T17:26:26+08:00">2021-09-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-15 17:27:28" itemprop="dateModified" datetime="2021-09-15T17:27:28+08:00">2021-09-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -427,13 +638,21 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 </ul>
 <hr>
 <ul>
-<li>p<ul>
+<li>p执行汇编程序，单步跟踪。<ul>
 <li>执行 int 21</li>
 <li>t p区别<ul>
 <li>单步跟踪命令（单步进入(step in)）：t命令是单步执行，是真的单步执行，碰到任何地方，都会一步步执行，遇到子程序，也会进入里面一步步执行再返回</li>
 <li>单步执行命令（单步通过(step over)）：p命令，大多数情况与t一样，只有当遇到call调用子程序的时候，p命令直接执行完这个程序，而t命令会进入里面一步步执行。</li>
 </ul>
 </li>
+<li>结束debug一般”p”+”q”+”exit”</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>g执行汇编指令<ul>
+<li>使用方法是：g [=起始地址] [断点地址]，从起始地址开始执行到断点地址。如果不设置断点，则程序一直运行到中止指令停止；如果不设置起始地址，则会向下运行到断点地址</li>
 </ul>
 </li>
 </ul>
@@ -481,10 +700,16 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-09-14 00:44:01 / 修改时间：17:29:25" itemprop="dateCreated datePublished" datetime="2021-09-14T00:44:01+08:00">2021-09-14</time>
+              <time title="创建时间：2021-09-14 00:44:01" itemprop="dateCreated datePublished" datetime="2021-09-14T00:44:01+08:00">2021-09-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-15 19:27:11" itemprop="dateModified" datetime="2021-09-15T19:27:11+08:00">2021-09-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -506,7 +731,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><font size="1" color="gray"><del>这个MOOC不得行啊</del></font><br><font size="1">后面还是看的B站orz</font></p>
+          <p><font size="1" color="gray"><del>这个MOOC不得行啊</del></font><br><font size="1">后面还是看的B站orz</font><br>回头来看，还是MOOC讲的系统</p>
 <h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631551561772.png" width="600/">
 <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561773.png" width="600/">
 <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561774.png" width="600/">
@@ -945,7 +1170,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -958,7 +1183,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -994,7 +1219,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共3.4k字呐~</span>
+  <span class="post-count">本博客全站共4.1k字呐~</span>
 </div>
 
         
