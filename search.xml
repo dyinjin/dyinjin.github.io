@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/09/09/hello-world/</url>
+    <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>搜索技巧</title>
     <url>/2021/09/10/bing/</url>
     <content><![CDATA[<h2 id="《》"><a href="#《》" class="headerlink" title="《》"></a>《》</h2><p>专有名词化</p>
@@ -21,17 +32,6 @@
       </categories>
       <tags>
         <tag>浏览器</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/09/09/hello-world/</url>
-    <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>其它</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -184,23 +184,6 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>汇编2</title>
-    <url>/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/</url>
-    <content><![CDATA[<h1 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h1><p>等于“++”</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">inc</span> <span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
-<h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>循环<br>先看例子：计算2<sup>12</sup></p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codee</span><br><span class="line"></span><br><span class="line">codee <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	start：<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">2</span></span><br><span class="line">				<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">11</span></span><br><span class="line"><span class="symbol">				s:</span> <span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">				<span class="keyword">loop</span> s</span><br><span class="line"></span><br><span class="line">				 <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">				<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codee ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p>cx(计数寄存器)存放为循环次数，s为标识指令地址（即从哪里开始循环）<br>先向cx存次数，标号：执行循环语句，最后loop+标记<br>本质上是指令指针(IP)的移动，先(cx)减一，再判断其值若不为0则转至s标号处，为0则执行下一条</p>
-<h3 id="汇编中-ffffh-编译器认为是标识符-要写为-0ffffh"><a href="#汇编中-ffffh-编译器认为是标识符-要写为-0ffffh" class="headerlink" title="汇编中 ffffh 编译器认为是标识符,要写为 0ffffh"></a>汇编中 ffffh 编译器认为是标识符,要写为 0ffffh</h3><h2 id="将ffff-0-ffff-b单元的数据的和，结果储存在dx中"><a href="#将ffff-0-ffff-b单元的数据的和，结果储存在dx中" class="headerlink" title="将ffff;0~ffff:b单元的数据的和，结果储存在dx中"></a>将ffff;0~ffff:b单元的数据的和，结果储存在dx中</h2><p>先将8位数据赋值到另一个16位寄存器bx中，再作加:</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0ffffh</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="number">0</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">s:</span>	  <span class="keyword">mov</span> <span class="built_in">al</span>,<span class="built_in">ds</span>:[<span class="built_in">bx</span>]</span><br><span class="line">		   <span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">0</span></span><br><span class="line">		   <span class="keyword">add</span> <span class="built_in">dx</span>,<span class="built_in">ax</span></span><br><span class="line">		   <span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">loop</span> s</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">		<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
       </tags>
   </entry>
   <entry>
@@ -360,9 +343,26 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       </tags>
   </entry>
   <entry>
+    <title>汇编2</title>
+    <url>/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/</url>
+    <content><![CDATA[<h1 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h1><p>等于“++”</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">inc</span> <span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
+<h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>循环<br>先看例子：计算2<sup>12</sup></p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codee</span><br><span class="line"></span><br><span class="line">codee <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	start：<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">2</span></span><br><span class="line">				<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">11</span></span><br><span class="line"><span class="symbol">				s:</span> <span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">				<span class="keyword">loop</span> s</span><br><span class="line"></span><br><span class="line">				 <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">				<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codee ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p>cx(计数寄存器)存放为循环次数，s为标识指令地址（即从哪里开始循环）<br>先向cx存次数，标号：执行循环语句，最后loop+标记<br>本质上是指令指针(IP)的移动，先(cx)减一，再判断其值若不为0则转至s标号处，为0则执行下一条</p>
+<h3 id="汇编中-ffffh-编译器认为是标识符-要写为-0ffffh"><a href="#汇编中-ffffh-编译器认为是标识符-要写为-0ffffh" class="headerlink" title="汇编中 ffffh 编译器认为是标识符,要写为 0ffffh"></a>汇编中 ffffh 编译器认为是标识符,要写为 0ffffh</h3><h2 id="将ffff-0-ffff-b单元的数据的和，结果储存在dx中"><a href="#将ffff-0-ffff-b单元的数据的和，结果储存在dx中" class="headerlink" title="将ffff;0~ffff:b单元的数据的和，结果储存在dx中"></a>将ffff;0~ffff:b单元的数据的和，结果储存在dx中</h2><p>先将8位数据赋值到另一个16位寄存器bx中，再作加:</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0ffffh</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="number">0</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">s:</span>	  <span class="keyword">mov</span> <span class="built_in">al</span>,<span class="built_in">ds</span>:[<span class="built_in">bx</span>]</span><br><span class="line">		   <span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">0</span></span><br><span class="line">		   <span class="keyword">add</span> <span class="built_in">dx</span>,<span class="built_in">ax</span></span><br><span class="line">		   <span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">loop</span> s</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">		<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>计组</title>
     <url>/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/</url>
-    <content><![CDATA[<p><a href="%E7%AC%AC%E4%B8%89%E7%AB%A0CPU-5.pptx">PPT下载</a></p>
+    <content><![CDATA[<p><a href="CPU-5.zip">PPT下载</a></p>
 <h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
 <ul>
 <li>操作数的位置<ul>
@@ -378,7 +378,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 </li>
 <li>存储器<ul>
 <li>主存</li>
-<li>外存<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708338099.png" alt="enter description here"></li>
+<li>外存<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086568.png" alt="enter description here"></li>
 </ul>
 </li>
 </ul>
@@ -389,24 +389,24 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 <ul>
 <li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
 <li>直接寻址类<ul>
-<li>直接寻址（主存直接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707836614.png" alt="enter description here"></li>
-<li>寄存器寻址（寄存器直接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707853801.png" alt="enter description here"></li>
+<li>直接寻址（主存直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086555.png" alt="enter description here"></li>
+<li>寄存器寻址（寄存器直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086556.png" alt="enter description here"></li>
 </ul>
 </li>
 <li>间接寻址类<ul>
-<li>间接寻址（主存间接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707880665.png" alt="enter description here"></li>
-<li>寄存器间接寻址方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707899777.png" alt="enter description here"></li>
-<li>自增、减型寄存器间址方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707919302.png" alt="enter description here"><br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707940521.png" alt="enter description here"></li>
-<li>堆栈寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707953170.png" alt="enter description here"></li>
-<li>多重间接寻址（主存多重间接寻址）方式<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707985223.png" alt="enter description here"></li>
+<li>间接寻址（主存间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086557.png" alt="enter description here"></li>
+<li>寄存器间接寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086558.png" alt="enter description here"></li>
+<li>自增、减型寄存器间址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086559.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086560.png" alt="enter description here"></li>
+<li>堆栈寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086561.png" alt="enter description here"></li>
+<li>多重间接寻址（主存多重间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086562.png" alt="enter description here"></li>
 </ul>
 </li>
 <li>变址类<ul>
-<li>变址寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708001028.png" alt="enter description here"></li>
-<li>基址寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708022768.png" alt="enter description here"><br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631707328350.png" alt="comparison"></li>
+<li>变址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086563.png" alt="enter description here"></li>
+<li>基址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086564.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086565.png" alt="comparison"></li>
 <li>基址加变址方式<br>图略</li>
-<li>相对寻址（浮动编址）<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708063060.png" alt="enter description here"></li>
-<li>页面寻址<br><img src="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/class1/1631708078233.png" alt="enter description here"><h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1></li>
+<li>相对寻址（浮动编址）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086566.png" alt="enter description here"></li>
+<li>页面寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086567.png" alt="enter description here"><h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1></li>
 </ul>
 </li>
 <li>传送类指令<ul>
