@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/09/09/hello-world/</url>
-    <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>其它</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>搜索技巧</title>
     <url>/2021/09/10/bing/</url>
     <content><![CDATA[<h2 id="《》"><a href="#《》" class="headerlink" title="《》"></a>《》</h2><p>专有名词化</p>
@@ -32,6 +21,98 @@
       </categories>
       <tags>
         <tag>浏览器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/09/09/hello-world/</url>
+    <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>其它</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>光影测试</title>
+    <url>/2021/09/11/MC/shaderpack/</url>
+    <content><![CDATA[<p>10个超良心低配光影介绍&amp;测评<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
+<p>从以下方面进行了系统评测，仅进行相互比较，建议因地制宜的选用<font size="4">基本都是那些实实在在影响感官和游戏体验的点</font><br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"><br>洞穴透光：问题过于普遍<br>水反：水面反光明显程度<br>水透：水下水体透明度<br>水面透：陆上看水下的水体透明度<br>烟：以篝火烟雾为代表的一众粒子效果<br>附魔：附魔紫光效果影响<br>手持：部分光影手持物品会变透明</p>
+<h1 id="chocapic13系列我也不清楚哪个是本来的"><a href="#chocapic13系列我也不清楚哪个是本来的" class="headerlink" title="chocapic13系列我也不清楚哪个是本来的"></a>chocapic13系列<font size="1" color="gray">我也不清楚哪个是本来的</font></h1><p>同系列可快速切换<br><font size="2">类似于只改变了配置</font></p>
+<hr>
+<ul>
+<li>chocapic13<br>  <em>Chocapic13-Shaders-Mod-1.6.2</em><br>  唯一不自带天空材质的<br>  水面反射效果较弱<br>  <strong>彩色玻璃阴影作实心计算（不透光）</strong><br>  百模组FPS：50|30 <font size="2">峰值|稳定平均值</font></li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/c131.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c132.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c133.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c134.png" alt="1"></p>
+<hr>
+<ul>
+<li>ziipzaaps<br>  <em>Ziipzaaps_Shaders_V2</em><br>  水面较暗<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子很糊</strong><br>  百模组FPS：40|30</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/zi(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(4).png" alt="1"></p>
+<hr>
+<ul>
+<li>werrus<br>  <em>Werrus HFPS Shaders V4.0 Ultra</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子糊</strong><br>  百模组FPS：50|30</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/wer(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(4).png" alt="1"></p>
+<hr>
+<ul>
+<li>iteration<br>  <em>iterationT Next 1.1.0</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>附魔随角度变化不正常</strong><br>  模组（CavesAndCliffsBackport）中遮光玻璃崩坏<br>  百模组FPS：20|20</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/it(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(4).png" alt="1"></p>
+<hr>
+<ul>
+<li>Seus renew<br>  <em>SEUS-Renewed-v1.0.1</em><br>  较弱的洞穴漏光修复<br>  水体透明度较低<br>  <strong>粒子效果偏移</strong><br>  <strong>附魔随角度变化不正常</strong><br>  百模组FPS：30|20</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/Seus(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(5).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(4).png" alt="1"></p>
+<hr>
+<ul>
+<li>Seus renew fix<br><em>SEUS-Renewed-v1.0.1 [Tweaked+Cloud]</em><br>较弱的洞穴漏光修复<br>水体透明度较低</li>
+<li><em>粒子效果偏移</em>*</li>
+<li><em>附魔随角度变化不正常</em>*<br><font size="2">几乎和上者一致</font><br>百模组FPS：20|20</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(4).png" alt="1"></p>
+<h1 id="BSL系列比较推荐BSL及其standard版"><a href="#BSL系列比较推荐BSL及其standard版" class="headerlink" title="BSL系列比较推荐BSL及其standard版"></a>BSL系列<font size="2">比较推荐BSL及其standard版</font></h1><hr>
+<ul>
+<li>BSL<br>  <em>BSL_v8.0.01</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  彩色玻璃表现较弱<br>  <strong>光源整体发光</strong><font size="2">比如说火把，它的木杆也明显很亮</font><br>  百模组FPS：40|20</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/BSL(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(4).png" alt="1"></p>
+<hr>
+<ul>
+<li>BSL Standard<br>  <em>BSL Standard v7.0p1</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  <strong>附魔效果整体泛光</strong><br>  <strong>水面过透</strong><br>  百模组FPS：40|30</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/BSLs(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(4).png" alt="1"></p>
+<hr>
+<ul>
+<li>Sildurs<br>  <em>B Sildurs Vibrant Shaders v1.281 Lite/Medium/High/Extreme</em><br>  <font size="2">建议直接开Extreme，阴影质量提升很多</font><br>  较弱的洞穴漏光修复<br>  <strong>附魔效果呈不透明紫色</strong><br>  百模组FPS：30|30~50|30</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/SILD(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(4).png" alt="1"></p>
+<h1 id="projectLUMA"><a href="#projectLUMA" class="headerlink" title="projectLUMA"></a>projectLUMA</h1><p>其实不怎么推荐这个</p>
+<hr>
+<ul>
+<li>projectLUMA<br>  <em>projectLUMA - v1.32 汉化版</em><br>  <strong>附魔取消效果</strong><br>  <strong>光源整体发光</strong><br>  百模组FPS：40|20</li>
+</ul>
+<p><img src="/2021/09/11/MC/shaderpack/pro(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(4).png" alt="1"></p>
+<hr>
+<p><font size="6">最后</font><br>个人观点，酌情选用<br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"></p>
+<hr>
+<hr>
+<hr>
+<p>本文作markdown 书写训练文<br>小坑：</p>
+<ul>
+<li>小书匠绑定图床的url前缀填写可省略（不是简单网址，例如：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631329393524.png</span><br></pre></td></tr></table></figure></li>
+<li>大图使用本地图库时参考了 <a href="https://www.jianshu.com/p/f72aaad7b852">DCBXZ的博客</a></li>
+<li>大部分“宏定义”  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Blog\themes\next\source\css\_variables</span><br></pre></td></tr></table></figure></li>
+<li>报错：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">warning: LF will be replaced by CRLF</span><br></pre></td></tr></table></figure>
+  使用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config –global core.autocrlf false //禁用自动转换 </span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>MC</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>MC</tag>
       </tags>
   </entry>
   <entry>
@@ -103,6 +184,96 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       </categories>
       <tags>
         <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编0MOOC笔记</title>
+    <url>/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/1/</url>
+    <content><![CDATA[<p><font size="1" color="gray"><del>这个MOOC不得行啊</del></font><br><font size="1">后面还是看的B站orz</font><br>回头来看，还是MOOC讲的系统</p>
+<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631551561772.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561773.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561774.png" width="600/">
+
+<h2 id="补码运算"><a href="#补码运算" class="headerlink" title="补码运算"></a>补码运算</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562085.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562479.png" width="600/">
+
+<h1 id="CPU基本结构"><a href="#CPU基本结构" class="headerlink" title="CPU基本结构"></a>CPU基本结构</h1><hr>
+<p>两种执行方式及特点<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561884.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561926.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561928.png" width="600/"></p>
+<h2 id="8086CPU结构"><a href="#8086CPU结构" class="headerlink" title="8086CPU结构"></a>8086CPU结构</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561929.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561930.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561931.png" width="600/">
+
+<h2 id="8086CPU寄存器"><a href="#8086CPU寄存器" class="headerlink" title="8086CPU寄存器"></a>8086CPU寄存器</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561954.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562012.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561955.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561956.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561885.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561923.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561957.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561958.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561959.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562144.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562170.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562116.png" width="600/">
+
+<p>注意AF、OF区别<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562142.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562173.png" width="600/"></p>
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562204.png" width="600/">
+
+<h1 id="堆栈及操作"><a href="#堆栈及操作" class="headerlink" title="堆栈及操作"></a>堆栈及操作</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562335.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562336.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562171.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562476.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562172.png" width="600/">
+
+<h1 id="HEXO技巧"><a href="#HEXO技巧" class="headerlink" title="HEXO技巧"></a>HEXO技巧</h1><p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;XXX&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;</span><br><span class="line">&lt;img src=&quot;XXX&quot; width=256 height=256 /&gt;</span><br></pre></td></tr></table></figure>
+<p>进行可控插入图片</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编3</title>
+    <url>/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/</url>
+    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以下</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">cx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ax</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">dx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ds</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">bp</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>全错:(<br>其它寄存器不能用于寻址，不能基址+基址或变址+变址</p>
+<h2 id="注意bp"><a href="#注意bp" class="headerlink" title="注意bp"></a>注意bp</h2><p>bp默认段寄存器为ss(栈段)，且bp+ 的段寄存器也为ss</p>
+<hr>
+<p>可单独使用</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>]</span><br></pre></td></tr></table></figure>
+<p>可基址搭配变址</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>加上立即数(idata)等等，详细分类以下</p>
+<h2 id="可见"><a href="#可见" class="headerlink" title="可见"></a><a href="https://dyinjin.github.io/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/4/">可见</a></h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796912.png" alt="enter description here"></p>
+<h3 id="ptr"><a href="#ptr" class="headerlink" title="ptr"></a>ptr</h3><p>byte ptr或word ptr指明内存单元长度</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>],<span class="number">1</span></span><br><span class="line"><span class="keyword">inc</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> [<span class="built_in">bx</span>]<span class="comment">;否则是将由地址bx和地址bx+1组成的一个字加一</span></span><br></pre></td></tr></table></figure>
+<p>push、pop一定针对字型(16)</p>
+<h1 id="div"><a href="#div" class="headerlink" title="div"></a>div</h1><p>其中<br>除数：8位和16位两种<br>被除数：默认放在 ax 或 dx和ax 中(dx存放高16位，ax存放低16位)<br>如果除数为8位，则ax中al存储商ah存储余数；如果除数为16位，则ax存储商dx存储余数</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (al)=(ax)/((ds)*16+0)    之商<br>        (ah)=(ax)/((ds)*16+0)  之余</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (ax)=[(dx)*10000h+(ax)]/((ds)*16+0)    之商<br>        (dx)=[(dx)*10000h+(ax)]/((ds)*16+0)  之余</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
       </tags>
   </entry>
   <entry>
@@ -203,65 +374,6 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       </tags>
   </entry>
   <entry>
-    <title>汇编0MOOC笔记</title>
-    <url>/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/1/</url>
-    <content><![CDATA[<p><font size="1" color="gray"><del>这个MOOC不得行啊</del></font><br><font size="1">后面还是看的B站orz</font><br>回头来看，还是MOOC讲的系统</p>
-<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631551561772.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561773.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561774.png" width="600/">
-
-<h2 id="补码运算"><a href="#补码运算" class="headerlink" title="补码运算"></a>补码运算</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562085.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562479.png" width="600/">
-
-<h1 id="CPU基本结构"><a href="#CPU基本结构" class="headerlink" title="CPU基本结构"></a>CPU基本结构</h1><hr>
-<p>两种执行方式及特点<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561884.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561926.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561928.png" width="600/"></p>
-<h2 id="8086CPU结构"><a href="#8086CPU结构" class="headerlink" title="8086CPU结构"></a>8086CPU结构</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561929.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561930.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561931.png" width="600/">
-
-<h2 id="8086CPU寄存器"><a href="#8086CPU寄存器" class="headerlink" title="8086CPU寄存器"></a>8086CPU寄存器</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561954.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562012.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561955.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561956.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561885.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561923.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561957.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561958.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561959.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562144.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562170.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562116.png" width="600/">
-
-<p>注意AF、OF区别<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562142.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562173.png" width="600/"></p>
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562204.png" width="600/">
-
-<h1 id="堆栈及操作"><a href="#堆栈及操作" class="headerlink" title="堆栈及操作"></a>堆栈及操作</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562335.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562336.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562171.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562476.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562172.png" width="600/">
-
-<h1 id="HEXO技巧"><a href="#HEXO技巧" class="headerlink" title="HEXO技巧"></a>HEXO技巧</h1><p>使用：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;XXX&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;</span><br><span class="line">&lt;img src=&quot;XXX&quot; width=256 height=256 /&gt;</span><br></pre></td></tr></table></figure>
-<p>进行可控插入图片</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>汇编2</title>
     <url>/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/</url>
     <content><![CDATA[<p>又换了个人<a href="https://www.bilibili.com/video/BV1CJ411D7yD?p=6">看</a></p>
@@ -330,7 +442,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 </li>
 </ul>
 <hr>
-<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中</p>
+<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a href="https://dyinjin.github.io/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/">x86具体操作</a></p>
 <ul>
 <li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
 <li>直接寻址类<ul>
@@ -369,118 +481,6 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 </ul>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>光影测试</title>
-    <url>/2021/09/11/MC/shaderpack/</url>
-    <content><![CDATA[<p>10个超良心低配光影介绍&amp;测评<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
-<p>从以下方面进行了系统评测，仅进行相互比较，建议因地制宜的选用<font size="4">基本都是那些实实在在影响感官和游戏体验的点</font><br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"><br>洞穴透光：问题过于普遍<br>水反：水面反光明显程度<br>水透：水下水体透明度<br>水面透：陆上看水下的水体透明度<br>烟：以篝火烟雾为代表的一众粒子效果<br>附魔：附魔紫光效果影响<br>手持：部分光影手持物品会变透明</p>
-<h1 id="chocapic13系列我也不清楚哪个是本来的"><a href="#chocapic13系列我也不清楚哪个是本来的" class="headerlink" title="chocapic13系列我也不清楚哪个是本来的"></a>chocapic13系列<font size="1" color="gray">我也不清楚哪个是本来的</font></h1><p>同系列可快速切换<br><font size="2">类似于只改变了配置</font></p>
-<hr>
-<ul>
-<li>chocapic13<br>  <em>Chocapic13-Shaders-Mod-1.6.2</em><br>  唯一不自带天空材质的<br>  水面反射效果较弱<br>  <strong>彩色玻璃阴影作实心计算（不透光）</strong><br>  百模组FPS：50|30 <font size="2">峰值|稳定平均值</font></li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/c131.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c132.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c133.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c134.png" alt="1"></p>
-<hr>
-<ul>
-<li>ziipzaaps<br>  <em>Ziipzaaps_Shaders_V2</em><br>  水面较暗<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子很糊</strong><br>  百模组FPS：40|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/zi(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>werrus<br>  <em>Werrus HFPS Shaders V4.0 Ultra</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子糊</strong><br>  百模组FPS：50|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/wer(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>iteration<br>  <em>iterationT Next 1.1.0</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>附魔随角度变化不正常</strong><br>  模组（CavesAndCliffsBackport）中遮光玻璃崩坏<br>  百模组FPS：20|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/it(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>Seus renew<br>  <em>SEUS-Renewed-v1.0.1</em><br>  较弱的洞穴漏光修复<br>  水体透明度较低<br>  <strong>粒子效果偏移</strong><br>  <strong>附魔随角度变化不正常</strong><br>  百模组FPS：30|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/Seus(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(5).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>Seus renew fix<br><em>SEUS-Renewed-v1.0.1 [Tweaked+Cloud]</em><br>较弱的洞穴漏光修复<br>水体透明度较低</li>
-<li><em>粒子效果偏移</em>*</li>
-<li><em>附魔随角度变化不正常</em>*<br><font size="2">几乎和上者一致</font><br>百模组FPS：20|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(4).png" alt="1"></p>
-<h1 id="BSL系列比较推荐BSL及其standard版"><a href="#BSL系列比较推荐BSL及其standard版" class="headerlink" title="BSL系列比较推荐BSL及其standard版"></a>BSL系列<font size="2">比较推荐BSL及其standard版</font></h1><hr>
-<ul>
-<li>BSL<br>  <em>BSL_v8.0.01</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  彩色玻璃表现较弱<br>  <strong>光源整体发光</strong><font size="2">比如说火把，它的木杆也明显很亮</font><br>  百模组FPS：40|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/BSL(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>BSL Standard<br>  <em>BSL Standard v7.0p1</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  <strong>附魔效果整体泛光</strong><br>  <strong>水面过透</strong><br>  百模组FPS：40|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/BSLs(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>Sildurs<br>  <em>B Sildurs Vibrant Shaders v1.281 Lite/Medium/High/Extreme</em><br>  <font size="2">建议直接开Extreme，阴影质量提升很多</font><br>  较弱的洞穴漏光修复<br>  <strong>附魔效果呈不透明紫色</strong><br>  百模组FPS：30|30~50|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/SILD(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(4).png" alt="1"></p>
-<h1 id="projectLUMA"><a href="#projectLUMA" class="headerlink" title="projectLUMA"></a>projectLUMA</h1><p>其实不怎么推荐这个</p>
-<hr>
-<ul>
-<li>projectLUMA<br>  <em>projectLUMA - v1.32 汉化版</em><br>  <strong>附魔取消效果</strong><br>  <strong>光源整体发光</strong><br>  百模组FPS：40|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/pro(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(4).png" alt="1"></p>
-<hr>
-<p><font size="6">最后</font><br>个人观点，酌情选用<br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"></p>
-<hr>
-<hr>
-<hr>
-<p>本文作markdown 书写训练文<br>小坑：</p>
-<ul>
-<li>小书匠绑定图床的url前缀填写可省略（不是简单网址，例如：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631329393524.png</span><br></pre></td></tr></table></figure></li>
-<li>大图使用本地图库时参考了 <a href="https://www.jianshu.com/p/f72aaad7b852">DCBXZ的博客</a></li>
-<li>大部分“宏定义”  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D:\Blog\themes\next\source\css\_variables</span><br></pre></td></tr></table></figure></li>
-<li>报错：  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">warning: LF will be replaced by CRLF</span><br></pre></td></tr></table></figure>
-  使用  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config –global core.autocrlf false //禁用自动转换 </span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>MC</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>MC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>汇编3</title>
-    <url>/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/</url>
-    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以下</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">cx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ax</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">dx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ds</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">bp</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
-<p>全错:(<br>其它寄存器不能用于寻址，不能基址+基址或变址+变址</p>
-<h2 id="注意bp"><a href="#注意bp" class="headerlink" title="注意bp"></a>注意bp</h2><p>bp默认段寄存器为ss(栈段)，且bp+ 的段寄存器也为ss</p>
-<hr>
-<p>可单独使用</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>]</span><br></pre></td></tr></table></figure>
-<p>可基址搭配变址</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
-<p>加上立即数(idata)等等，详细分类以下</p>
-<h2 id="可见"><a href="#可见" class="headerlink" title="可见"></a>可见</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796912.png" alt="enter description here"></p>
-<h3 id="ptr"><a href="#ptr" class="headerlink" title="ptr"></a>ptr</h3><p>byte ptr或word ptr指明内存单元长度</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>],<span class="number">1</span></span><br><span class="line"><span class="keyword">inc</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> [<span class="built_in">bx</span>]<span class="comment">;否则是将由地址bx和地址bx+1组成的一个字加一</span></span><br></pre></td></tr></table></figure>
-<p>push、pop一定针对字型(16)</p>
-<h1 id="div"><a href="#div" class="headerlink" title="div"></a>div</h1><p>其中<br>除数：8位和16位两种<br>被除数：默认放在 ax 或 dx和ax 中(dx存放高16位，ax存放低16位)<br>如果除数为8位，则ax中al存储商ah存储余数；如果除数为16位，则ax存储商dx存储余数</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>即： (al)=(ax)/((ds)*16+0)    之商<br>        (ah)=(ax)/((ds)*16+0)  之余</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>即： (ax)=[(dx)*10000h+(ax)]/((ds)*16+0)    之商<br>        (dx)=[(dx)*10000h+(ax)]/((ds)*16+0)  之余</p>
 ]]></content>
       <categories>
         <category>笔记</category>
