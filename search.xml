@@ -35,6 +35,77 @@
       </tags>
   </entry>
   <entry>
+    <title>Java String.format 用法</title>
+    <url>/2021/09/15/Java/1/</url>
+    <content><![CDATA[<h1 id="对整数进行格式化"><a href="#对整数进行格式化" class="headerlink" title="对整数进行格式化"></a>对整数进行格式化</h1><p>%[index$][标识][最小宽度]转换方式</p>
+<ul>
+<li>index$<br>  格式化参数的索引  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String.formart(<span class="string">&quot;%1$s %2$s&quot;</span>,<span class="string">&quot;中国&quot;</span>,<span class="string">&quot;北京&quot;</span>);<span class="comment">// &quot;中国 北京&quot;</span></span><br><span class="line">String.formart(<span class="string">&quot;%2$s %1$s&quot;</span>,<span class="string">&quot;中国&quot;</span>,<span class="string">&quot;北京&quot;</span>);<span class="comment">// &quot;北京 中国&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>标识<h2 id="‘-‘"><a href="#‘-‘" class="headerlink" title="‘-‘"></a>‘-‘</h2>  在最小宽度内左对齐，不可以与“用0填充”同时使用<h2 id="‘-’"><a href="#‘-’" class="headerlink" title="‘#’"></a>‘#’</h2>  只适用于8进制和16进制，8进制时在结果前面增加一个0，16进制时在结果前面增加0x<h2 id="‘-’-1"><a href="#‘-’-1" class="headerlink" title="‘+’"></a>‘+’</h2>  结果总是包括一个符号（一般情况下只适用于10进制，若对象为BigInteger才可以用于8进制和16进制）<h2 id="‘-‘-1"><a href="#‘-‘-1" class="headerlink" title="‘ ‘"></a>‘ ‘</h2>  正值前加空格，负值前加负号（一般情况下只适用于10进制，若对象为BigInteger才可以用于8进制和16进制）<h2 id="‘0’"><a href="#‘0’" class="headerlink" title="‘0’"></a>‘0’</h2>  结果将用零来填充<br>  简单补零：  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(String.format(<span class="string">&quot;%02d&quot;</span>,<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+  即01<br>  补零数据自然左对齐（不共用！）<h2 id="‘-’-2"><a href="#‘-’-2" class="headerlink" title="‘,’"></a>‘,’</h2>  只适用于10进制，每3位数字之间用“，”分隔<h2 id="‘-‘-2"><a href="#‘-‘-2" class="headerlink" title="‘(‘"></a>‘(‘</h2>  若参数是负数，则结果中不添加负号而是用圆括号把数字括起来（同‘+’具有同样的限制）</li>
+<li>转换方式<br>d 十进制   o 八进制   x/X 十六进制<br>例：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(String.format(<span class="string">&quot;%1$,-9d|&quot;</span>, -<span class="number">1234</span>));</span><br><span class="line">System.out.println(String.format(<span class="string">&quot;%1$0(9d&quot;</span>, -<span class="number">12</span>));</span><br><span class="line">System.out.println(String.format(<span class="string">&quot;%1$0#5x&quot;</span>, <span class="number">34</span>));</span><br><span class="line">System.out.println(String.format(<span class="string">&quot;%2$02x %1$06X&quot;</span>, <span class="number">28</span>,<span class="number">29</span>));</span><br></pre></td></tr></table></figure>
+OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1,234   |</span><br><span class="line">(0000012)</span><br><span class="line">0x022</span><br><span class="line">1d 00001C</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="对浮点数进行格式化"><a href="#对浮点数进行格式化" class="headerlink" title="对浮点数进行格式化"></a>对浮点数进行格式化</h1><p>%[index$][标识][最少宽度][.精度]转换方式</p>
+<ul>
+<li>其中转换方式:<ul>
+<li>e/E 带有效位数和指数的十进制数</li>
+<li>f 普通浮点型</li>
+<li>g/G 系统自动选择用普通表示方式还是科学计数法方式</li>
+<li>a/A 带有效位数和指数的十六进制浮点数<h2 id="精度-即小数点后位数"><a href="#精度-即小数点后位数" class="headerlink" title=".精度 即小数点后位数"></a>.精度 即小数点后位数</h2></li>
+</ul>
+</li>
+</ul>
+<h1 id="对字符、字符串进行格式化"><a href="#对字符、字符串进行格式化" class="headerlink" title="对字符、字符串进行格式化"></a>对字符、字符串进行格式化</h1><p>%[index$][标识][最小宽度]c/s</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String test = <span class="string">&quot;hello word&quot;</span>;</span><br><span class="line">String str = String.format(<span class="string">&quot;|%-15s|&quot;</span>, test);</span><br><span class="line">System.out.println(str);</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> tamp = <span class="string">&#x27;h&#x27;</span>;</span><br><span class="line">str = String.format(<span class="string">&quot;(%15c)&quot;</span>, tamp);</span><br><span class="line">System.out.println(str);</span><br></pre></td></tr></table></figure>
+<p>OUT:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|hello word     |</span><br><span class="line">(              h)</span><br></pre></td></tr></table></figure>
+<h1 id="对日期类型进行格式化"><a href="#对日期类型进行格式化" class="headerlink" title="对日期类型进行格式化"></a>对日期类型进行格式化</h1><p>以下日期和时间转换的后缀字符是为 ‘t’ 和 ‘T’ 转换定义的</p>
+<h2 id="以下转换字符用来格式化时间："><a href="#以下转换字符用来格式化时间：" class="headerlink" title="以下转换字符用来格式化时间："></a>以下转换字符用来格式化时间：</h2><ul>
+<li>‘H’     24 小时制的小时，被格式化为必要时带前导零的两位数，即 00 - 23。</li>
+<li>‘I’     12 小时制的小时，被格式化为必要时带前导零的两位数，即 01 - 12。</li>
+<li>‘k’     24 小时制的小时，即 0 - 23。</li>
+<li>‘l’     12 小时制的小时，即 1 - 12。</li>
+<li>‘M’     小时中的分钟，被格式化为必要时带前导零的两位数，即 00 - 59。</li>
+<li>‘S’     分钟中的秒，被格式化为必要时带前导零的两位数，即 00 - 60 （”60” 是支持闰秒所需的一个特殊值）。</li>
+<li>‘L’     秒中的毫秒，被格式化为必要时带前导零的三位数，即 000 - 999。</li>
+<li>‘N’     秒中的毫微秒，被格式化为必要时带前导零的九位数，即 000000000 - 999999999。</li>
+<li>‘p’     特定于语言环境的 上午或下午 标记以小写形式表示，例如 “am” 或 “pm”。使用转换前缀 ‘T’ 可以强行将此输出转换为大写形式。</li>
+<li>‘z’     相对于 GMT 的 RFC 822 格式的数字时区偏移量，例如 -0800。</li>
+<li>‘Z’     表示时区缩写形式的字符串。Formatter 的语言环境将取代参数的语言环境（如果有）。</li>
+<li>‘s’     自协调世界时 (UTC) 1970 年 1 月 1 日 00:00:00 至现在所经过的秒数，即 Long.MIN_VALUE/1000 与 Long.MAX_VALUE/1000 之间的差值。</li>
+<li>‘Q’     自协调世界时 (UTC) 1970 年 1 月 1 日 00:00:00 至现在所经过的毫秒数，即 Long.MIN_VALUE 与 Long.MAX_VALUE 之间的差值。</li>
+</ul>
+<h2 id="以下转换字符用来格式化日期："><a href="#以下转换字符用来格式化日期：" class="headerlink" title="以下转换字符用来格式化日期："></a>以下转换字符用来格式化日期：</h2><ul>
+<li>‘B’     特定于语言环境的月份全称，例如 “January” 和 “February”。</li>
+<li>‘b’     特定于语言环境的月份简称，例如 “Jan” 和 “Feb”。</li>
+<li>‘h’     与 ‘b’ 相同。</li>
+<li>‘A’     特定于语言环境的星期几全称，例如 “Sunday” 和 “Monday”</li>
+<li>‘a’     特定于语言环境的星期几简称，例如 “Sun” 和 “Mon”</li>
+<li>‘C’     除以 100 的四位数表示的年份，被格式化为必要时带前导零的两位数，即 00 - 99</li>
+<li>‘Y’     年份，被格式化为必要时带前导零的四位数（至少），例如，0092 等于格里高利历的 92 CE。</li>
+<li>‘y’     年份的最后两位数，被格式化为必要时带前导零的两位数，即 00 - 99。</li>
+<li>‘j’     一年中的天数，被格式化为必要时带前导零的三位数，例如，对于格里高利历是 001 - 366。</li>
+<li>‘m’     月份，被格式化为必要时带前导零的两位数，即 01 - 13。</li>
+<li>‘d’     一个月中的天数，被格式化为必要时带前导零两位数，即 01 - 31</li>
+<li>‘e’     一个月中的天数，被格式化为两位数，即 1 - 31。</li>
+</ul>
+<h2 id="以下转换字符用于格式化常见的日期-时间组合："><a href="#以下转换字符用于格式化常见的日期-时间组合：" class="headerlink" title="以下转换字符用于格式化常见的日期/时间组合："></a>以下转换字符用于格式化常见的日期/时间组合：</h2><ul>
+<li>‘R’     24 小时制的时间，被格式化为 “%tH:%tM”</li>
+<li>‘T’     24 小时制的时间，被格式化为 “%tH:%tM:%tS”。</li>
+<li>‘r’     12 小时制的时间，被格式化为 “%tI:%tM:%tS %Tp”。上午或下午标记 (‘%Tp’) 的位置可能与语言环境有关。</li>
+<li>‘D’     日期，被格式化为 “%tm/%td/%ty”。</li>
+<li>‘F’     ISO 8601 格式的完整日期，被格式化为 “%tY-%tm-%td”。</li>
+<li>‘c’     日期和时间，被格式化为 “%ta %tb %td %tT %tZ %tY”，例如 “Sun Jul 20 16:17:00 EDT 1969”。  <font size="2"><a href="https://blog.csdn.net/wahaha13168/article/details/83008576">参考博客</a></font></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>光影测试</title>
     <url>/2021/09/11/MC/shaderpack/</url>
     <content><![CDATA[<p>10个超良心低配光影介绍&amp;测评<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
@@ -116,77 +187,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java String.format 用法</title>
-    <url>/2021/09/15/Java/1/</url>
-    <content><![CDATA[<h1 id="对整数进行格式化"><a href="#对整数进行格式化" class="headerlink" title="对整数进行格式化"></a>对整数进行格式化</h1><p>%[index$][标识][最小宽度]转换方式</p>
-<ul>
-<li>index$<br>  格式化参数的索引  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String.formart(<span class="string">&quot;%1$s %2$s&quot;</span>,<span class="string">&quot;中国&quot;</span>,<span class="string">&quot;北京&quot;</span>);<span class="comment">// &quot;中国 北京&quot;</span></span><br><span class="line">String.formart(<span class="string">&quot;%2$s %1$s&quot;</span>,<span class="string">&quot;中国&quot;</span>,<span class="string">&quot;北京&quot;</span>);<span class="comment">// &quot;北京 中国&quot;</span></span><br></pre></td></tr></table></figure></li>
-<li>标识<h2 id="‘-‘"><a href="#‘-‘" class="headerlink" title="‘-‘"></a>‘-‘</h2>  在最小宽度内左对齐，不可以与“用0填充”同时使用<h2 id="‘-’"><a href="#‘-’" class="headerlink" title="‘#’"></a>‘#’</h2>  只适用于8进制和16进制，8进制时在结果前面增加一个0，16进制时在结果前面增加0x<h2 id="‘-’-1"><a href="#‘-’-1" class="headerlink" title="‘+’"></a>‘+’</h2>  结果总是包括一个符号（一般情况下只适用于10进制，若对象为BigInteger才可以用于8进制和16进制）<h2 id="‘-‘-1"><a href="#‘-‘-1" class="headerlink" title="‘ ‘"></a>‘ ‘</h2>  正值前加空格，负值前加负号（一般情况下只适用于10进制，若对象为BigInteger才可以用于8进制和16进制）<h2 id="‘0’"><a href="#‘0’" class="headerlink" title="‘0’"></a>‘0’</h2>  结果将用零来填充<br>  简单补零：  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(String.format(<span class="string">&quot;%02d&quot;</span>,<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
-  即01<br>  补零数据自然左对齐（不共用！）<h2 id="‘-’-2"><a href="#‘-’-2" class="headerlink" title="‘,’"></a>‘,’</h2>  只适用于10进制，每3位数字之间用“，”分隔<h2 id="‘-‘-2"><a href="#‘-‘-2" class="headerlink" title="‘(‘"></a>‘(‘</h2>  若参数是负数，则结果中不添加负号而是用圆括号把数字括起来（同‘+’具有同样的限制）</li>
-<li>转换方式<br>d 十进制   o 八进制   x/X 十六进制<br>例：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.println(String.format(<span class="string">&quot;%1$,-9d|&quot;</span>, -<span class="number">1234</span>));</span><br><span class="line">System.out.println(String.format(<span class="string">&quot;%1$0(9d&quot;</span>, -<span class="number">12</span>));</span><br><span class="line">System.out.println(String.format(<span class="string">&quot;%1$0#5x&quot;</span>, <span class="number">34</span>));</span><br><span class="line">System.out.println(String.format(<span class="string">&quot;%2$02x %1$06X&quot;</span>, <span class="number">28</span>,<span class="number">29</span>));</span><br></pre></td></tr></table></figure>
-OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-1,234   |</span><br><span class="line">(0000012)</span><br><span class="line">0x022</span><br><span class="line">1d 00001C</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="对浮点数进行格式化"><a href="#对浮点数进行格式化" class="headerlink" title="对浮点数进行格式化"></a>对浮点数进行格式化</h1><p>%[index$][标识][最少宽度][.精度]转换方式</p>
-<ul>
-<li>其中转换方式:<ul>
-<li>e/E 带有效位数和指数的十进制数</li>
-<li>f 普通浮点型</li>
-<li>g/G 系统自动选择用普通表示方式还是科学计数法方式</li>
-<li>a/A 带有效位数和指数的十六进制浮点数<h2 id="精度-即小数点后位数"><a href="#精度-即小数点后位数" class="headerlink" title=".精度 即小数点后位数"></a>.精度 即小数点后位数</h2></li>
-</ul>
-</li>
-</ul>
-<h1 id="对字符、字符串进行格式化"><a href="#对字符、字符串进行格式化" class="headerlink" title="对字符、字符串进行格式化"></a>对字符、字符串进行格式化</h1><p>%[index$][标识][最小宽度]c/s</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String test = <span class="string">&quot;hello word&quot;</span>;</span><br><span class="line">String str = String.format(<span class="string">&quot;|%-15s|&quot;</span>, test);</span><br><span class="line">System.out.println(str);</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> tamp = <span class="string">&#x27;h&#x27;</span>;</span><br><span class="line">str = String.format(<span class="string">&quot;(%15c)&quot;</span>, tamp);</span><br><span class="line">System.out.println(str);</span><br></pre></td></tr></table></figure>
-<p>OUT:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">|hello word     |</span><br><span class="line">(              h)</span><br></pre></td></tr></table></figure>
-<h1 id="对日期类型进行格式化"><a href="#对日期类型进行格式化" class="headerlink" title="对日期类型进行格式化"></a>对日期类型进行格式化</h1><p>以下日期和时间转换的后缀字符是为 ‘t’ 和 ‘T’ 转换定义的</p>
-<h2 id="以下转换字符用来格式化时间："><a href="#以下转换字符用来格式化时间：" class="headerlink" title="以下转换字符用来格式化时间："></a>以下转换字符用来格式化时间：</h2><ul>
-<li>‘H’     24 小时制的小时，被格式化为必要时带前导零的两位数，即 00 - 23。</li>
-<li>‘I’     12 小时制的小时，被格式化为必要时带前导零的两位数，即 01 - 12。</li>
-<li>‘k’     24 小时制的小时，即 0 - 23。</li>
-<li>‘l’     12 小时制的小时，即 1 - 12。</li>
-<li>‘M’     小时中的分钟，被格式化为必要时带前导零的两位数，即 00 - 59。</li>
-<li>‘S’     分钟中的秒，被格式化为必要时带前导零的两位数，即 00 - 60 （”60” 是支持闰秒所需的一个特殊值）。</li>
-<li>‘L’     秒中的毫秒，被格式化为必要时带前导零的三位数，即 000 - 999。</li>
-<li>‘N’     秒中的毫微秒，被格式化为必要时带前导零的九位数，即 000000000 - 999999999。</li>
-<li>‘p’     特定于语言环境的 上午或下午 标记以小写形式表示，例如 “am” 或 “pm”。使用转换前缀 ‘T’ 可以强行将此输出转换为大写形式。</li>
-<li>‘z’     相对于 GMT 的 RFC 822 格式的数字时区偏移量，例如 -0800。</li>
-<li>‘Z’     表示时区缩写形式的字符串。Formatter 的语言环境将取代参数的语言环境（如果有）。</li>
-<li>‘s’     自协调世界时 (UTC) 1970 年 1 月 1 日 00:00:00 至现在所经过的秒数，即 Long.MIN_VALUE/1000 与 Long.MAX_VALUE/1000 之间的差值。</li>
-<li>‘Q’     自协调世界时 (UTC) 1970 年 1 月 1 日 00:00:00 至现在所经过的毫秒数，即 Long.MIN_VALUE 与 Long.MAX_VALUE 之间的差值。</li>
-</ul>
-<h2 id="以下转换字符用来格式化日期："><a href="#以下转换字符用来格式化日期：" class="headerlink" title="以下转换字符用来格式化日期："></a>以下转换字符用来格式化日期：</h2><ul>
-<li>‘B’     特定于语言环境的月份全称，例如 “January” 和 “February”。</li>
-<li>‘b’     特定于语言环境的月份简称，例如 “Jan” 和 “Feb”。</li>
-<li>‘h’     与 ‘b’ 相同。</li>
-<li>‘A’     特定于语言环境的星期几全称，例如 “Sunday” 和 “Monday”</li>
-<li>‘a’     特定于语言环境的星期几简称，例如 “Sun” 和 “Mon”</li>
-<li>‘C’     除以 100 的四位数表示的年份，被格式化为必要时带前导零的两位数，即 00 - 99</li>
-<li>‘Y’     年份，被格式化为必要时带前导零的四位数（至少），例如，0092 等于格里高利历的 92 CE。</li>
-<li>‘y’     年份的最后两位数，被格式化为必要时带前导零的两位数，即 00 - 99。</li>
-<li>‘j’     一年中的天数，被格式化为必要时带前导零的三位数，例如，对于格里高利历是 001 - 366。</li>
-<li>‘m’     月份，被格式化为必要时带前导零的两位数，即 01 - 13。</li>
-<li>‘d’     一个月中的天数，被格式化为必要时带前导零两位数，即 01 - 31</li>
-<li>‘e’     一个月中的天数，被格式化为两位数，即 1 - 31。</li>
-</ul>
-<h2 id="以下转换字符用于格式化常见的日期-时间组合："><a href="#以下转换字符用于格式化常见的日期-时间组合：" class="headerlink" title="以下转换字符用于格式化常见的日期/时间组合："></a>以下转换字符用于格式化常见的日期/时间组合：</h2><ul>
-<li>‘R’     24 小时制的时间，被格式化为 “%tH:%tM”</li>
-<li>‘T’     24 小时制的时间，被格式化为 “%tH:%tM:%tS”。</li>
-<li>‘r’     12 小时制的时间，被格式化为 “%tI:%tM:%tS %Tp”。上午或下午标记 (‘%Tp’) 的位置可能与语言环境有关。</li>
-<li>‘D’     日期，被格式化为 “%tm/%td/%ty”。</li>
-<li>‘F’     ISO 8601 格式的完整日期，被格式化为 “%tY-%tm-%td”。</li>
-<li>‘c’     日期和时间，被格式化为 “%ta %tb %td %tT %tZ %tY”，例如 “Sun Jul 20 16:17:00 EDT 1969”。  <font size="2"><a href="https://blog.csdn.net/wahaha13168/article/details/83008576">参考博客</a></font></li>
-</ul>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>汇编0MOOC笔记</title>
     <url>/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/1/</url>
     <content><![CDATA[<p><font size="1" color="gray"><del>这个MOOC不得行啊</del></font><br><font size="1">后面还是看的B站orz</font><br>回头来看，还是MOOC讲的系统</p>
@@ -237,37 +237,6 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 <h1 id="HEXO技巧"><a href="#HEXO技巧" class="headerlink" title="HEXO技巧"></a>HEXO技巧</h1><p>使用：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;XXX&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;</span><br><span class="line">&lt;img src=&quot;XXX&quot; width=256 height=256 /&gt;</span><br></pre></td></tr></table></figure>
 <p>进行可控插入图片</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>汇编3</title>
-    <url>/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/</url>
-    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以下</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">cx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ax</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">dx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ds</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">bp</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
-<p>全错:(<br>其它寄存器不能用于寻址，不能基址+基址或变址+变址</p>
-<h2 id="注意bp"><a href="#注意bp" class="headerlink" title="注意bp"></a>注意bp</h2><p>bp默认段寄存器为ss(栈段)，且bp+ 的段寄存器也为ss</p>
-<hr>
-<p>可单独使用</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>]</span><br></pre></td></tr></table></figure>
-<p>可基址搭配变址</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
-<p>加上立即数(idata)等等，详细分类以下</p>
-<h2 id="可见"><a href="#可见" class="headerlink" title="可见"></a><a href="https://dyinjin.github.io/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/4/">可见</a></h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796912.png" alt="enter description here"></p>
-<h3 id="ptr"><a href="#ptr" class="headerlink" title="ptr"></a>ptr</h3><p>byte ptr或word ptr指明内存单元长度</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>],<span class="number">1</span></span><br><span class="line"><span class="keyword">inc</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> [<span class="built_in">bx</span>]<span class="comment">;否则是将由地址bx和地址bx+1组成的一个字加一</span></span><br></pre></td></tr></table></figure>
-<p>push、pop一定针对字型(16)</p>
-<h1 id="div"><a href="#div" class="headerlink" title="div"></a>div</h1><p>其中<br>除数：8位和16位两种<br>被除数：默认放在 ax 或 dx和ax 中(dx存放高16位，ax存放低16位)<br>如果除数为8位，则ax中al存储商ah存储余数；如果除数为16位，则ax存储商dx存储余数</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>即： (al)=(ax)/((ds)*16+0)    之商<br>        (ah)=(ax)/((ds)*16+0)  之余</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>即： (ax)=[(dx)*10000h+(ax)]/((ds)*16+0)    之商<br>        (dx)=[(dx)*10000h+(ax)]/((ds)*16+0)  之余</p>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -399,15 +368,62 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 对指定位置0</li>
 <li>or<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">or</span> <span class="built_in">al</span>,<span class="number">10111111b</span></span><br></pre></td></tr></table></figure>
 对指定位置1</li>
-<li>xor<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">xor</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
+<li>xor(异或)<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">xor</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
 对寄存器置零</li>
 <li>inc自增</li>
 <li>dec自减</li>
-<li>小写字符=大写字符+20h</li>
-<li>dw定义字类型变量，一个字数据占2个字节单元，读完一个，偏移量加2</li>
-<li>dd定义字节类型变量，一个字节数据占1个字节单元，读完一个，偏移量加1</li>
-<li>db定义双字类型变量，一个双字数据占4个字节单元，读完一个，偏移量加4</li>
+<li>小写字符=大写字符+20h<h3 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h3></li>
+<li>dw定义字类型变量，一个字数据占2个字节(16位)单元，读完一个，偏移量加2</li>
+<li>db定义字节类型变量，一个字节数据占1个字节(8位)单元，读完一个，偏移量加1</li>
+<li>dd定义双字类型变量，一个双字数据占4个字节(32位)单元，读完一个，偏移量加4<br>伪指令db、dw、dd都可以定义字符串，但最多的是用db来定义字符串，第一个原因是dw、dd定义的字符串到了内存中排序是相反的。</li>
+<li>dup是一个操作符，在汇编语言中同db、dw、dd等一样，也是由编译器识别处理的符号。它是和db、dw、dd等数据定义伪指令配合使用的，用来进行数据的重复。<br>dup的使用格式如下：<br>db 重复的次数 dup (重复的字节型数据)。<br>dw 重复的次数 dup (重复的字型数据)。<br>dd 重复的次数 dup (重复的双字数据)。<br>dup是一个十分有用的操作符，比如我们要定义一个容量为200个字节的栈段，如果不用dup，则需要大量的代码来进行定义。如果用dup的话：<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">stack <span class="meta">segment</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">200</span> dup (<span class="number">0</span>)</span><br><span class="line">stack ends</span><br></pre></td></tr></table></figure></li>
 </ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编3</title>
+    <url>/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/</url>
+    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以下</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">cx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ax</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">dx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ds</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">bp</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>全错:(<br>其它寄存器不能用于寻址，不能基址+基址或变址+变址</p>
+<h2 id="注意bp"><a href="#注意bp" class="headerlink" title="注意bp"></a>注意bp</h2><p>bp默认段寄存器为ss(栈段)，且bp+ 的段寄存器也为ss</p>
+<hr>
+<p>可单独使用</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>]</span><br></pre></td></tr></table></figure>
+<p>可基址搭配变址</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>加上立即数(idata)等等，详细分类以下</p>
+<h2 id="可见"><a href="#可见" class="headerlink" title="可见"></a><a href="https://dyinjin.github.io/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/4/">可见</a></h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796912.png" alt="enter description here"></p>
+<h3 id="ptr"><a href="#ptr" class="headerlink" title="ptr"></a>ptr</h3><p>byte ptr或word ptr指明内存单元长度</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>],<span class="number">1</span></span><br><span class="line"><span class="keyword">inc</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> [<span class="built_in">bx</span>]<span class="comment">;否则是将由地址bx和地址bx+1组成的一个字加一</span></span><br></pre></td></tr></table></figure>
+<p>push、pop一定针对字型(16)</p>
+<h1 id="div"><a href="#div" class="headerlink" title="div"></a>div</h1><p>其中<br>除数：8位和16位两种<br>被除数：默认放在 ax 或 dx和ax 中(dx存放高16位，ax存放低16位)<br>如果除数为8位，则ax中al存储商ah存储余数；如果除数为16位，则ax存储商dx存储余数</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (al)=(ax)/((ds)*16+0)    之商<br>        (ah)=(ax)/((ds)*16+0)  之余</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (ax)=[(dx)*10000h+(ax)]/((ds)*16+0)    之商<br>        (dx)=[(dx)*10000h+(ax)]/((ds)*16+0)  之余</p>
+<h1 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h1><p>即修改cs、ip的指令<br>段内转移：只修改ip，比如jmp ax<br>段间转移：同时修改cs:ip，比如jmp 1000:0<br>短转移：IP的修改范围为-128字节～127字节（2的8次方，8位）<br>近转移：IP的修改范围为-32768字节～32767字节（2的16次方，16位）</p>
+<h2 id="JMP标号转移"><a href="#JMP标号转移" class="headerlink" title="JMP标号转移"></a>JMP标号转移</h2><h3 id="jmp-short-s"><a href="#jmp-short-s" class="headerlink" title="jmp short s"></a>jmp short s</h3><p>转到标号处执行命令<br>段内短转移<br>范围-128～127</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">jmp</span> short s</span><br><span class="line"><span class="symbol">s:</span> ....</span><br></pre></td></tr></table></figure>
+<h3 id="jmp-near-ptr-s"><a href="#jmp-near-ptr-s" class="headerlink" title="jmp near ptr s"></a>jmp near ptr s</h3><p>转到标号处执行命令<br>段内近转移<br>范围-32768～32767</p>
+<h3 id="jmp-far-ptr-s"><a href="#jmp-far-ptr-s" class="headerlink" title="jmp far ptr s"></a>jmp far ptr s</h3><p>转到标号处执行命令<br>段间转移，同时修改CS和IP</p>
+<h2 id="JMP地址转移"><a href="#JMP地址转移" class="headerlink" title="JMP地址转移"></a>JMP地址转移</h2><h3 id="jmp-16位寄存器"><a href="#jmp-16位寄存器" class="headerlink" title="jmp [16位寄存器]"></a>jmp [16位寄存器]</h3><h3 id="jmp-word-ptr-段寄存器-偏移"><a href="#jmp-word-ptr-段寄存器-偏移" class="headerlink" title="jmp word ptr 段寄存器:[偏移]"></a>jmp word ptr 段寄存器:[偏移]</h3><p>段内转移<br>从内存单元地址出开始存放着一个字，是转移的目的偏移地址，改变IP</p>
+<h3 id="jmp-dword-ptr-段寄存器-偏移"><a href="#jmp-dword-ptr-段寄存器-偏移" class="headerlink" title="jmp dword ptr 段寄存器:[偏移]"></a>jmp dword ptr 段寄存器:[偏移]</h3><p>段间转移<br>从内存单元地址处开始存放着两个字，高地址处的字是转移的目的段地址，低地址处是转移的目的偏移地址，同时改变CS、IP</p>
+<h2 id="JCXZ条件转移"><a href="#JCXZ条件转移" class="headerlink" title="JCXZ条件转移"></a>JCXZ条件转移</h2><p>短转移</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if((cx)==0) jmp short 标号;</span><br></pre></td></tr></table></figure>
+<p>这么个意思</p>
+<h2 id="LOOP"><a href="#LOOP" class="headerlink" title="LOOP"></a>LOOP</h2><p>循环，本质也是转移指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(cx)--;</span><br><span class="line">if((cx)!=0)jmp short 标号;</span><br></pre></td></tr></table></figure>
+<h2 id="NOP"><a href="#NOP" class="headerlink" title="NOP"></a>NOP</h2><p>啥也不是，填充</p>
+<h2 id="OFFSET"><a href="#OFFSET" class="headerlink" title="OFFSET"></a>OFFSET</h2><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line"><span class="symbol">s:</span> ...</span><br></pre></td></tr></table></figure>
+<p>取标号地址</p>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -481,6 +497,103 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 </ul>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>x86模型机</title>
+    <url>/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/</url>
+    <content><![CDATA[<h1 id="模型机的总体设计"><a href="#模型机的总体设计" class="headerlink" title="模型机的总体设计"></a>模型机的总体设计</h1><h2 id="模型机指令系统"><a href="#模型机指令系统" class="headerlink" title="模型机指令系统"></a>模型机指令系统</h2><ul>
+<li>指令格式<ul>
+<li>双操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864169.png" alt="enter description here"></li>
+<li>单操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864170.png" alt="enter description here"></li>
+<li>转移指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864171.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864090.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864091.png" alt="enter description here"></li>
+<li>操作类型<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864216.png" alt="enter description here"><h2 id="CPU的组成"><a href="#CPU的组成" class="headerlink" title="CPU的组成"></a>CPU的组成</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864217.png" alt="enter description here"><h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3></li>
+<li>输入选择器/锁存器<br>  选择数据来源，送入ALU进行运算处理，或借道ALU进行传送。数据来源有：R0~R3、C、D、PC、SP、PSW、MDR。</li>
+<li>ALU部件<br>  作各种算术，逻辑运算；由微命令M，S0，S1，S2，S3，C0选择操作功能。</li>
+<li>移位器<br>  作直接传送、左移、右移；由微命令实现直接、左、右移。</li>
+</ul>
+<h3 id="寄存器设置"><a href="#寄存器设置" class="headerlink" title="寄存器设置"></a>寄存器设置</h3><ul>
+<li>用于处理的寄存器：通用寄存器、暂存器<ul>
+<li>通用寄存器组<br>  一组可编程访问的寄存器。在指令系统中为这些R分配了编号，有：R0~R3，PC，SP，PSW。</li>
+<li>暂存器<br>  用户不能直接访问的R，用来暂存信息，在指令系统中没有为它们分配编号，有C、D。 暂存器C：从主存中读取源操作数或源操作数地址时，使用它。 暂存器D：从主存中读取目的作数或目的操作数地址时，或中间运算结果时，使用它。</li>
+</ul>
+</li>
+<li>用于控制的寄存器：指令寄存器IR、程序计数器PC、 程序状态字寄存器PSW<ul>
+<li>指令寄存器IR<br>  用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
+<li>程序计数器PC<br>  PC提供后继指令地址，并送往与主存器相连接的地址寄存器（MAR）。</li>
+<li>程序状态字寄存器PSW（program status word）<br>  PSW的内容就是表现的现行程序的状态。 包括： 特征位：进位C、溢出V、零Z、负N，允许中断I等； 编程设定位。</li>
+</ul>
+</li>
+<li>用作主存接口的寄存器：地址寄存器MAR、数据缓冲寄存器MBR(MDR)<br>  CPU访问主存时，首先送出地址码，然后送出/接收数据，需：<br>  A.当作用在MAR上的微命令EMAR为低电平时，MAR输出呈高阻态，与地址总线断开；<br>  B.当作用在MAR上的微命令EMAR为高电平时，MAR输出其内容（地址信息）送往地址总线；<ul>
+<li>地址寄存器MAR<br>  读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
+<li>数据缓冲寄存器MBR(MDR)<br>  由控制命令R/W决定传送方向。<br>  R：由主存单元-&gt;数据总线-&gt;MDR<br>  W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3></li>
+</ul>
+</li>
+<li>定义<br>是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。<br>数据通路结构：数据传送结构，它是CPU总体结构的核心问题。 总线：是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。</li>
+<li>总线类型<br>① CPU内总线： 模型机中是一组单向数据传送总线，是连接运算器、寄存器等CPU内部部件的总线。<br>② 部件间总线： 芯片间的连接总线，包含地址线与数据线两组。<br>③ 系统总线： 作用是计算机系统内各大部件进行信息交换的基础，分：地址总线AB、数据总线DB、控制总线CB<br>④ 外总线： 一台CS与其它设备相连接的总线。<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3>产生时序信号的部件称为时序发生器或时序系统，它由一个振荡器和一组计数分频器组成。<h2 id="CPU的内部数据通路结构"><a href="#CPU的内部数据通路结构" class="headerlink" title="CPU的内部数据通路结构"></a>CPU的内部数据通路结构</h2>模型机如何<strong>以内总线为纽带</strong>建立各部件间的数据传送通路，即CPU内部数据通路结构，这是CPU组成的核心问题。<br>模型机的<strong>结构</strong>为：单组、单向内总线、分立寄存器结构。<h3 id="模型机数据通路框图"><a href="#模型机数据通路框图" class="headerlink" title="模型机数据通路框图"></a>模型机数据通路框图</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864168.png" alt="enter description here"></li>
+<li>可编程寄存器<br>R0~R3通用寄存器(000,001,010,011)、SP(100)堆栈指针、PSW(101)程序状态寄存器、PC程序计数器</li>
+<li>暂存器<br>C、D约定从主存中读源操作数、操作数地址时用C；从主存中取目的操作数、操作数地址或暂存时，用D</li>
+<li>指令寄存器IR</li>
+<li>主存接口寄存器MAR、MDR(MBR)</li>
+<li>地址寄存器MAR<br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。<ul>
+<li>数据缓冲寄存器MBR(MDR)<br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="各类信息的传送路径"><a href="#各类信息的传送路径" class="headerlink" title="各类信息的传送路径"></a>各类信息的传送路径</h3></li>
+</ul>
+</li>
+<li>取指令地址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864214.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864188.png" alt="enter description here"></li>
+<li>指令信息的传递<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864215.png" alt="enter description here"></li>
+<li>取操作数地址—①寄存器间址（R）</li>
+<li>取操作数地址—②自减型寄存器间址 -(R)</li>
+<li>取操作数地址—③自增型寄存器间址 (R)+</li>
+<li>取操作数地址—④自增型双重间址 @(R)+<h2 id="主机与外部的数据通路与-信息传送控制方式（未完）"><a href="#主机与外部的数据通路与-信息传送控制方式（未完）" class="headerlink" title="主机与外部的数据通路与 信息传送控制方式（未完）"></a>主机与外部的数据通路与 信息传送控制方式（未完）</h2><h2 id="时序控制方式与时序系统"><a href="#时序控制方式与时序系统" class="headerlink" title="时序控制方式与时序系统"></a>时序控制方式与时序系统</h2><h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1></li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编4</title>
+    <url>/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/7/</url>
+    <content><![CDATA[<h1 id="题"><a href="#题" class="headerlink" title="题"></a>题</h1><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codesg</span><br><span class="line">codesg <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,offect s2</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span>:[<span class="built_in">si</span>]</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cs</span>:[<span class="built_in">di</span>],<span class="built_in">ax</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s0:</span></span><br><span class="line">	jump short s</span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s1:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s2:</span></span><br><span class="line">	<span class="keyword">jmp</span> short s1</span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line"></span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p>这段代码首先用<br>    mov di,offect s<br>    mov si,offect s2<br>    mov ax,cs:[si]<br>    mov cs:[di],ax<br>将s2处代码写到s处<br>然后接着执行s0,跳到s,执行被写入的<strong>jmp short s1</strong><br>关键来了<br>汇编中jmp short X的本质是由编译器计算出当前地址举例要跳转标号的偏移值<br>再进行相对偏移；<br>所以<strong>jmp short s1</strong>实际是向前跳8个字节的意思（mov ax,0    int 21h    mov   ax,0这三条指令长8个字节）到原来的s1<br>但现在这句话被简单拷贝在了s处，电脑则也只是向前跳8个字节（不管前面到哪里），所以ip指针会向前执行到mov ax,4c00h处（mov ax,4c00h    int 21h       mov ax,0也是8个字节长）最后结束</p>
+<hr>
+<p>一个实用的程序<br>属性字节格式：</p>
+<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631889385422.png" alt="enter description here"><br>（二进制）<br>16*16=256=2^8</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code,<span class="built_in">ds</span>:data</span><br><span class="line"></span><br><span class="line">data <span class="meta">segment</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">1920</span>,<span class="number">2080</span>,<span class="number">2240</span>,<span class="number">64</span><span class="comment">;位置 共2*4=8</span></span><br><span class="line"><span class="built_in">db</span> <span class="string">&#x27;welcome to dyinj&#x27;</span><span class="comment">;显示字符 共16</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">82h</span>,<span class="number">0ach</span>,<span class="number">0f9h</span><span class="comment">;属性字节（不能字母开头）</span></span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,data</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span><span class="comment">;数据段该去哪去哪</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0B800h</span><span class="comment">;从此处开始的二维数组来代表屏幕显示（显存）</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span><span class="comment">;附加段存字符显示段位置</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">3</span><span class="comment">;三行</span></span><br><span class="line">	<span class="keyword">xor</span> <span class="built_in">di</span>,<span class="built_in">di</span></span><br><span class="line">	<span class="keyword">xor</span> <span class="built_in">si</span>,<span class="built_in">si</span></span><br><span class="line"><span class="symbol">s1:</span></span><br><span class="line"><span class="comment">;控制属性和位置的行循环</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">di</span><span class="comment">;ds:di行位置1920，+2=2080，+4=2240</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bl</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">div</span> <span class="built_in">bl</span><span class="comment">;将ax除二</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,[<span class="built_in">si</span>+<span class="number">24</span>]<span class="comment">;24+二分之di为属性字符开始82h,0ach,0f9h 即属性码</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="built_in">ds</span>:[<span class="number">6</span>]<span class="comment">;列位置64</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bp</span>,[<span class="built_in">di</span>]<span class="comment">;行位置1920，2080，2240</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="built_in">cx</span><span class="comment">;保存cx</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">16</span></span><br><span class="line"><span class="symbol">	s2:</span></span><br><span class="line">	<span class="comment">;控制显示字符的列循环</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">al</span>,[<span class="built_in">bx</span>+<span class="number">8</span>]<span class="comment">;welcome的w开始 即字符码</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">bp</span>+<span class="built_in">si</span>],<span class="built_in">al</span><span class="comment">;存入16位单字符码到显存低字节</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">bp</span>+<span class="built_in">si</span>+<span class="number">1</span>],<span class="number">ah</span><span class="comment">;存入16位属性码到显存高字节</span></span><br><span class="line">		<span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">add</span> <span class="built_in">si</span>,<span class="number">2</span></span><br><span class="line">		<span class="keyword">loop</span> s2</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="built_in">dx</span><span class="comment">;还原保存的cx</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">di</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s1</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<h1 id="ret-retf"><a href="#ret-retf" class="headerlink" title="ret/retf"></a>ret/retf</h1><p>和上一章不同在于用的是栈<br>pop栈中数据给指令指针<br>回忆：PUSH在存放数据时 SP先减二再取数据；POP 先拿数据再SP加二</p>
+<h3 id="ret"><a href="#ret" class="headerlink" title="ret"></a>ret</h3><p>指令用栈中的数据，修改IP的内容，从而实现近转移</p>
+<ol>
+<li>(IP) = ((ss)*16 + (sp))</li>
+<li>(SP) = (sp) + 2<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line"></span><br><span class="line">stack <span class="meta">segment</span></span><br><span class="line">    <span class="built_in">db</span> <span class="number">16</span> dup(<span class="number">0</span>)</span><br><span class="line">stack ends</span><br><span class="line"></span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="number">4c00h</span></span><br><span class="line">            <span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">    start:</span>  </span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">ax</span>, stack</span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ss</span>, <span class="built_in">ax</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">sp</span>, <span class="number">16</span><span class="comment">;注此时不在栈中</span></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">push</span> <span class="built_in">ax</span></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">bx</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">ret</span></span><br><span class="line">code ends</span><br><span class="line"></span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<h3 id="retf"><a href="#retf" class="headerlink" title="retf"></a>retf</h3>指令用栈中的数据，修改CS和IP的内容，从而实现远转移</li>
+<li>(IP) = ((ss) * 16 + (sp))</li>
+<li>(SP) = (sp) + 2</li>
+<li>(CS) = ((ss) * 16 + (sp))</li>
+<li>(SP) = (sp) + 2<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line"></span><br><span class="line">stack <span class="meta">segment</span></span><br><span class="line">    <span class="built_in">db</span> <span class="number">16</span> dup(<span class="number">0</span>)</span><br><span class="line">stack ends</span><br><span class="line"></span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="number">4c00h</span></span><br><span class="line">            <span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">    start:</span>  </span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">ax</span>, stack</span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ss</span>, <span class="built_in">ax</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">sp</span>, <span class="number">16</span></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">push</span> <span class="built_in">cs</span></span><br><span class="line">            <span class="keyword">push</span> <span class="built_in">ax</span></span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">bx</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">retf</span></span><br><span class="line">code ends</span><br><span class="line"></span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<h1 id="call"><a href="#call" class="headerlink" title="call"></a>call</h1>call</li>
+<li>将当前的ip或cs和ip压入栈中</li>
+<li>转移<br>比jmp多了压栈<h3 id="call-s-标号"><a href="#call-s-标号" class="headerlink" title="call s(标号)"></a>call s(标号)</h3>(sp)=(sp)-2<br>((ss)*16+(sp))=ip<br>(ip)=(ip)+16位位移</li>
+</ol>
+<p>16位位移=标号处地址-call指令后第一个字节的地址<br>范围-32768~332767</p>
+<h3 id="call-far-ptr-s-标号"><a href="#call-far-ptr-s-标号" class="headerlink" title="call far ptr s(标号)"></a>call far ptr s(标号)</h3><p>(sp)=(sp)-2<br>((ss)*16+(sp))=(cs)<br>(sp)=(sp)-2<br>((ss)*16+(sp))=(ip)<br>(cs)=标号所在段地址<br>(ip)=标号所在段中的偏移地址</p>
+<p>先压的是cs后压ip</p>
+<h3 id="call-reg-16位寄存器"><a href="#call-reg-16位寄存器" class="headerlink" title="call reg(16位寄存器)"></a>call reg(16位寄存器)</h3><p>(sp)=(sp)-2<br>((ss)*16+(sp))=(ip)<br>(ip)=(16位寄存器)</p>
+<h3 id="call-word-ptr-s-标号-call-dword-ptr-s-标号"><a href="#call-word-ptr-s-标号-call-dword-ptr-s-标号" class="headerlink" title="call word ptr s(标号)/call dword ptr s(标号)"></a>call word ptr s(标号)/call dword ptr s(标号)</h3><h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>call和ret组合使用<br>求2的4次方存入bx</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">    start:</span>  </span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">1</span></span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">4</span></span><br><span class="line">			<span class="keyword">call</span> s</span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="built_in">ax</span></span><br><span class="line">			</span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="number">4c00h</span></span><br><span class="line">            <span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">			<span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">			<span class="keyword">loop</span> s</span><br><span class="line">			<span class="keyword">ret</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+
+
 ]]></content>
       <categories>
         <category>笔记</category>
