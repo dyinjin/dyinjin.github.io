@@ -106,6 +106,65 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       </tags>
   </entry>
   <entry>
+    <title>汇编0MOOC笔记</title>
+    <url>/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/1/</url>
+    <content><![CDATA[<p><font size="1" color="gray"><del>这个MOOC不得行啊</del></font><br><font size="1">后面还是看的B站orz</font><br>回头来看，还是MOOC讲的系统</p>
+<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631551561772.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561773.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561774.png" width="600/">
+
+<h2 id="补码运算"><a href="#补码运算" class="headerlink" title="补码运算"></a>补码运算</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562085.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562479.png" width="600/">
+
+<h1 id="CPU基本结构"><a href="#CPU基本结构" class="headerlink" title="CPU基本结构"></a>CPU基本结构</h1><hr>
+<p>两种执行方式及特点<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561884.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561926.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561928.png" width="600/"></p>
+<h2 id="8086CPU结构"><a href="#8086CPU结构" class="headerlink" title="8086CPU结构"></a>8086CPU结构</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561929.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561930.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561931.png" width="600/">
+
+<h2 id="8086CPU寄存器"><a href="#8086CPU寄存器" class="headerlink" title="8086CPU寄存器"></a>8086CPU寄存器</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561954.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562012.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561955.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561956.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561885.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561923.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561957.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561958.png" width="600/">
+
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561959.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562144.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562170.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562116.png" width="600/">
+
+<p>注意AF、OF区别<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562142.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562173.png" width="600/"></p>
+<hr>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562204.png" width="600/">
+
+<h1 id="堆栈及操作"><a href="#堆栈及操作" class="headerlink" title="堆栈及操作"></a>堆栈及操作</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562335.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562336.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562171.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562476.png" width="600/">
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562172.png" width="600/">
+
+<h1 id="HEXO技巧"><a href="#HEXO技巧" class="headerlink" title="HEXO技巧"></a>HEXO技巧</h1><p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;XXX&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;</span><br><span class="line">&lt;img src=&quot;XXX&quot; width=256 height=256 /&gt;</span><br></pre></td></tr></table></figure>
+<p>进行可控插入图片</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>光影测试</title>
     <url>/2021/09/11/MC/shaderpack/</url>
     <content><![CDATA[<p>10个超良心低配光影介绍&amp;测评<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
@@ -184,65 +243,6 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       <tags>
         <tag>Hexo</tag>
         <tag>MC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>汇编0MOOC笔记</title>
-    <url>/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/1/</url>
-    <content><![CDATA[<p><font size="1" color="gray"><del>这个MOOC不得行啊</del></font><br><font size="1">后面还是看的B站orz</font><br>回头来看，还是MOOC讲的系统</p>
-<h1 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631551561772.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561773.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561774.png" width="600/">
-
-<h2 id="补码运算"><a href="#补码运算" class="headerlink" title="补码运算"></a>补码运算</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562085.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562479.png" width="600/">
-
-<h1 id="CPU基本结构"><a href="#CPU基本结构" class="headerlink" title="CPU基本结构"></a>CPU基本结构</h1><hr>
-<p>两种执行方式及特点<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561884.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561926.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561928.png" width="600/"></p>
-<h2 id="8086CPU结构"><a href="#8086CPU结构" class="headerlink" title="8086CPU结构"></a>8086CPU结构</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561929.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561930.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561931.png" width="600/">
-
-<h2 id="8086CPU寄存器"><a href="#8086CPU寄存器" class="headerlink" title="8086CPU寄存器"></a>8086CPU寄存器</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561954.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562012.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561955.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561956.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561885.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561923.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561957.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561958.png" width="600/">
-
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551561959.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562144.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562170.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562116.png" width="600/">
-
-<p>注意AF、OF区别<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562142.png" width="600/"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562173.png" width="600/"></p>
-<hr>
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562204.png" width="600/">
-
-<h1 id="堆栈及操作"><a href="#堆栈及操作" class="headerlink" title="堆栈及操作"></a>堆栈及操作</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562335.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562336.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562171.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562476.png" width="600/">
-<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631551562172.png" width="600/">
-
-<h1 id="HEXO技巧"><a href="#HEXO技巧" class="headerlink" title="HEXO技巧"></a>HEXO技巧</h1><p>使用：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;img src=&quot;XXX&quot; width=&quot;50%&quot; height=&quot;50%&quot; /&gt;</span><br><span class="line">&lt;img src=&quot;XXX&quot; width=256 height=256 /&gt;</span><br></pre></td></tr></table></figure>
-<p>进行可控插入图片</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
       </tags>
   </entry>
   <entry>
@@ -343,50 +343,6 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       </tags>
   </entry>
   <entry>
-    <title>汇编2</title>
-    <url>/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/</url>
-    <content><![CDATA[<p>又换了个人<a href="https://www.bilibili.com/video/BV1CJ411D7yD?p=6">看</a></p>
-<h1 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h1><p>等于“++”</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">inc</span> <span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
-<h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>循环<br>先看例子：计算2<sup>12</sup></p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codee</span><br><span class="line"></span><br><span class="line">codee <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	start：<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">2</span></span><br><span class="line">				<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">11</span></span><br><span class="line"><span class="symbol">				s:</span> <span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">				<span class="keyword">loop</span> s</span><br><span class="line"></span><br><span class="line">				 <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">				<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codee ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p>cx(计数寄存器)存放为循环次数，s为标识指令地址（即从哪里开始循环）<br>先向cx存次数，标号：执行循环语句，最后loop+标记<br>本质上是指令指针(IP)的移动，先(cx)减一，再判断其值若不为0则转至s标号处，为0则执行下一条</p>
-<h3 id="汇编中-ffffh-编译器认为是标识符-要写为-0ffffh"><a href="#汇编中-ffffh-编译器认为是标识符-要写为-0ffffh" class="headerlink" title="汇编中 ffffh 编译器认为是标识符,要写为 0ffffh"></a>汇编中 ffffh 编译器认为是标识符,要写为 0ffffh</h3><h2 id="将ffff-0-ffff-b单元的数据的和，结果储存在dx中"><a href="#将ffff-0-ffff-b单元的数据的和，结果储存在dx中" class="headerlink" title="将ffff;0~ffff:b单元的数据的和，结果储存在dx中"></a>将ffff;0~ffff:b单元的数据的和，结果储存在dx中</h2><p>先将8位数据赋值到另一个16位寄存器bx中，再作加:</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0ffffh</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="number">0</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">s:</span>	  <span class="keyword">mov</span> <span class="built_in">al</span>,<span class="built_in">ds</span>:[<span class="built_in">bx</span>]</span><br><span class="line">		   <span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">0</span></span><br><span class="line">		   <span class="keyword">add</span> <span class="built_in">dx</span>,<span class="built_in">ax</span></span><br><span class="line">		   <span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">loop</span> s</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">		<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<h1 id="段的应用"><a href="#段的应用" class="headerlink" title="段的应用"></a>段的应用</h1><p>下两例：不将数据段栈段和代码段分开<br>技术算以下8个数据的和，结果放在ax中</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0010h</span>,<span class="number">0020h</span>,<span class="number">0030h</span>,<span class="number">0100h</span>,<span class="number">0200h</span><span class="comment">;写单位数据</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span>	<span class="comment">;指定开始执行正确代码</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">cs</span>:[<span class="built_in">bx</span>]<span class="comment">;代码段的偏移地址为0、1、2、3的东西即目标数据</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p>栈段<br>倒置数据</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0004h</span>,<span class="number">0005h</span>,<span class="number">0006h</span>,<span class="number">0007h</span>,<span class="number">0008h</span><span class="comment">;写单位数据</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span><span class="comment">;sp指向的最后一个零</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ss</span>,<span class="built_in">ax</span><span class="comment">;指令段-》栈段</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">sp</span>,<span class="number">30h</span><span class="comment">;48即（8+16）*2最后一个零</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">push</span> <span class="built_in">cs</span>:[<span class="built_in">bx</span>]<span class="comment">;目标数据入栈</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">z:</span><span class="keyword">pop</span> <span class="built_in">cx</span>:[<span class="built_in">bx</span>]</span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> z</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845760.png"><br>这两段代码认真debug看一下每一步</p>
-<hr>
-<p>当然一般是分开的：</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codesg,<span class="built_in">ds</span>:datasg,<span class="built_in">ss</span>:stacksg</span><br><span class="line">datasg <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0004h</span>,<span class="number">0005h</span>,<span class="number">0006h</span>,<span class="number">0007h</span>,<span class="number">0008h</span><span class="comment">;写单位数据</span></span><br><span class="line">datasg ends</span><br><span class="line"></span><br><span class="line">stacksg <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span><span class="comment">;sp指向的最后一个零</span></span><br><span class="line">stacksg ends</span><br><span class="line"></span><br><span class="line">codesg <span class="meta">segment</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,stacksg<span class="comment">;不能直接写mov ss,stacksg</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ss</span>,<span class="built_in">ax</span><span class="comment">;</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">sp</span>,<span class="number">20h</span><span class="comment">;48即（8+16）*2最后一个零</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,datasg</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">push</span> [<span class="built_in">bx</span>]<span class="comment">;即ds:[bx]代替了cs:[bx]</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">z:</span><span class="keyword">pop</span> [<span class="built_in">bx</span>]</span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> z</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845755.png" alt="入栈"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845756.png" alt="出栈"></p>
-<h1 id="其它一些"><a href="#其它一些" class="headerlink" title="其它一些"></a>其它一些</h1><p>debug中数据查看是每位反向的<br>debug默认输入16进制，编译时默认10进制</p>
-<ul>
-<li>and<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">and</span> <span class="built_in">al</span>,<span class="number">10111111b</span></span><br></pre></td></tr></table></figure>
-对指定位置0</li>
-<li>or<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">or</span> <span class="built_in">al</span>,<span class="number">10111111b</span></span><br></pre></td></tr></table></figure>
-对指定位置1</li>
-<li>xor(异或)<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">xor</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
-对寄存器置零</li>
-<li>inc自增</li>
-<li>dec自减</li>
-<li>小写字符=大写字符+20h<h3 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h3></li>
-<li>dw定义字类型变量，一个字数据占2个字节(16位)单元，读完一个，偏移量加2</li>
-<li>db定义字节类型变量，一个字节数据占1个字节(8位)单元，读完一个，偏移量加1</li>
-<li>dd定义双字类型变量，一个双字数据占4个字节(32位)单元，读完一个，偏移量加4<br>伪指令db、dw、dd都可以定义字符串，但最多的是用db来定义字符串，第一个原因是dw、dd定义的字符串到了内存中排序是相反的。</li>
-<li>dup是一个操作符，在汇编语言中同db、dw、dd等一样，也是由编译器识别处理的符号。它是和db、dw、dd等数据定义伪指令配合使用的，用来进行数据的重复。<br>dup的使用格式如下：<br>db 重复的次数 dup (重复的字节型数据)。<br>dw 重复的次数 dup (重复的字型数据)。<br>dd 重复的次数 dup (重复的双字数据)。<br>dup是一个十分有用的操作符，比如我们要定义一个容量为200个字节的栈段，如果不用dup，则需要大量的代码来进行定义。如果用dup的话：<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">stack <span class="meta">segment</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">200</span> dup (<span class="number">0</span>)</span><br><span class="line">stack ends</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>汇编3</title>
     <url>/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/</url>
     <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
@@ -424,6 +380,52 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 <h2 id="NOP"><a href="#NOP" class="headerlink" title="NOP"></a>NOP</h2><p>啥也不是，填充</p>
 <h2 id="OFFSET"><a href="#OFFSET" class="headerlink" title="OFFSET"></a>OFFSET</h2><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line"><span class="symbol">s:</span> ...</span><br></pre></td></tr></table></figure>
 <p>取标号地址</p>
+<hr>
+<p>使用到栈时，单步debug(t)会覆盖栈ss，而(g)的结果正确<br>涉及单步debug时的中断原理</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编2</title>
+    <url>/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/</url>
+    <content><![CDATA[<p>又换了个人<a href="https://www.bilibili.com/video/BV1CJ411D7yD?p=6">看</a></p>
+<h1 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h1><p>等于“++”</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">inc</span> <span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
+<h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>循环<br>先看例子：计算2<sup>12</sup></p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codee</span><br><span class="line"></span><br><span class="line">codee <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	start：<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">2</span></span><br><span class="line">				<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">11</span></span><br><span class="line"><span class="symbol">				s:</span> <span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">				<span class="keyword">loop</span> s</span><br><span class="line"></span><br><span class="line">				 <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">				<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codee ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p>cx(计数寄存器)存放为循环次数，s为标识指令地址（即从哪里开始循环）<br>先向cx存次数，标号：执行循环语句，最后loop+标记<br>本质上是指令指针(IP)的移动，先(cx)减一，再判断其值若不为0则转至s标号处，为0则执行下一条</p>
+<h3 id="汇编中-ffffh-编译器认为是标识符-要写为-0ffffh"><a href="#汇编中-ffffh-编译器认为是标识符-要写为-0ffffh" class="headerlink" title="汇编中 ffffh 编译器认为是标识符,要写为 0ffffh"></a>汇编中 ffffh 编译器认为是标识符,要写为 0ffffh</h3><h2 id="将ffff-0-ffff-b单元的数据的和，结果储存在dx中"><a href="#将ffff-0-ffff-b单元的数据的和，结果储存在dx中" class="headerlink" title="将ffff;0~ffff:b单元的数据的和，结果储存在dx中"></a>将ffff;0~ffff:b单元的数据的和，结果储存在dx中</h2><p>先将8位数据赋值到另一个16位寄存器bx中，再作加:</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0ffffh</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="number">0</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">s:</span>	  <span class="keyword">mov</span> <span class="built_in">al</span>,<span class="built_in">ds</span>:[<span class="built_in">bx</span>]</span><br><span class="line">		   <span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">0</span></span><br><span class="line">		   <span class="keyword">add</span> <span class="built_in">dx</span>,<span class="built_in">ax</span></span><br><span class="line">		   <span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">loop</span> s</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">		<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<h1 id="段的应用"><a href="#段的应用" class="headerlink" title="段的应用"></a>段的应用</h1><p>下两例：不将数据段栈段和代码段分开<br>技术算以下8个数据的和，结果放在ax中</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0010h</span>,<span class="number">0020h</span>,<span class="number">0030h</span>,<span class="number">0100h</span>,<span class="number">0200h</span><span class="comment">;写单位数据</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span>	<span class="comment">;指定开始执行正确代码</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">cs</span>:[<span class="built_in">bx</span>]<span class="comment">;代码段的偏移地址为0、1、2、3的东西即目标数据</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p>栈段<br>倒置数据</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0004h</span>,<span class="number">0005h</span>,<span class="number">0006h</span>,<span class="number">0007h</span>,<span class="number">0008h</span><span class="comment">;写单位数据</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span><span class="comment">;sp指向的最后一个零</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ss</span>,<span class="built_in">ax</span><span class="comment">;指令段-》栈段</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">sp</span>,<span class="number">30h</span><span class="comment">;48即（8+16）*2最后一个零</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">push</span> <span class="built_in">cs</span>:[<span class="built_in">bx</span>]<span class="comment">;目标数据入栈</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">z:</span><span class="keyword">pop</span> <span class="built_in">cx</span>:[<span class="built_in">bx</span>]</span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> z</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845760.png"><br>这两段代码认真debug看一下每一步</p>
+<hr>
+<p>当然一般是分开的：</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codesg,<span class="built_in">ds</span>:datasg,<span class="built_in">ss</span>:stacksg</span><br><span class="line">datasg <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0004h</span>,<span class="number">0005h</span>,<span class="number">0006h</span>,<span class="number">0007h</span>,<span class="number">0008h</span><span class="comment">;写单位数据</span></span><br><span class="line">datasg ends</span><br><span class="line"></span><br><span class="line">stacksg <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span><span class="comment">;sp指向的最后一个零</span></span><br><span class="line">stacksg ends</span><br><span class="line"></span><br><span class="line">codesg <span class="meta">segment</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,stacksg<span class="comment">;不能直接写mov ss,stacksg</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ss</span>,<span class="built_in">ax</span><span class="comment">;</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">sp</span>,<span class="number">20h</span><span class="comment">;48即（8+16）*2最后一个零</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,datasg</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">push</span> [<span class="built_in">bx</span>]<span class="comment">;即ds:[bx]代替了cs:[bx]</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">z:</span><span class="keyword">pop</span> [<span class="built_in">bx</span>]</span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> z</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845755.png" alt="入栈"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845756.png" alt="出栈"></p>
+<h1 id="其它一些"><a href="#其它一些" class="headerlink" title="其它一些"></a>其它一些</h1><p>debug中数据查看是每位反向的<br>debug默认输入16进制，编译时默认10进制</p>
+<ul>
+<li>and<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">and</span> <span class="built_in">al</span>,<span class="number">10111111b</span></span><br></pre></td></tr></table></figure>
+对指定位置0</li>
+<li>or<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">or</span> <span class="built_in">al</span>,<span class="number">10111111b</span></span><br></pre></td></tr></table></figure>
+对指定位置1</li>
+<li>xor(异或)<br>常用<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">xor</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
+对寄存器置零</li>
+<li>inc自增</li>
+<li>dec自减</li>
+<li>小写字符=大写字符+20h<h3 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h3></li>
+<li>dw定义字类型变量，一个字数据占2个字节(16位)单元，读完一个，偏移量加2</li>
+<li>db定义字节类型变量，一个字节数据占1个字节(8位)单元，读完一个，偏移量加1</li>
+<li>dd定义双字类型变量，一个双字数据占4个字节(32位)单元，读完一个，偏移量加4<br>伪指令db、dw、dd都可以定义字符串，但最多的是用db来定义字符串，第一个原因是dw、dd定义的字符串到了内存中排序是相反的。</li>
+<li>dup是一个操作符，在汇编语言中同db、dw、dd等一样，也是由编译器识别处理的符号。它是和db、dw、dd等数据定义伪指令配合使用的，用来进行数据的重复。<br>dup的使用格式如下：<br>db 重复的次数 dup (重复的字节型数据)。<br>dw 重复的次数 dup (重复的字型数据)。<br>dd 重复的次数 dup (重复的双字数据)。<br>dup是一个十分有用的操作符，比如我们要定义一个容量为200个字节的栈段，如果不用dup，则需要大量的代码来进行定义。如果用dup的话：<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">stack <span class="meta">segment</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">200</span> dup (<span class="number">0</span>)</span><br><span class="line">stack ends</span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -540,20 +542,61 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 </li>
 <li>定义<br>是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。<br>数据通路结构：数据传送结构，它是CPU总体结构的核心问题。 总线：是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。</li>
 <li>总线类型<br>① CPU内总线： 模型机中是一组单向数据传送总线，是连接运算器、寄存器等CPU内部部件的总线。<br>② 部件间总线： 芯片间的连接总线，包含地址线与数据线两组。<br>③ 系统总线： 作用是计算机系统内各大部件进行信息交换的基础，分：地址总线AB、数据总线DB、控制总线CB<br>④ 外总线： 一台CS与其它设备相连接的总线。<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3>产生时序信号的部件称为时序发生器或时序系统，它由一个振荡器和一组计数分频器组成。<h2 id="CPU的内部数据通路结构"><a href="#CPU的内部数据通路结构" class="headerlink" title="CPU的内部数据通路结构"></a>CPU的内部数据通路结构</h2>模型机如何<strong>以内总线为纽带</strong>建立各部件间的数据传送通路，即CPU内部数据通路结构，这是CPU组成的核心问题。<br>模型机的<strong>结构</strong>为：单组、单向内总线、分立寄存器结构。<h3 id="模型机数据通路框图"><a href="#模型机数据通路框图" class="headerlink" title="模型机数据通路框图"></a>模型机数据通路框图</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864168.png" alt="enter description here"></li>
-<li>可编程寄存器<br>R0~R3通用寄存器(000,001,010,011)、SP(100)堆栈指针、PSW(101)程序状态寄存器、PC程序计数器</li>
-<li>暂存器<br>C、D约定从主存中读源操作数、操作数地址时用C；从主存中取目的操作数、操作数地址或暂存时，用D</li>
-<li>指令寄存器IR</li>
-<li>主存接口寄存器MAR、MDR(MBR)</li>
-<li>地址寄存器MAR<br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。<ul>
-<li>数据缓冲寄存器MBR(MDR)<br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="各类信息的传送路径"><a href="#各类信息的传送路径" class="headerlink" title="各类信息的传送路径"></a>各类信息的传送路径</h3></li>
+<li>可编程寄存器</li>
+<li><em>R0~R3<strong>通用寄存器(000,001,010,011)、</strong>SP*</em>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</li>
+<li>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
+<li>暂存器</li>
+<li><em>C、D<strong>约定从主存中读源操作数、操作数地址时用</strong>C<strong>；从主存中取目的操作数、操作数地址或暂存时，用</strong>D*</em></li>
+<li>主存接口寄存器MAR、MDR(MBR)<ul>
+<li>地址寄存器<strong>MAR</strong><br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
+<li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="各类信息的传送路径"><a href="#各类信息的传送路径" class="headerlink" title="各类信息的传送路径"></a>各类信息的传送路径</h3></li>
 </ul>
 </li>
 <li>取指令地址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864214.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864188.png" alt="enter description here"></li>
 <li>指令信息的传递<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864215.png" alt="enter description here"></li>
-<li>取操作数地址—①寄存器间址（R）</li>
-<li>取操作数地址—②自减型寄存器间址 -(R)</li>
-<li>取操作数地址—③自增型寄存器间址 (R)+</li>
-<li>取操作数地址—④自增型双重间址 @(R)+<h2 id="主机与外部的数据通路与-信息传送控制方式（未完）"><a href="#主机与外部的数据通路与-信息传送控制方式（未完）" class="headerlink" title="主机与外部的数据通路与 信息传送控制方式（未完）"></a>主机与外部的数据通路与 信息传送控制方式（未完）</h2><h2 id="时序控制方式与时序系统"><a href="#时序控制方式与时序系统" class="headerlink" title="时序控制方式与时序系统"></a>时序控制方式与时序系统</h2><h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1></li>
+<li>取操作数地址—①寄存器间址（R）<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946727225.png" alt="enter description here"></li>
+<li>取操作数地址—②自减型寄存器间址 -(R)<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946811630.png" alt="enter description here"></li>
+<li>取操作数地址—③自增型寄存器间址 (R)+<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946819200.png" alt="enter description here"><br>两步走<h3 id="微命令设置"><a href="#微命令设置" class="headerlink" title="微命令设置"></a>微命令设置</h3></li>
+<li>数据通路操作<pre><code>1) ALU输入选择:  Ri→A，Ri的取值：R0—R3，C,D,PC,SP Ri→B，Ri的取值：R0—R3,C,D,MDR,PSW 
+2) ALU功能选择: S0—S3，C0，M （6位线）
+3) 移位器功能选择:  00：直传DM、01：左移SL、10：右移SR、11：高低字节交换EX （2位线）
+4) 分配脉冲（打入到寄存器中的脉冲）:  CPR0—CPR3, CPC,CPD,CPMDR,CPMAR,CPPSW, CPPC,CPSP
+</code></pre>
+</li>
+<li>访存操作相关的控制信号（系统总线及主存有关的微命令）<pre><code>EMAR（输出到AB）、EMDR（输出到DB）、SMDR（DB到MDR）、 R（M到CPU）、W（CPU到M）、SIR（M到IR）
+(1)读入CPU：EMAR、R、SMDR（除指令以外），或SIR（指令） 
+(2)写入M：EMAR、EMDR、W
+</code></pre>
+<h2 id="主机与外部的数据通路-与-信息传送控制方式"><a href="#主机与外部的数据通路-与-信息传送控制方式" class="headerlink" title="主机与外部的数据通路 与 信息传送控制方式"></a>主机与外部的数据通路 与 信息传送控制方式</h2>主机与外设的连接模式：辐射型、总线型、通道型<br>对信息传送的控制方式：直接程序传送方式、程序中断方式、直接有储器访问方式<h3 id="主机与外围设备的连接方式"><a href="#主机与外围设备的连接方式" class="headerlink" title="主机与外围设备的连接方式"></a>主机与外围设备的连接方式</h3></li>
+<li>辐射型<pre><code>主机与各外围设备间有单独的数据通路；速度较快，**但**不易扩展。
+</code></pre>
+</li>
+<li>总线型<pre><code>各外设通过各自接口直接与公共的系统总线相连；结构简单，易扩展，**但**如果整个系统只有一组系统总线时，信息吞吐量有限，且速度较慢。
+</code></pre>
+</li>
+<li>通道型<pre><code>采取一种称为多种连接模式的部件去连接外设，这种部件称为通道；并行能力强。
+</code></pre>
+<h3 id="信息传送的控制方式"><a href="#信息传送的控制方式" class="headerlink" title="信息传送的控制方式"></a>信息传送的控制方式</h3></li>
+<li>直接程序传送方式<pre><code>定义：CPU直接利用I/O指令程序实现I/O传送,在外设工作期间, CPU不执行与I/O无关的操作。 
+主机状态：CPU处于查询—等待—执行状态。
+外设状态：在外设接口的状态字中设置两位表状态。 
+* 空闲——外设不工作，00 
+* 工作（忙）——外设置在执行操作，01 
+* 结束（完成）——外设完成一次操作，10
+特点：CPU不能与外设并行地工作,因而CPU利用率低,并且CPU不能响应来自外部的随机请求。
+![enter description here](./images/1631951512341.png)
+</code></pre>
+</li>
+<li>程序中断方式<pre><code>定义：CPU暂停执行现行程序，转去执行中断程序，以处理某些随机事态，并在处理完毕后自动恢复原程序的执行。 
+实质：程序的切换过程。包括将断点，有关状态信息（PSW）压栈保护起来，然后根据中断号，从中断向量表中得到中断服务程序的地址，送入PC中。（这一切是硬件实现的，称为隐指令）
+特点：随机性
+软件组织与程序安排：将系统中接收的中断请求编制成中断服务模块存入主存，并将其入口地址写入中断向量表。
+![enter description here](./images/1631951542103.png)
+硬件组织：CPU方面：在PSW中设置一个中断位；在模型机中，外部请求只有IREQ0—IREQ7，因此在CPU内还应设置一个判优逻辑。
+接口方面：设置了中断接口。
+特点：可以处理随机的复杂事态，但程序的切换需花费一定时间，因此，其适用范围是中低速I/O操作与随机请求。
+</code></pre>
+<h2 id="时序控制方式-与-时序系统（未完）"><a href="#时序控制方式-与-时序系统（未完）" class="headerlink" title="时序控制方式 与 时序系统（未完）"></a>时序控制方式 与 时序系统（未完）</h2><h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1></li>
 </ul>
 ]]></content>
       <categories>
@@ -569,7 +612,8 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
     <content><![CDATA[<h1 id="题"><a href="#题" class="headerlink" title="题"></a>题</h1><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codesg</span><br><span class="line">codesg <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,offect s2</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span>:[<span class="built_in">si</span>]</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cs</span>:[<span class="built_in">di</span>],<span class="built_in">ax</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s0:</span></span><br><span class="line">	jump short s</span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s1:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s2:</span></span><br><span class="line">	<span class="keyword">jmp</span> short s1</span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line"></span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
 <p>这段代码首先用<br>    mov di,offect s<br>    mov si,offect s2<br>    mov ax,cs:[si]<br>    mov cs:[di],ax<br>将s2处代码写到s处<br>然后接着执行s0,跳到s,执行被写入的<strong>jmp short s1</strong><br>关键来了<br>汇编中jmp short X的本质是由编译器计算出当前地址举例要跳转标号的偏移值<br>再进行相对偏移；<br>所以<strong>jmp short s1</strong>实际是向前跳8个字节的意思（mov ax,0    int 21h    mov   ax,0这三条指令长8个字节）到原来的s1<br>但现在这句话被简单拷贝在了s处，电脑则也只是向前跳8个字节（不管前面到哪里），所以ip指针会向前执行到mov ax,4c00h处（mov ax,4c00h    int 21h       mov ax,0也是8个字节长）最后结束</p>
 <hr>
-<p>一个实用的程序<br>属性字节格式：</p>
+<hr>
+<p>另一个实用的程序<br>属性字节格式：</p>
 <p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631889385422.png" alt="enter description here"><br>（二进制）<br>16*16=256=2^8</p>
 <figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code,<span class="built_in">ds</span>:data</span><br><span class="line"></span><br><span class="line">data <span class="meta">segment</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">1920</span>,<span class="number">2080</span>,<span class="number">2240</span>,<span class="number">64</span><span class="comment">;位置 共2*4=8</span></span><br><span class="line"><span class="built_in">db</span> <span class="string">&#x27;welcome to dyinj&#x27;</span><span class="comment">;显示字符 共16</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">82h</span>,<span class="number">0ach</span>,<span class="number">0f9h</span><span class="comment">;属性字节（不能字母开头）</span></span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,data</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span><span class="comment">;数据段该去哪去哪</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0B800h</span><span class="comment">;从此处开始的二维数组来代表屏幕显示（显存）</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span><span class="comment">;附加段存字符显示段位置</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">3</span><span class="comment">;三行</span></span><br><span class="line">	<span class="keyword">xor</span> <span class="built_in">di</span>,<span class="built_in">di</span></span><br><span class="line">	<span class="keyword">xor</span> <span class="built_in">si</span>,<span class="built_in">si</span></span><br><span class="line"><span class="symbol">s1:</span></span><br><span class="line"><span class="comment">;控制属性和位置的行循环</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">di</span><span class="comment">;ds:di行位置1920，+2=2080，+4=2240</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bl</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">div</span> <span class="built_in">bl</span><span class="comment">;将ax除二</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,[<span class="built_in">si</span>+<span class="number">24</span>]<span class="comment">;24+二分之di为属性字符开始82h,0ach,0f9h 即属性码</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="built_in">ds</span>:[<span class="number">6</span>]<span class="comment">;列位置64</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bp</span>,[<span class="built_in">di</span>]<span class="comment">;行位置1920，2080，2240</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="built_in">cx</span><span class="comment">;保存cx</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">16</span></span><br><span class="line"><span class="symbol">	s2:</span></span><br><span class="line">	<span class="comment">;控制显示字符的列循环</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">al</span>,[<span class="built_in">bx</span>+<span class="number">8</span>]<span class="comment">;welcome的w开始 即字符码</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">bp</span>+<span class="built_in">si</span>],<span class="built_in">al</span><span class="comment">;存入16位单字符码到显存低字节</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">bp</span>+<span class="built_in">si</span>+<span class="number">1</span>],<span class="number">ah</span><span class="comment">;存入16位属性码到显存高字节</span></span><br><span class="line">		<span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">add</span> <span class="built_in">si</span>,<span class="number">2</span></span><br><span class="line">		<span class="keyword">loop</span> s2</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="built_in">dx</span><span class="comment">;还原保存的cx</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">di</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s1</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
 <h1 id="ret-retf"><a href="#ret-retf" class="headerlink" title="ret/retf"></a>ret/retf</h1><p>和上一章不同在于用的是栈<br>pop栈中数据给指令指针<br>回忆：PUSH在存放数据时 SP先减二再取数据；POP 先拿数据再SP加二</p>
@@ -590,10 +634,69 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
 <h3 id="call-far-ptr-s-标号"><a href="#call-far-ptr-s-标号" class="headerlink" title="call far ptr s(标号)"></a>call far ptr s(标号)</h3><p>(sp)=(sp)-2<br>((ss)*16+(sp))=(cs)<br>(sp)=(sp)-2<br>((ss)*16+(sp))=(ip)<br>(cs)=标号所在段地址<br>(ip)=标号所在段中的偏移地址</p>
 <p>先压的是cs后压ip</p>
 <h3 id="call-reg-16位寄存器"><a href="#call-reg-16位寄存器" class="headerlink" title="call reg(16位寄存器)"></a>call reg(16位寄存器)</h3><p>(sp)=(sp)-2<br>((ss)*16+(sp))=(ip)<br>(ip)=(16位寄存器)</p>
-<h3 id="call-word-ptr-s-标号-call-dword-ptr-s-标号"><a href="#call-word-ptr-s-标号-call-dword-ptr-s-标号" class="headerlink" title="call word ptr s(标号)/call dword ptr s(标号)"></a>call word ptr s(标号)/call dword ptr s(标号)</h3><h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>call和ret组合使用<br>求2的4次方存入bx</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">    start:</span>  </span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">1</span></span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">4</span></span><br><span class="line">			<span class="keyword">call</span> s</span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="built_in">ax</span></span><br><span class="line">			</span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="number">4c00h</span></span><br><span class="line">            <span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">			<span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">			<span class="keyword">loop</span> s</span><br><span class="line">			<span class="keyword">ret</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-
-
+<h3 id="call-word-ptr-s-标号-call-dword-ptr-s-标号"><a href="#call-word-ptr-s-标号-call-dword-ptr-s-标号" class="headerlink" title="call word ptr s(标号)/call dword ptr s(标号)"></a>call word ptr s(标号)/call dword ptr s(标号)</h3><h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>call和ret组合使用<br>求2的3次方存入bx</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">    start:</span>  </span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">1</span></span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">3</span></span><br><span class="line">			<span class="keyword">call</span> s</span><br><span class="line">			<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="built_in">ax</span></span><br><span class="line">			</span><br><span class="line">            <span class="keyword">mov</span> <span class="built_in">ax</span>, <span class="number">4c00h</span></span><br><span class="line">            <span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">			<span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">			<span class="keyword">loop</span> s</span><br><span class="line">			<span class="keyword">ret</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><p>n的三次方</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">cube:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">mul</span> <span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">mul</span> <span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">ret</span></span><br></pre></td></tr></table></figure>
+<p>实例：</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line"></span><br><span class="line">data <span class="meta">segment</span></span><br><span class="line">	<span class="built_in">dw</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span><span class="comment">;单字节长</span></span><br><span class="line">	<span class="built_in">dd</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span><span class="comment">;双字节长</span></span><br><span class="line">data ends</span><br><span class="line"></span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,data</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="number">0</span><span class="comment">;123开始</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">16</span><span class="comment">;000开始</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,[<span class="built_in">si</span>]<span class="comment">;参数bx填入</span></span><br><span class="line">	<span class="keyword">call</span> cube</span><br><span class="line">	<span class="keyword">mov</span> [<span class="built_in">di</span>],<span class="built_in">ax</span><span class="comment">;得到返回值ax</span></span><br><span class="line">	<span class="keyword">mov</span> [<span class="built_in">di</span>+<span class="number">2</span>],<span class="built_in">dx</span><span class="comment">;返回值dx（如果是16位乘法，结果高位默认在dx中存放，低位在ax中存放。见下）</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">si</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">di</span>,<span class="number">4</span> </span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">cube:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">mul</span> <span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">mul</span> <span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">ret</span></span><br><span class="line">	</span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<h1 id="mul"><a href="#mul" class="headerlink" title="mul"></a>mul</h1><ol>
+<li>两个相乘的数：要么都是8位，要么都是16位。如果是8位，一个默认放在al中，另一个放在8位reg或内存字节单元中；如果是16位，一个在AX中，另一个在16位reg或内存字单元中。</li>
+<li>结果，如果是8位乘法，结果默认放在ax中；如果是16位乘法，结果高位默认在dx中存放，低位在ax中存放。<br>格式：mul reg或mul 内存单元<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">al</span>, <span class="number">5h</span><span class="comment">;AX = 0005h</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">bl</span>, <span class="number">10h</span></span><br><span class="line"><span class="keyword">mul</span> <span class="built_in">bl</span><span class="comment">; AX = 0050h</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>汇编5</title>
+    <url>/2021/09/18/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/8/</url>
+    <content><![CDATA[<h1 id="标志寄存器"><a href="#标志寄存器" class="headerlink" title="标志寄存器"></a>标志寄存器</h1><p>FLAGS 作用</p>
+<ol>
+<li>用来存储相关指令的某些执行结果</li>
+<li>用来为CPU执行相关指令提供行为依据</li>
+<li>用来控制CPU的相关工作方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631971457417.png" alt="enter description here"><br>空位为未定义保留位<h3 id="ZF"><a href="#ZF" class="headerlink" title="ZF"></a>ZF</h3></li>
+<li>flag的第六位是ZF，<strong>零标志位</strong>。</li>
+<li>它记录相关指令执行后，其结果是否为0。</li>
+<li>如果结果为0，那么zf=1；如果结果不为0，那么zf=0。    <h3 id="PF"><a href="#PF" class="headerlink" title="PF"></a>PF</h3></li>
+<li>flag的第2位是PF，<strong>奇偶标志位</strong>。</li>
+<li>记录相关指令执行后，结果的所有bit位中1的个数是否是偶数。</li>
+<li>如果结果bit位中有 偶数个1，则pf=1，奇数个1，pf=0。<h3 id="SF"><a href="#SF" class="headerlink" title="SF"></a>SF</h3></li>
+<li>flag的第7位是 SF（symbol flag），<strong>符号标志位</strong>。</li>
+<li>它记录相关指令执行后，结果是否为负。</li>
+<li>如果为负，sf=1；非负，则sf=0。<h3 id="CF"><a href="#CF" class="headerlink" title="CF"></a>CF</h3></li>
+<li>flag的第0位是CF，<strong>进位标志位</strong>。 </li>
+<li>一般情况下，在进行<strong>无符号数运算</strong>的时候，它记录了运算结果的最高有效位向更高位的进位值，或从更高位的借位值。<h3 id="OF"><a href="#OF" class="headerlink" title="OF"></a>OF</h3></li>
+<li>flag的第11位是OF，<strong>溢出标志位</strong>。</li>
+<li>OF记录了<strong>有符号数运算</strong>结果是否溢出。</li>
+<li>如果溢出，OF=1，没有则OF=0。<h2 id="adc"><a href="#adc" class="headerlink" title="adc"></a>adc</h2>adc是带进位加法指令，它利用了CF位上的记录的进位值。<br>类add但带了CF<br>功能：对象1=对象1+对象2+CF<h2 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h2>很明显，之前有了带进位加法adc，这个就是带借位减法。<br>类sub但带了CF<br>功能：对象1=对象1-对象2-CF<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631971457489.png" alt="enter description here"><h2 id="cmp"><a href="#cmp" class="headerlink" title="cmp"></a>cmp</h2>cmp是比较指令，cmp的功能相当于减法指令，但是不保存结果<br>功能：对象1-对象2，但不保存结果，不改变对象，只对标志寄存器进行重置<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631971457633.png" alt="enter description here"><h2 id="test"><a href="#test" class="headerlink" title="test"></a>test</h2>Test命令将两个操作数进行逻辑与运算，并根据运算结果设置相关的标志位。但是，Test命令的两个操作数不会被改变。<h1 id="条件转移指令"><a href="#条件转移指令" class="headerlink" title="条件转移指令"></a>条件转移指令</h1><h3 id="je-equl"><a href="#je-equl" class="headerlink" title="je(equl)"></a>je(equl)</h3>cmp后等于则转移（zf=1）<h3 id="jne"><a href="#jne" class="headerlink" title="jne"></a>jne</h3>cmp后不等于则转移（zf=0）</li>
+</ol>
+<hr>
+<p>相对于无符号数</p>
+<h3 id="jb-below"><a href="#jb-below" class="headerlink" title="jb(below)"></a>jb(below)</h3><p>cmp后低于则转移（cf=1）</p>
+<h3 id="jnb"><a href="#jnb" class="headerlink" title="jnb"></a>jnb</h3><p>cmp后不低于则转移（cf=0）</p>
+<h3 id="ja-above"><a href="#ja-above" class="headerlink" title="ja(above)"></a>ja(above)</h3><p>cmp后高于则转移（cf=0&amp;&amp;zf=0）</p>
+<h3 id="jna"><a href="#jna" class="headerlink" title="jna"></a>jna</h3><p>cmp不高于则转移（cf=1&amp;&amp;zf=1）</p>
+<hr>
+<p>相对于有符号数</p>
+<h3 id="jl-less"><a href="#jl-less" class="headerlink" title="jl(less)"></a>jl(less)</h3><p>cmp后小于则转移</p>
+<h3 id="jnl"><a href="#jnl" class="headerlink" title="jnl"></a>jnl</h3><p>cmp后不小于则转移</p>
+<h3 id="jg-greater"><a href="#jg-greater" class="headerlink" title="jg(greater)"></a>jg(greater)</h3><p>cmp后大于则转移</p>
+<h3 id="jng"><a href="#jng" class="headerlink" title="jng"></a>jng</h3><p>cmp后不大于则转移</p>
+<h1 id="DF-definition-flag-和串传送"><a href="#DF-definition-flag-和串传送" class="headerlink" title="DF(definition flag)和串传送"></a>DF(definition flag)和串传送</h1><h2 id="df"><a href="#df" class="headerlink" title="df"></a>df</h2><p>也是flag之一<br>df=0 每次操作后si di递增<br>df=1 每次操作后si di递减<br>唯一可修改的标志位</p>
+<h3 id="cld"><a href="#cld" class="headerlink" title="cld"></a>cld</h3><p>df清零</p>
+<h3 id="std"><a href="#std" class="headerlink" title="std"></a>std</h3><p>df置1</p>
+<h2 id="movsb"><a href="#movsb" class="headerlink" title="movsb"></a>movsb</h2><p>1、((es)*16+(di))=((ds)*16+(si))<br>2、如果df=0 则:<br>inc si<br>inc di<br> 如果df=1 则:<br> dec si<br> dec di</p>
+<h2 id="movsw"><a href="#movsw" class="headerlink" title="movsw"></a>movsw</h2><p>按字操作，di和si增减单位为2字节<br>mov es:[di],word ptr ds:[si]<br>如果df=0 则:<br>add si,2<br>add di,2<br> 如果df=1 则:<br>sub si,2<br>sub di,2</p>
+<h2 id="rep"><a href="#rep" class="headerlink" title="rep"></a>rep</h2><p>rep movsb<br>相当于：<br>s:<br>    movsb<br>    loop s<br>(循环则需预先设置cx)</p>
+<h1 id="题"><a href="#题" class="headerlink" title="题"></a>题</h1><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631971457533.png" alt="enter description here"></p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,data</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="number">0</span><span class="comment">;指向W</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">16</span><span class="comment">;指向第一个0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">16</span></span><br><span class="line">	<span class="keyword">cld</span></span><br><span class="line">	<span class="keyword">rep</span> <span class="keyword">movsb</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<h1 id="pushf和popf"><a href="#pushf和popf" class="headerlink" title="pushf和popf"></a>pushf和popf</h1><p>pushf的功能是将标志寄存器的值压栈，而popf就是将其出栈，扔入flag。<br>用于中断保护“现场”<br>popf可用于修改标志位</p>
+<h1 id="debug中显示的标志位"><a href="#debug中显示的标志位" class="headerlink" title="debug中显示的标志位"></a>debug中显示的标志位</h1><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631971457630.png" alt="enter description here"></p>
 ]]></content>
       <categories>
         <category>笔记</category>
