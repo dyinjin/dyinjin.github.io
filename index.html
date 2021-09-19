@@ -182,6 +182,141 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/19/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/19/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/9/" class="post-title-link" itemprop="url">汇编6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-19 18:02:46 / 修改时间：19:07:28" itemprop="dateCreated datePublished" datetime="2021-09-19T18:02:46+08:00">2021-09-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h1><p>CPU有这样一种功能：在执行完当前指令后，检测到cpu外部发送过来的或内部产生的一种特殊信息，且可以立即对接收到信息进行处理，这种信息呢，就叫中断信息。</p>
+<h2 id="内中断"><a href="#内中断" class="headerlink" title="内中断"></a>内中断</h2><p>当CPU内部有什么事情发生的时候，将产生需要马上处理的中断信息呢？对于8086来说，当cpu内部有下面的情况发生时，产生相应中断； </p>
+<ol>
+<li>除法错误，比如，执行div指令产生的除法溢出; </li>
+<li>单步执行； </li>
+<li>执行into指令； </li>
+<li>执行int指令。<br>上面的四种中断源，在8086中中断类型码如下。 </li>
+<li>除法错误：0 </li>
+<li>单步执行：1 </li>
+<li>执行into指令：4 </li>
+<li>执行int指令，该指令的格式为int n,指令中的n为字节型立即数，是提供给CPU的中断类型码。<br>cpu收到中断信息后，需要对中断信息进行处理，需要对不同的中断信息编写不同的处理程序。<br>若要定位中断处理程序，需要知道它的段地址和偏移地址<br>中断向量表就是中断向量的列表，中断向量就是中断处理程序的入口。<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782048.png" alt="enter description here"><h3 id="中断过程："><a href="#中断过程：" class="headerlink" title="中断过程："></a><font size="4">中断过程：</font></h3>中断类型码-&gt;中断向量表-&gt;修改CS:IP-&gt;中断处理程序</li>
+</ol>
+<ol>
+<li>（从中断信息中）取得中断信息码； </li>
+<li>标志寄存器的值入栈（因为在中断过程中要改变标志寄存器的值，所以先将其保存在栈中）； </li>
+<li>设置标志寄存器的第8位TF和第9位IF的值为0（以后解释） </li>
+<li>CS的内容入栈； </li>
+<li>IP的内容入栈； </li>
+<li>从内存地址位中断类型码*4 和中断类型码*4+2的两个字单元中读取中断处理程序入口地址设置IP和CS。<h3 id="中断处理程序"><a href="#中断处理程序" class="headerlink" title="中断处理程序"></a><font size="4">中断处理程序</font></h3>中断信息可能随时被检测到，所以中断处理程序必须一直存储在内存某段空间之中。中断处理程序入口地址，即中断向量，必须存储在对应表项中。 </li>
+<li>保存用到的寄存器；</li>
+<li> 处理中断 </li>
+<li> 恢复用到的寄存器</li>
+<li> 用iret指令返回。<br>iret:<br>pop ip<br>pop cs<br>popf<h3 id="经典除法中断（0号中断）"><a href="#经典除法中断（0号中断）" class="headerlink" title="经典除法中断（0号中断）"></a>经典除法中断（0号中断）</h3>再实现<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,offset do0<span class="comment">;要存的中断处理程序</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">200h</span><span class="comment">;存放地址(这里随便放在了中断表的后面空闲位置中)</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,offset do0end-offset do0<span class="comment">;存放的量(编译器可以进行简单运算)</span></span><br><span class="line">	<span class="keyword">cld</span><span class="comment">; cld是来控制重复移动时候的si 和di的递增方式即+1(用std是-1)。</span></span><br><span class="line">	<span class="keyword">rep</span> <span class="keyword">movsb</span><span class="comment">;逐字节移动复制</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">0</span>*<span class="number">4</span>],<span class="number">200h</span><span class="comment">;写入中断向量表入口地址ip</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">0</span>*<span class="number">4</span>+<span class="number">2</span>],<span class="number">0</span><span class="comment">;cs</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span><span class="comment">;这只是将中断处理程序写入的结束</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">do0:</span></span><br><span class="line">	<span class="keyword">jmp</span> short do0start</span><br><span class="line">	<span class="built_in">db</span> <span class="string">&quot;overflow!!!&quot;</span></span><br><span class="line">	<span class="built_in">db</span> <span class="number">0ach</span></span><br><span class="line"><span class="symbol">do0start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="number">201h</span><span class="comment">;o开始处</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0b800h</span><span class="comment">;老规矩的显存修改</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">12</span>*<span class="number">160</span>+<span class="number">36</span>*<span class="number">2</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="number">ah</span>,[<span class="built_in">si</span>+<span class="number">24</span>]</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,[<span class="built_in">si</span>]</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">di</span>],<span class="built_in">al</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">di</span>+<span class="number">1</span>],<span class="number">ah</span></span><br><span class="line">	<span class="keyword">inc</span> <span class="built_in">si</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">di</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span><span class="comment">;中断处理结束</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">do0end:</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+效果：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782042.png" alt="enter description here"><h2 id="int"><a href="#int" class="headerlink" title="int"></a>int</h2>int n ;引发中断过程 过程：</li>
+<li>取中断类型码n</li>
+<li>标志寄存器入栈，TF=0，IF=0</li>
+<li>CS、IP入栈</li>
+<li>(IP)=(n*4),(CS)=(n*4+2)</li>
+<li>执行中断处理程序<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[aaaa*<span class="number">4</span>],<span class="number">200h</span><span class="comment">;写入中断向量表入口地址ip</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[aaaa*<span class="number">4</span>+<span class="number">2</span>],<span class="number">0</span><span class="comment">;cs</span></span><br></pre></td></tr></table></figure>
+aaaa是多少就是int多少<h2 id="BIOS-DOS提供的中断例程"><a href="#BIOS-DOS提供的中断例程" class="headerlink" title="BIOS/DOS提供的中断例程"></a>BIOS/DOS提供的中断例程</h2>在系统的ROM中存放着一套程序，称为BIOS，主要有： </li>
+<li>硬件系统的检测和初始化程序； </li>
+<li>外部中断和内部中断的中断例程； </li>
+<li>用于对硬件设备进行I/O操作的中断例程； </li>
+<li>其他和硬件系统相关的中断例程。<br>DOS中也提供了中断例程，DOS的中断例程就是操作系统向程序员提供的编程资源。<h3 id="BIOS中断例程应用"><a href="#BIOS中断例程应用" class="headerlink" title="BIOS中断例程应用"></a>BIOS中断例程应用</h3>int 10h的使用<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">bh</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">dh</span>,<span class="number">5</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">dl</span>,<span class="number">12</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">10h</span><span class="comment">;解释：ah=2表示调用第10h号中断例程的2号子程序，功能为设置光标位置可以提供光标所在的行号、列号和页号作为参数。bh=0,dh=5,dl=12，设置光标到第0页，第5行，第12列。</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">9</span><span class="comment">;在光标位置显示字符</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,<span class="string">&#x27;a&#x27;</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bl</span>,<span class="number">11001010b</span><span class="comment">;同显存设置颜色属性</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">bh</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">3</span><span class="comment">;字符重复个数</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">10h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782053.png" alt="enter description here"><h3 id="DOS中断例程应用"><a href="#DOS中断例程应用" class="headerlink" title="DOS中断例程应用"></a>DOS中断例程应用</h3>经典：<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line"><span class="keyword">int</span> <span class="number">21h</span></span><br></pre></td></tr></table></figure>
+int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用4ch号功能，即程序返回功能<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">4ch</span><span class="comment">;程序返回功能号</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">al</span>,<span class="number">0</span><span class="comment">;返回值</span></span><br><span class="line"><span class="keyword">int</span> <span class="number">21h</span></span><br></pre></td></tr></table></figure>
+又如：<br>在屏幕的5行12列显示字符串“Welcome to cloud”<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782052.png" alt="enter description here"><h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1>在访问端口的时候，cpu通过端口地址来定位端口。因为端口所在的芯片和cpu通过总线相连，所以，端口地址和内存地址一样，通过地址总线来传送。在pc系统中，cpu最多可以定位64KB个不同的端口。则端口地址的范围为0~65535。</li>
+</ol>
+<p>对端口的读写不能用mov,push,pop等内存读写指令。只能用<strong>in</strong>和<strong>out</strong>这两条，分别用于从端口读取数据和向写入数据。</p>
+<p>在in和out指令中，<strong>只能使用ax或al</strong>来存放从端口中读入的数据或要发送到端口中的数据。<strong>访问8位端口时用al，访问16位端口时用ax</strong>。</p>
+<p>对0~255以内的端口读写：<br>in al,20h<br>out 20h,al</p>
+<p>对256~65535端口读写,<strong>端口号放在dx中</strong>：<br>mov dx,3f8h<br>in al,dx<br>out dx,al</p>
+<h3 id="CMOS-RAM"><a href="#CMOS-RAM" class="headerlink" title="CMOS-RAM"></a>CMOS-RAM</h3><p>PC机中，有一个CMOS RAM芯片，一般简称位CMOS。特征如下：</p>
+<ol>
+<li>含一个实时钟和一个有128个存储单元的RAM存储器（早期为64个字节）。</li>
+<li>该芯片靠电池供电。所以关机后其内部的实时钟仍可正常工作，RAM中的信息不丢失。</li>
+<li>128个字节的RAM中内部实时钟占用0~0dh单元保存信息，其余大部分单元用于保存系统配置信息，供系统启动时BIOS程序读取。BIOS也提供了相关的程序，使我们可以再开机的时候配置CMOS RAM中的系统信息。</li>
+<li>该芯片内部有两个端口，端口地址为70h和71h。CPU通过这两个端口来读写CMOS RAM。</li>
+<li><strong>70h为地址端口</strong>，存放要访问的CMOS RAM单元的地址；<strong>71h为数据端口</strong>，存放从选定的CMOS RAM单元中读取的数据，或要写入到其中的数据。可见，CPU对CMOS RAM的读写分两步进行，比如，读CMOS RAM的2号单元：<ol>
+<li>将2送入端口70h；</li>
+<li>从端口71h读出2号单元的内容。<h1 id="shl-shr"><a href="#shl-shr" class="headerlink" title="shl/shr"></a>shl/shr</h1>shr和shl是逻辑移位指令<br>shl逻辑左移</li>
+</ol>
+</li>
+<li>将一个寄存器或内部单元中的数据向左位移；</li>
+<li>将最后移出的一位写入CF中；</li>
+<li>最低位用0补充；</li>
+<li>如果移动位数大于1时，必须将移动位数放在cl中。<br>shr是逻辑右移指令，与shl相反。</li>
+<li>将一个寄存器或内存单元的数据向右移位。</li>
+<li>将最后移出的一位写入CF。</li>
+<li>最高位用0补充。<br>用法与shl一致。<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621983.png" alt="enter description here"><br>在屏幕中间显示当前月份<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,<span class="number">8</span></span><br><span class="line">	<span class="keyword">out</span> <span class="number">70h</span>,<span class="built_in">al</span></span><br><span class="line">	<span class="keyword">in</span> <span class="built_in">al</span>,<span class="number">71h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="built_in">al</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cl</span>,<span class="number">4</span></span><br><span class="line">	<span class="keyword">shr</span> <span class="number">ah</span>,<span class="built_in">al</span><span class="comment">;取前4位BCD码</span></span><br><span class="line">	<span class="keyword">and</span> <span class="built_in">al</span>,<span class="number">00001111b</span><span class="comment">;取后4位BCD码</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">add</span> <span class="number">ah</span>,<span class="number">30h</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">al</span>,<span class="number">30h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0b800h</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">160</span>*<span class="number">12</span>+<span class="number">40</span>*<span class="number">2</span>],<span class="number">ah</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">160</span>*<span class="number">12</span>+<span class="number">40</span>*<span class="number">2</span>+<span class="number">2</span>],<span class="built_in">al</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621982.png" alt="enter description here"><h1 id="外中断"><a href="#外中断" class="headerlink" title="外中断"></a>外中断</h1></li>
+</ol>
+<ul>
+<li>可屏蔽中断<br>  sti：IF置为1，响应中断<br>  cli：IF置为0，不响应可屏蔽中断</li>
+<li>不可屏蔽中断<br>  8086CPU，不可屏蔽中断的中断类型码固定为2<br>还是in，out<h1 id="…"><a href="#…" class="headerlink" title="…"></a>…</h1></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/18/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,6 +343,13 @@
 
               <time title="创建时间：2021-09-18 21:24:49" itemprop="dateCreated datePublished" datetime="2021-09-18T21:24:49+08:00">2021-09-18</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-19 16:42:57" itemprop="dateModified" datetime="2021-09-19T16:42:57+08:00">2021-09-19</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -264,9 +406,9 @@
 <h1 id="DF-definition-flag-和串传送"><a href="#DF-definition-flag-和串传送" class="headerlink" title="DF(definition flag)和串传送"></a>DF(definition flag)和串传送</h1><h2 id="df"><a href="#df" class="headerlink" title="df"></a>df</h2><p>也是flag之一<br>df=0 每次操作后si di递增<br>df=1 每次操作后si di递减<br>唯一可修改的标志位</p>
 <h3 id="cld"><a href="#cld" class="headerlink" title="cld"></a>cld</h3><p>df清零</p>
 <h3 id="std"><a href="#std" class="headerlink" title="std"></a>std</h3><p>df置1</p>
-<h2 id="movsb"><a href="#movsb" class="headerlink" title="movsb"></a>movsb</h2><p>1、((es)*16+(di))=((ds)*16+(si))<br>2、如果df=0 则:<br>inc si<br>inc di<br> 如果df=1 则:<br> dec si<br> dec di</p>
-<h2 id="movsw"><a href="#movsw" class="headerlink" title="movsw"></a>movsw</h2><p>按字操作，di和si增减单位为2字节<br>mov es:[di],word ptr ds:[si]<br>如果df=0 则:<br>add si,2<br>add di,2<br> 如果df=1 则:<br>sub si,2<br>sub di,2</p>
 <h2 id="rep"><a href="#rep" class="headerlink" title="rep"></a>rep</h2><p>rep movsb<br>相当于：<br>s:<br>    movsb<br>    loop s<br>(循环则需预先设置cx)</p>
+<h3 id="movsb"><a href="#movsb" class="headerlink" title="movsb"></a>movsb</h3><p>1、((es)*16+(di))=((ds)*16+(si))<br>2、如果df=0 则:<br>inc si<br>inc di<br> 如果df=1 则:<br> dec si<br> dec di</p>
+<h3 id="movsw"><a href="#movsw" class="headerlink" title="movsw"></a>movsw</h3><p>按字操作，di和si增减单位为2字节<br>mov es:[di],word ptr ds:[si]<br>如果df=0 则:<br>add si,2<br>add di,2<br> 如果df=1 则:<br>sub si,2<br>sub di,2</p>
 <h1 id="题"><a href="#题" class="headerlink" title="题"></a>题</h1><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631971457533.png" alt="enter description here"></p>
 <figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,data</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="number">0</span><span class="comment">;指向W</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">16</span><span class="comment">;指向第一个0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">16</span></span><br><span class="line">	<span class="keyword">cld</span></span><br><span class="line">	<span class="keyword">rep</span> <span class="keyword">movsb</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
 <h1 id="pushf和popf"><a href="#pushf和popf" class="headerlink" title="pushf和popf"></a>pushf和popf</h1><p>pushf的功能是将标志寄存器的值压栈，而popf就是将其出栈，扔入flag。<br>用于中断保护“现场”<br>popf可用于修改标志位</p>
@@ -1337,150 +1479,6 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/11/MC/shaderpack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/11/MC/shaderpack/" class="post-title-link" itemprop="url">光影测试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-11 01:00:21" itemprop="dateCreated datePublished" datetime="2021-09-11T01:00:21+08:00">2021-09-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-12 00:34:29" itemprop="dateModified" datetime="2021-09-12T00:34:29+08:00">2021-09-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>10个超良心低配光影介绍&amp;测评<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
-<p>从以下方面进行了系统评测，仅进行相互比较，建议因地制宜的选用<font size="4">基本都是那些实实在在影响感官和游戏体验的点</font><br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"><br>洞穴透光：问题过于普遍<br>水反：水面反光明显程度<br>水透：水下水体透明度<br>水面透：陆上看水下的水体透明度<br>烟：以篝火烟雾为代表的一众粒子效果<br>附魔：附魔紫光效果影响<br>手持：部分光影手持物品会变透明</p>
-<h1 id="chocapic13系列我也不清楚哪个是本来的"><a href="#chocapic13系列我也不清楚哪个是本来的" class="headerlink" title="chocapic13系列我也不清楚哪个是本来的"></a>chocapic13系列<font size="1" color="gray">我也不清楚哪个是本来的</font></h1><p>同系列可快速切换<br><font size="2">类似于只改变了配置</font></p>
-<hr>
-<ul>
-<li>chocapic13<br>  <em>Chocapic13-Shaders-Mod-1.6.2</em><br>  唯一不自带天空材质的<br>  水面反射效果较弱<br>  <strong>彩色玻璃阴影作实心计算（不透光）</strong><br>  百模组FPS：50|30 <font size="2">峰值|稳定平均值</font></li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/c131.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c132.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c133.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c134.png" alt="1"></p>
-<hr>
-<ul>
-<li>ziipzaaps<br>  <em>Ziipzaaps_Shaders_V2</em><br>  水面较暗<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子很糊</strong><br>  百模组FPS：40|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/zi(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>werrus<br>  <em>Werrus HFPS Shaders V4.0 Ultra</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子糊</strong><br>  百模组FPS：50|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/wer(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>iteration<br>  <em>iterationT Next 1.1.0</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>附魔随角度变化不正常</strong><br>  模组（CavesAndCliffsBackport）中遮光玻璃崩坏<br>  百模组FPS：20|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/it(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>Seus renew<br>  <em>SEUS-Renewed-v1.0.1</em><br>  较弱的洞穴漏光修复<br>  水体透明度较低<br>  <strong>粒子效果偏移</strong><br>  <strong>附魔随角度变化不正常</strong><br>  百模组FPS：30|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/Seus(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(5).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>Seus renew fix<br><em>SEUS-Renewed-v1.0.1 [Tweaked+Cloud]</em><br>较弱的洞穴漏光修复<br>水体透明度较低</li>
-<li><em>粒子效果偏移</em>*</li>
-<li><em>附魔随角度变化不正常</em>*<br><font size="2">几乎和上者一致</font><br>百模组FPS：20|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(4).png" alt="1"></p>
-<h1 id="BSL系列比较推荐BSL及其standard版"><a href="#BSL系列比较推荐BSL及其standard版" class="headerlink" title="BSL系列比较推荐BSL及其standard版"></a>BSL系列<font size="2">比较推荐BSL及其standard版</font></h1><hr>
-<ul>
-<li>BSL<br>  <em>BSL_v8.0.01</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  彩色玻璃表现较弱<br>  <strong>光源整体发光</strong><font size="2">比如说火把，它的木杆也明显很亮</font><br>  百模组FPS：40|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/BSL(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>BSL Standard<br>  <em>BSL Standard v7.0p1</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  <strong>附魔效果整体泛光</strong><br>  <strong>水面过透</strong><br>  百模组FPS：40|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/BSLs(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(4).png" alt="1"></p>
-<hr>
-<ul>
-<li>Sildurs<br>  <em>B Sildurs Vibrant Shaders v1.281 Lite/Medium/High/Extreme</em><br>  <font size="2">建议直接开Extreme，阴影质量提升很多</font><br>  较弱的洞穴漏光修复<br>  <strong>附魔效果呈不透明紫色</strong><br>  百模组FPS：30|30~50|30</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/SILD(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(4).png" alt="1"></p>
-<h1 id="projectLUMA"><a href="#projectLUMA" class="headerlink" title="projectLUMA"></a>projectLUMA</h1><p>其实不怎么推荐这个</p>
-<hr>
-<ul>
-<li>projectLUMA<br>  <em>projectLUMA - v1.32 汉化版</em><br>  <strong>附魔取消效果</strong><br>  <strong>光源整体发光</strong><br>  百模组FPS：40|20</li>
-</ul>
-<p><img src="/2021/09/11/MC/shaderpack/pro(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(4).png" alt="1"></p>
-<hr>
-<p><font size="6">最后</font><br>个人观点，酌情选用<br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"></p>
-<hr>
-<hr>
-<hr>
-<p>本文作markdown 书写训练文<br>小坑：</p>
-<ul>
-<li>小书匠绑定图床的url前缀填写可省略（不是简单网址，例如：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/小书匠/1631329393524.png</span><br></pre></td></tr></table></figure></li>
-<li>大图使用本地图库时参考了 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f72aaad7b852">DCBXZ的博客</a></li>
-<li>大部分“宏定义”  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\Blog\themes\next\source\css\_variables</span><br></pre></td></tr></table></figure></li>
-<li>报错：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">warning: LF will be replaced by CRLF</span><br></pre></td></tr></table></figure>
-  使用  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config –global core.autocrlf false //禁用自动转换 </span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1552,7 +1550,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1601,7 +1599,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共9.7k字呐~</span>
+  <span class="post-count">本博客全站共11.8k字呐~</span>
 </div>
 
         

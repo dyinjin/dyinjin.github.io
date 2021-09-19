@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="中断CPU有这样一种功能：在执行完当前指令后，检测到cpu外部发送过来的或内部产生的一种特殊信息，且可以立即对接收到信息进行处理，这种信息呢，就叫中断信息。 内中断当CPU内部有什么事情发生的时候，将产生需要马上处理的中断信息呢？对于8086来说，当cpu内部有下面的情况发生时，产生相应中断；   除法错误，比如，执行div指令产生的除法溢出;  单步执行；  执行into指令；  执行int指令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编6">
+<meta property="og:url" content="http://example.com/2021/09/19/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/9/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="中断CPU有这样一种功能：在执行完当前指令后，检测到cpu外部发送过来的或内部产生的一种特殊信息，且可以立即对接收到信息进行处理，这种信息呢，就叫中断信息。 内中断当CPU内部有什么事情发生的时候，将产生需要马上处理的中断信息呢？对于8086来说，当cpu内部有下面的情况发生时，产生相应中断；   除法错误，比如，执行div指令产生的除法溢出;  单步执行；  执行into指令；  执行int指令">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782048.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782042.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782053.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782052.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621983.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621982.png">
+<meta property="article:published_time" content="2021-09-19T10:02:46.420Z">
+<meta property="article:modified_time" content="2021-09-19T11:07:28.057Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="汇编语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782048.png">
+
+<link rel="canonical" href="http://example.com/2021/09/19/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>汇编6 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/19/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          汇编6
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-19 18:02:46 / 修改时间：19:07:28" itemprop="dateCreated datePublished" datetime="2021-09-19T18:02:46+08:00">2021-09-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h1><p>CPU有这样一种功能：在执行完当前指令后，检测到cpu外部发送过来的或内部产生的一种特殊信息，且可以立即对接收到信息进行处理，这种信息呢，就叫中断信息。</p>
+<h2 id="内中断"><a href="#内中断" class="headerlink" title="内中断"></a>内中断</h2><p>当CPU内部有什么事情发生的时候，将产生需要马上处理的中断信息呢？对于8086来说，当cpu内部有下面的情况发生时，产生相应中断； </p>
+<ol>
+<li>除法错误，比如，执行div指令产生的除法溢出; </li>
+<li>单步执行； </li>
+<li>执行into指令； </li>
+<li>执行int指令。<br>上面的四种中断源，在8086中中断类型码如下。 </li>
+<li>除法错误：0 </li>
+<li>单步执行：1 </li>
+<li>执行into指令：4 </li>
+<li>执行int指令，该指令的格式为int n,指令中的n为字节型立即数，是提供给CPU的中断类型码。<br>cpu收到中断信息后，需要对中断信息进行处理，需要对不同的中断信息编写不同的处理程序。<br>若要定位中断处理程序，需要知道它的段地址和偏移地址<br>中断向量表就是中断向量的列表，中断向量就是中断处理程序的入口。<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782048.png" alt="enter description here"><h3 id="中断过程："><a href="#中断过程：" class="headerlink" title="中断过程："></a><font size="4">中断过程：</font></h3>中断类型码-&gt;中断向量表-&gt;修改CS:IP-&gt;中断处理程序</li>
+</ol>
+<ol>
+<li>（从中断信息中）取得中断信息码； </li>
+<li>标志寄存器的值入栈（因为在中断过程中要改变标志寄存器的值，所以先将其保存在栈中）； </li>
+<li>设置标志寄存器的第8位TF和第9位IF的值为0（以后解释） </li>
+<li>CS的内容入栈； </li>
+<li>IP的内容入栈； </li>
+<li>从内存地址位中断类型码*4 和中断类型码*4+2的两个字单元中读取中断处理程序入口地址设置IP和CS。<h3 id="中断处理程序"><a href="#中断处理程序" class="headerlink" title="中断处理程序"></a><font size="4">中断处理程序</font></h3>中断信息可能随时被检测到，所以中断处理程序必须一直存储在内存某段空间之中。中断处理程序入口地址，即中断向量，必须存储在对应表项中。 </li>
+<li>保存用到的寄存器；</li>
+<li> 处理中断 </li>
+<li> 恢复用到的寄存器</li>
+<li> 用iret指令返回。<br>iret:<br>pop ip<br>pop cs<br>popf<h3 id="经典除法中断（0号中断）"><a href="#经典除法中断（0号中断）" class="headerlink" title="经典除法中断（0号中断）"></a>经典除法中断（0号中断）</h3>再实现<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,offset do0<span class="comment">;要存的中断处理程序</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">200h</span><span class="comment">;存放地址(这里随便放在了中断表的后面空闲位置中)</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,offset do0end-offset do0<span class="comment">;存放的量(编译器可以进行简单运算)</span></span><br><span class="line">	<span class="keyword">cld</span><span class="comment">; cld是来控制重复移动时候的si 和di的递增方式即+1(用std是-1)。</span></span><br><span class="line">	<span class="keyword">rep</span> <span class="keyword">movsb</span><span class="comment">;逐字节移动复制</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">0</span>*<span class="number">4</span>],<span class="number">200h</span><span class="comment">;写入中断向量表入口地址ip</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">0</span>*<span class="number">4</span>+<span class="number">2</span>],<span class="number">0</span><span class="comment">;cs</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span><span class="comment">;这只是将中断处理程序写入的结束</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">do0:</span></span><br><span class="line">	<span class="keyword">jmp</span> short do0start</span><br><span class="line">	<span class="built_in">db</span> <span class="string">&quot;overflow!!!&quot;</span></span><br><span class="line">	<span class="built_in">db</span> <span class="number">0ach</span></span><br><span class="line"><span class="symbol">do0start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="number">201h</span><span class="comment">;o开始处</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0b800h</span><span class="comment">;老规矩的显存修改</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">12</span>*<span class="number">160</span>+<span class="number">36</span>*<span class="number">2</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="number">ah</span>,[<span class="built_in">si</span>+<span class="number">24</span>]</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,[<span class="built_in">si</span>]</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">di</span>],<span class="built_in">al</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">di</span>+<span class="number">1</span>],<span class="number">ah</span></span><br><span class="line">	<span class="keyword">inc</span> <span class="built_in">si</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">di</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span><span class="comment">;中断处理结束</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">do0end:</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+效果：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782042.png" alt="enter description here"><h2 id="int"><a href="#int" class="headerlink" title="int"></a>int</h2>int n ;引发中断过程 过程：</li>
+<li>取中断类型码n</li>
+<li>标志寄存器入栈，TF=0，IF=0</li>
+<li>CS、IP入栈</li>
+<li>(IP)=(n*4),(CS)=(n*4+2)</li>
+<li>执行中断处理程序<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[aaaa*<span class="number">4</span>],<span class="number">200h</span><span class="comment">;写入中断向量表入口地址ip</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[aaaa*<span class="number">4</span>+<span class="number">2</span>],<span class="number">0</span><span class="comment">;cs</span></span><br></pre></td></tr></table></figure>
+aaaa是多少就是int多少<h2 id="BIOS-DOS提供的中断例程"><a href="#BIOS-DOS提供的中断例程" class="headerlink" title="BIOS/DOS提供的中断例程"></a>BIOS/DOS提供的中断例程</h2>在系统的ROM中存放着一套程序，称为BIOS，主要有： </li>
+<li>硬件系统的检测和初始化程序； </li>
+<li>外部中断和内部中断的中断例程； </li>
+<li>用于对硬件设备进行I/O操作的中断例程； </li>
+<li>其他和硬件系统相关的中断例程。<br>DOS中也提供了中断例程，DOS的中断例程就是操作系统向程序员提供的编程资源。<h3 id="BIOS中断例程应用"><a href="#BIOS中断例程应用" class="headerlink" title="BIOS中断例程应用"></a>BIOS中断例程应用</h3>int 10h的使用<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">bh</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">dh</span>,<span class="number">5</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">dl</span>,<span class="number">12</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">10h</span><span class="comment">;解释：ah=2表示调用第10h号中断例程的2号子程序，功能为设置光标位置可以提供光标所在的行号、列号和页号作为参数。bh=0,dh=5,dl=12，设置光标到第0页，第5行，第12列。</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">9</span><span class="comment">;在光标位置显示字符</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,<span class="string">&#x27;a&#x27;</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bl</span>,<span class="number">11001010b</span><span class="comment">;同显存设置颜色属性</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">bh</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">3</span><span class="comment">;字符重复个数</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">10h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782053.png" alt="enter description here"><h3 id="DOS中断例程应用"><a href="#DOS中断例程应用" class="headerlink" title="DOS中断例程应用"></a>DOS中断例程应用</h3>经典：<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line"><span class="keyword">int</span> <span class="number">21h</span></span><br></pre></td></tr></table></figure>
+int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用4ch号功能，即程序返回功能<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">4ch</span><span class="comment">;程序返回功能号</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">al</span>,<span class="number">0</span><span class="comment">;返回值</span></span><br><span class="line"><span class="keyword">int</span> <span class="number">21h</span></span><br></pre></td></tr></table></figure>
+又如：<br>在屏幕的5行12列显示字符串“Welcome to cloud”<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782052.png" alt="enter description here"><h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1>在访问端口的时候，cpu通过端口地址来定位端口。因为端口所在的芯片和cpu通过总线相连，所以，端口地址和内存地址一样，通过地址总线来传送。在pc系统中，cpu最多可以定位64KB个不同的端口。则端口地址的范围为0~65535。</li>
+</ol>
+<p>对端口的读写不能用mov,push,pop等内存读写指令。只能用<strong>in</strong>和<strong>out</strong>这两条，分别用于从端口读取数据和向写入数据。</p>
+<p>在in和out指令中，<strong>只能使用ax或al</strong>来存放从端口中读入的数据或要发送到端口中的数据。<strong>访问8位端口时用al，访问16位端口时用ax</strong>。</p>
+<p>对0~255以内的端口读写：<br>in al,20h<br>out 20h,al</p>
+<p>对256~65535端口读写,<strong>端口号放在dx中</strong>：<br>mov dx,3f8h<br>in al,dx<br>out dx,al</p>
+<h3 id="CMOS-RAM"><a href="#CMOS-RAM" class="headerlink" title="CMOS-RAM"></a>CMOS-RAM</h3><p>PC机中，有一个CMOS RAM芯片，一般简称位CMOS。特征如下：</p>
+<ol>
+<li>含一个实时钟和一个有128个存储单元的RAM存储器（早期为64个字节）。</li>
+<li>该芯片靠电池供电。所以关机后其内部的实时钟仍可正常工作，RAM中的信息不丢失。</li>
+<li>128个字节的RAM中内部实时钟占用0~0dh单元保存信息，其余大部分单元用于保存系统配置信息，供系统启动时BIOS程序读取。BIOS也提供了相关的程序，使我们可以再开机的时候配置CMOS RAM中的系统信息。</li>
+<li>该芯片内部有两个端口，端口地址为70h和71h。CPU通过这两个端口来读写CMOS RAM。</li>
+<li><strong>70h为地址端口</strong>，存放要访问的CMOS RAM单元的地址；<strong>71h为数据端口</strong>，存放从选定的CMOS RAM单元中读取的数据，或要写入到其中的数据。可见，CPU对CMOS RAM的读写分两步进行，比如，读CMOS RAM的2号单元：<ol>
+<li>将2送入端口70h；</li>
+<li>从端口71h读出2号单元的内容。<h1 id="shl-shr"><a href="#shl-shr" class="headerlink" title="shl/shr"></a>shl/shr</h1>shr和shl是逻辑移位指令<br>shl逻辑左移</li>
+</ol>
+</li>
+<li>将一个寄存器或内部单元中的数据向左位移；</li>
+<li>将最后移出的一位写入CF中；</li>
+<li>最低位用0补充；</li>
+<li>如果移动位数大于1时，必须将移动位数放在cl中。<br>shr是逻辑右移指令，与shl相反。</li>
+<li>将一个寄存器或内存单元的数据向右移位。</li>
+<li>将最后移出的一位写入CF。</li>
+<li>最高位用0补充。<br>用法与shl一致。<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621983.png" alt="enter description here"><br>在屏幕中间显示当前月份<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,<span class="number">8</span></span><br><span class="line">	<span class="keyword">out</span> <span class="number">70h</span>,<span class="built_in">al</span></span><br><span class="line">	<span class="keyword">in</span> <span class="built_in">al</span>,<span class="number">71h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="built_in">al</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cl</span>,<span class="number">4</span></span><br><span class="line">	<span class="keyword">shr</span> <span class="number">ah</span>,<span class="built_in">al</span><span class="comment">;取前4位BCD码</span></span><br><span class="line">	<span class="keyword">and</span> <span class="built_in">al</span>,<span class="number">00001111b</span><span class="comment">;取后4位BCD码</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">add</span> <span class="number">ah</span>,<span class="number">30h</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">al</span>,<span class="number">30h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0b800h</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">160</span>*<span class="number">12</span>+<span class="number">40</span>*<span class="number">2</span>],<span class="number">ah</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">160</span>*<span class="number">12</span>+<span class="number">40</span>*<span class="number">2</span>+<span class="number">2</span>],<span class="built_in">al</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
+<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621982.png" alt="enter description here"><h1 id="外中断"><a href="#外中断" class="headerlink" title="外中断"></a>外中断</h1></li>
+</ol>
+<ul>
+<li>可屏蔽中断<br>  sti：IF置为1，响应中断<br>  cli：IF置为0，不响应可屏蔽中断</li>
+<li>不可屏蔽中断<br>  8086CPU，不可屏蔽中断的中断类型码固定为2<br>还是in，out<h1 id="…"><a href="#…" class="headerlink" title="…"></a>…</h1></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="tag"># 汇编语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/18/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/8/" rel="prev" title="汇编5">
+      <i class="fa fa-chevron-left"></i> 汇编5
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD"><span class="nav-number">1.</span> <span class="nav-text">中断</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E4%B8%AD%E6%96%AD"><span class="nav-number">1.1.</span> <span class="nav-text">内中断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">中断过程：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">中断处理程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E9%99%A4%E6%B3%95%E4%B8%AD%E6%96%AD%EF%BC%880%E5%8F%B7%E4%B8%AD%E6%96%AD%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">经典除法中断（0号中断）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#int"><span class="nav-number">1.2.</span> <span class="nav-text">int</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BIOS-DOS%E6%8F%90%E4%BE%9B%E7%9A%84%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">BIOS&#x2F;DOS提供的中断例程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIOS%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%BA%94%E7%94%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">BIOS中断例程应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOS%E4%B8%AD%E6%96%AD%E4%BE%8B%E7%A8%8B%E5%BA%94%E7%94%A8"><span class="nav-number">1.3.2.</span> <span class="nav-text">DOS中断例程应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.</span> <span class="nav-text">端口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CMOS-RAM"><span class="nav-number">2.0.1.</span> <span class="nav-text">CMOS-RAM</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shl-shr"><span class="nav-number">3.</span> <span class="nav-text">shl&#x2F;shr</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">4.</span> <span class="nav-text">实战</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E4%B8%AD%E6%96%AD"><span class="nav-number">5.</span> <span class="nav-text">外中断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E2%80%A6"><span class="nav-number">6.</span> <span class="nav-text">…</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共11.8k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
