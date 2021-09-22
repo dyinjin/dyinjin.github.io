@@ -182,7 +182,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/MC/python0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/python0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -196,7 +196,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/20/MC/python0/" class="post-title-link" itemprop="url">远古python</a>
+            <a href="/2021/09/20/python0/" class="post-title-link" itemprop="url">python远古笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -208,6 +208,13 @@
 
               <time title="创建时间：2021-09-20 15:54:05" itemprop="dateCreated datePublished" datetime="2021-09-20T15:54:05+08:00">2021-09-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-22 13:43:33" itemprop="dateModified" datetime="2021-09-22T13:43:33+08:00">2021-09-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -338,7 +345,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/MC/block0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/block0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -352,7 +359,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/20/MC/block0/" class="post-title-link" itemprop="url">区块链概述</a>
+            <a href="/2021/09/20/block0/" class="post-title-link" itemprop="url">区块链概述</a>
         </h2>
 
         <div class="post-meta">
@@ -889,7 +896,7 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-18 19:09:03" itemprop="dateModified" datetime="2021-09-18T19:09:03+08:00">2021-09-18</time>
+                <time title="修改时间：2021-09-22 21:56:19" itemprop="dateModified" datetime="2021-09-22T21:56:19+08:00">2021-09-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -926,79 +933,144 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
 <li>移位器<br>  作直接传送、左移、右移；由微命令实现直接、左、右移。</li>
 </ul>
 <h3 id="寄存器设置"><a href="#寄存器设置" class="headerlink" title="寄存器设置"></a>寄存器设置</h3><ul>
-<li>用于处理的寄存器：通用寄存器、暂存器<ul>
+<li><p>用于处理的寄存器：通用寄存器、暂存器</p>
+<ul>
 <li>通用寄存器组<br>  一组可编程访问的寄存器。在指令系统中为这些R分配了编号，有：R0~R3，PC，SP，PSW。</li>
 <li>暂存器<br>  用户不能直接访问的R，用来暂存信息，在指令系统中没有为它们分配编号，有C、D。 暂存器C：从主存中读取源操作数或源操作数地址时，使用它。 暂存器D：从主存中读取目的作数或目的操作数地址时，或中间运算结果时，使用它。</li>
 </ul>
 </li>
-<li>用于控制的寄存器：指令寄存器IR、程序计数器PC、 程序状态字寄存器PSW<ul>
+<li><p>用于控制的寄存器：指令寄存器IR、程序计数器PC、 程序状态字寄存器PSW</p>
+<ul>
 <li>指令寄存器IR<br>  用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
 <li>程序计数器PC<br>  PC提供后继指令地址，并送往与主存器相连接的地址寄存器（MAR）。</li>
 <li>程序状态字寄存器PSW（program status word）<br>  PSW的内容就是表现的现行程序的状态。 包括： 特征位：进位C、溢出V、零Z、负N，允许中断I等； 编程设定位。</li>
 </ul>
 </li>
-<li>用作主存接口的寄存器：地址寄存器MAR、数据缓冲寄存器MBR(MDR)<br>  CPU访问主存时，首先送出地址码，然后送出/接收数据，需：<br>  A.当作用在MAR上的微命令EMAR为低电平时，MAR输出呈高阻态，与地址总线断开；<br>  B.当作用在MAR上的微命令EMAR为高电平时，MAR输出其内容（地址信息）送往地址总线；<ul>
+<li><p>用作主存接口的寄存器：地址寄存器MAR、数据缓冲寄存器MBR(MDR)<br>  CPU访问主存时，首先送出地址码，然后送出/接收数据，需：<br>  A.当作用在MAR上的微命令EMAR为低电平时，MAR输出呈高阻态，与地址总线断开；<br>  B.当作用在MAR上的微命令EMAR为高电平时，MAR输出其内容（地址信息）送往地址总线；</p>
+<ul>
 <li>地址寄存器MAR<br>  读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
 <li>数据缓冲寄存器MBR(MDR)<br>  由控制命令R/W决定传送方向。<br>  R：由主存单元-&gt;数据总线-&gt;MDR<br>  W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3></li>
 </ul>
 </li>
-<li>定义<br>是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。<br>数据通路结构：数据传送结构，它是CPU总体结构的核心问题。 总线：是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。</li>
-<li>总线类型<br>① CPU内总线： 模型机中是一组单向数据传送总线，是连接运算器、寄存器等CPU内部部件的总线。<br>② 部件间总线： 芯片间的连接总线，包含地址线与数据线两组。<br>③ 系统总线： 作用是计算机系统内各大部件进行信息交换的基础，分：地址总线AB、数据总线DB、控制总线CB<br>④ 外总线： 一台CS与其它设备相连接的总线。<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3>产生时序信号的部件称为时序发生器或时序系统，它由一个振荡器和一组计数分频器组成。<h2 id="CPU的内部数据通路结构"><a href="#CPU的内部数据通路结构" class="headerlink" title="CPU的内部数据通路结构"></a>CPU的内部数据通路结构</h2>模型机如何<strong>以内总线为纽带</strong>建立各部件间的数据传送通路，即CPU内部数据通路结构，这是CPU组成的核心问题。<br>模型机的<strong>结构</strong>为：单组、单向内总线、分立寄存器结构。<h3 id="模型机数据通路框图"><a href="#模型机数据通路框图" class="headerlink" title="模型机数据通路框图"></a>模型机数据通路框图</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864168.png" alt="enter description here"></li>
-<li>可编程寄存器</li>
-<li><em>R0~R3<strong>通用寄存器(000,001,010,011)、</strong>SP*</em>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</li>
-<li>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
-<li>暂存器</li>
-<li><em>C、D<strong>约定从主存中读源操作数、操作数地址时用</strong>C<strong>；从主存中取目的操作数、操作数地址或暂存时，用</strong>D*</em></li>
-<li>主存接口寄存器MAR、MDR(MBR)<ul>
+<li><p>定义<br>是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。<br>数据通路结构：数据传送结构，它是CPU总体结构的核心问题。 总线：是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。</p>
+</li>
+<li><p>总线类型<br>① CPU内总线： 模型机中是一组单向数据传送总线，是连接运算器、寄存器等CPU内部部件的总线。<br>② 部件间总线： 芯片间的连接总线，包含地址线与数据线两组。<br>③ 系统总线： 作用是计算机系统内各大部件进行信息交换的基础，分：地址总线AB、数据总线DB、控制总线CB<br>④ 外总线： 一台CS与其它设备相连接的总线。</p>
+<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3><p>产生时序信号的部件称为时序发生器或时序系统，它由一个振荡器和一组计数分频器组成。</p>
+<h2 id="CPU的内部数据通路结构"><a href="#CPU的内部数据通路结构" class="headerlink" title="CPU的内部数据通路结构"></a>CPU的内部数据通路结构</h2><p>模型机如何<strong>以内总线为纽带</strong>建立各部件间的数据传送通路，即CPU内部数据通路结构，这是CPU组成的核心问题。<br>模型机的<strong>结构</strong>为：单组、单向内总线、分立寄存器结构。</p>
+<h3 id="模型机数据通路框图"><a href="#模型机数据通路框图" class="headerlink" title="模型机数据通路框图"></a>模型机数据通路框图</h3><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864168.png" alt="enter description here"></p>
+</li>
+<li><p>可编程寄存器</p>
+</li>
+<li><p><em>R0~R3<strong>通用寄存器(000,001,010,011)、</strong>SP*</em>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</p>
+</li>
+<li><p>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</p>
+</li>
+<li><p>暂存器</p>
+</li>
+<li><p><em>C、D<strong>约定从主存中读源操作数、操作数地址时用</strong>C<strong>；从主存中取目的操作数、操作数地址或暂存时，用</strong>D*</em></p>
+</li>
+<li><p>主存接口寄存器MAR、MDR(MBR)</p>
+<ul>
 <li>地址寄存器<strong>MAR</strong><br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
 <li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="各类信息的传送路径"><a href="#各类信息的传送路径" class="headerlink" title="各类信息的传送路径"></a>各类信息的传送路径</h3></li>
 </ul>
 </li>
-<li>取指令地址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864214.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864188.png" alt="enter description here"></li>
-<li>指令信息的传递<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864215.png" alt="enter description here"></li>
-<li>取操作数地址—①寄存器间址（R）<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946727225.png" alt="enter description here"></li>
-<li>取操作数地址—②自减型寄存器间址 -(R)<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946811630.png" alt="enter description here"></li>
-<li>取操作数地址—③自增型寄存器间址 (R)+<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946819200.png" alt="enter description here"><br>两步走<h3 id="微命令设置"><a href="#微命令设置" class="headerlink" title="微命令设置"></a>微命令设置</h3></li>
-<li>数据通路操作<pre><code>1) ALU输入选择:  Ri→A，Ri的取值：R0—R3，C,D,PC,SP Ri→B，Ri的取值：R0—R3,C,D,MDR,PSW 
+<li><p>取指令地址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864214.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864188.png" alt="enter description here"></p>
+</li>
+<li><p>指令信息的传递<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864215.png" alt="enter description here"></p>
+</li>
+<li><p>取操作数地址—①寄存器间址（R）<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946727225.png" alt="enter description here"></p>
+</li>
+<li><p>取操作数地址—②自减型寄存器间址 -(R)<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946811630.png" alt="enter description here"></p>
+</li>
+<li><p>取操作数地址—③自增型寄存器间址 (R)+<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946819200.png" alt="enter description here"><br>两步走</p>
+<h3 id="微命令设置"><a href="#微命令设置" class="headerlink" title="微命令设置"></a>微命令设置</h3></li>
+<li><p>数据通路操作</p>
+<pre><code>1) ALU输入选择:  Ri→A，Ri的取值：R0—R3，C,D,PC,SP Ri→B，Ri的取值：R0—R3,C,D,MDR,PSW 
 2) ALU功能选择: S0—S3，C0，M （6位线）
 3) 移位器功能选择:  00：直传DM、01：左移SL、10：右移SR、11：高低字节交换EX （2位线）
 4) 分配脉冲（打入到寄存器中的脉冲）:  CPR0—CPR3, CPC,CPD,CPMDR,CPMAR,CPPSW, CPPC,CPSP
 </code></pre>
 </li>
-<li>访存操作相关的控制信号（系统总线及主存有关的微命令）<pre><code>EMAR（输出到AB）、EMDR（输出到DB）、SMDR（DB到MDR）、 R（M到CPU）、W（CPU到M）、SIR（M到IR）
+<li><p>访存操作相关的控制信号（系统总线及主存有关的微命令）</p>
+<pre><code>EMAR（输出到AB）、EMDR（输出到DB）、SMDR（DB到MDR）、 R（M到CPU）、W（CPU到M）、SIR（M到IR）
 (1)读入CPU：EMAR、R、SMDR（除指令以外），或SIR（指令） 
 (2)写入M：EMAR、EMDR、W
 </code></pre>
-<h2 id="主机与外部的数据通路-与-信息传送控制方式"><a href="#主机与外部的数据通路-与-信息传送控制方式" class="headerlink" title="主机与外部的数据通路 与 信息传送控制方式"></a>主机与外部的数据通路 与 信息传送控制方式</h2>主机与外设的连接模式：辐射型、总线型、通道型<br>对信息传送的控制方式：直接程序传送方式、程序中断方式、直接有储器访问方式<h3 id="主机与外围设备的连接方式"><a href="#主机与外围设备的连接方式" class="headerlink" title="主机与外围设备的连接方式"></a>主机与外围设备的连接方式</h3></li>
-<li>辐射型<pre><code>主机与各外围设备间有单独的数据通路；速度较快，**但**不易扩展。
+<h2 id="主机与外部的数据通路-与-信息传送控制方式"><a href="#主机与外部的数据通路-与-信息传送控制方式" class="headerlink" title="主机与外部的数据通路 与 信息传送控制方式"></a>主机与外部的数据通路 与 信息传送控制方式</h2><p>主机与外设的连接模式：辐射型、总线型、通道型<br>对信息传送的控制方式：直接程序传送方式、程序中断方式、直接有储器访问方式</p>
+<h3 id="主机与外围设备的连接方式"><a href="#主机与外围设备的连接方式" class="headerlink" title="主机与外围设备的连接方式"></a>主机与外围设备的连接方式</h3></li>
+<li><p>辐射型</p>
+<pre><code>主机与各外围设备间有单独的数据通路；速度较快，**但**不易扩展。
 </code></pre>
 </li>
-<li>总线型<pre><code>各外设通过各自接口直接与公共的系统总线相连；结构简单，易扩展，**但**如果整个系统只有一组系统总线时，信息吞吐量有限，且速度较慢。
+<li><p>总线型</p>
+<pre><code>各外设通过各自接口直接与公共的系统总线相连；结构简单，易扩展，**但**如果整个系统只有一组系统总线时，信息吞吐量有限，且速度较慢。
 </code></pre>
 </li>
-<li>通道型<pre><code>采取一种称为多种连接模式的部件去连接外设，这种部件称为通道；并行能力强。
+<li><p>通道型</p>
+<pre><code>采取一种称为多种连接模式的部件去连接外设，这种部件称为通道；并行能力强。
 </code></pre>
 <h3 id="信息传送的控制方式"><a href="#信息传送的控制方式" class="headerlink" title="信息传送的控制方式"></a>信息传送的控制方式</h3></li>
-<li>直接程序传送方式<pre><code>定义：CPU直接利用I/O指令程序实现I/O传送,在外设工作期间, CPU不执行与I/O无关的操作。 
-主机状态：CPU处于查询—等待—执行状态。
-外设状态：在外设接口的状态字中设置两位表状态。 
-* 空闲——外设不工作，00 
-* 工作（忙）——外设置在执行操作，01 
-* 结束（完成）——外设完成一次操作，10
-特点：CPU不能与外设并行地工作,因而CPU利用率低,并且CPU不能响应来自外部的随机请求。
-![enter description here](./images/1631951512341.png)
-</code></pre>
+<li><p>直接程序传送方式</p>
 </li>
-<li>程序中断方式<pre><code>定义：CPU暂停执行现行程序，转去执行中断程序，以处理某些随机事态，并在处理完毕后自动恢复原程序的执行。 
-实质：程序的切换过程。包括将断点，有关状态信息（PSW）压栈保护起来，然后根据中断号，从中断向量表中得到中断服务程序的地址，送入PC中。（这一切是硬件实现的，称为隐指令）
-特点：随机性
-软件组织与程序安排：将系统中接收的中断请求编制成中断服务模块存入主存，并将其入口地址写入中断向量表。
-![enter description here](./images/1631951542103.png)
-硬件组织：CPU方面：在PSW中设置一个中断位；在模型机中，外部请求只有IREQ0—IREQ7，因此在CPU内还应设置一个判优逻辑。
-接口方面：设置了中断接口。
-特点：可以处理随机的复杂事态，但程序的切换需花费一定时间，因此，其适用范围是中低速I/O操作与随机请求。
-</code></pre>
-<h2 id="时序控制方式-与-时序系统（未完）"><a href="#时序控制方式-与-时序系统（未完）" class="headerlink" title="时序控制方式 与 时序系统（未完）"></a>时序控制方式 与 时序系统（未完）</h2><h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1></li>
+<li><p>*定义**：CPU直接利用I/O指令程序实现I/O传送,在外设工作期间, CPU不执行与I/O无关的操作。 </p>
+</li>
+<li><p>*主机状态**：CPU处于查询—等待—执行状态。</p>
+</li>
+<li><p>*外设状态**：在外设接口的状态字中设置两位表状态。<br>   空闲——外设不工作，00<br>   工作（忙）——外设置在执行操作，01<br>   结束（完成）——外设完成一次操作，10</p>
+</li>
+<li><p>*特点**：CPU不能与外设并行地工作,因而CPU利用率低,并且CPU不能响应来自外部的随机请求。<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631951512341.png" alt="enter description here"></p>
+</li>
+<li><p>程序中断方式</p>
+</li>
+<li><p>*定义**：CPU暂停执行现行程序，转去执行中断程序，以处理某些随机事态，并在处理完毕后自动恢复原程序的执行。<br>实质：程序的切换过程。包括将断点，有关状态信息（PSW）压栈保护起来，然后根据中断号，从中断向量表中得到中断服务程序的地址，送入PC中。（这一切是硬件实现的，称为隐指令）<br>特点：随机性</p>
+</li>
+<li><p>*软件组织与程序安排**：将系统中接收的中断请求编制成中断服务模块存入主存，并将其入口地址写入中断向量表。</p>
+</li>
+<li><p>*硬件组织**：<br>CPU方面：在PSW中设置一个中断位；在模型机中，外部请求只有IREQ0—IREQ7，因此在CPU内还应设置一个判优逻辑。<br>接口方面：设置了中断接口。</p>
+</li>
+<li><p>*特点**：可以处理随机的复杂事态，但程序的切换需花费一定时间，因此，其适用范围是中低速I/O操作与随机请求。<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631951542103.png" alt="enter description here"></p>
+</li>
+<li><p>直接存储器存取（DMA）方式</p>
+</li>
+<li><p>*定义**：直接依靠硬件在主存与I/O设备进行简单成批数据传送的一种工作方式，在传送期间不需CPU的程序干预。<br>实质：暂停执行程序。不存在断点，现场的保护，速度很快。</p>
+</li>
+<li><p>*程序组织与DMA初始化**：在进行DMA传送前，应对DMA控制器进行初始化，主要初始化以下三个信息：<br>送出控制字：操作类型（输入或输出），外设地址；<br>送出主存缓冲区首址：传送或接收数据的起始地址；<br>送出交换量：DMA是批量传送的，传送的数据块数目。</p>
+</li>
+<li><p>*硬件组织**：由DMA控制器控制管理DMA传送。<br>CPU方面:在CPU的时序系统中，设置专门的DMA周期。在此周期，总线由DMA控制。每当系统总线周期结束（完成一次总线传送）时，CPU对总线控制权转移作出判断，是继续由DMA控制器掌管，还是CPU收回其控制权，恢复正常程序执行。<br>接口方面:设置DMA控制器与接口。</p>
+</li>
+<li><p>*特点**：适用于高速外设与主存之间的简单批量数据传送。<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632312297617.png" alt="enter description here"></p>
+</li>
+</ul>
+<h2 id="时序控制方式-与-时序系统（未完）"><a href="#时序控制方式-与-时序系统（未完）" class="headerlink" title="时序控制方式 与 时序系统（未完）"></a>时序控制方式 与 时序系统（未完）</h2><h3 id="时序控制方式"><a href="#时序控制方式" class="headerlink" title="时序控制方式"></a>时序控制方式</h3><ul>
+<li>同步控制方式</li>
+<li>*定义**：如果各项操作与统一的时序信号同步，称为同步控制。</li>
+<li>*时间分配**（基本特征）：同步控制方式的基本特征是将操作时间划分为许多时钟周期，周期长度固定，每个时钟周期完成一步操作。</li>
+<li>*同步定时**：在许多操作中需要严格地同步定时，如同步打入脉冲。</li>
+<li>*各部件间的协调**：在CPU内，一般采用由CPU提供的统一时序信号来控制部件间信息的传送的。</li>
+<li>*特点**：时序关系比较简单，在时间安排利用上可能是不经济的。</li>
+<li>异步控制方式</li>
+<li>*定义**：异步控制是指各项操作按其需要选择不同的时间，不受统一的时钟周期的约束；各操作之间的衔接与各部件之间的信息交换采取应答方式。</li>
+<li>*时间分配**（基本特征）：没有统一的节拍划分与同步定时脉冲，但存在着申请、响应、询问、回答一类的应答关系。</li>
+<li>*主从设备的概念**：申请使用总线，并获得批准后掌管总线控制权的设备，称为主设备，否则为从设备。</li>
+<li>*特点**：时间紧凑，能按不同部件，设备的实际需要分配时间，实现异步应答所需的控制比较复杂。</li>
+<li>实际应用中的一些变化<br>在CPU或设备的内部普遍采用同步控制方式；对连接CPU、主存、外设的系统总线，有的采用同步，有的采用异步控制，但多采用异步控制。在实际应用中，同步控制甚至引入异步应答关系。<h3 id="指令序列间的衔接方式"><a href="#指令序列间的衔接方式" class="headerlink" title="指令序列间的衔接方式"></a>指令序列间的衔接方式</h3><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632314119424.png" alt="enter description here"><h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h3 id="定义及组成"><a href="#定义及组成" class="headerlink" title="定义及组成"></a>定义及组成</h3></li>
+<li>*时序系统**：产生节拍，脉冲等时序信号的部件，称为时序系统。</li>
+<li>*时序系统的组成**：一个振荡器（产生脉冲源）；一组计数分频逻辑<h3 id="时序划分层次"><a href="#时序划分层次" class="headerlink" title="时序划分层次"></a>时序划分层次</h3></li>
+<li>*指令周期**：读取并执行一条指令所需的时间，称为指令周期。一般不作为时序的一级。</li>
+<li>*CPU工作周期**：在指令周期中的某一工作阶段所需的时间，称为一个工作周期。一般不同（FT、ST、DT、ET）。</li>
+<li>*时钟周期**（节拍）：是时序系统中最基本的时间分段。各节拍的长度相同（一般一个节拍是一个时钟周期）。</li>
+<li>*定时脉冲**（工作脉冲）：有的操作如打入R，还需严格的定时脉冲，以确定在哪一刻打入。<h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h2 id="加法单元"><a href="#加法单元" class="headerlink" title="加法单元"></a>加法单元</h2><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632316739512.png" alt="enter description here"><br>Σ<del>i</del> =（A<del>i</del> ⊕ B<del>i</del>）⊕ C<del>i-1</del><br>C<del>i</del> = A<del>i</del> B<del>i</del> +（A<del>i</del> ⊕ B<del>i</del>）C<del>i-1</del><br>根据上式，得出一位全加器的逻辑电路图：<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632316847349.png" alt="enter description here"><h2 id="串行加法器"><a href="#串行加法器" class="headerlink" title="串行加法器"></a>串行加法器</h2></li>
+<li>定义：如果每步只求一位和，将n位加分成n步实现，这样的加法器称为串行加法器。</li>
+<li>组成：一位全加器、移位寄存器（从低到高串行提供操作数相加）、寄存器、触发器（记录进位信号）</li>
+<li>组成图：<img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632316983636.png" alt="enter description here"></li>
+<li>特点：结构简单，速度极慢。<h2 id="并行加法器"><a href="#并行加法器" class="headerlink" title="并行加法器"></a>并行加法器</h2></li>
+<li>定义：如果用n位全加器一步实现n位相加，即n位同步相加，这样的加法器称为并行加法器。</li>
+<li>组成：n位加法器+进位链（串行进位链、并行进位链）<br>根据（指Ci-1）输入量提供时间的不同，将进位链分为带串行进位链的并行加法器，带并行进位链的并行加法器。<br>加法器的运算速度不仅与全加器的运算速度有关，更主要的因素是取决于进位传递速度。</li>
+<li>进位信号的基本逻辑<br>C<del>i</del>  = A<del>i</del>B<del>i</del> +（A<del>i</del> ⊕ B<del>i</del>）C<del>i-1</del><br>G<del>i</del> = A<del>i</del>B<del>i</del>  进位产生函数（本地进位） <br>P<del>i</del> = A<del>i</del> ⊕ B<del>i</del> 进位传递函数（传递进位）</li>
+<li>串行进位链<br>关系式：<br>C<del>1</del> = G<del>1</del> + P<del>1</del>C<del>0</del><br>C<del>2</del> = G<del>2</del> + P<del>2</del>G<del>1</del><br>……<br>C<del>n</del> = G<del>n</del> + P<del>n</del>G<del>n-1</del><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318136139.png" alt="enter description here"><br>特点：结构比较简单，运算速度比较慢。</li>
+<li>并行进位链<br>关系式：<br>C<del>1</del> = G<del>1</del> + P<del>1</del>C<del>0</del><br>C<del>2</del> = G<del>2</del> + P<del>2</del>G<del>1</del> + P<del>2</del>P<del>1</del>C<del>0</del><br>……<br>C<del>n</del> = G<del>n</del> + P<del>n</del>G<del>n-1</del> + …+ P<del>n</del>…P<del>1</del>C<del>0</del><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318143172.png" alt="enter description here"><br>特点：结构复杂，运算速度快。</li>
+<li>组内并行，组间并行（实际为串行）的进位链<br>分两级进行<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318911806.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318862445.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318876665.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318888497.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318895726.png" alt="enter description here"><br>然后<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318942322.png" alt="enter description here"><h2 id="ALU单元与多位ALU部件"><a href="#ALU单元与多位ALU部件" class="headerlink" title="ALU单元与多位ALU部件"></a>ALU单元与多位ALU部件</h2><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1></li>
 </ul>
 
       
@@ -1494,7 +1566,7 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共19.8k字呐~</span>
+  <span class="post-count">本博客全站共21.2k字呐~</span>
 </div>
 
         
