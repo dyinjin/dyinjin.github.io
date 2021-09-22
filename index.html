@@ -182,6 +182,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/23/Java/2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/23/Java/2/" class="post-title-link" itemprop="url">java速记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-09-23 00:13:55 / 修改时间：00:14:00" itemprop="dateCreated datePublished" datetime="2021-09-23T00:13:55+08:00">2021-09-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h1><p>关于后缀</p>
+<ul>
+<li>long/int<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> x=<span class="number">9999999999L</span>;<span class="comment">//超出2^31必须加L/l</span></span><br></pre></td></tr></table></figure></li>
+<li>double/float<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> x=<span class="number">10.0F</span>;<span class="comment">//不加F/f将丢失精度，默认double型</span></span><br></pre></td></tr></table></figure>
+关于转换</li>
+<li>自动转换<br>数值型数据的转换：byte→short→int→long→float→double<br>字符型转换为整型：char→int<br>实例程序：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">PrimitiveOverloading.java, 拓宽类型的方法过载</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrimitiveOverloading</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 布尔类型不能自动转换</span></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prt</span><span class="params">(String s)</span> </span>&#123;System.out.println(s);&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">char</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(char)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">byte</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(byte)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">short</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(short)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(int)&quot;</span>);&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f1(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">byte</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(byte)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">short</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(short)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(int)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">short</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(short)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(int)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(int)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f5</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f5(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f5</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f5(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f5</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f5(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f6</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f6(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f6</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f6(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f7</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f7(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testConstVal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		prt(<span class="string">&quot;Testing with 5&quot;</span>);</span><br><span class="line">		f1(<span class="number">5</span>); f2(<span class="number">5</span>);f3(<span class="number">5</span>);f4(<span class="number">5</span>); <span class="comment">//java中常数的默认类型是int型，调用void fx(int x) &#123; prt(&quot;fx(int)&quot;); &#125;</span></span><br><span class="line">                f5(<span class="number">5</span>);<span class="comment">//5为int型，f5无int参数，向上转换为f5(long x) &#123; prt(&quot;f5(long)&quot;); &#125;</span></span><br><span class="line">                f6(<span class="number">5</span>);  <span class="comment">//5为int型，f6无int、long参数方法，向上转换为void f6(float x) &#123; prt(&quot;f6(float)&quot;); &#125;</span></span><br><span class="line">                f7(<span class="number">5</span>);<span class="comment">//5为int型，f7无int、long、float参数方法，向上转换为void f7(double x) &#123; prt(&quot;f7(double)&quot;); &#125;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testChar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">char</span> x = <span class="string">&#x27;x&#x27;</span>;</span><br><span class="line">		prt(<span class="string">&quot;char argument:&quot;</span>);</span><br><span class="line">		f1(x); <span class="comment">//自动匹配void f1(char x) &#123;prt(&quot;f1(char)&quot;); &#125;</span></span><br><span class="line">                f2(x);f3(x);f4(x);  <span class="comment">//&#x27;x&#x27;为char类型，向上转换为void fx(int x) &#123; prt(&quot;fx(int)&quot;); &#125;</span></span><br><span class="line">                f5(x);<span class="comment">//&#x27;x&#x27;为char类型，f5无char、int型，向上转换为f5(long x) &#123; prt(&quot;f5(long)&quot;); &#125;</span></span><br><span class="line">                f6(x);<span class="comment">//&#x27;x&#x27;为char类型，f6无char、int、long型，向上转换为void f6(float x) &#123; prt(&quot;f6(float)&quot;); &#125;</span></span><br><span class="line">                f7(x);<span class="comment">//&#x27;x&#x27;为char类型，f7无char、int、long、float型，向上转换为void f7(double x) &#123; prt(&quot;f7(double)&quot;); &#125;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testByte</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">byte</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;byte argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testShort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">short</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;short argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testInt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;int argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testLong</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;long argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testFloat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;float argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testDouble</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;double argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		PrimitiveOverloading p = <span class="keyword">new</span> PrimitiveOverloading();</span><br><span class="line">		p.testConstVal();</span><br><span class="line">		p.testChar();</span><br><span class="line">		p.testByte();</span><br><span class="line">		p.testShort();</span><br><span class="line">		p.testInt();</span><br><span class="line">		p.testLong();</span><br><span class="line">		p.testFloat();</span><br><span class="line">		p.testDouble();</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>变量声明作用域在一个块内（一对大括号内）</li>
+<li>当两个类创建在同一个项目下，同一个包下则可以不使用import，就可以直接调用另一个类<h1 id="例"><a href="#例" class="headerlink" title="例"></a>例</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year;</span><br><span class="line">	<span class="keyword">int</span> month;</span><br><span class="line">	<span class="keyword">int</span> day;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		MyDate date = <span class="keyword">new</span> MyDate();</span><br><span class="line">		date.year = <span class="number">2021</span>;</span><br><span class="line">		date.month = <span class="number">9</span>;</span><br><span class="line">		date.day = <span class="number">22</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;The day is &quot;</span> + date.year </span><br><span class="line">					  + <span class="string">&quot;-&quot;</span>+ date.month + <span class="string">&quot;-&quot;</span>+ date.day);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+就是打印字符串，只是使用类来做了数据储存，类似结构体<br>下面看一个复杂一点的：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Location</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=-<span class="number">1</span>, b=-<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	Point() &#123;</span><br><span class="line">		x = <span class="number">20</span>;</span><br><span class="line">		y = <span class="number">30</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">getData</span><span class="params">(<span class="keyword">int</span> xValue, <span class="keyword">int</span> yValue)</span> </span>&#123;</span><br><span class="line">		xValue = <span class="number">100</span>;</span><br><span class="line">		yValue = <span class="number">200</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">getLocation</span><span class="params">(Location locRef)</span> </span>&#123;</span><br><span class="line">		locRef.a = x;<span class="comment">//就是20</span></span><br><span class="line">		locRef.b = y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test0</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Point p = <span class="keyword">new</span> Point();</span><br><span class="line">		System.out.println(<span class="string">&quot;Object p’s value:&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;p.x = &quot;</span> + p.x +<span class="string">&quot;  p.y = &quot;</span> + p.y);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> xVal = -<span class="number">1</span>, yVal = -<span class="number">1</span>;</span><br><span class="line">		p.getData(xVal,yVal);<span class="comment">//传参不改变原值</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Pass by value:&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;xVal = &quot;</span> + xVal +<span class="string">&quot;  yVal = &quot;</span> + yVal);</span><br><span class="line">		</span><br><span class="line">		Location loc = <span class="keyword">new</span> Location();</span><br><span class="line">		p.getLocation(loc);<span class="comment">//引用可改变值</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Pass by reference:&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;xVal = &quot;</span> + loc.a + <span class="string">&quot;  yVal = &quot;</span> +loc.b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+再看一个带返回值的：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestReturnValue</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner input=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> testScore = input.nextInt();</span><br><span class="line">		printGrade(testScore) ; <span class="comment">//调用返回类型Void方法</span></span><br><span class="line">		<span class="keyword">char</span> ret=getGrade(testScore);  <span class="comment">//调用返回类型非Void方法</span></span><br><span class="line">        System.out.println(ret);</span><br><span class="line">                &#125;</span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">printGrade</span><span class="params">(<span class="keyword">double</span> testscore)</span></span>&#123;  <span class="comment">//返回类型为void，可以有return，但是不能带表示式。</span></span><br><span class="line">                                  <span class="keyword">if</span> (testscore&lt;<span class="number">0</span> || testscore&gt;<span class="number">100</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&quot;成绩输入错误&quot;</span>);</span><br><span class="line">                                          <span class="keyword">return</span>;  <span class="comment">//中断程序，该方法后面语句不会被执行，可以试一下，如果注释掉该行的执行情况</span></span><br><span class="line">                                  &#125;</span><br><span class="line">                                  <span class="keyword">if</span> (testscore&gt;=<span class="number">90.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">80.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">70.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;C&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">60.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;D&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;F&#x27;</span>);</span><br><span class="line">                                 &#125;</span><br><span class="line">                      &#125;</span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span>  <span class="title">getGrade</span><span class="params">(<span class="keyword">double</span> testscore)</span></span>&#123;  <span class="comment">//返回类型非void，则需要return+表示式。</span></span><br><span class="line">                                  </span><br><span class="line">                                  <span class="keyword">if</span> (testscore&lt;<span class="number">0</span> || testscore&gt;<span class="number">100</span>)&#123;</span><br><span class="line">                                          <span class="keyword">return</span> <span class="string">&#x27;N&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span> (testscore&gt;=<span class="number">90.0</span>)&#123;</span><br><span class="line">                                          <span class="keyword">return</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">80.0</span>)&#123;</span><br><span class="line">                                           <span class="keyword">return</span> <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">70.0</span>)&#123;</span><br><span class="line">                                           <span class="keyword">return</span> <span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">60.0</span>)&#123;</span><br><span class="line">                                           <span class="keyword">return</span> <span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                                          <span class="keyword">return</span> <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">                                 &#125;</span><br><span class="line">                      &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+基本和C一样</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/20/python0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -896,7 +977,7 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-22 21:56:19" itemprop="dateModified" datetime="2021-09-22T21:56:19+08:00">2021-09-22</time>
+                <time title="修改时间：2021-09-23 00:35:45" itemprop="dateModified" datetime="2021-09-23T00:35:45+08:00">2021-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -921,158 +1002,124 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
       
           <h1 id="模型机的总体设计"><a href="#模型机的总体设计" class="headerlink" title="模型机的总体设计"></a>模型机的总体设计</h1><h2 id="模型机指令系统"><a href="#模型机指令系统" class="headerlink" title="模型机指令系统"></a>模型机指令系统</h2><ul>
 <li>指令格式<ul>
-<li>双操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864169.png" alt="enter description here"></li>
-<li>单操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864170.png" alt="enter description here"></li>
-<li>转移指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864171.png" alt="enter description here"></li>
+<li>双操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536491.png" alt="enter description here"></li>
+<li>单操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536597.png" alt="enter description here"></li>
+<li>转移指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536616.png" alt="enter description here"></li>
 </ul>
 </li>
-<li>寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864090.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864091.png" alt="enter description here"></li>
-<li>操作类型<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864216.png" alt="enter description here"><h2 id="CPU的组成"><a href="#CPU的组成" class="headerlink" title="CPU的组成"></a>CPU的组成</h2><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864217.png" alt="enter description here"><h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3></li>
+<li>寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536490.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536596.png" alt="enter description here"></li>
+<li>操作类型<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536614.png" alt="enter description here"></li>
+</ul>
+<h2 id="CPU的组成"><a href="#CPU的组成" class="headerlink" title="CPU的组成"></a>CPU的组成</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536611.png" alt="enter description here"></p>
+<h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3><ul>
 <li>输入选择器/锁存器<br>  选择数据来源，送入ALU进行运算处理，或借道ALU进行传送。数据来源有：R0~R3、C、D、PC、SP、PSW、MDR。</li>
 <li>ALU部件<br>  作各种算术，逻辑运算；由微命令M，S0，S1，S2，S3，C0选择操作功能。</li>
 <li>移位器<br>  作直接传送、左移、右移；由微命令实现直接、左、右移。</li>
 </ul>
 <h3 id="寄存器设置"><a href="#寄存器设置" class="headerlink" title="寄存器设置"></a>寄存器设置</h3><ul>
-<li><p>用于处理的寄存器：通用寄存器、暂存器</p>
-<ul>
+<li>用于处理的寄存器：通用寄存器、暂存器<ul>
 <li>通用寄存器组<br>  一组可编程访问的寄存器。在指令系统中为这些R分配了编号，有：R0~R3，PC，SP，PSW。</li>
 <li>暂存器<br>  用户不能直接访问的R，用来暂存信息，在指令系统中没有为它们分配编号，有C、D。 暂存器C：从主存中读取源操作数或源操作数地址时，使用它。 暂存器D：从主存中读取目的作数或目的操作数地址时，或中间运算结果时，使用它。</li>
 </ul>
 </li>
-<li><p>用于控制的寄存器：指令寄存器IR、程序计数器PC、 程序状态字寄存器PSW</p>
-<ul>
+<li>用于控制的寄存器：指令寄存器IR、程序计数器PC、 程序状态字寄存器PSW<ul>
 <li>指令寄存器IR<br>  用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
 <li>程序计数器PC<br>  PC提供后继指令地址，并送往与主存器相连接的地址寄存器（MAR）。</li>
 <li>程序状态字寄存器PSW（program status word）<br>  PSW的内容就是表现的现行程序的状态。 包括： 特征位：进位C、溢出V、零Z、负N，允许中断I等； 编程设定位。</li>
 </ul>
 </li>
-<li><p>用作主存接口的寄存器：地址寄存器MAR、数据缓冲寄存器MBR(MDR)<br>  CPU访问主存时，首先送出地址码，然后送出/接收数据，需：<br>  A.当作用在MAR上的微命令EMAR为低电平时，MAR输出呈高阻态，与地址总线断开；<br>  B.当作用在MAR上的微命令EMAR为高电平时，MAR输出其内容（地址信息）送往地址总线；</p>
-<ul>
+<li>用作主存接口的寄存器：地址寄存器MAR、数据缓冲寄存器MBR(MDR)<br>  CPU访问主存时，首先送出地址码，然后送出/接收数据，需：<br>  A.当作用在MAR上的微命令EMAR为低电平时，MAR输出呈高阻态，与地址总线断开；<br>  B.当作用在MAR上的微命令EMAR为高电平时，MAR输出其内容（地址信息）送往地址总线；<ul>
 <li>地址寄存器MAR<br>  读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
-<li>数据缓冲寄存器MBR(MDR)<br>  由控制命令R/W决定传送方向。<br>  R：由主存单元-&gt;数据总线-&gt;MDR<br>  W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3></li>
+<li>数据缓冲寄存器MBR(MDR)<br>  由控制命令R/W决定传送方向。<br>  R：由主存单元-&gt;数据总线-&gt;MDR<br>  W：由MDR-&gt;数据总线-&gt;数据单元</li>
 </ul>
 </li>
-<li><p>定义<br>是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。<br>数据通路结构：数据传送结构，它是CPU总体结构的核心问题。 总线：是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。</p>
-</li>
-<li><p>总线类型<br>① CPU内总线： 模型机中是一组单向数据传送总线，是连接运算器、寄存器等CPU内部部件的总线。<br>② 部件间总线： 芯片间的连接总线，包含地址线与数据线两组。<br>③ 系统总线： 作用是计算机系统内各大部件进行信息交换的基础，分：地址总线AB、数据总线DB、控制总线CB<br>④ 外总线： 一台CS与其它设备相连接的总线。</p>
+</ul>
+<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><ul>
+<li>定义<br>是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。<br>数据通路结构：数据传送结构，它是CPU总体结构的核心问题。 总线：是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。</li>
+<li>总线类型<br>① CPU内总线： 模型机中是一组单向数据传送总线，是连接运算器、寄存器等CPU内部部件的总线。<br>② 部件间总线： 芯片间的连接总线，包含地址线与数据线两组。<br>③ 系统总线： 作用是计算机系统内各大部件进行信息交换的基础，分：地址总线AB、数据总线DB、控制总线CB<br>④ 外总线： 一台CS与其它设备相连接的总线。</li>
+</ul>
 <h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3><p>产生时序信号的部件称为时序发生器或时序系统，它由一个振荡器和一组计数分频器组成。</p>
 <h2 id="CPU的内部数据通路结构"><a href="#CPU的内部数据通路结构" class="headerlink" title="CPU的内部数据通路结构"></a>CPU的内部数据通路结构</h2><p>模型机如何<strong>以内总线为纽带</strong>建立各部件间的数据传送通路，即CPU内部数据通路结构，这是CPU组成的核心问题。<br>模型机的<strong>结构</strong>为：单组、单向内总线、分立寄存器结构。</p>
-<h3 id="模型机数据通路框图"><a href="#模型机数据通路框图" class="headerlink" title="模型机数据通路框图"></a>模型机数据通路框图</h3><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864168.png" alt="enter description here"></p>
-</li>
-<li><p>可编程寄存器</p>
-</li>
-<li><p><em>R0~R3<strong>通用寄存器(000,001,010,011)、</strong>SP*</em>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</p>
-</li>
-<li><p>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</p>
-</li>
-<li><p>暂存器</p>
-</li>
-<li><p><em>C、D<strong>约定从主存中读源操作数、操作数地址时用</strong>C<strong>；从主存中取目的操作数、操作数地址或暂存时，用</strong>D*</em></p>
-</li>
-<li><p>主存接口寄存器MAR、MDR(MBR)</p>
+<h3 id="模型机数据通路框图"><a href="#模型机数据通路框图" class="headerlink" title="模型机数据通路框图"></a>模型机数据通路框图</h3><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png" alt="enter description here"></p>
 <ul>
+<li>可编程寄存器<br>  <strong>R0~R3</strong>通用寄存器(000,001,010,011)、<strong>SP</strong>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</li>
+<li>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
+<li>暂存器<br>  <strong>C、D</strong>约定从主存中读源操作数、操作数地址时用<strong>C</strong>；从主存中取目的操作数、操作数地址或暂存时，用<strong>D</strong></li>
+<li>主存接口寄存器MAR、MDR(MBR)<ul>
 <li>地址寄存器<strong>MAR</strong><br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
-<li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="各类信息的传送路径"><a href="#各类信息的传送路径" class="headerlink" title="各类信息的传送路径"></a>各类信息的传送路径</h3></li>
+<li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元</li>
 </ul>
 </li>
-<li><p>取指令地址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864214.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864188.png" alt="enter description here"></p>
-</li>
-<li><p>指令信息的传递<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631888864215.png" alt="enter description here"></p>
-</li>
-<li><p>取操作数地址—①寄存器间址（R）<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946727225.png" alt="enter description here"></p>
-</li>
-<li><p>取操作数地址—②自减型寄存器间址 -(R)<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946811630.png" alt="enter description here"></p>
-</li>
-<li><p>取操作数地址—③自增型寄存器间址 (R)+<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631946819200.png" alt="enter description here"><br>两步走</p>
-<h3 id="微命令设置"><a href="#微命令设置" class="headerlink" title="微命令设置"></a>微命令设置</h3></li>
-<li><p>数据通路操作</p>
-<pre><code>1) ALU输入选择:  Ri→A，Ri的取值：R0—R3，C,D,PC,SP Ri→B，Ri的取值：R0—R3,C,D,MDR,PSW 
+</ul>
+<h3 id="各类信息的传送路径"><a href="#各类信息的传送路径" class="headerlink" title="各类信息的传送路径"></a>各类信息的传送路径</h3><ul>
+<li>取指令地址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536613.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536615.png" alt="enter description here"></li>
+<li>指令信息的传递<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536617.png" alt="enter description here"></li>
+<li>取操作数地址—①寄存器间址（R）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536459.png" alt="enter description here"></li>
+<li>取操作数地址—②自减型寄存器间址 -(R)<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536460.png" alt="enter description here"></li>
+<li>取操作数地址—③自增型寄存器间址 (R)+<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536461.png" alt="enter description here"><br>两步走</li>
+</ul>
+<h3 id="微命令设置"><a href="#微命令设置" class="headerlink" title="微命令设置"></a>微命令设置</h3><ul>
+<li>数据通路操作<pre><code>1) ALU输入选择:  Ri→A，Ri的取值：R0—R3，C,D,PC,SP Ri→B，Ri的取值：R0—R3,C,D,MDR,PSW 
 2) ALU功能选择: S0—S3，C0，M （6位线）
 3) 移位器功能选择:  00：直传DM、01：左移SL、10：右移SR、11：高低字节交换EX （2位线）
 4) 分配脉冲（打入到寄存器中的脉冲）:  CPR0—CPR3, CPC,CPD,CPMDR,CPMAR,CPPSW, CPPC,CPSP
 </code></pre>
 </li>
-<li><p>访存操作相关的控制信号（系统总线及主存有关的微命令）</p>
-<pre><code>EMAR（输出到AB）、EMDR（输出到DB）、SMDR（DB到MDR）、 R（M到CPU）、W（CPU到M）、SIR（M到IR）
+<li>访存操作相关的控制信号（系统总线及主存有关的微命令）<pre><code>EMAR（输出到AB）、EMDR（输出到DB）、SMDR（DB到MDR）、 R（M到CPU）、W（CPU到M）、SIR（M到IR）
 (1)读入CPU：EMAR、R、SMDR（除指令以外），或SIR（指令） 
 (2)写入M：EMAR、EMDR、W
 </code></pre>
-<h2 id="主机与外部的数据通路-与-信息传送控制方式"><a href="#主机与外部的数据通路-与-信息传送控制方式" class="headerlink" title="主机与外部的数据通路 与 信息传送控制方式"></a>主机与外部的数据通路 与 信息传送控制方式</h2><p>主机与外设的连接模式：辐射型、总线型、通道型<br>对信息传送的控制方式：直接程序传送方式、程序中断方式、直接有储器访问方式</p>
-<h3 id="主机与外围设备的连接方式"><a href="#主机与外围设备的连接方式" class="headerlink" title="主机与外围设备的连接方式"></a>主机与外围设备的连接方式</h3></li>
-<li><p>辐射型</p>
-<pre><code>主机与各外围设备间有单独的数据通路；速度较快，**但**不易扩展。
-</code></pre>
-</li>
-<li><p>总线型</p>
-<pre><code>各外设通过各自接口直接与公共的系统总线相连；结构简单，易扩展，**但**如果整个系统只有一组系统总线时，信息吞吐量有限，且速度较慢。
-</code></pre>
-</li>
-<li><p>通道型</p>
-<pre><code>采取一种称为多种连接模式的部件去连接外设，这种部件称为通道；并行能力强。
-</code></pre>
-<h3 id="信息传送的控制方式"><a href="#信息传送的控制方式" class="headerlink" title="信息传送的控制方式"></a>信息传送的控制方式</h3></li>
-<li><p>直接程序传送方式</p>
-</li>
-<li><p>*定义**：CPU直接利用I/O指令程序实现I/O传送,在外设工作期间, CPU不执行与I/O无关的操作。 </p>
-</li>
-<li><p>*主机状态**：CPU处于查询—等待—执行状态。</p>
-</li>
-<li><p>*外设状态**：在外设接口的状态字中设置两位表状态。<br>   空闲——外设不工作，00<br>   工作（忙）——外设置在执行操作，01<br>   结束（完成）——外设完成一次操作，10</p>
-</li>
-<li><p>*特点**：CPU不能与外设并行地工作,因而CPU利用率低,并且CPU不能响应来自外部的随机请求。<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631951512341.png" alt="enter description here"></p>
-</li>
-<li><p>程序中断方式</p>
-</li>
-<li><p>*定义**：CPU暂停执行现行程序，转去执行中断程序，以处理某些随机事态，并在处理完毕后自动恢复原程序的执行。<br>实质：程序的切换过程。包括将断点，有关状态信息（PSW）压栈保护起来，然后根据中断号，从中断向量表中得到中断服务程序的地址，送入PC中。（这一切是硬件实现的，称为隐指令）<br>特点：随机性</p>
-</li>
-<li><p>*软件组织与程序安排**：将系统中接收的中断请求编制成中断服务模块存入主存，并将其入口地址写入中断向量表。</p>
-</li>
-<li><p>*硬件组织**：<br>CPU方面：在PSW中设置一个中断位；在模型机中，外部请求只有IREQ0—IREQ7，因此在CPU内还应设置一个判优逻辑。<br>接口方面：设置了中断接口。</p>
-</li>
-<li><p>*特点**：可以处理随机的复杂事态，但程序的切换需花费一定时间，因此，其适用范围是中低速I/O操作与随机请求。<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1631951542103.png" alt="enter description here"></p>
-</li>
-<li><p>直接存储器存取（DMA）方式</p>
-</li>
-<li><p>*定义**：直接依靠硬件在主存与I/O设备进行简单成批数据传送的一种工作方式，在传送期间不需CPU的程序干预。<br>实质：暂停执行程序。不存在断点，现场的保护，速度很快。</p>
-</li>
-<li><p>*程序组织与DMA初始化**：在进行DMA传送前，应对DMA控制器进行初始化，主要初始化以下三个信息：<br>送出控制字：操作类型（输入或输出），外设地址；<br>送出主存缓冲区首址：传送或接收数据的起始地址；<br>送出交换量：DMA是批量传送的，传送的数据块数目。</p>
-</li>
-<li><p>*硬件组织**：由DMA控制器控制管理DMA传送。<br>CPU方面:在CPU的时序系统中，设置专门的DMA周期。在此周期，总线由DMA控制。每当系统总线周期结束（完成一次总线传送）时，CPU对总线控制权转移作出判断，是继续由DMA控制器掌管，还是CPU收回其控制权，恢复正常程序执行。<br>接口方面:设置DMA控制器与接口。</p>
-</li>
-<li><p>*特点**：适用于高速外设与主存之间的简单批量数据传送。<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632312297617.png" alt="enter description here"></p>
 </li>
 </ul>
-<h2 id="时序控制方式-与-时序系统（未完）"><a href="#时序控制方式-与-时序系统（未完）" class="headerlink" title="时序控制方式 与 时序系统（未完）"></a>时序控制方式 与 时序系统（未完）</h2><h3 id="时序控制方式"><a href="#时序控制方式" class="headerlink" title="时序控制方式"></a>时序控制方式</h3><ul>
-<li>同步控制方式</li>
-<li>*定义**：如果各项操作与统一的时序信号同步，称为同步控制。</li>
-<li>*时间分配**（基本特征）：同步控制方式的基本特征是将操作时间划分为许多时钟周期，周期长度固定，每个时钟周期完成一步操作。</li>
-<li>*同步定时**：在许多操作中需要严格地同步定时，如同步打入脉冲。</li>
-<li>*各部件间的协调**：在CPU内，一般采用由CPU提供的统一时序信号来控制部件间信息的传送的。</li>
-<li>*特点**：时序关系比较简单，在时间安排利用上可能是不经济的。</li>
-<li>异步控制方式</li>
-<li>*定义**：异步控制是指各项操作按其需要选择不同的时间，不受统一的时钟周期的约束；各操作之间的衔接与各部件之间的信息交换采取应答方式。</li>
-<li>*时间分配**（基本特征）：没有统一的节拍划分与同步定时脉冲，但存在着申请、响应、询问、回答一类的应答关系。</li>
-<li>*主从设备的概念**：申请使用总线，并获得批准后掌管总线控制权的设备，称为主设备，否则为从设备。</li>
-<li>*特点**：时间紧凑，能按不同部件，设备的实际需要分配时间，实现异步应答所需的控制比较复杂。</li>
-<li>实际应用中的一些变化<br>在CPU或设备的内部普遍采用同步控制方式；对连接CPU、主存、外设的系统总线，有的采用同步，有的采用异步控制，但多采用异步控制。在实际应用中，同步控制甚至引入异步应答关系。<h3 id="指令序列间的衔接方式"><a href="#指令序列间的衔接方式" class="headerlink" title="指令序列间的衔接方式"></a>指令序列间的衔接方式</h3><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632314119424.png" alt="enter description here"><h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h3 id="定义及组成"><a href="#定义及组成" class="headerlink" title="定义及组成"></a>定义及组成</h3></li>
-<li>*时序系统**：产生节拍，脉冲等时序信号的部件，称为时序系统。</li>
-<li>*时序系统的组成**：一个振荡器（产生脉冲源）；一组计数分频逻辑<h3 id="时序划分层次"><a href="#时序划分层次" class="headerlink" title="时序划分层次"></a>时序划分层次</h3></li>
-<li>*指令周期**：读取并执行一条指令所需的时间，称为指令周期。一般不作为时序的一级。</li>
-<li>*CPU工作周期**：在指令周期中的某一工作阶段所需的时间，称为一个工作周期。一般不同（FT、ST、DT、ET）。</li>
-<li>*时钟周期**（节拍）：是时序系统中最基本的时间分段。各节拍的长度相同（一般一个节拍是一个时钟周期）。</li>
-<li>*定时脉冲**（工作脉冲）：有的操作如打入R，还需严格的定时脉冲，以确定在哪一刻打入。<h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h2 id="加法单元"><a href="#加法单元" class="headerlink" title="加法单元"></a>加法单元</h2><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632316739512.png" alt="enter description here"><br>Σ<del>i</del> =（A<del>i</del> ⊕ B<del>i</del>）⊕ C<del>i-1</del><br>C<del>i</del> = A<del>i</del> B<del>i</del> +（A<del>i</del> ⊕ B<del>i</del>）C<del>i-1</del><br>根据上式，得出一位全加器的逻辑电路图：<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632316847349.png" alt="enter description here"><h2 id="串行加法器"><a href="#串行加法器" class="headerlink" title="串行加法器"></a>串行加法器</h2></li>
+<h2 id="主机与外部的数据通路-与-信息传送控制方式"><a href="#主机与外部的数据通路-与-信息传送控制方式" class="headerlink" title="主机与外部的数据通路 与 信息传送控制方式"></a>主机与外部的数据通路 与 信息传送控制方式</h2><p>主机与外设的连接模式：辐射型、总线型、通道型<br>对信息传送的控制方式：直接程序传送方式、程序中断方式、直接有储器访问方式</p>
+<h3 id="主机与外围设备的连接方式"><a href="#主机与外围设备的连接方式" class="headerlink" title="主机与外围设备的连接方式"></a>主机与外围设备的连接方式</h3><ul>
+<li>辐射型<pre><code>主机与各外围设备间有单独的数据通路；速度较快，**但**不易扩展。
+</code></pre>
+</li>
+<li>总线型<pre><code>各外设通过各自接口直接与公共的系统总线相连；结构简单，易扩展，**但**如果整个系统只有一组系统总线时，信息吞吐量有限，且速度较慢。
+</code></pre>
+</li>
+<li>通道型<pre><code>采取一种称为多种连接模式的部件去连接外设，这种部件称为通道；并行能力强。
+</code></pre>
+</li>
+</ul>
+<h3 id="信息传送的控制方式"><a href="#信息传送的控制方式" class="headerlink" title="信息传送的控制方式"></a>信息传送的控制方式</h3><ul>
+<li><p>直接程序传送方式<br>  <strong>定义</strong>：CPU直接利用I/O指令程序实现I/O传送,在外设工作期间, CPU不执行与I/O无关的操作。<br>  <strong>主机状态</strong>：CPU处于查询—等待—执行状态。<br>  <strong>外设状态</strong>：在外设接口的状态字中设置两位表状态。 </p>
+<pre><code>  空闲——外设不工作，00 
+  工作（忙）——外设置在执行操作，01 
+  结束（完成）——外设完成一次操作，10
+</code></pre>
+<p>  <strong>特点</strong>：CPU不能与外设并行地工作,因而CPU利用率低,并且CPU不能响应来自外部的随机请求。<br>  <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536425.png" alt="enter description here"></p>
+</li>
+<li><p>程序中断方式<br>  <strong>定义</strong>：CPU暂停执行现行程序，转去执行中断程序，以处理某些随机事态，并在处理完毕后自动恢复原程序的执行。<br>  实质：程序的切换过程。包括将断点，有关状态信息（PSW）压栈保护起来，然后根据中断号，从中断向量表中得到中断服务程序的地址，送入PC中。（这一切是硬件实现的，称为隐指令）<br>  特点：随机性<br>  <strong>软件组织与程序安排</strong>：将系统中接收的中断请求编制成中断服务模块存入主存，并将其入口地址写入中断向量表。<br>  <strong>硬件组织</strong>：<br>  CPU方面：在PSW中设置一个中断位；在模型机中，外部请求只有IREQ0—IREQ7，因此在CPU内还应设置一个判优逻辑。<br>  接口方面：设置了中断接口。<br>  <strong>特点</strong>：可以处理随机的复杂事态，但程序的切换需花费一定时间，因此，其适用范围是中低速I/O操作与随机请求。<br>  <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536427.png" alt="enter description here"></p>
+</li>
+<li><p>直接存储器存取（DMA）方式<br>  <strong>定义</strong>：直接依靠硬件在主存与I/O设备进行简单成批数据传送的一种工作方式，在传送期间不需CPU的程序干预。<br>  实质：暂停执行程序。不存在断点，现场的保护，速度很快。<br>  <strong>程序组织与DMA初始化</strong>：在进行DMA传送前，应对DMA控制器进行初始化，主要初始化以下三个信息：<br>  送出控制字：操作类型（输入或输出），外设地址；<br>  送出主存缓冲区首址：传送或接收数据的起始地址；<br>  送出交换量：DMA是批量传送的，传送的数据块数目。<br>  <strong>硬件组织</strong>：由DMA控制器控制管理DMA传送。<br>  CPU方面:在CPU的时序系统中，设置专门的DMA周期。在此周期，总线由DMA控制。每当系统总线周期结束（完成一次总线传送）时，CPU对总线控制权转移作出判断，是继续由DMA控制器掌管，还是CPU收回其控制权，恢复正常程序执行。<br>  接口方面:设置DMA控制器与接口。<br>  <strong>特点</strong>：适用于高速外设与主存之间的简单批量数据传送。<br>  <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536429.png" alt="enter description here"></p>
+</li>
+</ul>
+<h2 id="时序控制方式-与-时序系统"><a href="#时序控制方式-与-时序系统" class="headerlink" title="时序控制方式 与 时序系统"></a>时序控制方式 与 时序系统</h2><h3 id="时序控制方式"><a href="#时序控制方式" class="headerlink" title="时序控制方式"></a>时序控制方式</h3><ul>
+<li>同步控制方式<br>  <strong>定义</strong>：如果各项操作与统一的时序信号同步，称为同步控制。<br>  <strong>时间分配</strong>（基本特征）：同步控制方式的基本特征是将操作时间划分为许多时钟周期，周期长度固定，每个时钟周期完成一步操作。<br>  <strong>同步定时</strong>：在许多操作中需要严格地同步定时，如同步打入脉冲。<br>  <strong>各部件间的协调</strong>：在CPU内，一般采用由CPU提供的统一时序信号来控制部件间信息的传送的。<br>  <strong>特点</strong>：时序关系比较简单，在时间安排利用上可能是不经济的。</li>
+<li>异步控制方式<br>  <strong>定义</strong>：异步控制是指各项操作按其需要选择不同的时间，不受统一的时钟周期的约束；各操作之间的衔接与各部件之间的信息交换采取应答方式。<br>  <strong>时间分配</strong>（基本特征）：没有统一的节拍划分与同步定时脉冲，但存在着申请、响应、询问、回答一类的应答关系。<br>  <strong>主从设备的概念</strong>：申请使用总线，并获得批准后掌管总线控制权的设备，称为主设备，否则为从设备。<br>  <strong>特点</strong>：时间紧凑，能按不同部件，设备的实际需要分配时间，实现异步应答所需的控制比较复杂。</li>
+<li>实际应用中的一些变化<br>在CPU或设备的内部普遍采用同步控制方式；对连接CPU、主存、外设的系统总线，有的采用同步，有的采用异步控制，但多采用异步控制。在实际应用中，同步控制甚至引入异步应答关系。</li>
+</ul>
+<h3 id="指令序列间的衔接方式"><a href="#指令序列间的衔接方式" class="headerlink" title="指令序列间的衔接方式"></a>指令序列间的衔接方式</h3><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536430.png" alt="enter description here"></p>
+<h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h3 id="定义及组成"><a href="#定义及组成" class="headerlink" title="定义及组成"></a>定义及组成</h3><p><strong>时序系统</strong>：产生节拍，脉冲等时序信号的部件，称为时序系统。<br><strong>时序系统的组成</strong>：一个振荡器（产生脉冲源）；一组计数分频逻辑</p>
+<h3 id="时序划分层次"><a href="#时序划分层次" class="headerlink" title="时序划分层次"></a>时序划分层次</h3><p><strong>指令周期</strong>：读取并执行一条指令所需的时间，称为指令周期。一般不作为时序的一级。<br><strong>CPU工作周期</strong>：在指令周期中的某一工作阶段所需的时间，称为一个工作周期。一般不同（FT、ST、DT、ET）。<br><strong>时钟周期</strong>（节拍）：是时序系统中最基本的时间分段。各节拍的长度相同（一般一个节拍是一个时钟周期）。<br><strong>定时脉冲</strong>（工作脉冲）：有的操作如打入R，还需严格的定时脉冲，以确定在哪一刻打入。</p>
+<h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h2 id="加法单元"><a href="#加法单元" class="headerlink" title="加法单元"></a>加法单元</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536431.png" alt="enter description here"><br>Σ<sub>i</sub>=（A<sub>i</sub> ⊕ B<sub>i</sub>）⊕ C<sub>i-1</sub><br>C<sub>i</sub> = A<sub>i</sub> B<sub>i</sub> +（A<sub>i</sub> ⊕ B<sub>i</sub>）C<sub>i-1</sub><br>根据上式，得出一位全加器的逻辑电路图：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536432.png" alt="enter description here"></p>
+<h2 id="串行加法器"><a href="#串行加法器" class="headerlink" title="串行加法器"></a>串行加法器</h2><ul>
 <li>定义：如果每步只求一位和，将n位加分成n步实现，这样的加法器称为串行加法器。</li>
 <li>组成：一位全加器、移位寄存器（从低到高串行提供操作数相加）、寄存器、触发器（记录进位信号）</li>
-<li>组成图：<img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632316983636.png" alt="enter description here"></li>
-<li>特点：结构简单，速度极慢。<h2 id="并行加法器"><a href="#并行加法器" class="headerlink" title="并行加法器"></a>并行加法器</h2></li>
+<li>组成图：<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536433.png" alt="enter description here"></li>
+<li>特点：结构简单，速度极慢。</li>
+</ul>
+<h2 id="并行加法器"><a href="#并行加法器" class="headerlink" title="并行加法器"></a>并行加法器</h2><ul>
 <li>定义：如果用n位全加器一步实现n位相加，即n位同步相加，这样的加法器称为并行加法器。</li>
 <li>组成：n位加法器+进位链（串行进位链、并行进位链）<br>根据（指Ci-1）输入量提供时间的不同，将进位链分为带串行进位链的并行加法器，带并行进位链的并行加法器。<br>加法器的运算速度不仅与全加器的运算速度有关，更主要的因素是取决于进位传递速度。</li>
-<li>进位信号的基本逻辑<br>C<del>i</del>  = A<del>i</del>B<del>i</del> +（A<del>i</del> ⊕ B<del>i</del>）C<del>i-1</del><br>G<del>i</del> = A<del>i</del>B<del>i</del>  进位产生函数（本地进位） <br>P<del>i</del> = A<del>i</del> ⊕ B<del>i</del> 进位传递函数（传递进位）</li>
-<li>串行进位链<br>关系式：<br>C<del>1</del> = G<del>1</del> + P<del>1</del>C<del>0</del><br>C<del>2</del> = G<del>2</del> + P<del>2</del>G<del>1</del><br>……<br>C<del>n</del> = G<del>n</del> + P<del>n</del>G<del>n-1</del><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318136139.png" alt="enter description here"><br>特点：结构比较简单，运算速度比较慢。</li>
-<li>并行进位链<br>关系式：<br>C<del>1</del> = G<del>1</del> + P<del>1</del>C<del>0</del><br>C<del>2</del> = G<del>2</del> + P<del>2</del>G<del>1</del> + P<del>2</del>P<del>1</del>C<del>0</del><br>……<br>C<del>n</del> = G<del>n</del> + P<del>n</del>G<del>n-1</del> + …+ P<del>n</del>…P<del>1</del>C<del>0</del><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318143172.png" alt="enter description here"><br>特点：结构复杂，运算速度快。</li>
-<li>组内并行，组间并行（实际为串行）的进位链<br>分两级进行<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318911806.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318862445.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318876665.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318888497.png" alt="enter description here"><br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318895726.png" alt="enter description here"><br>然后<br><img src="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/6/1632318942322.png" alt="enter description here"><h2 id="ALU单元与多位ALU部件"><a href="#ALU单元与多位ALU部件" class="headerlink" title="ALU单元与多位ALU部件"></a>ALU单元与多位ALU部件</h2><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1></li>
+<li>进位信号的基本逻辑<br>C<sub>i</sub>  = A<sub>i</sub>B<sub>i</sub> +（A<sub>i</sub> ⊕ B<sub>i</sub>）C<sub>i-1</sub><br>G<sub>i</sub> = A<sub>i</sub>B<sub>i</sub>  进位产生函数（本地进位） <br>P<sub>i</sub> = A<sub>i</sub> ⊕ B<sub>i</sub> 进位传递函数（传递进位）</li>
+<li>串行进位链<br>关系式：<br>C<sub>1</sub> = G<sub>1</sub> + P<sub>1</sub>C<sub>0</sub><br>C<sub>2</sub> = G<sub>2</sub> + P<sub>2</sub>G<sub>1</sub><br>……<br>C<sub>n</sub> = G<sub>n</sub> + P<sub>n</sub>G<sub>n-1</sub><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536435.png" alt="enter description here"><br>特点：结构比较简单，运算速度比较慢。</li>
+<li>并行进位链<br>关系式：<br>C<sub>1</sub> = G<sub>1</sub> + P<sub>1</sub>C<sub>0</sub><br>C<sub>2</sub> = G<sub>2</sub> + P<sub>2</sub>G<sub>1</sub> + P<sub>2</sub>P<sub>1</sub>C<sub>0</sub><br>……<br>C<sub>n</sub> = G<sub>n</sub> + P<sub>n</sub>G<sub>n-1</sub> + …+ P<sub>n</sub>…P<sub>1</sub>C<sub>0</sub><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536436.png" alt="enter description here"><br>特点：结构复杂，运算速度快。</li>
+<li>组内并行，组间并行（实际为串行）的进位链<br>分两级进行<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536437.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536453.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536455.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536456.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536457.png" alt="enter description here"><br>然后<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536458.png" alt="enter description here"></li>
 </ul>
-
+<h2 id="ALU单元与多位ALU部件-未完"><a href="#ALU单元与多位ALU部件-未完" class="headerlink" title="ALU单元与多位ALU部件(未完)"></a>ALU单元与多位ALU部件(未完)</h2><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1>
       
     </div>
 
@@ -1338,114 +1385,6 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/" class="post-title-link" itemprop="url">汇编2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-15 19:12:37" itemprop="dateCreated datePublished" datetime="2021-09-15T19:12:37+08:00">2021-09-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-17 17:46:00" itemprop="dateModified" datetime="2021-09-17T17:46:00+08:00">2021-09-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>又换了个人<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CJ411D7yD?p=6">看</a></p>
-<h1 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h1><p>等于“++”</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inc</span> <span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
-<h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>循环<br>先看例子：计算2<sup>12</sup></p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codee</span><br><span class="line"></span><br><span class="line">codee <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	start：<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">2</span></span><br><span class="line">				<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">11</span></span><br><span class="line"><span class="symbol">				s:</span> <span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br><span class="line">				<span class="keyword">loop</span> s</span><br><span class="line"></span><br><span class="line">				 <span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">				<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codee ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p>cx(计数寄存器)存放为循环次数，s为标识指令地址（即从哪里开始循环）<br>先向cx存次数，标号：执行循环语句，最后loop+标记<br>本质上是指令指针(IP)的移动，先(cx)减一，再判断其值若不为0则转至s标号处，为0则执行下一条</p>
-<h3 id="汇编中-ffffh-编译器认为是标识符-要写为-0ffffh"><a href="#汇编中-ffffh-编译器认为是标识符-要写为-0ffffh" class="headerlink" title="汇编中 ffffh 编译器认为是标识符,要写为 0ffffh"></a>汇编中 ffffh 编译器认为是标识符,要写为 0ffffh</h3><h2 id="将ffff-0-ffff-b单元的数据的和，结果储存在dx中"><a href="#将ffff-0-ffff-b单元的数据的和，结果储存在dx中" class="headerlink" title="将ffff;0~ffff:b单元的数据的和，结果储存在dx中"></a>将ffff;0~ffff:b单元的数据的和，结果储存在dx中</h2><p>先将8位数据赋值到另一个16位寄存器bx中，再作加:</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0ffffh</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">dx</span>,<span class="number">0</span></span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">s:</span>	  <span class="keyword">mov</span> <span class="built_in">al</span>,<span class="built_in">ds</span>:[<span class="built_in">bx</span>]</span><br><span class="line">		   <span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">0</span></span><br><span class="line">		   <span class="keyword">add</span> <span class="built_in">dx</span>,<span class="built_in">ax</span></span><br><span class="line">		   <span class="keyword">inc</span> <span class="built_in">bx</span></span><br><span class="line">		<span class="keyword">loop</span> s</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">		<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<h1 id="段的应用"><a href="#段的应用" class="headerlink" title="段的应用"></a>段的应用</h1><p>下两例：不将数据段栈段和代码段分开<br>技术算以下8个数据的和，结果放在ax中</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0010h</span>,<span class="number">0020h</span>,<span class="number">0030h</span>,<span class="number">0100h</span>,<span class="number">0200h</span><span class="comment">;写单位数据</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span>	<span class="comment">;指定开始执行正确代码</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">add</span> <span class="built_in">ax</span>,<span class="built_in">cs</span>:[<span class="built_in">bx</span>]<span class="comment">;代码段的偏移地址为0、1、2、3的东西即目标数据</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p>栈段<br>倒置数据</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0004h</span>,<span class="number">0005h</span>,<span class="number">0006h</span>,<span class="number">0007h</span>,<span class="number">0008h</span><span class="comment">;写单位数据</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span><span class="comment">;sp指向的最后一个零</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ss</span>,<span class="built_in">ax</span><span class="comment">;指令段-》栈段</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">sp</span>,<span class="number">30h</span><span class="comment">;48即（8+16）*2最后一个零</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">push</span> <span class="built_in">cs</span>:[<span class="built_in">bx</span>]<span class="comment">;目标数据入栈</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">z:</span><span class="keyword">pop</span> <span class="built_in">cx</span>:[<span class="built_in">bx</span>]</span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> z</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845760.png"><br>这两段代码认真debug看一下每一步</p>
-<hr>
-<p>当然一般是分开的：</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codesg,<span class="built_in">ds</span>:datasg,<span class="built_in">ss</span>:stacksg</span><br><span class="line">datasg <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0001h</span>,<span class="number">0002h</span>,<span class="number">0003h</span>,<span class="number">0004h</span>,<span class="number">0005h</span>,<span class="number">0006h</span>,<span class="number">0007h</span>,<span class="number">0008h</span><span class="comment">;写单位数据</span></span><br><span class="line">datasg ends</span><br><span class="line"></span><br><span class="line">stacksg <span class="meta">segment</span></span><br><span class="line">		<span class="built_in">dw</span> <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span><span class="comment">;sp指向的最后一个零</span></span><br><span class="line">stacksg ends</span><br><span class="line"></span><br><span class="line">codesg <span class="meta">segment</span></span><br><span class="line"><span class="symbol">		</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,stacksg<span class="comment">;不能直接写mov ss,stacksg</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ss</span>,<span class="built_in">ax</span><span class="comment">;</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">sp</span>,<span class="number">20h</span><span class="comment">;48即（8+16）*2最后一个零</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,datasg</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">s:</span><span class="keyword">push</span> [<span class="built_in">bx</span>]<span class="comment">;即ds:[bx]代替了cs:[bx]</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">8</span></span><br><span class="line"><span class="symbol">z:</span><span class="keyword">pop</span> [<span class="built_in">bx</span>]</span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">bx</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> z</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845755.png" alt="入栈"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812845756.png" alt="出栈"></p>
-<h1 id="其它一些"><a href="#其它一些" class="headerlink" title="其它一些"></a>其它一些</h1><p>debug中数据查看是每位反向的<br>debug默认输入16进制，编译时默认10进制</p>
-<ul>
-<li>and<br>常用<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">and</span> <span class="built_in">al</span>,<span class="number">10111111b</span></span><br></pre></td></tr></table></figure>
-对指定位置0</li>
-<li>or<br>常用<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">or</span> <span class="built_in">al</span>,<span class="number">10111111b</span></span><br></pre></td></tr></table></figure>
-对指定位置1</li>
-<li>xor(异或)<br>常用<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">xor</span> <span class="built_in">ax</span>,<span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
-对寄存器置零</li>
-<li>inc自增</li>
-<li>dec自减</li>
-<li>小写字符=大写字符+20h<h3 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h3></li>
-<li>dw定义字类型变量，一个字数据占2个字节(16位)单元，读完一个，偏移量加2</li>
-<li>db定义字节类型变量，一个字节数据占1个字节(8位)单元，读完一个，偏移量加1</li>
-<li>dd定义双字类型变量，一个双字数据占4个字节(32位)单元，读完一个，偏移量加4<br>伪指令db、dw、dd都可以定义字符串，但最多的是用db来定义字符串，第一个原因是dw、dd定义的字符串到了内存中排序是相反的。</li>
-<li>dup是一个操作符，在汇编语言中同db、dw、dd等一样，也是由编译器识别处理的符号。它是和db、dw、dd等数据定义伪指令配合使用的，用来进行数据的重复。<br>dup的使用格式如下：<br>db 重复的次数 dup (重复的字节型数据)。<br>dw 重复的次数 dup (重复的字型数据)。<br>dd 重复的次数 dup (重复的双字数据)。<br>dup是一个十分有用的操作符，比如我们要定义一个容量为200个字节的栈段，如果不用dup，则需要大量的代码来进行定义。如果用dup的话：<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stack <span class="meta">segment</span></span><br><span class="line"><span class="built_in">db</span> <span class="number">200</span> dup (<span class="number">0</span>)</span><br><span class="line">stack ends</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1517,7 +1456,7 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1566,7 +1505,7 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共21.2k字呐~</span>
+  <span class="post-count">本博客全站共22.7k字呐~</span>
 </div>
 
         
