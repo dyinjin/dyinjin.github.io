@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="模型机的总体设计模型机指令系统 指令格式 双操作数指令 单操作数指令 转移指令   寻址方式 操作类型  CPU的组成 运算器 输入选择器&#x2F;锁存器  选择数据来源，送入ALU进行运算处理，或借道ALU进行传送。数据来源有：R0~R3、C、D、PC、SP、PSW、MDR。 ALU部件  作各种算术，逻辑运算；由微命令M，S0，S1，S2，S3，C0选择操作功能。 移位器  作直接传送、左移、右移；由">
+<meta property="og:type" content="article">
+<meta property="og:title" content="x86模型机">
+<meta property="og:url" content="http://example.com/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/x86%E6%A8%A1%E5%9E%8B%E6%9C%BA/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="模型机的总体设计模型机指令系统 指令格式 双操作数指令 单操作数指令 转移指令   寻址方式 操作类型  CPU的组成 运算器 输入选择器&#x2F;锁存器  选择数据来源，送入ALU进行运算处理，或借道ALU进行传送。数据来源有：R0~R3、C、D、PC、SP、PSW、MDR。 ALU部件  作各种算术，逻辑运算；由微命令M，S0，S1，S2，S3，C0选择操作功能。 移位器  作直接传送、左移、右移；由">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536491.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536597.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536616.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536490.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536596.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536614.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536611.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536613.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536615.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536617.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536459.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536460.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536461.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536425.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536427.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536429.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536430.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536431.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536432.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536433.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536435.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536436.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536437.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536453.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536455.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536456.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536457.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536458.png">
+<meta property="article:published_time" content="2021-09-17T09:16:44.552Z">
+<meta property="article:modified_time" content="2021-09-22T16:35:45.383Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="汇编语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536491.png">
+
+<link rel="canonical" href="http://example.com/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/x86%E6%A8%A1%E5%9E%8B%E6%9C%BA/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>x86模型机 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/x86%E6%A8%A1%E5%9E%8B%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          x86模型机
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-17 17:16:44" itemprop="dateCreated datePublished" datetime="2021-09-17T17:16:44+08:00">2021-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-23 00:35:45" itemprop="dateModified" datetime="2021-09-23T00:35:45+08:00">2021-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="模型机的总体设计"><a href="#模型机的总体设计" class="headerlink" title="模型机的总体设计"></a>模型机的总体设计</h1><h2 id="模型机指令系统"><a href="#模型机指令系统" class="headerlink" title="模型机指令系统"></a>模型机指令系统</h2><ul>
+<li>指令格式<ul>
+<li>双操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536491.png" alt="enter description here"></li>
+<li>单操作数指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536597.png" alt="enter description here"></li>
+<li>转移指令<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536616.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536490.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536596.png" alt="enter description here"></li>
+<li>操作类型<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536614.png" alt="enter description here"></li>
+</ul>
+<h2 id="CPU的组成"><a href="#CPU的组成" class="headerlink" title="CPU的组成"></a>CPU的组成</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536611.png" alt="enter description here"></p>
+<h3 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h3><ul>
+<li>输入选择器/锁存器<br>  选择数据来源，送入ALU进行运算处理，或借道ALU进行传送。数据来源有：R0~R3、C、D、PC、SP、PSW、MDR。</li>
+<li>ALU部件<br>  作各种算术，逻辑运算；由微命令M，S0，S1，S2，S3，C0选择操作功能。</li>
+<li>移位器<br>  作直接传送、左移、右移；由微命令实现直接、左、右移。</li>
+</ul>
+<h3 id="寄存器设置"><a href="#寄存器设置" class="headerlink" title="寄存器设置"></a>寄存器设置</h3><ul>
+<li>用于处理的寄存器：通用寄存器、暂存器<ul>
+<li>通用寄存器组<br>  一组可编程访问的寄存器。在指令系统中为这些R分配了编号，有：R0~R3，PC，SP，PSW。</li>
+<li>暂存器<br>  用户不能直接访问的R，用来暂存信息，在指令系统中没有为它们分配编号，有C、D。 暂存器C：从主存中读取源操作数或源操作数地址时，使用它。 暂存器D：从主存中读取目的作数或目的操作数地址时，或中间运算结果时，使用它。</li>
+</ul>
+</li>
+<li>用于控制的寄存器：指令寄存器IR、程序计数器PC、 程序状态字寄存器PSW<ul>
+<li>指令寄存器IR<br>  用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
+<li>程序计数器PC<br>  PC提供后继指令地址，并送往与主存器相连接的地址寄存器（MAR）。</li>
+<li>程序状态字寄存器PSW（program status word）<br>  PSW的内容就是表现的现行程序的状态。 包括： 特征位：进位C、溢出V、零Z、负N，允许中断I等； 编程设定位。</li>
+</ul>
+</li>
+<li>用作主存接口的寄存器：地址寄存器MAR、数据缓冲寄存器MBR(MDR)<br>  CPU访问主存时，首先送出地址码，然后送出/接收数据，需：<br>  A.当作用在MAR上的微命令EMAR为低电平时，MAR输出呈高阻态，与地址总线断开；<br>  B.当作用在MAR上的微命令EMAR为高电平时，MAR输出其内容（地址信息）送往地址总线；<ul>
+<li>地址寄存器MAR<br>  读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
+<li>数据缓冲寄存器MBR(MDR)<br>  由控制命令R/W决定传送方向。<br>  R：由主存单元-&gt;数据总线-&gt;MDR<br>  W：由MDR-&gt;数据总线-&gt;数据单元</li>
+</ul>
+</li>
+</ul>
+<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><ul>
+<li>定义<br>是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。<br>数据通路结构：数据传送结构，它是CPU总体结构的核心问题。 总线：是一组能为多个部件分时共享的公共信息传送线路，及相应的控制逻辑。</li>
+<li>总线类型<br>① CPU内总线： 模型机中是一组单向数据传送总线，是连接运算器、寄存器等CPU内部部件的总线。<br>② 部件间总线： 芯片间的连接总线，包含地址线与数据线两组。<br>③ 系统总线： 作用是计算机系统内各大部件进行信息交换的基础，分：地址总线AB、数据总线DB、控制总线CB<br>④ 外总线： 一台CS与其它设备相连接的总线。</li>
+</ul>
+<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3><p>产生时序信号的部件称为时序发生器或时序系统，它由一个振荡器和一组计数分频器组成。</p>
+<h2 id="CPU的内部数据通路结构"><a href="#CPU的内部数据通路结构" class="headerlink" title="CPU的内部数据通路结构"></a>CPU的内部数据通路结构</h2><p>模型机如何<strong>以内总线为纽带</strong>建立各部件间的数据传送通路，即CPU内部数据通路结构，这是CPU组成的核心问题。<br>模型机的<strong>结构</strong>为：单组、单向内总线、分立寄存器结构。</p>
+<h3 id="模型机数据通路框图"><a href="#模型机数据通路框图" class="headerlink" title="模型机数据通路框图"></a>模型机数据通路框图</h3><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png" alt="enter description here"></p>
+<ul>
+<li>可编程寄存器<br>  <strong>R0~R3</strong>通用寄存器(000,001,010,011)、<strong>SP</strong>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</li>
+<li>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
+<li>暂存器<br>  <strong>C、D</strong>约定从主存中读源操作数、操作数地址时用<strong>C</strong>；从主存中取目的操作数、操作数地址或暂存时，用<strong>D</strong></li>
+<li>主存接口寄存器MAR、MDR(MBR)<ul>
+<li>地址寄存器<strong>MAR</strong><br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
+<li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元</li>
+</ul>
+</li>
+</ul>
+<h3 id="各类信息的传送路径"><a href="#各类信息的传送路径" class="headerlink" title="各类信息的传送路径"></a>各类信息的传送路径</h3><ul>
+<li>取指令地址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536613.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536615.png" alt="enter description here"></li>
+<li>指令信息的传递<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536617.png" alt="enter description here"></li>
+<li>取操作数地址—①寄存器间址（R）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536459.png" alt="enter description here"></li>
+<li>取操作数地址—②自减型寄存器间址 -(R)<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536460.png" alt="enter description here"></li>
+<li>取操作数地址—③自增型寄存器间址 (R)+<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536461.png" alt="enter description here"><br>两步走</li>
+</ul>
+<h3 id="微命令设置"><a href="#微命令设置" class="headerlink" title="微命令设置"></a>微命令设置</h3><ul>
+<li>数据通路操作<pre><code>1) ALU输入选择:  Ri→A，Ri的取值：R0—R3，C,D,PC,SP Ri→B，Ri的取值：R0—R3,C,D,MDR,PSW 
+2) ALU功能选择: S0—S3，C0，M （6位线）
+3) 移位器功能选择:  00：直传DM、01：左移SL、10：右移SR、11：高低字节交换EX （2位线）
+4) 分配脉冲（打入到寄存器中的脉冲）:  CPR0—CPR3, CPC,CPD,CPMDR,CPMAR,CPPSW, CPPC,CPSP
+</code></pre>
+</li>
+<li>访存操作相关的控制信号（系统总线及主存有关的微命令）<pre><code>EMAR（输出到AB）、EMDR（输出到DB）、SMDR（DB到MDR）、 R（M到CPU）、W（CPU到M）、SIR（M到IR）
+(1)读入CPU：EMAR、R、SMDR（除指令以外），或SIR（指令） 
+(2)写入M：EMAR、EMDR、W
+</code></pre>
+</li>
+</ul>
+<h2 id="主机与外部的数据通路-与-信息传送控制方式"><a href="#主机与外部的数据通路-与-信息传送控制方式" class="headerlink" title="主机与外部的数据通路 与 信息传送控制方式"></a>主机与外部的数据通路 与 信息传送控制方式</h2><p>主机与外设的连接模式：辐射型、总线型、通道型<br>对信息传送的控制方式：直接程序传送方式、程序中断方式、直接有储器访问方式</p>
+<h3 id="主机与外围设备的连接方式"><a href="#主机与外围设备的连接方式" class="headerlink" title="主机与外围设备的连接方式"></a>主机与外围设备的连接方式</h3><ul>
+<li>辐射型<pre><code>主机与各外围设备间有单独的数据通路；速度较快，**但**不易扩展。
+</code></pre>
+</li>
+<li>总线型<pre><code>各外设通过各自接口直接与公共的系统总线相连；结构简单，易扩展，**但**如果整个系统只有一组系统总线时，信息吞吐量有限，且速度较慢。
+</code></pre>
+</li>
+<li>通道型<pre><code>采取一种称为多种连接模式的部件去连接外设，这种部件称为通道；并行能力强。
+</code></pre>
+</li>
+</ul>
+<h3 id="信息传送的控制方式"><a href="#信息传送的控制方式" class="headerlink" title="信息传送的控制方式"></a>信息传送的控制方式</h3><ul>
+<li><p>直接程序传送方式<br>  <strong>定义</strong>：CPU直接利用I/O指令程序实现I/O传送,在外设工作期间, CPU不执行与I/O无关的操作。<br>  <strong>主机状态</strong>：CPU处于查询—等待—执行状态。<br>  <strong>外设状态</strong>：在外设接口的状态字中设置两位表状态。 </p>
+<pre><code>  空闲——外设不工作，00 
+  工作（忙）——外设置在执行操作，01 
+  结束（完成）——外设完成一次操作，10
+</code></pre>
+<p>  <strong>特点</strong>：CPU不能与外设并行地工作,因而CPU利用率低,并且CPU不能响应来自外部的随机请求。<br>  <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536425.png" alt="enter description here"></p>
+</li>
+<li><p>程序中断方式<br>  <strong>定义</strong>：CPU暂停执行现行程序，转去执行中断程序，以处理某些随机事态，并在处理完毕后自动恢复原程序的执行。<br>  实质：程序的切换过程。包括将断点，有关状态信息（PSW）压栈保护起来，然后根据中断号，从中断向量表中得到中断服务程序的地址，送入PC中。（这一切是硬件实现的，称为隐指令）<br>  特点：随机性<br>  <strong>软件组织与程序安排</strong>：将系统中接收的中断请求编制成中断服务模块存入主存，并将其入口地址写入中断向量表。<br>  <strong>硬件组织</strong>：<br>  CPU方面：在PSW中设置一个中断位；在模型机中，外部请求只有IREQ0—IREQ7，因此在CPU内还应设置一个判优逻辑。<br>  接口方面：设置了中断接口。<br>  <strong>特点</strong>：可以处理随机的复杂事态，但程序的切换需花费一定时间，因此，其适用范围是中低速I/O操作与随机请求。<br>  <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536427.png" alt="enter description here"></p>
+</li>
+<li><p>直接存储器存取（DMA）方式<br>  <strong>定义</strong>：直接依靠硬件在主存与I/O设备进行简单成批数据传送的一种工作方式，在传送期间不需CPU的程序干预。<br>  实质：暂停执行程序。不存在断点，现场的保护，速度很快。<br>  <strong>程序组织与DMA初始化</strong>：在进行DMA传送前，应对DMA控制器进行初始化，主要初始化以下三个信息：<br>  送出控制字：操作类型（输入或输出），外设地址；<br>  送出主存缓冲区首址：传送或接收数据的起始地址；<br>  送出交换量：DMA是批量传送的，传送的数据块数目。<br>  <strong>硬件组织</strong>：由DMA控制器控制管理DMA传送。<br>  CPU方面:在CPU的时序系统中，设置专门的DMA周期。在此周期，总线由DMA控制。每当系统总线周期结束（完成一次总线传送）时，CPU对总线控制权转移作出判断，是继续由DMA控制器掌管，还是CPU收回其控制权，恢复正常程序执行。<br>  接口方面:设置DMA控制器与接口。<br>  <strong>特点</strong>：适用于高速外设与主存之间的简单批量数据传送。<br>  <img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536429.png" alt="enter description here"></p>
+</li>
+</ul>
+<h2 id="时序控制方式-与-时序系统"><a href="#时序控制方式-与-时序系统" class="headerlink" title="时序控制方式 与 时序系统"></a>时序控制方式 与 时序系统</h2><h3 id="时序控制方式"><a href="#时序控制方式" class="headerlink" title="时序控制方式"></a>时序控制方式</h3><ul>
+<li>同步控制方式<br>  <strong>定义</strong>：如果各项操作与统一的时序信号同步，称为同步控制。<br>  <strong>时间分配</strong>（基本特征）：同步控制方式的基本特征是将操作时间划分为许多时钟周期，周期长度固定，每个时钟周期完成一步操作。<br>  <strong>同步定时</strong>：在许多操作中需要严格地同步定时，如同步打入脉冲。<br>  <strong>各部件间的协调</strong>：在CPU内，一般采用由CPU提供的统一时序信号来控制部件间信息的传送的。<br>  <strong>特点</strong>：时序关系比较简单，在时间安排利用上可能是不经济的。</li>
+<li>异步控制方式<br>  <strong>定义</strong>：异步控制是指各项操作按其需要选择不同的时间，不受统一的时钟周期的约束；各操作之间的衔接与各部件之间的信息交换采取应答方式。<br>  <strong>时间分配</strong>（基本特征）：没有统一的节拍划分与同步定时脉冲，但存在着申请、响应、询问、回答一类的应答关系。<br>  <strong>主从设备的概念</strong>：申请使用总线，并获得批准后掌管总线控制权的设备，称为主设备，否则为从设备。<br>  <strong>特点</strong>：时间紧凑，能按不同部件，设备的实际需要分配时间，实现异步应答所需的控制比较复杂。</li>
+<li>实际应用中的一些变化<br>在CPU或设备的内部普遍采用同步控制方式；对连接CPU、主存、外设的系统总线，有的采用同步，有的采用异步控制，但多采用异步控制。在实际应用中，同步控制甚至引入异步应答关系。</li>
+</ul>
+<h3 id="指令序列间的衔接方式"><a href="#指令序列间的衔接方式" class="headerlink" title="指令序列间的衔接方式"></a>指令序列间的衔接方式</h3><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536430.png" alt="enter description here"></p>
+<h2 id="同步控制的时序系统"><a href="#同步控制的时序系统" class="headerlink" title="同步控制的时序系统"></a>同步控制的时序系统</h2><h3 id="定义及组成"><a href="#定义及组成" class="headerlink" title="定义及组成"></a>定义及组成</h3><p><strong>时序系统</strong>：产生节拍，脉冲等时序信号的部件，称为时序系统。<br><strong>时序系统的组成</strong>：一个振荡器（产生脉冲源）；一组计数分频逻辑</p>
+<h3 id="时序划分层次"><a href="#时序划分层次" class="headerlink" title="时序划分层次"></a>时序划分层次</h3><p><strong>指令周期</strong>：读取并执行一条指令所需的时间，称为指令周期。一般不作为时序的一级。<br><strong>CPU工作周期</strong>：在指令周期中的某一工作阶段所需的时间，称为一个工作周期。一般不同（FT、ST、DT、ET）。<br><strong>时钟周期</strong>（节拍）：是时序系统中最基本的时间分段。各节拍的长度相同（一般一个节拍是一个时钟周期）。<br><strong>定时脉冲</strong>（工作脉冲）：有的操作如打入R，还需严格的定时脉冲，以确定在哪一刻打入。</p>
+<h1 id="算术逻辑运算部件"><a href="#算术逻辑运算部件" class="headerlink" title="算术逻辑运算部件"></a>算术逻辑运算部件</h1><h2 id="加法单元"><a href="#加法单元" class="headerlink" title="加法单元"></a>加法单元</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536431.png" alt="enter description here"><br>Σ<sub>i</sub>=（A<sub>i</sub> ⊕ B<sub>i</sub>）⊕ C<sub>i-1</sub><br>C<sub>i</sub> = A<sub>i</sub> B<sub>i</sub> +（A<sub>i</sub> ⊕ B<sub>i</sub>）C<sub>i-1</sub><br>根据上式，得出一位全加器的逻辑电路图：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536432.png" alt="enter description here"></p>
+<h2 id="串行加法器"><a href="#串行加法器" class="headerlink" title="串行加法器"></a>串行加法器</h2><ul>
+<li>定义：如果每步只求一位和，将n位加分成n步实现，这样的加法器称为串行加法器。</li>
+<li>组成：一位全加器、移位寄存器（从低到高串行提供操作数相加）、寄存器、触发器（记录进位信号）</li>
+<li>组成图：<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536433.png" alt="enter description here"></li>
+<li>特点：结构简单，速度极慢。</li>
+</ul>
+<h2 id="并行加法器"><a href="#并行加法器" class="headerlink" title="并行加法器"></a>并行加法器</h2><ul>
+<li>定义：如果用n位全加器一步实现n位相加，即n位同步相加，这样的加法器称为并行加法器。</li>
+<li>组成：n位加法器+进位链（串行进位链、并行进位链）<br>根据（指Ci-1）输入量提供时间的不同，将进位链分为带串行进位链的并行加法器，带并行进位链的并行加法器。<br>加法器的运算速度不仅与全加器的运算速度有关，更主要的因素是取决于进位传递速度。</li>
+<li>进位信号的基本逻辑<br>C<sub>i</sub>  = A<sub>i</sub>B<sub>i</sub> +（A<sub>i</sub> ⊕ B<sub>i</sub>）C<sub>i-1</sub><br>G<sub>i</sub> = A<sub>i</sub>B<sub>i</sub>  进位产生函数（本地进位） <br>P<sub>i</sub> = A<sub>i</sub> ⊕ B<sub>i</sub> 进位传递函数（传递进位）</li>
+<li>串行进位链<br>关系式：<br>C<sub>1</sub> = G<sub>1</sub> + P<sub>1</sub>C<sub>0</sub><br>C<sub>2</sub> = G<sub>2</sub> + P<sub>2</sub>G<sub>1</sub><br>……<br>C<sub>n</sub> = G<sub>n</sub> + P<sub>n</sub>G<sub>n-1</sub><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536435.png" alt="enter description here"><br>特点：结构比较简单，运算速度比较慢。</li>
+<li>并行进位链<br>关系式：<br>C<sub>1</sub> = G<sub>1</sub> + P<sub>1</sub>C<sub>0</sub><br>C<sub>2</sub> = G<sub>2</sub> + P<sub>2</sub>G<sub>1</sub> + P<sub>2</sub>P<sub>1</sub>C<sub>0</sub><br>……<br>C<sub>n</sub> = G<sub>n</sub> + P<sub>n</sub>G<sub>n-1</sub> + …+ P<sub>n</sub>…P<sub>1</sub>C<sub>0</sub><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536436.png" alt="enter description here"><br>特点：结构复杂，运算速度快。</li>
+<li>组内并行，组间并行（实际为串行）的进位链<br>分两级进行<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536437.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536453.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536455.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536456.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536457.png" alt="enter description here"><br>然后<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536458.png" alt="enter description here"></li>
+</ul>
+<h2 id="ALU单元与多位ALU部件-未完"><a href="#ALU单元与多位ALU部件-未完" class="headerlink" title="ALU单元与多位ALU部件(未完)"></a>ALU单元与多位ALU部件(未完)</h2><h1 id="运算方法"><a href="#运算方法" class="headerlink" title="运算方法"></a>运算方法</h1><h1 id="模型机的组合逻辑控制器"><a href="#模型机的组合逻辑控制器" class="headerlink" title="模型机的组合逻辑控制器"></a>模型机的组合逻辑控制器</h1><h1 id="模型机的微程序控制器"><a href="#模型机的微程序控制器" class="headerlink" title="模型机的微程序控制器"></a>模型机的微程序控制器</h1>
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/" rel="tag"># 汇编语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%963/" rel="prev" title="汇编3">
+      <i class="fa fa-chevron-left"></i> 汇编3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%964/" rel="next" title="汇编4">
+      汇编4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E6%80%BB%E4%BD%93%E8%AE%BE%E8%AE%A1"><span class="nav-number">1.</span> <span class="nav-text">模型机的总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9C%BA%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">模型机指令系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">1.2.</span> <span class="nav-text">CPU的组成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E5%99%A8"><span class="nav-number">1.2.1.</span> <span class="nav-text">运算器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.2.2.</span> <span class="nav-text">寄存器设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BA%BF"><span class="nav-number">1.2.3.</span> <span class="nav-text">总线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.2.4.</span> <span class="nav-text">时序系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU%E7%9A%84%E5%86%85%E9%83%A8%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">CPU的内部数据通路结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9C%BA%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E6%A1%86%E5%9B%BE"><span class="nav-number">1.3.1.</span> <span class="nav-text">模型机数据通路框图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E4%BF%A1%E6%81%AF%E7%9A%84%E4%BC%A0%E9%80%81%E8%B7%AF%E5%BE%84"><span class="nav-number">1.3.2.</span> <span class="nav-text">各类信息的传送路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E5%91%BD%E4%BB%A4%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.3.3.</span> <span class="nav-text">微命令设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E4%B8%8E%E5%A4%96%E9%83%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF-%E4%B8%8E-%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%81%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">主机与外部的数据通路 与 信息传送控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E4%B8%8E%E5%A4%96%E5%9B%B4%E8%AE%BE%E5%A4%87%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text">主机与外围设备的连接方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E4%BC%A0%E9%80%81%E7%9A%84%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.2.</span> <span class="nav-text">信息传送的控制方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F-%E4%B8%8E-%E6%97%B6%E5%BA%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.5.</span> <span class="nav-text">时序控制方式 与 时序系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text">时序控制方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E5%BA%8F%E5%88%97%E9%97%B4%E7%9A%84%E8%A1%94%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.2.</span> <span class="nav-text">指令序列间的衔接方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E6%8E%A7%E5%88%B6%E7%9A%84%E6%97%B6%E5%BA%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.6.</span> <span class="nav-text">同步控制的时序系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%8F%8A%E7%BB%84%E6%88%90"><span class="nav-number">1.6.1.</span> <span class="nav-text">定义及组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E5%88%92%E5%88%86%E5%B1%82%E6%AC%A1"><span class="nav-number">1.6.2.</span> <span class="nav-text">时序划分层次</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">算术逻辑运算部件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%8D%95%E5%85%83"><span class="nav-number">2.1.</span> <span class="nav-text">加法单元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E8%A1%8C%E5%8A%A0%E6%B3%95%E5%99%A8"><span class="nav-number">2.2.</span> <span class="nav-text">串行加法器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E8%A1%8C%E5%8A%A0%E6%B3%95%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">并行加法器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ALU%E5%8D%95%E5%85%83%E4%B8%8E%E5%A4%9A%E4%BD%8DALU%E9%83%A8%E4%BB%B6-%E6%9C%AA%E5%AE%8C"><span class="nav-number">2.4.</span> <span class="nav-text">ALU单元与多位ALU部件(未完)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">运算方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">模型机的组合逻辑控制器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E6%9C%BA%E7%9A%84%E5%BE%AE%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">模型机的微程序控制器</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共23.5k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

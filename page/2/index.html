@@ -182,7 +182,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -196,7 +196,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/3/" class="post-title-link" itemprop="url">汇编2</a>
+            <a href="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">寻址与指令</a>
         </h2>
 
         <div class="post-meta">
@@ -206,14 +206,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-15 19:12:37" itemprop="dateCreated datePublished" datetime="2021-09-15T19:12:37+08:00">2021-09-15</time>
+              <time title="创建时间：2021-09-15 20:30:14" itemprop="dateCreated datePublished" datetime="2021-09-15T20:30:14+08:00">2021-09-15</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-17 17:46:00" itemprop="dateModified" datetime="2021-09-17T17:46:00+08:00">2021-09-17</time>
+                <time title="修改时间：2021-09-17 01:30:01" itemprop="dateModified" datetime="2021-09-17T01:30:01+08:00">2021-09-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,144 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>又换了个人<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CJ411D7yD?p=6">看</a></p>
+          <p><a href="/download/CP.zip">PPT下载</a></p>
+<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
+<ul>
+<li>操作数的位置<ul>
+<li>堆栈<ul>
+<li>主存开辟（软堆栈）</li>
+<li>CPU中的寄存器组组成（硬堆栈）</li>
+</ul>
+</li>
+<li>寄存器<ul>
+<li>CPU寄存器</li>
+<li>外设寄存器</li>
+</ul>
+</li>
+<li>存储器<ul>
+<li>主存</li>
+<li>外存<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086568.png" alt="enter description here"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/">x86具体操作</a></p>
+<ul>
+<li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
+<li>直接寻址类<ul>
+<li>直接寻址（主存直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086555.png" alt="enter description here"></li>
+<li>寄存器寻址（寄存器直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086556.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>间接寻址类<ul>
+<li>间接寻址（主存间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086557.png" alt="enter description here"></li>
+<li>寄存器间接寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086558.png" alt="enter description here"></li>
+<li>自增、减型寄存器间址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086559.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086560.png" alt="enter description here"></li>
+<li>堆栈寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086561.png" alt="enter description here"></li>
+<li>多重间接寻址（主存多重间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086562.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>变址类<ul>
+<li>变址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086563.png" alt="enter description here"></li>
+<li>基址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086564.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086565.png" alt="comparison"></li>
+<li>基址加变址方式<br>图略</li>
+<li>相对寻址（浮动编址）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086566.png" alt="enter description here"></li>
+<li>页面寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086567.png" alt="enter description here"><h1 id="指令-未完"><a href="#指令-未完" class="headerlink" title="指令(未完)"></a>指令(未完)</h1></li>
+</ul>
+</li>
+<li>传送类指令<ul>
+<li>一般传送指令</li>
+<li>堆栈指令</li>
+<li>数据交换指令</li>
+</ul>
+</li>
+<li>输入/输出(I/O)指令<ul>
+<li>外围设备编址<br>  ① 对外围设备单独编址<ul>
+<li>1）单独编址到设备级</li>
+<li>2）单独编址到寄存器级：<br>② 外围设备与主存储器统一编址</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%962/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%962/" class="post-title-link" itemprop="url">汇编2</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-15 19:12:37" itemprop="dateCreated datePublished" datetime="2021-09-15T19:12:37+08:00">2021-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-23 17:09:58" itemprop="dateModified" datetime="2021-09-23T17:09:58+08:00">2021-09-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>又换了个人<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CJ411D7yD?p=6">看</a><br>玉涵大大</p>
 <h1 id="inc"><a href="#inc" class="headerlink" title="inc"></a>inc</h1><p>等于“++”</p>
 <figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inc</span> <span class="built_in">ax</span></span><br></pre></td></tr></table></figure>
 <h1 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h1><p>循环<br>先看例子：计算2<sup>12</sup></p>
@@ -290,7 +427,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/Java/1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/Java/Java%20String.format%20%E7%94%A8%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -304,7 +441,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/15/Java/1/" class="post-title-link" itemprop="url">Java String.format 用法</a>
+            <a href="/2021/09/15/Java/Java%20String.format%20%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">Java String.format 用法</a>
         </h2>
 
         <div class="post-meta">
@@ -425,7 +562,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/2/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%961%EF%BC%88B%E7%AB%99%E5%B0%8F%E7%94%B2%E9%B1%BC%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -439,7 +576,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/2/" class="post-title-link" itemprop="url">汇编1（B站小甲鱼）</a>
+            <a href="/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%961%EF%BC%88B%E7%AB%99%E5%B0%8F%E7%94%B2%E9%B1%BC%EF%BC%89/" class="post-title-link" itemprop="url">汇编1（B站小甲鱼）</a>
         </h2>
 
         <div class="post-meta">
@@ -586,7 +723,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/1/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%960MOOC%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -600,7 +737,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/1/" class="post-title-link" itemprop="url">汇编0MOOC笔记</a>
+            <a href="/2021/09/14/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%960MOOC%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">汇编0MOOC笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -709,7 +846,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/11/MC/shaderpack/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -723,7 +860,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/11/MC/shaderpack/" class="post-title-link" itemprop="url">光影测试</a>
+            <a href="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">光影测试</a>
         </h2>
 
         <div class="post-meta">
@@ -764,63 +901,63 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 
       
           <p>10个超良心低配光影介绍&amp;测评<font size="2"><em>毕竟妄图在装了200+mods后还开光影<del>一帧能玩两帧流畅三帧电竞</del></em></font></p>
-<p>从以下方面进行了系统评测，仅进行相互比较，建议因地制宜的选用<font size="4">基本都是那些实实在在影响感官和游戏体验的点</font><br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"><br>洞穴透光：问题过于普遍<br>水反：水面反光明显程度<br>水透：水下水体透明度<br>水面透：陆上看水下的水体透明度<br>烟：以篝火烟雾为代表的一众粒子效果<br>附魔：附魔紫光效果影响<br>手持：部分光影手持物品会变透明</p>
+<p>从以下方面进行了系统评测，仅进行相互比较，建议因地制宜的选用<font size="4">基本都是那些实实在在影响感官和游戏体验的点</font><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/end.png" alt="表格"><br>洞穴透光：问题过于普遍<br>水反：水面反光明显程度<br>水透：水下水体透明度<br>水面透：陆上看水下的水体透明度<br>烟：以篝火烟雾为代表的一众粒子效果<br>附魔：附魔紫光效果影响<br>手持：部分光影手持物品会变透明</p>
 <h1 id="chocapic13系列我也不清楚哪个是本来的"><a href="#chocapic13系列我也不清楚哪个是本来的" class="headerlink" title="chocapic13系列我也不清楚哪个是本来的"></a>chocapic13系列<font size="1" color="gray">我也不清楚哪个是本来的</font></h1><p>同系列可快速切换<br><font size="2">类似于只改变了配置</font></p>
 <hr>
 <ul>
 <li>chocapic13<br>  <em>Chocapic13-Shaders-Mod-1.6.2</em><br>  唯一不自带天空材质的<br>  水面反射效果较弱<br>  <strong>彩色玻璃阴影作实心计算（不透光）</strong><br>  百模组FPS：50|30 <font size="2">峰值|稳定平均值</font></li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/c131.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c132.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c133.png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/c134.png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/c131.png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/c132.png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/c133.png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/c134.png" alt="1"></p>
 <hr>
 <ul>
 <li>ziipzaaps<br>  <em>Ziipzaaps_Shaders_V2</em><br>  水面较暗<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子很糊</strong><br>  百模组FPS：40|30</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/zi(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/zi(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/zi(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/zi(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/zi(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/zi(4).png" alt="1"></p>
 <hr>
 <ul>
 <li>werrus<br>  <em>Werrus HFPS Shaders V4.0 Ultra</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>彩色玻璃不透光</strong><br>  <strong>影子糊</strong><br>  百模组FPS：50|30</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/wer(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/wer(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/wer(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/wer(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/wer(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/wer(4).png" alt="1"></p>
 <hr>
 <ul>
 <li>iteration<br>  <em>iterationT Next 1.1.0</em><br>  较好的洞穴漏光修复<br>  <strong>烟雾不正常</strong><br>  <strong>附魔随角度变化不正常</strong><br>  模组（CavesAndCliffsBackport）中遮光玻璃崩坏<br>  百模组FPS：20|20</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/it(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/it(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/it(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/it(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/it(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/it(4).png" alt="1"></p>
 <hr>
 <ul>
 <li>Seus renew<br>  <em>SEUS-Renewed-v1.0.1</em><br>  较弱的洞穴漏光修复<br>  水体透明度较低<br>  <strong>粒子效果偏移</strong><br>  <strong>附魔随角度变化不正常</strong><br>  百模组FPS：30|20</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/Seus(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(5).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus(5).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus(4).png" alt="1"></p>
 <hr>
 <ul>
 <li>Seus renew fix<br><em>SEUS-Renewed-v1.0.1 [Tweaked+Cloud]</em><br>较弱的洞穴漏光修复<br>水体透明度较低</li>
 <li><em>粒子效果偏移</em>*</li>
 <li><em>附魔随角度变化不正常</em>*<br><font size="2">几乎和上者一致</font><br>百模组FPS：20|20</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/Seus%5B%5D(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus%5B%5D(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus%5B%5D(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus%5B%5D(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/Seus%5B%5D(4).png" alt="1"></p>
 <h1 id="BSL系列比较推荐BSL及其standard版"><a href="#BSL系列比较推荐BSL及其standard版" class="headerlink" title="BSL系列比较推荐BSL及其standard版"></a>BSL系列<font size="2">比较推荐BSL及其standard版</font></h1><hr>
 <ul>
 <li>BSL<br>  <em>BSL_v8.0.01</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  彩色玻璃表现较弱<br>  <strong>光源整体发光</strong><font size="2">比如说火把，它的木杆也明显很亮</font><br>  百模组FPS：40|20</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/BSL(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSL(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSL(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSL(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSL(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSL(4).png" alt="1"></p>
 <hr>
 <ul>
 <li>BSL Standard<br>  <em>BSL Standard v7.0p1</em><br>  较弱的洞穴漏光修复<br>  水体表现不错<br>  <strong>附魔效果整体泛光</strong><br>  <strong>水面过透</strong><br>  百模组FPS：40|30</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/BSLs(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/BSLs(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSLs(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSLs(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSLs(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/BSLs(4).png" alt="1"></p>
 <hr>
 <ul>
 <li>Sildurs<br>  <em>B Sildurs Vibrant Shaders v1.281 Lite/Medium/High/Extreme</em><br>  <font size="2">建议直接开Extreme，阴影质量提升很多</font><br>  较弱的洞穴漏光修复<br>  <strong>附魔效果呈不透明紫色</strong><br>  百模组FPS：30|30~50|30</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/SILD(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/SILD(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/SILD(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/SILD(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/SILD(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/SILD(4).png" alt="1"></p>
 <h1 id="projectLUMA"><a href="#projectLUMA" class="headerlink" title="projectLUMA"></a>projectLUMA</h1><p>其实不怎么推荐这个</p>
 <hr>
 <ul>
 <li>projectLUMA<br>  <em>projectLUMA - v1.32 汉化版</em><br>  <strong>附魔取消效果</strong><br>  <strong>光源整体发光</strong><br>  百模组FPS：40|20</li>
 </ul>
-<p><img src="/2021/09/11/MC/shaderpack/pro(1).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(2).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(3).png" alt="1"><br><img src="/2021/09/11/MC/shaderpack/pro(4).png" alt="1"></p>
+<p><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/pro(1).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/pro(2).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/pro(3).png" alt="1"><br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/pro(4).png" alt="1"></p>
 <hr>
-<p><font size="6">最后</font><br>个人观点，酌情选用<br><img src="/2021/09/11/MC/shaderpack/end.png" alt="表格"></p>
+<p><font size="6">最后</font><br>个人观点，酌情选用<br><img src="/2021/09/11/MC/%E5%85%89%E5%BD%B1%E6%B5%8B%E8%AF%95/end.png" alt="表格"></p>
 <hr>
 <hr>
 <hr>
@@ -853,7 +990,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/bing/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -867,7 +1004,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/10/bing/" class="post-title-link" itemprop="url">搜索技巧</a>
+            <a href="/2021/09/10/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">搜索技巧</a>
         </h2>
 
         <div class="post-meta">
@@ -1082,20 +1219,20 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1131,7 +1268,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共22.7k字呐~</span>
+  <span class="post-count">本博客全站共23.5k字呐~</span>
 </div>
 
         
