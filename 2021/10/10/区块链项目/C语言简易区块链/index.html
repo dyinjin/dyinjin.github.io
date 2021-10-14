@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="岛屿尽">
 <meta property="og:description" content="哈希简谈（sha_256）就是对任意长度字符数据都会生成唯一的长度为256bit长的哈希值，且不可逆的一种加密方式哈希函数，又称散列算法，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（或哈希值）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表。 概要主要参照：简易区块">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/10/10/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/C%E8%AF%AD%E8%A8%80%E7%AE%80%E6%98%93%E5%8C%BA%E5%9D%97%E9%93%BE/1633843973844_1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214586681.png">
 <meta property="article:published_time" content="2021-10-10T05:27:15.922Z">
-<meta property="article:modified_time" content="2021-10-12T02:47:13.789Z">
+<meta property="article:modified_time" content="2021-10-14T12:31:32.525Z">
 <meta property="article:author" content="dyinjin">
 <meta property="article:tag" content="区块链">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/10/10/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/C%E8%AF%AD%E8%A8%80%E7%AE%80%E6%98%93%E5%8C%BA%E5%9D%97%E9%93%BE/1633843973844_1.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214586681.png">
 
 <link rel="canonical" href="http://example.com/2021/10/10/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/C%E8%AF%AD%E8%A8%80%E7%AE%80%E6%98%93%E5%8C%BA%E5%9D%97%E9%93%BE/">
 
@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-12 10:47:13" itemprop="dateModified" datetime="2021-10-12T10:47:13+08:00">2021-10-12</time>
+                <time title="修改时间：2021-10-14 20:31:32" itemprop="dateModified" datetime="2021-10-14T20:31:32+08:00">2021-10-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,7 +250,7 @@
       
         <h2 id="哈希简谈（sha-256）"><a href="#哈希简谈（sha-256）" class="headerlink" title="哈希简谈（sha_256）"></a>哈希简谈（sha_256）</h2><p>就是对任意长度字符数据都会生成唯一的长度为256bit长的哈希值，且不可逆的一种加密方式<br><code>哈希函数，又称散列算法，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（或哈希值）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表。</code></p>
 <h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>主要参照：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44046447/article/details/111966999">简易区块链C语言实现</a><br>博主讲得很清楚，简洁易懂，适合初学区块链</p>
-<h2 id="区块链数据结构"><a href="#区块链数据结构" class="headerlink" title="区块链数据结构"></a>区块链数据结构</h2><p><img src="/2021/10/10/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/C%E8%AF%AD%E8%A8%80%E7%AE%80%E6%98%93%E5%8C%BA%E5%9D%97%E9%93%BE/1633843973844_1.png" alt="1633843973844"><br>具体实现</p>
+<h2 id="区块链数据结构"><a href="#区块链数据结构" class="headerlink" title="区块链数据结构"></a>区块链数据结构</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214586681.png" alt="1633843973844"><br>具体实现</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">union</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> byte[<span class="number">104</span>];<span class="comment">//与以下结构体等长，利用了联合的特性</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_all[<span class="number">32</span>];<span class="comment">//对本区块head、body进行SHA256运算（且最终保证满足前导0要求）的结果</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> nonce;<span class="comment">//随机数，目的是在不改变其它有意义数据的情况下使每次哈希结果改变直到最后能够生成满足要求前导0</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_prev[<span class="number">32</span>];<span class="comment">//保存上一个区块的sha_all</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_block[<span class="number">32</span>];<span class="comment">//对本区块body进行SHA256运算的结果，可视为经过不可逆加密后的数据</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;block_head;<span class="comment">//区块链核心，目的是保证不可篡改性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> body[<span class="number">1000</span>];</span><br><span class="line">&#125;block_body;<span class="comment">//实际数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    block_head head;</span><br><span class="line">    block_body body; </span><br><span class="line">&#125;block;</span><br></pre></td></tr></table></figure>
 <p>总之HEAD是核心，nonce的意义就在满足前导0要求，而前导0（不一定要求为0）的位数某种程度上控制了哈希运算的加密难度（复杂度）（比特币要靠挖就是算这个费算力），正因为有此不定的数据存在，使得哈希运算次数不定，则即使哈希加密可逆也无法解密出整个区块链保存的数据。又由于sha_all关联于sha_prev与sha_block，则任意修改区块链中的body数据，会使得sha_block不同，进而sha_all不同，直接影响了sha_prev无法衔接，可轻易识别非法修改数据。</p>
 <p>这里前导0只要求两位（不然算的慢）：</p>
