@@ -182,6 +182,92 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/25/MC/%E6%A8%A1%E7%BB%84%E6%9C%8D%E7%9A%84%E5%B0%9D%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/25/MC/%E6%A8%A1%E7%BB%84%E6%9C%8D%E7%9A%84%E5%B0%9D%E8%AF%95/" class="post-title-link" itemprop="url">模组服的尝试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-25 19:28:26" itemprop="dateCreated datePublished" datetime="2021-10-25T19:28:26+08:00">2021-10-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h1><h2 id="mohist-YYDS"><a href="#mohist-YYDS" class="headerlink" title="mohist (YYDS)"></a><a target="_blank" rel="noopener" href="https://mohistmc.com/">mohist</a> (YYDS)</h2><p>下载下来是jar包，用终端运行，或者随便写个bat启动文件(使用开服器可以略过)：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">color</span> <span class="number">3</span></span><br><span class="line"><span class="built_in">title</span> <span class="number">1</span>.<span class="number">16</span>.<span class="number">5</span></span><br><span class="line">java -Xmx12G -jar mohist-<span class="number">1</span>.<span class="number">16</span>.<span class="number">5</span>-<span class="number">820</span>-server.jar//其实只用这一句（<span class="number">12</span>G为自己选择分配的内存）</span><br><span class="line"><span class="built_in">pause</span></span><br></pre></td></tr></table></figure>
+<h2 id="模组的选择"><a href="#模组的选择" class="headerlink" title="模组的选择"></a>模组的选择</h2><p>我的主力整合包已经240+mods了，不要妄想全部能用在服务器上(一个是负载问题、更多问题的是有BUG)<br>最终挑选了130+mods：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">2021/07/19  18:33            98,900 【优化】区块加载ferritecore-2.0.5-forge.jar</span><br><span class="line">2021/04/26  08:04           437,841 【优化】区块预加载Chunk Pregenerator-V1.16-3.0.5.jar</span><br><span class="line">2021/07/20  22:25           129,304 【优化】合成冲突化解polymorph-forge-1.16.5-0.25.jar</span><br><span class="line">2021/07/19  14:56            60,714 【优化】实体优化EntityCulling-1.16.5-2.1.6.jar</span><br><span class="line">2021/04/10  00:04            84,744 【优化】平滑加载smoothboot-forge-1.16.4-1.2.2.jar</span><br><span class="line">2021/05/04  07:33            13,677 【优化】渲染优化（针对多人） out_of_sight-1.16.4-1.0.1.jar</span><br><span class="line">2021/07/19  14:53           232,291 【优化】生物AI优化performant-1.16.2-5-3.71m.jar</span><br><span class="line">2021/07/19  15:42            19,038 【优化】生物群系修复(争对新添加群系)biomeidfixer-1.16.5-1.0.1.s4.jar</span><br><span class="line">2021/07/06  15:29           947,047 【前置01】abnormals_core-1.16.5-3.2.0.jar</span><br><span class="line">2021/07/21  21:33           812,772 【前置10】【辅助】jei-1.16.5-7.7.1.110.jar</span><br><span class="line">2021/07/19  15:23            43,358 【前置11】expandability-2.0.1-forge.jar</span><br><span class="line">2021/10/20  14:42         8,768,876 【前置14】【前置21】Quark-r2.4-319.jar</span><br><span class="line">2021/04/09  23:44           328,828 【前置16】【食物】潘马斯农村食物核心pamhc2foodcore-1.16.3-1.0.2.jar</span><br><span class="line">2021/07/06  16:13         1,259,031 【前置17】【食物】FarmersDelight-1.16.5-0.4.5.jar</span><br><span class="line">2021/07/19  16:53           167,613 【前置18】【食物】simplytea-1.16.5-2.4.0.jar</span><br><span class="line">2021/06/20  16:17           912,234 【前置19】rhino-1605.1.1-build.23.jar</span><br><span class="line">2021/07/19  19:35         1,337,675 【前置20】cloth-config-4.11.26-forge.jar</span><br><span class="line">2021/07/19  19:19            57,279 【前置21】AutoRegLib-1.6-49.jar</span><br><span class="line">2021/07/19  21:41         3,374,203 【前置22】geckolib-forge-1.16.5-3.0.41.jar</span><br><span class="line">2021/09/03  16:03           253,717 【前置25.1】(25取其一)【辅助】1高亮显示Jade-1.16.4-2.7.4.jar</span><br><span class="line">2021/07/20  19:38           714,054 【前置29】Mantle-1.16.5-1.6.115.jar</span><br><span class="line">2021/07/19  18:15           501,225 【前置2】architectury-1.20.28-forge.jar</span><br><span class="line">2021/06/04  22:42           260,027 【前置32】structure_gel-1.16.5-1.7.7.jar</span><br><span class="line">2021/06/05  02:28            32,203 【前置33】SimpleCoreLib-1.16.5-2.0.7.5.jar</span><br><span class="line">2021/09/13  00:35           140,636 【前置37】collective-1.16.5-2.64.jar</span><br><span class="line">2021/07/20  23:13           140,070 【前置38】Placebo-1.16.4-4.5.0.jar</span><br><span class="line">2021/07/20  23:18           208,147 【前置39】selene-1.16.5-1.5.jar</span><br><span class="line">2021/09/03  15:54           106,044 【前置3】YungsApi-1.16.4-Forge-12.jar</span><br><span class="line">2021/09/04  22:58           125,835 【前置40】valhelsia_core-16.0.10.jar</span><br><span class="line">2021/07/19  18:14           740,946 【前置41】【辅助】【前置19】或【前置2】添加合成表kubejs-forge-1605.3.12-build.38.jar</span><br><span class="line">2021/08/17  17:04           509,849 【前置42】Penguin-Lib-1.16.5-0.4.3.jar</span><br><span class="line">2021/08/17  13:42           395,978 【前置43】shetiphiancore-1.16-3.8.5.jar</span><br><span class="line">2021/08/29  21:43            88,373 【前置44】majrusz-library-1.16.4-2.0.1.jar</span><br><span class="line">2021/08/29  21:52           482,439 【前置7】citadel-1.8.1-1.16.5.jar</span><br><span class="line">2021/06/04  19:07           102,333 【前置8】cuneiform-1.16.3-1.2.5.jar</span><br><span class="line">2021/07/20  15:08           244,720 【前置9】饰品栏curios-forge-1.16.5-4.0.5.2.jar</span><br><span class="line">2021/09/21  01:42            12,082 【杂项】【前置37】围火无怪nohostilesaroundcampfire_1.16.5-3.6.jar</span><br><span class="line">2021/07/20  22:17             9,491 【杂项】【前置37】治疗篝火healingcampfire_1.16.5-3.3.jar</span><br><span class="line">2021/05/04  08:31             9,772 【杂项】农田不再被踩坏.jar</span><br><span class="line">2021/04/24  04:44         2,040,762 【杂项】幻梦eidolon-0.2.7.jar</span><br><span class="line">2021/04/09  23:42            18,175 【杂项】快速树叶腐烂FastLeafDecay-v25.jar</span><br><span class="line">2021/06/08  00:35           312,299 【杂项】旅行背包TravelersBackpack-1.16.5-5.4.2.jar</span><br><span class="line">2021/06/05  02:31           133,745 【杂项】稀有精英怪infernalmobs-1.16.2.1.jar</span><br><span class="line">2021/07/20  22:36           378,040 【杂项】荒野之息Paraglider-1.16.5-1.3.2.0-beta.4.jar</span><br><span class="line">2021/08/29  21:07        18,109,537 【生物】alexsmobs-1.12.0.jar</span><br><span class="line">2021/07/20  21:55         5,522,069 【生物】mowziesmobs-1.5.19.jar</span><br><span class="line">2021/07/21  13:20         2,970,312 【生物】Zonko&#x27;s+Monsters+1.16.5+1.2.jar</span><br><span class="line">2021/07/19  17:23           841,753 【生物】【前置01】buzzier_bees-1.16.5-3.0.1.jar</span><br><span class="line">2021/06/04  18:57        11,003,946 【生物】【前置01】endergetic-1.16.4-3.0.0.jar</span><br><span class="line">2021/06/04  20:58         3,668,858 【生物】【前置01】碧海新生upgrade_aquatic-1.16.5-3.1.0.jar</span><br><span class="line">2021/07/21  14:07           963,433 【生物】【前置22】生物与怪物CNB-1.16.3_5-1.2.11.jar</span><br><span class="line">2021/08/17  16:57           447,935 【生物】【前置42】鱼Piscary-1.16.5-1.0.3.jar</span><br><span class="line">2021/08/29  21:22           658,320 【生物】【前置44】难度渐进(宝藏袋)majruszs-difficulty-1.16.4-1.1.0.jar</span><br><span class="line">2021/10/22  13:54         4,590,562 【生物】厄运（地狱恶魔）MCDoom-1.16.5-4.0.26.jar</span><br><span class="line">2021/06/04  22:26         1,289,476 【生物】变异生物MutantBeasts-1.16.4-1.1.3.jar</span><br><span class="line">2021/09/03  16:23         7,681,362 【生物】古老水生物OddWaterMobs[1.16.5]_1.4.0.jar</span><br><span class="line">2021/07/20  16:23           845,975 【生物】地下城怪物dungeons_mobs-1.16.5-1.0.5.jar</span><br><span class="line">2021/08/29  21:06           511,424 【生物】寂静岭Silent+Mine+1.16.5+0.1.jar</span><br><span class="line">2021/07/21  17:55         1,225,543 【生物】无名生物(优质无汉化)unnamedanimalmod-1.0.2.jar</span><br><span class="line">2021/07/20  16:51        14,493,152 【生物】更多下界生物infernal-expansion-2.0.0-beta.7.jar</span><br><span class="line">2021/07/06  10:33         1,102,070 【生物】更多傀儡extragolems-11.3.1.jar</span><br><span class="line">2021/08/29  21:14         1,743,711 【生物】更多挑战DungeonsMod-1.16.3-1.4.40.jar</span><br><span class="line">2021/07/21  14:06           259,576 【生物】更多职业村民morevillagers-FORGE-1.16.5-1.5.3.jar</span><br><span class="line">2021/07/20  19:50           308,282 【生物】更多骷髅bones-1.16.5-2.1.0.jar</span><br><span class="line">2021/04/24  05:02         8,356,809 【生物】更好动物betteranimalsplus#-1.16.5-10.2.0.jar</span><br><span class="line">2021/07/19  19:05           382,707 【生物】末地重生EndReborn+[0.8.4].jar</span><br><span class="line">2021/09/05  16:27           190,249 【生物】村民护卫guardvillagers-1.16.5.1.2.6.jar</span><br><span class="line">2021/09/25  19:09           551,025 【生物】水产养殖Aquaculture-1.16.5-2.1.21.jar</span><br><span class="line">2021/07/19  16:25           235,050 【生物】海洋生物risingtides-1.16.5-1.3.0.jar</span><br><span class="line">2021/06/04  22:21         1,454,383 【生物】潘多拉的生物pandoras_creatures-1.16.3-2.0.1.jar</span><br><span class="line">2021/07/21  14:07           427,537 【生物】灾祸村民illagers_plus-1.16.4v1.5.jar</span><br><span class="line">2021/06/04  22:44           466,557 【生物】落选生物outvoted-1.16.5-1.2.4.jar</span><br><span class="line">2021/07/06  10:33           327,809 【生物】附魔师enchantwithmob-1.16.5-1.4.6.jar</span><br><span class="line">2021/08/29  21:30           274,624 【生物】非虔诚Impish+Tome+(1.16.5_ver.1.0.2).jar</span><br><span class="line">2021/07/21  14:07           389,176 【结构】 【前置32】更多地牢dungeons_plus-1.16.5-1.1.5.jar</span><br><span class="line">2021/10/22  13:45           756,298 【结构】DungeonCrawl-1.16.5-2.3.2.jar</span><br><span class="line">2021/10/22  13:44           590,639 【结构】StructuresPlusEnd.jar</span><br><span class="line">2021/09/03  15:54           509,890 【结构】yung_BetterDungeons-1.16.4-1.2.jar</span><br><span class="line">2021/07/20  17:24           289,307 【结构】yung_BetterMineshafts-Forge-1.16.4-2.0.4.jar</span><br><span class="line">2021/07/20  17:30            64,256 【结构】【前置3】yung-YungsExtras-Forge-1.16.4-1.0.jar</span><br><span class="line">2021/09/03  15:54           541,396 【结构】【前置3】yung_BetterStrongholds-1.16.4-1.2.1.jar</span><br><span class="line">2021/07/21  14:06         1,537,457 【结构】【前置40】valhelsia_structures-1.16.5-0.1.3.jar</span><br><span class="line">2021/09/03  16:07         1,540,625 【结构】【前置40】valhelsia_structures-1.16.5-0.1.5.jar</span><br><span class="line">2021/06/17  01:05            85,877 【结构】刷怪castle_dungeons-2.3-1.16.5-forge.jar</span><br><span class="line">2021/07/20  21:29         4,676,349 【结构】地下城DungeonsArise-1.16.5-2.1.47-release.jar</span><br><span class="line">2021/06/17  01:03           218,290 【结构】地下村庄stoneholm-1.2.2.jar</span><br><span class="line">2021/09/05  02:31            22,253 【结构】地下群系Below+1.0+Forge.jar</span><br><span class="line">2021/09/05  16:28         1,061,118 【结构】坚毅堡垒stalwart-dungeons-1.16.5-1.1.3.jar</span><br><span class="line">2021/06/29  16:58           915,982 【结构】大型结构Shrines-1.16.5-1.8.1.jar</span><br><span class="line">2021/04/20  20:54           157,181 【结构】旷野塔towers_of_the_wild-1.16.4-2.0.1.jar</span><br><span class="line">2021/09/05  00:12         5,240,491 【结构】更多结构repurposed_structures_forge-3.2.4+1.16.5.jar</span><br><span class="line">2021/10/22  13:45           141,714 【结构】沙漠下界元素NMN_1.16.5_v0.1.jar</span><br><span class="line">2021/09/18  02:46           781,636 【结构】遗迹relics-0.2.9.jar</span><br><span class="line">2021/10/22  13:44           281,735 【结构】（墙壁宝石快）Forgotten+Treasures+V12+1.16.5.jar</span><br><span class="line">2021/07/19  16:20         3,651,050 【群系】BOP_BiomesOPlenty-1.16.5-13.1.0.480-universal.jar</span><br><span class="line">2021/07/19  15:22           464,318 【装备】【前置9】【前置11】奇异饰品Artifacts-1.16.5-2.10.0.jar</span><br><span class="line">2021/05/24  21:50           327,436 【装备】【前置9】泰拉瑞亚更多饰品curioBountiful+Baubles+FORGE-1.16.3-0.0.2.jar</span><br><span class="line">2021/07/20  15:10            30,293 【装备】【前置9】经验护符CrimsonXP-1.1.1.jar</span><br><span class="line">2021/07/06  10:33         2,049,774 【装备】地下城装备dungeons_gear-1.16.5-3.0.17.jar</span><br><span class="line">2021/07/20  22:43         2,033,912 【装饰】cfm-7.0.0pre22-1.16.3.jar</span><br><span class="line">2021/07/20  17:01         1,462,309 【装饰】【前置29】灵感原版装饰Inspirations-1.16.5-1.2.3.37.jar</span><br><span class="line">2021/07/19  12:49            65,945 【装饰】【前置2】更多竹制品bambooeverything-1.16.5-1.0.0-forge.jar</span><br><span class="line">2021/07/20  21:51         5,723,810 【装饰】【前置39】supplementaries-1.16.5-0.14.5.jar</span><br><span class="line">2021/08/17  13:36         7,824,319 【装饰】【前置43】地灵云心海树山花terraqueous-1.16-1.7.15.jar</span><br><span class="line">2021/06/04  18:58           954,765 【装饰】【前置8】装饰性环境植物terraincognita-1.16.3-1.6.4.2.jar</span><br><span class="line">2021/07/19  14:47         8,666,985 【装饰】自然装饰Natural+Decor+Mod+1.16+II+V0.21.3.7.jar</span><br><span class="line">2021/04/25  00:11            61,580 【装饰】花finallyfarmabledyes-1.16.4-1.2.0.1.jar</span><br><span class="line">2021/07/20  22:35           280,581 【装饰】花草灌木SereneShrubbery-1.16.5-1.1.0.jar</span><br><span class="line">2021/07/20  22:52         6,132,491 【装饰】（cfm系）morecfm-1.3.1-1.16.3.jar</span><br><span class="line">2021/07/20  23:03         5,398,623 【装饰】（菜篮）NefsMedievalPub+v0.9(1.16.5).jar</span><br><span class="line">2021/08/07  00:01            30,493 【辅助】jei找东西findme-1.16.3-2.2.0.0.jar</span><br><span class="line">2021/05/03  15:29           792,263 【辅助】Xaeros_Better_PvP_21.8.0_Forge_1.16.5.jar</span><br><span class="line">2021/04/09  02:10            24,981 【辅助】【前置10】JEI拓展jeiintegration_1.16.5-7.0.1.15.jar</span><br><span class="line">2021/08/29  21:33           235,574 【辅助】【前置10】JEI资源显示JustEnoughResources-1.16.5-0.12.1.128.jar</span><br><span class="line">2021/07/19  15:19           262,656 【辅助】【前置10】拼音搜索JustEnoughCharacters-1.16.4-4.3.0.jar</span><br><span class="line">2021/07/21  14:06            31,243 【辅助】【前置10】附魔信息JEIEnchantmentInfo-1.16.4-1.2.1.jar</span><br><span class="line">2021/07/20  16:16            29,421 【辅助】【前置25】12高亮显示扩展WailaHarvestability-mc1.16.x-forge-1.1.15.jar</span><br><span class="line">2021/07/17  10:12           483,347 【辅助】世界地图XaerosWorldMap_1.14.6.1_Forge_1.16.5.jar</span><br><span class="line">2021/04/25  03:14            14,660 【辅助】伤害显示TextDamageIndicators-1.16.3-2.0.1.jar</span><br><span class="line">2021/07/30  18:11           460,711 【辅助】回收箱Corail-Recycler-NE-1.16.4-385.jar</span><br><span class="line">2021/07/20  21:23           330,091 【辅助】搬箱子carryon-1.16.5-1.15.5.15.jar</span><br><span class="line">2021/05/04  07:49            22,955 【辅助】穿草swingthroughgrass-1.16.4-1.5.3.jar</span><br><span class="line">2021/09/26  01:06           134,996 【辅助】结构指南针ExplorersCompass-1.16.5-1.1.2-forge.jar</span><br><span class="line">2021/09/26  01:06           203,573 【辅助】群系指南针NaturesCompass-1.16.5-1.9.1-forge.jar</span><br><span class="line">2021/08/02  11:50            46,287 【辅助】饱和度状态栏appleskin-forge-mc1.16.x-2.1.0.jar</span><br><span class="line">2021/04/09  22:58           281,216 【辅助】（区域挖掘）OreExcavation-1.8.157.jar</span><br><span class="line">2021/04/27  12:06           804,052 【食物】【前置16】潘马斯作物pamhc2crops-1.16.3-1.0.2.jar</span><br><span class="line">2021/04/27  12:17           545,339 【食物】【前置16】潘马斯树木pamhc2trees-1.16.3-1.0.1.jar</span><br><span class="line">2021/04/27  12:18           913,219 【食物】【前置16】潘马斯食物拓展pamhc2foodextended-1.16.3-1.0.2.jar</span><br><span class="line">2021/07/19  16:52            14,411 【食物】【前置17】【前置18】farmerstea-1.16.5-1.2.jar</span><br><span class="line">2021/07/19  16:52           107,061 【食物】【前置17】农夫乐事下界扩展nethers_delight-1.1.jar</span><br><span class="line">2021/07/19  16:54           130,982 【食物】【前置17】农夫乐事扩展Farmers_Extra_Foods_1.2.jar</span><br><span class="line">2021/07/19  16:54           182,667 【食物】【前置17】（巨多联动）农夫乐事非正规厨师irregularchef-1.16.5-1.0.0.jar</span><br></pre></td></tr></table></figure>
+<p>然后也在测试时发现了一个非常关键的问题，在初次用html配好的forge中直接一次性全部跑以上mods很可能会卡住(卡死)<br>最后发现是小伙伴的JAVA用的是jdk16，而我一般用的是jdk15就没有问题。最后他先换为jdk11发现能进来了，但有贴图bug还是得有jdk15（这种关于材质的错误很可能与JAVA版本有关）</p>
+<h1 id="开服器"><a href="#开服器" class="headerlink" title="开服器"></a>开服器</h1><p>可视化、方便操作、不必要(对小型服务器)</p>
+<h2 id="灵工艺"><a href="#灵工艺" class="headerlink" title="灵工艺"></a><a target="_blank" rel="noopener" href="https://nullcraft.org/">灵工艺</a></h2><h1 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h1><p>一开始看网上开服教程，说如果本机ip为公网ip则不用搞内网穿透，我学校的网ip确实是公网，但好像对于校外连接还是不行，还是得内网穿透(而且寝室的网络也不是公网ip)。</p>
+<h2 id="SakuraFrp-YYDS"><a href="#SakuraFrp-YYDS" class="headerlink" title="SakuraFrp (YYDS)"></a><a target="_blank" rel="noopener" href="https://www.natfrp.com/">SakuraFrp</a> (YYDS)</h2><font size="2">
+有说通过ipconfig查自己IP的方法，但好像学校(寝室)有些不一样：
+我通过ipconfig查到的是普通的192.168.XXX.XXX
+通过百度ip查到的却是210.XXX.XXX.XXX
+</font>
+<br>
+其实如果是用SakuraFrp以上都不重要，直接在左侧进程中选择Java的就行了
+最终实现了*愉快的玩耍*
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/25/%E5%89%8D%E7%AB%AF/%E8%9A%82%E8%9A%81%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -486,10 +572,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-10-16 01:16:06 / 修改时间：01:22:13" itemprop="dateCreated datePublished" datetime="2021-10-16T01:16:06+08:00">2021-10-16</time>
+              <time title="创建时间：2021-10-16 01:16:06" itemprop="dateCreated datePublished" datetime="2021-10-16T01:16:06+08:00">2021-10-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-25 18:57:30" itemprop="dateModified" datetime="2021-10-25T18:57:30+08:00">2021-10-25</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -1146,105 +1238,6 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/26/MC/debugfile/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/26/MC/debugfile/" class="post-title-link" itemprop="url">minecraft debug log</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-26 17:02:45" itemprop="dateCreated datePublished" datetime="2021-09-26T17:02:45+08:00">2021-09-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-23 01:16:45" itemprop="dateModified" datetime="2021-10-23T01:16:45+08:00">2021-10-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="BYG与BOP"><a href="#BYG与BOP" class="headerlink" title="BYG与BOP"></a>BYG与BOP</h2><ul>
-<li>两大高版本群系模组</li>
-<li>其实由于BOP生成是特殊生成模式，所以冲突在所难免</li>
-<li>又有”【优化】生物群系修复(争对新添加群系)biomeidfixer-1.16.5-1.0.1.s4”与”【优化】【前置15】byg群系生成修复chocolate-1.3.0-1.16.4”能够对此问题进行修复</li>
-<li>但我混合正常使用只能在两百加模组的全部整合中成功，推测另有模组旁敲侧击的解决了问题</li>
-<li>使用单独以上两个修复模组不能使BYG与BOP在BOP群系下正常使用</li>
-</ul>
-<h2 id="【群系】【前置4】CavesAndCliffsBackport-1-16-5-6-3-jar"><a href="#【群系】【前置4】CavesAndCliffsBackport-1-16-5-6-3-jar" class="headerlink" title="【群系】【前置4】CavesAndCliffsBackport-1.16.5-6.3.jar"></a>【群系】【前置4】CavesAndCliffsBackport-1.16.5-6.3.jar</h2><ul>
-<li>目前此模组及其前置共添加了三种地下群系（cavesandcliffs:lush_caves/cavebiomeapi:caves/cavesandcliffs:dripstone_caves）鉴于普通模组没有特别涉及地下生成设置会致使以上群系生物过于单一，故特别添加生成设置</li>
-<li>此模组【前置4】系”【前置4】cavebiomeapi-1.16.5-1.3.7.jar”存在一定的特殊性（鉴于在1.17以下还原三维群系此前置模组特加入了三维群系），具观察加入三维群系方式过于暴力（指定一定深度以下为洞穴群系），可能兼容性较差</li>
-<li>此模组的创建世界卡死为间歇性，有待进一步确定</li>
-<li>关于此模组受特定世界类型影响导致的：地下全是繁茂洞穴、滴水洞穴的问题，或地下完全不存在此模组添加的以上两种群系的问题。目前推断为旧版本问题</li>
-</ul>
-<h2 id="【音效】动态环绕4-26DynamicSurroundings-1-16-4-4-0-4-2-jar"><a href="#【音效】动态环绕4-26DynamicSurroundings-1-16-4-4-0-4-2-jar" class="headerlink" title="【音效】动态环绕4.26DynamicSurroundings-1.16.4-4.0.4.2.jar"></a>【音效】动态环绕4.26DynamicSurroundings-1.16.4-4.0.4.2.jar</h2><ul>
-<li>此模组添加了真实的音效系统，较好的解决了隔墙听声问题</li>
-<li>此模组目前以确认可能导致已创建世界无法加载进入问题，日志报错”SoundControl Sound Processor is lagging”，暂停使用后即可成功进入</li>
-<li>以上问题目前推测为角色生处方块内部物理声效无法计算所导致（例如处在观察者模式在地下退出世界后重新加入时）</li>
-</ul>
-<h2 id="【优化】储物抽屉优化drawerfps-2-1-jar"><a href="#【优化】储物抽屉优化drawerfps-2-1-jar" class="headerlink" title="【优化】储物抽屉优化drawerfps-2.1.jar"></a>【优化】储物抽屉优化drawerfps-2.1.jar</h2><ul>
-<li>此模组系解决”【杂项】储物抽屉StorageDrawers-1.16.3-8.2.2”所导致的间歇性掉帧问题，效果良好<br><del>* 但此观察此模组系通过在一定范围外不加载“抽屉”单元贴图来解决问题，这常常间歇性导致正常地形方块成片贴图不加载（同种类或不同种类，多数情况下为树干贴图消失、岩壁贴图消失等）同时系统直接报错”OpenGL Error 1281: Invalid Value”（此报错可能原因多样，经多次尝试发现系此模组导致）</del></li>
-<li>见下OpenGL</li>
-</ul>
-<h1 id="生物生成"><a href="#生物生成" class="headerlink" title="生物生成"></a>生物生成</h1><p>其实之前通过“【辅助】生物生成管理SpawnBalanceUtility-1.36.0.11.jar”改过很多，当时没有做记录，现在可能也忘了</p>
-<h2 id="原版生物"><a href="#原版生物" class="headerlink" title="原版生物"></a>原版生物</h2><h2 id="各种水生物"><a href="#各种水生物" class="headerlink" title="各种水生物"></a>各种水生物</h2><h2 id="三洞穴群系"><a href="#三洞穴群系" class="headerlink" title="三洞穴群系"></a>三洞穴群系</h2><h2 id="BOSS-特指有屏幕血条的生物"><a href="#BOSS-特指有屏幕血条的生物" class="headerlink" title="BOSS(特指有屏幕血条的生物)"></a>BOSS(特指有屏幕血条的生物)</h2><h1 id="已解决的问题"><a href="#已解决的问题" class="headerlink" title="已解决的问题"></a>已解决的问题</h1><h2 id="OpenGL-Error-1281-Invalid-Value"><a href="#OpenGL-Error-1281-Invalid-Value" class="headerlink" title="OpenGL Error 1281: Invalid Value"></a><code>OpenGL Error 1281: Invalid Value</code></h2><p><del>老问题，不只是“【优化】储物抽屉优化drawerfps-2.1.jar”的原因，这次表现为水体透明<br>好家伙不查不知道，首先看看OpenGL是个啥吧：<br><code>OpenGL（英语：Open Graphics Library，译名：开放图形库或者“开放式图形库”）是用于渲染2D、3D矢量图形的跨语言、跨平台的应用程序编程接口（API）。这个接口由近350个不同的函数调用组成，用来绘制从简单的图形比特到复杂的三维景象。而另一种程序接口系统是仅用于Microsoft Windows上的Direct3D。OpenGL常用于CAD、虚拟现实、科学可视化程序和电子游戏开发。</code><br>总之不只是我的世界高清修复在用<br>那么看了一下日志，发现和一个叫VBO的东西相关，一查：<br><code>顶点缓存对象（VBO）准许顶点数组数据存放在服务端的高性能显卡内存中，且提供高效数据传输。</code><br>又有知乎大佬说和做水效相关，那么找对问题了，但怎么解决。。。</del><br>这么底层的报错一开始就应该想到是不是JAVA的问题…果然是我JAVA版本低了而已（之前一直确认下了最高版本的JAVA但是忘了启动器这边改成最高版本的）</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1316,7 +1309,7 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1329,7 +1322,7 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1365,7 +1358,7 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共38.9k字呐~</span>
+  <span class="post-count">本博客全站共42k字呐~</span>
 </div>
 
         
