@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="思路浏览器(cilent) 发起登录操作 获取用户名和密码 发送信息到服务器端验证 事件绑定到按钮上   发送信息 获取到输入框的内容 socket.emit(‘sendMessage’, msg) 自己的聊天界面 $(text) 里新增消息记录 广播到其他的浏览器端中   online 服务端发送当前已登录的用户 拿到登录用户后，显示在左边的好友列表   获取历史记录 socket.emi(‘g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蚂蚁前端课程简易聊天室">
+<meta property="og:url" content="http://example.com/2021/10/25/%E5%89%8D%E7%AB%AF/%E8%9A%82%E8%9A%81%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B1/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="思路浏览器(cilent) 发起登录操作 获取用户名和密码 发送信息到服务器端验证 事件绑定到按钮上   发送信息 获取到输入框的内容 socket.emit(‘sendMessage’, msg) 自己的聊天界面 $(text) 里新增消息记录 广播到其他的浏览器端中   online 服务端发送当前已登录的用户 拿到登录用户后，显示在左边的好友列表   获取历史记录 socket.emi(‘g">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-25T10:40:39.588Z">
+<meta property="article:modified_time" content="2021-10-25T10:51:42.810Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/10/25/%E5%89%8D%E7%AB%AF/%E8%9A%82%E8%9A%81%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>蚂蚁前端课程简易聊天室 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/25/%E5%89%8D%E7%AB%AF/%E8%9A%82%E8%9A%81%E5%89%8D%E7%AB%AF%E8%AF%BE%E7%A8%8B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          蚂蚁前端课程简易聊天室
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-25 18:40:39 / 修改时间：18:51:42" itemprop="dateCreated datePublished" datetime="2021-10-25T18:40:39+08:00">2021-10-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="浏览器-cilent"><a href="#浏览器-cilent" class="headerlink" title="浏览器(cilent)"></a>浏览器(cilent)</h2><ol>
+<li>发起登录操作<ol>
+<li>获取用户名和密码</li>
+<li>发送信息到服务器端验证</li>
+<li>事件绑定到按钮上</li>
+</ol>
+</li>
+<li>发送信息<ol>
+<li>获取到输入框的内容</li>
+<li>socket.emit(‘sendMessage’, msg)</li>
+<li>自己的聊天界面 $(text) 里新增消息记录</li>
+<li>广播到其他的浏览器端中</li>
+</ol>
+</li>
+<li>online<ol>
+<li>服务端发送当前已登录的用户</li>
+<li>拿到登录用户后，显示在左边的好友列表</li>
+</ol>
+</li>
+<li>获取历史记录<ol>
+<li>socket.emi(‘getHistory’)</li>
+<li>服务器端返回保存的历史记录</li>
+<li>拿到历史记录后渲染聊天框中</li>
+</ol>
+</li>
+</ol>
+<h2 id="服务器端-server"><a href="#服务器端-server" class="headerlink" title="服务器端(server)"></a>服务器端(server)</h2><ol>
+<li>通过中间件的形式 io.use 验证账号密码是否为空</li>
+<li>在 connected 事件里获取到浏览器的 socket<ol>
+<li>socket.on(‘sendMessage’)</li>
+<li>拼装 Message 对象，包含消息内容 content，发送时间，发送人</li>
+<li>将信息对象 push 到 history 中</li>
+<li>通过广播发生消息</li>
+</ol>
+</li>
+<li>增加获取历史记录的接口<ol>
+<li>socket.on(‘getHistory’) 将历史记录返回浏览器</li>
+</ol>
+</li>
+<li>触发 online 事件<ol>
+<li>io 监听 connected 和 disconnect 事件后</li>
+<li>将保存在全局的 sockets 通过 socket.emit(‘online’) 发送浏览器</li>
+<li>disconnect 事件，delete name，然后再发送<h1 id="具体结构"><a href="#具体结构" class="headerlink" title="具体结构"></a>具体结构</h1><h2 id="服务端JS"><a href="#服务端JS" class="headerlink" title="服务端JS"></a>服务端JS</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&#x27;http&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> socketIO = <span class="built_in">require</span>(<span class="string">&#x27;socket.io&#x27;</span>).Server;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> express();</span><br><span class="line"><span class="keyword">const</span> server = http.createServer(app);</span><br><span class="line"><span class="keyword">const</span> io = <span class="keyword">new</span> socketIO(server);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sockets = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> historys = [];</span><br><span class="line"></span><br><span class="line">app.use(express.static(<span class="string">&#x27;./web&#x27;</span>));</span><br><span class="line"></span><br><span class="line">io.use(<span class="function">(<span class="params">socket, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;a client incoming&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> name = socket.handshake.query.name;</span><br><span class="line">  <span class="keyword">const</span> password = socket.handshake.query.password;</span><br><span class="line">  <span class="keyword">if</span> (!name) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;拒绝连接：没有账户名&#x27;</span>);</span><br><span class="line">    next(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;empty&#x27;</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (password !== <span class="string">&#x27;123&#x27;</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;拒绝连接：密码错误&#x27;</span>);</span><br><span class="line">    next(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">&#x27;error&#x27;</span>));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">&#x27;connection&#x27;</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;a user connected&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> name = socket.handshake.query.name;</span><br><span class="line">  sockets[name] = socket;</span><br><span class="line">  socket.on(<span class="string">&#x27;sendMessage&#x27;</span>, <span class="function">(<span class="params">content</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;receive a message&#x27;</span>, name, content);</span><br><span class="line">    <span class="keyword">const</span> message = &#123;</span><br><span class="line">      <span class="attr">time</span>: <span class="built_in">Date</span>.now(),</span><br><span class="line">      <span class="attr">sender</span>: name,</span><br><span class="line">      content</span><br><span class="line">    &#125;;</span><br><span class="line">    historys.push(message);</span><br><span class="line">    socket.broadcast.emit(<span class="string">&#x27;receiveMessage&#x27;</span>, message);</span><br><span class="line">  &#125;);</span><br><span class="line">  socket.on(<span class="string">&#x27;getHistory&#x27;</span>, <span class="function">(<span class="params">fn</span>) =&gt;</span> &#123;</span><br><span class="line">    fn(historys);</span><br><span class="line">  &#125;);</span><br><span class="line">  socket.on(<span class="string">&#x27;disconnect&#x27;</span>, <span class="function">(<span class="params">reason</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">delete</span> sockets[name];</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;sa user disconnect:&#x27;</span>, name, reason);</span><br><span class="line">    io.sockets.emit(<span class="string">&#x27;online&#x27;</span>, <span class="built_in">Object</span>.keys(sockets));</span><br><span class="line">  &#125;);</span><br><span class="line">  io.sockets.emit(<span class="string">&#x27;online&#x27;</span>, <span class="built_in">Object</span>.keys(sockets));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">3000</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="网页文件-web文件夹与xerver-js同级"><a href="#网页文件-web文件夹与xerver-js同级" class="headerlink" title="网页文件(web文件夹与xerver.js同级)"></a>网页文件(web文件夹与xerver.js同级)</h2><h3 id="客户端JS"><a href="#客户端JS" class="headerlink" title="客户端JS"></a>客户端JS</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 快捷选择方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.querySelector(query)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 登录模块</span></span><br><span class="line">  <span class="keyword">var</span> login = $(<span class="string">&#x27;#login&#x27;</span>);</span><br><span class="line">  <span class="comment">// 聊天室模块</span></span><br><span class="line">  <span class="keyword">var</span> chatroom = $(<span class="string">&#x27;#chatroom&#x27;</span>);</span><br><span class="line">  <span class="comment">// 保存连接对象，后面需要用到</span></span><br><span class="line">  <span class="keyword">var</span> socket = <span class="literal">null</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 登录方法</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onLoginFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> inputNameValue = $(<span class="string">&#x27;#inputName&#x27;</span>).value;</span><br><span class="line">    <span class="keyword">var</span> inputPwdValue = $(<span class="string">&#x27;#inputPwd&#x27;</span>).value;</span><br><span class="line">    socket = io(&#123;</span><br><span class="line">      <span class="attr">query</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>: inputNameValue,</span><br><span class="line">        <span class="attr">password</span>: inputPwdValue</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">reconnection</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  </span><br><span class="line">    socket.on(<span class="string">&#x27;connect&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      login.setAttribute(<span class="string">&quot;class&quot;</span>, <span class="string">&quot;login disappear&quot;</span>);</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        chatroom.setAttribute(<span class="string">&quot;style&quot;</span>, <span class="string">&quot;display: flex&quot;</span>);</span><br><span class="line">      &#125;, <span class="number">1500</span>);</span><br><span class="line">  </span><br><span class="line">      socket.emit(<span class="string">&#x27;getHistory&#x27;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;history&#x27;</span>, data);</span><br><span class="line">        <span class="keyword">var</span> textSection = $(<span class="string">&#x27;#text-section&#x27;</span>);</span><br><span class="line">        textSection.innerHTML = data.map(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (value.sender == inputNameValue) &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">              <span class="string">`&lt;div class=&quot;msg msg-me&quot;&gt;</span></span><br><span class="line"><span class="string">                &lt;label&gt;<span class="subst">$&#123;value.sender&#125;</span>&lt;/label&gt;</span></span><br><span class="line"><span class="string">                &lt;div class=&quot;msg-txt&quot;&gt;<span class="subst">$&#123;value.content&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">              &lt;/div&gt;`</span></span><br><span class="line">            );</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">return</span> (</span><br><span class="line">            <span class="string">`&lt;div class=&quot;msg&quot;&gt;</span></span><br><span class="line"><span class="string">              &lt;label&gt;<span class="subst">$&#123;value.sender&#125;</span>&lt;/label&gt;</span></span><br><span class="line"><span class="string">              &lt;div class=&quot;msg-txt&quot;&gt;<span class="subst">$&#123;value.content&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/div&gt;`</span></span><br><span class="line">          );</span><br><span class="line">        &#125;).join(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  </span><br><span class="line">      socket.on(<span class="string">&#x27;receiveMessage&#x27;</span>, <span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> textSection = $(<span class="string">&#x27;#text-section&#x27;</span>);</span><br><span class="line">        textSection.innerHTML += (</span><br><span class="line">          <span class="string">`&lt;div class=&quot;msg&quot;&gt;</span></span><br><span class="line"><span class="string">            &lt;label&gt;<span class="subst">$&#123;message.sender&#125;</span>&lt;/label&gt;</span></span><br><span class="line"><span class="string">            &lt;div class=&quot;msg-txt&quot;&gt;<span class="subst">$&#123;message.content&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">          &lt;/div&gt;`</span></span><br><span class="line">        );</span><br><span class="line">      &#125;);</span><br><span class="line">  </span><br><span class="line">    <span class="comment">//   socket.on(&#x27;online&#x27;, (onlines) =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//     console.log(&#x27;onlines&#x27;, onlines);</span></span><br><span class="line">    <span class="comment">//     var friendSection = $(&#x27;#friend-box&#x27;);</span></span><br><span class="line">    <span class="comment">//     friendSection.innerHTML = onlines.map(name =&gt; &#123;</span></span><br><span class="line">    <span class="comment">//       return `&lt;p class=&quot;friend-profile&quot;&gt;$&#123;name&#125;&lt;/p&gt;`;</span></span><br><span class="line">    <span class="comment">//     &#125;).join(&#x27;&#x27;);</span></span><br><span class="line">    <span class="comment">//   &#125;);</span></span><br><span class="line">    &#125;);</span><br><span class="line">  </span><br><span class="line">    socket.on(<span class="string">&#x27;connect_error&#x27;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;connect_error&#x27;</span>, e);</span><br><span class="line">      <span class="keyword">if</span> (e &amp;&amp; e.message === <span class="string">&#x27;error&#x27;</span>) &#123;</span><br><span class="line">        alert(<span class="string">&#x27;密码错误，请检查&#x27;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      alert(<span class="string">&#x27;链接失败，请检查服务器地址&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">var</span> login = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#login&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> chatRoom = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#chatRoom&#x27;</span>)</span><br><span class="line">    login.style.top = <span class="string">&#x27;-100%&#x27;</span></span><br><span class="line">    chatRoom.style.top = <span class="string">&#x27;0&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> loginbutton = $(<span class="string">&#x27;.login-button&#x27;</span>);</span><br><span class="line">  loginbutton.addEventListener(<span class="string">&#x27;click&#x27;</span>, onLoginFunction);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 发送</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onSendFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textSection = $(<span class="string">&#x27;#text-section&#x27;</span>);</span><br><span class="line">    <span class="keyword">var</span> msg = $(<span class="string">&#x27;.input-area&#x27;</span>).value;</span><br><span class="line">    <span class="keyword">if</span> (!msg) &#123;</span><br><span class="line">      alert(<span class="string">&#x27;请输入内容&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $(<span class="string">&#x27;.input-area&#x27;</span>).value = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="keyword">var</span> inputNameValue = $(<span class="string">&#x27;#inputName&#x27;</span>).value;</span><br><span class="line">    socket.emit(<span class="string">&#x27;sendMessage&#x27;</span>, msg);</span><br><span class="line">    textSection.innerHTML += <span class="string">`&lt;div class=&quot;msg msg-me&quot;&gt;</span></span><br><span class="line"><span class="string">      &lt;label&gt;<span class="subst">$&#123;inputNameValue&#125;</span>&lt;/label&gt;</span></span><br><span class="line"><span class="string">      &lt;div class=&quot;msg-txt&quot;&gt;<span class="subst">$&#123;msg&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;`</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> sendBtn = $(<span class="string">&#x27;.send-button&#x27;</span>);</span><br><span class="line">  sendBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>, onSendFunction);</span><br></pre></td></tr></table></figure>
+<h3 id="总HTML"><a href="#总HTML" class="headerlink" title="总HTML"></a>总HTML</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">content</span>=<span class="string">&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Room<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/socket.io/socket.io.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;index.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;login&quot;</span> <span class="attr">id</span>=<span class="string">&quot;login&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;login-title&quot;</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content usrName&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>账户名<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;inputName&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content usrPwd&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;inputPwd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;login-button&quot;</span>&gt;</span>确认<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrap chatRoom&quot;</span> <span class="attr">id</span>=<span class="string">&quot;chatroom&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;left&quot;</span> <span class="attr">id</span>=<span class="string">&quot;friend-box&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;li&quot;</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;li&quot;</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;li&quot;</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;li&quot;</span>&gt;</span>D<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;right&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>Room<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;msg-wrap&quot;</span> <span class="attr">id</span>=<span class="string">&quot;text-section&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;msg&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;avatar&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./me.png&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;msg-txt&quot;</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;input-wrap&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;input-area&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;send-button&quot;</span>&gt;</span>发送<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;index.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background</span>:</span><br><span class="line">    <span class="built_in">linear-gradient</span>(<span class="number">63deg</span>, <span class="built_in">rgb</span>(<span class="number">233</span>, <span class="number">233</span>, <span class="number">233</span>) <span class="number">23%</span>, transparent <span class="number">23%</span>) <span class="number">7px</span> <span class="number">0</span>,</span><br><span class="line">    <span class="built_in">linear-gradient</span>(<span class="number">63deg</span>, transparent <span class="number">74%</span>, <span class="built_in">rgb</span>(<span class="number">233</span>, <span class="number">233</span>, <span class="number">233</span>) <span class="number">78%</span>),</span><br><span class="line">    <span class="built_in">linear-gradient</span>(<span class="number">63deg</span>, transparent <span class="number">34%</span>, <span class="built_in">rgb</span>(<span class="number">233</span>, <span class="number">233</span>, <span class="number">233</span>) <span class="number">38%</span>, <span class="built_in">rgb</span>(<span class="number">233</span>, <span class="number">233</span>, <span class="number">233</span>) <span class="number">58%</span>, transparent <span class="number">62%</span>),<span class="number">#444</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">16px</span> <span class="number">48px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.login</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">    <span class="attribute">opacity</span>:<span class="number">0.95</span>; </span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">10px</span> <span class="number">#494848</span>, -<span class="number">5px</span> -<span class="number">5px</span> <span class="number">10px</span> <span class="number">#ffffff</span>; </span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.5s</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.login-title</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">3px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#e6e6e6</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">10px</span> <span class="number">#bbbbbb</span>, -<span class="number">5px</span> -<span class="number">5px</span> <span class="number">10px</span> <span class="number">#ffffff</span>; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.content</span> <span class="selector-tag">input</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">3px</span>;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#e6e6e6</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">10px</span> <span class="number">#bbbbbb</span>, -<span class="number">5px</span> -<span class="number">5px</span> <span class="number">10px</span> <span class="number">#ffffff</span>; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.login-button</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#e6e6e6</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">10px</span> <span class="number">#bbbbbb</span>, -<span class="number">5px</span> -<span class="number">5px</span> <span class="number">10px</span> <span class="number">#ffffff</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.send-button</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#e6e6e6</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">10px</span> <span class="number">#bbbbbb</span>, -<span class="number">5px</span> -<span class="number">5px</span> <span class="number">10px</span> <span class="number">#ffffff</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.chatRoom</span> &#123;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.5s</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.wrap</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="comment">/* position: relative; */</span></span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">29</span>, <span class="number">49</span>, <span class="number">28</span>);</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="built_in">rgb</span>(<span class="number">70</span>, <span class="number">70</span>, <span class="number">70</span>);</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.li</span> &#123;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#111</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.right</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: antiquewhite;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">flex-direction</span>: column;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">1px</span> solid <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.input-wrap</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="number">#999</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.input-area</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.msg-wrap</span> &#123;</span><br><span class="line">    <span class="attribute">overflow</span>: scroll;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.msg</span> &#123;</span><br><span class="line">    <span class="attribute">flex</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.msg-me</span> &#123;</span><br><span class="line">    <span class="attribute">flex-direction</span>: row-reverse;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.msg-me</span> <span class="selector-class">.msg-txt</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">81</span>, <span class="number">108</span>, <span class="number">81</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.avatar</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.msg-txt</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">height</span>: fit-content;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#e6e6e6</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">5px</span> <span class="number">10px</span> <span class="number">#bbbbbb</span>, -<span class="number">5px</span> -<span class="number">5px</span> <span class="number">10px</span> <span class="number">#ffffff</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="仅作简单了解前端的练习"><a href="#仅作简单了解前端的练习" class="headerlink" title="仅作简单了解前端的练习"></a>仅作简单了解前端的练习</h1></li>
+</ol>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/21/MC/vmmc/" rel="prev" title="虚拟机安装HMCL的注意">
+      <i class="fa fa-chevron-left"></i> 虚拟机安装HMCL的注意
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8-cilent"><span class="nav-number">1.1.</span> <span class="nav-text">浏览器(cilent)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF-server"><span class="nav-number">1.2.</span> <span class="nav-text">服务器端(server)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">具体结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AFJS"><span class="nav-number">2.1.</span> <span class="nav-text">服务端JS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E9%A1%B5%E6%96%87%E4%BB%B6-web%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8Exerver-js%E5%90%8C%E7%BA%A7"><span class="nav-number">2.2.</span> <span class="nav-text">网页文件(web文件夹与xerver.js同级)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AFJS"><span class="nav-number">2.2.1.</span> <span class="nav-text">客户端JS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BBHTML"><span class="nav-number">2.2.2.</span> <span class="nav-text">总HTML</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">2.2.3.</span> <span class="nav-text">CSS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%85%E4%BD%9C%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E5%89%8D%E7%AB%AF%E7%9A%84%E7%BB%83%E4%B9%A0"><span class="nav-number">3.</span> <span class="nav-text">仅作简单了解前端的练习</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共38.9k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
