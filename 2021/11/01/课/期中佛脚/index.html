@@ -20,18 +20,29 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="摸鱼窝">
+  <meta name="description" content="CPU概述CPU基本包含运算部件、缓存部件、寄存器组、微命令产生部件（控制部件）、时序系统、数据&#x2F;控制通路总体来看CPU的工作过程就是  从主存(或缓存)中读取命令， 将指令放入指令寄存器(IR)， 然后对指令译码，把指令分解成一系列的微操作， 再发出各种相应的控制命令，控制各功能部件执行相关操作，从而完成一条指令的执行，实现对应的功能。运算部件ALU(算术逻辑运算单元)是核心、主要由加法器构成缓">
 <meta property="og:type" content="article">
 <meta property="og:title" content="期中佛脚">
 <meta property="og:url" content="http://example.com/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/index.html">
 <meta property="og:site_name" content="岛屿尽">
-<meta property="og:description" content="摸鱼窝">
+<meta property="og:description" content="CPU概述CPU基本包含运算部件、缓存部件、寄存器组、微命令产生部件（控制部件）、时序系统、数据&#x2F;控制通路总体来看CPU的工作过程就是  从主存(或缓存)中读取命令， 将指令放入指令寄存器(IR)， 然后对指令译码，把指令分解成一系列的微操作， 再发出各种相应的控制命令，控制各功能部件执行相关操作，从而完成一条指令的执行，实现对应的功能。运算部件ALU(算术逻辑运算单元)是核心、主要由加法器构成缓">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635852841593.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635853320294.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790783406.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790799739.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790825197.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790847773.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790869631.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790896974.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790917941.png">
 <meta property="article:published_time" content="2021-11-01T11:37:34.439Z">
-<meta property="article:modified_time" content="2021-11-01T11:37:36.472Z">
+<meta property="article:modified_time" content="2021-11-02T11:43:32.487Z">
 <meta property="article:author" content="dyinjin">
 <meta property="article:tag" content="计组">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png">
 
 <link rel="canonical" href="http://example.com/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/">
 
@@ -208,10 +219,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-01 19:37:34 / 修改时间：19:37:36" itemprop="dateCreated datePublished" datetime="2021-11-01T19:37:34+08:00">2021-11-01</time>
+              <time title="创建时间：2021-11-01 19:37:34" itemprop="dateCreated datePublished" datetime="2021-11-01T19:37:34+08:00">2021-11-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-02 19:43:32" itemprop="dateModified" datetime="2021-11-02T19:43:32+08:00">2021-11-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -240,7 +257,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="CPU概述"><a href="#CPU概述" class="headerlink" title="CPU概述"></a>CPU概述</h2><p>CPU基本包含运算部件、缓存部件、寄存器组、微命令产生部件（控制部件）、时序系统、数据/控制通路<br>总体来看CPU的工作过程就是</p>
+<ol>
+<li>从主存(或缓存)中读取命令，</li>
+<li>将指令放入指令寄存器(IR)，</li>
+<li>然后对指令译码，把指令分解成一系列的微操作，</li>
+<li>再发出各种相应的控制命令，控制各功能部件执行相关操作，<br>从而完成一条指令的执行，实现对应的功能。<h3 id="运算部件"><a href="#运算部件" class="headerlink" title="运算部件"></a>运算部件</h3>ALU(算术逻辑运算单元)是核心、主要由加法器构成<h3 id="缓存部件"><a href="#缓存部件" class="headerlink" title="缓存部件"></a>缓存部件</h3>为提高CPU处理主存数据的效率而设<h3 id="寄存器组"><a href="#寄存器组" class="headerlink" title="寄存器组"></a>寄存器组</h3>一般分为(8)</li>
+</ol>
+<ul>
+<li>通用寄存器组</li>
+<li>暂存器</li>
+<li><strong>IR</strong>指令寄存器</li>
+<li><strong>PC</strong>程序计数器</li>
+<li><strong>PSW</strong>程序状态寄存器</li>
+<li><strong>MAR</strong>地址寄存器</li>
+<li><strong>MBR/MDR</strong>数据缓冲寄存器</li>
+<li><strong>SP</strong>堆栈指针寄存器<h4 id="具体可见"><a href="#具体可见" class="headerlink" title="具体可见"></a>具体可见</h4><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png"></li>
+<li>可编程寄存器<br>  <strong>R0~R3</strong>通用寄存器(000,001,010,011)、<strong>SP</strong>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</li>
+<li>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
+<li>暂存器<br>  <strong>C、D</strong>约定从主存中读<strong>源操作数</strong>、操作数地址时用<strong>C</strong>；从主存中取目的<strong>操作数</strong>、操作数地址或暂存时，用<strong>D</strong></li>
+<li>主存接口寄存器MAR、MDR(MBR)<ul>
+<li>地址寄存器<strong>MAR</strong><br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
+<li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="控制部件"><a href="#控制部件" class="headerlink" title="控制部件"></a>控制部件</h3>产生控制信号(微命令)<br>CPU可使用两种控制部件组合逻辑控制器(硬件)和微程序控制器(软件)<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3>协调工作要有周期和节拍</li>
+</ul>
+</li>
+<li>节拍是执行一步的所需时间(一个周期可以由多个节拍)</li>
+<li>时序控制方式：<ul>
+<li>同步控制方式<br>所有操作用统一的时序信号，各操作不存在控制信号的交互</li>
+<li>异步控制方式<br>不受统一的时钟周期的约束，各部件之间采用异步应答的方式<h3 id="数据通络和控制通路"><a href="#数据通络和控制通路" class="headerlink" title="数据通络和控制通路"></a>数据通络和控制通路</h3>简单的常有ALU总线，复杂一点的分数据总线和地址总线</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h2><p>指令集有CISC(复杂指令集计算机)RISC(精简指令集计算机)<br>按地址结构可分为：三地址指令、二地址指令、一地址指令、零地址指令<br>操作码结构多设为可变字长指令</p>
+<h3 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a><a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/15/%E8%AF%BE/%E5%AF%BB%E5%9D%80/">寻址</a></h3><h3 id="指令的功能和类型"><a href="#指令的功能和类型" class="headerlink" title="指令的功能和类型"></a>指令的功能和类型</h3><p>现在大部分微机将指令分为；</p>
+<ul>
+<li>传输类指令</li>
+<li>访存指令</li>
+<li>I/O指令</li>
+<li>算术运算指令</li>
+<li>逻辑运算指令</li>
+<li>程序控制类指令</li>
+<li>处理机控制类指令<h2 id="加法器与运算部件"><a href="#加法器与运算部件" class="headerlink" title="加法器与运算部件"></a>加法器与运算部件</h2><h3 id="加法器及其进位逻辑"><a href="#加法器及其进位逻辑" class="headerlink" title="加法器及其进位逻辑"></a>加法器及其进位逻辑</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635852841593.png" alt="enter description here"><br>Σi =（Ai ⊕ Bi）⊕ Ci-1 (1)<br>Ci = Ai Bi +（Ai ⊕ Bi）Ci-1 (2)</li>
+<li>串行加法器：如果每步只求一位和，将n位加分成n步实现</li>
+<li>并行加法器：如果用n位全加器一步实现n位相加，即n位同步相加<ol>
+<li>串行进位链</li>
+<li>并行进位链</li>
+<li>组内并行组间串行的进位链<h3 id="算术逻辑运算单元"><a href="#算术逻辑运算单元" class="headerlink" title="算术逻辑运算单元"></a>算术逻辑运算单元</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635853320294.png" alt="ALU运算功能对照"><h2 id="x86架构模型机CPU设计"><a href="#x86架构模型机CPU设计" class="headerlink" title="x86架构模型机CPU设计"></a>x86架构模型机CPU设计</h2><h3 id="指令流程与微命令"><a href="#指令流程与微命令" class="headerlink" title="指令流程与微命令"></a><strong>指令流程与微命令</strong></h3>信息传输操作两大类：内部数据通路操作和外部访存操作</li>
+</ol>
+</li>
+<li>数据通路操作<ol>
+<li>ALU输入选择</li>
+<li>ALU功能选择</li>
+<li>移位器功能选择</li>
+<li>CPU内部总线结果分配控制信号</li>
+</ol>
+</li>
+<li>访存操作相关控制信号<br><strong>EMAR</strong>地址使能<br><strong>R/W</strong>控制主存读写模式<br><strong>EMDR</strong>数据使能<br><strong>SMDR</strong>打入(把数据总线上的数据置入寄存器MDR)<br><strong>SIR</strong>读指令写入<br>(W和EMDR基本绑定)<br>又分四个基本执行阶段：取指令FT、源操作ST、目的操作DT、执行ET<h4 id="MOV指令重点"><a href="#MOV指令重点" class="headerlink" title="MOV指令重点"></a><strong>MOV指令</strong>重点</h4><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790783406.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790799739.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790825197.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790847773.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790869631.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790896974.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790917941.png" alt="enter description here"><h3 id="组合逻辑控制"><a href="#组合逻辑控制" class="headerlink" title="组合逻辑控制"></a>组合逻辑控制</h3></li>
+</ul>
+<p><kbd>insert</kbd>切换输入模式（鼠标光标横竖）</p>
+
     </div>
 
     
@@ -268,10 +344,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/10/29/MC/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.5/" rel="prev" title="minecraft[1.16.5]现用模组表0.5">
+    <a href="/2021/10/29/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.5/" rel="prev" title="minecraft[1.16.5]现用模组表0.5">
       <i class="fa fa-chevron-left"></i> minecraft[1.16.5]现用模组表0.5
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/11/01/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/" rel="next" title="寻址">
+      寻址 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -330,6 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">CPU概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">运算部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98%E9%83%A8%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">缓存部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E7%BB%84"><span class="nav-number">1.3.</span> <span class="nav-text">寄存器组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%8F%AF%E8%A7%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">具体可见</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E9%83%A8%E4%BB%B6"><span class="nav-number">1.4.</span> <span class="nav-text">控制部件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%B6%E5%BA%8F%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.5.</span> <span class="nav-text">时序系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E7%BB%9C%E5%92%8C%E6%8E%A7%E5%88%B6%E9%80%9A%E8%B7%AF"><span class="nav-number">1.6.</span> <span class="nav-text">数据通络和控制通路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BB%E5%9D%80"><span class="nav-number">2.1.</span> <span class="nav-text">寻址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E7%9A%84%E5%8A%9F%E8%83%BD%E5%92%8C%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">指令的功能和类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%99%A8%E4%B8%8E%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">加法器与运算部件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E6%B3%95%E5%99%A8%E5%8F%8A%E5%85%B6%E8%BF%9B%E4%BD%8D%E9%80%BB%E8%BE%91"><span class="nav-number">3.1.</span> <span class="nav-text">加法器及其进位逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E5%8D%95%E5%85%83"><span class="nav-number">3.2.</span> <span class="nav-text">算术逻辑运算单元</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x86%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%9E%8B%E6%9C%BACPU%E8%AE%BE%E8%AE%A1"><span class="nav-number">4.</span> <span class="nav-text">x86架构模型机CPU设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%BE%AE%E5%91%BD%E4%BB%A4"><span class="nav-number">4.1.</span> <span class="nav-text">指令流程与微命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MOV%E6%8C%87%E4%BB%A4%E9%87%8D%E7%82%B9"><span class="nav-number">4.1.1.</span> <span class="nav-text">MOV指令重点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E6%8E%A7%E5%88%B6"><span class="nav-number">4.2.</span> <span class="nav-text">组合逻辑控制</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -345,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -394,7 +474,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共47.5k字呐~</span>
+  <span class="post-count">本博客全站共49k字呐~</span>
 </div>
 
         
