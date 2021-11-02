@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://example.com/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/</loc>
-    <lastmod>2021-11-02</lastmod>
-  </url>
-  <url>
     <loc>http://example.com/2021/11/02/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.6/</loc>
     <lastmod>2021-11-02</lastmod>
   </url>
   <url>
     <loc>http://example.com/2021/09/26/MC/debugfile/</loc>
+    <lastmod>2021-11-02</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/</loc>
     <lastmod>2021-11-02</lastmod>
   </url>
   <url>

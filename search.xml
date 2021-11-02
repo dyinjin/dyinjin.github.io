@@ -156,7 +156,11 @@
   <entry>
     <title>minecraft debug log</title>
     <url>/2021/09/26/MC/debugfile/</url>
-    <content><![CDATA[<h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="关于cavesandcliffs更新问题"><a href="#关于cavesandcliffs更新问题" class="headerlink" title="关于cavesandcliffs更新问题"></a>关于cavesandcliffs更新问题</h2><p>在更新为<code>【前置4】cavebiomeapi-1.16.5-1.4.1.jar 【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar</code>后，钟乳石刷新异常：</p>
+    <content><![CDATA[<h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="Forgotten-Treasures-已弃用"><a href="#Forgotten-Treasures-已弃用" class="headerlink" title="Forgotten+Treasures(已弃用)"></a>Forgotten+Treasures(已弃用)</h2><p>以下问题已查明，系此模组导致<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635869592303.png" alt="enter description here"></p>
+<h3 id="“耕地消失术”"><a href="#“耕地消失术”" class="headerlink" title="“耕地消失术”"></a>“耕地消失术”</h3><ul>
+<li>表现为自然村庄耕地或玩家耕地在玩家身边几秒内变为普通泥土</li>
+</ul>
+<h3 id="钟乳石问题"><a href="#钟乳石问题" class="headerlink" title="钟乳石问题"></a>钟乳石问题</h3><p><del>在更新为<code>【前置4】cavebiomeapi-1.16.5-1.4.1.jar 【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar</code>后，钟乳石刷新异常：</del></p>
 <ul>
 <li>表现为如沙子一样的下落特性，且肉眼可见的作为实体间断刷新<h2 id="Epic-Fight-Mod"><a href="#Epic-Fight-Mod" class="headerlink" title="Epic Fight Mod"></a>Epic Fight Mod</h2></li>
 <li>本模组由于为僵尸村民也修改了动作，使用任何其它模组中的僵尸村民都将出现贴图错误。</li>
@@ -397,6 +401,120 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
       </categories>
       <tags>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C语言简易区块链</title>
+    <url>/2021/10/10/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/C%E8%AF%AD%E8%A8%80%E7%AE%80%E6%98%93%E5%8C%BA%E5%9D%97%E9%93%BE/</url>
+    <content><![CDATA[<h2 id="哈希简谈（sha-256）"><a href="#哈希简谈（sha-256）" class="headerlink" title="哈希简谈（sha_256）"></a>哈希简谈（sha_256）</h2><p>就是对任意长度字符数据都会生成唯一的长度为256bit长的哈希值，且不可逆的一种加密方式<br><code>哈希函数，又称散列算法，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（或哈希值）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表。</code></p>
+<h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>主要参照：<a href="https://blog.csdn.net/weixin_44046447/article/details/111966999">简易区块链C语言实现</a><br>博主讲得很清楚，简洁易懂，适合初学区块链</p>
+<h2 id="区块链数据结构"><a href="#区块链数据结构" class="headerlink" title="区块链数据结构"></a>区块链数据结构</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214586681.png" alt="1633843973844"><br>具体实现</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">union</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> byte[<span class="number">104</span>];<span class="comment">//与以下结构体等长，利用了联合的特性</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_all[<span class="number">32</span>];<span class="comment">//对本区块head、body进行SHA256运算（且最终保证满足前导0要求）的结果</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> nonce;<span class="comment">//随机数，目的是在不改变其它有意义数据的情况下使每次哈希结果改变直到最后能够生成满足要求前导0</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_prev[<span class="number">32</span>];<span class="comment">//保存上一个区块的sha_all</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_block[<span class="number">32</span>];<span class="comment">//对本区块body进行SHA256运算的结果，可视为经过不可逆加密后的数据</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;block_head;<span class="comment">//区块链核心，目的是保证不可篡改性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> body[<span class="number">1000</span>];</span><br><span class="line">&#125;block_body;<span class="comment">//实际数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    block_head head;</span><br><span class="line">    block_body body; </span><br><span class="line">&#125;block;</span><br></pre></td></tr></table></figure>
+<p>总之HEAD是核心，nonce的意义就在满足前导0要求，而前导0（不一定要求为0）的位数某种程度上控制了哈希运算的加密难度（复杂度）（比特币要靠挖就是算这个费算力），正因为有此不定的数据存在，使得哈希运算次数不定，则即使哈希加密可逆也无法解密出整个区块链保存的数据。又由于sha_all关联于sha_prev与sha_block，则任意修改区块链中的body数据，会使得sha_block不同，进而sha_all不同，直接影响了sha_prev无法衔接，可轻易识别非法修改数据。</p>
+<p>这里前导0只要求两位（不然算的慢）：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check_sha</span><span class="params">(BYTE text[<span class="number">32</span>])</span></span>&#123;  <span class="comment">// 检验是否为前导0</span></span><br><span class="line">    <span class="keyword">if</span>(text[<span class="number">0</span>]==<span class="number">0x00</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化程序"><a href="#初始化程序" class="headerlink" title="初始化程序"></a>初始化程序</h2><p>基本上掌握初始化原理就差不多弄得懂了</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    block_head* gen=<span class="built_in">malloc</span>(<span class="number">104</span>);</span><br><span class="line">    block_body gbody;</span><br><span class="line">    <span class="built_in">strcpy</span>(gbody.body,<span class="string">&quot;helloworldjin&quot;</span>);<span class="comment">//创世信息，后面的区块就在此存数据了</span></span><br><span class="line">    <span class="built_in">memset</span>(gen-&gt;byte,<span class="number">0</span>,<span class="number">104</span>);<span class="comment">//初始化0</span></span><br><span class="line">    sha256_main(gbody.body,<span class="built_in">strlen</span>(gbody.body),gen-&gt;sha_block);<span class="comment">//将body信息哈希一次</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(gen-&gt;nonce&lt;<span class="number">0xffffffffffffffff</span>)&#123;<span class="comment">//一直哈希直到满足前导</span></span><br><span class="line">        BYTE text[<span class="number">10200</span>];<span class="comment">//暂存块头块体</span></span><br><span class="line">        read_head_body(text,gen,gbody);<span class="comment">//块头快体写入</span></span><br><span class="line"></span><br><span class="line">        BYTE buf[<span class="number">32</span>];<span class="comment">//暂存加密后的块头块体</span></span><br><span class="line">        <span class="keyword">size_t</span> textsize=<span class="number">104</span><span class="number">-32</span>+<span class="built_in">strlen</span>(gbody.body);<span class="comment">//(注意要减去32 sha_all)</span></span><br><span class="line">        sha256_main(text,textsize,buf);<span class="comment">//text存的块头快体一起哈希</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;当前nonce为: %lu     &quot;</span>,gen-&gt;nonce);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;前8bit为:%02x\n&quot;</span>,buf[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(check_sha(buf))&#123;<span class="comment">// 检查是否为前导0</span></span><br><span class="line">		<span class="comment">//成功则记录区块</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;创世块nonce为：%lu\n&quot;</span>,gen-&gt;nonce);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//文件写入处理</span></span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">char</span>* filename = <span class="string">&quot;genesis.block&quot;</span>;</span><br><span class="line">            FILE *fp = fopen(filename,<span class="string">&quot;w&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> i;</span><br><span class="line">            <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++) &#123;</span><br><span class="line">                gen-&gt;sha_all[i] = buf[i];<span class="comment">//加密后的块头块体哈希值</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">104</span>;i++) &#123;   <span class="comment">// 写入区块头（包含加密后的本块块头块体哈希值，nonce随机数，sha_prev上个区块加密后的块头块体哈希值，sha_block本块数据哈希值）</span></span><br><span class="line">                <span class="built_in">fprintf</span>(fp,<span class="string">&quot;%c&quot;</span>,gen-&gt;byte[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(gbody.body);i++) &#123;  <span class="comment">// 写入区块体（包含直接的数据）</span></span><br><span class="line">                <span class="built_in">fprintf</span>(fp,<span class="string">&quot;%c&quot;</span>,gbody.body[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            fclose(fp);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        gen-&gt;nonce++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>考虑加入时间戳是否就是在最后通过前导检测后，写入时多写一个时间关联数据，意义类似nonce随机数？</p>
+<h2 id="再分析一个函数"><a href="#再分析一个函数" class="headerlink" title="再分析一个函数"></a>再分析一个函数</h2><p>找最后一个块的函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">block <span class="title">find_last_block</span><span class="params">()</span></span>&#123;</span><br><span class="line">    block block_list[<span class="number">100</span>];<span class="comment">//这个可以随便扩</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *filePath = <span class="string">&quot;.&quot;</span>;</span><br><span class="line">    <span class="keyword">int</span> size = read_dir_block(block_list,filePath);   <span class="comment">// 一共size个区块（简单根据文件名数），这里不只是算了个数字，还将每个文件数据导入到了block_list[i]</span></span><br><span class="line">    <span class="keyword">if</span> (size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;no block file\n&quot;</span>);<span class="comment">//这个随便了</span></span><br><span class="line">        block tmp;</span><br><span class="line">        <span class="built_in">memset</span>(tmp.head.byte, <span class="number">0</span>, <span class="number">104</span>);</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 然后给所有区块弄一个拓扑排序</span></span><br><span class="line">    <span class="comment">// 先遍历找第一个 block</span></span><br><span class="line">    block topo[size];</span><br><span class="line">    BYTE hash[<span class="number">32</span>] = &#123;<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>&#125;;<span class="comment">//创世区块的前导（这里如果确定中间某一个块的前导值也可以中途开找）</span></span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(hash,block_list[i].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">        <span class="keyword">if</span>(cmp == <span class="number">0</span>)&#123;   <span class="comment">// equal， this is the first block</span></span><br><span class="line">            copy(&amp;topo[<span class="number">0</span>],&amp;block_list[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="comment">// topo[0] 为创世纪块</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//双循环链接区块</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;size;j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(topo[i<span class="number">-1</span>].head.sha_all,block_list[j].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">            <span class="comment">// 遍历所有区块，prev == topo[i-1] 的便是对应 topo[i]</span></span><br><span class="line">            <span class="keyword">if</span> (cmp == <span class="number">0</span>) &#123;</span><br><span class="line">                copy(&amp;topo[i],&amp;block_list[j]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> topo[size<span class="number">-1</span>];<span class="comment">//返回最后一个</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自然可以简单修改为找对应需要数据区块的函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">block <span class="title">find_block</span><span class="params">(<span class="keyword">char</span>* content)</span></span>&#123;        <span class="comment">// 读各个区块</span></span><br><span class="line">    block block_list[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *filePath = <span class="string">&quot;.&quot;</span>;</span><br><span class="line">    <span class="keyword">int</span> size = read_dir_block(block_list,filePath);   <span class="comment">// 一共 size 个区块</span></span><br><span class="line">    <span class="comment">// 给所有区块弄一个拓扑排序</span></span><br><span class="line">    <span class="keyword">if</span> (size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;no block file\n&quot;</span>);</span><br><span class="line">        block tmp;</span><br><span class="line">        <span class="built_in">memset</span>(tmp.head.byte, <span class="number">0</span>, <span class="number">104</span>);</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 先找第一个 block</span></span><br><span class="line">    block topo[size];</span><br><span class="line">    BYTE hash[<span class="number">32</span>] = &#123;<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(hash,block_list[i].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">        <span class="keyword">if</span>(cmp == <span class="number">0</span>)&#123;   <span class="comment">// equal， this is the first block</span></span><br><span class="line">            copy(&amp;topo[<span class="number">0</span>],&amp;block_list[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// topo[0] 为创世纪块</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;size;j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(topo[i<span class="number">-1</span>].head.sha_all,block_list[j].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">            <span class="comment">// 遍历所有区块，找到 prev == topo[i-1] 的，以此来确定 topo[i]</span></span><br><span class="line">            <span class="keyword">if</span> (cmp == <span class="number">0</span>) &#123;</span><br><span class="line">                copy(&amp;topo[i],&amp;block_list[j]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//从链接完的区块链topo排序中找</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;start find *****************\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\nbody:%s\n&quot;</span>,topo[i].body.body);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strstr</span>(topo[i].body.body,content))&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\n****finded****\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> topo[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可能复杂了，但是改的简单）</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>区块链</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链概述</title>
+    <url>/2021/09/20/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%A6%82%E8%BF%B0/</url>
+    <content><![CDATA[<h1 id="百度百科"><a href="#百度百科" class="headerlink" title="百度百科"></a>百度百科</h1><p>区块链是一个信息技术领域的术语。从本质上讲，它是一个<strong>共享数据库</strong>，存储于其中的数据或信息，具有“不可伪造”“全程留痕”“可以追溯”“公开透明”“集体维护”等特征。基于这些特征，区块链技术奠定了坚实的“信任”基础，创造了可靠的“合作”机制，具有广阔的运用前景。</p>
+<ul>
+<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
+<li>开放性。区块链技术基础是开源的，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透。</li>
+<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
+<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
+<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以匿名进行。<h1 id="实际实现"><a href="#实际实现" class="headerlink" title="实际实现"></a>实际实现</h1><h2 id="简易区块链"><a href="#简易区块链" class="headerlink" title="简易区块链"></a>简易区块链</h2>一个简易的区块链，必须有下面几个功能：</li>
+<li>  生成创世纪块</li>
+<li>  读取文件夹下的所有区块</li>
+<li>  查找创世纪块</li>
+<li>  查找区块链的最后一个区块</li>
+<li>  在区块链的尾部追加区块</li>
+<li>  对区块的SHA计算<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632124361597.png" alt="enter description here"><br>一个块Block一般有：</li>
+<li>  index 块号</li>
+<li>  previousHash 上一个区块的hash值</li>
+<li>  timestamp 时间戳</li>
+<li>  data 存放的数据</li>
+<li>  hash 区块的hash值<br>我们每生成一个区块，我们都会给这个区块按照特定的hash算法，来得到一个hash值，一般来说，只要这个区块的index,previoushash,timestamp,data有改动，那么它所算出的hash值也会改变，所以当你想要篡改某个区块的数据时，你需要将后面所有的区块的previoushash都进行篡改。</li>
+</ul>
+<hr>
+<p><a href="https://blog.csdn.net/TuxedoLinux/article/details/86764142">区块链的数据结构</a><br><a href="https://blog.csdn.net/qq_43289711/article/details/116082281">区块链的简单实现</a><br><a href="https://blog.csdn.net/weixin_44046447/article/details/111966999">简易区块链C语言实现</a><br><a href="https://blog.csdn.net/maxzero/article/details/81773443?spm=1001.2014.3001.5501">区块链学习</a><br><a href="https://blog.csdn.net/u011583927/article/details/80905740">SHA256算法原理详解</a></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>区块链</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>区块链的加密与存储</title>
+    <url>/2021/10/16/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%8A%A0%E5%AF%86%E4%B8%8E%E5%AD%98%E5%82%A8/</url>
+    <content><![CDATA[<p>谈谈我的理解：关于数据存储，一般数据不都是在每个分机生成的区块中的，可以有单独数据库而区块链起到传输修改信息的作用（账本记录的就是入账出账信息，通过这些信息自然可得余额信息）；争对我们的课题网上的架构不一定适用，我觉得可以在每个患者挂号时，为每一个患者创立独立的<em>创世区块</em>且记入数据库，然后根据需要，在构想的手环分机中，开始生成子需要传输信息的区块，且分机每次在成功传输信息后，仅需储存上一个区块值；可以简单的把区块生成视作加密，那么区块链就仅起到加密信息传输的作用（这样已经可以保证无法通过分机得到患者信息）；所以我们还可以利用区块链分块储存的架构，将总数据库进行较大型的分布式储存。</p>
+<p><em>以下文字为摘录</em></p>
+<hr>
+<h1 id="区块链-≠-分布式存储这篇强推"><a href="#区块链-≠-分布式存储这篇强推" class="headerlink" title="区块链 ≠ 分布式存储这篇强推"></a><a href="https://zhuanlan.zhihu.com/p/411768627">区块链 ≠ 分布式存储</a><em>这篇强推</em></h1><p>直观的角度来看，完整的区块链系统内部一定会包含一个「存储模块」，整体而言，区块链系统确实可以起到持久化数据的作用。<br>但是如果从这个角度出发，直接将区块链系统看作是一个数据库，这样的观点也是有待商榷的。<br>当我们站在区块链系统内部“数据存储”功能的角度看待“区块链系统”时，我们会发现，区块链系统具有确定性的系统架构、确定性的内部业务逻辑，以及一些通用的数据组织格式（比如：区块是一种append-only形式的数据、只有虚拟机执行指令的过程中会修改状态数据等）。区块链系统中的数据存储只需要满足这一套运转逻辑过程中的持久化需求即可，也就是说，<strong>区块链系统为其存储模块划定了比通用数据库更小的模块功能边界</strong>。</p>
+<h1 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h1><p>Hash是一个把任意长度的数据映射成固定长度数据的函数。例如，对于数据完整性校验，最简单的方法是对整个数据做Hash运算得到固定长度的Hash值，然后把得到的Hash值公布在网上，这样用户下载到数据之后，对数据再次进行Hash运算，比较运算结果和网上公布的Hash值进行比较，如果两个Hash值相等，说明下载的数据没有损坏。可以这样做是因为输入数据的稍微改变就会引起Hash运算结果的面目全非，而且根据Hash值反推原始输入数据的特征是困难的。</p>
+<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><blockquote>
+<p><strong>非对称加密技术在区块链的应用场景：</strong></p>
+</blockquote>
+<ol>
+<li> <strong>信息加密场景</strong>：主要是由信息发送者(记为A)使用接受者(记为B)的公钥对信息加密后再发送给B，B利用自己的私钥对信息解密。比特币交易的加密即属于此场景。</li>
+<li><strong>数字签名场景</strong>：由发送者A采用自己的私钥加密信息后发送给B，B使用A的公钥对信息解密、从而可确保信息是由A发送的。<br> 数字签名，可以保证收到的文件没有被篡改，也可以保证发送者的身份。因为私钥生产了数字签名，私钥是不公开的。</li>
+<li><strong>登录认证场景</strong>：是由客户端使用私钥加密登录信息后发送给服务器，后者接收后采用该客户端的公钥解密并认证登录信息.</li>
+</ol>
+<p><strong>上述三种场景加密的不同之处主要在于：</strong></p>
+<ul>
+<li>  信息加密是公钥加密，私钥解密，确保信息的安全性；</li>
+<li>  数字签名是私钥加密公钥解密，确保数字签名的归属性；</li>
+<li>  登录认证私钥加密，公钥解密。</li>
+</ul>
+<h1 id="如何存储大型数据"><a href="#如何存储大型数据" class="headerlink" title="如何存储大型数据"></a>如何存储大型数据</h1><p>现在众多项目自称是基于区块链的，因为区块的数据大小，格式受限，其实是一些重要的信息，如账户信息，交易信息等放在区块里，其他的程序还是需要中心化的服务器执行，还有一些自身的需要存储的大数据，只是把其中的根节点HASH值，存入区块链。<br>大部分的的项目基于区块链是如下的一个思路，将需要用到区块链的部分抽离出来，逻辑上分成应用系统和区块链系统，用公链（如以太坊）实现区块链的功能，优点如下：</p>
+<ol>
+<li>应用系统，区块链系统分类，最大程度的用原有中心化服务器系统。</li>
+<li>利用公有区块链的网络安全强大，不可篡改等特性保证区块链功能。<br>基于以太坊的应用场景解决方案，一些大量数据可以做如下操作：</li>
+<li>在以太坊智能合约中维护自身区块链的头部信息； →网络安全、防篡改</li>
+<li>自身区块链区块内容放在二级存储（安全的企业存储环境中）；→自身信息隐私保护，省钱</li>
+<li>对于历史头信息进行剪裁；→省钱</li>
+<li>关联以太坊地址和自身身份；→不可抵赖</li>
+</ol>
+<h1 id="IAM的架构模式"><a href="#IAM的架构模式" class="headerlink" title="IAM的架构模式"></a>IAM的架构模式</h1><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634318416611.png" alt="enter description here"><br>IAM环境中包括很多用户和服务提供商。IAM系统为每个用户分配 一个账户以及一组访问能力，用户基于其账户权限及访问能力访问提供商 的服务。可以采用以如下方式利用W3C的DID规范和W3C的可验证声明规范：<br>假设Alice需要一个身份（DID，唯一标识符）。如上图所示，为了创建一个 新的DID，Alice需要在区块链上创建一个数据项，该数据项中包含了随机 生成的标识符、指向其个人档案数据的链接、以及其个人档案数据的哈希。 档案数据中包含了公钥以及一组可验证的声明，所生成的随机标识符现在 成为Alice的DID，因为只有她持有与公钥对应的私钥。<br>可验证声明是由授权机构签名的通证，创建者同时也会在区块链上记录 声明数据的哈希，类似于DID的实现方式。<br>Alice首先前往权威机构获取可验证声明。例如，个人注册部可能是姓名、 地址、出生日期这些信息的负责机构。假设权威机构签发了可验证的声明， Alice首先展示其对DID的所有权，然后提交对可验证声明的请求。为了更新 其个人档案数据，Alice需要在区块链中添加一个新的数据项，其中包含 更新后的个人档案数据的新的哈希。<br>在验证Alice对DID的所有权时使用的挑战-应答协议，验证者会生成一个随机 种子，然后使用ALice的公钥进行加密，接下来Alice需要使用其私钥解密种子 以展示其确实持有公钥对应的私钥。<br>另一个希望识别Alice身份的用户或机构，例如Bob，首先会从Alice处接收到 DID，然后从区块链上读取所有该DID相关的数据并进行验证。Bob可以同样的 挑战-应答方式验证Alice的身份。</p>
+<h1 id="联盟链"><a href="#联盟链" class="headerlink" title="联盟链"></a>联盟链</h1><p>联盟链，只针对特定某个群体的成员和有限的第三方，内部指定多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定，其他接入节点可以参与交易，但不过问记账过程，其他第三方可以通过该区块链开放的API进行限定查询。为了获得更好的性能，联盟链对于共识或验证节点的配置和网络环境有一定要求。有了准入机制，可以使得交易性能更容易提高，避免由参次不齐的参与者产生的一些问题。</p>
+<h1 id="区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？"><a href="#区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？" class="headerlink" title="区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？"></a>区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？</h1><p>我们必须了解清楚两个概念：</p>
+<ol>
+<li> 区块链数据；</li>
+<li> 链上数据；<h2 id="首先：区块链数据-包括区块数据和状态数据两者"><a href="#首先：区块链数据-包括区块数据和状态数据两者" class="headerlink" title="首先：区块链数据(包括区块数据和状态数据两者)"></a>首先：区块链数据(包括区块数据和状态数据两者)</h2></li>
+<li> 区块数据描述的实际是区块链上面发生的每一笔交易的记录（如小帅给小王转账了50元，小帅充值了20元之类的数据）</li>
+<li> 而状态数据则是记录了每个账户和智能合约的当前状态（如小帅余额200元，小王20元）<br>而无论是区块数据还是状态数据都是由我们的区块链节点使用和储存的，区块链节点是一个<strong>程序</strong>，允许在我们的电脑，虚拟机等上，而多个节点通过网络的方式进行链接最终形成了完整的区块链网络。<br>而这其中区块链节点的数据存储最普遍的方式就是存入我们的磁盘中间，而我们的区块链不会直接的访问我们的磁盘，而是通过特定的数据库如LevelIDB，RocksDB，MySQL等独立和分布式的数据库来操作我们的数据（目前最重要的另外一个技术就是加入缓存区域，减少磁盘的寻道时间，加快区块链对磁盘数据的使用和存储），而相比于直接访问磁盘，用数据库作为中间媒介的<strong>特定数据访问模型对区块链节点更加的友好。</strong><br>所以数据存储的过程可以解释为<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634315188441.png" alt="enter description here"></li>
+</ol>
+<p><strong>而数据库分为独立和嵌入式：其最大的区别就是是否需要独立的部署，嵌入式的数据库和区块链节点整合在同一个进程中间，同动同停，基本感受不到独立的存在感。</strong></p>
+<h2 id="其次：链上数据"><a href="#其次：链上数据" class="headerlink" title="其次：链上数据"></a>其次：链上数据</h2><p><strong>解释：链上数据是直接或者间接由区块链共识产生的数据；</strong></p>
+<ol>
+<li>而回到我们的问题，我们会发现区块链中间的区块数据和状态数据并不是凭空的产生的，区块中间的数据是因为不同节点之间的交易数据存储然后被广播到所有区块链节点的共识状态，所以区块数据也是因为共识而产生的数据之一；</li>
+<li>而反观状态数据，由于交易的产生，共识的一致，最终会引起状态的改变，所以在此角度中间，状态数据也一样可以被认为是链上数据；</li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>区块链</tag>
       </tags>
   </entry>
   <entry>
@@ -661,120 +779,6 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
       </tags>
   </entry>
   <entry>
-    <title>C语言简易区块链</title>
-    <url>/2021/10/10/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/C%E8%AF%AD%E8%A8%80%E7%AE%80%E6%98%93%E5%8C%BA%E5%9D%97%E9%93%BE/</url>
-    <content><![CDATA[<h2 id="哈希简谈（sha-256）"><a href="#哈希简谈（sha-256）" class="headerlink" title="哈希简谈（sha_256）"></a>哈希简谈（sha_256）</h2><p>就是对任意长度字符数据都会生成唯一的长度为256bit长的哈希值，且不可逆的一种加密方式<br><code>哈希函数，又称散列算法，是一种从任何一种数据中创建小的数字“指纹”的方法。散列函数把消息或数据压缩成摘要，使得数据量变小，将数据的格式固定下来。该函数将数据打乱混合，重新创建一个叫做散列值（或哈希值）的指纹。散列值通常用一个短的随机字母和数字组成的字符串来代表。</code></p>
-<h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>主要参照：<a href="https://blog.csdn.net/weixin_44046447/article/details/111966999">简易区块链C语言实现</a><br>博主讲得很清楚，简洁易懂，适合初学区块链</p>
-<h2 id="区块链数据结构"><a href="#区块链数据结构" class="headerlink" title="区块链数据结构"></a>区块链数据结构</h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214586681.png" alt="1633843973844"><br>具体实现</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">union</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> byte[<span class="number">104</span>];<span class="comment">//与以下结构体等长，利用了联合的特性</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_all[<span class="number">32</span>];<span class="comment">//对本区块head、body进行SHA256运算（且最终保证满足前导0要求）的结果</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> nonce;<span class="comment">//随机数，目的是在不改变其它有意义数据的情况下使每次哈希结果改变直到最后能够生成满足要求前导0</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_prev[<span class="number">32</span>];<span class="comment">//保存上一个区块的sha_all</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha_block[<span class="number">32</span>];<span class="comment">//对本区块body进行SHA256运算的结果，可视为经过不可逆加密后的数据</span></span><br><span class="line">    &#125;;</span><br><span class="line">&#125;block_head;<span class="comment">//区块链核心，目的是保证不可篡改性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    <span class="keyword">char</span> body[<span class="number">1000</span>];</span><br><span class="line">&#125;block_body;<span class="comment">//实际数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">    block_head head;</span><br><span class="line">    block_body body; </span><br><span class="line">&#125;block;</span><br></pre></td></tr></table></figure>
-<p>总之HEAD是核心，nonce的意义就在满足前导0要求，而前导0（不一定要求为0）的位数某种程度上控制了哈希运算的加密难度（复杂度）（比特币要靠挖就是算这个费算力），正因为有此不定的数据存在，使得哈希运算次数不定，则即使哈希加密可逆也无法解密出整个区块链保存的数据。又由于sha_all关联于sha_prev与sha_block，则任意修改区块链中的body数据，会使得sha_block不同，进而sha_all不同，直接影响了sha_prev无法衔接，可轻易识别非法修改数据。</p>
-<p>这里前导0只要求两位（不然算的慢）：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check_sha</span><span class="params">(BYTE text[<span class="number">32</span>])</span></span>&#123;  <span class="comment">// 检验是否为前导0</span></span><br><span class="line">    <span class="keyword">if</span>(text[<span class="number">0</span>]==<span class="number">0x00</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="初始化程序"><a href="#初始化程序" class="headerlink" title="初始化程序"></a>初始化程序</h2><p>基本上掌握初始化原理就差不多弄得懂了</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    block_head* gen=<span class="built_in">malloc</span>(<span class="number">104</span>);</span><br><span class="line">    block_body gbody;</span><br><span class="line">    <span class="built_in">strcpy</span>(gbody.body,<span class="string">&quot;helloworldjin&quot;</span>);<span class="comment">//创世信息，后面的区块就在此存数据了</span></span><br><span class="line">    <span class="built_in">memset</span>(gen-&gt;byte,<span class="number">0</span>,<span class="number">104</span>);<span class="comment">//初始化0</span></span><br><span class="line">    sha256_main(gbody.body,<span class="built_in">strlen</span>(gbody.body),gen-&gt;sha_block);<span class="comment">//将body信息哈希一次</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(gen-&gt;nonce&lt;<span class="number">0xffffffffffffffff</span>)&#123;<span class="comment">//一直哈希直到满足前导</span></span><br><span class="line">        BYTE text[<span class="number">10200</span>];<span class="comment">//暂存块头块体</span></span><br><span class="line">        read_head_body(text,gen,gbody);<span class="comment">//块头快体写入</span></span><br><span class="line"></span><br><span class="line">        BYTE buf[<span class="number">32</span>];<span class="comment">//暂存加密后的块头块体</span></span><br><span class="line">        <span class="keyword">size_t</span> textsize=<span class="number">104</span><span class="number">-32</span>+<span class="built_in">strlen</span>(gbody.body);<span class="comment">//(注意要减去32 sha_all)</span></span><br><span class="line">        sha256_main(text,textsize,buf);<span class="comment">//text存的块头快体一起哈希</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;当前nonce为: %lu     &quot;</span>,gen-&gt;nonce);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;前8bit为:%02x\n&quot;</span>,buf[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(check_sha(buf))&#123;<span class="comment">// 检查是否为前导0</span></span><br><span class="line">		<span class="comment">//成功则记录区块</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;创世块nonce为：%lu\n&quot;</span>,gen-&gt;nonce);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//文件写入处理</span></span><br><span class="line">            <span class="keyword">const</span> <span class="keyword">char</span>* filename = <span class="string">&quot;genesis.block&quot;</span>;</span><br><span class="line">            FILE *fp = fopen(filename,<span class="string">&quot;w&quot;</span>);</span><br><span class="line">            <span class="keyword">int</span> i;</span><br><span class="line">            <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++) &#123;</span><br><span class="line">                gen-&gt;sha_all[i] = buf[i];<span class="comment">//加密后的块头块体哈希值</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="number">104</span>;i++) &#123;   <span class="comment">// 写入区块头（包含加密后的本块块头块体哈希值，nonce随机数，sha_prev上个区块加密后的块头块体哈希值，sha_block本块数据哈希值）</span></span><br><span class="line">                <span class="built_in">fprintf</span>(fp,<span class="string">&quot;%c&quot;</span>,gen-&gt;byte[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;<span class="built_in">strlen</span>(gbody.body);i++) &#123;  <span class="comment">// 写入区块体（包含直接的数据）</span></span><br><span class="line">                <span class="built_in">fprintf</span>(fp,<span class="string">&quot;%c&quot;</span>,gbody.body[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            fclose(fp);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        gen-&gt;nonce++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>考虑加入时间戳是否就是在最后通过前导检测后，写入时多写一个时间关联数据，意义类似nonce随机数？</p>
-<h2 id="再分析一个函数"><a href="#再分析一个函数" class="headerlink" title="再分析一个函数"></a>再分析一个函数</h2><p>找最后一个块的函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">block <span class="title">find_last_block</span><span class="params">()</span></span>&#123;</span><br><span class="line">    block block_list[<span class="number">100</span>];<span class="comment">//这个可以随便扩</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *filePath = <span class="string">&quot;.&quot;</span>;</span><br><span class="line">    <span class="keyword">int</span> size = read_dir_block(block_list,filePath);   <span class="comment">// 一共size个区块（简单根据文件名数），这里不只是算了个数字，还将每个文件数据导入到了block_list[i]</span></span><br><span class="line">    <span class="keyword">if</span> (size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;no block file\n&quot;</span>);<span class="comment">//这个随便了</span></span><br><span class="line">        block tmp;</span><br><span class="line">        <span class="built_in">memset</span>(tmp.head.byte, <span class="number">0</span>, <span class="number">104</span>);</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 然后给所有区块弄一个拓扑排序</span></span><br><span class="line">    <span class="comment">// 先遍历找第一个 block</span></span><br><span class="line">    block topo[size];</span><br><span class="line">    BYTE hash[<span class="number">32</span>] = &#123;<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>&#125;;<span class="comment">//创世区块的前导（这里如果确定中间某一个块的前导值也可以中途开找）</span></span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(hash,block_list[i].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">        <span class="keyword">if</span>(cmp == <span class="number">0</span>)&#123;   <span class="comment">// equal， this is the first block</span></span><br><span class="line">            copy(&amp;topo[<span class="number">0</span>],&amp;block_list[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="comment">// topo[0] 为创世纪块</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//双循环链接区块</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;size;j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(topo[i<span class="number">-1</span>].head.sha_all,block_list[j].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">            <span class="comment">// 遍历所有区块，prev == topo[i-1] 的便是对应 topo[i]</span></span><br><span class="line">            <span class="keyword">if</span> (cmp == <span class="number">0</span>) &#123;</span><br><span class="line">                copy(&amp;topo[i],&amp;block_list[j]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> topo[size<span class="number">-1</span>];<span class="comment">//返回最后一个</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>自然可以简单修改为找对应需要数据区块的函数：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">block <span class="title">find_block</span><span class="params">(<span class="keyword">char</span>* content)</span></span>&#123;        <span class="comment">// 读各个区块</span></span><br><span class="line">    block block_list[<span class="number">100</span>];</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *filePath = <span class="string">&quot;.&quot;</span>;</span><br><span class="line">    <span class="keyword">int</span> size = read_dir_block(block_list,filePath);   <span class="comment">// 一共 size 个区块</span></span><br><span class="line">    <span class="comment">// 给所有区块弄一个拓扑排序</span></span><br><span class="line">    <span class="keyword">if</span> (size &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;no block file\n&quot;</span>);</span><br><span class="line">        block tmp;</span><br><span class="line">        <span class="built_in">memset</span>(tmp.head.byte, <span class="number">0</span>, <span class="number">104</span>);</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 先找第一个 block</span></span><br><span class="line">    block topo[size];</span><br><span class="line">    BYTE hash[<span class="number">32</span>] = &#123;<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>,<span class="number">0x00</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(hash,block_list[i].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">        <span class="keyword">if</span>(cmp == <span class="number">0</span>)&#123;   <span class="comment">// equal， this is the first block</span></span><br><span class="line">            copy(&amp;topo[<span class="number">0</span>],&amp;block_list[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// topo[0] 为创世纪块</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;size;i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (j=<span class="number">0</span>;j&lt;size;j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> cmp = <span class="built_in">memcmp</span>(topo[i<span class="number">-1</span>].head.sha_all,block_list[j].head.sha_prev,<span class="number">32</span>);</span><br><span class="line">            <span class="comment">// 遍历所有区块，找到 prev == topo[i-1] 的，以此来确定 topo[i]</span></span><br><span class="line">            <span class="keyword">if</span> (cmp == <span class="number">0</span>) &#123;</span><br><span class="line">                copy(&amp;topo[i],&amp;block_list[j]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//从链接完的区块链topo排序中找</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;start find *****************\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;size;i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\nbody:%s\n&quot;</span>,topo[i].body.body);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">strstr</span>(topo[i].body.body,content))&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\n****finded****\n&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> topo[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可能复杂了，但是改的简单）</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>区块链</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>区块链的加密与存储</title>
-    <url>/2021/10/16/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%8A%A0%E5%AF%86%E4%B8%8E%E5%AD%98%E5%82%A8/</url>
-    <content><![CDATA[<p>谈谈我的理解：关于数据存储，一般数据不都是在每个分机生成的区块中的，可以有单独数据库而区块链起到传输修改信息的作用（账本记录的就是入账出账信息，通过这些信息自然可得余额信息）；争对我们的课题网上的架构不一定适用，我觉得可以在每个患者挂号时，为每一个患者创立独立的<em>创世区块</em>且记入数据库，然后根据需要，在构想的手环分机中，开始生成子需要传输信息的区块，且分机每次在成功传输信息后，仅需储存上一个区块值；可以简单的把区块生成视作加密，那么区块链就仅起到加密信息传输的作用（这样已经可以保证无法通过分机得到患者信息）；所以我们还可以利用区块链分块储存的架构，将总数据库进行较大型的分布式储存。</p>
-<p><em>以下文字为摘录</em></p>
-<hr>
-<h1 id="区块链-≠-分布式存储这篇强推"><a href="#区块链-≠-分布式存储这篇强推" class="headerlink" title="区块链 ≠ 分布式存储这篇强推"></a><a href="https://zhuanlan.zhihu.com/p/411768627">区块链 ≠ 分布式存储</a><em>这篇强推</em></h1><p>直观的角度来看，完整的区块链系统内部一定会包含一个「存储模块」，整体而言，区块链系统确实可以起到持久化数据的作用。<br>但是如果从这个角度出发，直接将区块链系统看作是一个数据库，这样的观点也是有待商榷的。<br>当我们站在区块链系统内部“数据存储”功能的角度看待“区块链系统”时，我们会发现，区块链系统具有确定性的系统架构、确定性的内部业务逻辑，以及一些通用的数据组织格式（比如：区块是一种append-only形式的数据、只有虚拟机执行指令的过程中会修改状态数据等）。区块链系统中的数据存储只需要满足这一套运转逻辑过程中的持久化需求即可，也就是说，<strong>区块链系统为其存储模块划定了比通用数据库更小的模块功能边界</strong>。</p>
-<h1 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h1><p>Hash是一个把任意长度的数据映射成固定长度数据的函数。例如，对于数据完整性校验，最简单的方法是对整个数据做Hash运算得到固定长度的Hash值，然后把得到的Hash值公布在网上，这样用户下载到数据之后，对数据再次进行Hash运算，比较运算结果和网上公布的Hash值进行比较，如果两个Hash值相等，说明下载的数据没有损坏。可以这样做是因为输入数据的稍微改变就会引起Hash运算结果的面目全非，而且根据Hash值反推原始输入数据的特征是困难的。</p>
-<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><blockquote>
-<p><strong>非对称加密技术在区块链的应用场景：</strong></p>
-</blockquote>
-<ol>
-<li> <strong>信息加密场景</strong>：主要是由信息发送者(记为A)使用接受者(记为B)的公钥对信息加密后再发送给B，B利用自己的私钥对信息解密。比特币交易的加密即属于此场景。</li>
-<li><strong>数字签名场景</strong>：由发送者A采用自己的私钥加密信息后发送给B，B使用A的公钥对信息解密、从而可确保信息是由A发送的。<br> 数字签名，可以保证收到的文件没有被篡改，也可以保证发送者的身份。因为私钥生产了数字签名，私钥是不公开的。</li>
-<li><strong>登录认证场景</strong>：是由客户端使用私钥加密登录信息后发送给服务器，后者接收后采用该客户端的公钥解密并认证登录信息.</li>
-</ol>
-<p><strong>上述三种场景加密的不同之处主要在于：</strong></p>
-<ul>
-<li>  信息加密是公钥加密，私钥解密，确保信息的安全性；</li>
-<li>  数字签名是私钥加密公钥解密，确保数字签名的归属性；</li>
-<li>  登录认证私钥加密，公钥解密。</li>
-</ul>
-<h1 id="如何存储大型数据"><a href="#如何存储大型数据" class="headerlink" title="如何存储大型数据"></a>如何存储大型数据</h1><p>现在众多项目自称是基于区块链的，因为区块的数据大小，格式受限，其实是一些重要的信息，如账户信息，交易信息等放在区块里，其他的程序还是需要中心化的服务器执行，还有一些自身的需要存储的大数据，只是把其中的根节点HASH值，存入区块链。<br>大部分的的项目基于区块链是如下的一个思路，将需要用到区块链的部分抽离出来，逻辑上分成应用系统和区块链系统，用公链（如以太坊）实现区块链的功能，优点如下：</p>
-<ol>
-<li>应用系统，区块链系统分类，最大程度的用原有中心化服务器系统。</li>
-<li>利用公有区块链的网络安全强大，不可篡改等特性保证区块链功能。<br>基于以太坊的应用场景解决方案，一些大量数据可以做如下操作：</li>
-<li>在以太坊智能合约中维护自身区块链的头部信息； →网络安全、防篡改</li>
-<li>自身区块链区块内容放在二级存储（安全的企业存储环境中）；→自身信息隐私保护，省钱</li>
-<li>对于历史头信息进行剪裁；→省钱</li>
-<li>关联以太坊地址和自身身份；→不可抵赖</li>
-</ol>
-<h1 id="IAM的架构模式"><a href="#IAM的架构模式" class="headerlink" title="IAM的架构模式"></a>IAM的架构模式</h1><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634318416611.png" alt="enter description here"><br>IAM环境中包括很多用户和服务提供商。IAM系统为每个用户分配 一个账户以及一组访问能力，用户基于其账户权限及访问能力访问提供商 的服务。可以采用以如下方式利用W3C的DID规范和W3C的可验证声明规范：<br>假设Alice需要一个身份（DID，唯一标识符）。如上图所示，为了创建一个 新的DID，Alice需要在区块链上创建一个数据项，该数据项中包含了随机 生成的标识符、指向其个人档案数据的链接、以及其个人档案数据的哈希。 档案数据中包含了公钥以及一组可验证的声明，所生成的随机标识符现在 成为Alice的DID，因为只有她持有与公钥对应的私钥。<br>可验证声明是由授权机构签名的通证，创建者同时也会在区块链上记录 声明数据的哈希，类似于DID的实现方式。<br>Alice首先前往权威机构获取可验证声明。例如，个人注册部可能是姓名、 地址、出生日期这些信息的负责机构。假设权威机构签发了可验证的声明， Alice首先展示其对DID的所有权，然后提交对可验证声明的请求。为了更新 其个人档案数据，Alice需要在区块链中添加一个新的数据项，其中包含 更新后的个人档案数据的新的哈希。<br>在验证Alice对DID的所有权时使用的挑战-应答协议，验证者会生成一个随机 种子，然后使用ALice的公钥进行加密，接下来Alice需要使用其私钥解密种子 以展示其确实持有公钥对应的私钥。<br>另一个希望识别Alice身份的用户或机构，例如Bob，首先会从Alice处接收到 DID，然后从区块链上读取所有该DID相关的数据并进行验证。Bob可以同样的 挑战-应答方式验证Alice的身份。</p>
-<h1 id="联盟链"><a href="#联盟链" class="headerlink" title="联盟链"></a>联盟链</h1><p>联盟链，只针对特定某个群体的成员和有限的第三方，内部指定多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定，其他接入节点可以参与交易，但不过问记账过程，其他第三方可以通过该区块链开放的API进行限定查询。为了获得更好的性能，联盟链对于共识或验证节点的配置和网络环境有一定要求。有了准入机制，可以使得交易性能更容易提高，避免由参次不齐的参与者产生的一些问题。</p>
-<h1 id="区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？"><a href="#区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？" class="headerlink" title="区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？"></a>区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？</h1><p>我们必须了解清楚两个概念：</p>
-<ol>
-<li> 区块链数据；</li>
-<li> 链上数据；<h2 id="首先：区块链数据-包括区块数据和状态数据两者"><a href="#首先：区块链数据-包括区块数据和状态数据两者" class="headerlink" title="首先：区块链数据(包括区块数据和状态数据两者)"></a>首先：区块链数据(包括区块数据和状态数据两者)</h2></li>
-<li> 区块数据描述的实际是区块链上面发生的每一笔交易的记录（如小帅给小王转账了50元，小帅充值了20元之类的数据）</li>
-<li> 而状态数据则是记录了每个账户和智能合约的当前状态（如小帅余额200元，小王20元）<br>而无论是区块数据还是状态数据都是由我们的区块链节点使用和储存的，区块链节点是一个<strong>程序</strong>，允许在我们的电脑，虚拟机等上，而多个节点通过网络的方式进行链接最终形成了完整的区块链网络。<br>而这其中区块链节点的数据存储最普遍的方式就是存入我们的磁盘中间，而我们的区块链不会直接的访问我们的磁盘，而是通过特定的数据库如LevelIDB，RocksDB，MySQL等独立和分布式的数据库来操作我们的数据（目前最重要的另外一个技术就是加入缓存区域，减少磁盘的寻道时间，加快区块链对磁盘数据的使用和存储），而相比于直接访问磁盘，用数据库作为中间媒介的<strong>特定数据访问模型对区块链节点更加的友好。</strong><br>所以数据存储的过程可以解释为<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634315188441.png" alt="enter description here"></li>
-</ol>
-<p><strong>而数据库分为独立和嵌入式：其最大的区别就是是否需要独立的部署，嵌入式的数据库和区块链节点整合在同一个进程中间，同动同停，基本感受不到独立的存在感。</strong></p>
-<h2 id="其次：链上数据"><a href="#其次：链上数据" class="headerlink" title="其次：链上数据"></a>其次：链上数据</h2><p><strong>解释：链上数据是直接或者间接由区块链共识产生的数据；</strong></p>
-<ol>
-<li>而回到我们的问题，我们会发现区块链中间的区块数据和状态数据并不是凭空的产生的，区块中间的数据是因为不同节点之间的交易数据存储然后被广播到所有区块链节点的共识状态，所以区块数据也是因为共识而产生的数据之一；</li>
-<li>而反观状态数据，由于交易的产生，共识的一致，最终会引起状态的改变，所以在此角度中间，状态数据也一样可以被认为是链上数据；</li>
-</ol>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>区块链</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>区块链概述</title>
-    <url>/2021/09/20/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BE%E6%A6%82%E8%BF%B0/</url>
-    <content><![CDATA[<h1 id="百度百科"><a href="#百度百科" class="headerlink" title="百度百科"></a>百度百科</h1><p>区块链是一个信息技术领域的术语。从本质上讲，它是一个<strong>共享数据库</strong>，存储于其中的数据或信息，具有“不可伪造”“全程留痕”“可以追溯”“公开透明”“集体维护”等特征。基于这些特征，区块链技术奠定了坚实的“信任”基础，创造了可靠的“合作”机制，具有广阔的运用前景。</p>
-<ul>
-<li>去中心化。区块链技术不依赖额外的第三方管理机构或硬件设施，没有中心管制，除了自成一体的区块链本身，通过分布式核算和存储，各个节点实现了信息自我验证、传递和管理。去中心化是区块链最突出最本质的特征。</li>
-<li>开放性。区块链技术基础是开源的，除了交易各方的私有信息被加密外，区块链的数据对所有人开放，任何人都可以通过公开的接口查询区块链数据和开发相关应用，因此整个系统信息高度透。</li>
-<li>独立性。基于协商一致的规范和协议(类似比特币采用的哈希算法等各种数学算法)，整个区块链系统不依赖其他第三方，所有节点能够在系统内自动安全地验证、交换数据，不需要任何人为的干预。</li>
-<li>安全性。只要不能掌控全部数据节点的51%，就无法肆意操控修改网络数据，这使区块链本身变得相对安全，避免了主观人为的数据变更。</li>
-<li>匿名性。除非有法律规范要求，单从技术上来讲，各区块节点的身份信息不需要公开或验证，信息传递可以匿名进行。<h1 id="实际实现"><a href="#实际实现" class="headerlink" title="实际实现"></a>实际实现</h1><h2 id="简易区块链"><a href="#简易区块链" class="headerlink" title="简易区块链"></a>简易区块链</h2>一个简易的区块链，必须有下面几个功能：</li>
-<li>  生成创世纪块</li>
-<li>  读取文件夹下的所有区块</li>
-<li>  查找创世纪块</li>
-<li>  查找区块链的最后一个区块</li>
-<li>  在区块链的尾部追加区块</li>
-<li>  对区块的SHA计算<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632124361597.png" alt="enter description here"><br>一个块Block一般有：</li>
-<li>  index 块号</li>
-<li>  previousHash 上一个区块的hash值</li>
-<li>  timestamp 时间戳</li>
-<li>  data 存放的数据</li>
-<li>  hash 区块的hash值<br>我们每生成一个区块，我们都会给这个区块按照特定的hash算法，来得到一个hash值，一般来说，只要这个区块的index,previoushash,timestamp,data有改动，那么它所算出的hash值也会改变，所以当你想要篡改某个区块的数据时，你需要将后面所有的区块的previoushash都进行篡改。</li>
-</ul>
-<hr>
-<p><a href="https://blog.csdn.net/TuxedoLinux/article/details/86764142">区块链的数据结构</a><br><a href="https://blog.csdn.net/qq_43289711/article/details/116082281">区块链的简单实现</a><br><a href="https://blog.csdn.net/weixin_44046447/article/details/111966999">简易区块链C语言实现</a><br><a href="https://blog.csdn.net/maxzero/article/details/81773443?spm=1001.2014.3001.5501">区块链学习</a><br><a href="https://blog.csdn.net/u011583927/article/details/80905740">SHA256算法原理详解</a></p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>区块链</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>寻址</title>
     <url>/2021/11/01/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
@@ -823,6 +827,79 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
 <li>基址加变址方式<br>图略</li>
 <li>相对寻址（浮动编址）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086566.png" alt="enter description here"></li>
 <li>页面寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086567.png" alt="enter description here"></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+        <tag>计组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>寻址与指令</title>
+    <url>/2021/09/15/%E8%AF%BE/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
+<ul>
+<li>操作数的位置<ul>
+<li>堆栈<ul>
+<li>主存开辟（软堆栈）</li>
+<li>CPU中的寄存器组组成（硬堆栈）</li>
+</ul>
+</li>
+<li>寄存器<ul>
+<li>CPU寄存器</li>
+<li>外设寄存器</li>
+</ul>
+</li>
+<li>存储器<ul>
+<li>主存</li>
+<li>外存<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086568.png" alt="enter description here"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a href="https://dyinjin.github.io/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/">x86具体操作</a></p>
+<ul>
+<li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
+<li>直接寻址类<ul>
+<li>直接寻址（主存直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086555.png" alt="enter description here"></li>
+<li>寄存器寻址（寄存器直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086556.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>间接寻址类<ul>
+<li>间接寻址（主存间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086557.png" alt="enter description here"></li>
+<li>寄存器间接寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086558.png" alt="enter description here"></li>
+<li>自增、减型寄存器间址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086559.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086560.png" alt="enter description here"></li>
+<li>堆栈寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086561.png" alt="enter description here"></li>
+<li>多重间接寻址（主存多重间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086562.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>变址类<ul>
+<li>变址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086563.png" alt="enter description here"></li>
+<li>基址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086564.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086565.png" alt="comparison"></li>
+<li>基址加变址方式<br>图略</li>
+<li>相对寻址（浮动编址）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086566.png" alt="enter description here"></li>
+<li>页面寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086567.png" alt="enter description here"><h1 id="指令-未完"><a href="#指令-未完" class="headerlink" title="指令(未完)"></a>指令(未完)</h1></li>
+</ul>
+</li>
+<li>传送类指令<ul>
+<li>一般传送指令</li>
+<li>堆栈指令</li>
+<li>数据交换指令</li>
+</ul>
+</li>
+<li>输入/输出(I/O)指令<ul>
+<li>外围设备编址<br>  ① 对外围设备单独编址<ul>
+<li>1）单独编址到设备级</li>
+<li>2）单独编址到寄存器级：<br>② 外围设备与主存储器统一编址</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -902,79 +979,6 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
         <category>笔记</category>
       </categories>
       <tags>
-        <tag>计组</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>寻址与指令</title>
-    <url>/2021/09/15/%E8%AF%BE/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
-<ul>
-<li>操作数的位置<ul>
-<li>堆栈<ul>
-<li>主存开辟（软堆栈）</li>
-<li>CPU中的寄存器组组成（硬堆栈）</li>
-</ul>
-</li>
-<li>寄存器<ul>
-<li>CPU寄存器</li>
-<li>外设寄存器</li>
-</ul>
-</li>
-<li>存储器<ul>
-<li>主存</li>
-<li>外存<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086568.png" alt="enter description here"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a href="https://dyinjin.github.io/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/">x86具体操作</a></p>
-<ul>
-<li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
-<li>直接寻址类<ul>
-<li>直接寻址（主存直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086555.png" alt="enter description here"></li>
-<li>寄存器寻址（寄存器直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086556.png" alt="enter description here"></li>
-</ul>
-</li>
-<li>间接寻址类<ul>
-<li>间接寻址（主存间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086557.png" alt="enter description here"></li>
-<li>寄存器间接寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086558.png" alt="enter description here"></li>
-<li>自增、减型寄存器间址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086559.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086560.png" alt="enter description here"></li>
-<li>堆栈寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086561.png" alt="enter description here"></li>
-<li>多重间接寻址（主存多重间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086562.png" alt="enter description here"></li>
-</ul>
-</li>
-<li>变址类<ul>
-<li>变址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086563.png" alt="enter description here"></li>
-<li>基址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086564.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086565.png" alt="comparison"></li>
-<li>基址加变址方式<br>图略</li>
-<li>相对寻址（浮动编址）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086566.png" alt="enter description here"></li>
-<li>页面寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086567.png" alt="enter description here"><h1 id="指令-未完"><a href="#指令-未完" class="headerlink" title="指令(未完)"></a>指令(未完)</h1></li>
-</ul>
-</li>
-<li>传送类指令<ul>
-<li>一般传送指令</li>
-<li>堆栈指令</li>
-<li>数据交换指令</li>
-</ul>
-</li>
-<li>输入/输出(I/O)指令<ul>
-<li>外围设备编址<br>  ① 对外围设备单独编址<ul>
-<li>1）单独编址到设备级</li>
-<li>2）单独编址到寄存器级：<br>② 外围设备与主存储器统一编址</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
         <tag>计组</tag>
       </tags>
   </entry>
@@ -1179,6 +1183,54 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
       </tags>
   </entry>
   <entry>
+    <title>汇编3</title>
+    <url>/2021/09/17/%E8%AF%BE/%E6%B1%87%E7%BC%963/</url>
+    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以下</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">cx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ax</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">dx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ds</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">bp</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>全错:(<br>其它寄存器不能用于寻址，不能基址+基址或变址+变址</p>
+<h2 id="注意bp"><a href="#注意bp" class="headerlink" title="注意bp"></a>注意bp</h2><p>bp默认段寄存器为ss(栈段)，且bp+ 的段寄存器也为ss</p>
+<hr>
+<p>可单独使用</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>]</span><br></pre></td></tr></table></figure>
+<p>可基址搭配变址</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>加上立即数(idata)等等，详细分类以下</p>
+<h2 id="可见"><a href="#可见" class="headerlink" title="可见"></a><a href="https://dyinjin.github.io/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/4/">可见</a></h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796912.png" alt="enter description here"></p>
+<h3 id="ptr"><a href="#ptr" class="headerlink" title="ptr"></a>ptr</h3><p>byte ptr或word ptr指明内存单元长度</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>],<span class="number">1</span></span><br><span class="line"><span class="keyword">inc</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> [<span class="built_in">bx</span>]<span class="comment">;否则是将由地址bx和地址bx+1组成的一个字加一</span></span><br></pre></td></tr></table></figure>
+<p>push、pop一定针对字型(16)</p>
+<h1 id="div"><a href="#div" class="headerlink" title="div"></a>div</h1><p>其中<br>除数：8位和16位两种<br>被除数：默认放在 ax 或 dx和ax 中(dx存放高16位，ax存放低16位)<br>如果除数为8位，则ax中al存储商ah存储余数；如果除数为16位，则ax存储商dx存储余数</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (al)=(ax)/((ds)*16+0)    之商<br>        (ah)=(ax)/((ds)*16+0)  之余</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (ax)=[(dx)*10000h+(ax)]/((ds)*16+0)    之商<br>        (dx)=[(dx)*10000h+(ax)]/((ds)*16+0)  之余</p>
+<h1 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h1><p>即修改cs、ip的指令<br>段内转移：只修改ip，比如jmp ax<br>段间转移：同时修改cs:ip，比如jmp 1000:0<br>短转移：IP的修改范围为-128字节～127字节（2的8次方，8位）<br>近转移：IP的修改范围为-32768字节～32767字节（2的16次方，16位）</p>
+<h2 id="JMP标号转移"><a href="#JMP标号转移" class="headerlink" title="JMP标号转移"></a>JMP标号转移</h2><h3 id="jmp-short-s"><a href="#jmp-short-s" class="headerlink" title="jmp short s"></a>jmp short s</h3><p>转到标号处执行命令<br>段内短转移<br>范围-128～127</p>
+<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">jmp</span> short s</span><br><span class="line"><span class="symbol">s:</span> ....</span><br></pre></td></tr></table></figure>
+<h3 id="jmp-near-ptr-s"><a href="#jmp-near-ptr-s" class="headerlink" title="jmp near ptr s"></a>jmp near ptr s</h3><p>转到标号处执行命令<br>段内近转移<br>范围-32768～32767</p>
+<h3 id="jmp-far-ptr-s"><a href="#jmp-far-ptr-s" class="headerlink" title="jmp far ptr s"></a>jmp far ptr s</h3><p>转到标号处执行命令<br>段间转移，同时修改CS和IP</p>
+<h2 id="JMP地址转移"><a href="#JMP地址转移" class="headerlink" title="JMP地址转移"></a>JMP地址转移</h2><h3 id="jmp-16位寄存器"><a href="#jmp-16位寄存器" class="headerlink" title="jmp [16位寄存器]"></a>jmp [16位寄存器]</h3><h3 id="jmp-word-ptr-段寄存器-偏移"><a href="#jmp-word-ptr-段寄存器-偏移" class="headerlink" title="jmp word ptr 段寄存器:[偏移]"></a>jmp word ptr 段寄存器:[偏移]</h3><p>段内转移<br>从内存单元地址出开始存放着一个字，是转移的目的偏移地址，改变IP</p>
+<h3 id="jmp-dword-ptr-段寄存器-偏移"><a href="#jmp-dword-ptr-段寄存器-偏移" class="headerlink" title="jmp dword ptr 段寄存器:[偏移]"></a>jmp dword ptr 段寄存器:[偏移]</h3><p>段间转移<br>从内存单元地址处开始存放着两个字，高地址处的字是转移的目的段地址，低地址处是转移的目的偏移地址，同时改变CS、IP</p>
+<h2 id="JCXZ条件转移"><a href="#JCXZ条件转移" class="headerlink" title="JCXZ条件转移"></a>JCXZ条件转移</h2><p>短转移</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if((cx)==0) jmp short 标号;</span><br></pre></td></tr></table></figure>
+<p>这么个意思</p>
+<h2 id="LOOP"><a href="#LOOP" class="headerlink" title="LOOP"></a>LOOP</h2><p>循环，本质也是转移指令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(cx)--;</span><br><span class="line">if((cx)!=0)jmp short 标号;</span><br></pre></td></tr></table></figure>
+<h2 id="NOP"><a href="#NOP" class="headerlink" title="NOP"></a>NOP</h2><p>啥也不是，填充</p>
+<h2 id="OFFSET"><a href="#OFFSET" class="headerlink" title="OFFSET"></a>OFFSET</h2><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line"><span class="symbol">s:</span> ...</span><br></pre></td></tr></table></figure>
+<p>取标号地址</p>
+<hr>
+<p>使用到栈时，单步debug(t)会覆盖栈ss，而(g)的结果正确<br>涉及单步debug时的中断原理</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>汇编语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>汇编4</title>
     <url>/2021/09/17/%E8%AF%BE/%E6%B1%87%E7%BC%964/</url>
     <content><![CDATA[<h1 id="题"><a href="#题" class="headerlink" title="题"></a>题</h1><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:codesg</span><br><span class="line">codesg <span class="meta">segment</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,offect s2</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span>:[<span class="built_in">si</span>]</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cs</span>:[<span class="built_in">di</span>],<span class="built_in">ax</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s0:</span></span><br><span class="line">	jump short s</span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s1:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">s2:</span></span><br><span class="line">	<span class="keyword">jmp</span> short s1</span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line"></span><br><span class="line">codesg ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
@@ -1281,54 +1333,6 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
       </tags>
   </entry>
   <entry>
-    <title>汇编3</title>
-    <url>/2021/09/17/%E8%AF%BE/%E6%B1%87%E7%BC%963/</url>
-    <content><![CDATA[<h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以下</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">cx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ax</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">dx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ds</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">bp</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
-<p>全错:(<br>其它寄存器不能用于寻址，不能基址+基址或变址+变址</p>
-<h2 id="注意bp"><a href="#注意bp" class="headerlink" title="注意bp"></a>注意bp</h2><p>bp默认段寄存器为ss(栈段)，且bp+ 的段寄存器也为ss</p>
-<hr>
-<p>可单独使用</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>]</span><br></pre></td></tr></table></figure>
-<p>可基址搭配变址</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
-<p>加上立即数(idata)等等，详细分类以下</p>
-<h2 id="可见"><a href="#可见" class="headerlink" title="可见"></a><a href="https://dyinjin.github.io/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/4/">可见</a></h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796912.png" alt="enter description here"></p>
-<h3 id="ptr"><a href="#ptr" class="headerlink" title="ptr"></a>ptr</h3><p>byte ptr或word ptr指明内存单元长度</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>],<span class="number">1</span></span><br><span class="line"><span class="keyword">inc</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> [<span class="built_in">bx</span>]<span class="comment">;否则是将由地址bx和地址bx+1组成的一个字加一</span></span><br></pre></td></tr></table></figure>
-<p>push、pop一定针对字型(16)</p>
-<h1 id="div"><a href="#div" class="headerlink" title="div"></a>div</h1><p>其中<br>除数：8位和16位两种<br>被除数：默认放在 ax 或 dx和ax 中(dx存放高16位，ax存放低16位)<br>如果除数为8位，则ax中al存储商ah存储余数；如果除数为16位，则ax存储商dx存储余数</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>即： (al)=(ax)/((ds)*16+0)    之商<br>        (ah)=(ax)/((ds)*16+0)  之余</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<p>即： (ax)=[(dx)*10000h+(ax)]/((ds)*16+0)    之商<br>        (dx)=[(dx)*10000h+(ax)]/((ds)*16+0)  之余</p>
-<h1 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h1><p>即修改cs、ip的指令<br>段内转移：只修改ip，比如jmp ax<br>段间转移：同时修改cs:ip，比如jmp 1000:0<br>短转移：IP的修改范围为-128字节～127字节（2的8次方，8位）<br>近转移：IP的修改范围为-32768字节～32767字节（2的16次方，16位）</p>
-<h2 id="JMP标号转移"><a href="#JMP标号转移" class="headerlink" title="JMP标号转移"></a>JMP标号转移</h2><h3 id="jmp-short-s"><a href="#jmp-short-s" class="headerlink" title="jmp short s"></a>jmp short s</h3><p>转到标号处执行命令<br>段内短转移<br>范围-128～127</p>
-<figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">jmp</span> short s</span><br><span class="line"><span class="symbol">s:</span> ....</span><br></pre></td></tr></table></figure>
-<h3 id="jmp-near-ptr-s"><a href="#jmp-near-ptr-s" class="headerlink" title="jmp near ptr s"></a>jmp near ptr s</h3><p>转到标号处执行命令<br>段内近转移<br>范围-32768～32767</p>
-<h3 id="jmp-far-ptr-s"><a href="#jmp-far-ptr-s" class="headerlink" title="jmp far ptr s"></a>jmp far ptr s</h3><p>转到标号处执行命令<br>段间转移，同时修改CS和IP</p>
-<h2 id="JMP地址转移"><a href="#JMP地址转移" class="headerlink" title="JMP地址转移"></a>JMP地址转移</h2><h3 id="jmp-16位寄存器"><a href="#jmp-16位寄存器" class="headerlink" title="jmp [16位寄存器]"></a>jmp [16位寄存器]</h3><h3 id="jmp-word-ptr-段寄存器-偏移"><a href="#jmp-word-ptr-段寄存器-偏移" class="headerlink" title="jmp word ptr 段寄存器:[偏移]"></a>jmp word ptr 段寄存器:[偏移]</h3><p>段内转移<br>从内存单元地址出开始存放着一个字，是转移的目的偏移地址，改变IP</p>
-<h3 id="jmp-dword-ptr-段寄存器-偏移"><a href="#jmp-dword-ptr-段寄存器-偏移" class="headerlink" title="jmp dword ptr 段寄存器:[偏移]"></a>jmp dword ptr 段寄存器:[偏移]</h3><p>段间转移<br>从内存单元地址处开始存放着两个字，高地址处的字是转移的目的段地址，低地址处是转移的目的偏移地址，同时改变CS、IP</p>
-<h2 id="JCXZ条件转移"><a href="#JCXZ条件转移" class="headerlink" title="JCXZ条件转移"></a>JCXZ条件转移</h2><p>短转移</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if((cx)==0) jmp short 标号;</span><br></pre></td></tr></table></figure>
-<p>这么个意思</p>
-<h2 id="LOOP"><a href="#LOOP" class="headerlink" title="LOOP"></a>LOOP</h2><p>循环，本质也是转移指令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(cx)--;</span><br><span class="line">if((cx)!=0)jmp short 标号;</span><br></pre></td></tr></table></figure>
-<h2 id="NOP"><a href="#NOP" class="headerlink" title="NOP"></a>NOP</h2><p>啥也不是，填充</p>
-<h2 id="OFFSET"><a href="#OFFSET" class="headerlink" title="OFFSET"></a>OFFSET</h2><figure class="highlight x86asm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line"><span class="symbol">s:</span> ...</span><br></pre></td></tr></table></figure>
-<p>取标号地址</p>
-<hr>
-<p>使用到栈时，单步debug(t)会覆盖栈ss，而(g)的结果正确<br>涉及单步debug时的中断原理</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-      </categories>
-      <tags>
-        <tag>汇编语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>汇编6</title>
     <url>/2021/09/19/%E8%AF%BE/%E6%B1%87%E7%BC%966/</url>
     <content><![CDATA[<h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h1><p>CPU有这样一种功能：在执行完当前指令后，检测到cpu外部发送过来的或内部产生的一种特殊信息，且可以立即对接收到信息进行处理，这种信息呢，就叫中断信息。</p>
@@ -1410,6 +1414,7 @@ int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用
     <url>/2021/11/02/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.6/</url>
     <content><![CDATA[<h1 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h1><p>【结构】AwesomeDungeonForge-1.16.5-1.1.1.jar<br>【装备】饰品？Alterlands+1.2+P2+Beta+v1.jar###已弃用<br>【生物】更多生物(包含但表现于落选生物)mobsgenus-0.2.jar</p>
 <h1 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h1><p>【结构】更多结构repurposed_structures_forge-3.4.0+1.16.5.jar<br>【前置4】cavebiomeapi-1.16.5-1.4.1.jar<br>【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar</p>
+<h1 id="ABANDON"><a href="#ABANDON" class="headerlink" title="ABANDON"></a>ABANDON</h1><p>【结构】（墙壁宝石快）Forgotten+Treasures+V12+1.16.5<br>原因详见<a href="https://dyinjin.github.io/2021/09/26/MC/debugfile/">debugfile</a></p>
 ]]></content>
       <categories>
         <category>MC</category>
