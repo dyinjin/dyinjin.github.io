@@ -81,7 +81,7 @@
   </entry>
   <entry>
     <title>Hyperledger Fabric官方文档#0</title>
-    <url>/2021/11/08/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/HyperledgerFabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#0/</url>
+    <url>/2021/11/08/Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#0/</url>
     <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="什么是区块链"><a href="#什么是区块链" class="headerlink" title="什么是区块链"></a>什么是区块链</h2><p>区块链网络的核心是一个<strong>分布式账本</strong>，记录网络上发生的所有交易（数据变化）。<br>区块链使用 <strong>智能合约</strong> 来提供对账本的受控访问。<br>保持账本在整个网络中同步的过程称为 <strong>共识</strong> 。</p>
 <h2 id="为什么区块链有用"><a href="#为什么区块链有用" class="headerlink" title="为什么区块链有用"></a>为什么区块链有用</h2><p>当然有用…</p>
 <h2 id="什么是Hyperledger-Fabric"><a href="#什么是Hyperledger-Fabric" class="headerlink" title="什么是Hyperledger Fabric"></a>什么是Hyperledger Fabric</h2><p>Hyperledger Fabric 与其他区块链系统不同的地方是 <strong>私有</strong> 和 <strong>许可</strong> 。与允许未知身份参与网络的开放式非许可系统（需要诸如“工作量证明”之类的协议来验证交易并保护网络）不同，Hyperledger Fabric 网络的成员需要从可信赖的 <strong>成员服务提供者（MSP）</strong> 注册。<br>Hyperledger Fabric 还提供创建 <strong>通道</strong> 的功能，允许一组参与者创建各自的交易账本。</p>
