@@ -60,28 +60,8 @@
       </tags>
   </entry>
   <entry>
-    <title>minecraft forge maker#0</title>
-    <url>/2021/11/08/MC/minecraft%20debug%20log/</url>
-    <content><![CDATA[<h1 id="MinecraftForgeMDK安装注意"><a href="#MinecraftForgeMDK安装注意" class="headerlink" title="MinecraftForgeMDK安装注意"></a>MinecraftForgeMDK安装注意</h1><p>就是跑gradlew.bat tasks<br>我的版本：<br>MDK：forge-1.16.5-36.2.8-mdk.zip<br>JDK：jdk1.8.0_311<br>(jdk17测试报错)</p>
-<h2 id="JAVA-HOME的奇葩要求"><a href="#JAVA-HOME的奇葩要求" class="headerlink" title="JAVA_HOME的奇葩要求"></a>JAVA_HOME的奇葩要求</h2><ul>
-<li>不能有其它路径（建议先剪切保存，安装后回改）</li>
-<li>最后不能有分号</li>
-<li>不能下到bin目录,即：<code>C:\Program Files\Java\jdk1.8.0_311</code></li>
-<li>然后日常的PATH为%JAVA_HOME%/bin</li>
-<li>最后CLASSPATH直接<code>.</code>缺省<br>否则：<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1636313580367.png" alt="enter description here"><h2 id="gradlew命令变更"><a href="#gradlew命令变更" class="headerlink" title="gradlew命令变更"></a>gradlew命令变更</h2>相对于土球球教程<code>gradlew.bat setupDecompWorkspace</code>变更为<code>gradlew.bat tasks</code></li>
-</ul>
-]]></content>
-      <categories>
-        <category>MC</category>
-      </categories>
-      <tags>
-        <tag>MC</tag>
-        <tag>forge</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hyperledger Fabric官方文档#0</title>
-    <url>/2021/11/08/Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#0/</url>
+    <url>/2021/11/09/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="什么是区块链"><a href="#什么是区块链" class="headerlink" title="什么是区块链"></a>什么是区块链</h2><p>区块链网络的核心是一个<strong>分布式账本</strong>，记录网络上发生的所有交易（数据变化）。<br>区块链使用 <strong>智能合约</strong> 来提供对账本的受控访问。<br>保持账本在整个网络中同步的过程称为 <strong>共识</strong> 。</p>
 <h2 id="为什么区块链有用"><a href="#为什么区块链有用" class="headerlink" title="为什么区块链有用"></a>为什么区块链有用</h2><p>当然有用…</p>
 <h2 id="什么是Hyperledger-Fabric"><a href="#什么是Hyperledger-Fabric" class="headerlink" title="什么是Hyperledger Fabric"></a>什么是Hyperledger Fabric</h2><p>Hyperledger Fabric 与其他区块链系统不同的地方是 <strong>私有</strong> 和 <strong>许可</strong> 。与允许未知身份参与网络的开放式非许可系统（需要诸如“工作量证明”之类的协议来验证交易并保护网络）不同，Hyperledger Fabric 网络的成员需要从可信赖的 <strong>成员服务提供者（MSP）</strong> 注册。<br>Hyperledger Fabric 还提供创建 <strong>通道</strong> 的功能，允许一组参与者创建各自的交易账本。</p>
@@ -134,6 +114,26 @@
       </categories>
       <tags>
         <tag>区块链</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>minecraft forge maker#0</title>
+    <url>/2021/11/08/MC/minecraft%20debug%20log/</url>
+    <content><![CDATA[<h1 id="MinecraftForgeMDK安装注意"><a href="#MinecraftForgeMDK安装注意" class="headerlink" title="MinecraftForgeMDK安装注意"></a>MinecraftForgeMDK安装注意</h1><p>就是跑gradlew.bat tasks<br>我的版本：<br>MDK：forge-1.16.5-36.2.8-mdk.zip<br>JDK：jdk1.8.0_311<br>(jdk17测试报错)</p>
+<h2 id="JAVA-HOME的奇葩要求"><a href="#JAVA-HOME的奇葩要求" class="headerlink" title="JAVA_HOME的奇葩要求"></a>JAVA_HOME的奇葩要求</h2><ul>
+<li>不能有其它路径（建议先剪切保存，安装后回改）</li>
+<li>最后不能有分号</li>
+<li>不能下到bin目录,即：<code>C:\Program Files\Java\jdk1.8.0_311</code></li>
+<li>然后日常的PATH为%JAVA_HOME%/bin</li>
+<li>最后CLASSPATH直接<code>.</code>缺省<br>否则：<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1636313580367.png" alt="enter description here"><h2 id="gradlew命令变更"><a href="#gradlew命令变更" class="headerlink" title="gradlew命令变更"></a>gradlew命令变更</h2>相对于土球球教程<code>gradlew.bat setupDecompWorkspace</code>变更为<code>gradlew.bat tasks</code></li>
+</ul>
+]]></content>
+      <categories>
+        <category>MC</category>
+      </categories>
+      <tags>
+        <tag>MC</tag>
+        <tag>forge</tag>
       </tags>
   </entry>
   <entry>
