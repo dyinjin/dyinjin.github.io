@@ -182,6 +182,118 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/17/%E8%AF%BE/%E6%B1%87%E7%BC%963/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/17/%E8%AF%BE/%E6%B1%87%E7%BC%963/" class="post-title-link" itemprop="url">汇编3</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-17 01:19:42" itemprop="dateCreated datePublished" datetime="2021-09-17T01:19:42+08:00">2021-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-09-18 19:08:54" itemprop="dateModified" datetime="2021-09-18T19:08:54+08:00">2021-09-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p> bx（基址寄存器）bp（基址指针）si（源变址寄存器）di（目的变址寄存器）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796811.png" alt="enter description here"></p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以下</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">cx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ax</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">dx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">ds</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">bp</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>全错:(<br>其它寄存器不能用于寻址，不能基址+基址或变址+变址</p>
+<h2 id="注意bp"><a href="#注意bp" class="headerlink" title="注意bp"></a>注意bp</h2><p>bp默认段寄存器为ss(栈段)，且bp+ 的段寄存器也为ss</p>
+<hr>
+<p>可单独使用</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>]</span><br></pre></td></tr></table></figure>
+<p>可基址搭配变址</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bx</span>+<span class="built_in">di</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">si</span>]</span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,[<span class="built_in">bp</span>+<span class="built_in">di</span>]</span><br></pre></td></tr></table></figure>
+<p>加上立即数(idata)等等，详细分类以下</p>
+<h2 id="可见"><a href="#可见" class="headerlink" title="可见"></a><a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/15/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/4/">可见</a></h2><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631812796912.png" alt="enter description here"></p>
+<h3 id="ptr"><a href="#ptr" class="headerlink" title="ptr"></a>ptr</h3><p>byte ptr或word ptr指明内存单元长度</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>],<span class="number">1</span></span><br><span class="line"><span class="keyword">inc</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> [<span class="built_in">bx</span>]<span class="comment">;否则是将由地址bx和地址bx+1组成的一个字加一</span></span><br></pre></td></tr></table></figure>
+<p>push、pop一定针对字型(16)</p>
+<h1 id="div"><a href="#div" class="headerlink" title="div"></a>div</h1><p>其中<br>除数：8位和16位两种<br>被除数：默认放在 ax 或 dx和ax 中(dx存放高16位，ax存放低16位)<br>如果除数为8位，则ax中al存储商ah存储余数；如果除数为16位，则ax存储商dx存储余数</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (al)=(ax)/((ds)*16+0)    之商<br>        (ah)=(ax)/((ds)*16+0)  之余</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">div</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">ds</span>:[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>即： (ax)=[(dx)*10000h+(ax)]/((ds)*16+0)    之商<br>        (dx)=[(dx)*10000h+(ax)]/((ds)*16+0)  之余</p>
+<h1 id="转移指令"><a href="#转移指令" class="headerlink" title="转移指令"></a>转移指令</h1><p>即修改cs、ip的指令<br>段内转移：只修改ip，比如jmp ax<br>段间转移：同时修改cs:ip，比如jmp 1000:0<br>短转移：IP的修改范围为-128字节～127字节（2的8次方，8位）<br>近转移：IP的修改范围为-32768字节～32767字节（2的16次方，16位）</p>
+<h2 id="JMP标号转移"><a href="#JMP标号转移" class="headerlink" title="JMP标号转移"></a>JMP标号转移</h2><h3 id="jmp-short-s"><a href="#jmp-short-s" class="headerlink" title="jmp short s"></a>jmp short s</h3><p>转到标号处执行命令<br>段内短转移<br>范围-128～127</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">jmp</span> short s</span><br><span class="line"><span class="symbol">s:</span> ....</span><br></pre></td></tr></table></figure>
+<h3 id="jmp-near-ptr-s"><a href="#jmp-near-ptr-s" class="headerlink" title="jmp near ptr s"></a>jmp near ptr s</h3><p>转到标号处执行命令<br>段内近转移<br>范围-32768～32767</p>
+<h3 id="jmp-far-ptr-s"><a href="#jmp-far-ptr-s" class="headerlink" title="jmp far ptr s"></a>jmp far ptr s</h3><p>转到标号处执行命令<br>段间转移，同时修改CS和IP</p>
+<h2 id="JMP地址转移"><a href="#JMP地址转移" class="headerlink" title="JMP地址转移"></a>JMP地址转移</h2><h3 id="jmp-16位寄存器"><a href="#jmp-16位寄存器" class="headerlink" title="jmp [16位寄存器]"></a>jmp [16位寄存器]</h3><h3 id="jmp-word-ptr-段寄存器-偏移"><a href="#jmp-word-ptr-段寄存器-偏移" class="headerlink" title="jmp word ptr 段寄存器:[偏移]"></a>jmp word ptr 段寄存器:[偏移]</h3><p>段内转移<br>从内存单元地址出开始存放着一个字，是转移的目的偏移地址，改变IP</p>
+<h3 id="jmp-dword-ptr-段寄存器-偏移"><a href="#jmp-dword-ptr-段寄存器-偏移" class="headerlink" title="jmp dword ptr 段寄存器:[偏移]"></a>jmp dword ptr 段寄存器:[偏移]</h3><p>段间转移<br>从内存单元地址处开始存放着两个字，高地址处的字是转移的目的段地址，低地址处是转移的目的偏移地址，同时改变CS、IP</p>
+<h2 id="JCXZ条件转移"><a href="#JCXZ条件转移" class="headerlink" title="JCXZ条件转移"></a>JCXZ条件转移</h2><p>短转移</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if((cx)==0) jmp short 标号;</span><br></pre></td></tr></table></figure>
+<p>这么个意思</p>
+<h2 id="LOOP"><a href="#LOOP" class="headerlink" title="LOOP"></a>LOOP</h2><p>循环，本质也是转移指令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(cx)--;</span><br><span class="line">if((cx)!=0)jmp short 标号;</span><br></pre></td></tr></table></figure>
+<h2 id="NOP"><a href="#NOP" class="headerlink" title="NOP"></a>NOP</h2><p>啥也不是，填充</p>
+<h2 id="OFFSET"><a href="#OFFSET" class="headerlink" title="OFFSET"></a>OFFSET</h2><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">di</span>,offect s</span><br><span class="line"><span class="symbol">s:</span> ...</span><br></pre></td></tr></table></figure>
+<p>取标号地址</p>
+<hr>
+<p>使用到栈时，单步debug(t)会覆盖栈ss，而(g)的结果正确<br>涉及单步debug时的中断原理</p>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/15/%E8%AF%BE/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1107,7 +1219,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-14 21:49:30" itemprop="dateModified" datetime="2021-10-14T21:49:30+08:00">2021-10-14</time>
+                <time title="修改时间：2021-11-16 15:25:19" itemprop="dateModified" datetime="2021-11-16T15:25:19+08:00">2021-11-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1131,8 +1243,9 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 
       
           <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>
-<p>没刷新过来时<kbd>Shift</kbd>+<kbd>F5</kbd>刷新试试</p>
 
+<h2 id="网站没刷新过来时Shift-F5刷新试试"><a href="#网站没刷新过来时Shift-F5刷新试试" class="headerlink" title="网站没刷新过来时Shift+F5刷新试试"></a>网站没刷新过来时<kbd>Shift</kbd>+<kbd>F5</kbd>刷新试试</h2><h2 id="永久禁用数字签名"><a href="#永久禁用数字签名" class="headerlink" title="永久禁用数字签名"></a>永久禁用数字签名</h2><p>在管理员模式的cmd下<br><code>bcdedit.exe /set nointegritychecks on</code></p>
+<h2 id="F2文件重命名"><a href="#F2文件重命名" class="headerlink" title="F2文件重命名"></a><kbd>F2</kbd>文件重命名</h2>
       
     </div>
 
@@ -1220,7 +1333,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1269,7 +1382,7 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共65.8k字呐~</span>
+  <span class="post-count">本博客全站共66.6k字呐~</span>
 </div>
 
         

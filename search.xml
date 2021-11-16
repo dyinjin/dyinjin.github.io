@@ -3,13 +3,33 @@
   <entry>
     <title>minecraft debug log</title>
     <url>/2021/09/26/MC/debugfile/</url>
-    <content><![CDATA[<h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="Forgotten-Treasures-已弃用"><a href="#Forgotten-Treasures-已弃用" class="headerlink" title="Forgotten+Treasures(已弃用)"></a>Forgotten+Treasures(已弃用)</h2><p>以下问题已查明，系此模组导致<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635869592303.png" alt="enter description here"></p>
-<h3 id="“耕地消失术”"><a href="#“耕地消失术”" class="headerlink" title="“耕地消失术”"></a>“耕地消失术”</h3><ul>
-<li>表现为自然村庄耕地或玩家耕地在玩家身边几秒内变为普通泥土</li>
+    <content><![CDATA[<h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="【前置10】【辅助】jei-1-16-5-7-7-1-110-jar-old"><a href="#【前置10】【辅助】jei-1-16-5-7-7-1-110-jar-old" class="headerlink" title="【前置10】【辅助】jei-1.16.5-7.7.1.110.jar.old"></a>【前置10】【辅助】jei-1.16.5-7.7.1.110.jar.old</h2><ul>
+<li>jei这之后的几个版本不能使用标签搜索。。</li>
+<li>jei-1.16.5-7.7.1.136此版本可以了</li>
 </ul>
-<h3 id="钟乳石问题"><a href="#钟乳石问题" class="headerlink" title="钟乳石问题"></a>钟乳石问题</h3><p><del>在更新为<code>【前置4】cavebiomeapi-1.16.5-1.4.1.jar 【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar</code>后，钟乳石刷新异常：</del></p>
+<h2 id="【生物】-BETA-dannys-expansion1-16-5-1-0-9-1-jar"><a href="#【生物】-BETA-dannys-expansion1-16-5-1-0-9-1-jar" class="headerlink" title="【生物】[BETA]dannys_expansion1.16.5-1.0.9.1.jar"></a>【生物】[BETA]dannys_expansion1.16.5-1.0.9.1.jar</h2><ul>
+<li>非常优质的生物模组</li>
+<li>待更新或手动调整（生成和掉落物还有问题）</li>
+</ul>
+<h2 id="风铃chime模组"><a href="#风铃chime模组" class="headerlink" title="风铃chime模组"></a>风铃chime模组</h2><ul>
+<li>在1.16.5中缺少与模组衔接的铜风铃合成表与紫水晶风铃合成表</li>
+<li>计划通过kubejs手动添加（已添加）</li>
+</ul>
+<h2 id="【前置13】【生物】【前置12】mysticalworld-1-16-5-0-3-5-24"><a href="#【前置13】【生物】【前置12】mysticalworld-1-16-5-0-3-5-24" class="headerlink" title="【前置13】【生物】【前置12】mysticalworld-1.16.5-0.3.5.24"></a>【前置13】【生物】【前置12】mysticalworld-1.16.5-0.3.5.24</h2><ul>
+<li>此版本银与水银物品贴图有部分混淆</li>
+<li>以简单修复</li>
+</ul>
+<h2 id="【辅助】工具栏inventorio-1-16-forge-1-6-1-jar"><a href="#【辅助】工具栏inventorio-1-16-forge-1-6-1-jar" class="headerlink" title="【辅助】工具栏inventorio-1.16-forge-1.6.1.jar"></a>【辅助】工具栏inventorio-1.16-forge-1.6.1.jar</h2><ul>
+<li>此模组提供的额外工具栏位以及自动切换系统较方便</li>
+<li>但存在三叉戟等蓄力投掷物无法右击蓄力释放的问题</li>
+<li>暂无解决方法</li>
+</ul>
+<h2 id="Forgotten-Treasures-已弃用"><a href="#Forgotten-Treasures-已弃用" class="headerlink" title="Forgotten+Treasures(已弃用)"></a>Forgotten+Treasures(已弃用)</h2><p>以下问题已查明，系此模组<code>Forgotten+Treasures</code>导致<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635869592303.png" alt="enter description here"></p>
 <ul>
-<li>表现为如沙子一样的下落特性，且肉眼可见的作为实体间断刷新<h2 id="Epic-Fight-Mod"><a href="#Epic-Fight-Mod" class="headerlink" title="Epic Fight Mod"></a>Epic Fight Mod</h2></li>
+<li>“耕地消失术”表现为自然村庄耕地或玩家耕地在玩家身边几秒内变为普通泥土</li>
+<li>钟乳石问题<del>在更新为<code>【前置4】cavebiomeapi-1.16.5-1.4.1.jar 【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar</code>后，钟乳石刷新异常：</del>bs表现为如沙子一样的下落特性，且肉眼可见的作为实体间断刷新</li>
+</ul>
+<h2 id="Epic-Fight-Mod"><a href="#Epic-Fight-Mod" class="headerlink" title="Epic Fight Mod"></a>Epic Fight Mod</h2><ul>
 <li>本模组由于为僵尸村民也修改了动作，使用任何其它模组中的僵尸村民都将出现贴图错误。</li>
 <li>本模组对生物也进行了修改，模组生物不会受到本模组的控制。</li>
 <li>本模组对装备显示兼容(如旅行者背包)正在更新</li>
@@ -49,8 +69,39 @@
 <li>此模组系解决”【杂项】储物抽屉StorageDrawers-1.16.3-8.2.2”所导致的间歇性掉帧问题，效果良好<br><del>* 但此观察此模组系通过在一定范围外不加载“抽屉”单元贴图来解决问题，这常常间歇性导致正常地形方块成片贴图不加载（同种类或不同种类，多数情况下为树干贴图消失、岩壁贴图消失等）同时系统直接报错”OpenGL Error 1281: Invalid Value”（此报错可能原因多样，经多次尝试发现系此模组导致）</del></li>
 <li>见下OpenGL</li>
 </ul>
-<h1 id="生物生成调整-待记录"><a href="#生物生成调整-待记录" class="headerlink" title="生物生成调整(待记录)"></a>生物生成调整(待记录)</h1><p>其实之前通过“【辅助】生物生成管理SpawnBalanceUtility-1.36.0.11.jar”改过很多，当时没有做记录，现在可能也忘了<br>原版生物<br>各种水生物<br>三洞穴群系<br>BOSS(特指有屏幕血条的生物)</p>
-<h1 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h1><h2 id="OpenGL-Error-1281-Invalid-Value"><a href="#OpenGL-Error-1281-Invalid-Value" class="headerlink" title="OpenGL Error 1281: Invalid Value"></a><code>OpenGL Error 1281: Invalid Value</code></h2><p><del>老问题，不只是“【优化】储物抽屉优化drawerfps-2.1.jar”的原因，这次表现为水体透明<br>好家伙不查不知道，首先看看OpenGL是个啥吧：<br><code>OpenGL（英语：Open Graphics Library，译名：开放图形库或者“开放式图形库”）是用于渲染2D、3D矢量图形的跨语言、跨平台的应用程序编程接口（API）。这个接口由近350个不同的函数调用组成，用来绘制从简单的图形比特到复杂的三维景象。而另一种程序接口系统是仅用于Microsoft Windows上的Direct3D。OpenGL常用于CAD、虚拟现实、科学可视化程序和电子游戏开发。</code><br>总之不只是我的世界高清修复在用<br>那么看了一下日志，发现和一个叫VBO的东西相关，一查：<br><code>顶点缓存对象（VBO）准许顶点数组数据存放在服务端的高性能显卡内存中，且提供高效数据传输。</code><br>又有知乎大佬说和做水效相关，那么找对问题了，但怎么解决。。。</del><br>这么底层的报错一开始就应该想到是不是JAVA的问题…果然是我JAVA版本低了而已（之前一直确认下了最高版本的JAVA但是忘了启动器这边改成最高版本的）</p>
+<h1 id="生成调整-待记录"><a href="#生成调整-待记录" class="headerlink" title="生成调整(待记录)"></a>生成调整(待记录)</h1><h2 id="矿石"><a href="#矿石" class="headerlink" title="矿石"></a>矿石</h2><ul>
+<li>生成铜的模组有三个，太多了，关闭两个（一个设为1）</li>
+<li>wyrmroost中生成的铂矿太多了，且不可调控，通过强制修改掉落物，使其掉落NNOW中提供的兼容铂粒(好蠢后面发现拿kube可以直接改)</li>
+<li>锡也有两个模组在生成，降低了比例</li>
+<li>铅也调整了在mysticalworld中配置的生成高度等</li>
+</ul>
+<h2 id="生物"><a href="#生物" class="headerlink" title="生物"></a>生物</h2><p>其实之前通过“【辅助】生物生成管理SpawnBalanceUtility-1.36.0.11.jar”改过很多，当时没有做记录，现在可能也忘了<br>原版生物<br>各种水生物<br>三洞穴群系<br>BOSS(特指有屏幕血条的生物)</p>
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><h2 id="data-get-entity-p-SelectedItem"><a href="#data-get-entity-p-SelectedItem" class="headerlink" title="/data get entity @p SelectedItem"></a><code>/data get entity @p SelectedItem</code></h2><p>查看手持物品详细数据<br>非常有用</p>
+<h2 id="OpenGL-Error-1281-Invalid-Value"><a href="#OpenGL-Error-1281-Invalid-Value" class="headerlink" title="OpenGL Error 1281: Invalid Value"></a><code>OpenGL Error 1281: Invalid Value</code></h2><p><del>老问题，不只是“【优化】储物抽屉优化drawerfps-2.1.jar”的原因，这次表现为水体透明<br>好家伙不查不知道，首先看看OpenGL是个啥吧：<br><code>OpenGL（英语：Open Graphics Library，译名：开放图形库或者“开放式图形库”）是用于渲染2D、3D矢量图形的跨语言、跨平台的应用程序编程接口（API）。这个接口由近350个不同的函数调用组成，用来绘制从简单的图形比特到复杂的三维景象。而另一种程序接口系统是仅用于Microsoft Windows上的Direct3D。OpenGL常用于CAD、虚拟现实、科学可视化程序和电子游戏开发。</code><br>总之不只是我的世界高清修复在用<br>那么看了一下日志，发现和一个叫VBO的东西相关，一查：<br><code>顶点缓存对象（VBO）准许顶点数组数据存放在服务端的高性能显卡内存中，且提供高效数据传输。</code><br>又有知乎大佬说和做水效相关，那么找对问题了，但怎么解决。。。</del><br>这么底层的报错一开始就应该想到是不是JAVA的问题…果然是我JAVA版本低了而已（之前一直确认下了最高版本的JAVA但是忘了启动器这边改成最高版本的）</p>
+]]></content>
+      <categories>
+        <category>MC</category>
+      </categories>
+      <tags>
+        <tag>MC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>minecraft kubejs</title>
+    <url>/2021/11/15/MC/minecraft%20kubejs/</url>
+    <content><![CDATA[<p>kubejs系模组<code>【前置41】【辅助】【前置19】或【前置2】(添加合成表矿辞统一)kubejs-forge-1605.3.18-build.157.jar</code><br>‎此 mod 允许您使用 JavaScript 语言创建脚本来管理服务器、添加新的方块和物品、更改配方、为任务模组添加自定义处理程序、更改世界生成器等！‎</p>
+<h1 id="kubejs操作指南"><a href="#kubejs操作指南" class="headerlink" title="kubejs操作指南"></a>kubejs操作指南</h1><p>首先<code>/kubejs hand</code>获取手持物品信息<br>单击信息即可复制到剪切板</p>
+<h2 id="nbt标签编辑"><a href="#nbt标签编辑" class="headerlink" title="nbt标签编辑"></a>nbt标签编辑</h2><p>格式</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;item.tags&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// Get the #forge:cobblestone tag collection and add Diamond Ore to it</span></span><br><span class="line">	event.get(<span class="string">&#x27;forge:cobblestone&#x27;</span>).add(<span class="string">&#x27;minecraft:diamond_ore&#x27;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get the #forge:cobblestone tag collection and remove Mossy Cobblestone from it</span></span><br><span class="line">	event.get(<span class="string">&#x27;forge:cobblestone&#x27;</span>).remove(<span class="string">&#x27;minecraft:mossy_cobblestone&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>注意前面的标签记号不要<code>#</code></p>
+<ul>
+<li>添加<br><code>event.get(&#39;forge:cobblestone&#39;).add(&#39;minecraft:diamond_ore&#39;)</code></li>
+<li>移除<br><code>event.get(&#39;forge:cobblestone&#39;).remove(&#39;minecraft:mossy_cobblestone&#39;)</code><h2 id="工作台配方"><a href="#工作台配方" class="headerlink" title="工作台配方"></a>工作台配方</h2>首先格式：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;recipes&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// Change recipes here</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>无序<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">event.shapeless(<span class="string">&#x27;minecraft:carved_pumpkin&#x27;</span>, [<span class="string">&#x27;minecraft:jack_o_lantern&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
+<li>数量<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">event.shapeless(<span class="string">&#x27;2x minecraft:carved_pumpkin&#x27;</span>, [<span class="string">&#x27;minecraft:jack_o_lantern&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
+<li>有序<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">event.shaped(<span class="string">&#x27;minecraft:iron_leggings&#x27;</span>, [</span><br><span class="line">        <span class="string">&#x27;SXS&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;X X&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Y Y&#x27;</span></span><br><span class="line">      ], &#123;</span><br><span class="line">        <span class="attr">S</span>: <span class="string">&#x27;minecraft:iron_ingot&#x27;</span>,</span><br><span class="line">        <span class="attr">X</span>: <span class="string">&#x27;minecraft:redstone&#x27;</span>,</span><br><span class="line">        <span class="attr">Y</span>: <span class="string">&#x27;minecraft:gold_ingot&#x27;</span></span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>标签物品<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">event.shaped(<span class="string">&#x27;minecraft:book&#x27;</span>, [</span><br><span class="line">  <span class="string">&#x27;CCC&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;WGL&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;CCC&#x27;</span></span><br><span class="line">], &#123;</span><br><span class="line">  <span class="attr">C</span>: <span class="string">&#x27;#forge:cobblestone&#x27;</span>,</span><br><span class="line">  <span class="attr">L</span>: Item.of(<span class="string">&#x27;minecraft:enchanted_book&#x27;</span>, &#123;<span class="attr">StoredEnchantments</span>:[&#123;<span class="attr">lvl</span>:<span class="number">1</span>,<span class="attr">id</span>:<span class="string">&quot;minecraft:sweeping&quot;</span>&#125;]&#125;),</span><br><span class="line">  <span class="comment">// 对于附魔来说，你还可以将其简写成如下形式：</span></span><br><span class="line">  <span class="attr">W</span>: Item.of(<span class="string">&#x27;minecraft:enchanted_book&#x27;</span>).enchant(<span class="string">&#x27;minecraft:respiration&#x27;</span>, <span class="number">2</span>),</span><br><span class="line">  <span class="attr">G</span>: <span class="string">&#x27;#forge:glass&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <categories>
         <category>MC</category>
@@ -130,7 +181,7 @@
   </entry>
   <entry>
     <title>minecraft forge maker#0</title>
-    <url>/2021/11/08/MC/minecraft%20debug%20log/</url>
+    <url>/2021/11/08/MC/minecraftforge/</url>
     <content><![CDATA[<h1 id="MinecraftForgeMDK安装注意"><a href="#MinecraftForgeMDK安装注意" class="headerlink" title="MinecraftForgeMDK安装注意"></a>MinecraftForgeMDK安装注意</h1><p>就是跑gradlew.bat tasks<br>我的版本：<br>MDK：forge-1.16.5-36.2.8-mdk.zip<br>JDK：jdk1.8.0_311<br>(jdk17测试报错)</p>
 <h2 id="JAVA-HOME的奇葩要求"><a href="#JAVA-HOME的奇葩要求" class="headerlink" title="JAVA_HOME的奇葩要求"></a>JAVA_HOME的奇葩要求</h2><ul>
 <li>不能有其它路径（建议先剪切保存，安装后回改）</li>
@@ -1813,8 +1864,9 @@ OUT:<figure class="highlight plaintext"><table><tr><td class="code"><pre><span c
     <title>Hello World</title>
     <url>/2021/09/09/hello-world/</url>
     <content><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo cl      <span class="comment">#清除缓存文件 db.json 和已生成的静态文件 public(hexo clean 的缩写)</span></span><br><span class="line">hexo g       <span class="comment">#生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)</span></span><br><span class="line">hexo d       <span class="comment">#自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)</span></span><br><span class="line">by 岛屿尽</span><br></pre></td></tr></table></figure>
-<p>没刷新过来时<kbd>Shift</kbd>+<kbd>F5</kbd>刷新试试</p>
-]]></content>
+
+<h2 id="网站没刷新过来时Shift-F5刷新试试"><a href="#网站没刷新过来时Shift-F5刷新试试" class="headerlink" title="网站没刷新过来时Shift+F5刷新试试"></a>网站没刷新过来时<kbd>Shift</kbd>+<kbd>F5</kbd>刷新试试</h2><h2 id="永久禁用数字签名"><a href="#永久禁用数字签名" class="headerlink" title="永久禁用数字签名"></a>永久禁用数字签名</h2><p>在管理员模式的cmd下<br><code>bcdedit.exe /set nointegritychecks on</code></p>
+<h2 id="F2文件重命名"><a href="#F2文件重命名" class="headerlink" title="F2文件重命名"></a><kbd>F2</kbd>文件重命名</h2>]]></content>
       <categories>
         <category>其它</category>
       </categories>
