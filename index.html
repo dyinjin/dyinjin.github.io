@@ -332,6 +332,123 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">寻址</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-17 20:43:42" itemprop="dateCreated datePublished" datetime="2021-11-17T20:43:42+08:00">2021-11-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
+<ul>
+<li>操作数的位置<ul>
+<li>堆栈<ul>
+<li>主存开辟（软堆栈）</li>
+<li>CPU中的寄存器组组成（硬堆栈）</li>
+</ul>
+</li>
+<li>寄存器<ul>
+<li>CPU寄存器</li>
+<li>外设寄存器</li>
+</ul>
+</li>
+<li>存储器<ul>
+<li>主存</li>
+<li>外存<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086568.png" alt="enter description here"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/">x86具体操作</a></p>
+<hr>
+<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790186316.png" alt="enter description here"></p>
+<ul>
+<li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
+<li>直接寻址类<ul>
+<li>直接寻址（主存直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086555.png" alt="enter description here"></li>
+<li>寄存器寻址（寄存器直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086556.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>间接寻址类<ul>
+<li>间接寻址（主存间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086557.png" alt="enter description here"></li>
+<li>寄存器间接寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086558.png" alt="enter description here"></li>
+<li>自增、减型寄存器间址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086559.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086560.png" alt="enter description here"></li>
+<li>堆栈寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086561.png" alt="enter description here"></li>
+<li>多重间接寻址（主存多重间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086562.png" alt="enter description here"></li>
+</ul>
+</li>
+<li>变址类<ul>
+<li>变址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086563.png" alt="enter description here"></li>
+<li>基址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086564.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086565.png" alt="comparison"></li>
+<li>基址加变址方式<br>图略</li>
+<li>相对寻址（浮动编址）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086566.png" alt="enter description here"></li>
+<li>页面寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086567.png" alt="enter description here"></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/15/MC/minecraft%20kubejs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -355,10 +472,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-11-15 15:37:32 / 修改时间：16:05:58" itemprop="dateCreated datePublished" datetime="2021-11-15T15:37:32+08:00">2021-11-15</time>
+              <time title="创建时间：2021-11-15 15:37:32" itemprop="dateCreated datePublished" datetime="2021-11-15T15:37:32+08:00">2021-11-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-17 15:35:01" itemprop="dateModified" datetime="2021-11-17T15:35:01+08:00">2021-11-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -382,18 +505,34 @@
       
           <p>kubejs系模组<code>【前置41】【辅助】【前置19】或【前置2】(添加合成表矿辞统一)kubejs-forge-1605.3.18-build.157.jar</code><br>‎此 mod 允许您使用 JavaScript 语言创建脚本来管理服务器、添加新的方块和物品、更改配方、为任务模组添加自定义处理程序、更改世界生成器等！‎</p>
 <h1 id="kubejs操作指南"><a href="#kubejs操作指南" class="headerlink" title="kubejs操作指南"></a>kubejs操作指南</h1><p>首先<code>/kubejs hand</code>获取手持物品信息<br>单击信息即可复制到剪切板</p>
+<h2 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h2><p><code>kubejs\startup_scripts</code>下</p>
+<h3 id="矿石"><a href="#矿石" class="headerlink" title="矿石"></a>矿石</h3><p>移除矿石</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;worldgen.remove&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    event.removeOres(<span class="function"><span class="params">ores</span> =&gt;</span> &#123;<span class="comment">//移除矿石</span></span><br><span class="line">      ores.blocks = [ <span class="string">&#x27;minecraft:coal_ore&#x27;</span>, <span class="string">&#x27;minecraft:iron_ore&#x27;</span> ] <span class="comment">// 移除铁矿和煤矿</span></span><br><span class="line">      ores.biomes.values = [ <span class="string">&#x27;minecraft:plains&#x27;</span> ] <span class="comment">// 限制该选项仅在平原生效</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>添加矿石</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;worldgen.add&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  </span><br><span class="line">    event.addOre(<span class="function"><span class="params">ore</span> =&gt;</span> &#123; <span class="comment">//自定义矿石</span></span><br><span class="line">      ore.block = <span class="string">&#x27;minecraft:iron_ore&#x27;</span>,<span class="string">&#x27;darkerdepths:silver_ore&#x27;</span>,<span class="string">&#x27;minecraft:gold_ore&#x27;</span> <span class="comment">// 方块ID (使用 [] 来为其添加属性)</span></span><br><span class="line">      ore.spawnsIn.blacklist = <span class="literal">false</span> <span class="comment">// 是否在矿石生成黑名单位置处生成</span></span><br><span class="line">      ore.spawnsIn.values = [ <span class="comment">// 该矿石可以在以下位置生成（支持方块ID、标签）</span></span><br><span class="line">        <span class="string">&#x27;#minecraft:base_stone_overworld&#x27;</span> <span class="comment">// 默认的生成方式: 用于决定作为地下矿石生成时，该矿石能取代哪些方块。你可以在https://wiki.biligame.com/mc/%E6%A0%87%E7%AD%BE查看更多信息。</span></span><br><span class="line">      ]</span><br><span class="line">      </span><br><span class="line">      ore.biomes.blacklist = <span class="literal">true</span> <span class="comment">// 是否在矿石生成黑名单群系中生成</span></span><br><span class="line">      ore.biomes.values = [ <span class="comment">// 矿石可以生成的群系</span></span><br><span class="line">        <span class="string">&#x27;#extreme_hills&#x27;</span>, <span class="comment">// 群系ID或#类型</span></span><br><span class="line">        <span class="string">&#x27;#taiga&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;#savanna&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;#forest&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;#mesa&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;#desert&#x27;</span></span><br><span class="line"></span><br><span class="line">      ]</span><br><span class="line"></span><br><span class="line">      ore.clusterMinSize = <span class="number">3</span> <span class="comment">// 每矿簇最少的矿石数量</span></span><br><span class="line">      ore.clusterMaxSize = <span class="number">7</span> <span class="comment">// 每矿簇最多的矿石数量</span></span><br><span class="line">      ore.clusterCount = <span class="number">15</span> <span class="comment">// 每个区块矿石数量</span></span><br><span class="line">      ore.minHeight = <span class="number">60</span> <span class="comment">// 最小Y值</span></span><br><span class="line">      ore.maxHeight = <span class="number">128</span> <span class="comment">// 最大Y值</span></span><br><span class="line">      ore.squared = <span class="literal">true</span> <span class="comment">// 对X和Z值添加0~16的随机值. 推荐设置为 true</span></span><br><span class="line">      <span class="comment">// ore.chance = 4 // 每大约4个区块生成一次. 对于稀有的矿石来说, 你可以将它和 clusterCount = 1 一同使用</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <h2 id="nbt标签编辑"><a href="#nbt标签编辑" class="headerlink" title="nbt标签编辑"></a>nbt标签编辑</h2><p>格式</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;item.tags&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// Get the #forge:cobblestone tag collection and add Diamond Ore to it</span></span><br><span class="line">	event.get(<span class="string">&#x27;forge:cobblestone&#x27;</span>).add(<span class="string">&#x27;minecraft:diamond_ore&#x27;</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Get the #forge:cobblestone tag collection and remove Mossy Cobblestone from it</span></span><br><span class="line">	event.get(<span class="string">&#x27;forge:cobblestone&#x27;</span>).remove(<span class="string">&#x27;minecraft:mossy_cobblestone&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>注意前面的标签记号不要<code>#</code></p>
 <ul>
 <li>添加<br><code>event.get(&#39;forge:cobblestone&#39;).add(&#39;minecraft:diamond_ore&#39;)</code></li>
-<li>移除<br><code>event.get(&#39;forge:cobblestone&#39;).remove(&#39;minecraft:mossy_cobblestone&#39;)</code><h2 id="工作台配方"><a href="#工作台配方" class="headerlink" title="工作台配方"></a>工作台配方</h2>首先格式：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;recipes&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// Change recipes here</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+<li>移除<br><code>event.get(&#39;forge:cobblestone&#39;).remove(&#39;minecraft:mossy_cobblestone&#39;)</code><h2 id="工作台配方"><a href="#工作台配方" class="headerlink" title="工作台配方"></a>工作台配方</h2>可<code>kubejs\server_scripts</code>下<br>首先格式：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;recipes&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">// Change recipes here</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 <li>无序<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.shapeless(<span class="string">&#x27;minecraft:carved_pumpkin&#x27;</span>, [<span class="string">&#x27;minecraft:jack_o_lantern&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
 <li>数量<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.shapeless(<span class="string">&#x27;2x minecraft:carved_pumpkin&#x27;</span>, [<span class="string">&#x27;minecraft:jack_o_lantern&#x27;</span>])</span><br></pre></td></tr></table></figure></li>
 <li>有序<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">event.shaped(<span class="string">&#x27;minecraft:iron_leggings&#x27;</span>, [</span><br><span class="line">        <span class="string">&#x27;SXS&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;X X&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Y Y&#x27;</span></span><br><span class="line">      ], &#123;</span><br><span class="line">        <span class="attr">S</span>: <span class="string">&#x27;minecraft:iron_ingot&#x27;</span>,</span><br><span class="line">        <span class="attr">X</span>: <span class="string">&#x27;minecraft:redstone&#x27;</span>,</span><br><span class="line">        <span class="attr">Y</span>: <span class="string">&#x27;minecraft:gold_ingot&#x27;</span></span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure></li>
 <li>标签物品<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">event.shaped(<span class="string">&#x27;minecraft:book&#x27;</span>, [</span><br><span class="line">  <span class="string">&#x27;CCC&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;WGL&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;CCC&#x27;</span></span><br><span class="line">], &#123;</span><br><span class="line">  <span class="attr">C</span>: <span class="string">&#x27;#forge:cobblestone&#x27;</span>,</span><br><span class="line">  <span class="attr">L</span>: Item.of(<span class="string">&#x27;minecraft:enchanted_book&#x27;</span>, &#123;<span class="attr">StoredEnchantments</span>:[&#123;<span class="attr">lvl</span>:<span class="number">1</span>,<span class="attr">id</span>:<span class="string">&quot;minecraft:sweeping&quot;</span>&#125;]&#125;),</span><br><span class="line">  <span class="comment">// 对于附魔来说，你还可以将其简写成如下形式：</span></span><br><span class="line">  <span class="attr">W</span>: Item.of(<span class="string">&#x27;minecraft:enchanted_book&#x27;</span>).enchant(<span class="string">&#x27;minecraft:respiration&#x27;</span>, <span class="number">2</span>),</span><br><span class="line">  <span class="attr">G</span>: <span class="string">&#x27;#forge:glass&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h1 id="某些带json文件-其实是大部分-的模组的直接修改"><a href="#某些带json文件-其实是大部分-的模组的直接修改" class="headerlink" title="某些带json文件(其实是大部分)的模组的直接修改"></a>某些带json文件(其实是大部分)的模组的直接修改</h1><h2 id="但强烈不建议直接修改别人打包好的jar，很不尊重作者"><a href="#但强烈不建议直接修改别人打包好的jar，很不尊重作者" class="headerlink" title="但强烈不建议直接修改别人打包好的jar，很不尊重作者"></a>但强烈不建议直接修改别人打包好的jar，很不尊重作者</h2><p>也顺带提一下大部分模组的文件结构：</p>
+<ul>
+<li><code>assets</code>资源文件，不是简单的png材质，还附带模型json及各种UI排布json等(某种程度上可视为css)，语言文件也在此</li>
+<li><code>com</code>包含基本的Java文件经过编译后的class，不可修改(当然可反编译再自己编译一遍)</li>
+<li><code>META-INF</code>一些标志性文件例：mods.toml及用于描述模组信息，如版本信息，依赖信息等</li>
+<li><code>data</code>此文件为一些逻辑性的配置json，并提供兼容性接口(其下的minecraft、forge文件夹多用于配置兼容标签)，推测kubejs就是某种程度上的修改和复制此json</li>
+</ul>
+<p>如果实在想直接修改一些掉落物情况可参考：<br><code>【生物】龙栖Wyrmroost-1.16.3-1.2.11.jar</code>对于此模组的铂矿生成过多、不可配置的问题，而直接对<code>jar</code>文件中<code>【生物】龙栖Wyrmroost-1.16.3-1.2.11.jar\data\wyrmroost\loot_tables\blocks\</code>下的<code>platinum_ore.json</code>进行编辑：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;type&quot;</span>: <span class="string">&quot;minecraft:block&quot;</span>,</span><br><span class="line">  <span class="string">&quot;pools&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;rolls&quot;</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="string">&quot;entries&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">&quot;type&quot;</span>: <span class="string">&quot;minecraft:item&quot;</span>,</span><br><span class="line">          <span class="string">&quot;name&quot;</span>: <span class="string">&quot;wyrmroost:platinum_ore&quot;</span><span class="comment">//修改此处直接修改了挖掘掉落物</span></span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="string">&quot;conditions&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="string">&quot;condition&quot;</span>: <span class="string">&quot;minecraft:survives_explosion&quot;</span><span class="comment">//意思说情况只发生在生存模式下</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="此方案最终弃用、采用如上kubejs的方法"><a href="#此方案最终弃用、采用如上kubejs的方法" class="headerlink" title="此方案最终弃用、采用如上kubejs的方法"></a>此方案最终弃用、采用如上kubejs的方法</h2>
       
     </div>
 
@@ -940,130 +1079,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/01/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/01/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">寻址</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-01 20:34:28" itemprop="dateCreated datePublished" datetime="2021-11-01T20:34:28+08:00">2021-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-02 02:09:55" itemprop="dateModified" datetime="2021-11-02T02:09:55+08:00">2021-11-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a>寻址</h1><p>寻址方式是规定如何对地址字段作出解释,以找到操作数</p>
-<ul>
-<li>操作数的位置<ul>
-<li>堆栈<ul>
-<li>主存开辟（软堆栈）</li>
-<li>CPU中的寄存器组组成（硬堆栈）</li>
-</ul>
-</li>
-<li>寄存器<ul>
-<li>CPU寄存器</li>
-<li>外设寄存器</li>
-</ul>
-</li>
-<li>存储器<ul>
-<li>主存</li>
-<li>外存<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086568.png" alt="enter description here"></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/">x86具体操作</a></p>
-<hr>
-<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790186316.png" alt="enter description here"></p>
-<ul>
-<li>立即寻址<br>  操作码字段后面的部分是操作数本身</li>
-<li>直接寻址类<ul>
-<li>直接寻址（主存直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086555.png" alt="enter description here"></li>
-<li>寄存器寻址（寄存器直接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086556.png" alt="enter description here"></li>
-</ul>
-</li>
-<li>间接寻址类<ul>
-<li>间接寻址（主存间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086557.png" alt="enter description here"></li>
-<li>寄存器间接寻址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086558.png" alt="enter description here"></li>
-<li>自增、减型寄存器间址方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086559.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086560.png" alt="enter description here"></li>
-<li>堆栈寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086561.png" alt="enter description here"></li>
-<li>多重间接寻址（主存多重间接寻址）方式<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086562.png" alt="enter description here"></li>
-</ul>
-</li>
-<li>变址类<ul>
-<li>变址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086563.png" alt="enter description here"></li>
-<li>基址寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086564.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086565.png" alt="comparison"></li>
-<li>基址加变址方式<br>图略</li>
-<li>相对寻址（浮动编址）<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086566.png" alt="enter description here"></li>
-<li>页面寻址<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1631711086567.png" alt="enter description here"></li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1314,7 +1329,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共66.6k字呐~</span>
+  <span class="post-count">本博客全站共67.4k字呐~</span>
 </div>
 
         
