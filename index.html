@@ -349,6 +349,194 @@ byg:dead_sea</li>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/19/Java/Java%E7%AE%80%E5%8D%95%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/19/Java/Java%E7%AE%80%E5%8D%95%E7%AA%97%E5%8F%A3%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Java简单窗口操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-19 15:59:50" itemprop="dateCreated datePublished" datetime="2021-11-19T15:59:50+08:00">2021-11-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="其实就是学别人代码"><a href="#其实就是学别人代码" class="headerlink" title="其实就是学别人代码"></a>其实就是学别人代码</h1><h1 id="接口简述"><a href="#接口简述" class="headerlink" title="接口简述"></a>接口简述</h1><p>比如：People是一个接口，他里面有say这个方法。<br>接口的定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">People</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span></span>;<span class="comment">//就是public abstract void say();</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是接口没有方法体。只能通过一个具体的类去实现其中的方法体。<br>比如 Chinese这个类，就实现了People这个接口。<br>接口的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Chinese</span> <span class="keyword">implements</span> <span class="title">People</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">()</span> </span>&#123;</span><br><span class="line">System.out.println(<span class="string">&quot; 你好！&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接口的调用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">People chinese = <span class="keyword">new</span> Chinese() ;</span><br><span class="line">chinese.say();</span><br></pre></td></tr></table></figure>
+
+<h1 id="关于Awt"><a href="#关于Awt" class="headerlink" title="关于Awt"></a>关于Awt</h1><h2 id="关于-MouseListener接口"><a href="#关于-MouseListener接口" class="headerlink" title="关于 MouseListener接口"></a>关于 MouseListener接口</h2><ol>
+<li><code>void mouseClicked(MouseEvent e)</code> 在组件上单击(按下并释放)鼠标按钮时调用。 </li>
+<li><code>void mouseEntered(MouseEvent e)</code> 鼠标进入组件时调用 。</li>
+<li><code>void mouseExited(MouseEvent e)</code> 鼠标退出组件时调用。</li>
+<li><code>void mousePressed(MouseEvent e)</code> 在组件上按下鼠标按钮时调用。</li>
+<li><code>void mouseReleased(MouseEvent e)</code> 在组件上释放鼠标按钮时调用。</li>
+</ol>
+<p>实验与结合：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.awt.BorderLayout;</span><br><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.*;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Baton</span></span>&#123;</span><br><span class="line">	JFrame f = <span class="keyword">new</span> JFrame(<span class="string">&quot;frame窗口&quot;</span>);		</span><br><span class="line">	JMenuBar menuBar = <span class="keyword">new</span> JMenuBar();<span class="comment">//创建菜单栏</span></span><br><span class="line">	JMenu fileMenu = <span class="keyword">new</span> JMenu(<span class="string">&quot;DYJ&quot;</span>);</span><br><span class="line">	JMenuItem testMenuItem = <span class="keyword">new</span> JMenuItem(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">	JMenuItem exitMenuItem = <span class="keyword">new</span> JMenuItem(<span class="string">&quot;2&quot;</span>);<span class="comment">//子选项</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">view</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		f.setSize(<span class="number">300</span>,<span class="number">200</span>);</span><br><span class="line">		f.setLocationRelativeTo(<span class="keyword">null</span>);</span><br><span class="line">		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);<span class="comment">//叉号能关</span></span><br><span class="line"></span><br><span class="line">		menuBar.add(fileMenu);<span class="comment">//一级菜单的创建与添加</span></span><br><span class="line">		</span><br><span class="line">		fileMenu.add(testMenuItem);<span class="comment">//子选项添加</span></span><br><span class="line">		fileMenu.addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">		fileMenu.add(exitMenuItem);</span><br><span class="line">		</span><br><span class="line">		exitMenuItem.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;2  被点击&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">		</span><br><span class="line">		f.setJMenuBar(menuBar);<span class="comment">//设置到窗口</span></span><br><span class="line">		f.setVisible(<span class="keyword">true</span>);<span class="comment">//设置开启显示</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span> <span class="keyword">extends</span> <span class="title">JFrame</span> <span class="keyword">implements</span> <span class="title">MouseListener</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> JTextArea jt = <span class="keyword">new</span> JTextArea();</span><br><span class="line">	<span class="keyword">private</span> JButton exit = <span class="keyword">new</span> JButton(<span class="string">&quot;退出&quot;</span>);</span><br><span class="line">	Baton baton=<span class="keyword">new</span> Baton();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		baton.view();</span><br><span class="line">		baton.testMenuItem.addMouseListener(<span class="keyword">this</span>);</span><br><span class="line"> </span><br><span class="line">		<span class="keyword">this</span>.add(jt, BorderLayout.CENTER);</span><br><span class="line">		<span class="keyword">this</span>.add(exit, BorderLayout.SOUTH);</span><br><span class="line">		<span class="keyword">this</span>.setSize(<span class="number">500</span>, <span class="number">400</span>);</span><br><span class="line">		<span class="keyword">this</span>.setVisible(<span class="keyword">true</span>);</span><br><span class="line">		<span class="keyword">this</span>.setLocationRelativeTo(<span class="keyword">null</span>);</span><br><span class="line">		exit.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">				System.exit(<span class="number">0</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> test1();</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseClicked</span><span class="params">(MouseEvent e)</span> </span>&#123;<span class="comment">// 单击鼠标时执行的操作</span></span><br><span class="line">		jt.append(<span class="string">&quot;鼠标单击了此文本区域\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseEntered</span><span class="params">(MouseEvent e)</span> </span>&#123;<span class="comment">// 鼠标进入组件时执行的操作</span></span><br><span class="line">		jt.append(<span class="string">&quot;鼠标进入了此文本区域\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseExited</span><span class="params">(MouseEvent e)</span> </span>&#123;<span class="comment">// 鼠标离开组件时执行的操作</span></span><br><span class="line">		jt.append(<span class="string">&quot;鼠标离开了此文本区域\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mousePressed</span><span class="params">(MouseEvent e)</span> </span>&#123;<span class="comment">// 鼠标在组件上按下时执行的操作</span></span><br><span class="line">		jt.append(<span class="string">&quot;在此文本区域你按下了鼠标\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseReleased</span><span class="params">(MouseEvent e)</span> </span>&#123;<span class="comment">// 鼠标释放时执行的操作</span></span><br><span class="line">		jt.append(<span class="string">&quot;鼠标按键释放了\n&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>混合使用：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214638674.png" alt="enter description here"><br>6. getX(),getY()：获取鼠标的坐标位置<br>7. getModifiers()：获取鼠标的左或右键<br>8. getClickCount()：获取鼠标被点击的次数<br>9. setCursor():控制鼠标指针的形状。如设置成漏斗：<code>setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR))</code></p>
+<h2 id="关于-MouseMotionListener接口"><a href="#关于-MouseMotionListener接口" class="headerlink" title="关于 MouseMotionListener接口"></a>关于 MouseMotionListener接口</h2><ol>
+<li><code>void mouseDragged(MouseEvent e)</code> 在组件上按下鼠标按钮然后拖动时调用。</li>
+<li><code>void mouseMoved(MouseEvent e)</code> 将鼠标光标移动到组件但未按下任何按钮时调用。<br>简单例子：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.*;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> javax.swing.JFrame;</span><br><span class="line"><span class="keyword">import</span> javax.swing.JButton;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test2</span> <span class="keyword">implements</span> <span class="title">MouseMotionListener</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">	JFrame myframe; <span class="comment">// JFrame通常默认使用BorderLayout布局管理器的</span></span><br><span class="line">	TextArea tf;</span><br><span class="line">	JButton exitButton;</span><br><span class="line">	<span class="keyword">int</span> number = <span class="number">1</span>;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		Label label = <span class="keyword">new</span> Label(<span class="string">&quot;click and drag the mouse&quot;</span>);</span><br><span class="line">		myframe = <span class="keyword">new</span> JFrame(<span class="string">&quot;MyMouseMotionListener&quot;</span>);</span><br><span class="line">		tf = <span class="keyword">new</span> TextArea();</span><br><span class="line">		exitButton = <span class="keyword">new</span> JButton(<span class="string">&quot;退出&quot;</span>);</span><br><span class="line"> </span><br><span class="line">		tf.addMouseMotionListener(<span class="keyword">this</span>);</span><br><span class="line">		exitButton.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line"> </span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">				System.exit(<span class="number">0</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line"> </span><br><span class="line">		myframe.add(label, BorderLayout.NORTH);</span><br><span class="line">		myframe.add(tf, BorderLayout.CENTER);</span><br><span class="line">		myframe.add(exitButton, BorderLayout.SOUTH);</span><br><span class="line">		myframe.setSize(<span class="number">400</span>, <span class="number">300</span>);</span><br><span class="line">		myframe.setVisible(<span class="keyword">true</span>);</span><br><span class="line"> </span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">new</span> test2();</span><br><span class="line"> </span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="comment">// 负责处理鼠标拖动事件</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseDragged</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//getX(),getY()：获取鼠标的坐标位置</span></span><br><span class="line">		String s = number++ + <span class="string">&quot;&quot;</span> + <span class="string">&quot;the mouse is draggered:x=&quot;</span> + e.getX()</span><br><span class="line">				+ <span class="string">&quot;y=&quot;</span> + e.getY() + <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		tf.append(s);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="comment">// 负责处理鼠标移动事件</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mouseMoved</span><span class="params">(MouseEvent e)</span> </span>&#123;</span><br><span class="line">		String s = number++ + <span class="string">&quot;&quot;</span> + <span class="string">&quot;the mouse is moving:x=&quot;</span> + e.getX() + <span class="string">&quot;y=&quot;</span></span><br><span class="line">				+ e.getY() + <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">		tf.append(s);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+效果：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214638670.png" alt="enter description here"></li>
+</ol>
+<h1 id="关于Swing"><a href="#关于Swing" class="headerlink" title="关于Swing"></a>关于Swing</h1><p>跨平台性的更丰富的图形界面<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214638677.png" alt="enter description here"></p>
+<h2 id="首先关于JFrame"><a href="#首先关于JFrame" class="headerlink" title="首先关于JFrame"></a>首先关于JFrame</h2><p>窗体容器，Swing组件的载体。继承自Frame类。<br>并且可直接使用<code>jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</code>关闭窗体</p>
+<h2 id="关于JDialog"><a href="#关于JDialog" class="headerlink" title="关于JDialog"></a>关于JDialog</h2><p>对话框，继承自Dialog类，功能是从一个窗体钟弹出另一个窗体（类似子JFrame）<br>使用<code>public JDialog(Frame f, String title, boolean model)</code>创建一个指定窗体、标题和模式的对话框。</p>
+<h2 id="关于JLabel"><a href="#关于JLabel" class="headerlink" title="关于JLabel"></a>关于JLabel</h2><p><code>JLabel</code>类可以显示文本或图像。通过在显示区域中设置垂直和水平对齐来对齐标签的内容。默认情况下，标签在显示区域中垂直居中。默认情况下，纯文本标签前沿对齐; 默认情况下，仅图像标签水平居中。<br>例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JLabel(Icon image, <span class="keyword">int</span> horizontalAlignment);<span class="comment">//使用指定的图像和水平对齐创建JLabel实例。</span></span><br><span class="line">JLabel(String text, Icon icon, <span class="keyword">int</span> horizontalAlignment);<span class="comment">//使用指定的文本，图像和水平对齐创建JLabel实例。</span></span><br></pre></td></tr></table></figure>
+<h2 id="中间容器JPanel"><a href="#中间容器JPanel" class="headerlink" title="中间容器JPanel"></a>中间容器JPanel</h2><p>中间性区域安排</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.awt.GridLayout;</span><br><span class="line"><span class="keyword">import</span> java.awt.Color;</span><br><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	JFrame jf=<span class="keyword">new</span> JFrame();</span><br><span class="line">    	jf.setLayout(<span class="keyword">new</span> GridLayout(<span class="number">1</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line">    	JPanel jp=<span class="keyword">new</span> JPanel(<span class="keyword">new</span> GridLayout(<span class="number">2</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line">    	JPanel jp1=<span class="keyword">new</span> JPanel(<span class="keyword">new</span> GridLayout(<span class="number">2</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line">    	jp.add(<span class="keyword">new</span> JButton(<span class="string">&quot;11&quot;</span>));</span><br><span class="line">    	jp.add(<span class="keyword">new</span> JButton(<span class="string">&quot;22&quot;</span>));</span><br><span class="line">    	jp.add(<span class="keyword">new</span> JButton(<span class="string">&quot;33&quot;</span>));</span><br><span class="line">    	jp.setBackground(Color.green);</span><br><span class="line">    	jp1.add(<span class="keyword">new</span> JButton(<span class="string">&quot;111&quot;</span>));</span><br><span class="line">    	jp1.add(<span class="keyword">new</span> JButton(<span class="string">&quot;222&quot;</span>));</span><br><span class="line">    	jf.add(jp);</span><br><span class="line">    	jf.add(jp1);</span><br><span class="line">    	jf.setSize(<span class="number">300</span>,<span class="number">300</span>);</span><br><span class="line">    	jf.setVisible(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214638673.png" alt="enter description here"></p>
+<h2 id="关于JScrollPane"><a href="#关于JScrollPane" class="headerlink" title="关于JScrollPane"></a>关于JScrollPane</h2><p>JScrollPane内只能添加一个组件，是一个带滚动条的面板</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.awt.GridLayout;</span><br><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    	JFrame jf=<span class="keyword">new</span> JFrame(<span class="string">&quot;DYJ&quot;</span>);</span><br><span class="line">    	JTextArea jta=<span class="keyword">new</span> JTextArea(<span class="number">10</span>,<span class="number">5</span>);</span><br><span class="line">    	jta.setText(<span class="string">&quot;test!!&quot;</span>);</span><br><span class="line">    	jf.setLayout(<span class="keyword">new</span> GridLayout(<span class="number">1</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line">    	JPanel jp1=<span class="keyword">new</span> JPanel(<span class="keyword">new</span> GridLayout(<span class="number">2</span>,<span class="number">2</span>,<span class="number">10</span>,<span class="number">10</span>));</span><br><span class="line">    	jp1.add(<span class="keyword">new</span> JButton(<span class="string">&quot;111&quot;</span>));</span><br><span class="line">    	jp1.add(jta);</span><br><span class="line">    	JScrollPane jsp=<span class="keyword">new</span> JScrollPane(jp1);</span><br><span class="line">    	jf.add(jsp);</span><br><span class="line">    	jf.setSize(<span class="number">300</span>,<span class="number">300</span>);</span><br><span class="line">    	jf.setVisible(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214638675.png" alt="enter description here"><br>它在界面需要时才自动出现<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214638690.png" alt="enter description here"></p>
+<h2 id="关于JMenuBar"><a href="#关于JMenuBar" class="headerlink" title="关于JMenuBar"></a>关于JMenuBar</h2><p>JMenuBar，菜单栏。菜单栏组件添加到 JFrame 窗口后，在窗口的内容显示区域的顶部出现。实现一个菜单栏主要涉及三种类: </p>
+<ol>
+<li>JMenuBar 表示一个菜单栏。 </li>
+<li>JMenu 表示菜单栏上的一个一级菜单。 </li>
+<li>JMenuItem, JCheckBoxMenuItem, JRadioButtonMenuItem 表示一级菜单下的一个子菜单项，三者分别表示 普通的子菜单、带复选框的子菜单、带单选按钮的子菜单。<br>使用：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Batton</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">view</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		JFrame f = <span class="keyword">new</span> JFrame(<span class="string">&quot;frame窗口&quot;</span>);</span><br><span class="line">		f.setSize(<span class="number">300</span>,<span class="number">200</span>);</span><br><span class="line">		f.setLocationRelativeTo(<span class="keyword">null</span>);</span><br><span class="line">		f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);<span class="comment">//叉号能关</span></span><br><span class="line">		</span><br><span class="line">		JMenuBar menuBar = <span class="keyword">new</span> JMenuBar();<span class="comment">//创建菜单栏</span></span><br><span class="line">		</span><br><span class="line">		JMenu fileMenu = <span class="keyword">new</span> JMenu(<span class="string">&quot;DYJ&quot;</span>);</span><br><span class="line">		menuBar.add(fileMenu);<span class="comment">//一级菜单的创建与添加</span></span><br><span class="line">		</span><br><span class="line">		JMenuItem testMenuItem = <span class="keyword">new</span> JMenuItem(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">		JMenuItem exitMenuItem = <span class="keyword">new</span> JMenuItem(<span class="string">&quot;2&quot;</span>);<span class="comment">//子选项</span></span><br><span class="line">		</span><br><span class="line">		fileMenu.add(testMenuItem);<span class="comment">//子选项添加</span></span><br><span class="line">		fileMenu.addSeparator();<span class="comment">//添加分割线</span></span><br><span class="line">		fileMenu.add(exitMenuItem);</span><br><span class="line">		</span><br><span class="line">		exitMenuItem.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;2  被点击&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">		</span><br><span class="line">		f.setJMenuBar(menuBar);<span class="comment">//设置到窗口</span></span><br><span class="line">		f.setVisible(<span class="keyword">true</span>);<span class="comment">//设置开启显示</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+效果：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634214638676.png" alt="enter description here"><br>默认功能：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jRMItemEasy.setSelected(<span class="keyword">true</span>);<span class="comment">// 默认按钮选择</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/19/Java/java%E9%80%9F%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/19/Java/java%E9%80%9F%E8%AE%B0/" class="post-title-link" itemprop="url">java速记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-19 15:59:46" itemprop="dateCreated datePublished" datetime="2021-11-19T15:59:46+08:00">2021-11-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h1><p>关于后缀</p>
+<ul>
+<li>long/int<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">long</span> x=<span class="number">9999999999L</span>;<span class="comment">//超出2^31必须加L/l</span></span><br></pre></td></tr></table></figure></li>
+<li>double/float<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> x=<span class="number">10.0F</span>;<span class="comment">//不加F/f将丢失精度，默认double型</span></span><br></pre></td></tr></table></figure>
+关于转换</li>
+<li>自动转换<br>数值型数据的转换：byte→short→int→long→float→double<br>字符型转换为整型：char→int<br>实例程序：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">PrimitiveOverloading.java, 拓宽类型的方法过载</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrimitiveOverloading</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 布尔类型不能自动转换</span></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prt</span><span class="params">(String s)</span> </span>&#123;System.out.println(s);&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">char</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(char)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">byte</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(byte)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">short</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(short)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(int)&quot;</span>);&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123;prt(<span class="string">&quot;f1(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f1(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">byte</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(byte)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">short</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(short)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(int)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f2(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">short</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(short)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(int)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f3</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f3(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(int)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f4</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f4(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f5</span><span class="params">(<span class="keyword">long</span> x)</span> </span>&#123; prt(<span class="string">&quot;f5(long)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f5</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f5(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f5</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f5(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f6</span><span class="params">(<span class="keyword">float</span> x)</span> </span>&#123; prt(<span class="string">&quot;f6(float)&quot;</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f6</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f6(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f7</span><span class="params">(<span class="keyword">double</span> x)</span> </span>&#123; prt(<span class="string">&quot;f7(double)&quot;</span>); &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testConstVal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		prt(<span class="string">&quot;Testing with 5&quot;</span>);</span><br><span class="line">		f1(<span class="number">5</span>); f2(<span class="number">5</span>);f3(<span class="number">5</span>);f4(<span class="number">5</span>); <span class="comment">//java中常数的默认类型是int型，调用void fx(int x) &#123; prt(&quot;fx(int)&quot;); &#125;</span></span><br><span class="line">                f5(<span class="number">5</span>);<span class="comment">//5为int型，f5无int参数，向上转换为f5(long x) &#123; prt(&quot;f5(long)&quot;); &#125;</span></span><br><span class="line">                f6(<span class="number">5</span>);  <span class="comment">//5为int型，f6无int、long参数方法，向上转换为void f6(float x) &#123; prt(&quot;f6(float)&quot;); &#125;</span></span><br><span class="line">                f7(<span class="number">5</span>);<span class="comment">//5为int型，f7无int、long、float参数方法，向上转换为void f7(double x) &#123; prt(&quot;f7(double)&quot;); &#125;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testChar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">char</span> x = <span class="string">&#x27;x&#x27;</span>;</span><br><span class="line">		prt(<span class="string">&quot;char argument:&quot;</span>);</span><br><span class="line">		f1(x); <span class="comment">//自动匹配void f1(char x) &#123;prt(&quot;f1(char)&quot;); &#125;</span></span><br><span class="line">                f2(x);f3(x);f4(x);  <span class="comment">//&#x27;x&#x27;为char类型，向上转换为void fx(int x) &#123; prt(&quot;fx(int)&quot;); &#125;</span></span><br><span class="line">                f5(x);<span class="comment">//&#x27;x&#x27;为char类型，f5无char、int型，向上转换为f5(long x) &#123; prt(&quot;f5(long)&quot;); &#125;</span></span><br><span class="line">                f6(x);<span class="comment">//&#x27;x&#x27;为char类型，f6无char、int、long型，向上转换为void f6(float x) &#123; prt(&quot;f6(float)&quot;); &#125;</span></span><br><span class="line">                f7(x);<span class="comment">//&#x27;x&#x27;为char类型，f7无char、int、long、float型，向上转换为void f7(double x) &#123; prt(&quot;f7(double)&quot;); &#125;</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testByte</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">byte</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;byte argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testShort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">short</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;short argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testInt</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;int argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testLong</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;long argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testFloat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">float</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;float argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">testDouble</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">double</span> x = <span class="number">0</span>;</span><br><span class="line">		prt(<span class="string">&quot;double argument:&quot;</span>);</span><br><span class="line">		f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		PrimitiveOverloading p = <span class="keyword">new</span> PrimitiveOverloading();</span><br><span class="line">		p.testConstVal();</span><br><span class="line">		p.testChar();</span><br><span class="line">		p.testByte();</span><br><span class="line">		p.testShort();</span><br><span class="line">		p.testInt();</span><br><span class="line">		p.testLong();</span><br><span class="line">		p.testFloat();</span><br><span class="line">		p.testDouble();</span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li>变量声明作用域在一个块内（一对大括号内）</li>
+<li>当两个类创建在同一个项目下，同一个包下则可以不使用import，就可以直接调用另一个类<h1 id="例"><a href="#例" class="headerlink" title="例"></a>例</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyDate</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> year;</span><br><span class="line">	<span class="keyword">int</span> month;</span><br><span class="line">	<span class="keyword">int</span> day;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDateTest</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		MyDate date = <span class="keyword">new</span> MyDate();</span><br><span class="line">		date.year = <span class="number">2021</span>;</span><br><span class="line">		date.month = <span class="number">9</span>;</span><br><span class="line">		date.day = <span class="number">22</span>;</span><br><span class="line">		System.out.println(<span class="string">&quot;The day is &quot;</span> + date.year </span><br><span class="line">					  + <span class="string">&quot;-&quot;</span>+ date.month + <span class="string">&quot;-&quot;</span>+ date.day);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+就是打印字符串，只是使用类来做了数据储存，类似结构体<br>下面看一个复杂一点的：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Location</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=-<span class="number">1</span>, b=-<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x, y;</span><br><span class="line">	Point() &#123;</span><br><span class="line">		x = <span class="number">20</span>;</span><br><span class="line">		y = <span class="number">30</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">getData</span><span class="params">(<span class="keyword">int</span> xValue, <span class="keyword">int</span> yValue)</span> </span>&#123;</span><br><span class="line">		xValue = <span class="number">100</span>;</span><br><span class="line">		yValue = <span class="number">200</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">getLocation</span><span class="params">(Location locRef)</span> </span>&#123;</span><br><span class="line">		locRef.a = x;<span class="comment">//就是20</span></span><br><span class="line">		locRef.b = y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test0</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Point p = <span class="keyword">new</span> Point();</span><br><span class="line">		System.out.println(<span class="string">&quot;Object p’s value:&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;p.x = &quot;</span> + p.x +<span class="string">&quot;  p.y = &quot;</span> + p.y);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> xVal = -<span class="number">1</span>, yVal = -<span class="number">1</span>;</span><br><span class="line">		p.getData(xVal,yVal);<span class="comment">//传参不改变原值</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Pass by value:&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;xVal = &quot;</span> + xVal +<span class="string">&quot;  yVal = &quot;</span> + yVal);</span><br><span class="line">		</span><br><span class="line">		Location loc = <span class="keyword">new</span> Location();</span><br><span class="line">		p.getLocation(loc);<span class="comment">//引用可改变值</span></span><br><span class="line">		System.out.println(<span class="string">&quot;Pass by reference:&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;xVal = &quot;</span> + loc.a + <span class="string">&quot;  yVal = &quot;</span> +loc.b);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+再看一个带返回值的：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestReturnValue</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Scanner input=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> testScore = input.nextInt();</span><br><span class="line">		printGrade(testScore) ; <span class="comment">//调用返回类型Void方法</span></span><br><span class="line">		<span class="keyword">char</span> ret=getGrade(testScore);  <span class="comment">//调用返回类型非Void方法</span></span><br><span class="line">        System.out.println(ret);</span><br><span class="line">                &#125;</span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">printGrade</span><span class="params">(<span class="keyword">double</span> testscore)</span></span>&#123;  <span class="comment">//返回类型为void，可以有return，但是不能带表示式。</span></span><br><span class="line">                                  <span class="keyword">if</span> (testscore&lt;<span class="number">0</span> || testscore&gt;<span class="number">100</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&quot;成绩输入错误&quot;</span>);</span><br><span class="line">                                          <span class="keyword">return</span>;  <span class="comment">//中断程序，该方法后面语句不会被执行，可以试一下，如果注释掉该行的执行情况</span></span><br><span class="line">                                  &#125;</span><br><span class="line">                                  <span class="keyword">if</span> (testscore&gt;=<span class="number">90.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;A&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">80.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">70.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;C&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">60.0</span>)&#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;D&#x27;</span>);</span><br><span class="line">                                  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                                          System.out.println(<span class="string">&#x27;F&#x27;</span>);</span><br><span class="line">                                 &#125;</span><br><span class="line">                      &#125;</span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span>  <span class="title">getGrade</span><span class="params">(<span class="keyword">double</span> testscore)</span></span>&#123;  <span class="comment">//返回类型非void，则需要return+表示式。</span></span><br><span class="line">                                  </span><br><span class="line">                                  <span class="keyword">if</span> (testscore&lt;<span class="number">0</span> || testscore&gt;<span class="number">100</span>)&#123;</span><br><span class="line">                                          <span class="keyword">return</span> <span class="string">&#x27;N&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span> (testscore&gt;=<span class="number">90.0</span>)&#123;</span><br><span class="line">                                          <span class="keyword">return</span> <span class="string">&#x27;A&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">80.0</span>)&#123;</span><br><span class="line">                                           <span class="keyword">return</span> <span class="string">&#x27;B&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">70.0</span>)&#123;</span><br><span class="line">                                           <span class="keyword">return</span> <span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(testscore&gt;=<span class="number">60.0</span>)&#123;</span><br><span class="line">                                           <span class="keyword">return</span> <span class="string">&#x27;D&#x27;</span>;</span><br><span class="line">                                  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                                          <span class="keyword">return</span> <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line">                                 &#125;</span><br><span class="line">                      &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+基本和C一样</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E5%AF%BB%E5%9D%80%E4%B8%8E%E6%8C%87%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1017,222 +1205,10 @@ byg:dead_sea</li>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/02/MC/modslists/minecraft[1.16.5]%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/02/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.6/" class="post-title-link" itemprop="url">minecraft[1.16.5]现用模组修改0.6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-02 15:47:59" itemprop="dateCreated datePublished" datetime="2021-11-02T15:47:59+08:00">2021-11-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 15:49:39" itemprop="dateModified" datetime="2021-11-05T15:49:39+08:00">2021-11-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h1><p>【结构】AwesomeDungeonForge-1.16.5-1.1.1.jar<br>【装备】饰品？Alterlands+1.2+P2+Beta+v1.jar###已弃用<br>【生物】更多生物(包含但表现于落选生物)mobsgenus-0.2.jar</p>
-<h1 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h1><p>【结构】更多结构repurposed_structures_forge-3.4.0+1.16.5.jar<br>【前置4】cavebiomeapi-1.16.5-1.4.1.jar<br>【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar</p>
-<h1 id="ABANDON"><a href="#ABANDON" class="headerlink" title="ABANDON"></a>ABANDON</h1><p>【结构】（墙壁宝石快）Forgotten+Treasures+V12+1.16.5.jar<br>原因详见<a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/26/MC/debugfile/">debugfile</a><br>【生物】史前动物(以维度的形式添加)Prehistoric+Fauna+2.1.1.jar<br>不喜欢增加维度</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/" class="post-title-link" itemprop="url">期中佛脚</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-01 19:37:34" itemprop="dateCreated datePublished" datetime="2021-11-01T19:37:34+08:00">2021-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-03 19:09:35" itemprop="dateModified" datetime="2021-11-03T19:09:35+08:00">2021-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="CPU概述"><a href="#CPU概述" class="headerlink" title="CPU概述"></a>CPU概述</h2><p>CPU基本包含运算部件、缓存部件、寄存器组、微命令产生部件（控制部件）、时序系统、数据/控制通路<br>总体来看CPU的工作过程就是</p>
-<ol>
-<li>从主存(或缓存)中读取命令，</li>
-<li>将指令放入指令寄存器(IR)，</li>
-<li>然后对指令译码，把指令分解成一系列的微操作，</li>
-<li>再发出各种相应的控制命令，控制各功能部件执行相关操作，<br>从而完成一条指令的执行，实现对应的功能。<h3 id="运算部件"><a href="#运算部件" class="headerlink" title="运算部件"></a>运算部件</h3>ALU(算术逻辑运算单元)是核心、主要由加法器构成<h3 id="缓存部件"><a href="#缓存部件" class="headerlink" title="缓存部件"></a>缓存部件</h3>为提高CPU处理主存数据的效率而设<h3 id="寄存器组"><a href="#寄存器组" class="headerlink" title="寄存器组"></a>寄存器组</h3>一般分为(8)</li>
-</ol>
-<ul>
-<li>通用寄存器组</li>
-<li>暂存器</li>
-<li><strong>IR</strong>指令寄存器</li>
-<li><strong>PC</strong>程序计数器</li>
-<li><strong>PSW</strong>程序状态寄存器</li>
-<li><strong>MAR</strong>地址寄存器</li>
-<li><strong>MBR/MDR</strong>数据缓冲寄存器</li>
-<li><strong>SP</strong>堆栈指针寄存器<h4 id="具体可见"><a href="#具体可见" class="headerlink" title="具体可见"></a>具体可见</h4><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png"></li>
-<li>可编程寄存器<br>  <strong>R0~R3</strong>通用寄存器(000,001,010,011)、<strong>SP</strong>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</li>
-<li>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
-<li>暂存器<br>  <strong>C、D</strong>约定从主存中读<strong>源操作数</strong>、操作数地址时用<strong>C</strong>；从主存中取目的<strong>操作数</strong>、操作数地址或暂存时，用<strong>D</strong></li>
-<li>主存接口寄存器MAR、MDR(MBR)<ul>
-<li>地址寄存器<strong>MAR</strong><br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
-<li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="控制部件"><a href="#控制部件" class="headerlink" title="控制部件"></a>控制部件</h3>产生控制信号(微命令)<br>CPU可使用两种控制部件组合逻辑控制器(硬件)和微程序控制器(软件)<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3>协调工作要有周期和节拍</li>
-</ul>
-</li>
-<li>节拍是执行一步的所需时间(一个周期可以由多个节拍)</li>
-<li>时序控制方式：<ul>
-<li>同步控制方式<br>所有操作用统一的时序信号，各操作不存在控制信号的交互</li>
-<li>异步控制方式<br>不受统一的时钟周期的约束，各部件之间采用异步应答的方式<h3 id="数据通络和控制通路"><a href="#数据通络和控制通路" class="headerlink" title="数据通络和控制通路"></a>数据通络和控制通路</h3>简单的常有ALU总线，复杂一点的分数据总线和地址总线</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h2><p>指令集有CISC(复杂指令集计算机)RISC(精简指令集计算机)<br>按地址结构可分为：三地址指令、二地址指令、一地址指令、零地址指令<br>操作码结构多设为可变字长指令</p>
-<h3 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a><a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/15/%E8%AF%BE/%E5%AF%BB%E5%9D%80/">寻址</a></h3><h3 id="指令的功能和类型"><a href="#指令的功能和类型" class="headerlink" title="指令的功能和类型"></a>指令的功能和类型</h3><p>现在大部分微机将指令分为；</p>
-<ul>
-<li>传输类指令</li>
-<li>访存指令</li>
-<li>I/O指令</li>
-<li>算术运算指令</li>
-<li>逻辑运算指令</li>
-<li>程序控制类指令</li>
-<li>处理机控制类指令<h2 id="加法器与运算部件"><a href="#加法器与运算部件" class="headerlink" title="加法器与运算部件"></a>加法器与运算部件</h2><h3 id="加法器及其进位逻辑"><a href="#加法器及其进位逻辑" class="headerlink" title="加法器及其进位逻辑"></a>加法器及其进位逻辑</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635852841593.png" alt="enter description here"><br>Σi =（Ai ⊕ Bi）⊕ Ci-1<br>Ci = Ai Bi +（Ai ⊕ Bi）Ci-1 </li>
-<li>串行加法器：如果每步只求一位和，将n位加分成n步实现</li>
-<li>并行加法器：如果用n位全加器一步实现n位相加，即n位同步相加<ol>
-<li>串行进位链</li>
-<li>并行进位链</li>
-<li>组内并行组间串行的进位链<h3 id="算术逻辑运算单元"><a href="#算术逻辑运算单元" class="headerlink" title="算术逻辑运算单元"></a>算术逻辑运算单元</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635853320294.png" alt="ALU运算功能对照"><h2 id="x86架构模型机CPU设计"><a href="#x86架构模型机CPU设计" class="headerlink" title="x86架构模型机CPU设计"></a>x86架构模型机CPU设计</h2><h3 id="指令流程与微命令"><a href="#指令流程与微命令" class="headerlink" title="指令流程与微命令"></a><strong>指令流程与微命令</strong></h3>信息传输操作两大类：内部数据通路操作和外部访存操作</li>
-</ol>
-</li>
-<li>数据通路操作<ol>
-<li>ALU输入选择</li>
-<li>ALU功能选择</li>
-<li>移位器功能选择</li>
-<li>CPU内部总线结果分配控制信号</li>
-</ol>
-</li>
-<li>访存操作相关控制信号<br><strong>EMAR</strong>地址使能<br><strong>R/W</strong>控制主存读写模式<br><strong>EMDR</strong>数据使能<br><strong>SMDR</strong>打入(把数据总线上的数据置入寄存器MDR)<br><strong>SIR</strong>读指令写入<br>(W和EMDR基本绑定)<br>又分四个基本执行阶段：取指令FT、源操作ST、目的操作DT、执行ET<h4 id="MOV指令重点"><a href="#MOV指令重点" class="headerlink" title="MOV指令重点"></a><strong>MOV指令</strong>重点</h4><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790783406.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790799739.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790825197.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790847773.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790869631.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790896974.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790917941.png" alt="enter description here"><h3 id="组合逻辑控制"><a href="#组合逻辑控制" class="headerlink" title="组合逻辑控制"></a>组合逻辑控制</h3></li>
-</ul>
-<p><kbd>insert</kbd>切换输入模式（鼠标光标横竖）</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1300,7 +1276,7 @@ byg:dead_sea</li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">41</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1313,7 +1289,7 @@ byg:dead_sea</li>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1349,7 +1325,7 @@ byg:dead_sea</li>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共67.7k字呐~</span>
+  <span class="post-count">本博客全站共70.9k字呐~</span>
 </div>
 
         
