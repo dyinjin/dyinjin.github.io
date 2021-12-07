@@ -213,7 +213,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-19 15:41:07" itemprop="dateModified" datetime="2021-11-19T15:41:07+08:00">2021-11-19</time>
+                <time title="修改时间：2021-11-26 02:44:04" itemprop="dateModified" datetime="2021-11-26T02:44:04+08:00">2021-11-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,7 +236,42 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="【结构】【前置40】valhelsia-structures-1-16-5-0-1-6-jar"><a href="#【结构】【前置40】valhelsia-structures-1-16-5-0-1-6-jar" class="headerlink" title="【结构】【前置40】valhelsia_structures-1.16.5-0.1.6.jar"></a>【结构】【前置40】valhelsia_structures-1.16.5-0.1.6.jar</h2><ul>
+          <h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="BYG草甸方块材质？"><a href="#BYG草甸方块材质？" class="headerlink" title="BYG草甸方块材质？"></a>BYG草甸方块材质？</h2><ul>
+<li>现象为草甸方块放在任意草方块、泥土方块上直接变透明</li>
+<li>应该是模组冲突导致，与草坪优化相关</li>
+<li>【装饰】【前置30】更好的树叶BetterFoliage-2.7.1-Forge-1.16.5.jar由此模组导致此模组识别各个模组的草方块、树叶方块等再基于原本材质进行修饰(如跟丰富的树叶)，可能草甸方块不是简单的草方块换皮，所有有BUG(可通过设置改变，其提供的设置十分详细和丰富)</li>
+</ul>
+<h2 id="【杂项】快速树叶腐烂FastLeafDecay-v25-jar导致（这个BUG价值三天）"><a href="#【杂项】快速树叶腐烂FastLeafDecay-v25-jar导致（这个BUG价值三天）" class="headerlink" title="【杂项】快速树叶腐烂FastLeafDecay-v25.jar导致（这个BUG价值三天）"></a>【杂项】快速树叶腐烂FastLeafDecay-v25.jar导致（这个BUG价值三天）</h2><ul>
+<li>整合包加入了非常的群系性结构性影响生成世界的模组，</li>
+<li>在创造新的世界时约有30%的可能卡死</li>
+<li>(表现为并非未响应，但加载百分比长时间不变化，任务管理器占用内存变化幅度非常小，如果打开日志的话可以观察到已经在卡死前报错fatal了，只是并没有彻底的阶数游戏进程而且也不再继续)</li>
+<li>最后分析可能与树叶检测有关：在生成世界时部分模组已经生成树叶，部分还没有生成，而本模组在生成时就已经开始执行检测？造成冲突？！</li>
+</ul>
+<h2 id="区块预生成Chunk-Pregenerator"><a href="#区块预生成Chunk-Pregenerator" class="headerlink" title="区块预生成Chunk-Pregenerator"></a>区块预生成Chunk-Pregenerator</h2><ul>
+<li>在选择世界生成类型的下方会有一个按钮</li>
+<li>在其中点击start便可以预生成区块</li>
+</ul>
+<h2 id="优化性模组"><a href="#优化性模组" class="headerlink" title="优化性模组"></a>优化性模组</h2><p>在大型整合包中年尤为重要</p>
+<h3 id="Out-Of-Sight-机翻"><a href="#Out-Of-Sight-机翻" class="headerlink" title="Out Of Sight(机翻)"></a>Out Of Sight(机翻)</h3><p>厌倦了你的邻居巨大的模板工厂基地 （你甚至看不到大部分时间） 降低你的框架？这个模组是你需要的！<br>如果磁贴实体距离远超过 24 个街区，则”视线外”只需停止它们的渲染，并且您可以在配置文件中将此范围配置到最适合您的任何范围。<br>它还支持实体，一些模组用于渲染 fps 重功能。<br>在一个完美的世界中，每个模组都经过优化和良好的测试，但与通常包含超过 100 模组的模组包，这个世界并不存在。所以我这样做， 使多人模组更可玩！<br><strong>优点：</strong></p>
+<ul>
+<li>在繁忙的复杂基地附近， 包含大量模板实体和实体 （如机器、灯光等） 的框架速度非常好</li>
+<li>客户端仅模组</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>当你走近时， 更明显的弹出的实体和瓷砖实体</li>
+</ul>
+<h3 id="ferritecore-机翻"><a href="#ferritecore-机翻" class="headerlink" title="ferritecore(机翻)"></a>ferritecore(机翻)</h3><p>此模组以几种不同的方式减少了 Minecraft 的内存使用。此处提供了有关更改的高级别技术描述。<br>保存的内存量将取决于模组，在 1.16.4 Direwolf20 包的 1.2.0 版本中，它大约将标题屏幕上的内存使用量（GC 之后）从 3.1 GB 减少到 1.1-1.2 GB。</p>
+<h3 id="smoothboot-机翻"><a href="#smoothboot-机翻" class="headerlink" title="smoothboot(机翻)"></a>smoothboot(机翻)</h3><p>平滑启动 - 优化 Minecraft 装载性能，使低端系统更平滑，高端系统规模更好。<br>如果您的 PC 具有较旧或低端 CPU（前 CPU 具有 8 个或更少的线程），您可能已经注意到 Minecraft 在加载到标题屏幕时占用了 CPU 的 100%，导致光标口吃，使多任务处理变得非常困难。平滑启动可以完全解决这个问题，加载应该更顺畅，而且可能更快。</p>
+<h4 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h4><ul>
+<li>  更改用于加载的线程数量</li>
+<li>  更改 Minecraft 使用的线程的优先级</li>
+</ul>
+<h4 id="模组的工作原理"><a href="#模组的工作原理" class="headerlink" title="模组的工作原理"></a>模组的工作原理</h4><p>Minecraft 使用执行器执行多重任务。问题是，在加载过程中运行的任务在 CPU 上相当繁重，因此它会导致 100% CPU 使用。而且，有些任务不一定受益于多阅读。平滑引导通过更改执行者的参数（包括其使用的线程数和每个线程的优先级）来修复这些问题。<br>欲了解更多信息，请阅读<a target="_blank" rel="noopener" href="https://github.com/UltimateBoomer/mc-smoothboot/wiki">平滑启动维基</a></p>
+<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><p>模组应与所有模组兼容，包括 Optifine。但是，值得注意的是，模组使用混合素覆盖用于加载游戏的某些方法。</p>
+<h3 id="Entity-Culling-机翻"><a href="#Entity-Culling-机翻" class="headerlink" title="Entity Culling(机翻)"></a>Entity Culling(机翻)</h3><p><strong>实体剔除</strong>是一个相对较小的客户端性能核心模组，旨在跳过隐藏（磁贴）实体的渲染。<br>在香草中，它只呈现玩家视野中的所有（瓷砖）实体。这意味着可能有成百上千的 （瓷砖） 实体吃你的 fps， 而你甚至看不到他们， 因为他们隐藏在墙后。<br><strong>剔除隐藏实体</strong><br>此模组光线跟踪另一个线程，以检查（瓷砖实体）是否可见。因为这种方法不是100%准确的每个（瓷砖）实体，不被认为是可见的开放gl遮挡测试将作出。<br>当许多（瓷砖）实体不可见时，这可能导致大量 fps 改进。同时，当大多数（瓷砖）实体可见时，也只有最低限度的开销。<br><strong>阴影的配置选项（当使用视网膜和带阴影的阴影的阴影时）</strong><br>此模组还添加了一些配置选项，以在安装视光素和使用带阴影的阴影的阴影器时调整阴影的渲染。<br>某些阴影器可能会提供配置选项来调整阴影渲染距离。但问题是，所有被认为太远的实体、瓷砖实体和块的阴影仍将由 cpu 处理，然后由遮光板扔掉。<br>此模组允许用户指定实体、瓷砖实体和地形的最大阴影距离。<br>或者，它还允许完全跳过实体、瓷砖实体或地形阴影的渲染。</p>
+<h3 id="performant-机翻"><a href="#performant-机翻" class="headerlink" title="performant(机翻)"></a>performant(机翻)</h3><p><strong>最显著的功能：</strong><br>所有功能均可配置，可在配置中调整/启用/禁用。<br><strong>减少 AI 开销</strong><br>AI 不再花费一半的时间来决定他们应该执行哪些任务<br><strong>实体碰撞和路径的多重读数</strong><br>实体更新、碰撞路径和移动的昂贵部分更快，并且发生多重阅读。<br><strong>AI/实体、磁体和事件的负载平衡</strong><br>负载平衡是一种更具侵入性的机械师，以限制滞后罪犯，它可能会影响其他模组的功能，但只有在您的游戏已经落后时才会变得活跃起来。它通过定期检查服务器的 tps 以及它是否低于配置负载平衡中的阈值而工作。然后，它开始配置 AI/实体、Tileent 和事件，以确定谁导致最多的滞后，并限制其更新与这些源导致的滞后。这主要是一个功能，以保持你的游戏可玩，而一些特定的滞后来源通常会把它带到它的膝盖。<br><strong>FPS</strong><br>用于渲染实体的 FPS 得到改进，但仅对客户端的改进很少。<br><strong>登录/播放超时</strong><br>可配置的登录超时，用于在游戏期间登录和断开连接，帮助使用较慢 PC 和连接的玩家。<br><strong>食谱缓存</strong><br>食谱查找得到快得多，帮助所有这些自动制作的模组在那里造成滞后时，通过大量的食谱。<br><strong>快速世界更新</strong><br>随机块和块滴答声整体速度更快，性能成本更低。<br><strong>可配置的公用设施</strong><br>禁用实体生成特定类型的实体。<br>显示非正常块负载的调试设置。<br>用于显示的调试设置</p>
+<h2 id="【结构】【前置40】valhelsia-structures-1-16-5-0-1-6-jar"><a href="#【结构】【前置40】valhelsia-structures-1-16-5-0-1-6-jar" class="headerlink" title="【结构】【前置40】valhelsia_structures-1.16.5-0.1.6.jar"></a>【结构】【前置40】valhelsia_structures-1.16.5-0.1.6.jar</h2><ul>
 <li>本身是别人整合包用的</li>
 <li>但是在生成结构的时候，其特殊的代码(貌似调用结构使用方块时会用其特别标志替代，有时会不切换回方块本身)会使草方块(本应是)变为透视方块</li>
 <li>貌似是JAVA版本要求比较严格-其建议JAVA8</li>
@@ -327,7 +362,433 @@
 byg:dead_sea</li>
 </ul>
 <h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><h2 id="data-get-entity-p-SelectedItem"><a href="#data-get-entity-p-SelectedItem" class="headerlink" title="/data get entity @p SelectedItem"></a><code>/data get entity @p SelectedItem</code></h2><p>查看手持物品详细数据<br>非常有用</p>
-<h2 id="OpenGL-Error-1281-Invalid-Value"><a href="#OpenGL-Error-1281-Invalid-Value" class="headerlink" title="OpenGL Error 1281: Invalid Value"></a><code>OpenGL Error 1281: Invalid Value</code></h2><p><del>老问题，不只是“【优化】储物抽屉优化drawerfps-2.1.jar”的原因，这次表现为水体透明<br>好家伙不查不知道，首先看看OpenGL是个啥吧：<br><code>OpenGL（英语：Open Graphics Library，译名：开放图形库或者“开放式图形库”）是用于渲染2D、3D矢量图形的跨语言、跨平台的应用程序编程接口（API）。这个接口由近350个不同的函数调用组成，用来绘制从简单的图形比特到复杂的三维景象。而另一种程序接口系统是仅用于Microsoft Windows上的Direct3D。OpenGL常用于CAD、虚拟现实、科学可视化程序和电子游戏开发。</code><br>总之不只是我的世界高清修复在用<br>那么看了一下日志，发现和一个叫VBO的东西相关，一查：<br><code>顶点缓存对象（VBO）准许顶点数组数据存放在服务端的高性能显卡内存中，且提供高效数据传输。</code><br>又有知乎大佬说和做水效相关，那么找对问题了，但怎么解决。。。</del><br>这么底层的报错一开始就应该想到是不是JAVA的问题…果然是我JAVA版本低了而已（之前一直确认下了最高版本的JAVA但是忘了启动器这边改成最高版本的）</p>
+<h2 id="OpenGL-Error-1281-Invalid-Value"><a href="#OpenGL-Error-1281-Invalid-Value" class="headerlink" title="OpenGL Error 1281: Invalid Value"></a><code>OpenGL Error 1281: Invalid Value</code></h2><p><del>老问题，不只是“【优化】储物抽屉优化drawerfps-2.1.jar”的原因，这次表现为水体透明<br>好家伙不查不知道，首先看看OpenGL是个啥吧：<br><code>OpenGL（英语：Open Graphics Library，译名：开放图形库或者“开放式图形库”）是用于渲染2D、3D矢量图形的跨语言、跨平台的应用程序编程接口（API）。这个接口由近350个不同的函数调用组成，用来绘制从简单的图形比特到复杂的三维景象。而另一种程序接口系统是仅用于Microsoft Windows上的Direct3D。OpenGL常用于CAD、虚拟现实、科学可视化程序和电子游戏开发。</code><br>总之不只是我的世界高清修复在用<br>那么看了一下日志，发现和一个叫VBO的东西相关，一查：<br><code>顶点缓存对象（VBO）准许顶点数组数据存放在服务端的高性能显卡内存中，且提供高效数据传输。</code><br>又有知乎大佬说和做水效相关，那么找对问题了，但怎么解决。。。</del></p>
+<ul>
+<li>与JAVA版本有关</li>
+<li>尝试关闭Optifine提供的性能设置中的区域渲染</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/07/MC/modslists/minecraft[1.16.5]%20%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A81.0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/07/MC/modslists/minecraft%5B1.16.5%5D%20%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A81.0/" class="post-title-link" itemprop="url">minecraft[1.16.5]现用模组表1.0</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-07 17:22:50 / 修改时间：17:25:51" itemprop="dateCreated datePublished" datetime="2021-12-07T17:22:50+08:00">2021-12-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="走向精华与稳定"><a href="#走向精华与稳定" class="headerlink" title="走向精华与稳定"></a>走向精华与稳定</h1><p>2021/11/11  18:49            71,220 【任务】【前置00】ftb-money-1605.1.3-build.3.jar<br>2021/11/11  17:57           937,588 【任务】【前置00】ftb-quests-forge-1605.3.5-build.72.jar<br>2021/11/25  01:50           171,679 【任务】【前置00】ftb-teams-forge-1605.2.3-build.40.jar<br>2021/11/11  18:05           106,801 【任务】【前置00】item-filters-forge-1605.2.5-build.9.jar<br>2021/04/24  04:52            23,054 【优化】【前置15】byg群系生成修复chocolate-1.3.0-1.16.4.jar<br>2021/07/19  18:33            98,900 【优化】内存加载ferritecore-2.0.5-forge.jar<br>2021/11/25  01:50           244,836 【优化】合成冲突化解polymorph-forge-1.16.5-0.33.jar<br>2021/07/19  14:56            60,714 【优化】实体剔除EntityCulling-1.16.5-2.1.6.jar<br>2021/04/10  00:04            84,744 【优化】平滑加载smoothboot-forge-1.16.4-1.2.2.jar<br>2021/11/25  01:50            97,273 【优化】模组目录catalogue-1.5.0-1.16.5.jar<br>2021/11/25  01:50           135,150 【优化】模组设置configured-1.4.0-1.16.5.jar<br>2021/05/04  07:33            13,677 【优化】渲染优化（针对多人） out_of_sight-1.16.4-1.0.1.jar<br>2021/11/13  01:25           232,975 【优化】生物加载performant-1.16.2-5-3.76m.jar<br>2021/11/25  01:50           585,126 【前置00】ftb-library-forge-1605.3.4-build.87.jar<br>2021/10/26  10:58           975,289 【前置01】abnormals_core-1.16.5-3.3.0.jar<br>2021/11/25  01:50           826,748 【前置10】【辅助】jei-1.16.5-7.7.1.137.jar<br>2021/07/19  15:23            43,358 【前置11】expandability-2.0.1-forge.jar<br>2021/11/05  14:28           593,114 【前置12】帕秋莉Patchouli-1.16.4-53.2.jar<br>2021/11/13  01:49         4,286,350 【前置13】【生物】【前置12】mysticalworld-1.16.5-0.3.5.24.jar<br>2021/10/20  14:42         8,768,876 【前置14】【前置21】Quark-r2.4-319.jar<br>2021/10/26  11:00        10,314,611 【前置15】【群系】byg-1.3.5.jar<br>2021/04/09  23:44           328,828 【前置16】【食物】潘马斯农村食物核心pamhc2foodcore-1.16.3-1.0.2.jar<br>2021/10/26  10:59         2,528,891 【前置17】【食物】农夫乐事FarmersDelight-1.16.5-0.5.1.jar<br>2021/07/19  16:53           167,613 【前置18】【食物】simplytea-1.16.5-2.4.0.jar<br>2021/11/16  15:16         1,030,440 【前置19】rhino-forge-1605.1.5-build.75.jar<br>2021/07/19  19:35         1,337,675 【前置20】cloth-config-4.11.26-forge.jar<br>2021/07/19  19:19            57,279 【前置21】AutoRegLib-1.6-49.jar<br>2021/11/25  01:50         3,382,391 【前置22】geckolib-forge-1.16.5-3.0.56.jar<br>2021/11/25  01:50         1,472,504 【前置23】【杂项】血月丰收月enhancedcelestials-2.0.9-1.16.5.jar<br>2021/10/26  10:58           254,587 【前置25.1】(25取其一)【辅助】1高亮显示Jade-1.16.4-2.8.0.jar<br>2021/10/26  10:58           315,420 【前置28】Bookshelf-Forge-1.16.5-10.3.29.jar<br>2021/10/26  10:58           746,595 【前置29】Mantle-1.16.5-1.6.127.jar<br>2021/07/19  18:15           501,225 【前置2】architectury-1.20.28-forge.jar<br>2021/07/20  19:37         6,638,824 【前置30】kotlinforforge-1.14.0-obf.jar<br>2021/10/26  10:58           105,524 【前置31】morevanillalib-1.16.4-1.4.1.jar<br>2021/10/26  10:58           261,390 【前置32】structure_gel-1.16.5-1.7.8.jar<br>2021/10/26  10:58            96,151 【前置33】SimpleCoreLib-1.16.5-2.0.8.22.jar<br>2021/10/26  10:58         1,074,217 【前置36】附魔前置cofh_core-1.16.5-1.3.1.jar<br>2021/11/25  01:50           140,939 【前置37】collective-1.16.5-3.0.jar<br>2021/10/26  10:58           140,163 【前置38】Placebo-1.16.5-4.6.0.jar<br>2021/10/26  10:58           215,498 【前置39】selene-1.16.5-1.8.1.jar<br>2021/10/26  10:58           106,058 【前置3】YungsApi-1.16.4-Forge-13.jar<br>2021/11/05  14:28           601,128 【前置40】valhelsia_core-16.0.13a.jar<br>2021/11/25  01:50           910,455 【前置41】【辅助】【前置19】或【前置2】(添加合成表矿辞统一)kubejs-forge-1605.3.19-build.180.jar<br>2021/08/17  17:04           509,849 【前置42】Penguin-Lib-1.16.5-0.4.3.jar<br>2021/10/26  10:58           398,661 【前置43】shetiphiancore-1.16-3.8.6.jar<br>2021/08/29  21:43            88,373 【前置44】majrusz-library-1.16.4-2.0.1.jar<br>2021/10/26  14:59           217,199 【前置45】Library_of_Exile-1.16.5-1.2.0.jar<br>2021/10/26  15:43         3,145,190 【前置46】【食物】简单农场simplefarming-1.16.5-1.3.8.jar<br>2021/11/10  00:01           147,708 【前置4】cavebiomeapi-1.16.5-1.4.2.jar<br>2021/07/19  15:12           631,288 【前置5】CreativeCore_v2.2.0_mc1.16.5.jar<br>2021/06/04  21:05         2,660,414 【前置6】【杂项】charm-forge-1.16.5-2.3.2.jar<br>2021/08/29  21:52           482,439 【前置7】citadel-1.8.1-1.16.5.jar<br>2021/06/04  19:07           102,333 【前置8】cuneiform-1.16.3-1.2.5.jar<br>2021/10/26  10:58           246,281 【前置9】饰品栏curios-forge-1.16.5-4.0.5.3.jar<br>2021/07/21  14:07             8,013 【前置】全局数据包globaldataandresourcepacks-1.16.4-1.7.4.jar<br>2021/06/04  22:37         2,004,590 【杂项】[NNOW]NeverNeededOrWanted-1.16.5-1.0.9a.jar<br>2021/06/04  22:28           962,042 【杂项】【前置01】残暴与掠夺savageandravage-1.16.5-3.1.0.jar<br>2021/07/23  18:01             1,896 【杂项】【前置14】夸克奇思妙想QuarkOddities-1.16.3.jar<br>2021/07/19  16:53             3,063 【杂项】【前置17】农夫乐事兼容性farmersdelightintegration-1.16.5-1.0.3.jar<br>2021/10/26  10:58            29,376 【杂项】【前置17】农夫乐事兼容性farmersdelightintegrations-1.16.5-1.2.jar<br>2021/10/26  10:58           297,941 【杂项】【前置17】农夫乐事铜锅copperpot-1.16.5-1.1.2.jar<br>2021/10/26  10:58           321,866 【杂项】【前置33】矿石SimpleOres2-1.16.5-2.4.7.2.jar<br>2021/09/21  01:42            12,082 【杂项】【前置37】围火无怪nohostilesaroundcampfire_1.16.5-3.6.jar<br>2021/07/20  22:17             9,491 【杂项】【前置37】治疗篝火healingcampfire_1.16.5-3.3.jar<br>2021/10/26  10:58            28,518 【杂项】【前置3】群系标题yung_TravelersTitles-1.16.4-1.5.jar<br>2021/07/19  15:14            47,260 【杂项】【前置5】物理掉落物ItemPhysic_v1.4.18_mc1.16.5.jar<br>2021/11/15  01:36            14,638 【杂项】【前置9】【前置14】饰品化夸克背包CuriosQuarkOBP-1.16.5-1.0.2.jar<br>2021/07/20  15:04            67,143 【杂项】【前置9】【前置24】潜影贝栏位curiousshulkerboxes-forge-1.16.5-4.0.1.0.jar<br>2021/07/20  15:10            27,890 【杂项】【前置9】不死图腾栏位curioofundying-forge-1.16.5-5.2.0.0.jar<br>2021/10/26  10:58           500,792 【杂项】储物抽屉StorageDrawers-1.16.3-8.3.0.jar<br>2021/10/26  10:58             6,082 【杂项】农田不再被踩坏TrampleStopper-2.6.1-build.22+mc1.16.5.jar<br>2021/04/24  04:44         2,040,762 【杂项】幻梦eidolon-0.2.7.jar<br>2021/10/29  22:48         1,488,023 【杂项】德鲁伊工艺Druidcraft-1.16.5-0.4.54.jar<br>2021/06/05  00:31           560,732 【杂项】更多洞穴特征extcaves.jar<br>2021/10/26  09:42            19,085 【杂项】村庄英雄合成HeroOfNowhereUpdated_1.16.5.jar<br>2021/11/25  01:46             8,534 【杂项】汉化i18nupdatemod-1.16.5-2.0.2-hotfix5.jar<br>2021/10/26  09:26             8,837 【杂项】爆头headshot-1.3.0.jar<br>2021/08/17  17:07             2,661 【杂项】白天睡觉插件Daydreamer-1.16.5-1.0.jar<br>2021/06/05  02:31           133,745 【杂项】稀有精英怪infernalmobs-1.16.2.1.jar<br>2021/11/10  00:01           396,387 【杂项】荒野之息Paraglider-1.16.5-1.3.2.6.jar<br>2021/11/05  23:53           540,313 【杂项】菜单定制PackMenu-1.16.5-2.5.0.jar<br>2021/11/11  02:08         2,291,012 【杂项】饰品背包ImprovedBackpacks-1.6.2.0.jar<br>2021/04/25  08:54           112,845 【杂项】（再也不用经验修补了）维修箱子RepairChests-1.16.5-1.7.jar<br>2021/10/26  11:01        18,135,643 【生物】alexsmobs-1.12.1.jar<br>2021/11/05  14:26         1,948,461 【生物】MinecraftEarthMod-2.5.7.1.jar<br>2021/07/20  21:55         5,522,069 【生物】mowziesmobs-1.5.19.jar<br>2021/09/05  02:30         1,271,721 【生物】Wilds+Version+2.2.1.jar<br>2021/07/21  13:20         2,970,312 【生物】Zonko’s+Monsters+1.16.5+1.2.jar<br>2021/07/19  17:23           841,753 【生物】【前置01】buzzier_bees-1.16.5-3.0.1.jar<br>2021/06/04  18:57        11,003,946 【生物】【前置01】endergetic-1.16.4-3.0.0.jar<br>2021/11/13  01:26         3,682,658 【生物】【前置01】碧海新生upgrade_aquatic-1.16.5-3.1.1.jar<br>2021/07/21  14:07           963,433 【生物】【前置22】生物与怪物CNB-1.16.3_5-1.2.11.jar<br>2021/06/04  22:35         5,428,670 【生物】【前置32】更多末影人farlanders-1.16.4-1.3.9.jar<br>2021/08/17  16:57           447,935 【生物】【前置42】鱼Piscary-1.16.5-1.0.3.jar<br>2021/08/29  21:22           658,320 【生物】【前置44】难度渐进(宝藏袋)majruszs-difficulty-1.16.4-1.1.0.jar<br>2021/11/25  01:50         4,806,185 【生物】厄运（地狱恶魔）MCDoom-1.16.5-4.0.32.jar<br>2021/06/04  22:26         1,289,476 【生物】变异生物MutantBeasts-1.16.4-1.1.3.jar<br>2021/09/03  16:23         7,681,362 【生物】古老水生物OddWaterMobs[1.16.5]_1.4.0.jar<br>2021/10/26  10:59         1,311,630 【生物】地下城怪物dungeons_mobs-1.16.5-1.0.10.jar<br>2021/11/05  14:28           509,209 【生物】地球版生物restored_earth-1.16.5-1.1.1.jar<br>2021/11/05  14:24        10,560,452 【生物】外来物种Exotic+Critters+1.16+Experimental+1.19.jar<br>2021/11/11  00:37         1,251,211 【生物】如题ambientadditions-0.5.1.jar<br>2021/11/25  01:50         2,767,437 【生物】库帕的克里特斯Koopa’s Critters 1.16 IIV0.4.1.jar<br>2021/10/26  10:58         1,225,645 【生物】无名生物(优质)unnamedanimalmod-1.0.3.jar<br>2021/11/16  15:17        14,521,154 【生物】更多下界生物infernal-expansion-1.16.5-2.4.0.jar<br>2021/07/06  10:33         1,102,070 【生物】更多傀儡extragolems-11.3.1.jar<br>2021/11/10  00:02        10,524,585 【生物】更多僵尸UNDEADv.1.3.release+Biome.jar<br>2021/10/31  18:53           772,409 【生物】更多变异生物mutantmore-1.16.5-1.0.0.jar<br>2021/10/26  10:48           318,147 【生物】更多小型生物LittleMoreCreatures1.1.jar<br>2021/11/05  14:28         1,743,562 【生物】更多挑战DungeonsMod-1.16.3-1.4.41.jar<br>2021/11/02  15:24           714,968 【生物】更多生物(包含但表现于落选生物)mobsgenus-0.2.jar<br>2021/10/26  10:58           265,717 【生物】更多职业村民morevillagers-FORGE-1.16.5-1.5.5.jar<br>2021/07/20  19:50           308,282 【生物】更多骷髅bones-1.16.5-2.1.0.jar<br>2021/10/27  02:38         8,356,809 【生物】更好动物betteranimalsplus-1.16.5-10.2.0.jar<br>2021/07/19  19:05           382,707 【生物】末地重生EndReborn+[0.8.4].jar<br>2021/09/05  16:27           190,249 【生物】村民护卫guardvillagers-1.16.5.1.2.6.jar<br>2021/09/25  19:09           551,025 【生物】水产养殖Aquaculture-1.16.5-2.1.21.jar<br>2021/06/04  22:21         1,454,383 【生物】潘多拉的生物pandoras_creatures-1.16.3-2.0.1.jar<br>2021/11/05  14:28           760,003 【生物】灾祸村民illagers_plus-1.16.4v1.7.2.jar<br>2021/11/13  01:26         2,058,724 【生物】珍奇鸟类exoticbirds-1.16.4-1.3.0.jar<br>2021/11/15  01:41           999,568 【生物】科博尔兹及地牢Kobolds-1.4.9.jar<br>2021/10/26  10:59           743,785 【生物】落选生物outvoted-2.0.0-alpha.12-forge.jar<br>2021/10/26  10:59         9,220,781 【生物】阿斯特米尔的森林(地狱门与钓鱼方式改变)astemir_forestcraft-1.602.jar<br>2021/11/05  14:28           333,669 【生物】附魔师enchantwithmob-1.16.5-1.5.1.jar<br>2021/08/29  21:30           274,624 【生物】非虔诚Impish+Tome+(1.16.5_ver.1.0.2).jar<br>2021/11/16  23:47         4,967,448 【生物】龙栖Wyrmroost-1.16.3-1.2.11.jar<br>2021/07/21  14:07           389,176 【结构】 【前置32】更多地牢dungeons_plus-1.16.5-1.1.5.jar<br>2021/11/05  14:28           297,282 【结构】AwesomeDungeonForge-1.16.5-1.1.2.jar<br>2021/11/25  02:13         4,149,756 【结构】castle_in_the_sky-1.16.5-0.2.6.jar<br>2021/11/13  01:56           313,216 【结构】more_ships_1.16.5_3.jar<br>2021/10/22  13:44           590,639 【结构】StructuresPlusEnd.jar<br>2021/10/26  10:58           510,439 【结构】yung_BetterDungeons-1.16.4-1.2.1.jar<br>2021/07/20  17:24           289,307 【结构】yung_BetterMineshafts-Forge-1.16.4-2.0.4.jar<br>2021/07/20  17:30            64,256 【结构】【前置3】yung-YungsExtras-Forge-1.16.4-1.0.jar<br>2021/09/03  15:54           541,396 【结构】【前置3】yung_BetterStrongholds-1.16.4-1.2.1.jar<br>2021/11/05  14:28         1,540,395 【结构】【前置40】valhelsia_structures-1.16.5-0.1.6.jar<br>2021/10/26  10:33           428,761 【结构】【前置45】(开箱子后会拆除塔)dungeon_World_of_Exile-1.16.5-1.4.0.jar<br>2021/11/05  14:28         2,562,731 【结构】中世纪城堡(不只结构)MedievalCraft-1.16.5-1.16.2.jar<br>2021/06/17  01:05            85,877 【结构】刷怪castle_dungeons-2.3-1.16.5-forge.jar<br>2021/11/25  01:50         5,544,981 【结构】地下城DungeonsArise-1.16.5-2.1.49-beta.jar<br>2021/06/17  01:03           218,290 【结构】地下村庄stoneholm-1.2.2.jar<br>2021/09/05  02:31            22,253 【结构】地下群系Below+1.0+Forge.jar<br>2021/10/26  11:17         1,542,647 【结构】坚毅堡垒stalwart-dungeons-1.16.5-1.1.7.jar<br>2021/11/25  01:50           761,598 【结构】大型多层地牢DungeonCrawl-1.16.5-2.3.4.jar<br>2021/11/25  01:51        38,263,836 【结构】大型结构Shrines-1.16.5-2.0.0-Beta4.jar<br>2021/11/25  01:35           206,580 【结构】天空村庄SkyVillage_1.0.0_1.16.5.jar<br>2021/04/20  20:54           157,181 【结构】旷野塔towers_of_the_wild-1.16.4-2.0.1.jar<br>2021/11/25  01:50         5,576,245 【结构】更多结构repurposed_structures_forge-3.4.5+1.16.5.jar<br>2021/10/26  11:30            80,085 【结构】桥YungsBridges-Forge-1.16.4-1.0.1.jar<br>2021/10/22  13:45           141,714 【结构】沙漠下界元素NMN_1.16.5_v0.1.jar<br>2021/11/25  17:48            49,668 【结构】溪流upstream-1.0.jar<br>2021/11/05  14:28           993,669 【结构】遗迹饰品relics-0.3.1.jar<br>2021/10/29  21:56            19,498 【群系】abyg-1.2-forge.jar<br>2021/10/26  10:59         1,576,889 【群系】BetterDefaultBiomes-1.16.4+-Alpha 2.6.0.jar<br>2021/10/26  11:01        81,199,992 【群系】betterendforge-1.16.5-1.6.3.jar<br>2021/07/19  16:20         3,651,050 【群系】BOP_BiomesOPlenty-1.16.5-13.1.0.480-universal.jar<br>2021/07/21  14:07         4,751,584 【群系】Spheric 1.0.3 1.16.5.jar<br>2021/10/26  11:02        57,328,296 【群系】【前置01】末地OuterEnd-0.2.14.jar<br>2021/07/19  14:45           554,081 【群系】【前置01】河口群系Bayou-Blues-1.16.5-1.0.5.jar<br>2021/06/04  20:58           961,236 【群系】【前置01】秋原autumnity-1.16.5-2.1.1.jar<br>2021/10/26  10:59         6,988,017 【群系】【前置01】自然环境（有生物）environmental-1.16.5-1.1.0.jar<br>2021/07/19  17:16           665,178 【群系】【前置01】薰衣草Abundance-1.16.5-1.0.5.jar<br>2021/07/19  17:31         1,527,658 【群系】【前置01】雨林沙丘atmospheric-1.16.5-3.1.0.jar<br>2021/10/26  10:58           367,720 【群系】【前置13】【前置12】mysticalbiomes-1.16.5-0.0.0.7.jar<br>2021/07/19  21:30           305,286 【群系】【前置22】无尽海洋endless_oceans-1.0.5-forge.jar<br>2021/11/16  15:18        51,506,679 【群系】【前置4】cavesandcliffs-1.16.5-7.1.4.jar<br>2021/10/26  10:58           870,285 【群系】【前置4】【前置27】岩石darkerdepths-1.16.5-1.1.4.jar<br>2021/11/05  01:17           506,465 【群系】地狱生物ShretNether+-+Release+-1.3.3.jar<br>2021/07/19  15:44           280,211 【群系】彩色世界MysticsBiomes-1.16.4-1.1.0.jar<br>2021/07/21  14:07         2,365,497 【群系】恶地改造Betterlands-1.16.5-0.5.0.jar<br>2021/11/16  15:16         1,598,328 【群系】探险者explorercraft-5.0.6.jar<br>2021/11/05  14:29        22,443,866 【群系】更好地狱betternether_reforged-1.2.jar<br>2021/07/21  14:06         1,700,785 【群系】灰烬之地Desolation 1.1.0-1 1.16.5.jar<br>2021/09/05  00:01         7,273,457 【群系】舒适下界ComfortableNether4.9.jar<br>2021/10/26  10:44        10,685,093 【群系】通用群系？genericeco-1.16.5-2.1.jar<br>2021/10/26  10:58           467,595 【装备】【前置9】【前置11】奇异饰品Artifacts-1.16.5-2.10.3.jar<br>2021/05/24  21:50           327,436 【装备】【前置9】泰拉瑞亚更多饰品curioBountiful+Baubles+FORGE-1.16.3-0.0.2.jar<br>2021/07/20  15:10            30,293 【装备】【前置9】经验护符CrimsonXP-1.1.1.jar<br>2021/10/26  10:58         1,001,013 【装备】升级下界合金装备Upgraded Netherite 1.10.1.jar<br>2021/11/10  00:01         2,116,957 【装备】地下城装备dungeons_gear-1.16.5-3.0.20-hotfix.jar<br>2021/07/20  17:01         1,462,309 【装饰】【前置29】灵感原版装饰Inspirations-1.16.5-1.2.3.37.jar<br>2021/11/16  15:17        12,947,922 【装饰】【前置39】supplementaries-1.16.5-0.17.10.jar<br>2021/10/26  10:59         7,871,642 【装饰】【前置43】地灵云心海树山花terraqueous-1.16-1.7.17.jar<br>2021/10/26  10:58         1,013,352 【装饰】【前置8】装饰性环境植物terraincognita-1.16.3-1.7.jar<br>2021/10/26  10:59         1,541,592 【装饰】活力之旅projectvibrantjourneys-1.16.5-3.2.10.jar<br>2021/11/05  14:28         9,241,804 【装饰】自然装饰NaturalDecorMod 1.16 II V0.23.jar<br>2021/04/25  00:11            61,580 【装饰】花finallyfarmabledyes-1.16.4-1.2.0.1.jar<br>2021/07/20  22:35           280,581 【装饰】花草灌木SereneShrubbery-1.16.5-1.1.0.jar<br>2021/10/26  12:06         8,476,267 【装饰】风铃Chimes-1.0.0-1.16.5.jar<br>2021/07/20  23:03         5,398,623 【装饰】（菜篮）NefsMedievalPub+v0.9(1.16.5).jar<br>2021/08/07  00:01            30,493 【辅助】jei找东西findme-1.16.3-2.2.0.0.jar<br>2021/05/03  15:29           792,263 【辅助】Xaeros_Better_PvP_21.8.0_Forge_1.16.5.jar<br>2021/10/26  10:58           270,250 【辅助】【前置10】拼音搜索JustEnoughCharacters-1.16.4-4.3.2.jar<br>2021/04/09  23:51           123,705 【辅助】【前置20】边拿边走InvMove-1.16.3-0.4.6.jar<br>2021/07/19  15:24            21,734 【辅助】【前置9】盔甲架显示饰品Curious+Armor+Stands-1.16.5-2.1.2.jar<br>2021/11/25  01:50           509,478 【辅助】世界地图XaerosWorldMap_1.18.3_Forge_1.16.5.jar<br>2021/04/25  03:14            14,660 【辅助】伤害显示TextDamageIndicators-1.16.3-2.0.1.jar<br>2021/04/24  15:37            42,604 【辅助】拾取通知PickUpNotifier-v1.2-1.16.3.jar<br>2021/07/20  21:23           330,091 【辅助】搬箱子carryon-1.16.5-1.15.5.15.jar<br>2021/04/11  16:07            22,624 【辅助】物品堆叠upsizer-mc1.16.4-6.1.1.jar<br>2021/09/20  22:39            33,125 【辅助】生物生成管理SpawnBalanceUtility-1.36.0.11.jar<br>2021/05/04  07:49            22,955 【辅助】穿草swingthroughgrass-1.16.4-1.5.3.jar<br>2021/09/26  01:06           134,996 【辅助】结构指南针ExplorersCompass-1.16.5-1.1.2-forge.jar<br>2021/09/26  01:06           203,573 【辅助】群系指南针NaturesCompass-1.16.5-1.9.1-forge.jar<br>2021/11/05  14:28            46,203 【辅助】饱和度状态栏appleskin-forge-mc1.16.x-2.2.0.jar<br>2021/04/09  22:58           281,216 【辅助】（区域挖掘）OreExcavation-1.8.157.jar<br>2021/11/11  00:37           588,910 【附魔】【前置01】allurement-1.16.5-1.2.1.jar<br>2021/10/26  10:58            59,309 【附魔】【前置28】附魔描述EnchantmentDescriptions-1.16.5-7.0.17.jar<br>2021/10/26  10:58           132,851 【附魔】【前置36】更多附魔ensorcellation-1.16.5-1.3.1.jar<br>2021/10/26  10:58           478,696 【附魔】更多附魔flowingagony-1.16.5-1.0.4.jar<br>2021/07/20  21:14           136,931 【附魔】更多附魔Unique+Enchantments-1.16.5-2.0.1.jar<br>2021/07/20  21:14            11,607 【附魔】更多附魔—战斗Unique+Enchantments+Battle-1.16.5-1.0.jar<br>2021/07/20  21:14            31,406 【附魔】更多附魔工具Unique+Enchantments+Utils-1.16.5-1.3.jar<br>2021/04/25  04:14            47,064 【附魔】附魔拆解台Disenchanting-forge-1.16.5-1.7.1.jar<br>2021/07/19  17:16           937,114 【食物】【前置01】neapolitan-1.16.5-2.1.0.jar<br>2021/10/26  10:58           549,400 【食物】【前置01】【前置17】A系融合农夫乐事abnormals_delight-1.16.5-1.2.0.jar<br>2021/04/27  12:06           804,052 【食物】【前置16】潘马斯作物pamhc2crops-1.16.3-1.0.2.jar<br>2021/04/27  12:17           545,339 【食物】【前置16】潘马斯树木pamhc2trees-1.16.3-1.0.1.jar<br>2021/04/27  12:18           913,219 【食物】【前置16】潘马斯食物拓展pamhc2foodextended-1.16.3-1.0.2.jar<br>2021/10/26  10:58            11,809 【食物】【前置17】【前置18】farmerstea-1.16.5-1.3.jar<br>2021/10/26  10:58           283,157 【食物】【前置17】农夫乐事下界扩展nethers_delight-2.1.jar<br>2021/07/19  16:54           130,982 【食物】【前置17】农夫乐事扩展Farmers_Extra_Foods_1.2.jar<br>2021/10/26  10:58           199,890 【食物】【前置17】（巨多联动）农夫乐事非正规厨师irregularchef-1.16.5-1.0.1.jar<br>2021/08/17  17:07           496,315 【食物】【前置42】Horticulture-1.16.5-1.0.2.jar<br>2021/10/26  12:11            79,425 【食物】【前置46】【前置17】简单快乐simpledelights-1.2.jar<br>2021/07/20  23:03           682,828 【食物】懒人厨房CookingForBlockheads_1.16.5-9.3.3.jar</p>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/07/MC/modslists/minecraft[1.16.5]%20%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/07/MC/modslists/minecraft%5B1.16.5%5D%20%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.9/" class="post-title-link" itemprop="url">minecraft[1.16.5]现用模组表0.9</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-07 17:20:30 / 修改时间：17:22:29" itemprop="dateCreated datePublished" datetime="2021-12-07T17:20:30+08:00">2021-12-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2021/11/11  18:49            71,220 【任务】【前置00】ftb-money-1605.1.3-build.3.jar<br>2021/11/11  17:57           937,588 【任务】【前置00】ftb-quests-forge-1605.3.5-build.72.jar<br>2021/11/11  18:05           171,681 【任务】【前置00】ftb-teams-forge-1605.2.3-build.38.jar<br>2021/11/11  18:05           106,801 【任务】【前置00】item-filters-forge-1605.2.5-build.9.jar<br>2021/04/24  04:52            23,054 【优化】【前置15】byg群系生成修复chocolate-1.3.0-1.16.4.jar<br>2021/11/16  15:16           245,226 【优化】合成冲突化解polymorph-forge-1.16.5-0.31.jar<br>2021/07/19  14:56            60,714 【优化】实体剔除EntityCulling-1.16.5-2.1.6.jar<br>2021/11/16  15:16            95,977 【优化】模组目录catalogue-1.4.0-1.16.5.jar<br>2021/11/13  01:25           128,171 【优化】模组设置configured-1.3.0-1.16.5.jar<br>2021/11/11  18:05           576,738 【前置00】ftb-library-forge-1605.3.4-build.83.jar<br>2021/10/26  10:58           975,289 【前置01】abnormals_core-1.16.5-3.3.0.jar<br>2021/11/16  15:16           826,742 【前置10】【辅助】jei-1.16.5-7.7.1.136.jar<br>2021/07/19  15:23            43,358 【前置11】expandability-2.0.1-forge.jar<br>2021/11/05  14:28           593,114 【前置12】帕秋莉Patchouli-1.16.4-53.2.jar<br>2021/11/13  01:49         4,286,350 【前置13】【生物】【前置12】mysticalworld-1.16.5-0.3.5.24.jar<br>2021/10/20  14:42         8,768,876 【前置14】【前置21】Quark-r2.4-319.jar<br>2021/10/26  11:00        10,314,611 【前置15】【群系】byg-1.3.5.jar<br>2021/04/09  23:44           328,828 【前置16】【食物】潘马斯农村食物核心pamhc2foodcore-1.16.3-1.0.2.jar<br>2021/10/26  10:59         2,528,891 【前置17】【食物】农夫乐事FarmersDelight-1.16.5-0.5.1.jar<br>2021/07/19  16:53           167,613 【前置18】【食物】simplytea-1.16.5-2.4.0.jar<br>2021/11/16  15:16         1,030,440 【前置19】rhino-forge-1605.1.5-build.75.jar<br>2021/07/19  19:35         1,337,675 【前置20】cloth-config-4.11.26-forge.jar<br>2021/07/19  19:19            57,279 【前置21】AutoRegLib-1.6-49.jar<br>2021/11/16  15:16         3,382,347 【前置22】geckolib-forge-1.16.5-3.0.54.jar<br>2021/11/05  14:28         1,471,429 【前置23】【杂项】血月丰收月enhancedcelestials-2.0.8-1.16.5.jar<br>2021/10/26  10:58           254,587 【前置25.1】(25取其一)【辅助】1高亮显示Jade-1.16.4-2.8.0.jar<br>2021/10/26  10:58           315,420 【前置28】Bookshelf-Forge-1.16.5-10.3.29.jar<br>2021/10/26  10:58           746,595 【前置29】Mantle-1.16.5-1.6.127.jar<br>2021/07/19  18:15           501,225 【前置2】architectury-1.20.28-forge.jar<br>2021/07/20  19:37         6,638,824 【前置30】kotlinforforge-1.14.0-obf.jar<br>2021/10/26  10:58           105,524 【前置31】morevanillalib-1.16.4-1.4.1.jar<br>2021/10/26  10:58           261,390 【前置32】structure_gel-1.16.5-1.7.8.jar<br>2021/10/26  10:58            96,151 【前置33】SimpleCoreLib-1.16.5-2.0.8.22.jar<br>2021/10/26  10:58         1,074,217 【前置36】附魔前置cofh_core-1.16.5-1.3.1.jar<br>2021/11/13  01:25           140,661 【前置37】collective-1.16.5-2.65.jar<br>2021/10/26  10:58           140,163 【前置38】Placebo-1.16.5-4.6.0.jar<br>2021/10/26  10:58           215,498 【前置39】selene-1.16.5-1.8.1.jar<br>2021/10/26  10:58           106,058 【前置3】YungsApi-1.16.4-Forge-13.jar<br>2021/11/05  14:28           601,128 【前置40】valhelsia_core-16.0.13a.jar<br>2021/11/16  15:16           908,420 【前置41】【辅助】【前置19】或【前置2】(添加合成表矿辞统一)kubejs-forge-1605.3.19-build.170.jar<br>2021/08/17  17:04           509,849 【前置42】Penguin-Lib-1.16.5-0.4.3.jar<br>2021/10/26  10:58           398,661 【前置43】shetiphiancore-1.16-3.8.6.jar<br>2021/08/29  21:43            88,373 【前置44】majrusz-library-1.16.4-2.0.1.jar<br>2021/10/26  14:59           217,199 【前置45】Library_of_Exile-1.16.5-1.2.0.jar<br>2021/10/26  15:43         3,145,190 【前置46】【食物】简单农场simplefarming-1.16.5-1.3.8.jar<br>2021/11/10  00:01           147,708 【前置4】cavebiomeapi-1.16.5-1.4.2.jar<br>2021/07/19  15:12           631,288 【前置5】CreativeCore_v2.2.0_mc1.16.5.jar<br>2021/06/04  21:05         2,660,414 【前置6】【杂项】charm-forge-1.16.5-2.3.2.jar<br>2021/08/29  21:52           482,439 【前置7】citadel-1.8.1-1.16.5.jar<br>2021/06/04  19:07           102,333 【前置8】cuneiform-1.16.3-1.2.5.jar<br>2021/10/26  10:58           246,281 【前置9】饰品栏curios-forge-1.16.5-4.0.5.3.jar<br>2021/07/21  14:07             8,013 【前置】全局数据包globaldataandresourcepacks-1.16.4-1.7.4.jar<br>2021/06/04  22:37         2,004,590 【杂项】[NNOW]NeverNeededOrWanted-1.16.5-1.0.9a.jar<br>2021/06/04  22:28           962,042 【杂项】【前置01】残暴与掠夺savageandravage-1.16.5-3.1.0.jar<br>2021/07/23  18:01             1,896 【杂项】【前置14】夸克奇思妙想QuarkOddities-1.16.3.jar<br>2021/07/19  16:53             3,063 【杂项】【前置17】农夫乐事兼容性farmersdelightintegration-1.16.5-1.0.3.jar<br>2021/10/26  10:58            29,376 【杂项】【前置17】农夫乐事兼容性farmersdelightintegrations-1.16.5-1.2.jar<br>2021/10/26  10:58           297,941 【杂项】【前置17】农夫乐事铜锅copperpot-1.16.5-1.1.2.jar<br>2021/10/26  10:58           321,866 【杂项】【前置33】矿石SimpleOres2-1.16.5-2.4.7.2.jar<br>2021/09/21  01:42            12,082 【杂项】【前置37】围火无怪nohostilesaroundcampfire_1.16.5-3.6.jar<br>2021/07/20  22:17             9,491 【杂项】【前置37】治疗篝火healingcampfire_1.16.5-3.3.jar<br>2021/10/26  10:58            28,518 【杂项】【前置3】群系标题yung_TravelersTitles-1.16.4-1.5.jar<br>2021/07/19  15:14            47,260 【杂项】【前置5】物理掉落物ItemPhysic_v1.4.18_mc1.16.5.jar<br>2021/11/15  01:36            14,638 【杂项】【前置9】【前置14】饰品化夸克背包CuriosQuarkOBP-1.16.5-1.0.2.jar<br>2021/07/20  15:04            67,143 【杂项】【前置9】【前置24】潜影贝栏位curiousshulkerboxes-forge-1.16.5-4.0.1.0.jar<br>2021/07/20  15:10            27,890 【杂项】【前置9】不死图腾栏位curioofundying-forge-1.16.5-5.2.0.0.jar<br>2021/10/26  10:58           500,792 【杂项】储物抽屉StorageDrawers-1.16.3-8.3.0.jar<br>2021/10/26  10:58             6,082 【杂项】农田不再被踩坏TrampleStopper-2.6.1-build.22+mc1.16.5.jar<br>2021/04/24  04:44         2,040,762 【杂项】幻梦eidolon-0.2.7.jar<br>2021/10/29  22:48         1,488,023 【杂项】德鲁伊工艺Druidcraft-1.16.5-0.4.54.jar<br>2021/06/05  00:31           560,732 【杂项】更多洞穴特征extcaves.jar<br>2021/10/26  09:42            19,085 【杂项】村庄英雄合成HeroOfNowhereUpdated_1.16.5.jar<br>2021/10/26  09:26             8,837 【杂项】爆头headshot-1.3.0.jar<br>2021/08/17  17:07             2,661 【杂项】白天睡觉插件Daydreamer-1.16.5-1.0.jar<br>2021/06/05  02:31           133,745 【杂项】稀有精英怪infernalmobs-1.16.2.1.jar<br>2021/11/10  00:01           396,387 【杂项】荒野之息Paraglider-1.16.5-1.3.2.6.jar<br>2021/11/05  23:53           540,313 【杂项】菜单定制PackMenu-1.16.5-2.5.0.jar<br>2021/11/11  02:08         2,291,012 【杂项】饰品背包ImprovedBackpacks-1.6.2.0.jar<br>2021/04/25  08:54           112,845 【杂项】（再也不用经验修补了）维修箱子RepairChests-1.16.5-1.7.jar<br>2021/10/26  11:01        18,135,643 【生物】alexsmobs-1.12.1.jar<br>2021/11/05  14:26         1,948,461 【生物】MinecraftEarthMod-2.5.7.1.jar<br>2021/07/20  21:55         5,522,069 【生物】mowziesmobs-1.5.19.jar<br>2021/09/05  02:30         1,271,721 【生物】Wilds+Version+2.2.1.jar<br>2021/07/21  13:20         2,970,312 【生物】Zonko’s+Monsters+1.16.5+1.2.jar<br>2021/07/19  17:23           841,753 【生物】【前置01】buzzier_bees-1.16.5-3.0.1.jar<br>2021/06/04  18:57        11,003,946 【生物】【前置01】endergetic-1.16.4-3.0.0.jar<br>2021/11/13  01:26         3,682,658 【生物】【前置01】碧海新生upgrade_aquatic-1.16.5-3.1.1.jar<br>2021/07/21  14:07           963,433 【生物】【前置22】生物与怪物CNB-1.16.3_5-1.2.11.jar<br>2021/06/04  22:35         5,428,670 【生物】【前置32】更多末影人farlanders-1.16.4-1.3.9.jar<br>2021/08/17  16:57           447,935 【生物】【前置42】鱼Piscary-1.16.5-1.0.3.jar<br>2021/08/29  21:22           658,320 【生物】【前置44】难度渐进(宝藏袋)majruszs-difficulty-1.16.4-1.1.0.jar<br>2021/11/05  14:28         4,589,626 【生物】厄运（地狱恶魔）MCDoom-1.16.5-4.0.30.jar<br>2021/06/04  22:26         1,289,476 【生物】变异生物MutantBeasts-1.16.4-1.1.3.jar<br>2021/09/03  16:23         7,681,362 【生物】古老水生物OddWaterMobs[1.16.5]_1.4.0.jar<br>2021/10/26  10:59         1,311,630 【生物】地下城怪物dungeons_mobs-1.16.5-1.0.10.jar<br>2021/11/05  14:28           509,209 【生物】地球版生物restored_earth-1.16.5-1.1.1.jar<br>2021/11/05  14:24        10,560,452 【生物】外来物种Exotic+Critters+1.16+Experimental+1.19.jar<br>2021/11/11  00:37         1,251,211 【生物】如题ambientadditions-0.5.1.jar<br>2021/11/05  14:28         2,556,106 【生物】库帕的克里特斯Koopas Critters 1.16.5 II V0.3.3 Beta 4.jar<br>2021/10/26  10:58         1,225,645 【生物】无名生物(优质)unnamedanimalmod-1.0.3.jar<br>2021/11/16  15:17        14,521,154 【生物】更多下界生物infernal-expansion-1.16.5-2.4.0.jar<br>2021/07/06  10:33         1,102,070 【生物】更多傀儡extragolems-11.3.1.jar<br>2021/11/10  00:02        10,524,585 【生物】更多僵尸UNDEADv.1.3.release+Biome.jar<br>2021/10/31  18:53           772,409 【生物】更多变异生物mutantmore-1.16.5-1.0.0.jar<br>2021/10/26  10:48           318,147 【生物】更多小型生物LittleMoreCreatures1.1.jar<br>2021/11/05  14:28         1,743,562 【生物】更多挑战DungeonsMod-1.16.3-1.4.41.jar<br>2021/11/02  15:24           714,968 【生物】更多生物(包含但表现于落选生物)mobsgenus-0.2.jar<br>2021/10/26  10:58           265,717 【生物】更多职业村民morevillagers-FORGE-1.16.5-1.5.5.jar<br>2021/07/20  19:50           308,282 【生物】更多骷髅bones-1.16.5-2.1.0.jar<br>2021/10/27  02:38         8,356,809 【生物】更好动物betteranimalsplus-1.16.5-10.2.0.jar<br>2021/07/19  19:05           382,707 【生物】末地重生EndReborn+[0.8.4].jar<br>2021/09/05  16:27           190,249 【生物】村民护卫guardvillagers-1.16.5.1.2.6.jar<br>2021/09/25  19:09           551,025 【生物】水产养殖Aquaculture-1.16.5-2.1.21.jar<br>2021/06/04  22:21         1,454,383 【生物】潘多拉的生物pandoras_creatures-1.16.3-2.0.1.jar<br>2021/11/05  14:28           760,003 【生物】灾祸村民illagers_plus-1.16.4v1.7.2.jar<br>2021/11/13  01:26         2,058,724 【生物】珍奇鸟类exoticbirds-1.16.4-1.3.0.jar<br>2021/11/15  01:41           999,568 【生物】科博尔兹及地牢Kobolds-1.4.9.jar<br>2021/10/26  10:59           743,785 【生物】落选生物outvoted-2.0.0-alpha.12-forge.jar<br>2021/10/26  10:59         9,220,781 【生物】阿斯特米尔的森林(地狱门与钓鱼方式改变)astemir_forestcraft-1.602.jar<br>2021/11/05  14:28           333,669 【生物】附魔师enchantwithmob-1.16.5-1.5.1.jar<br>2021/08/29  21:30           274,624 【生物】非虔诚Impish+Tome+(1.16.5_ver.1.0.2).jar<br>2021/11/16  23:47         4,967,448 【生物】龙栖Wyrmroost-1.16.3-1.2.11.jar<br>2021/07/21  14:07           389,176 【结构】 【前置32】更多地牢dungeons_plus-1.16.5-1.1.5.jar<br>2021/11/05  14:28           297,282 【结构】AwesomeDungeonForge-1.16.5-1.1.2.jar<br>2021/11/13  01:56           313,216 【结构】more_ships_1.16.5_3.jar<br>2021/10/22  13:44           590,639 【结构】StructuresPlusEnd.jar<br>2021/10/26  10:58           510,439 【结构】yung_BetterDungeons-1.16.4-1.2.1.jar<br>2021/07/20  17:24           289,307 【结构】yung_BetterMineshafts-Forge-1.16.4-2.0.4.jar<br>2021/07/20  17:30            64,256 【结构】【前置3】yung-YungsExtras-Forge-1.16.4-1.0.jar<br>2021/09/03  15:54           541,396 【结构】【前置3】yung_BetterStrongholds-1.16.4-1.2.1.jar<br>2021/11/05  14:28         1,540,395 【结构】【前置40】valhelsia_structures-1.16.5-0.1.6.jar<br>2021/10/26  10:33           428,761 【结构】【前置45】(开箱子后会拆除塔)dungeon_World_of_Exile-1.16.5-1.4.0.jar<br>2021/11/05  14:28         2,562,731 【结构】中世纪城堡(不只结构)MedievalCraft-1.16.5-1.16.2.jar<br>2021/06/17  01:05            85,877 【结构】刷怪castle_dungeons-2.3-1.16.5-forge.jar<br>2021/07/20  21:29         4,676,349 【结构】地下城DungeonsArise-1.16.5-2.1.47-release.jar<br>2021/06/17  01:03           218,290 【结构】地下村庄stoneholm-1.2.2.jar<br>2021/09/05  02:31            22,253 【结构】地下群系Below+1.0+Forge.jar<br>2021/10/26  11:17         1,542,647 【结构】坚毅堡垒stalwart-dungeons-1.16.5-1.1.7.jar<br>2021/11/10  00:01           760,148 【结构】大型多层地牢DungeonCrawl-1.16.5-2.3.3.jar<br>2021/11/13  01:26        38,248,803 【结构】大型结构Shrines-1.16.5-2.0.0-Beta2.jar<br>2021/04/20  20:54           157,181 【结构】旷野塔towers_of_the_wild-1.16.4-2.0.1.jar<br>2021/11/16  15:17         5,575,793 【结构】更多结构repurposed_structures_forge-3.4.4+1.16.5.jar<br>2021/10/26  11:30            80,085 【结构】桥YungsBridges-Forge-1.16.4-1.0.1.jar<br>2021/10/22  13:45           141,714 【结构】沙漠下界元素NMN_1.16.5_v0.1.jar<br>2021/11/05  14:28           993,669 【结构】遗迹饰品relics-0.3.1.jar<br>2021/10/29  21:56            19,498 【群系】abyg-1.2-forge.jar<br>2021/10/26  10:59         1,576,889 【群系】BetterDefaultBiomes-1.16.4+-Alpha 2.6.0.jar<br>2021/10/26  11:01        81,199,992 【群系】betterendforge-1.16.5-1.6.3.jar<br>2021/07/19  16:20         3,651,050 【群系】BOP_BiomesOPlenty-1.16.5-13.1.0.480-universal.jar<br>2021/07/21  14:07         4,751,584 【群系】Spheric 1.0.3 1.16.5.jar<br>2021/10/26  11:02        57,328,296 【群系】【前置01】末地OuterEnd-0.2.14.jar<br>2021/07/19  14:45           554,081 【群系】【前置01】河口群系Bayou-Blues-1.16.5-1.0.5.jar<br>2021/06/04  20:58           961,236 【群系】【前置01】秋原autumnity-1.16.5-2.1.1.jar<br>2021/10/26  10:59         6,988,017 【群系】【前置01】自然环境（有生物）environmental-1.16.5-1.1.0.jar<br>2021/07/19  17:16           665,178 【群系】【前置01】薰衣草Abundance-1.16.5-1.0.5.jar<br>2021/07/19  17:31         1,527,658 【群系】【前置01】雨林沙丘atmospheric-1.16.5-3.1.0.jar<br>2021/10/26  10:58           367,720 【群系】【前置13】【前置12】mysticalbiomes-1.16.5-0.0.0.7.jar<br>2021/07/19  21:30           305,286 【群系】【前置22】无尽海洋endless_oceans-1.0.5-forge.jar<br>2021/11/16  15:18        51,506,679 【群系】【前置4】cavesandcliffs-1.16.5-7.1.4.jar<br>2021/10/26  10:58           870,285 【群系】【前置4】【前置27】岩石darkerdepths-1.16.5-1.1.4.jar<br>2021/11/05  01:17           506,465 【群系】地狱生物ShretNether+-+Release+-1.3.3.jar<br>2021/07/19  15:44           280,211 【群系】彩色世界MysticsBiomes-1.16.4-1.1.0.jar<br>2021/07/21  14:07         2,365,497 【群系】恶地改造Betterlands-1.16.5-0.5.0.jar<br>2021/11/16  15:16         1,598,328 【群系】探险者explorercraft-5.0.6.jar<br>2021/11/05  14:29        22,443,866 【群系】更好地狱betternether_reforged-1.2.jar<br>2021/07/21  14:06         1,700,785 【群系】灰烬之地Desolation 1.1.0-1 1.16.5.jar<br>2021/09/05  00:01         7,273,457 【群系】舒适下界ComfortableNether4.9.jar<br>2021/10/26  10:44        10,685,093 【群系】通用群系？genericeco-1.16.5-2.1.jar<br>2021/10/26  10:58           467,595 【装备】【前置9】【前置11】奇异饰品Artifacts-1.16.5-2.10.3.jar<br>2021/05/24  21:50           327,436 【装备】【前置9】泰拉瑞亚更多饰品curioBountiful+Baubles+FORGE-1.16.3-0.0.2.jar<br>2021/07/20  15:10            30,293 【装备】【前置9】经验护符CrimsonXP-1.1.1.jar<br>2021/10/26  10:58         1,001,013 【装备】升级下界合金装备Upgraded Netherite 1.10.1.jar<br>2021/11/10  00:01         2,116,957 【装备】地下城装备dungeons_gear-1.16.5-3.0.20-hotfix.jar<br>2021/07/20  17:01         1,462,309 【装饰】【前置29】灵感原版装饰Inspirations-1.16.5-1.2.3.37.jar<br>2021/11/16  15:17        12,947,922 【装饰】【前置39】supplementaries-1.16.5-0.17.10.jar<br>2021/10/26  10:59         7,871,642 【装饰】【前置43】地灵云心海树山花terraqueous-1.16-1.7.17.jar<br>2021/10/26  10:58         1,013,352 【装饰】【前置8】装饰性环境植物terraincognita-1.16.3-1.7.jar<br>2021/10/26  10:59         1,541,592 【装饰】活力之旅projectvibrantjourneys-1.16.5-3.2.10.jar<br>2021/11/05  14:28         9,241,804 【装饰】自然装饰NaturalDecorMod 1.16 II V0.23.jar<br>2021/04/25  00:11            61,580 【装饰】花finallyfarmabledyes-1.16.4-1.2.0.1.jar<br>2021/07/20  22:35           280,581 【装饰】花草灌木SereneShrubbery-1.16.5-1.1.0.jar<br>2021/10/26  12:06         8,476,267 【装饰】风铃Chimes-1.0.0-1.16.5.jar<br>2021/07/20  23:03         5,398,623 【装饰】（菜篮）NefsMedievalPub+v0.9(1.16.5).jar<br>2021/11/11  00:37           588,910 【附魔】【前置01】allurement-1.16.5-1.2.1.jar<br>2021/10/26  10:58            59,309 【附魔】【前置28】附魔描述EnchantmentDescriptions-1.16.5-7.0.17.jar<br>2021/10/26  10:58           132,851 【附魔】【前置36】更多附魔ensorcellation-1.16.5-1.3.1.jar<br>2021/10/26  10:58           478,696 【附魔】更多附魔flowingagony-1.16.5-1.0.4.jar<br>2021/07/20  21:14           136,931 【附魔】更多附魔Unique+Enchantments-1.16.5-2.0.1.jar<br>2021/07/20  21:14            11,607 【附魔】更多附魔—战斗Unique+Enchantments+Battle-1.16.5-1.0.jar<br>2021/07/20  21:14            31,406 【附魔】更多附魔工具Unique+Enchantments+Utils-1.16.5-1.3.jar<br>2021/04/25  04:14            47,064 【附魔】附魔拆解台Disenchanting-forge-1.16.5-1.7.1.jar<br>2021/07/19  17:16           937,114 【食物】【前置01】neapolitan-1.16.5-2.1.0.jar<br>2021/10/26  10:58           549,400 【食物】【前置01】【前置17】A系融合农夫乐事abnormals_delight-1.16.5-1.2.0.jar<br>2021/04/27  12:06           804,052 【食物】【前置16】潘马斯作物pamhc2crops-1.16.3-1.0.2.jar<br>2021/04/27  12:17           545,339 【食物】【前置16】潘马斯树木pamhc2trees-1.16.3-1.0.1.jar<br>2021/04/27  12:18           913,219 【食物】【前置16】潘马斯食物拓展pamhc2foodextended-1.16.3-1.0.2.jar<br>2021/10/26  10:58            11,809 【食物】【前置17】【前置18】farmerstea-1.16.5-1.3.jar<br>2021/10/26  10:58           283,157 【食物】【前置17】农夫乐事下界扩展nethers_delight-2.1.jar<br>2021/07/19  16:54           130,982 【食物】【前置17】农夫乐事扩展Farmers_Extra_Foods_1.2.jar<br>2021/10/26  10:58           199,890 【食物】【前置17】（巨多联动）农夫乐事非正规厨师irregularchef-1.16.5-1.0.1.jar<br>2021/08/17  17:07           496,315 【食物】【前置42】Horticulture-1.16.5-1.0.2.jar<br>2021/10/26  12:11            79,425 【食物】【前置46】【前置17】简单快乐simpledelights-1.2.jar<br>2021/07/20  23:03           682,828 【食物】懒人厨房CookingForBlockheads_1.16.5-9.3.3.jar</p>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%90%8E%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%90%8E%E9%9D%A2/" class="post-title-link" itemprop="url">后面</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-28 05:02:32" itemprop="dateCreated datePublished" datetime="2021-11-28T05:02:32+08:00">2021-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-30 13:28:35" itemprop="dateModified" datetime="2021-11-30T13:28:35+08:00">2021-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1622422">Fabric应用开发</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40185499/article/details/104023543">基于Fabric的简单Web应用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/64281ff8de13">fabric基本概念</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40657814/article/details/90447259">基于Hyperledger Fabric的官方例子e2e构建一个简单的web应用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.xuanzhangjiong.top/2019/04/16/%E5%88%A9%E7%94%A8Hyperledger-Fabric%E5%BC%80%E5%8F%91%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%BA%E5%9D%97%E9%93%BE%E5%BA%94%E7%94%A8/#%E8%AE%BE%E7%BD%AE%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C">利用Hyperledger Fabric开发你的第一个区块链应用</a><br><a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/write_first_app.html#id2">对应官方</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span>**dyingjin@ubuntu**:**~/Desktop/fabric-samples/test-network**$ sudo -i</span><br><span class="line">[sudo] password for dyingjin: </span><br><span class="line">root@ubuntu:~# cd /</span><br><span class="line">root@ubuntu:/# cd home/dyingjin/Desktop/fabric-samples/test-network</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# ./network.sh up createChannel</span><br><span class="line">Creating channel &#x27;mychannel&#x27;.</span><br><span class="line">If network is not up, starting nodes with CLI timeout of &#x27;5&#x27; tries and CLI delay of &#x27;3&#x27; seconds and using database &#x27;leveldb with crypto from &#x27;cryptogen&#x27;</span><br><span class="line">Bringing up network</span><br><span class="line">LOCAL_VERSION=2.3.3</span><br><span class="line">DOCKER_IMAGE_VERSION=2.3.3</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/test-network/../bin/cryptogen</span><br><span class="line">Generating certificates using cryptogen tool</span><br><span class="line">Creating Org1 Identities</span><br><span class="line">+ cryptogen generate --config=./organizations/cryptogen/crypto-config-org1.yaml --output=organizations</span><br><span class="line">org1.example.com</span><br><span class="line">+ res=0</span><br><span class="line">Creating Org2 Identities</span><br><span class="line">+ cryptogen generate --config=./organizations/cryptogen/crypto-config-org2.yaml --output=organizations</span><br><span class="line">org2.example.com</span><br><span class="line">+ res=0</span><br><span class="line">Creating Orderer Org Identities</span><br><span class="line">+ cryptogen generate --config=./organizations/cryptogen/crypto-config-orderer.yaml --output=organizations</span><br><span class="line">+ res=0</span><br><span class="line">Generating CCP files for Org1 and Org2</span><br><span class="line">Creating network &quot;fabric_test&quot; with the default driver</span><br><span class="line">Creating volume &quot;docker_orderer.example.com&quot; with default driver</span><br><span class="line">Creating volume &quot;docker_peer0.org1.example.com&quot; with default driver</span><br><span class="line">Creating volume &quot;docker_peer0.org2.example.com&quot; with default driver</span><br><span class="line">Creating peer0.org2.example.com ... done</span><br><span class="line">Creating peer0.org1.example.com ... done</span><br><span class="line">Creating orderer.example.com    ... done</span><br><span class="line">Creating cli                    ... done</span><br><span class="line">CONTAINER ID   IMAGE                               COMMAND             CREATED         STATUS                  PORTS                                                                                                                                 NAMES</span><br><span class="line">0fe7892c3748   hyperledger/fabric-tools:latest     &quot;/bin/bash&quot;         1 second ago    Up Less than a second                                                                                                                                         cli</span><br><span class="line">83bde93c006c   hyperledger/fabric-orderer:latest   &quot;orderer&quot;           2 seconds ago   Up Less than a second   0.0.0.0:7050-&gt;7050/tcp, :::7050-&gt;7050/tcp, 0.0.0.0:7053-&gt;7053/tcp, :::7053-&gt;7053/tcp, 0.0.0.0:17050-&gt;17050/tcp, :::17050-&gt;17050/tcp   orderer.example.com</span><br><span class="line">016ba2f4c79a   hyperledger/fabric-peer:latest      &quot;peer node start&quot;   3 seconds ago   Up Less than a second   0.0.0.0:9051-&gt;9051/tcp, :::9051-&gt;9051/tcp, 7051/tcp, 0.0.0.0:19051-&gt;19051/tcp, :::19051-&gt;19051/tcp                                    peer0.org2.example.com</span><br><span class="line">2d10a48b4833   hyperledger/fabric-peer:latest      &quot;peer node start&quot;   3 seconds ago   Up Less than a second   0.0.0.0:7051-&gt;7051/tcp, :::7051-&gt;7051/tcp, 0.0.0.0:17051-&gt;17051/tcp, :::17051-&gt;17051/tcp                                              peer0.org1.example.com</span><br><span class="line">Generating channel genesis block &#x27;mychannel.block&#x27;</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/test-network/../bin/configtxgen</span><br><span class="line">+ configtxgen -profile TwoOrgsApplicationGenesis -outputBlock ./channel-artifacts/mychannel.block -channelID mychannel</span><br><span class="line">2021-11-29 21:24:09.077 PST [common.tools.configtxgen] main -&gt; INFO 001 Loading configuration</span><br><span class="line">2021-11-29 21:24:09.083 PST [common.tools.configtxgen.localconfig] completeInitialization -&gt; INFO 002 orderer type: etcdraft</span><br><span class="line">2021-11-29 21:24:09.083 PST [common.tools.configtxgen.localconfig] completeInitialization -&gt; INFO 003 Orderer.EtcdRaft.Options unset, setting to tick_interval:&quot;500ms&quot; election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 </span><br><span class="line">2021-11-29 21:24:09.083 PST [common.tools.configtxgen.localconfig] Load -&gt; INFO 004 Loaded configuration: /home/dyingjin/Desktop/fabric-samples/test-network/configtx/configtx.yaml</span><br><span class="line">2021-11-29 21:24:09.085 PST [common.tools.configtxgen] doOutputBlock -&gt; INFO 005 Generating genesis block</span><br><span class="line">2021-11-29 21:24:09.086 PST [common.tools.configtxgen] doOutputBlock -&gt; INFO 006 Creating application channel genesis block</span><br><span class="line">2021-11-29 21:24:09.086 PST [common.tools.configtxgen] doOutputBlock -&gt; INFO 007 Writing genesis block</span><br><span class="line">+ res=0</span><br><span class="line">Creating channel mychannel</span><br><span class="line">Using organization 1</span><br><span class="line">+ osnadmin channel join --channelID mychannel --config-block ./channel-artifacts/mychannel.block -o localhost:7053 --ca-file /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --client-cert /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt --client-key /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key</span><br><span class="line">+ res=0</span><br><span class="line">Status: 201</span><br><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;: &quot;mychannel&quot;,</span><br><span class="line">	&quot;url&quot;: &quot;/participation/v1/channels/mychannel&quot;,</span><br><span class="line">	&quot;consensusRelation&quot;: &quot;consenter&quot;,</span><br><span class="line">	&quot;status&quot;: &quot;active&quot;,</span><br><span class="line">	&quot;height&quot;: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Channel &#x27;mychannel&#x27; created</span><br><span class="line">Joining org1 peer to the channel...</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer channel join -b ./channel-artifacts/mychannel.block</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:15.240 PST [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-29 21:24:15.262 PST [channelCmd] executeJoin -&gt; INFO 002 Successfully submitted proposal to join channel</span><br><span class="line">Joining org2 peer to the channel...</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer channel join -b ./channel-artifacts/mychannel.block</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:18.329 PST [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-29 21:24:18.350 PST [channelCmd] executeJoin -&gt; INFO 002 Successfully submitted proposal to join channel</span><br><span class="line">Setting anchor peer for org1...</span><br><span class="line">Using organization 1</span><br><span class="line">Fetching channel config for channel mychannel</span><br><span class="line">Using organization 1</span><br><span class="line">Fetching the most recent configuration block for the channel</span><br><span class="line">+ peer channel fetch config config_block.pb -o orderer.example.com:7050 --ordererTLSHostnameOverride orderer.example.com -c mychannel --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem</span><br><span class="line">2021-11-30 05:24:18.565 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:18.573 UTC [cli.common] readBlock -&gt; INFO 002 Received block: 0</span><br><span class="line">2021-11-30 05:24:18.573 UTC [channelCmd] fetch -&gt; INFO 003 Retrieving last config block: 0</span><br><span class="line">2021-11-30 05:24:18.577 UTC [cli.common] readBlock -&gt; INFO 004 Received block: 0</span><br><span class="line">Decoding config block to JSON and isolating config to Org1MSPconfig.json</span><br><span class="line">+ configtxlator proto_decode --input config_block.pb --type common.Block</span><br><span class="line">+ jq &#x27;.data.data[0].payload.data.config&#x27;</span><br><span class="line">+ jq &#x27;.channel_group.groups.Application.groups.Org1MSP.values += &#123;&quot;AnchorPeers&quot;:&#123;&quot;mod_policy&quot;: &quot;Admins&quot;,&quot;value&quot;:&#123;&quot;anchor_peers&quot;: [&#123;&quot;host&quot;: &quot;peer0.org1.example.com&quot;,&quot;port&quot;: 7051&#125;]&#125;,&quot;version&quot;: &quot;0&quot;&#125;&#125;&#x27; Org1MSPconfig.json</span><br><span class="line">Generating anchor peer update transaction for Org1 on channel mychannel</span><br><span class="line">+ configtxlator proto_encode --input Org1MSPconfig.json --type common.Config</span><br><span class="line">+ configtxlator proto_encode --input Org1MSPmodified_config.json --type common.Config</span><br><span class="line">+ configtxlator compute_update --channel_id mychannel --original original_config.pb --updated modified_config.pb</span><br><span class="line">+ configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate</span><br><span class="line">+ jq .</span><br><span class="line">++ cat config_update.json</span><br><span class="line">+ echo &#x27;&#123;&quot;payload&quot;:&#123;&quot;header&quot;:&#123;&quot;channel_header&quot;:&#123;&quot;channel_id&quot;:&quot;mychannel&quot;, &quot;type&quot;:2&#125;&#125;,&quot;data&quot;:&#123;&quot;config_update&quot;:&#123;&#x27; &#x27;&quot;channel_id&quot;:&#x27; &#x27;&quot;mychannel&quot;,&#x27; &#x27;&quot;isolated_data&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;read_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org1MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;write_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org1MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;AnchorPeers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;anchor_peers&quot;:&#x27; &#x27;[&#x27; &#x27;&#123;&#x27; &#x27;&quot;host&quot;:&#x27; &#x27;&quot;peer0.org1.example.com&quot;,&#x27; &#x27;&quot;port&quot;:&#x27; 7051 &#x27;&#125;&#x27; &#x27;]&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;1&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;&#125;&#125;&#125;&#x27;</span><br><span class="line">+ configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope</span><br><span class="line">2021-11-30 05:24:18.826 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:18.840 UTC [channelCmd] update -&gt; INFO 002 Successfully submitted channel update</span><br><span class="line">Anchor peer set for org &#x27;Org1MSP&#x27; on channel &#x27;mychannel&#x27;</span><br><span class="line">Setting anchor peer for org2...</span><br><span class="line">Using organization 2</span><br><span class="line">Fetching channel config for channel mychannel</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer channel fetch config Fetching the most recent configuration block for the channel</span><br><span class="line">config_block.pb -o orderer.example.com:7050 --ordererTLSHostnameOverride orderer.example.com -c mychannel --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem</span><br><span class="line">2021-11-30 05:24:19.048 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:19.054 UTC [cli.common] readBlock -&gt; INFO 002 Received block: 1</span><br><span class="line">2021-11-30 05:24:19.055 UTC [channelCmd] fetch -&gt; INFO 003 Retrieving last config block: 1</span><br><span class="line">2021-11-30 05:24:19.057 UTC [cli.common] readBlock -&gt; INFO 004 Received block: 1</span><br><span class="line">Decoding config block to JSON and isolating config to Org2MSPconfig.json</span><br><span class="line">+ configtxlator proto_decode --input config_block.pb --type common.Block</span><br><span class="line">+ jq &#x27;.data.data[0].payload.data.config&#x27;</span><br><span class="line">Generating anchor peer update transaction for Org2 on channel mychannel</span><br><span class="line">+ jq &#x27;.channel_group.groups.Application.groups.Org2MSP.values += &#123;&quot;AnchorPeers&quot;:&#123;&quot;mod_policy&quot;: &quot;Admins&quot;,&quot;value&quot;:&#123;&quot;anchor_peers&quot;: [&#123;&quot;host&quot;: &quot;peer0.org2.example.com&quot;,&quot;port&quot;: 9051&#125;]&#125;,&quot;version&quot;: &quot;0&quot;&#125;&#125;&#x27; Org2MSPconfig.json</span><br><span class="line">+ configtxlator proto_encode --input Org2MSPconfig.json --type common.Config</span><br><span class="line">+ configtxlator proto_encode --input Org2MSPmodified_config.json --type common.Config</span><br><span class="line">+ configtxlator compute_update --channel_id mychannel --original original_config.pb --updated modified_config.pb</span><br><span class="line">+ configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate</span><br><span class="line">+ jq .</span><br><span class="line">++ cat config_update.json</span><br><span class="line">+ echo &#x27;&#123;&quot;payload&quot;:&#123;&quot;header&quot;:&#123;&quot;channel_header&quot;:&#123;&quot;channel_id&quot;:&quot;mychannel&quot;, &quot;type&quot;:2&#125;&#125;,&quot;data&quot;:&#123;&quot;config_update&quot;:&#123;&#x27; &#x27;&quot;channel_id&quot;:&#x27; &#x27;&quot;mychannel&quot;,&#x27; &#x27;&quot;isolated_data&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;read_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org2MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;write_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org2MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;AnchorPeers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;anchor_peers&quot;:&#x27; &#x27;[&#x27; &#x27;&#123;&#x27; &#x27;&quot;host&quot;:&#x27; &#x27;&quot;peer0.org2.example.com&quot;,&#x27; &#x27;&quot;port&quot;:&#x27; 9051 &#x27;&#125;&#x27; &#x27;]&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;1&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;&#125;&#125;&#125;&#x27;</span><br><span class="line">+ configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope</span><br><span class="line">2021-11-30 05:24:19.311 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:19.326 UTC [channelCmd] update -&gt; INFO 002 Successfully submitted channel update</span><br><span class="line">Anchor peer set for org &#x27;Org2MSP&#x27; on channel &#x27;mychannel&#x27;</span><br><span class="line">Channel &#x27;mychannel&#x27; joined</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go</span><br><span class="line">deploying chaincode on channel &#x27;mychannel&#x27;</span><br><span class="line">executing with the following</span><br><span class="line">- CHANNEL_NAME: mychannel</span><br><span class="line">- CC_NAME: basic</span><br><span class="line">- CC_SRC_PATH: ../asset-transfer-basic/chaincode-go</span><br><span class="line">- CC_SRC_LANGUAGE: go</span><br><span class="line">- CC_VERSION: 1.0</span><br><span class="line">- CC_SEQUENCE: 1</span><br><span class="line">- CC_END_POLICY: NA</span><br><span class="line">- CC_COLL_CONFIG: NA</span><br><span class="line">- CC_INIT_FCN: NA</span><br><span class="line">- DELAY: 3</span><br><span class="line">- MAX_RETRY: 5</span><br><span class="line">- VERBOSE: false</span><br><span class="line">Vendoring Go dependencies at ../asset-transfer-basic/chaincode-go</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/asset-transfer-basic/chaincode-go /home/dyingjin/Desktop/fabric-samples/test-network</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/test-network</span><br><span class="line">Finished vendoring Go dependencies</span><br><span class="line">+ peer lifecycle chaincode package basic.tar.gz --path ../asset-transfer-basic/chaincode-go --lang golang --label basic_1.0</span><br><span class="line">+ res=0</span><br><span class="line">Chaincode is packaged</span><br><span class="line">Installing chaincode on peer0.org1...</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer lifecycle chaincode install basic.tar.gz</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:40.273 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 001 Installed remotely: response:<span class="tag">&lt;<span class="name">status:200</span> <span class="attr">payload:</span>&quot;\<span class="attr">nJbasic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span>\<span class="attr">022</span>\<span class="attr">tbasic_1.0</span>&quot; &gt;</span> </span><br><span class="line">2021-11-29 21:24:40.273 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 002 Chaincode code package identifier: basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span><br><span class="line">Chaincode is installed on peer0.org1</span><br><span class="line">Install chaincode on peer0.org2...</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer lifecycle chaincode install basic.tar.gz</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:55.571 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 001 Installed remotely: response:<span class="tag">&lt;<span class="name">status:200</span> <span class="attr">payload:</span>&quot;\<span class="attr">nJbasic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span>\<span class="attr">022</span>\<span class="attr">tbasic_1.0</span>&quot; &gt;</span> </span><br><span class="line">2021-11-29 21:24:55.571 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 002 Chaincode code package identifier: basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span><br><span class="line">Chaincode is installed on peer0.org2</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer lifecycle chaincode queryinstalled</span><br><span class="line">+ res=0</span><br><span class="line">Installed chaincodes on peer:</span><br><span class="line">Package ID: basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e, Label: basic_1.0</span><br><span class="line">Query installed successful on peer0.org1 on channel</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name basic --version 1.0 --package-id basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e --sequence 1</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:57.729 PST [chaincodeCmd] ClientWait -&gt; INFO 001 txid [00e5c20e20f9c0aac1a15c0b0077f6222617a3316b233bcd6228a85f32140102] committed with status (VALID) at localhost:7051</span><br><span class="line">Chaincode definition approved on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org1 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org1, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org2 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org2, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name basic --version 1.0 --package-id basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e --sequence 1</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:25:05.967 PST [chaincodeCmd] ClientWait -&gt; INFO 001 txid [2a12e0d4680ab3d7bc370464af51d98dce75706d47968496e13ba168035fe61b] committed with status (VALID) at localhost:9051</span><br><span class="line">Chaincode definition approved on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org1 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org1, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: true</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org2 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org2, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: true</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name basic --peerAddresses localhost:7051 --tlsRootCertFiles /home/dyingjin/Desktop/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles /home/dyingjin/Desktop/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --version 1.0 --sequence 1</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:25:14.497 PST [chaincodeCmd] ClientWait -&gt; INFO 001 txid [52ab43fdce51efbf03f66a3bfa441566802339f03a18da30332b80bd80344fab] committed with status (VALID) at localhost:9051</span><br><span class="line">2021-11-29 21:25:14.560 PST [chaincodeCmd] ClientWait -&gt; INFO 002 txid [52ab43fdce51efbf03f66a3bfa441566802339f03a18da30332b80bd80344fab] committed with status (VALID) at localhost:7051</span><br><span class="line">Chaincode definition committed on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Querying chaincode definition on peer0.org1 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to Query committed status on peer0.org1, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode querycommitted --channelID mychannel --name basic</span><br><span class="line">+ res=0</span><br><span class="line">Committed chaincode definition for chaincode &#x27;basic&#x27; on channel &#x27;mychannel&#x27;:</span><br><span class="line">Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]</span><br><span class="line">Query chaincode definition successful on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">Querying chaincode definition on peer0.org2 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to Query committed status on peer0.org2, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode querycommitted --channelID mychannel --name basic</span><br><span class="line">+ res=0</span><br><span class="line">Committed chaincode definition for chaincode &#x27;basic&#x27; on channel &#x27;mychannel&#x27;:</span><br><span class="line">Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]</span><br><span class="line">Query chaincode definition successful on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Chaincode initialization is not required</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export PATH=$&#123;PWD&#125;/../bin:$PATH</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export FABRIC_CFG_PATH=$PWD/../config/</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ENABLED=true</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_LOCALMSPID=&quot;Org1MSP&quot;</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ROOTCERT_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_ADDRESS=localhost:7051</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c &#x27;&#123;&quot;function&quot;:&quot;InitLedger&quot;,&quot;Args&quot;:[]&#125;&#x27;</span><br><span class="line">2021-11-29 21:25:48.618 PST [chaincodeCmd] chaincodeInvokeOrQuery -&gt; INFO 001 Chaincode invoke successful. result: status:200 </span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;GetAllAssets&quot;]&#125;&#x27;</span><br><span class="line">[&#123;&quot;AppraisedValue&quot;:300,&quot;Color&quot;:&quot;blue&quot;,&quot;ID&quot;:&quot;asset1&quot;,&quot;Owner&quot;:&quot;Tomoko&quot;,&quot;Size&quot;:5&#125;,&#123;&quot;AppraisedValue&quot;:400,&quot;Color&quot;:&quot;red&quot;,&quot;ID&quot;:&quot;asset2&quot;,&quot;Owner&quot;:&quot;Brad&quot;,&quot;Size&quot;:5&#125;,&#123;&quot;AppraisedValue&quot;:500,&quot;Color&quot;:&quot;green&quot;,&quot;ID&quot;:&quot;asset3&quot;,&quot;Owner&quot;:&quot;Jin Soo&quot;,&quot;Size&quot;:10&#125;,&#123;&quot;AppraisedValue&quot;:600,&quot;Color&quot;:&quot;yellow&quot;,&quot;ID&quot;:&quot;asset4&quot;,&quot;Owner&quot;:&quot;Max&quot;,&quot;Size&quot;:10&#125;,&#123;&quot;AppraisedValue&quot;:700,&quot;Color&quot;:&quot;black&quot;,&quot;ID&quot;:&quot;asset5&quot;,&quot;Owner&quot;:&quot;Adriana&quot;,&quot;Size&quot;:15&#125;,&#123;&quot;AppraisedValue&quot;:800,&quot;Color&quot;:&quot;white&quot;,&quot;ID&quot;:&quot;asset6&quot;,&quot;Owner&quot;:&quot;Michel&quot;,&quot;Size&quot;:15&#125;]</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c &#x27;&#123;&quot;function&quot;:&quot;TransferAsset&quot;,&quot;Args&quot;:[&quot;asset6&quot;,&quot;Christopher&quot;]&#125;&#x27;</span><br><span class="line">2021-11-29 21:26:06.688 PST [chaincodeCmd] chaincodeInvokeOrQuery -&gt; INFO 001 Chaincode invoke successful. result: status:200 </span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ENABLED=true</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_LOCALMSPID=&quot;Org2MSP&quot;</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ROOTCERT_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_ADDRESS=localhost:9051</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;ReadAsset&quot;,&quot;asset6&quot;]&#125;&#x27;</span><br><span class="line">&#123;&quot;AppraisedValue&quot;:800,&quot;Color&quot;:&quot;white&quot;,&quot;ID&quot;:&quot;asset6&quot;,&quot;Owner&quot;:&quot;Christopher&quot;,&quot;Size&quot;:15&#125;</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# </span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E9%A2%98/" class="post-title-link" itemprop="url">题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-27 18:46:47" itemprop="dateCreated datePublished" datetime="2021-11-27T18:46:47+08:00">2021-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-29 15:29:16" itemprop="dateModified" datetime="2021-11-29T15:29:16+08:00">2021-11-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="0"><a href="#0" class="headerlink" title="0"></a>0</h1><ol>
+<li>（背书）是指特定节点执行链码交易并返回一个提案响应给客户端应用的过程。</li>
+<li>（系统通道）配置和每个应用通道配置部分提供了排序组织对哪些组织是联盟成员、区块如何分发到通道以及排序服务节点使用的共识机制的控制。</li>
+<li>（Peer节点）是网络的基本元素，因为他们存储了账本和智能合约。</li>
+<li>（Peer 节点）是账本及链码的宿主，应用程序及管理员如果想要访问这些资源，他们必须要和（Peer 节点）进行交互。这就是为什么（Peer 节点）被认为是 Hyperledger Fabric 网络最基本的组成模块。</li>
+<li>（背书）指明了区块链网络中哪些组织必须对一个给定的智能合约所生成的交易进行签名，以此来宣布该交易有效。</li>
+<li>程序通常需要对象的当前值，如果遍历整个区块链来计算对象的当前值会很麻烦——从（世界状态）中可以直接获取当前值。</li>
+<li>一个智能合约中可定义一个或多个链码。（X可以将智能合约看成交易的管理者，而链码则管理着如何将智能合约打包以便用于部署。一个智能合约定义在一个链码中。而多个智能合约也可以定义在同一个链码中。当一个链码部署完毕，该链码中的所有智能合约都可供应用程序使用。）</li>
+<li>Hyperledger Fabric 中的账本由“世界状态“和”区块链“这两部分组成，世界状态是交易日志，区块链是数据库。（X世界状态是一个数据库，它存储了一组账本状态的当前值；区块链是交易日志，它记录了促成当前世界状态的所有改变。）</li>
+<li>一个 Peer 节点可以维护多个账本。（V）</li>
+</ol>
+<h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><ol>
+<li>许多分布式区块链，如以太坊（Ethereum）和比特币（Bitcoin），都是<code>非</code>许可的，这意味着任何节点都可以参与共识过程，在共识过程中，交易被排序并打包成区块。因此，这些系统依靠<code>概率共识算法</code>最终保证账本一致性高的概率，但仍容易受到不同的账本（有时也称为一个账本“分叉”），在网络中不同的参与者对于交易顺序有不同的观点。</li>
+<li>Hyperledger Fabric 的工作方式与许多分布式区块链<code>不同</code>。它有一种称为排序节点的节点使交易有序，并与其他排序节点一起形成一个排序服务。因为 Fabric 的设计依赖于<code>确定性</code>的共识算法，所以 Peer 节点所验证的区块都是最终的和正确的。</li>
+<li>拜占庭将军问题：多个拜占庭将军要如何在可能有叛徒、信使可能被策反或者暗杀的情况下达成是否要进攻的一致性决定？；Raft共识算法(fabric2.X特点)的举例：假设将军中<code>没有</code>叛军，信使的信息<code>可靠</code>但<code>有</code>可能被暗杀的情况下，将军们如何达成一致性决定？（多看看拜占庭将军问题即解决方案，使用raft为理想的实验情况）</li>
+<li>CA是什么，MSP是什么(数字证书是一种由权威机构颁发的、用于在网络上证明用户身份的证明文件，颁发数字证书的过程也可以称为认证授权 (Certification Authority，简称CA)过程。;MSP是Membership Service Provider的缩写，直译为 成员关系服务提供者 。)</li>
+<li>然后去搜一下SDK开发相关吧</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Hyperledger%20Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Hyperledger%20Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#1/" class="post-title-link" itemprop="url">Hyperledger Fabric官方文档#1</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-27 18:41:36" itemprop="dateCreated datePublished" datetime="2021-11-27T18:41:36+08:00">2021-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-28 05:00:46" itemprop="dateModified" datetime="2021-11-28T05:00:46+08:00">2021-11-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="（概念）"><a href="#（概念）" class="headerlink" title="（概念）"></a>（概念）</h1><h2 id="排序服务"><a href="#排序服务" class="headerlink" title="排序服务"></a>排序服务</h2><p>每个Fabric网络还包括一个<strong>排序服务</strong>。 </p>
+<p>排序服务允许对等节点专注于验证交易并将它们提交到账本。 排序节点从客户那里收到<strong>认可</strong>的交易后，他们就交易顺序达成共识，然后添加区块。 这些区块之后被分配给添加这些区块到账本的对等节点。 排序节点还可以操作<strong>定义Fabric网络的功能</strong>的<strong>系统通道</strong>， 系统通道定义了哪个组织是该联盟的成员。</p>
+<p>该示例网络使用一个<strong>单节点Raft排序服务</strong>，该服务由排序组织运行。 您可以看到在您机器上正在运行的排序节点<code>orderer.example.com</code>。 虽然测试网络仅使用单节点排序服务，一个真实的网络将有多个排序节点，由一个或多个多个排序者组织操作。 不同的排序节点将使用Raft共识算法达成跨交易顺序的共识网络。</p>
+<h2 id="智能合约与链码"><a href="#智能合约与链码" class="headerlink" title="智能合约与链码"></a>智能合约与链码</h2><p>在Fabric中，智能合约作为链码以软件包的形式部署在网络上。 链码安装在组织的对等节点上，然后部署到某个通道，然后可以在该通道中用于认可交易和区块链账本交互。 在将链码部署到通道前，该频道的成员需要就链码定义达成共识，建立链码治理。 何时达到要求数量的组织同意后，链码定义可以提交给通道，并且可以使用链码了。<br>链码通过应用提交的交易来初始化以及管理账本状态。<br>链码通常用来处理网络中成员共同接受的业务逻辑，所以它可以被认为是“智能合约”。</p>
+<h2 id="Fabric-链码生命周期"><a href="#Fabric-链码生命周期" class="headerlink" title="Fabric 链码生命周期"></a><a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/chaincode_lifecycle.html">Fabric 链码生命周期</a></h2><p>Fabric 链码生命周期是一个过程，它允许多个组织在使用一个链码之前就如何操作达成一致。网络操作者可以使用 Fabric 生命周期来展开以下的任务：</p>
+<ul>
+<li>  <a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/chaincode_lifecycle.html#install-and-define-a-chaincode">安装和定义链码</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/chaincode_lifecycle.html#upgrade-a-chaincode">升级链码</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/chaincode_lifecycle.html#deployment-scenarios">部署场景</a></li>
+<li>  <a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/chaincode_lifecycle.html#migrate-to-the-new-fabric-lifecycle">迁移到新的 Fabric 生命周期</a></li>
+</ul>
+<h1 id="测试网络"><a href="#测试网络" class="headerlink" title="测试网络"></a>测试网络</h1><h2 id="启动测试网络test-network"><a href="#启动测试网络test-network" class="headerlink" title="启动测试网络test-network"></a>启动测试网络test-network</h2><p><code>./network.sh down</code>删除先前运行的所有容器或工程<br><code>./network.sh up</code><br>此命令创建一个由两个对等节点和一个排序节点组成的Fabric网络。 运行<code>./network.sh up</code>时没有创建任何channel， 虽然我们将在后面的步骤实现。 如果命令执行成功，您将看到已创建的节点的日志：<br><img src="/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Hyperledger%20Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#1/1638011400957.png" alt="enter description here"></p>
+<h2 id="使用例程创建通道"><a href="#使用例程创建通道" class="headerlink" title="使用例程创建通道"></a>使用例程创建通道</h2><p>您可以使用network.sh脚本在Org1和Org2之间创建通道并加入他们的对等节点。 运行以下命令以创建一个默认名称为“ mychannel”的通道：<br><code>./network.sh createChannel</code><br>您也可以使用channel标志创建具有自定义名称的通道。 作为一个例子，以下命令将创建一个名为channeljin的通道：<br><code>./network.sh createChannel -c channeljin</code></p>
+<h2 id="在通道启动一个链码"><a href="#在通道启动一个链码" class="headerlink" title="在通道启动一个链码"></a>在通道启动一个链码</h2><p><code>./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-java -ccl java</code>或<br><code>./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go</code></p>
+<h2 id="后面网络交互就照着做"><a href="#后面网络交互就照着做" class="headerlink" title="后面网络交互就照着做"></a><a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/test_network.html">后面网络交互就照着做</a></h2><h2 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h2><p>既然您已经使用测试网络在您的本地计算机上部署了Hyperledger Fabric，您可以使用教程来开始开发自己的解决方案：</p>
+<ul>
+<li>  使用<a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/deploy_chaincode.html">将智能合约部署到通道</a> 教程了解如何来将自己的智能合约部署到测试网络。</li>
+<li>  访问<a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/write_first_app.html">编写您的第一个应用程序</a> 教程了解如何从您的客户端程序使用Fabric SDK提供的API调用智能合约。</li>
+<li>  如果您准备将更复杂的智能合约部署到网络，请跟随<a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/tutorial/commercial_paper.html">商业票据教程</a> 探索两个组织使用区块链网络进行商业票据交易的用例。</li>
+</ul>
+<p>您可以在<a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/tutorials.html">教程</a>页上找到Fabric教程的完整列表。</p>
+<h2 id="用CA建立网络"><a href="#用CA建立网络" class="headerlink" title="用CA建立网络"></a>用CA建立网络</h2><p>默认情况下，脚本使用cryptogen工具创建证书和密钥。(比如以上)<br>测试网络脚本还提供了使用证书颁发机构（CA）的网络的启动选项。 在产品网络中，每个组织操作一个CA（或多个中间CA）来创建属于他们的组织身份。 所有由该组织运行的CA创建的身份享有相同的组织信任根源。<br><code>./network.sh up -ca</code><br><img src="/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Hyperledger%20Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#1/1638034821740.png" alt="enter description here"><br>测试网络使用Fabric CA客户端以每个组织的CA注册节点和用户身份。 之后这个脚本使用enroll命令为每个身份生成一个MSP文件夹。 MSP文件夹包含每个身份的证书和私钥，以及在运营CA的组织中建立身份的角色和成员身份。<br>检查Org1管理员用户的MSP文件夹：<code>tree organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/</code><br><img src="/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Hyperledger%20Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#1/1638034943943.png" alt="enter description here"></p>
+<h2 id="每次记得关闭docker容器"><a href="#每次记得关闭docker容器" class="headerlink" title="每次记得关闭docker容器"></a>每次记得关闭docker容器</h2><p>直接用<code>./network.sh down</code></p>
+<h1 id="使用configtx-yaml创建通道配置"><a href="#使用configtx-yaml创建通道配置" class="headerlink" title="使用configtx.yaml创建通道配置"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1nK4y1K7s6">使用configtx.yaml创建通道配置</a></h1><p><a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/commands/cryptogen.html">cryptogen</a><br><code>cryptogen</code> 是用来生成 Hyperledger Fabric 密钥材料的工具。它为测试提供了一种预配置网络的工具。通常它不应使用在生产环境中。</p>
+<p> 最后跑的命令2.2的示例<br><code>configtxgen -profile TwoOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block -channelID fabric-channel  configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID mychannel  configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID mychannel -asOrg Org1MSP  configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -channelID mychannel -asOrg Org2MSP</code><br>2.3的示例<br><code>configtxgen -profile TwoOrgsApplicationGenesis -outputBlock ./channel-artifacts/genesis.block -channelID fabric-channel</code></p>
+<h1 id="部署节点"><a href="#部署节点" class="headerlink" title="部署节点"></a>部署节点</h1><p> 使用docker的话这些配置文件会有一个默认的内置在docker hyperledger fabric官方容器中<br> 即一般测试会写一个docker-compose.yaml的配置文件来用docker创建节点<br> 否则一般有：</p>
+<h2 id="创建一个-peer-节点"><a href="#创建一个-peer-节点" class="headerlink" title="创建一个 peer 节点"></a>创建一个 peer 节点</h2><p>在创建 peer 节点之前，你需要为 peer 节点定制配置文件。在 Fabric 中，这个文件叫做 <code>core.yaml</code>。</p>
+<h2 id="创建一个排序节点"><a href="#创建一个排序节点" class="headerlink" title="创建一个排序节点"></a>创建一个排序节点</h2><p>与创建 peer 节点不同，你将需要创建一个创世纪块（或者引用已经创建的块，如果将排序节点添加到现有的排序服务中），并在启动排序节点之前指定其路径。<br>在Fabric中，这个用于排序节点的配置文件称为 <code>orderer.yaml</code>。</p>
+<h1 id="最后部署链码。。。"><a href="#最后部署链码。。。" class="headerlink" title="最后部署链码。。。"></a>最后部署链码。。。</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># education程序解读</span><br><span class="line"> * chaincode文件存放链码及相关依赖</span><br><span class="line"> * fixtures文件存放docker的配置文件（docker-compose.yaml）通道配置文件（configtx.yaml）网络配置文件（crypto-config.yaml）</span><br><span class="line"> * img作者示例图片与网页资源图片</span><br><span class="line"> * sdkinit</span><br><span class="line"> * service</span><br><span class="line"> * web 基本的网页应用前后端</span><br></pre></td></tr></table></figure>
+<h1 id="（记）"><a href="#（记）" class="headerlink" title="（记）"></a>（记）</h1><h2 id="docker-compose用docker启动节点"><a href="#docker-compose用docker启动节点" class="headerlink" title="docker compose用docker启动节点"></a>docker compose用docker启动节点</h2><p>在有docker-compose.yaml的地方<br><code>docker-compose up</code>即可</p>
+<h2 id="删除container和image"><a href="#删除container和image" class="headerlink" title="删除container和image"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/laonicc/p/11143562.html">删除container和image</a></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker container ls -a #查看所有container</span><br><span class="line">docker rm xxxxxxx #通过container id 删除container，container id可以不写全</span><br><span class="line">docker ps -a #通过docker提供的commands 可以做到manager commands的效果，还简便些。</span><br><span class="line">docker rm $(docker container ls -qa) #批量删除</span><br><span class="line"><span class="meta">#</span><span class="bash">删除前先要STOP</span></span><br><span class="line">docker stop xxxx</span><br><span class="line"></span><br><span class="line">docker image ls #查看所有image</span><br><span class="line">docker rmi xxxxxxx #通过image id 删除</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Hyperledger%20Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#1/1638034348459.png" alt="enter description here"><br><code> docker rm -f $(docker ps -aq)  docker rmi -f $(docker images -q)</code></p>
+<h2 id="进入容器内bash"><a href="#进入容器内bash" class="headerlink" title="进入容器内bash"></a>进入容器内bash</h2><p> <code>docker exec -it cli1 bash</code></p>
+<h2 id="go代理"><a href="#go代理" class="headerlink" title="go代理"></a>go代理</h2><p> <code>go env -w GOPROXY=https://goproxy.cn,direct</code></p>
 
       
     </div>
@@ -497,7 +958,7 @@ byg:dead_sea</li>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-18 18:16:42" itemprop="dateModified" datetime="2021-11-18T18:16:42+08:00">2021-11-18</time>
+                <time title="修改时间：2021-11-19 23:01:21" itemprop="dateModified" datetime="2021-11-19T23:01:21+08:00">2021-11-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -522,8 +983,11 @@ byg:dead_sea</li>
       
           <p>kubejs系模组<code>【前置41】【辅助】【前置19】或【前置2】(添加合成表矿辞统一)kubejs-forge-1605.3.18-build.157.jar</code><br>‎此 mod 允许您使用 JavaScript 语言创建脚本来管理服务器、添加新的方块和物品、更改配方、为任务模组添加自定义处理程序、更改世界生成器等！‎</p>
 <h1 id="kubejs操作指南"><a href="#kubejs操作指南" class="headerlink" title="kubejs操作指南"></a>kubejs操作指南</h1><p>首先<code>/kubejs hand</code>获取手持物品信息<br>单击信息即可复制到剪切板</p>
+<h2 id="初始物品"><a href="#初始物品" class="headerlink" title="初始物品"></a>初始物品</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Listen to player login event</span></span><br><span class="line">onEvent(<span class="string">&#x27;player.logged_in&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// Check if player doesn&#x27;t have &quot;starting_items&quot; stage yet</span></span><br><span class="line">  <span class="keyword">if</span> (!event.player.stages.has(<span class="string">&#x27;starting_items&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// Add the stage</span></span><br><span class="line">    event.player.stages.add(<span class="string">&#x27;starting_items&#x27;</span>)</span><br><span class="line">    <span class="comment">// Give some items to player</span></span><br><span class="line">    event.player.give(<span class="string">&#x27;minecraft:stone_sword&#x27;</span>)</span><br><span class="line">    event.player.give(Item.of(<span class="string">&#x27;minecraft:stone_pickaxe&#x27;</span>, <span class="string">&quot;&#123;Damage: 10&#125;&quot;</span>))</span><br><span class="line">    event.player.give(<span class="string">&#x27;30x minecraft:apple&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>简简单单不用多说</p>
 <h2 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h2><p><code>kubejs\startup_scripts</code>下</p>
 <h3 id="湖"><a href="#湖" class="headerlink" title="湖"></a>湖</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;worldgen.remove&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">	event.addLake(<span class="function"><span class="params">lake</span> =&gt;</span> &#123; <span class="comment">// Create new lake feature</span></span><br><span class="line">		lake.block = <span class="string">&#x27;quark:elder_sea_lantern&#x27;</span> <span class="comment">// Block ID (Use [] syntax for properties)</span></span><br><span class="line">		lake.chance = <span class="number">1</span> <span class="comment">// Spawns every ~3 chunks</span></span><br><span class="line">	  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="矿石"><a href="#矿石" class="headerlink" title="矿石"></a>矿石</h3><p>移除矿石</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onEvent(<span class="string">&#x27;worldgen.remove&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    event.removeOres(<span class="function"><span class="params">ores</span> =&gt;</span> &#123;<span class="comment">//移除矿石</span></span><br><span class="line">      ores.blocks = [ <span class="string">&#x27;minecraft:coal_ore&#x27;</span>, <span class="string">&#x27;minecraft:iron_ore&#x27;</span> ] <span class="comment">// 移除铁矿和煤矿</span></span><br><span class="line">      ores.biomes.values = [ <span class="string">&#x27;minecraft:plains&#x27;</span> ] <span class="comment">// 限制该选项仅在平原生效</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>添加矿石<br><del>不知道什么原因，在我的整合包中几乎没有作用<br>此段语法有问题?</del></p>
@@ -760,479 +1224,10 @@ byg:dead_sea</li>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/08/MC/minecraftforge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/08/MC/minecraftforge/" class="post-title-link" itemprop="url">minecraft forge maker#0</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-11-08 03:35:59 / 修改时间：03:36:28" itemprop="dateCreated datePublished" datetime="2021-11-08T03:35:59+08:00">2021-11-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="MinecraftForgeMDK安装注意"><a href="#MinecraftForgeMDK安装注意" class="headerlink" title="MinecraftForgeMDK安装注意"></a>MinecraftForgeMDK安装注意</h1><p>就是跑gradlew.bat tasks<br>我的版本：<br>MDK：forge-1.16.5-36.2.8-mdk.zip<br>JDK：jdk1.8.0_311<br>(jdk17测试报错)</p>
-<h2 id="JAVA-HOME的奇葩要求"><a href="#JAVA-HOME的奇葩要求" class="headerlink" title="JAVA_HOME的奇葩要求"></a>JAVA_HOME的奇葩要求</h2><ul>
-<li>不能有其它路径（建议先剪切保存，安装后回改）</li>
-<li>最后不能有分号</li>
-<li>不能下到bin目录,即：<code>C:\Program Files\Java\jdk1.8.0_311</code></li>
-<li>然后日常的PATH为%JAVA_HOME%/bin</li>
-<li>最后CLASSPATH直接<code>.</code>缺省<br>否则：<img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1636313580367.png" alt="enter description here"><h2 id="gradlew命令变更"><a href="#gradlew命令变更" class="headerlink" title="gradlew命令变更"></a>gradlew命令变更</h2>相对于土球球教程<code>gradlew.bat setupDecompWorkspace</code>变更为<code>gradlew.bat tasks</code></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/06/MC/packmenu%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/06/MC/packmenu%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">packmenu模组使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-06 00:33:45" itemprop="dateCreated datePublished" datetime="2021-11-06T00:33:45+08:00">2021-11-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-07 22:24:23" itemprop="dateModified" datetime="2021-11-07T22:24:23+08:00">2021-11-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="官方下载"><a href="#官方下载" class="headerlink" title="官方下载"></a><a target="_blank" rel="noopener" href="https://www.curseforge.com/minecraft/mc-mods/packmenu">官方下载</a></h1><h1 id="官方说明"><a href="#官方说明" class="headerlink" title="官方说明"></a>官方说明</h1><h2 id="About"><a href="#About" class="headerlink" title="About"></a><strong>About</strong></h2><p>Pack Menu allows the user to change the way the Minecraft Main Menu looks.  It was developed as a replacement to Custom Main Menu in Minecraft 1.14+.</p>
-<p>Pack Menu has the following features:</p>
-<ul>
-<li>  Changing the background image of the Main Menu</li>
-<li>  Rearranging or disabling any menu elements, such as the title image, splash text, and the panorama fade.</li>
-<li>  Creation of custom buttons, and through that, the ability to completely overhaul the buttons on the menu. Buttons are created using JSON files, with the defaults shipped with the provided resource pack.</li>
-<li>Display of a custom logo separate from the background. This logo can have splash text attached to it, and can draw from a custom splash text list instead of the defaults.<br>  Creation of a custom background slideshow, using any number of images.</li>
-<li>  Creation of a custom panorama by overriding the vanilla panorama assets.</li>
-</ul>
-<p>PackMenu uses a resource pack to load its textures.  This resource pack is located at <gamedir>/packmenu/resources.zip</gamedir>, or at <gamedir>/packmenu/resources</gamedir> (as a folder) if enabled in the config.</p>
-<p>This means you can also use PackMenu to load any assets that your modpack may require for any reason.</p>
-<p>Please note that when asked for a “Resource Path”, packmenu requires them in the vanilla resource format. Do not put absolute paths into these areas, and do not attempt to access assets that are not loaded as part of a resource pack.</p>
-<p>For reference, this is how resource transformation works:  The resource path <strong>minecraft:textures/gui/background.png</strong> translates to (in the resource zip) <strong>assets\minecraft\textures\gui\background.png</strong>.</p>
-<p>Finally, PackMenu does not re-ship any vanilla assets.  This means that you will not find any vanilla assets inside the defaultly generated packmenu zip.  A list of common resource paths is provided below.</p>
-<p>Important Resource Paths (for overriding things):</p>
-<ul>
-<li><p>  The location of the Custom Background Image is <strong>packmenu:textures/gui/background.png</strong>_.  _This image should be 1920x1080.</p>
-</li>
-<li><p>  Buttons, by default, use the texture sheet <strong>minecraft:textures/gui/widgets.png</strong>.</p>
-</li>
-<li><p>  However, this is used by non-main menu buttons, so overriding it is not advisable.  Instead, you can point buttons at packmenu’s copy of that file: <strong>packmenu:textures/gui/widgets.png</strong>and override that one.</p>
-</li>
-<li><p>  Buttons are loaded from <strong>packmenu:buttons/</strong>. Any json files in this directory will be treated as if it were a button (similar to advancements or recipes, but in this directory). More information about buttons, including the JSON specification, is available on <a target="_blank" rel="noopener" href="https://github.com/Shadows-of-Fire/PackMenu/wiki/PackMenu-Button-Schema">the wiki</a>.</p>
-</li>
-<li><p>  The path of the Minecraft Title Texture is <strong>minecraft:textures/gui/title/minecraft.png</strong></p>
-</li>
-<li><p>  The path of the Java Edition Texture is <strong>minecraft:textures/gui/title/edition.png</strong></p>
-</li>
-</ul>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>本身是模组，在运行一次后会创建<code>packmenu</code>目录，在<code>assets</code>中创建文件，建议基于原版或成熟材质包修改</p>
-<h2 id="简单的替换"><a href="#简单的替换" class="headerlink" title="简单的替换"></a>简单的替换</h2><p>在原版<code>\resources\assets\minecraft\textures\gui\title</code>目录下，有<code>mojangstudios.png</code>标志文件<br>若想修改，则在<code>packmenu\resources\assets\minecraft\textures\gui\title</code>目录下，存放修改后同名图片文件即可</p>
-<h2 id="按钮添加"><a href="#按钮添加" class="headerlink" title="按钮添加"></a>按钮添加</h2><p><code>packmenu\resources\assets\minecraft\buttons</code>目录下，编辑json文件，如：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">&quot;x&quot;</span>: <span class="number">-50</span>,</span><br><span class="line">	<span class="attr">&quot;y&quot;</span>: <span class="number">-25</span>,</span><br><span class="line">	<span class="attr">&quot;width&quot;</span>: <span class="number">120</span>,</span><br><span class="line">	<span class="attr">&quot;height&quot;</span>: <span class="number">30</span>,</span><br><span class="line">	<span class="attr">&quot;langKey&quot;</span>: <span class="string">&quot;menu.singleplayer&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;action&quot;</span>: <span class="string">&quot;OPEN_GUI&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;data&quot;</span>: <span class="string">&quot;SINGLEPLAYER&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;u&quot;</span>: <span class="number">0</span>,</span><br><span class="line">	<span class="attr">&quot;v&quot;</span>: <span class="number">0</span>,</span><br><span class="line">	<span class="attr">&quot;hoverU&quot;</span>: <span class="number">0</span>,</span><br><span class="line">	<span class="attr">&quot;hoverV&quot;</span>: <span class="number">30</span>,</span><br><span class="line">	<span class="attr">&quot;texWidth&quot;</span>: <span class="number">120</span>,</span><br><span class="line">	<span class="attr">&quot;texHeight&quot;</span>: <span class="number">60</span>,</span><br><span class="line">	<span class="attr">&quot;texture&quot;</span>: <span class="string">&quot;textures/singleplayer.png&quot;</span>,</span><br><span class="line">	<span class="attr">&quot;fontColor&quot;</span>: <span class="number">0</span>,</span><br><span class="line">	<span class="attr">&quot;hoverFontColor&quot;</span>: <span class="number">1140326</span>,</span><br><span class="line">	<span class="attr">&quot;dropShadow&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">	<span class="attr">&quot;textXOffset&quot;</span>: <span class="number">5</span>,</span><br><span class="line">	<span class="attr">&quot;textYOffset&quot;</span>: <span class="number">-6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在<code>packmenu\resources\assets\minecraft\textures</code>目录下，存放按钮png即可(注意像素位置设置)</p>
-<h2 id="特别的"><a href="#特别的" class="headerlink" title="特别的"></a>特别的</h2><p>部分设置参照自动生成文件<br>如：<br>修改背景文件在    <code>packmenu\resources\assets\packmenu\textures\gui</code>目录下的<code>background.png</code>中</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/05/MC/modslists/minecraft[1.16.5]%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/05/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.7/" class="post-title-link" itemprop="url">minecraft[1.16.5]现用模组表0.7</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-11-05 15:50:15 / 修改时间：15:50:20" itemprop="dateCreated datePublished" datetime="2021-11-05T15:50:15+08:00">2021-11-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>2021/04/24  04:52            23,054 【优化】【前置15】byg群系生成修复chocolate-1.3.0-1.16.4.jar<br>2021/09/09  00:56            10,475 【优化】储物抽屉优化drawerfps-2.1.jar<br>2021/07/19  18:33            98,900 【优化】区块加载ferritecore-2.0.5-forge.jar<br>2021/04/26  08:04           437,841 【优化】区块预加载Chunk Pregenerator-V1.16-3.0.5.jar<br>2021/11/05  14:28           239,293 【优化】合成冲突化解polymorph-forge-1.16.5-0.26.jar<br>2021/10/17  21:26         1,675,339 【优化】地形生成TerraForged-1.16.5-0.2.16-BETA-2 .jar<br>2021/07/19  14:56            60,714 【优化】实体优化EntityCulling-1.16.5-2.1.6.jar<br>2021/11/05  15:22             9,554 【优化】属性限制解除AttributeFix-1.16.5-10.1.2.jar<br>2021/04/10  00:04            84,744 【优化】平滑加载smoothboot-forge-1.16.4-1.2.2.jar<br>2021/10/26  10:58            94,861 【优化】模组目录catalogue-1.3.0-1.16.5.jar<br>2021/10/26  10:58            75,690 【优化】模组设置configured-1.2.0-1.16.3.jar<br>2021/05/04  07:33            13,677 【优化】渲染优化（针对多人） out_of_sight-1.16.4-1.0.1.jar<br>2021/11/05  14:28           232,658 【优化】生物AI优化performant-1.16.2-5-3.74m.jar<br>2021/10/26  10:58            18,942 【优化】生物群系修复(争对新添加群系)biomeidfixer-1.16.5-1.0.1.s5.jar<br>2021/04/17  01:14           423,940 【优化】（补丁）随意修复randompatches-2.4.4-forge.jar<br>2021/10/26  10:58           975,289 【前置01】abnormals_core-1.16.5-3.3.0.jar<br>2021/07/21  21:33           812,772 【前置10】【辅助】jei-1.16.5-7.7.1.110.jar<br>2021/07/19  15:23            43,358 【前置11】expandability-2.0.1-forge.jar<br>2021/11/05  14:28           593,114 【前置12】帕秋莉Patchouli-1.16.4-53.2.jar<br>2021/11/05  14:28         4,223,129 【前置13】【生物】【前置12】mysticalworld-1.16.5-0.3.5.24.jar<br>2021/10/20  14:42         8,768,876 【前置14】【前置21】Quark-r2.4-319.jar<br>2021/10/26  11:00        10,314,611 【前置15】【群系】byg-1.3.5.jar<br>2021/04/09  23:44           328,828 【前置16】【食物】潘马斯农村食物核心pamhc2foodcore-1.16.3-1.0.2.jar<br>2021/10/26  10:59         2,528,891 【前置17】【食物】农夫乐事FarmersDelight-1.16.5-0.5.1.jar<br>2021/07/19  16:53           167,613 【前置18】【食物】simplytea-1.16.5-2.4.0.jar<br>2021/10/26  10:58         1,026,294 【前置19】rhino-forge-1605.1.4-build.67.jar<br>2021/07/19  19:35         1,337,675 【前置20】cloth-config-4.11.26-forge.jar<br>2021/07/19  19:19            57,279 【前置21】AutoRegLib-1.6-49.jar<br>2021/11/05  14:28         3,382,256 【前置22】geckolib-forge-1.16.5-3.0.51.jar<br>2021/11/05  14:28         1,471,429 【前置23】【杂项】血月丰收月enhancedcelestials-2.0.8-1.16.5.jar<br>2021/10/26  10:58           254,587 【前置25.1】(25取其一)【辅助】1高亮显示Jade-1.16.4-2.8.0.jar<br>2021/10/26  10:58           315,420 【前置28】Bookshelf-Forge-1.16.5-10.3.29.jar<br>2021/10/26  10:58           746,595 【前置29】Mantle-1.16.5-1.6.127.jar<br>2021/07/19  18:15           501,225 【前置2】architectury-1.20.28-forge.jar<br>2021/07/20  19:37         6,638,824 【前置30】kotlinforforge-1.14.0-obf.jar<br>2021/10/26  10:58           105,524 【前置31】morevanillalib-1.16.4-1.4.1.jar<br>2021/10/26  10:58           261,390 【前置32】structure_gel-1.16.5-1.7.8.jar<br>2021/10/26  10:58            96,151 【前置33】SimpleCoreLib-1.16.5-2.0.8.22.jar<br>2021/10/26  10:58         1,074,217 【前置36】附魔前置cofh_core-1.16.5-1.3.1.jar<br>2021/09/13  00:35           140,636 【前置37】collective-1.16.5-2.64.jar<br>2021/10/26  10:58           140,163 【前置38】Placebo-1.16.5-4.6.0.jar<br>2021/10/26  10:58           215,498 【前置39】selene-1.16.5-1.8.1.jar<br>2021/10/26  10:58           106,058 【前置3】YungsApi-1.16.4-Forge-13.jar<br>2021/11/05  14:28           601,128 【前置40】valhelsia_core-16.0.13a.jar<br>2021/10/26  10:58           857,398 【前置41】【辅助】【前置19】或【前置2】添加合成表矿辞统一kubejs-forge-1605.3.18-build.152.jar<br>2021/08/17  17:04           509,849 【前置42】Penguin-Lib-1.16.5-0.4.3.jar<br>2021/10/26  10:58           398,661 【前置43】shetiphiancore-1.16-3.8.6.jar<br>2021/08/29  21:43            88,373 【前置44】majrusz-library-1.16.4-2.0.1.jar<br>2021/10/26  14:59           217,199 【前置45】Library_of_Exile-1.16.5-1.2.0.jar<br>2021/10/26  15:43         3,145,190 【前置46】【食物】简单农场simplefarming-1.16.5-1.3.8.jar<br>2021/11/02  15:34           146,952 【前置4】cavebiomeapi-1.16.5-1.4.1.jar<br>2021/07/19  15:12           631,288 【前置5】CreativeCore_v2.2.0_mc1.16.5.jar<br>2021/06/04  21:05         2,660,414 【前置6】【杂项】charm-forge-1.16.5-2.3.2.jar<br>2021/08/29  21:52           482,439 【前置7】citadel-1.8.1-1.16.5.jar<br>2021/06/04  19:07           102,333 【前置8】cuneiform-1.16.3-1.2.5.jar<br>2021/10/26  10:58           246,281 【前置9】饰品栏curios-forge-1.16.5-4.0.5.3.jar<br>2021/07/21  14:07             8,013 【前置】全局数据包globaldataandresourcepacks-1.16.4-1.7.4.jar<br>2021/06/04  22:37         2,004,590 【杂项】[NNOW]NeverNeededOrWanted-1.16.5-1.0.9a.jar<br>2021/07/19  17:22           538,708 【杂项】【前置01】extra_boats-1.16.5-2.1.0.jar<br>2021/07/19  18:27           288,116 【杂项】【前置01】动作personality-1.16.5-1.0.2.jar<br>2021/06/04  22:28           962,042 【杂项】【前置01】残暴与掠夺savageandravage-1.16.5-3.1.0.jar<br>2021/07/19  17:23         3,009,108 【杂项】【前置01】甜浆果优化berry_good-1.16.5-4.1.1.jar<br>2021/07/23  18:01             1,896 【杂项】【前置14】夸克奇思妙想QuarkOddities-1.16.3.jar<br>2021/07/19  16:53             3,063 【杂项】【前置17】农夫乐事兼容性farmersdelightintegration-1.16.5-1.0.3.jar<br>2021/10/26  10:58            29,376 【杂项】【前置17】农夫乐事兼容性farmersdelightintegrations-1.16.5-1.2.jar<br>2021/10/26  10:58           297,941 【杂项】【前置17】农夫乐事铜锅copperpot-1.16.5-1.1.2.jar<br>2021/10/26  10:58           321,866 【杂项】【前置33】矿石SimpleOres2-1.16.5-2.4.7.2.jar<br>2021/09/21  01:42            12,082 【杂项】【前置37】围火无怪nohostilesaroundcampfire_1.16.5-3.6.jar<br>2021/07/20  22:17             9,491 【杂项】【前置37】治疗篝火healingcampfire_1.16.5-3.3.jar<br>2021/04/11  15:24            32,462 【杂项】【前置38】末影袋(提升大量储存空间）EnderBags-1.16.4-6.3.1.jar<br>2021/10/26  10:58            28,518 【杂项】【前置3】群系标题yung_TravelersTitles-1.16.4-1.5.jar<br>2021/07/19  15:14            47,260 【杂项】【前置5】物理掉落物ItemPhysic_v1.4.18_mc1.16.5.jar<br>2021/07/20  15:04            67,143 【杂项】【前置9】【前置24】潜影贝栏位curiousshulkerboxes-forge-1.16.5-4.0.1.0.jar<br>2021/07/20  15:10            27,890 【杂项】【前置9】不死图腾栏位curioofundying-forge-1.16.5-5.2.0.0.jar<br>2021/10/26  10:58           500,792 【杂项】储物抽屉StorageDrawers-1.16.3-8.3.0.jar<br>2021/10/26  10:58             6,082 【杂项】农田不再被踩坏TrampleStopper-2.6.1-build.22+mc1.16.5.jar<br>2021/04/24  04:44         2,040,762 【杂项】幻梦eidolon-0.2.7.jar<br>2021/10/26  10:58           195,224 【杂项】建筑权杖constructionwand-1.16.5-2.4.jar<br>2021/10/29  22:48         1,488,023 【杂项】德鲁伊工艺Druidcraft-1.16.5-0.4.54.jar<br>2021/04/09  23:42            18,175 【杂项】快速树叶腐烂FastLeafDecay-v25.jar<br>2021/10/26  10:58           327,612 【杂项】旅行背包TravelersBackpack-1.16.5-5.4.5.jar<br>2021/04/25  03:41            40,702 【杂项】晃动镜头.jar<br>2021/06/05  00:31           560,732 【杂项】更多洞穴特征extcaves.jar<br>2021/07/20  17:29         1,402,482 【杂项】更好的洞穴yung_BetterCaves-Forge-1.16.4-1.1.2.jar<br>2021/10/26  10:58             5,019 【杂项】村庄出生点villagespawnpoint_1.16.5-1.8.jar<br>2021/10/26  09:42            19,085 【杂项】村庄英雄合成HeroOfNowhereUpdated_1.16.5.jar<br>2021/09/12  04:01            11,857 【杂项】村民名称villagernames_1.16.5-3.3.jar<br>2021/10/26  10:52            44,820 【杂项】村民重生VillagersRespawn-1.16.5-1.36.0.4.jar<br>2021/10/26  09:26             8,837 【杂项】爆头headshot-1.3.0.jar<br>2021/08/17  17:07             2,661 【杂项】白天睡觉插件Daydreamer-1.16.5-1.0.jar<br>2021/06/05  02:31           133,745 【杂项】稀有精英怪infernalmobs-1.16.2.1.jar<br>2021/10/26  10:58           396,444 【杂项】荒野之息Paraglider-1.16.5-1.3.2.2.jar<br>2021/04/25  08:54           112,845 【杂项】（再也不用经验修补了）维修箱子RepairChests-1.16.5-1.7.jar<br>2021/10/26  11:01        18,135,643 【生物】alexsmobs-1.12.1.jar<br>2021/11/05  14:26         1,948,461 【生物】MinecraftEarthMod-2.5.7.1.jar<br>2021/07/20  21:55         5,522,069 【生物】mowziesmobs-1.5.19.jar<br>2021/09/05  02:30         1,271,721 【生物】Wilds+Version+2.2.1.jar<br>2021/07/21  13:20         2,970,312 【生物】Zonko’s+Monsters+1.16.5+1.2.jar<br>2021/07/19  17:23           841,753 【生物】【前置01】buzzier_bees-1.16.5-3.0.1.jar<br>2021/06/04  18:57        11,003,946 【生物】【前置01】endergetic-1.16.4-3.0.0.jar<br>2021/06/04  20:58         3,668,858 【生物】【前置01】碧海新生upgrade_aquatic-1.16.5-3.1.0.jar<br>2021/07/21  14:07           963,433 【生物】【前置22】生物与怪物CNB-1.16.3_5-1.2.11.jar<br>2021/06/04  22:35         5,428,670 【生物】【前置32】更多末影人farlanders-1.16.4-1.3.9.jar<br>2021/08/17  16:57           447,935 【生物】【前置42】鱼Piscary-1.16.5-1.0.3.jar<br>2021/08/29  21:22           658,320 【生物】【前置44】难度渐进(宝藏袋)majruszs-difficulty-1.16.4-1.1.0.jar<br>2021/11/05  14:28         4,589,626 【生物】厄运（地狱恶魔）MCDoom-1.16.5-4.0.30.jar<br>2021/06/04  22:26         1,289,476 【生物】变异生物MutantBeasts-1.16.4-1.1.3.jar<br>2021/09/03  16:23         7,681,362 【生物】古老水生物OddWaterMobs[1.16.5]_1.4.0.jar<br>2021/10/26  10:59         1,311,630 【生物】地下城怪物dungeons_mobs-1.16.5-1.0.10.jar<br>2021/11/05  14:28           509,209 【生物】地球版生物restored_earth-1.16.5-1.1.1.jar<br>2021/11/05  14:24        10,560,452 【生物】外来物种Exotic+Critters+1.16+Experimental+1.19.jar<br>2021/10/26  09:39         1,100,621 【生物】如题ambientadditions-0.3.1.jar<br>2021/11/05  14:28         2,556,106 【生物】库帕的克里特斯Koopas Critters 1.16.5 II V0.3.3 Beta 4.jar<br>2021/10/26  10:58         1,225,645 【生物】无名生物(优质)unnamedanimalmod-1.0.3.jar<br>2021/10/26  11:00        14,708,258 【生物】更多下界生物infernal-expansion-2.3.2.jar<br>2021/07/06  10:33         1,102,070 【生物】更多傀儡extragolems-11.3.1.jar<br>2021/08/29  21:13        10,032,735 【生物】更多僵尸UNDEADv.1.1release.jar<br>2021/10/31  18:53           772,409 【生物】更多变异生物mutantmore-1.16.5-1.0.0.jar<br>2021/10/26  10:48           318,147 【生物】更多小型生物LittleMoreCreatures1.1.jar<br>2021/11/05  14:28         1,743,562 【生物】更多挑战DungeonsMod-1.16.3-1.4.41.jar<br>2021/11/02  15:24           714,968 【生物】更多生物(包含但表现于落选生物)mobsgenus-0.2.jar<br>2021/10/26  10:58           265,717 【生物】更多职业村民morevillagers-FORGE-1.16.5-1.5.5.jar<br>2021/07/20  19:50           308,282 【生物】更多骷髅bones-1.16.5-2.1.0.jar<br>2021/10/27  02:38         8,356,809 【生物】更好动物betteranimalsplus-1.16.5-10.2.0.jar<br>2021/07/19  19:05           382,707 【生物】末地重生EndReborn+[0.8.4].jar<br>2021/09/05  16:27           190,249 【生物】村民护卫guardvillagers-1.16.5.1.2.6.jar<br>2021/09/25  19:09           551,025 【生物】水产养殖Aquaculture-1.16.5-2.1.21.jar<br>2021/07/19  16:25           235,050 【生物】海洋生物risingtides-1.16.5-1.3.0.jar<br>2021/06/04  22:21         1,454,383 【生物】潘多拉的生物pandoras_creatures-1.16.3-2.0.1.jar<br>2021/11/05  14:28           760,003 【生物】灾祸村民illagers_plus-1.16.4v1.7.2.jar<br>2021/10/26  10:59         2,058,306 【生物】珍奇鸟类exoticbirds-1.16.4-1.2.0.jar<br>2021/10/26  11:15           974,280 【生物】科博尔兹及地牢Kobolds-1.4.6.jar<br>2021/10/26  10:59           743,785 【生物】落选生物outvoted-2.0.0-alpha.12-forge.jar<br>2021/10/26  10:59         9,220,781 【生物】阿斯特米尔的森林(地狱门与钓鱼方式改变)astemir_forestcraft-1.602.jar<br>2021/11/05  14:28           333,669 【生物】附魔师enchantwithmob-1.16.5-1.5.1.jar<br>2021/08/29  21:30           274,624 【生物】非虔诚Impish+Tome+(1.16.5_ver.1.0.2).jar<br>2021/08/30  00:25         4,969,566 【生物】龙栖Wyrmroost-1.16.3-1.2.11.jar<br>2021/07/21  14:07           389,176 【结构】 【前置32】更多地牢dungeons_plus-1.16.5-1.1.5.jar<br>2021/11/05  14:28           297,282 【结构】AwesomeDungeonForge-1.16.5-1.1.2.jar<br>2021/10/22  13:45           756,298 【结构】DungeonCrawl-1.16.5-2.3.2.jar<br>2021/10/22  13:44           590,639 【结构】StructuresPlusEnd.jar<br>2021/10/26  10:58           510,439 【结构】yung_BetterDungeons-1.16.4-1.2.1.jar<br>2021/07/20  17:24           289,307 【结构】yung_BetterMineshafts-Forge-1.16.4-2.0.4.jar<br>2021/07/20  17:30            64,256 【结构】【前置3】yung-YungsExtras-Forge-1.16.4-1.0.jar<br>2021/09/03  15:54           541,396 【结构】【前置3】yung_BetterStrongholds-1.16.4-1.2.1.jar<br>2021/11/05  14:28         1,540,395 【结构】【前置40】valhelsia_structures-1.16.5-0.1.6.jar<br>2021/10/26  10:33           428,761 【结构】【前置45】(开箱子后会拆除塔)dungeon_World_of_Exile-1.16.5-1.4.0.jar<br>2021/11/05  14:28         2,562,731 【结构】中世纪城堡(不只结构)MedievalCraft-1.16.5-1.16.2.jar<br>2021/06/17  01:05            85,877 【结构】刷怪castle_dungeons-2.3-1.16.5-forge.jar<br>2021/07/20  21:29         4,676,349 【结构】地下城DungeonsArise-1.16.5-2.1.47-release.jar<br>2021/06/17  01:03           218,290 【结构】地下村庄stoneholm-1.2.2.jar<br>2021/09/05  02:31            22,253 【结构】地下群系Below+1.0+Forge.jar<br>2021/10/26  11:17         1,542,647 【结构】坚毅堡垒stalwart-dungeons-1.16.5-1.1.7.jar<br>2021/10/26  10:42           756,298 【结构】大型多层地牢DungeonCrawl-1.16.5-2.3.2.jar<br>2021/10/26  11:01        38,114,528 【结构】大型结构Shrines-1.16.5-2.0.0-SNAPSHOT-13.jar<br>2021/11/05  14:24           100,134 【结构】小型结构skyssmallstructures.jar<br>2021/04/20  20:54           157,181 【结构】旷野塔towers_of_the_wild-1.16.4-2.0.1.jar<br>2021/11/05  14:28         5,581,329 【结构】更多结构repurposed_structures_forge-3.4.1+1.16.5.jar<br>2021/10/26  11:30            80,085 【结构】桥YungsBridges-Forge-1.16.4-1.0.1.jar<br>2021/10/22  13:45           141,714 【结构】沙漠下界元素NMN_1.16.5_v0.1.jar<br>2021/11/05  14:28           993,669 【结构】遗迹饰品relics-0.3.1.jar<br>2021/10/29  21:56            19,498 【群系】abyg-1.2-forge.jar<br>2021/10/26  10:59         1,576,889 【群系】BetterDefaultBiomes-1.16.4+-Alpha 2.6.0.jar<br>2021/10/26  11:01        81,199,992 【群系】betterendforge-1.16.5-1.6.3.jar<br>2021/07/19  16:20         3,651,050 【群系】BOP_BiomesOPlenty-1.16.5-13.1.0.480-universal.jar<br>2021/07/21  14:07         4,751,584 【群系】Spheric 1.0.3 1.16.5.jar<br>2021/10/26  11:02        57,328,296 【群系】【前置01】末地OuterEnd-0.2.14.jar<br>2021/07/19  14:45           554,081 【群系】【前置01】河口群系Bayou-Blues-1.16.5-1.0.5.jar<br>2021/06/04  20:58           961,236 【群系】【前置01】秋原autumnity-1.16.5-2.1.1.jar<br>2021/10/26  10:59         6,988,017 【群系】【前置01】自然环境（有生物）environmental-1.16.5-1.1.0.jar<br>2021/07/19  17:16           665,178 【群系】【前置01】薰衣草Abundance-1.16.5-1.0.5.jar<br>2021/07/19  17:31         1,527,658 【群系】【前置01】雨林沙丘atmospheric-1.16.5-3.1.0.jar<br>2021/10/26  10:58           367,720 【群系】【前置13】【前置12】mysticalbiomes-1.16.5-0.0.0.7.jar<br>2021/07/19  21:30           305,286 【群系】【前置22】无尽海洋endless_oceans-1.0.5-forge.jar<br>2021/11/02  15:35        51,463,042 【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar<br>2021/10/26  10:58           870,285 【群系】【前置4】【前置27】岩石darkerdepths-1.16.5-1.1.4.jar<br>2021/11/05  01:17           506,465 【群系】地狱生物ShretNether+-+Release+-1.3.3.jar<br>2021/07/19  15:44           280,211 【群系】彩色世界MysticsBiomes-1.16.4-1.1.0.jar<br>2021/07/21  14:07         2,365,497 【群系】恶地改造Betterlands-1.16.5-0.5.0.jar<br>2021/11/05  14:28         1,585,566 【群系】探险者explorercraft-5.0.5.jar<br>2021/11/05  14:29        22,443,866 【群系】更好地狱betternether_reforged-1.2.jar<br>2021/07/21  14:06         1,700,785 【群系】灰烬之地Desolation 1.1.0-1 1.16.5.jar<br>2021/09/05  00:01         7,273,457 【群系】舒适下界ComfortableNether4.9.jar<br>2021/10/26  10:44        10,685,093 【群系】通用群系？genericeco-1.16.5-2.1.jar<br>2021/10/26  10:58           467,595 【装备】【前置9】【前置11】奇异饰品Artifacts-1.16.5-2.10.3.jar<br>2021/05/24  21:50           327,436 【装备】【前置9】泰拉瑞亚更多饰品curioBountiful+Baubles+FORGE-1.16.3-0.0.2.jar<br>2021/07/20  15:10            30,293 【装备】【前置9】经验护符CrimsonXP-1.1.1.jar<br>2021/10/26  10:58         1,001,013 【装备】升级下界合金装备Upgraded Netherite 1.10.1.jar<br>2021/07/06  10:33         2,049,774 【装备】地下城装备dungeons_gear-1.16.5-3.0.17.jar<br>2021/07/20  22:43         2,033,912 【装饰】cfm-7.0.0pre22-1.16.3.jar<br>2021/07/20  17:01         1,462,309 【装饰】【前置29】灵感原版装饰Inspirations-1.16.5-1.2.3.37.jar<br>2021/07/19  12:49            65,945 【装饰】【前置2】更多竹制品bambooeverything-1.16.5-1.0.0-forge.jar<br>2021/10/26  10:58           937,719 【装饰】【前置30】更好的树叶BetterFoliage-2.7.1-Forge-1.16.5.jar<br>2021/11/05  14:29        12,235,658 【装饰】【前置39】supplementaries-1.16.5-0.17.8.jar<br>2021/10/26  10:59         7,871,642 【装饰】【前置43】地灵云心海树山花terraqueous-1.16-1.7.17.jar<br>2021/10/26  10:58         1,013,352 【装饰】【前置8】装饰性环境植物terraincognita-1.16.3-1.7.jar<br>2021/10/26  10:59         1,541,592 【装饰】活力之旅projectvibrantjourneys-1.16.5-3.2.10.jar<br>2021/11/05  14:28         9,241,804 【装饰】自然装饰NaturalDecorMod 1.16 II V0.23.jar<br>2021/04/25  00:11            61,580 【装饰】花finallyfarmabledyes-1.16.4-1.2.0.1.jar<br>2021/07/20  22:35           280,581 【装饰】花草灌木SereneShrubbery-1.16.5-1.1.0.jar<br>2021/10/26  12:06         8,476,267 【装饰】风铃Chimes-1.0.0-1.16.5.jar<br>2021/07/20  22:52         6,132,491 【装饰】（cfm系）morecfm-1.3.1-1.16.3.jar<br>2021/07/20  23:03         5,398,623 【装饰】（菜篮）NefsMedievalPub+v0.9(1.16.5).jar<br>2021/08/07  00:01            30,493 【辅助】jei找东西findme-1.16.3-2.2.0.0.jar<br>2021/04/27  11:23            92,540 【辅助】mod设置GameMenuModOption-1.16.4-1.8.jar<br>2021/05/03  15:29           792,263 【辅助】Xaeros_Better_PvP_21.8.0_Forge_1.16.5.jar<br>2021/07/21  14:07            19,362 【辅助】【前置10】jei-professions-1.0.0-1.16.4.jar<br>2021/04/09  02:10            24,981 【辅助】【前置10】JEI拓展jeiintegration_1.16.5-7.0.1.15.jar<br>2021/10/26  10:44            67,686 【辅助】【前置10】JEI效果信息显示jeed-1.16.5-1.3.jar<br>2021/08/29  21:33           235,574 【辅助】【前置10】JEI资源显示JustEnoughResources-1.16.5-0.12.1.128.jar<br>2021/10/26  10:58           270,250 【辅助】【前置10】拼音搜索JustEnoughCharacters-1.16.4-4.3.2.jar<br>2021/07/21  14:06            31,243 【辅助】【前置10】附魔信息JEIEnchantmentInfo-1.16.4-1.2.1.jar<br>2021/04/09  23:51           123,705 【辅助】【前置20】边拿边走InvMove-1.16.3-0.4.6.jar<br>2021/07/20  16:16            29,421 【辅助】【前置25】12高亮显示扩展WailaHarvestability-mc1.16.x-forge-1.1.15.jar<br>2021/07/19  15:24            21,734 【辅助】【前置9】盔甲架显示饰品Curious+Armor+Stands-1.16.5-2.1.2.jar<br>2021/11/05  14:28           507,997 【辅助】世界地图XaerosWorldMap_1.18.1_Forge_1.16.5.jar<br>2021/04/25  03:14            14,660 【辅助】伤害显示TextDamageIndicators-1.16.3-2.0.1.jar<br>2021/07/30  18:11           460,711 【辅助】回收箱Corail-Recycler-NE-1.16.4-385.jar<br>2021/04/24  15:37            42,604 【辅助】拾取通知PickUpNotifier-v1.2-1.16.3.jar<br>2021/07/20  21:23           330,091 【辅助】搬箱子carryon-1.16.5-1.15.5.15.jar<br>2021/10/26  10:58            86,844 【辅助】时装盔甲CosmeticArmorReworked-1.16.5-v4.jar<br>2021/07/20  23:26            78,198 【辅助】更好的第三人称视角BetterThirdPerson-Forge-1.16.4-1.5.1.jar<br>2021/07/20  22:24             8,514 【辅助】汉化i18nupdatemod-1.16.5-2.0.2-hotfix-4.jar<br>2021/04/11  16:07            22,624 【辅助】物品堆叠upsizer-mc1.16.4-6.1.1.jar<br>2021/09/20  22:39            33,125 【辅助】生物生成管理SpawnBalanceUtility-1.36.0.11.jar<br>2021/05/04  07:49            22,955 【辅助】穿草swingthroughgrass-1.16.4-1.5.3.jar<br>2021/09/26  01:06           134,996 【辅助】结构指南针ExplorersCompass-1.16.5-1.1.2-forge.jar<br>2021/09/26  01:06           203,573 【辅助】群系指南针NaturesCompass-1.16.5-1.9.1-forge.jar<br>2021/11/05  14:28            46,203 【辅助】饱和度状态栏appleskin-forge-mc1.16.x-2.2.0.jar<br>2021/04/09  22:58           281,216 【辅助】（区域挖掘）OreExcavation-1.8.157.jar<br>2021/07/29  18:20           120,959 【辅助】（查看物品是否接触过）travelers_index-1.16.4-1.0.2.jar<br>2021/07/19  18:27           585,049 【附魔】【前置01】allurement-1.16.5-1.2.0.jar<br>2021/10/26  10:58            59,309 【附魔】【前置28】附魔描述EnchantmentDescriptions-1.16.5-7.0.17.jar<br>2021/10/26  10:58           132,851 【附魔】【前置36】更多附魔ensorcellation-1.16.5-1.3.1.jar<br>2021/10/26  10:58           478,696 【附魔】更多附魔flowingagony-1.16.5-1.0.4.jar<br>2021/07/20  21:14           136,931 【附魔】更多附魔Unique+Enchantments-1.16.5-2.0.1.jar<br>2021/07/20  21:14            11,607 【附魔】更多附魔—战斗Unique+Enchantments+Battle-1.16.5-1.0.jar<br>2021/07/20  21:14            31,406 【附魔】更多附魔工具Unique+Enchantments+Utils-1.16.5-1.3.jar<br>2021/04/25  04:14            47,064 【附魔】附魔拆解台Disenchanting-forge-1.16.5-1.7.1.jar<br>2021/10/26  11:01        76,505,094 【音效】【前置5】自然音效AmbientSounds_v3.1.10_mc1.16.5.jar<br>2021/06/04  21:01        58,565,641 【音效】【前置6】音效charmonium-forge-1.16.5-2.3.2.jar<br>2021/10/26  10:59        14,746,751 【音效】动态环绕DynamicSurroundings-1.16.5-4.0.5.0.jar<br>2021/07/19  17:16           937,114 【食物】【前置01】neapolitan-1.16.5-2.1.0.jar<br>2021/10/26  10:58           549,400 【食物】【前置01】【前置17】A系融合农夫乐事abnormals_delight-1.16.5-1.2.0.jar<br>2021/04/27  12:06           804,052 【食物】【前置16】潘马斯作物pamhc2crops-1.16.3-1.0.2.jar<br>2021/04/27  12:17           545,339 【食物】【前置16】潘马斯树木pamhc2trees-1.16.3-1.0.1.jar<br>2021/04/27  12:18           913,219 【食物】【前置16】潘马斯食物拓展pamhc2foodextended-1.16.3-1.0.2.jar<br>2021/10/26  10:58            11,809 【食物】【前置17】【前置18】farmerstea-1.16.5-1.3.jar<br>2021/10/26  10:58           283,157 【食物】【前置17】农夫乐事下界扩展nethers_delight-2.1.jar<br>2021/07/19  16:54           130,982 【食物】【前置17】农夫乐事扩展Farmers_Extra_Foods_1.2.jar<br>2021/10/26  10:58           199,890 【食物】【前置17】（巨多联动）农夫乐事非正规厨师irregularchef-1.16.5-1.0.1.jar<br>2021/08/17  17:07           496,315 【食物】【前置42】Horticulture-1.16.5-1.0.2.jar<br>2021/10/26  12:11            79,425 【食物】【前置46】【前置17】简单快乐simpledelights-1.2.jar<br>2021/07/20  23:03           682,828 【食物】懒人厨房CookingForBlockheads_1.16.5-9.3.3.jar</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/02/MC/modslists/minecraft[1.16.5]%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/02/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.6/" class="post-title-link" itemprop="url">minecraft[1.16.5]现用模组修改0.6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-02 15:47:59" itemprop="dateCreated datePublished" datetime="2021-11-02T15:47:59+08:00">2021-11-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-05 15:49:39" itemprop="dateModified" datetime="2021-11-05T15:49:39+08:00">2021-11-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="ADD"><a href="#ADD" class="headerlink" title="ADD"></a>ADD</h1><p>【结构】AwesomeDungeonForge-1.16.5-1.1.1.jar<br>【装备】饰品？Alterlands+1.2+P2+Beta+v1.jar###已弃用<br>【生物】更多生物(包含但表现于落选生物)mobsgenus-0.2.jar</p>
-<h1 id="UPDATE"><a href="#UPDATE" class="headerlink" title="UPDATE"></a>UPDATE</h1><p>【结构】更多结构repurposed_structures_forge-3.4.0+1.16.5.jar<br>【前置4】cavebiomeapi-1.16.5-1.4.1.jar<br>【群系】【前置4】cavesandcliffs-1.16.5-7.0.jar</p>
-<h1 id="ABANDON"><a href="#ABANDON" class="headerlink" title="ABANDON"></a>ABANDON</h1><p>【结构】（墙壁宝石快）Forgotten+Treasures+V12+1.16.5.jar<br>原因详见<a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/26/MC/debugfile/">debugfile</a><br>【生物】史前动物(以维度的形式添加)Prehistoric+Fauna+2.1.1.jar<br>不喜欢增加维度</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/01/%E8%AF%BE/%E6%9C%9F%E4%B8%AD%E4%BD%9B%E8%84%9A/" class="post-title-link" itemprop="url">期中佛脚</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-01 19:37:34" itemprop="dateCreated datePublished" datetime="2021-11-01T19:37:34+08:00">2021-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-03 19:09:35" itemprop="dateModified" datetime="2021-11-03T19:09:35+08:00">2021-11-03</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="CPU概述"><a href="#CPU概述" class="headerlink" title="CPU概述"></a>CPU概述</h2><p>CPU基本包含运算部件、缓存部件、寄存器组、微命令产生部件（控制部件）、时序系统、数据/控制通路<br>总体来看CPU的工作过程就是</p>
-<ol>
-<li>从主存(或缓存)中读取命令，</li>
-<li>将指令放入指令寄存器(IR)，</li>
-<li>然后对指令译码，把指令分解成一系列的微操作，</li>
-<li>再发出各种相应的控制命令，控制各功能部件执行相关操作，<br>从而完成一条指令的执行，实现对应的功能。<h3 id="运算部件"><a href="#运算部件" class="headerlink" title="运算部件"></a>运算部件</h3>ALU(算术逻辑运算单元)是核心、主要由加法器构成<h3 id="缓存部件"><a href="#缓存部件" class="headerlink" title="缓存部件"></a>缓存部件</h3>为提高CPU处理主存数据的效率而设<h3 id="寄存器组"><a href="#寄存器组" class="headerlink" title="寄存器组"></a>寄存器组</h3>一般分为(8)</li>
-</ol>
-<ul>
-<li>通用寄存器组</li>
-<li>暂存器</li>
-<li><strong>IR</strong>指令寄存器</li>
-<li><strong>PC</strong>程序计数器</li>
-<li><strong>PSW</strong>程序状态寄存器</li>
-<li><strong>MAR</strong>地址寄存器</li>
-<li><strong>MBR/MDR</strong>数据缓冲寄存器</li>
-<li><strong>SP</strong>堆栈指针寄存器<h4 id="具体可见"><a href="#具体可见" class="headerlink" title="具体可见"></a>具体可见</h4><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632327536612.png"></li>
-<li>可编程寄存器<br>  <strong>R0~R3</strong>通用寄存器(000,001,010,011)、<strong>SP</strong>(100)堆栈指针、<strong>PSW</strong>(101)程序状态寄存器、<strong>PC</strong>程序计数器</li>
-<li>指令寄存器IR<br>用来存放现行运行指令，它的输出是产生微操作命令序列的主要逻辑依据。</li>
-<li>暂存器<br>  <strong>C、D</strong>约定从主存中读<strong>源操作数</strong>、操作数地址时用<strong>C</strong>；从主存中取目的<strong>操作数</strong>、操作数地址或暂存时，用<strong>D</strong></li>
-<li>主存接口寄存器MAR、MDR(MBR)<ul>
-<li>地址寄存器<strong>MAR</strong><br>读取指令/存取操作数/操作数地址时，CPU先将地址信息送入MAR，再由MAR经地址总线送往主存M，找到相应的主存单元。</li>
-<li>数据缓冲寄存器<strong>MBR(MDR)</strong><br>   由控制命令R/W决定传送方向。<br>   R：由主存单元-&gt;数据总线-&gt;MDR<br>   W：由MDR-&gt;数据总线-&gt;数据单元<h3 id="控制部件"><a href="#控制部件" class="headerlink" title="控制部件"></a>控制部件</h3>产生控制信号(微命令)<br>CPU可使用两种控制部件组合逻辑控制器(硬件)和微程序控制器(软件)<h3 id="时序系统"><a href="#时序系统" class="headerlink" title="时序系统"></a>时序系统</h3>协调工作要有周期和节拍</li>
-</ul>
-</li>
-<li>节拍是执行一步的所需时间(一个周期可以由多个节拍)</li>
-<li>时序控制方式：<ul>
-<li>同步控制方式<br>所有操作用统一的时序信号，各操作不存在控制信号的交互</li>
-<li>异步控制方式<br>不受统一的时钟周期的约束，各部件之间采用异步应答的方式<h3 id="数据通络和控制通路"><a href="#数据通络和控制通路" class="headerlink" title="数据通络和控制通路"></a>数据通络和控制通路</h3>简单的常有ALU总线，复杂一点的分数据总线和地址总线</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h2><p>指令集有CISC(复杂指令集计算机)RISC(精简指令集计算机)<br>按地址结构可分为：三地址指令、二地址指令、一地址指令、零地址指令<br>操作码结构多设为可变字长指令</p>
-<h3 id="寻址"><a href="#寻址" class="headerlink" title="寻址"></a><a target="_blank" rel="noopener" href="https://dyinjin.github.io/2021/09/15/%E8%AF%BE/%E5%AF%BB%E5%9D%80/">寻址</a></h3><h3 id="指令的功能和类型"><a href="#指令的功能和类型" class="headerlink" title="指令的功能和类型"></a>指令的功能和类型</h3><p>现在大部分微机将指令分为；</p>
-<ul>
-<li>传输类指令</li>
-<li>访存指令</li>
-<li>I/O指令</li>
-<li>算术运算指令</li>
-<li>逻辑运算指令</li>
-<li>程序控制类指令</li>
-<li>处理机控制类指令<h2 id="加法器与运算部件"><a href="#加法器与运算部件" class="headerlink" title="加法器与运算部件"></a>加法器与运算部件</h2><h3 id="加法器及其进位逻辑"><a href="#加法器及其进位逻辑" class="headerlink" title="加法器及其进位逻辑"></a>加法器及其进位逻辑</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635852841593.png" alt="enter description here"><br>Σi =（Ai ⊕ Bi）⊕ Ci-1<br>Ci = Ai Bi +（Ai ⊕ Bi）Ci-1 </li>
-<li>串行加法器：如果每步只求一位和，将n位加分成n步实现</li>
-<li>并行加法器：如果用n位全加器一步实现n位相加，即n位同步相加<ol>
-<li>串行进位链</li>
-<li>并行进位链</li>
-<li>组内并行组间串行的进位链<h3 id="算术逻辑运算单元"><a href="#算术逻辑运算单元" class="headerlink" title="算术逻辑运算单元"></a>算术逻辑运算单元</h3><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635853320294.png" alt="ALU运算功能对照"><h2 id="x86架构模型机CPU设计"><a href="#x86架构模型机CPU设计" class="headerlink" title="x86架构模型机CPU设计"></a>x86架构模型机CPU设计</h2><h3 id="指令流程与微命令"><a href="#指令流程与微命令" class="headerlink" title="指令流程与微命令"></a><strong>指令流程与微命令</strong></h3>信息传输操作两大类：内部数据通路操作和外部访存操作</li>
-</ol>
-</li>
-<li>数据通路操作<ol>
-<li>ALU输入选择</li>
-<li>ALU功能选择</li>
-<li>移位器功能选择</li>
-<li>CPU内部总线结果分配控制信号</li>
-</ol>
-</li>
-<li>访存操作相关控制信号<br><strong>EMAR</strong>地址使能<br><strong>R/W</strong>控制主存读写模式<br><strong>EMDR</strong>数据使能<br><strong>SMDR</strong>打入(把数据总线上的数据置入寄存器MDR)<br><strong>SIR</strong>读指令写入<br>(W和EMDR基本绑定)<br>又分四个基本执行阶段：取指令FT、源操作ST、目的操作DT、执行ET<h4 id="MOV指令重点"><a href="#MOV指令重点" class="headerlink" title="MOV指令重点"></a><strong>MOV指令</strong>重点</h4><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790783406.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790799739.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790825197.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790847773.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790869631.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790896974.png" alt="enter description here"><br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790917941.png" alt="enter description here"><h3 id="组合逻辑控制"><a href="#组合逻辑控制" class="headerlink" title="组合逻辑控制"></a>组合逻辑控制</h3></li>
-</ul>
-<p><kbd>insert</kbd>切换输入模式（鼠标光标横竖）</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1300,7 +1295,7 @@ byg:dead_sea</li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1349,7 +1344,7 @@ byg:dead_sea</li>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共67.7k字呐~</span>
+  <span class="post-count">本博客全站共86.2k字呐~</span>
 </div>
 
         

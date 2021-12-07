@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Fabric应用开发 基于Fabric的简单Web应用 fabric基本概念 基于Hyperledger Fabric的官方例子e2e构建一个简单的web应用 利用Hyperledger Fabric开发你的第一个区块链应用对应官方 12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta property="og:type" content="article">
+<meta property="og:title" content="后面">
+<meta property="og:url" content="http://example.com/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%90%8E%E9%9D%A2/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="Fabric应用开发 基于Fabric的简单Web应用 fabric基本概念 基于Hyperledger Fabric的官方例子e2e构建一个简单的web应用 利用Hyperledger Fabric开发你的第一个区块链应用对应官方 12345678910111213141516171819202122232425262728293031323334353637383940414243444546">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-27T21:02:32.414Z">
+<meta property="article:modified_time" content="2021-11-30T05:28:35.550Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="区块链">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%90%8E%E9%9D%A2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>后面 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/28/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%90%8E%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          后面
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-28 05:02:32" itemprop="dateCreated datePublished" datetime="2021-11-28T05:02:32+08:00">2021-11-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-11-30 13:28:35" itemprop="dateModified" datetime="2021-11-30T13:28:35+08:00">2021-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1622422">Fabric应用开发</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40185499/article/details/104023543">基于Fabric的简单Web应用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/64281ff8de13">fabric基本概念</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40657814/article/details/90447259">基于Hyperledger Fabric的官方例子e2e构建一个简单的web应用</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.xuanzhangjiong.top/2019/04/16/%E5%88%A9%E7%94%A8Hyperledger-Fabric%E5%BC%80%E5%8F%91%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8C%BA%E5%9D%97%E9%93%BE%E5%BA%94%E7%94%A8/#%E8%AE%BE%E7%BD%AE%E5%8C%BA%E5%9D%97%E9%93%BE%E7%BD%91%E7%BB%9C">利用Hyperledger Fabric开发你的第一个区块链应用</a><br><a target="_blank" rel="noopener" href="https://hyperledger-fabric.readthedocs.io/zh_CN/release-2.2/write_first_app.html#id2">对应官方</a></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span>**dyingjin@ubuntu**:**~/Desktop/fabric-samples/test-network**$ sudo -i</span><br><span class="line">[sudo] password for dyingjin: </span><br><span class="line">root@ubuntu:~# cd /</span><br><span class="line">root@ubuntu:/# cd home/dyingjin/Desktop/fabric-samples/test-network</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# ./network.sh up createChannel</span><br><span class="line">Creating channel &#x27;mychannel&#x27;.</span><br><span class="line">If network is not up, starting nodes with CLI timeout of &#x27;5&#x27; tries and CLI delay of &#x27;3&#x27; seconds and using database &#x27;leveldb with crypto from &#x27;cryptogen&#x27;</span><br><span class="line">Bringing up network</span><br><span class="line">LOCAL_VERSION=2.3.3</span><br><span class="line">DOCKER_IMAGE_VERSION=2.3.3</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/test-network/../bin/cryptogen</span><br><span class="line">Generating certificates using cryptogen tool</span><br><span class="line">Creating Org1 Identities</span><br><span class="line">+ cryptogen generate --config=./organizations/cryptogen/crypto-config-org1.yaml --output=organizations</span><br><span class="line">org1.example.com</span><br><span class="line">+ res=0</span><br><span class="line">Creating Org2 Identities</span><br><span class="line">+ cryptogen generate --config=./organizations/cryptogen/crypto-config-org2.yaml --output=organizations</span><br><span class="line">org2.example.com</span><br><span class="line">+ res=0</span><br><span class="line">Creating Orderer Org Identities</span><br><span class="line">+ cryptogen generate --config=./organizations/cryptogen/crypto-config-orderer.yaml --output=organizations</span><br><span class="line">+ res=0</span><br><span class="line">Generating CCP files for Org1 and Org2</span><br><span class="line">Creating network &quot;fabric_test&quot; with the default driver</span><br><span class="line">Creating volume &quot;docker_orderer.example.com&quot; with default driver</span><br><span class="line">Creating volume &quot;docker_peer0.org1.example.com&quot; with default driver</span><br><span class="line">Creating volume &quot;docker_peer0.org2.example.com&quot; with default driver</span><br><span class="line">Creating peer0.org2.example.com ... done</span><br><span class="line">Creating peer0.org1.example.com ... done</span><br><span class="line">Creating orderer.example.com    ... done</span><br><span class="line">Creating cli                    ... done</span><br><span class="line">CONTAINER ID   IMAGE                               COMMAND             CREATED         STATUS                  PORTS                                                                                                                                 NAMES</span><br><span class="line">0fe7892c3748   hyperledger/fabric-tools:latest     &quot;/bin/bash&quot;         1 second ago    Up Less than a second                                                                                                                                         cli</span><br><span class="line">83bde93c006c   hyperledger/fabric-orderer:latest   &quot;orderer&quot;           2 seconds ago   Up Less than a second   0.0.0.0:7050-&gt;7050/tcp, :::7050-&gt;7050/tcp, 0.0.0.0:7053-&gt;7053/tcp, :::7053-&gt;7053/tcp, 0.0.0.0:17050-&gt;17050/tcp, :::17050-&gt;17050/tcp   orderer.example.com</span><br><span class="line">016ba2f4c79a   hyperledger/fabric-peer:latest      &quot;peer node start&quot;   3 seconds ago   Up Less than a second   0.0.0.0:9051-&gt;9051/tcp, :::9051-&gt;9051/tcp, 7051/tcp, 0.0.0.0:19051-&gt;19051/tcp, :::19051-&gt;19051/tcp                                    peer0.org2.example.com</span><br><span class="line">2d10a48b4833   hyperledger/fabric-peer:latest      &quot;peer node start&quot;   3 seconds ago   Up Less than a second   0.0.0.0:7051-&gt;7051/tcp, :::7051-&gt;7051/tcp, 0.0.0.0:17051-&gt;17051/tcp, :::17051-&gt;17051/tcp                                              peer0.org1.example.com</span><br><span class="line">Generating channel genesis block &#x27;mychannel.block&#x27;</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/test-network/../bin/configtxgen</span><br><span class="line">+ configtxgen -profile TwoOrgsApplicationGenesis -outputBlock ./channel-artifacts/mychannel.block -channelID mychannel</span><br><span class="line">2021-11-29 21:24:09.077 PST [common.tools.configtxgen] main -&gt; INFO 001 Loading configuration</span><br><span class="line">2021-11-29 21:24:09.083 PST [common.tools.configtxgen.localconfig] completeInitialization -&gt; INFO 002 orderer type: etcdraft</span><br><span class="line">2021-11-29 21:24:09.083 PST [common.tools.configtxgen.localconfig] completeInitialization -&gt; INFO 003 Orderer.EtcdRaft.Options unset, setting to tick_interval:&quot;500ms&quot; election_tick:10 heartbeat_tick:1 max_inflight_blocks:5 snapshot_interval_size:16777216 </span><br><span class="line">2021-11-29 21:24:09.083 PST [common.tools.configtxgen.localconfig] Load -&gt; INFO 004 Loaded configuration: /home/dyingjin/Desktop/fabric-samples/test-network/configtx/configtx.yaml</span><br><span class="line">2021-11-29 21:24:09.085 PST [common.tools.configtxgen] doOutputBlock -&gt; INFO 005 Generating genesis block</span><br><span class="line">2021-11-29 21:24:09.086 PST [common.tools.configtxgen] doOutputBlock -&gt; INFO 006 Creating application channel genesis block</span><br><span class="line">2021-11-29 21:24:09.086 PST [common.tools.configtxgen] doOutputBlock -&gt; INFO 007 Writing genesis block</span><br><span class="line">+ res=0</span><br><span class="line">Creating channel mychannel</span><br><span class="line">Using organization 1</span><br><span class="line">+ osnadmin channel join --channelID mychannel --config-block ./channel-artifacts/mychannel.block -o localhost:7053 --ca-file /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --client-cert /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt --client-key /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key</span><br><span class="line">+ res=0</span><br><span class="line">Status: 201</span><br><span class="line">&#123;</span><br><span class="line">	&quot;name&quot;: &quot;mychannel&quot;,</span><br><span class="line">	&quot;url&quot;: &quot;/participation/v1/channels/mychannel&quot;,</span><br><span class="line">	&quot;consensusRelation&quot;: &quot;consenter&quot;,</span><br><span class="line">	&quot;status&quot;: &quot;active&quot;,</span><br><span class="line">	&quot;height&quot;: 1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Channel &#x27;mychannel&#x27; created</span><br><span class="line">Joining org1 peer to the channel...</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer channel join -b ./channel-artifacts/mychannel.block</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:15.240 PST [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-29 21:24:15.262 PST [channelCmd] executeJoin -&gt; INFO 002 Successfully submitted proposal to join channel</span><br><span class="line">Joining org2 peer to the channel...</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer channel join -b ./channel-artifacts/mychannel.block</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:18.329 PST [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-29 21:24:18.350 PST [channelCmd] executeJoin -&gt; INFO 002 Successfully submitted proposal to join channel</span><br><span class="line">Setting anchor peer for org1...</span><br><span class="line">Using organization 1</span><br><span class="line">Fetching channel config for channel mychannel</span><br><span class="line">Using organization 1</span><br><span class="line">Fetching the most recent configuration block for the channel</span><br><span class="line">+ peer channel fetch config config_block.pb -o orderer.example.com:7050 --ordererTLSHostnameOverride orderer.example.com -c mychannel --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem</span><br><span class="line">2021-11-30 05:24:18.565 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:18.573 UTC [cli.common] readBlock -&gt; INFO 002 Received block: 0</span><br><span class="line">2021-11-30 05:24:18.573 UTC [channelCmd] fetch -&gt; INFO 003 Retrieving last config block: 0</span><br><span class="line">2021-11-30 05:24:18.577 UTC [cli.common] readBlock -&gt; INFO 004 Received block: 0</span><br><span class="line">Decoding config block to JSON and isolating config to Org1MSPconfig.json</span><br><span class="line">+ configtxlator proto_decode --input config_block.pb --type common.Block</span><br><span class="line">+ jq &#x27;.data.data[0].payload.data.config&#x27;</span><br><span class="line">+ jq &#x27;.channel_group.groups.Application.groups.Org1MSP.values += &#123;&quot;AnchorPeers&quot;:&#123;&quot;mod_policy&quot;: &quot;Admins&quot;,&quot;value&quot;:&#123;&quot;anchor_peers&quot;: [&#123;&quot;host&quot;: &quot;peer0.org1.example.com&quot;,&quot;port&quot;: 7051&#125;]&#125;,&quot;version&quot;: &quot;0&quot;&#125;&#125;&#x27; Org1MSPconfig.json</span><br><span class="line">Generating anchor peer update transaction for Org1 on channel mychannel</span><br><span class="line">+ configtxlator proto_encode --input Org1MSPconfig.json --type common.Config</span><br><span class="line">+ configtxlator proto_encode --input Org1MSPmodified_config.json --type common.Config</span><br><span class="line">+ configtxlator compute_update --channel_id mychannel --original original_config.pb --updated modified_config.pb</span><br><span class="line">+ configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate</span><br><span class="line">+ jq .</span><br><span class="line">++ cat config_update.json</span><br><span class="line">+ echo &#x27;&#123;&quot;payload&quot;:&#123;&quot;header&quot;:&#123;&quot;channel_header&quot;:&#123;&quot;channel_id&quot;:&quot;mychannel&quot;, &quot;type&quot;:2&#125;&#125;,&quot;data&quot;:&#123;&quot;config_update&quot;:&#123;&#x27; &#x27;&quot;channel_id&quot;:&#x27; &#x27;&quot;mychannel&quot;,&#x27; &#x27;&quot;isolated_data&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;read_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org1MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;write_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org1MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;AnchorPeers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;anchor_peers&quot;:&#x27; &#x27;[&#x27; &#x27;&#123;&#x27; &#x27;&quot;host&quot;:&#x27; &#x27;&quot;peer0.org1.example.com&quot;,&#x27; &#x27;&quot;port&quot;:&#x27; 7051 &#x27;&#125;&#x27; &#x27;]&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;1&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;&#125;&#125;&#125;&#x27;</span><br><span class="line">+ configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope</span><br><span class="line">2021-11-30 05:24:18.826 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:18.840 UTC [channelCmd] update -&gt; INFO 002 Successfully submitted channel update</span><br><span class="line">Anchor peer set for org &#x27;Org1MSP&#x27; on channel &#x27;mychannel&#x27;</span><br><span class="line">Setting anchor peer for org2...</span><br><span class="line">Using organization 2</span><br><span class="line">Fetching channel config for channel mychannel</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer channel fetch config Fetching the most recent configuration block for the channel</span><br><span class="line">config_block.pb -o orderer.example.com:7050 --ordererTLSHostnameOverride orderer.example.com -c mychannel --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem</span><br><span class="line">2021-11-30 05:24:19.048 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:19.054 UTC [cli.common] readBlock -&gt; INFO 002 Received block: 1</span><br><span class="line">2021-11-30 05:24:19.055 UTC [channelCmd] fetch -&gt; INFO 003 Retrieving last config block: 1</span><br><span class="line">2021-11-30 05:24:19.057 UTC [cli.common] readBlock -&gt; INFO 004 Received block: 1</span><br><span class="line">Decoding config block to JSON and isolating config to Org2MSPconfig.json</span><br><span class="line">+ configtxlator proto_decode --input config_block.pb --type common.Block</span><br><span class="line">+ jq &#x27;.data.data[0].payload.data.config&#x27;</span><br><span class="line">Generating anchor peer update transaction for Org2 on channel mychannel</span><br><span class="line">+ jq &#x27;.channel_group.groups.Application.groups.Org2MSP.values += &#123;&quot;AnchorPeers&quot;:&#123;&quot;mod_policy&quot;: &quot;Admins&quot;,&quot;value&quot;:&#123;&quot;anchor_peers&quot;: [&#123;&quot;host&quot;: &quot;peer0.org2.example.com&quot;,&quot;port&quot;: 9051&#125;]&#125;,&quot;version&quot;: &quot;0&quot;&#125;&#125;&#x27; Org2MSPconfig.json</span><br><span class="line">+ configtxlator proto_encode --input Org2MSPconfig.json --type common.Config</span><br><span class="line">+ configtxlator proto_encode --input Org2MSPmodified_config.json --type common.Config</span><br><span class="line">+ configtxlator compute_update --channel_id mychannel --original original_config.pb --updated modified_config.pb</span><br><span class="line">+ configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate</span><br><span class="line">+ jq .</span><br><span class="line">++ cat config_update.json</span><br><span class="line">+ echo &#x27;&#123;&quot;payload&quot;:&#123;&quot;header&quot;:&#123;&quot;channel_header&quot;:&#123;&quot;channel_id&quot;:&quot;mychannel&quot;, &quot;type&quot;:2&#125;&#125;,&quot;data&quot;:&#123;&quot;config_update&quot;:&#123;&#x27; &#x27;&quot;channel_id&quot;:&#x27; &#x27;&quot;mychannel&quot;,&#x27; &#x27;&quot;isolated_data&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;read_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org2MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;write_set&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Application&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Org2MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;groups&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;Admins&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Endorsement&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Readers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;Writers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policy&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;AnchorPeers&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;Admins&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;anchor_peers&quot;:&#x27; &#x27;[&#x27; &#x27;&#123;&#x27; &#x27;&quot;host&quot;:&#x27; &#x27;&quot;peer0.org2.example.com&quot;,&#x27; &#x27;&quot;port&quot;:&#x27; 9051 &#x27;&#125;&#x27; &#x27;]&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;MSP&quot;:&#x27; &#x27;&#123;&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;value&quot;:&#x27; null, &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;1&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;,&#x27; &#x27;&quot;mod_policy&quot;:&#x27; &#x27;&quot;&quot;,&#x27; &#x27;&quot;policies&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;values&quot;:&#x27; &#x27;&#123;&#125;,&#x27; &#x27;&quot;version&quot;:&#x27; &#x27;&quot;0&quot;&#x27; &#x27;&#125;&#x27; &#x27;&#125;&#125;&#125;&#125;&#x27;</span><br><span class="line">+ configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope</span><br><span class="line">2021-11-30 05:24:19.311 UTC [channelCmd] InitCmdFactory -&gt; INFO 001 Endorser and orderer connections initialized</span><br><span class="line">2021-11-30 05:24:19.326 UTC [channelCmd] update -&gt; INFO 002 Successfully submitted channel update</span><br><span class="line">Anchor peer set for org &#x27;Org2MSP&#x27; on channel &#x27;mychannel&#x27;</span><br><span class="line">Channel &#x27;mychannel&#x27; joined</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# ./network.sh deployCC -ccn basic -ccp ../asset-transfer-basic/chaincode-go -ccl go</span><br><span class="line">deploying chaincode on channel &#x27;mychannel&#x27;</span><br><span class="line">executing with the following</span><br><span class="line">- CHANNEL_NAME: mychannel</span><br><span class="line">- CC_NAME: basic</span><br><span class="line">- CC_SRC_PATH: ../asset-transfer-basic/chaincode-go</span><br><span class="line">- CC_SRC_LANGUAGE: go</span><br><span class="line">- CC_VERSION: 1.0</span><br><span class="line">- CC_SEQUENCE: 1</span><br><span class="line">- CC_END_POLICY: NA</span><br><span class="line">- CC_COLL_CONFIG: NA</span><br><span class="line">- CC_INIT_FCN: NA</span><br><span class="line">- DELAY: 3</span><br><span class="line">- MAX_RETRY: 5</span><br><span class="line">- VERBOSE: false</span><br><span class="line">Vendoring Go dependencies at ../asset-transfer-basic/chaincode-go</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/asset-transfer-basic/chaincode-go /home/dyingjin/Desktop/fabric-samples/test-network</span><br><span class="line">/home/dyingjin/Desktop/fabric-samples/test-network</span><br><span class="line">Finished vendoring Go dependencies</span><br><span class="line">+ peer lifecycle chaincode package basic.tar.gz --path ../asset-transfer-basic/chaincode-go --lang golang --label basic_1.0</span><br><span class="line">+ res=0</span><br><span class="line">Chaincode is packaged</span><br><span class="line">Installing chaincode on peer0.org1...</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer lifecycle chaincode install basic.tar.gz</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:40.273 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 001 Installed remotely: response:<span class="tag">&lt;<span class="name">status:200</span> <span class="attr">payload:</span>&quot;\<span class="attr">nJbasic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span>\<span class="attr">022</span>\<span class="attr">tbasic_1.0</span>&quot; &gt;</span> </span><br><span class="line">2021-11-29 21:24:40.273 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 002 Chaincode code package identifier: basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span><br><span class="line">Chaincode is installed on peer0.org1</span><br><span class="line">Install chaincode on peer0.org2...</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer lifecycle chaincode install basic.tar.gz</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:55.571 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 001 Installed remotely: response:<span class="tag">&lt;<span class="name">status:200</span> <span class="attr">payload:</span>&quot;\<span class="attr">nJbasic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span>\<span class="attr">022</span>\<span class="attr">tbasic_1.0</span>&quot; &gt;</span> </span><br><span class="line">2021-11-29 21:24:55.571 PST [cli.lifecycle.chaincode] submitInstallProposal -&gt; INFO 002 Chaincode code package identifier: basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e</span><br><span class="line">Chaincode is installed on peer0.org2</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer lifecycle chaincode queryinstalled</span><br><span class="line">+ res=0</span><br><span class="line">Installed chaincodes on peer:</span><br><span class="line">Package ID: basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e, Label: basic_1.0</span><br><span class="line">Query installed successful on peer0.org1 on channel</span><br><span class="line">Using organization 1</span><br><span class="line">+ peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name basic --version 1.0 --package-id basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e --sequence 1</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:24:57.729 PST [chaincodeCmd] ClientWait -&gt; INFO 001 txid [00e5c20e20f9c0aac1a15c0b0077f6222617a3316b233bcd6228a85f32140102] committed with status (VALID) at localhost:7051</span><br><span class="line">Chaincode definition approved on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org1 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org1, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org2 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org2, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer lifecycle chaincode approveformyorg -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name basic --version 1.0 --package-id basic_1.0:c3fff99b8effbccb6749ab2dddd573adac22e7c0b5cae3e659732df710d1815e --sequence 1</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:25:05.967 PST [chaincodeCmd] ClientWait -&gt; INFO 001 txid [2a12e0d4680ab3d7bc370464af51d98dce75706d47968496e13ba168035fe61b] committed with status (VALID) at localhost:9051</span><br><span class="line">Chaincode definition approved on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org1 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org1, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: true</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">Checking the commit readiness of the chaincode definition on peer0.org2 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to check the commit readiness of the chaincode definition on peer0.org2, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode checkcommitreadiness --channelID mychannel --name basic --version 1.0 --sequence 1 --output json</span><br><span class="line">+ res=0</span><br><span class="line">&#123;</span><br><span class="line">	&quot;approvals&quot;: &#123;</span><br><span class="line">		&quot;Org1MSP&quot;: true,</span><br><span class="line">		&quot;Org2MSP&quot;: true</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">Checking the commit readiness of the chaincode definition successful on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Using organization 2</span><br><span class="line">+ peer lifecycle chaincode commit -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile /home/dyingjin/Desktop/fabric-samples/test-network/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --channelID mychannel --name basic --peerAddresses localhost:7051 --tlsRootCertFiles /home/dyingjin/Desktop/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles /home/dyingjin/Desktop/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --version 1.0 --sequence 1</span><br><span class="line">+ res=0</span><br><span class="line">2021-11-29 21:25:14.497 PST [chaincodeCmd] ClientWait -&gt; INFO 001 txid [52ab43fdce51efbf03f66a3bfa441566802339f03a18da30332b80bd80344fab] committed with status (VALID) at localhost:9051</span><br><span class="line">2021-11-29 21:25:14.560 PST [chaincodeCmd] ClientWait -&gt; INFO 002 txid [52ab43fdce51efbf03f66a3bfa441566802339f03a18da30332b80bd80344fab] committed with status (VALID) at localhost:7051</span><br><span class="line">Chaincode definition committed on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 1</span><br><span class="line">Querying chaincode definition on peer0.org1 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to Query committed status on peer0.org1, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode querycommitted --channelID mychannel --name basic</span><br><span class="line">+ res=0</span><br><span class="line">Committed chaincode definition for chaincode &#x27;basic&#x27; on channel &#x27;mychannel&#x27;:</span><br><span class="line">Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]</span><br><span class="line">Query chaincode definition successful on peer0.org1 on channel &#x27;mychannel&#x27;</span><br><span class="line">Using organization 2</span><br><span class="line">Querying chaincode definition on peer0.org2 on channel &#x27;mychannel&#x27;...</span><br><span class="line">Attempting to Query committed status on peer0.org2, Retry after 3 seconds.</span><br><span class="line">+ peer lifecycle chaincode querycommitted --channelID mychannel --name basic</span><br><span class="line">+ res=0</span><br><span class="line">Committed chaincode definition for chaincode &#x27;basic&#x27; on channel &#x27;mychannel&#x27;:</span><br><span class="line">Version: 1.0, Sequence: 1, Endorsement Plugin: escc, Validation Plugin: vscc, Approvals: [Org1MSP: true, Org2MSP: true]</span><br><span class="line">Query chaincode definition successful on peer0.org2 on channel &#x27;mychannel&#x27;</span><br><span class="line">Chaincode initialization is not required</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export PATH=$&#123;PWD&#125;/../bin:$PATH</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export FABRIC_CFG_PATH=$PWD/../config/</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ENABLED=true</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_LOCALMSPID=&quot;Org1MSP&quot;</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ROOTCERT_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_ADDRESS=localhost:7051</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c &#x27;&#123;&quot;function&quot;:&quot;InitLedger&quot;,&quot;Args&quot;:[]&#125;&#x27;</span><br><span class="line">2021-11-29 21:25:48.618 PST [chaincodeCmd] chaincodeInvokeOrQuery -&gt; INFO 001 Chaincode invoke successful. result: status:200 </span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;GetAllAssets&quot;]&#125;&#x27;</span><br><span class="line">[&#123;&quot;AppraisedValue&quot;:300,&quot;Color&quot;:&quot;blue&quot;,&quot;ID&quot;:&quot;asset1&quot;,&quot;Owner&quot;:&quot;Tomoko&quot;,&quot;Size&quot;:5&#125;,&#123;&quot;AppraisedValue&quot;:400,&quot;Color&quot;:&quot;red&quot;,&quot;ID&quot;:&quot;asset2&quot;,&quot;Owner&quot;:&quot;Brad&quot;,&quot;Size&quot;:5&#125;,&#123;&quot;AppraisedValue&quot;:500,&quot;Color&quot;:&quot;green&quot;,&quot;ID&quot;:&quot;asset3&quot;,&quot;Owner&quot;:&quot;Jin Soo&quot;,&quot;Size&quot;:10&#125;,&#123;&quot;AppraisedValue&quot;:600,&quot;Color&quot;:&quot;yellow&quot;,&quot;ID&quot;:&quot;asset4&quot;,&quot;Owner&quot;:&quot;Max&quot;,&quot;Size&quot;:10&#125;,&#123;&quot;AppraisedValue&quot;:700,&quot;Color&quot;:&quot;black&quot;,&quot;ID&quot;:&quot;asset5&quot;,&quot;Owner&quot;:&quot;Adriana&quot;,&quot;Size&quot;:15&#125;,&#123;&quot;AppraisedValue&quot;:800,&quot;Color&quot;:&quot;white&quot;,&quot;ID&quot;:&quot;asset6&quot;,&quot;Owner&quot;:&quot;Michel&quot;,&quot;Size&quot;:15&#125;]</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode invoke -o localhost:7050 --ordererTLSHostnameOverride orderer.example.com --tls --cafile $&#123;PWD&#125;/organizations/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C mychannel -n basic --peerAddresses localhost:7051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses localhost:9051 --tlsRootCertFiles $&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c &#x27;&#123;&quot;function&quot;:&quot;TransferAsset&quot;,&quot;Args&quot;:[&quot;asset6&quot;,&quot;Christopher&quot;]&#125;&#x27;</span><br><span class="line">2021-11-29 21:26:06.688 PST [chaincodeCmd] chaincodeInvokeOrQuery -&gt; INFO 001 Chaincode invoke successful. result: status:200 </span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ENABLED=true</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_LOCALMSPID=&quot;Org2MSP&quot;</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_TLS_ROOTCERT_FILE=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_MSPCONFIGPATH=$&#123;PWD&#125;/organizations/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# export CORE_PEER_ADDRESS=localhost:9051</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# peer chaincode query -C mychannel -n basic -c &#x27;&#123;&quot;Args&quot;:[&quot;ReadAsset&quot;,&quot;asset6&quot;]&#125;&#x27;</span><br><span class="line">&#123;&quot;AppraisedValue&quot;:800,&quot;Color&quot;:&quot;white&quot;,&quot;ID&quot;:&quot;asset6&quot;,&quot;Owner&quot;:&quot;Christopher&quot;,&quot;Size&quot;:15&#125;</span><br><span class="line">root@ubuntu:/home/dyingjin/Desktop/fabric-samples/test-network# </span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag"># 区块链</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/11/27/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E9%A2%98/" rel="prev" title="题">
+      <i class="fa fa-chevron-left"></i> 题
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/12/07/MC/modslists/minecraft%5B1.16.5%5D%20%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.9/" rel="next" title="minecraft[1.16.5]现用模组表0.9">
+      minecraft[1.16.5]现用模组表0.9 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共86.2k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
