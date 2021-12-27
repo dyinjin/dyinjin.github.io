@@ -4,7 +4,12 @@
     <title>minecraft making log</title>
     <url>/2021/09/26/MC/debugfile/</url>
     <content><![CDATA[<p><img src="/2021/09/26/MC/debugfile/ti.png" alt="2021-12-04_16"></p>
-<h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><h2 id="变异骷髅闪退"><a href="#变异骷髅闪退" class="headerlink" title="变异骷髅闪退"></a>变异骷髅闪退</h2><ul>
+<h1 id="模组部分"><a href="#模组部分" class="headerlink" title="模组部分"></a>模组部分</h1><p>按时间顺序【由近及远】</p>
+<h2 id="【结构】大型结构Shrines-1-16-5-2-0-0-Beta8"><a href="#【结构】大型结构Shrines-1-16-5-2-0-0-Beta8" class="headerlink" title="【结构】大型结构Shrines-1.16.5-2.0.0-Beta8"></a>【结构】大型结构Shrines-1.16.5-2.0.0-Beta8</h2><p>加载闪退(毕竟BETA)<br>日志fatal报错：</p>
+<figure class="highlight plaintext"><figcaption><span>apply failed mixins.shrines.json:MixinMinecraftServer -> net.minecraft.server.MinecraftServer: org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException Critical injection failure: @Inject annotation on onConfigurePackRepository could not find any targets matching 'configurePackRepository' in net.minecraft.server.MinecraftServer. No refMap loaded. [PREINJECT Applicator Phase -> mixins.shrines.json:MixinMinecraftServer -> Prepare Injections ->  -> handler$bbi000$onConfigurePackRepository(Lnet/minecraft/resources/ResourcePackList;Lnet/minecraft/util/datafix/codec/DatapackCodec;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V -> Parse]</span></figcaption><table><tr><td class="code"><pre><span class="line">org.spongepowered.asm.mixin.injection.throwables.InvalidInjectionException: Critical injection failure: @Inject annotation on onConfigurePackRepository could not find any targets matching &#x27;configurePackRepository&#x27; in net.minecraft.server.MinecraftServer. No refMap loaded. [PREINJECT Applicator Phase -&gt; mixins.shrines.json:MixinMinecraftServer -&gt; Prepare Injections -&gt;  -&gt; handler$bbi000$onConfigurePackRepository(Lnet/minecraft/resources/ResourcePackList;Lnet/minecraft/util/datafix/codec/DatapackCodec;ZLorg/spongepowered/asm/mixin/injection/callback/CallbackInfoReturnable;)V -&gt; Parse]</span><br></pre></td></tr></table></figure>
+<p>有：<br>InvalidInjectionException严重注入失败：@onConfigurePackRepository上的injection批注在网络中找不到任何与“configurePackRepository”匹配的目标。我的世界。服务器MinecraftServer。未加载参考地图。<br>更换为BETA7版本正常</p>
+<h2 id="某生物附魔模组更新后"><a href="#某生物附魔模组更新后" class="headerlink" title="某生物附魔模组更新后"></a>某生物附魔模组更新后</h2><p>更新后会生物附魔详情会以名称形式显示（很长很难看）<br>找出来了，是【生物】【前置24】地下城怪物dungeons_mobs-1.16.5-2.0.1-beta（测试版？）<br>毕竟是从1.X到2.X了的大更新，等正式版吧</p>
+<h2 id="变异骷髅闪退"><a href="#变异骷髅闪退" class="headerlink" title="变异骷髅闪退"></a>变异骷髅闪退</h2><ul>
 <li>【生物】变异生物MutantBeasts-1.16.4-1.1.3.jar</li>
 <li>生成的变异骷髅似乎在一个跳跃动作后便会使整合包闪退</li>
 <li>其它生物均无此现象</li>
@@ -136,7 +141,8 @@
 洞穴<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cavebiomeapi:caves</span><br><span class="line">cavesandcliffs:dripstone_caves</span><br><span class="line">cavesandcliffs:lush_caves</span><br><span class="line">darkerdepths:crystal_cave</span><br><span class="line">darkerdepths:glowshroom_caves</span><br></pre></td></tr></table></figure>
 byg:dead_sea</li>
 </ul>
-<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><h2 id="data-get-entity-p-SelectedItem"><a href="#data-get-entity-p-SelectedItem" class="headerlink" title="/data get entity @p SelectedItem"></a><code>/data get entity @p SelectedItem</code></h2><p>查看手持物品详细数据<br>非常有用</p>
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><h2 id="Better-Minecraft-FORGE-v34"><a href="#Better-Minecraft-FORGE-v34" class="headerlink" title="Better Minecraft [FORGE] v34"></a>Better Minecraft [FORGE] v34</h2><p>在此版本后，项目组不再使用Global Data- &amp; Resourcepacks (by JTK222)模组</p>
+<h2 id="data-get-entity-p-SelectedItem"><a href="#data-get-entity-p-SelectedItem" class="headerlink" title="/data get entity @p SelectedItem"></a><code>/data get entity @p SelectedItem</code></h2><p>查看手持物品详细数据<br>非常有用</p>
 <h2 id="OpenGL-Error-1281-Invalid-Value"><a href="#OpenGL-Error-1281-Invalid-Value" class="headerlink" title="OpenGL Error 1281: Invalid Value"></a><code>OpenGL Error 1281: Invalid Value</code></h2><p><del>老问题，不只是“【优化】储物抽屉优化drawerfps-2.1.jar”的原因，这次表现为水体透明<br>好家伙不查不知道，首先看看OpenGL是个啥吧：<br><code>OpenGL（英语：Open Graphics Library，译名：开放图形库或者“开放式图形库”）是用于渲染2D、3D矢量图形的跨语言、跨平台的应用程序编程接口（API）。这个接口由近350个不同的函数调用组成，用来绘制从简单的图形比特到复杂的三维景象。而另一种程序接口系统是仅用于Microsoft Windows上的Direct3D。OpenGL常用于CAD、虚拟现实、科学可视化程序和电子游戏开发。</code><br>总之不只是我的世界高清修复在用<br>那么看了一下日志，发现和一个叫VBO的东西相关，一查：<br><code>顶点缓存对象（VBO）准许顶点数组数据存放在服务端的高性能显卡内存中，且提供高效数据传输。</code><br>又有知乎大佬说和做水效相关，那么找对问题了，但怎么解决。。。</del></p>
 <ul>
 <li>与JAVA版本有关</li>
@@ -289,7 +295,7 @@ byg:dead_sea</li>
 </li>
 </ul>
 <hr>
-<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a href="https://dyinjin.github.io/2021/09/17/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/5/">x86具体操作</a></p>
+<p>CPU能够直接访问的操作数只能存放在主存储器或CPU内的寄存器中<br><a href="https://dyinjin.github.io/2021/09/18/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%965/">x86具体操作</a></p>
 <hr>
 <p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1635790186316.png" alt="enter description here"></p>
 <ul>
