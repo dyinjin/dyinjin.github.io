@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2022/01/07/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Fabric%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3#1/</loc>
+    <loc>http://example.com/2022/01/07/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/1/</loc>
     
     <lastmod>2022-01-07</lastmod>
     
@@ -354,13 +354,6 @@
 
   
   <url>
-    <loc>http://example.com/tags/python/</loc>
-    <lastmod>2022-01-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/Hexo/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>daily</changefreq>
@@ -368,7 +361,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
+    <loc>http://example.com/tags/python/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -376,6 +369,13 @@
   
   <url>
     <loc>http://example.com/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/</loc>
+    <lastmod>2022-01-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -403,6 +403,13 @@
   </url>
   
   <url>
+    <loc>http://example.com/tags/Ubuntu/</loc>
+    <lastmod>2022-01-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>daily</changefreq>
@@ -410,7 +417,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Ubuntu/</loc>
+    <loc>http://example.com/tags/%E7%88%AA%E8%9B%99/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -430,24 +437,17 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://example.com/tags/%E7%88%AA%E8%9B%99/</loc>
-    <lastmod>2022-01-07</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
-    <loc>http://example.com/categories/%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://example.com/categories/%E5%85%B6%E5%AE%83/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/%E5%85%B6%E5%AE%83/</loc>
+    <loc>http://example.com/categories/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2022-01-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
