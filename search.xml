@@ -157,6 +157,19 @@ byg:dead_sea</li>
       </tags>
   </entry>
   <entry>
+    <title>Onedrive共享</title>
+    <url>/2022/01/12/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/Onedrive%E5%85%B1%E4%BA%AB/</url>
+    <content><![CDATA[<h1 id="最简单用法：直接拖进去"><a href="#最简单用法：直接拖进去" class="headerlink" title="最简单用法：直接拖进去"></a>最简单用法：直接拖进去</h1><p>比如我就可以直接吧文件拷到<code>C:\Users\123\OneDrive\123</code>中即可等待自动传输同步。相当于OneDrive会把任何其目录下的内容上次云端<br>但是如果不想改文件位置，甚至文件太大不想拷一份呢（而且每次修改需要重新拷过来）</p>
+<h1 id="着重记下指定任意文件夹进行备份"><a href="#着重记下指定任意文件夹进行备份" class="headerlink" title="着重记下指定任意文件夹进行备份"></a>着重记下指定任意文件夹进行备份</h1><p>这个不算是官方功能，但只需要运用映射文件夹的简单道理，即可实现一般所谓的文件夹备份（即修改本地文件夹内容后自动修改OneDrive上的内容）<br>即cmd（管理员）中运行<code>mklink /d  C:\Users\123\OneDrive\123  D:\456</code>进行文件夹映射（链接）</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+      </categories>
+      <tags>
+        <tag>Onedrive</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hyperledger Fabric官方文档</title>
     <url>/2022/01/07/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/1/</url>
     <content><![CDATA[<h1 id="（概念）"><a href="#（概念）" class="headerlink" title="（概念）"></a>（概念）</h1><h2 id="排序服务"><a href="#排序服务" class="headerlink" title="排序服务"></a>排序服务</h2><p>每个Fabric网络还包括一个<strong>排序服务</strong>。 </p>
