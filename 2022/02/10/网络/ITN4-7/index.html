@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="物理层物理层的用途物理连接可以通过线缆进行有线连接，也可以通过无线电波进行无线连接。网络接口卡 (NIC) 将设备连接到网络。以太网网卡用于有线连接，而无线局域网（WLAN）网卡用于无线连接。接收设备的物理层将位传递到数据链路层物理层接收帧进行编码和传输 物理层的特征标准在物理层标准的制定和维护中涉及许多不同的国际和国家组织、政府监管机构和私营企业。例如，物理层硬件、介质、编码和信令标准由以下组织">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ITN 4-7">
+<meta property="og:url" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="物理层物理层的用途物理连接可以通过线缆进行有线连接，也可以通过无线电波进行无线连接。网络接口卡 (NIC) 将设备连接到网络。以太网网卡用于有线连接，而无线局域网（WLAN）网卡用于无线连接。接收设备的物理层将位传递到数据链路层物理层接收帧进行编码和传输 物理层的特征标准在物理层标准的制定和维护中涉及许多不同的国际和国家组织、政府监管机构和私营企业。例如，物理层硬件、介质、编码和信令标准由以下组织">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493043317.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493334397.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493679542.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493708281.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645012614617.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645186890628.png">
+<meta property="og:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645188061139.png">
+<meta property="article:published_time" content="2022-02-10T08:42:49.720Z">
+<meta property="article:modified_time" content="2022-02-21T10:55:18.780Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493043317.png">
+
+<link rel="canonical" href="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>ITN 4-7 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ITN 4-7
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-10 16:42:49" itemprop="dateCreated datePublished" datetime="2022-02-10T16:42:49+08:00">2022-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-21 18:55:18" itemprop="dateModified" datetime="2022-02-21T18:55:18+08:00">2022-02-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><h2 id="物理层的用途"><a href="#物理层的用途" class="headerlink" title="物理层的用途"></a>物理层的用途</h2><p>物理连接可以通过线缆进行有线连接，也可以通过无线电波进行无线连接。<br>网络接口卡 (NIC) 将设备连接到网络。以太网网卡用于有线连接，而无线局域网（WLAN）网卡用于无线连接。<br>接收设备的物理层将位传递到数据链路层<br>物理层接收帧进行编码和传输</p>
+<h2 id="物理层的特征"><a href="#物理层的特征" class="headerlink" title="物理层的特征"></a>物理层的特征</h2><h3 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h3><p>在物理层标准的制定和维护中涉及许多不同的国际和国家组织、政府监管机构和私营企业。例如，物理层硬件、介质、编码和信令标准由以下组织定义和管理：</p>
+<ul>
+<li>  国际标准化组织 (ISO)</li>
+<li>  电信工业协会/电子工业协会 (TIA/EIA)</li>
+<li>  国际电信联盟 (ITU)</li>
+<li>  美国国家标准学会 (ANSI)</li>
+<li>  电气电子工程师协会 (IEEE)</li>
+<li>  国家级电信管理局包括美国联邦通信委员会 (FCC) 和欧洲电信标准协会 (ETSI)。<br>除了这些组织之外，通常还有地方性布线标准组织，例如 CSA（加拿大标准协会）、CENELEC（欧洲电工标准化委员会）和 JSA/JIS（日本标准协会），开发本地规范。<h3 id="物理组件"><a href="#物理组件" class="headerlink" title="物理组件"></a>物理组件</h3>物理组件是电子硬件设备、介质和其他连接器，它们用于传输用于表示位的信号。网卡、接口和连接器、线缆材料以及线缆设计等硬件组件均按照物理层的相关标准进行规定。<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3>编码或线路编码是一种将数据位流转换为预先定义“代码”的方法。这些代码就是位的编组，用于提供一种可预测模式，以便发送者和接收者均能识别。换句话说，编码是用于表示数字信息的方法或模式。<h3 id="信令"><a href="#信令" class="headerlink" title="信令"></a>信令</h3>物理层必须在介质上生成代表“1”和“0”的电信号、光信号或无线信号。<strong>表示位的方法称为信令方法。</strong> 物理层标准必须定义哪种类型的信号代表“1”，而哪种类型的信号代表“0”。这可以简单到只是改变电信号或光脉冲的级别。例如，长脉冲可能代表 1，而短脉冲可能代表 0。<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3>不同的物理介质所支持的位传输速率不同。数据传输的讨论通常都会提及带宽。带宽是介质承载数据的能力。数字带宽可以测量在给定时间内从一个位置流向另一个位置的数据量。<br>多种因素的结合，决定了网络的实际带宽：</li>
+<li>  物理介质的属性</li>
+<li>  信令和检测网络信号所选用的技术<table>
+<thead>
+<tr>
+<th><strong>带宽单位</strong></th>
+<th><strong>缩写</strong></th>
+<th><strong>当量</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>位/秒</td>
+<td>bps</td>
+<td>1 bps = 带宽的基本单位</td>
+</tr>
+<tr>
+<td>千位/秒</td>
+<td>Kbps</td>
+<td>1 Kbps = 1,000 bps = 10^3^bps</td>
+</tr>
+<tr>
+<td>兆位/秒</td>
+<td>Mbps</td>
+<td>1 Mbps = 1,000,000 bps = 10^6^ bps</td>
+</tr>
+<tr>
+<td>千兆位/秒</td>
+<td>Gbps</td>
+<td>1 Gbps = 1,000,000,000 bps = 10^9^ bps</td>
+</tr>
+<tr>
+<td>兆兆位/秒</td>
+<td>Tbps</td>
+<td>1 Tbps = 1,000,000,000,000 bps = 10^12^ bps</td>
+</tr>
+</tbody></table>
+</li>
+<li><strong>延迟</strong>延迟是指数据从一个给定点传送到另一给定点所用的时间，包括时延。</li>
+<li><strong>吞吐量</strong>吞吐量是给定时段内通过介质传输的位的量度。</li>
+<li><strong>实际吞吐量</strong>实际吞吐量是在给定时间段内传输的有用数据的衡量标准。<br>  实际吞吐量就是吞吐量减去建立会话、确认、封装和重传所产生的流量开销。<br>  实际吞吐量总是低于吞吐量，而吞吐量通常低于带宽。<h2 id="铜缆布线"><a href="#铜缆布线" class="headerlink" title="铜缆布线"></a>铜缆布线</h2>网络使用铜介质是因为其价格低廉、易于安装、对电流的电阻低。但是，铜介质受到距离和信号干扰的限制。<br>在铜缆中，通过电脉冲传输数据。目的设备网络接口中的探测器接收的信号必须可成功解码为与发送的信号相符。但是，信号传输的距离越远，信号下降就越多。这称为信号衰减。因此，所有铜介质必须严格遵循指导标准所指定的距离限制。<br>电脉冲的时间和电压值易受两个干扰源的干扰：</li>
+<li>  <strong>电磁干扰 (EMI) 或射频干扰 (RFI)</strong>- EMI 和 RFI 干扰信号会扭曲和损坏通过铜介质承载的数据信号。EMI 和 RFI 的潜在来源包括无线电波和电磁设备（如荧光灯或电动机）。</li>
+<li>  <strong>串扰</strong> - 串扰是一根电线中信号的电场或磁场对邻近电线中的信号造成的干扰。在电话线上，串扰会由相邻电路中另一语音会话的接听部分引起。具体而言，当电流流经电线时，会在电线周围产生一个较小的环形磁场，而相邻电线可能接收到该磁场。<br>为了应对 EMI 和 RFI 的负面影响，某些类型的铜缆会用金属屏蔽套包裹，并要求适当的接地连接。<br>为了应对串扰的负面影响，某些类型的铜缆将相反电路线对绞合在一起以有效消除串扰。<br>使用以下建议也可以限制电子噪音对铜缆的影响：</li>
+<li>  选择的电缆类型或类别要适合特定的网络环境。</li>
+<li>  设计电缆基础设施时应规避建筑结构中已知和潜在的干扰源。</li>
+<li>  使用包括正确处理和端接电缆的布线技术。<h3 id="非屏蔽双绞线-UTP"><a href="#非屏蔽双绞线-UTP" class="headerlink" title="非屏蔽双绞线 (UTP)"></a>非屏蔽双绞线 (UTP)</h3>通过 RJ-45 连接器端接的 UTP 布线用于网络主机与中间网络设备的互连，例如交换机和路由器。<br>在 LAN 中，UTP 电缆由四对用颜色标记的电线组成。这些电线绞合在一起，并用软塑料套包裹，以避免较小的物理损坏。电线的扭绞有助于防止电线之间的串扰。<br>关键特征:</li>
+</ul>
+<ol>
+<li> 外层护套可防止铜缆受到物理损坏。</li>
+<li> 线对扭绞可防止信号串扰。</li>
+<li> 颜色编码的塑料绝缘层使电线之间相互隔离并标识每个线对。<h3 id="屏蔽双绞线-STP"><a href="#屏蔽双绞线-STP" class="headerlink" title="屏蔽双绞线 (STP)"></a>屏蔽双绞线 (STP)</h3>屏蔽双绞线 (STP) 比 UTP 布线提供更好的噪声防护。但是，与 UTP 电缆相比，STP 电缆更加昂贵而且不易安装。和 UTP 相同，STP 也使用 RJ-45 连接器。STP 电缆结合屏蔽技术来应对 EMI 和 RFI，使用线缆扭绞技术来应对串扰。为了充分利用屏蔽的优势，STP 电缆使用特殊屏蔽 STP 数据连接器进行端接。如果电缆接地不正确，屏蔽就相当于一个天线，会接听多余信号。<br>关键特征:</li>
+<li> 外层护套</li>
+<li> 金属编织或箔屏蔽</li>
+<li> 金属箔屏蔽</li>
+<li> 双绞线<h3 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h3>同轴电缆用于有线电视和互联网服务，并将天线连接到无线设备，它使用多种类型的连接器，包括BNC、N型和F型连接器。<br>虽然 UTP 电缆在现代以太网安装中最终取代了同轴电缆，但在以下情形中仍采用同轴电缆设计：</li>
+</ol>
+<ul>
+<li>  <strong>无线安装</strong> - 用同轴电缆将天线连接到无线设备。同轴电缆可传送天线和无线电设备之间的射频 (RF) 能量。</li>
+<li>  <strong>有线电视互联网安装</strong> - 有线电视服务提供商为其客户提供互联网连接，他们会使用光缆替换同轴电缆和支撑放大元件部分。但是，客户所在地的布线仍采用同轴电缆。<br>关键特征:</li>
+</ul>
+<ol>
+<li> 外层护套</li>
+<li> 铜网屏蔽</li>
+<li> 塑料绝缘层</li>
+<li> 铜质导线<h2 id="UTP-布线"><a href="#UTP-布线" class="headerlink" title="UTP 布线"></a>UTP 布线</h2>用作网络介质时，UTP电缆由四对用颜色标记的铜线组成。这些铜线扭绞在一起，并用软塑料套包裹。在安装过程中，它尺寸较小是有利的。<br>UTP 电缆并不使用屏蔽层来对抗 EMI 和 RFI 的影响。相反，电缆设计者发现他们可以通过以下方式来减少串扰的负面影响：</li>
+</ol>
+<ul>
+<li>  <strong>抵消</strong> - 电缆设计者现在对电路中的电线进行配对。当电路中的两根电线紧密排列时，彼此的磁场正好相反。因此，这两个磁场相互抵消，也抵消了所有的外部 EMI 和 RFI 干扰信号。</li>
+<li>  <strong>变化每个线对中的扭绞次数</strong> - 为了进一步增强配对电线的抵消效果，设计者会变化电缆中每个线对的扭绞次数。UTP 电缆必须遵守精确的规定来管理每米（3.28 英尺）电缆所允许的扭绞次数或编织数。请注意，图中橙色/橙白色线对比蓝色/蓝白色线对的扭绞次数要少。每个彩色线对扭绞的次数不同。<br>UTP 电缆仅通过线对扭绞的抵消效果来减小信号衰减，并为网络介质中的线对提供有效的自屏蔽。<h3 id="标准-1"><a href="#标准-1" class="headerlink" title="标准"></a>标准</h3>UTP 布线遵循由 TIA/EIA 共同制定的标准。具体而言，TIA/EIA-568 规定了 LAN 安装的商业布线标准，它是 LAN 布线环境中最常用的标准。<br>电气电子工程师协会 (IEEE) 定义了铜缆的电气特性。IEEE 按照它的性能对 UTP 布线划分等级。电缆分类的依据是它们承载更高速率带宽的能力。</li>
+</ul>
+<p>-3 类电缆最初用于语音线路的语音通信，但后来用于数据传输。<br>-5 类和5e 类电缆用于数据传输。5类电缆支持 100Mbps，5e 类电缆支持 1000 Mbps<br>-6类电缆在每对线之间增加了一个分隔器以支持更高的速度。 6类电缆支持高达 10 Gbps。 -7类电缆也支持 10 Gbps。 -8类电缆支持 40 Gbps。<br>一些制造商制造的电缆超出了 TIA/EIA 6a 类电缆的规格，将其称为 7 类电缆。<br> UTP 电缆类别之间的结构差异：3类电缆有四根电线（直）。5类电缆 和 5e类电缆有四对双绞线。6类电缆(STP)有四对双绞线，每对之间都有一个塑料分隔器。</p>
+<h3 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h3><p><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493043317.png" alt="RJ-45 UTP"></p>
+<h3 id="直通和交叉UTP电缆"><a href="#直通和交叉UTP电缆" class="headerlink" title="直通和交叉UTP电缆"></a>直通和交叉UTP电缆</h3><ul>
+<li>  <strong>以太网直通电缆</strong> -最常见的网络电缆类型。它通常用于主机到交换机和交换机到路由器的互连。</li>
+<li>  <strong>以太网交叉电缆</strong> -用于互连相似设备的电缆。例如，交换机到交换机、主机到主机或路由器到路由器的连接。但是，由于网卡使用介质相关接口交叉（auto-MDIX）来自动检测电缆类型并进行内部连接，因此现在已将交叉电缆视为传统电缆。<table>
+<thead>
+<tr>
+<th>电缆类型</th>
+<th>标准</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>以太网直通线</td>
+<td>两端均为 T568A 或两端均为 T568B</td>
+<td>将网络主机连接到交换机或集线器之类的网络设备</td>
+</tr>
+<tr>
+<td>以太网交叉线</td>
+<td>一端为 T568A，另一端为 T568B</td>
+<td>连接两个网络主机或连接两台网络中间设备 （交换机到交换机或路由器到路由器）</td>
+</tr>
+<tr>
+<td>全反电缆</td>
+<td>思科专有</td>
+<td>使用适配器连接工作站串行端口与路由器 控制台端口。</td>
+</tr>
+<tr>
+<td><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493334397.png"></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><em>蓝中间，棕右边，左绿为A橘为B，花线左但中间反</em>*<h2 id="光纤布线"><a href="#光纤布线" class="headerlink" title="光纤布线"></a>光纤布线</h2>因为它是昂贵的，所以在各种类型的铜缆布线中并不常用。但是光纤布线具有某些特性，使其成为某些情况下的最佳选择<br>与其他网络介质相比，光缆能够以更远的距离和更高的带宽传输数据。不同于铜缆，光缆传输信号的衰减更少，并且完全不受 EMI 和 RFI 影响。光纤常用于互连网络设备。<br>目前光纤布线用于四类行业：</li>
+<li>  <strong>企业网络</strong> - 用于主干布线和基础设施设备互连。</li>
+<li>  <strong>光纤到户 (FTTH)</strong> - 用于为家庭和小型企业提供不间断宽带服务。</li>
+<li>  <strong>长距离传输网络</strong> - 由服务提供商用于连接国家/地区与城市。</li>
+<li>  <strong>水下有线网络</strong> - 用于提供可靠高速、高容量的网络解决方案，使其在深度与横跨海洋的距离相当的严酷海下环境中仍能生存。在互联网上搜索“海底电缆电信地理地图”，以在线查看各种地图。<h3 id="两种类型："><a href="#两种类型：" class="headerlink" title="两种类型："></a>两种类型：</h3></li>
+<li>单模光纤 (SMF)单模光纤包含一个极小的芯，使用昂贵的激光技术来发送单束光，如图所示。单模光纤在跨越数百公里的长距离传输情况下很受欢迎，例如应用于长途电话和有线电视中的光纤。<br>  <img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493679542.png" alt="enter description here"></li>
+<li>多模光纤 (MMF)多模光纤包含一个稍大的芯，使用 LED 发射器发送光脉冲。具体而言，LED 发出的光从不同角度进入多模光纤，如图所示。普遍用于 LAN 中，因为它们可以由低成本的 LED 提供支持。它可以通过长达 550 米的链路提供高达 10 Gb/s 的带宽。<br>  <img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493708281.png" alt="enter description here"><br>多模和单模光纤之间的主要区别之一就是色散的数量。色散是指光脉冲在时间上的分布。色散增加意味着信号强度损失增加。多模光纤具有比单模光纤更大的色散。这就是为什么多模光纤在信号丢失之前只能传播 500 米。<h3 id="光纤连接器与光纤插接线略"><a href="#光纤连接器与光纤插接线略" class="headerlink" title="光纤连接器与光纤插接线略"></a>光纤连接器与光纤插接线略</h3></li>
+</ul>
+<p>4.5.4、4.5.5</p>
+<h2 id="无线介质"><a href="#无线介质" class="headerlink" title="无线介质"></a>无线介质</h2><p>无线介质使用无线电或微波频率来承载代表数据通信二进制数字的电磁信号。<br>无线介质提供所有介质中最好的移动特性，而且启用无线的设备数量不断增加。无线现在是用户连接到家庭和企业网络的主要方式。<br>以下是无线网络的一些局限性:</p>
+<ul>
+<li>  <strong>覆盖面积</strong> - 无线数据通信技术非常适合开放环境。但是，在楼宇和建筑物中使用的某些建筑材料以及当地地形将会限制它的有效覆盖。</li>
+<li>  <strong>干扰</strong> - 无线电易受干扰，可能会受到家庭无绳电话、某些类型的荧光灯、微波炉和其他无线通信装置等常见设备的干扰。</li>
+<li>  <strong>安全性</strong> - 无线通信覆盖无需进行介质的物理接线。因此，未获得网络访问授权的设备和用户可以访问传输。所以网络安全是无线网络管理的重要组成部分。</li>
+<li>  <strong>共享介质</strong> - WLAN 以半双工模式运行，意味着一台设备一次只能发送或接收。无线介质由所有无线用户共享。许多用户同时访问WLAN会导致每个用户的带宽减少。<br>虽然无线在桌面连接中逐渐普及，但铜缆和光纤仍是部署网络中间设备（如路由器和交换机）最常见的物理层介质。<h3 id="标准-2"><a href="#标准-2" class="headerlink" title="标准"></a>标准</h3></li>
+<li>  <strong>Wi-Fi (IEEE 802.11)</strong> - 无线 LAN (WLAN) 技术，通常称为 Wi-Fi。WLAN 使用一种称为“载波侦听多路访问/冲突避免 (CSMA/CA)”的争用协议。无线 NIC 在传输数据之前必须先侦听，以确定无线信道是否空闲。如果其他无线设备正在传输，则 NIC 必须等待信道空闲。Wi-Fi 是 Wi-Fi 联盟的标记。Wi-Fi 与基于 IEEE 802.11 标准的认证 WLAN 设备结合使用。</li>
+<li>  <strong>蓝牙 (IEEE 802.15)</strong> - 这是一个无线个人局域网 (WPAN) 标准，通常称为 “蓝牙”。它采用设备配对过程进行通信，距离为 1 到 100 米。</li>
+<li>  <strong>WiMAX (IEEE 802:16)</strong> - 通常称为微波接入全球互通 (WiMAX)，这个无线标准采用点到多点拓扑结构，提供无线带宽接入。</li>
+<li>  <strong>Zigbee (IEEE 802.15.4)</strong> - Zigbee是一种用于低数据速率、低功耗通信的规范。它适用于需要短距离、低数据速率和长电池寿命的应用。Zigbee 通常用于工业和物联网 (IoT) 环境，如无线照明开关和医疗设备数据采集。<h3 id="常见方式-WLAN"><a href="#常见方式-WLAN" class="headerlink" title="常见方式-WLAN"></a>常见方式-WLAN</h3>常见的无线数据实施方式是使设备通过LAN以无线方式连接。通常，WLAN 要求具备下列网络设备：</li>
+<li>  <strong>无线接入点 (AP)</strong> - 集中用户的无线信号，并连接到现有基于铜介质的网络基础设施，如以太网。如图所示，家庭和小型企业无线路由器将路由器、交换机和接入点的功能整合到了一起。</li>
+<li>  <strong>无线网卡适配器</strong> - 能够为每台网络主机提供无线通信。<br>随着技术的发展，许多以太网 WLAN 标准应运而生。在购买无线设备时，必须确保它的兼容性和互操作性。<br>无线数据通信技术的益处是显而易见的，尤其是节省了昂贵的房屋布线，而且方便主机移动。网络管理员必须制定和应用严格的安全策略和流程保护WLAN，防止网络遭受不速之客的访问和破坏。<h1 id="4查漏补缺"><a href="#4查漏补缺" class="headerlink" title="4查漏补缺"></a>4查漏补缺</h1>物理层负责通过物理介质将实际信号作为<strong>位</strong>传输。<br>交换帧、控制介质访问和执行错误检测都是数据链路层的功能。</li>
+</ul>
+<p>帧编码会将<strong>位</strong>转化为预定义的代码，以便提供一种可预测模式，帮助区分数据位和控制位。</p>
+<ul>
+<li>  数据 - 一般术语，泛指应用层使用的 PDU</li>
+<li>  段 - 传输层 PDU</li>
+<li>  数据包 - 网络层 PDU</li>
+<li>  帧 - 数据链路层 PDU</li>
+<li>  位 - 通过介质实际传输数据时使用的物理层 PDU<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1>OSI模型的数据链路层(第2层)为物理网络准备网络数据。数据链路层负责网络接口卡 (NIC) 到网络接口卡的通信。数据链路层执行以下操作：</li>
+<li>  允许上层访问介质。上层协议完全不知道用于转发数据的介质类型。</li>
+<li>  接受数据，通常是第 3 层数据包（即 IPv4 或 IPv6），并将它们封装到第 2 层帧中。</li>
+<li>  控制数据在介质上的放置和接收方式，</li>
+<li>  通过网络介质在终端之间交换帧。</li>
+<li>  接收封装的数据，通常是第 3 层数据包，并将它们定向到适当的上层协议。</li>
+<li>  执行错误检测并拒绝任何损坏的帧。<h2 id="IEEE-802LAN-MAN-数据链路子层"><a href="#IEEE-802LAN-MAN-数据链路子层" class="headerlink" title="IEEE 802LAN/MAN 数据链路子层"></a>IEEE 802LAN/MAN 数据链路子层</h2></li>
+<li><strong>逻辑链路控制 (LLC)</strong> - 这个 IEEE 802.2 子层在<strong>上层的网络软件与下层的设备硬件之间进行通信</strong>。它放入帧中的信息用于<strong>确定帧所使用的网络层协议</strong>。此信息允许多个第 3 层协议（如 IPv4 和 IPv6）使用相同的网络接口和介质。<pre><code>LLC 子层获取网络协议数据（通常是 IPv4 或 IPv6数据包）并加入第2层控制信息，帮助将数据包传送到目的节点。 
+</code></pre>
+</li>
+<li><strong>介质访问控制 (MAC)</strong> - 在硬件上实现这个子层（IEEE 802.3、802.11 或 802.15）。<strong>它负责数据封装和介质访问控制</strong>。<strong>它提供数据链路层寻址</strong>，并与各种物理层技术集成。<pre><code>MAC子层控制网卡和负责在有线或无线LAN/MAN介质上发送和接收数据的其他硬件。
+MAC 子层提供数据封装：
+*   **帧定界** - 在成帧过程中提供重要的定界符，用来标识帧中的字段。这些定界符位可以在发送节点与接收节点之间提供同步。
+*   **编址** - 提供源和目的编址，用于在同一共享介质上的设备之间传输第 2 层帧。
+*   **错误检测** - 包含一个帧尾，用于检测传输错误。
+MAC 子层还提供介质访问控制，允许多个设备通过共享（半双工）介质进行通信。全双工通信不需要访问控制。
+</code></pre>
+<h3 id="介质访问方法"><a href="#介质访问方法" class="headerlink" title="介质访问方法"></a>介质访问方法</h3>在数据包从本地主机传送到远程主机的过程中，其遇到的各种网络环境可能具有不同的特性。对于串行链路，访问方法可能只包括两个设备之间的直接连接，通常是两个路由器。因此，它们不需要 IEEE 802 MAC 子层所使用的技术。<br>使用合适的介质访问控制方法来访问每个链路。<br>确定所使用的介质访问控制方法的两个条件是所涉及的<strong>介质共享类型</strong>和<strong>拓扑</strong>。<br>在路径上的每一跳，路由器都执行以下第 2 层功能：</li>
+</ul>
+<ol>
+<li> 从介质接受帧</li>
+<li> 解封帧</li>
+<li> 将数据包重新封装到新帧中</li>
+<li> 从适合该物理网络网段的介质转发新帧<h2 id="数据链路层标准"><a href="#数据链路层标准" class="headerlink" title="数据链路层标准"></a>数据链路层标准</h2>与 TCP/IP 的上层协议不同，数据链路层协议通常不是由征求意见 (RFC) 文档定义的。互联网工程任务组 (IETF) 虽然维护着 TCP/IP 协议簇上层的工作协议和服务，但它没有定义TCP/IP模型的网络接入层的功能和操作。<br>定义适用于网络接入层（即，OSI的物理和数据链路层）的开放标准和协议的工程组织包括：</li>
+</ol>
+<ul>
+<li>  电气电子工程师协会 (IEEE)</li>
+<li>  国际电信联盟 (ITU)</li>
+<li>  国际标准化组织 (ISO)</li>
+<li>  美国国家标准学会 (ANSI)<h2 id="拓扑"><a href="#拓扑" class="headerlink" title="拓扑"></a>拓扑</h2></li>
+<li>  <strong>物理拓扑</strong> - 标识物理连接，以及终端设备和中间设备（即，路由器、交换机和无线接入点）如何互连。这个拓扑还可能包括特定的设备位置，如房间号和设备机架上的位置。物理拓扑通常是点对点拓扑或星型拓扑。</li>
+<li>  <strong>逻辑拓扑</strong> - 是指网络将帧从一个节点传输到另一节点的方法。此拓扑使用设备接口和第 3 层 IP 寻址方案识别虚拟连接。<h3 id="访问控制方法"><a href="#访问控制方法" class="headerlink" title="访问控制方法"></a>访问控制方法</h3></li>
+<li><strong>基于竞争的访问</strong>-在基于竞争的多路访问网络中，所有节点都工作在半双工方式，争夺介质的使用。然而，一次只有一台设备能够发送。因此，当多台设备同时传输时，会使用一个处理过程。基于竞争的访问方法示例如下：<ul>
+<li>在传统总线拓扑以太网局域网上使用<strong>载波侦听多路访问/冲突检测</strong>(CSMA/CD)</li>
+<li>在无线局域网上使用<strong>载波侦听多路访问/冲突避免</strong>(CSMA/CA)</li>
+</ul>
+</li>
+<li><strong>受控访问</strong>-在基于控制的多路访问网络中，每个节点都有自己的时间来使用介质。这种确定性的传统网络类型效率很低，因为设备必须等到轮到自己才能访问介质。使用受控访问的多路访问网络的示例包括：<ul>
+<li>传统令牌环</li>
+<li>传统ARCNET</li>
+</ul>
+</li>
+<li>如今，以太网网络以全双工方式运行，不需要访问方法。使用交换机的以太网 LAN 不使用基于竞争的系统，因为交换机和主机网卡在全双工模式下运行。无线局域网 (WLAN)只支持半双工，因为同一时间只有一台设备可以访问介质。<h2 id="数据链路帧"><a href="#数据链路帧" class="headerlink" title="数据链路帧"></a>数据链路帧</h2>虽然有许多描述数据链路层帧的不同数据链路层协议，但每种帧均有三个基本组成部分：</li>
+<li>  帧头</li>
+<li>  数据</li>
+<li>  帧尾<br>成帧技术将位流拆分成可破解的多个分组，且将控制信息作为不同字段值插入帧头和帧尾中。此格式使物理信号具备能被节点识别且可在目的地解码成数据包的一种结构。<br>图中显示了通用帧字段。并非所有协议均包含全部此类字段。特定数据链路协议的标准定义了实际帧格式。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645012614617.png"><br>帧字段包括以下内容：</li>
+<li>  <strong>帧开始和停止指示标志</strong> - 用于标识帧的开始和结束位置的限制。</li>
+<li>  <strong>编址</strong> - 表示介质上的源节点和目的节点。</li>
+<li>  <strong>类型</strong> - 用于标识数据字段中的第 3 层协议。</li>
+<li>  <strong>控制</strong> - 用于标识特殊流量控制服务，比如服务质量 (QoS)。QoS 为某些类型的消息提供转发优先权。例如，IP 语音 (VoIP) 帧通常优先接收，因为它们对延迟敏感。</li>
+<li>  <strong>数据</strong> - 包含帧负载（即数据包报头、数据段报头和数据）。</li>
+<li><strong>错误检测</strong> - 包含在数据之后以形成帧尾。<br>数据链路层协议将帧尾添加到各帧结尾处。在一个叫做错误检测的过程中，帧尾会判断帧是否到达时没有错误。它将组成帧的各个位的逻辑或数学摘要放入帧尾中。要将错误检测添加到数据链路层，因为介质中的信号可能遭受干扰、失真或丢失，从而大幅更改这些信号所代表的位值。<br>发送节点会创建帧内容的逻辑摘要，称为循环冗余校验 (CRC) 值。此值将放入帧校验序列 (FCS) 字段中以代表帧内容。在以太网尾部，FCS 为接收节点提供一种方法，用于确定帧是否出现传输错误。<br>数据链路层向第3层数据包添加一个包含源和目的第2层地址的<strong>帧头</strong>和一个包含帧检查序列(FCS)的<strong>帧尾</strong>。<h1 id="6查漏补缺"><a href="#6查漏补缺" class="headerlink" title="6查漏补缺"></a>6查漏补缺</h1>以太网帧在数据链路层由它们的MAC地址来标识，每个网卡的地址都是唯一的<br>MAC 子层的功能：提供数据链路层编址，检查位错误，支持以太网技术，由硬件执行控制对介质的访问<br>数据链路层接受第3层的数据包并将它们封装到称为帧的数据单元中<h1 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h1>以太网标准同时定义第 2 层协议和第 1 层技术。<br>以太网在数据链路层和物理层运行，是 IEEE 802.2 和 802.3 标准中定义的一系列网络技术。<h2 id="以太网帧"><a href="#以太网帧" class="headerlink" title="以太网帧"></a>以太网帧</h2>以太网帧大小的最小值为 64 个字节，最大值为 1518 个字节。这包括从“目的 MAC 地址”字段到“帧校验序列 (FCS)”字段的所有字节。在描述帧的大小时，不包含“前导码”字段。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645186890628.png"><table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>前导码和帧首定界符字段(SFD)</td>
+<td>前导码（7 字节）和帧首定界符（SFD），也称为 帧首（1 字节），该字段用于发送设备 与接收设备之间的同步。帧开头的八个字节 用于引起接收节点的注意。基本上，前几个字节的 作用是告诉接收方准备接收新帧。</td>
+</tr>
+<tr>
+<td>目的 MAC 地址字段</td>
+<td>该 6 字节字段是预期接收方的标识符。读者应该还记得， 此地址被第2层用来协助设备 确定帧是否发送到目的地。帧中的地址将会与设备中的 MAC 地址进行比对。如果匹配， 设备就接受该帧。可以是单播、组播或广播 地址。</td>
+</tr>
+<tr>
+<td>源 MAC 地址字段</td>
+<td>该 6 字节字段标识发出帧的网卡 或接口。</td>
+</tr>
+<tr>
+<td>类型/长度</td>
+<td>该字段包含两个字节，标识封装于以太网帧中的 上层协议。常见值为十六进制，0x800 用于 IPv4， 0x86DD 用于 IPv6，0x806 用于 ARP。</td>
+</tr>
+</tbody></table>
+</li>
+<li>*注意**：您也可能会看到此字段称为 EtherType、类型或长度。 |<br>| 数据字段 | 该字段（46-1500 字节）包含来自 较高层的封装数据，一般是第3层PDU或更常见的IPv4 数据包。所有帧至少必须有 64 个字节。如果封装的是小数据包， 则使用填充位将帧 增大到最小值。 |<br>| 帧校验序列字段 | “帧校验序列 (FCS)”字段（4 个字节）用于检测帧中 的错误。它使用循环冗余校验 (CRC)。发送设备 在帧的 FCS 字段中包含 CRC 的结果。接收设备 接收帧并生成 CRC 以查找 错误。如果计算匹配，就不会发生错误。计算 不匹配则表明数据已经改变。因此， 帧会被丢弃。数据的变化可能是 由于代表比特位的电信号受到干扰所致。 |<h2 id="以太网MAC地址"><a href="#以太网MAC地址" class="headerlink" title="以太网MAC地址"></a>以太网MAC地址</h2>在以太网中，每台网络设备都连接到同一个共享介质。MAC 地址用于标识本地网段上的物理源和目的设备。MAC 编址为 OSI 模型的数据链路层提供了设备识别方法。<br>以太网 MAC 地址是使用 12个十六进制数字表示的 48 位地址，一个字节等于 8 位，也可以说 一个MAC 地址长度为 6 个字节。<br>所有 MAC 地址对于以太网设备或以太网接口必须是唯一的。为了确保这一点，所有销售以太网设备的供应商必须向 IEEE 注册才能获得唯一的 6个十六进制（即 24 位或 3 字节）代码，称为组织唯一标识符 (OUI)。使用其分配的 OUI 作为前 6 个十六进制数字。为后 6 个十六进制数字分配唯一值。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645188061139.png" alt="enter description here"><br>MAC 地址通常称为烧录地址 (BIA)，因为传统上该地址被烧录到网卡的只读存储器（ROM）中。这意味着该地址会永久编码到 ROM 芯片中。<br>收到以太网帧时，网卡会查看帧中的目的 MAC 地址是否与设备 RAM 中存储的物理 MAC 地址匹配。如果不匹配，设备就会丢弃帧。如果与帧中的目的 MAC 匹配，则网卡会将帧向上传送到 OSI 层进行解封处理。</li>
+</ul>
+<p>IPv4 目的地址为<strong>广播</strong>地址 <strong>192.168.1.255</strong>。<br>当封装数据为IPv4<strong>组播</strong>包时，目的MAC地址为<strong>01-00-5E</strong>;当封装数据为IPv6组播包时，目的MAC地址为<strong>33-33</strong>。</p>
+<h2 id="MAC地址表"><a href="#MAC地址表" class="headerlink" title="MAC地址表"></a>MAC地址表</h2><p>交换机通过检查端口传入帧的源 MAC 地址来动态构建 MAC 地址表。交换机通过匹配帧中的目的 MAC 地址与 MAC 地址表中的条目来转发帧。<br>如果目的 MAC 地址为单播地址，该交换机会看帧中的目的 MAC 地址与 MAC 地址表中的条目是否匹配。如果表中存在该目的MAC地址，交换机会从指定端口转发帧。如果表中不存在该目的MAC地址，交换机会从除传入端口外的所有端口转发帧。这称为未知单播。</p>
+<h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><h3 id="存储转发交换"><a href="#存储转发交换" class="headerlink" title="存储转发交换"></a>存储转发交换</h3><p>这个帧转发的方法接收整个帧并计算CRC。CRC 根据帧中的比特位为 1 的位数量，使用数学公式来确定收到的帧是否有错。如果 CRC 有效，则交换机查找目的地址，目的地址决定了转发接口。帧然后从正确的端口转发出去。<br>存储转发交换的一大优点是，它可以在传播帧之前确定帧是否有错误。当在帧中检测到错误时，交换机丢弃该帧。丢弃有错的帧可减少损坏的数据所耗用的带宽量。存储转发交换对于融合网络中的服务质量 (QoS) 分析是必需的</p>
+<h3 id="直通交换"><a href="#直通交换" class="headerlink" title="直通交换"></a>直通交换</h3><p>在直通交换中，交换机在收到数据时立即处理数据，即使传输尚未完成。交换机只缓冲帧的一部分，缓冲的量仅足以读取目的 MAC 地址，以便确定转发数据时应使用的端口。<br>直通交换有两种变体：</p>
+<ul>
+<li>  <strong>快速转发交换</strong> -  快速转发交换提供最低程度的延时。快速转发交换在读取目的地址之后立即转发数据包。由于快速转发交换在收到整个数据包之前就开始转发，因此有时候中继数据包时会出错。这种情况并不经常发生，而且目的网络适配器在收到含错数据包时会将其丢弃。在快速转发模式下，延时是指从收到第一个位到传出第一个位之间的时间差。快速转发交换是典型的直通交换方法。</li>
+<li>  <strong>免分片交换 -</strong>  在免分片交换中，交换机在转发之前存储帧的前 64 个字节。可以将免分片交换视为存储转发交换和直通交换之间的折衷。免分片交换只存储帧的前 64 个字节的原因是，大部分网络错误和冲突都发生在前 64 个字节。免分片交换在转发帧之前对帧的前 64 个字节执行小错误检查以确保没有发生过冲突，并且尝试通过这种方法来增强快速转发交换功能。免分片交换是存储转发交换的高延时和高完整性与快速转发交换的低延时和弱完整性之间的折衷。<h3 id="交换机上的内存缓冲"><a href="#交换机上的内存缓冲" class="headerlink" title="交换机上的内存缓冲"></a>交换机上的内存缓冲</h3>以太网交换机在转发帧之前，可以使用缓冲技术存储帧。当目的端口由于拥塞而繁忙时，也可以使用缓冲。交换机将帧存储起来，直到可以传输。<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>基于端口的内存</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li>  帧存储在链接到特定传入端口和传出 端口的队列中。</li>
+<li>  只有当队列前面的所有帧都成功传输后， 才会将帧传输到传出端口。</li>
+<li>  由于目地端口繁忙， 单个帧可能会造成内存中所有帧的传输延迟。</li>
+<li>即使其他帧可以传送到开放的目的端口， 这种延迟仍然会发生。<br>|<br>| <strong>共享内存</strong> | </li>
+<li>  将所有帧存储到由所有交换端口共享的公共内存缓冲区中， 并且动态分配一个端口所需的 缓冲区内存量。</li>
+<li>缓冲区中的帧动态地链接到目的端口， 允许在一个端口上接收数据包，然后 在另一个端口上发送，而无需移动到另一个队列。<br>|<h3 id="自动协商"><a href="#自动协商" class="headerlink" title="自动协商"></a>自动协商</h3>交换机上最基本的两个设置是带宽(有时称为“速率”)和每个交换机端口的双工设置。交换机端口和连接的设备（例如计算机或另一台交换机）的双工设置和带宽设置必须匹配。<br>当链路上的一个或两个端口被重置时，会发生双工不匹配，自动协调过程并不会使链路上的两个端口的配置相同。当用户重新配置链路的一端而忘记重新配置另一端时，也会出现这样的情况。链路的两端均应都使用或都不使用自动协商。最佳实践是将两个以太网交换端口都配置为全双工。<h3 id="Auto-MDIX"><a href="#Auto-MDIX" class="headerlink" title="Auto-MDIX"></a>Auto-MDIX</h3>大多数交换机设备都支持自动介质相关接口交叉 (auto-MDIX) 功能。当该功能启用时，交换机可检测连接到端口的线缆类型，并相应地配置接口。因此，如果要连接到交换机上的铜缆 10/100/1000 端口，您既可以使用交叉线，也可以使用直通线，而无需考虑连接另一端的设备类型。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/05/%E7%BD%91%E7%BB%9C/ITN1-3/" rel="prev" title="ITN 1-3">
+      <i class="fa fa-chevron-left"></i> ITN 1-3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/02/21/%E7%BD%91%E7%BB%9C/ITN%208-10/" rel="next" title="ITN 8-10">
+      ITN 8-10 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E7%94%A8%E9%80%94"><span class="nav-number">1.1.</span> <span class="nav-text">物理层的用途</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%9A%84%E7%89%B9%E5%BE%81"><span class="nav-number">1.2.</span> <span class="nav-text">物理层的特征</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86"><span class="nav-number">1.2.1.</span> <span class="nav-text">标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E7%BB%84%E4%BB%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">物理组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.3.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E4%BB%A4"><span class="nav-number">1.2.4.</span> <span class="nav-text">信令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD"><span class="nav-number">1.2.5.</span> <span class="nav-text">带宽</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%9C%E7%BC%86%E5%B8%83%E7%BA%BF"><span class="nav-number">1.3.</span> <span class="nav-text">铜缆布线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E5%B1%8F%E8%94%BD%E5%8F%8C%E7%BB%9E%E7%BA%BF-UTP"><span class="nav-number">1.3.1.</span> <span class="nav-text">非屏蔽双绞线 (UTP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%8F%E8%94%BD%E5%8F%8C%E7%BB%9E%E7%BA%BF-STP"><span class="nav-number">1.3.2.</span> <span class="nav-text">屏蔽双绞线 (STP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8C%E8%BD%B4%E7%94%B5%E7%BC%86"><span class="nav-number">1.3.3.</span> <span class="nav-text">同轴电缆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UTP-%E5%B8%83%E7%BA%BF"><span class="nav-number">1.4.</span> <span class="nav-text">UTP 布线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%99%A8"><span class="nav-number">1.4.2.</span> <span class="nav-text">连接器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E9%80%9A%E5%92%8C%E4%BA%A4%E5%8F%89UTP%E7%94%B5%E7%BC%86"><span class="nav-number">1.4.3.</span> <span class="nav-text">直通和交叉UTP电缆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E7%BA%A4%E5%B8%83%E7%BA%BF"><span class="nav-number">1.5.</span> <span class="nav-text">光纤布线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%9A"><span class="nav-number">1.5.1.</span> <span class="nav-text">两种类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E7%BA%A4%E8%BF%9E%E6%8E%A5%E5%99%A8%E4%B8%8E%E5%85%89%E7%BA%A4%E6%8F%92%E6%8E%A5%E7%BA%BF%E7%95%A5"><span class="nav-number">1.5.2.</span> <span class="nav-text">光纤连接器与光纤插接线略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF%E4%BB%8B%E8%B4%A8"><span class="nav-number">1.6.</span> <span class="nav-text">无线介质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E5%87%86-2"><span class="nav-number">1.6.1.</span> <span class="nav-text">标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E6%96%B9%E5%BC%8F-WLAN"><span class="nav-number">1.6.2.</span> <span class="nav-text">常见方式-WLAN</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA"><span class="nav-number">2.</span> <span class="nav-text">4查漏补缺</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">3.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IEEE-802LAN-MAN-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%AD%90%E5%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">IEEE 802LAN&#x2F;MAN 数据链路子层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.1.</span> <span class="nav-text">介质访问方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E6%A0%87%E5%87%86"><span class="nav-number">3.2.</span> <span class="nav-text">数据链路层标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%93%E6%89%91"><span class="nav-number">3.3.</span> <span class="nav-text">拓扑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E6%96%B9%E6%B3%95"><span class="nav-number">3.3.1.</span> <span class="nav-text">访问控制方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B8%A7"><span class="nav-number">3.4.</span> <span class="nav-text">数据链路帧</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA"><span class="nav-number">4.</span> <span class="nav-text">6查漏补缺</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-number">5.</span> <span class="nav-text">以太网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7"><span class="nav-number">5.1.</span> <span class="nav-text">以太网帧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91MAC%E5%9C%B0%E5%9D%80"><span class="nav-number">5.2.</span> <span class="nav-text">以太网MAC地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80%E8%A1%A8"><span class="nav-number">5.3.</span> <span class="nav-text">MAC地址表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="nav-number">5.4.</span> <span class="nav-text">交换机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E8%BD%AC%E5%8F%91%E4%BA%A4%E6%8D%A2"><span class="nav-number">5.4.1.</span> <span class="nav-text">存储转发交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E9%80%9A%E4%BA%A4%E6%8D%A2"><span class="nav-number">5.4.2.</span> <span class="nav-text">直通交换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%B8%8A%E7%9A%84%E5%86%85%E5%AD%98%E7%BC%93%E5%86%B2"><span class="nav-number">5.4.3.</span> <span class="nav-text">交换机上的内存缓冲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%8D%8F%E5%95%86"><span class="nav-number">5.4.4.</span> <span class="nav-text">自动协商</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Auto-MDIX"><span class="nav-number">5.4.5.</span> <span class="nav-text">Auto-MDIX</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共125.1k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

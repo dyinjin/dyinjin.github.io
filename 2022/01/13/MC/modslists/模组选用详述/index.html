@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="模组文件命名规则：【大类】【功能】【如果是前置+编号】（提示说明）原文件名.jar  基础此类即笔者认为的本整合包基础模组，除夸克外对原版本质没有影响如添加物品。夸克将其中辅助性功能定为基础（如Z键换栏，Q键投掷力度，边沿搭建辅助，背包箱子整理等）所以Quark还添加了SCB中的(PS夸克添加了原版生物贴图如黄色鸡黑色猪) 结构1quark:big_dungeon  生物123456789螃蟹柴犬">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模组选用详述">
+<meta property="og:url" content="http://example.com/2022/01/13/MC/modslists/%E6%A8%A1%E7%BB%84%E9%80%89%E7%94%A8%E8%AF%A6%E8%BF%B0/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="模组文件命名规则：【大类】【功能】【如果是前置+编号】（提示说明）原文件名.jar  基础此类即笔者认为的本整合包基础模组，除夸克外对原版本质没有影响如添加物品。夸克将其中辅助性功能定为基础（如Z键换栏，Q键投掷力度，边沿搭建辅助，背包箱子整理等）所以Quark还添加了SCB中的(PS夸克添加了原版生物贴图如黄色鸡黑色猪) 结构1quark:big_dungeon  生物123456789螃蟹柴犬">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-13T13:59:38.747Z">
+<meta property="article:modified_time" content="2022-02-05T04:30:42.753Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="MC">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/01/13/MC/modslists/%E6%A8%A1%E7%BB%84%E9%80%89%E7%94%A8%E8%AF%A6%E8%BF%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>模组选用详述 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/13/MC/modslists/%E6%A8%A1%E7%BB%84%E9%80%89%E7%94%A8%E8%AF%A6%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          模组选用详述
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-13 21:59:38" itemprop="dateCreated datePublished" datetime="2022-01-13T21:59:38+08:00">2022-01-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-02-05 12:30:42" itemprop="dateModified" datetime="2022-02-05T12:30:42+08:00">2022-02-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>模组文件命名规则：【大类】【功能】【如果是前置+编号】（提示说明）原文件名.jar </p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>此类即笔者认为的本整合包基础模组，<strong>除夸克</strong>外对原版本质没有影响如添加物品。夸克将其中辅助性功能定为基础（如Z键换栏，Q键投掷力度，边沿搭建辅助，背包箱子整理等）<br>所以<strong>Quark</strong>还添加了SCB中的(PS夸克添加了原版生物贴图如黄色鸡黑色猪)</p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">quark:big_dungeon</span><br></pre></td></tr></table></figure>
+
+<h2 id="生物"><a href="#生物" class="headerlink" title="生物"></a>生物</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">螃蟹</span><br><span class="line">柴犬</span><br><span class="line">石精灵</span><br><span class="line">青蛙</span><br><span class="line">乌龟</span><br><span class="line">游魂</span><br><span class="line">遗忘者</span><br><span class="line">裹尸</span><br><span class="line">猎狐犬</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">修改日期	文件大小（KB）	文件名称</span><br><span class="line">2022/01/01  13:40            30,160 【基础】【便捷】jei找东西findme-1.16.3-2.2.1.0.jar</span><br><span class="line">2021/04/09  23:51           123,705 【基础】【便捷】【1】边拿边走InvMove-1.16.3-0.4.6.jar</span><br><span class="line">2021/04/09  22:58           281,216 【基础】【便捷】区域挖掘OreExcavation-1.8.157.jar</span><br><span class="line">2021/12/26  18:09           322,836 【基础】【便捷】搬箱子carryon-1.16.5-1.15.5.22.jar</span><br><span class="line">2021/12/24  15:43            17,627 【基础】【便捷】树叶快速掉落RapidLeafDecay-1.16.5-2.0.0.jar</span><br><span class="line">2021/04/11  16:07            22,624 【基础】【便捷】物品堆叠upsizer-mc1.16.4-6.1.1.jar</span><br><span class="line">2021/05/04  07:49            22,955 【基础】【便捷】穿草swingthroughgrass-1.16.4-1.5.3.jar</span><br><span class="line">2022/01/07  02:15           245,533 【基础】【修复】合成冲突化解polymorph-forge-1.16.5-0.38.jar</span><br><span class="line">2022/01/12  14:44           827,088 【基础】【前置0】jei-1.16.5-7.7.1.144.jar</span><br><span class="line">2021/07/19  19:35         1,337,675 【基础】【前置1】cloth-config-4.11.26-forge.jar</span><br><span class="line">2021/07/19  19:19            57,279 【基础】【前置2】AutoRegLib-1.6-49.jar</span><br><span class="line">2021/10/26  10:58           106,058 【基础】【前置3】YungsApi-1.16.4-Forge-13.jar</span><br><span class="line">2021/12/03  22:46           145,933 【基础】【前置4】Placebo-1.16.5-4.6.1.jar</span><br><span class="line">2022/01/12  14:44           515,600 【基础】【地图】世界地图XaerosWorldMap_1.19.1_Forge_1.16.5.jar</span><br><span class="line">2022/01/12  23:34         1,152,576 【基础】【地图】（小地图与信息提示）XaerosBetterPvP_21.23.1_Forge_1.16.5.jar</span><br><span class="line">2021/07/19  18:33            98,900 【基础】【性能】内存加载ferritecore-2.0.5-forge.jar</span><br><span class="line">2021/07/19  14:56            60,714 【基础】【性能】实体剔除EntityCulling-1.16.5-2.1.6.jar</span><br><span class="line">2021/04/10  00:04            84,744 【基础】【性能】平滑加载smoothboot-forge-1.16.4-1.2.2.jar</span><br><span class="line">2021/05/04  07:33            13,677 【基础】【性能】渲染优化（针对多人） out_of_sight-1.16.4-1.0.1.jar</span><br><span class="line">2022/01/09  16:43           234,733 【基础】【性能】生物加载performant-1.16.2-5-3.82m.jar</span><br><span class="line">2021/10/26  10:58           270,250 【基础】【汉化】【0】拼音搜索JustEnoughCharacters-1.16.4-4.3.2.jar</span><br><span class="line">2021/12/03  22:46             8,537 【基础】【汉化】汉化i18nupdatemod-1.16.5.jar</span><br><span class="line">2021/12/03  22:47         8,797,129 【基础】【玩法】【便捷】【2】Quark-r2.4-321.jar</span><br><span class="line">2021/10/26  09:26             8,837 【基础】【玩法】爆头headshot-1.3.0.jar</span><br><span class="line">2021/10/26  10:58            28,518 【基础】【界面】【前置3】群系标题yung_TravelersTitles-1.16.4-1.5.jar</span><br><span class="line">2021/11/05  23:53           540,313 【基础】【界面】【定制】【4】菜单PackMenu-1.16.5-2.5.0.jar</span><br><span class="line">2021/04/25  03:14            14,660 【基础】【界面】伤害显示TextDamageIndicators-1.16.3-2.0.1.jar</span><br><span class="line">2021/04/24  15:37            42,604 【基础】【界面】拾取通知PickUpNotifier-v1.2-1.16.3.jar</span><br><span class="line">2021/11/25  01:50            97,273 【基础】【界面】模组目录catalogue-1.5.0-1.16.5.jar</span><br><span class="line">2021/12/03  22:46           136,584 【基础】【界面】模组设置configured-1.5.1-1.16.5.jar</span><br><span class="line">2021/11/05  14:28            46,203 【基础】【界面】饱和度状态栏appleskin-forge-mc1.16.x-2.2.0.jar</span><br><span class="line">2022/01/12  23:38            96,334 【基础】【调试工具】【便捷】游戏内模组设置GameMenuModOption-1.16.4-1.8.2.jar</span><br><span class="line">2021/09/20  22:39            33,125 【基础】【调试工具】【定制】SpawnBalanceUtility-1.36.0.11.jar</span><br></pre></td></tr></table></figure>
+
+<h1 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h1><p>此部分包括了对游戏内容进行修改了的，且笔者认为是整合包添加的核心玩法的各种模组。介于核心与拓展的衡量，笔者将添加元素丰富的（如既有生物又有结构还有对应装备之类的），在游戏中戏份较大的，或有较多联动的模组归为核心，其余放入拓展系列。</p>
+<h2 id="charm"><a href="#charm" class="headerlink" title="charm"></a>charm</h2><h3 id="结构-1"><a href="#结构-1" class="headerlink" title="结构"></a>结构</h3><p>原版村庄补充</p>
+<h3 id="生物-1"><a href="#生物-1" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">珊瑚鱿鱼</span><br></pre></td></tr></table></figure>
+
+<h2 id="alex’s-mobs"><a href="#alex’s-mobs" class="headerlink" title="alex’s mobs"></a>alex’s mobs</h2><h3 id="生物-2"><a href="#生物-2" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">骨蟒</span><br><span class="line">太阳鸟</span><br><span class="line">绯红蚊子</span><br><span class="line">末影缓步兽</span><br><span class="line">洞穴蜈蚣</span><br><span class="line">诡异蟾蜍</span><br><span class="line">复刻怪</span><br><span class="line">灵魂鹫</span><br><span class="line">灵翼</span><br><span class="line">蘑菇君</span><br><span class="line">悬熊</span><br><span class="line">沙风怪</span><br><span class="line">跨座兽</span><br><span class="line">跨座蝌蚪</span><br><span class="line">诡异蚊鬼</span><br><span class="line">末影噬菌体</span><br><span class="line">虚空蠕虫</span><br><span class="line">灰熊</span><br><span class="line">走鹃</span><br><span class="line">瞪羚</span><br><span class="line">鳄鱼</span><br><span class="line">苍蝇</span><br><span class="line">蜂鸟</span><br><span class="line">虎鲸</span><br><span class="line">大猩猩</span><br><span class="line">响尾蛇</span><br><span class="line">锤头鲨</span><br><span class="line">龙虾</span><br><span class="line">科莫多巨蜥</span><br><span class="line">卷尾猴</span><br><span class="line">驼鹿</span><br><span class="line">浣熊</span><br><span class="line">水滴鱼</span><br><span class="line">海豹</span><br><span class="line">蟑螂</span><br><span class="line">鲸头鹳</span><br><span class="line">乌鸦</span><br><span class="line">大象</span><br><span class="line">雪豹</span><br><span class="line">大鳄龟</span><br><span class="line">鸸鹋</span><br><span class="line">袋鼠</span><br><span class="line">螳螂虾</span><br><span class="line">鸭嘴兽</span><br><span class="line">袋獾</span><br><span class="line">抹香鲸</span><br><span class="line">切叶蚁</span><br><span class="line">老虎</span><br><span class="line">白头海雕</span><br><span class="line">沙漠蛛蜂</span><br><span class="line">皱鳃鲨</span><br><span class="line">拟态章鱼</span><br><span class="line">海鸥</span><br></pre></td></tr></table></figure>
+<h2 id="YUNG’s"><a href="#YUNG’s" class="headerlink" title="YUNG’s"></a>YUNG’s</h2><p>代表一系列此作者的模组，添加、改变或优化了结构，特别是洞穴生成逻辑</p>
+<h3 id="结构-2"><a href="#结构-2" class="headerlink" title="结构"></a>结构</h3><p>明面上的添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">betterdungeons:skeleton_dungeon</span><br><span class="line">betterdungeons:small_dungeon</span><br><span class="line">betterdungeons:spider_dungeon</span><br><span class="line">betterdungeons:zombie_dungeon</span><br><span class="line">bettermineshafts:mineshaft</span><br><span class="line">betterstrongholds:stronghol</span><br></pre></td></tr></table></figure>
+<h2 id="eidolon"><a href="#eidolon" class="headerlink" title="eidolon"></a>eidolon</h2><p>魔法</p>
+<h3 id="结构-3"><a href="#结构-3" class="headerlink" title="结构"></a>结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eidolon:catacomb</span><br><span class="line">eidolon:lab</span><br><span class="line">eidolon:stray_tower</span><br></pre></td></tr></table></figure>
+<h3 id="生物-3"><a href="#生物-3" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">僵尸暴君</span><br><span class="line">幽魂</span><br><span class="line">亡灵巫师</span><br></pre></td></tr></table></figure>
+<h3 id="hexblades-eidolon扩展"><a href="#hexblades-eidolon扩展" class="headerlink" title="hexblades(eidolon扩展)"></a>hexblades(eidolon扩展)</h3><h4 id="结构-4"><a href="#结构-4" class="headerlink" title="结构"></a>结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexblades:fire_temple</span><br></pre></td></tr></table></figure>
+<h4 id="生物-4"><a href="#生物-4" class="headerlink" title="生物"></a>生物</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">火焰元素</span><br></pre></td></tr></table></figure>
+<h2 id="ice-and-fire"><a href="#ice-and-fire" class="headerlink" title="ice and fire"></a>ice and fire</h2><h3 id="结构-5"><a href="#结构-5" class="headerlink" title="结构"></a>结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">iceandfire:gorgon_temple</span><br><span class="line">iceandfire:graveyard</span><br><span class="line">iceandfire:mausoleum</span><br></pre></td></tr></table></figure>
+<h3 id="生物-5"><a href="#生物-5" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">雪地村民</span><br><span class="line">悚怖尸巫</span><br><span class="line">(悚怖尸奴</span><br><span class="line">悚怖尸兽</span><br><span class="line">悚怖食尸鬼</span><br><span class="line">悚怖劫蛛)</span><br><span class="line">悚怖尸骑</span><br><span class="line">悚怖战马</span><br><span class="line">火龙</span><br><span class="line">冰龙</span><br><span class="line">骏鹰</span><br><span class="line">小精灵</span><br><span class="line">翼蚺</span><br><span class="line">海马</span><br><span class="line">死亡蠕虫</span><br><span class="line">鸡蛇	</span><br><span class="line">蛇发女妖</span><br><span class="line">独眼巨人</span><br><span class="line">塞壬</span><br><span class="line">铜羽泽鹗</span><br><span class="line">食人妖</span><br><span class="line">恐蚁</span><br><span class="line">(恐蚁劳工</span><br><span class="line">恐蚁军士</span><br><span class="line">恐蚁斥候</span><br><span class="line">恐蚁皇族</span><br><span class="line">恐蚁女皇</span><br><span class="line">恐蚁蛋</span><br><span class="line">恐蜂蚁)</span><br><span class="line">海蟒</span><br><span class="line">九头蛇	</span><br></pre></td></tr></table></figure>
+<h2 id="wyrmroost"><a href="#wyrmroost" class="headerlink" title="wyrmroost"></a>wyrmroost</h2><h3 id="生物-6"><a href="#生物-6" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">蝶型利维坦</span><br><span class="line">遨空银翼</span><br><span class="line">高山飞龙</span><br><span class="line">加那利飞龙</span><br><span class="line">火龙果幼龙</span><br><span class="line">游沙龙</span><br><span class="line">主世界幼龙</span><br><span class="line">屋栖盗客</span><br><span class="line">皇室血红</span><br><span class="line">金币小龙</span><br></pre></td></tr></table></figure>
+<h2 id="dungeon-gear-mobs"><a href="#dungeon-gear-mobs" class="headerlink" title="dungeon gear/mobs"></a>dungeon gear/mobs</h2><p>特指the_infamous_1的两个模组</p>
+<h3 id="生物-7"><a href="#生物-7" class="headerlink" title="生物"></a>生物</h3><p>地下城生物不再赘述</p>
+<h2 id="hexerei"><a href="#hexerei" class="headerlink" title="hexerei"></a>hexerei</h2><p>巫术</p>
+<h3 id="结构-6"><a href="#结构-6" class="headerlink" title="结构"></a>结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexerei:dark_coven</span><br><span class="line">hexerei:mangrove_tree</span><br><span class="line">hexerei:witch_hut</span><br></pre></td></tr></table></figure>
+<h2 id="Paraglider"><a href="#Paraglider" class="headerlink" title="Paraglider"></a>Paraglider</h2><p>滑翔伞</p>
+<h3 id="结构-7"><a href="#结构-7" class="headerlink" title="结构"></a>结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">paraglider:nether_horned_statue</span><br><span class="line">paraglider:tarrey_town_goddess_statue</span><br><span class="line">paraglider:underground_horned_statue</span><br></pre></td></tr></table></figure>
+<h2 id="Druidcraft"><a href="#Druidcraft" class="headerlink" title="Druidcraft??"></a>Druidcraft??</h2><p>德鲁伊工艺</p>
+<h3 id="生物-8"><a href="#生物-8" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">蓝甲虫</span><br><span class="line">畏怖之鱼</span><br><span class="line">月光蛾</span><br></pre></td></tr></table></figure>
+<h2 id="abnormals系列"><a href="#abnormals系列" class="headerlink" title="abnormals系列"></a>abnormals系列</h2><p>一个核心，但有很多模组依赖它且模组之间联动较多</p>
+<h3 id="结构-8"><a href="#结构-8" class="headerlink" title="结构"></a>结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">atmospheric:arid_shrine</span><br><span class="line">autumnity:maple_witch_hut</span><br><span class="line">outer_end:catacombs</span><br><span class="line">outer_end:end_tower</span><br></pre></td></tr></table></figure>
+<h3 id="生物-9"><a href="#生物-9" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">蜗牛</span><br><span class="line">火鸡</span><br><span class="line">灰熊</span><br><span class="line">哞花</span><br><span class="line">鹿</span><br><span class="line">鸭</span><br><span class="line">锦鲤</span><br><span class="line">板鱼</span><br><span class="line">耗牛</span><br><span class="line">黑猩猩</span><br><span class="line">芭蕉蜘蛛</span><br><span class="line">刽子手</span><br><span class="line">破坏者</span><br><span class="line">冰术师</span><br><span class="line">骷髅村民</span><br><span class="line">诡术师</span><br><span class="line">浮跃牛蛙</span><br><span class="line">泡泡虫</span><br><span class="line">紫颂鱿鱼</span><br><span class="line">被埋葬者</span><br><span class="line">天蓝怪</span><br><span class="line">紫珀傀儡</span><br><span class="line">幽灵蜂</span><br><span class="line">追猎者</span><br><span class="line">耀翼</span><br><span class="line">发光鱿鱼</span><br><span class="line">鹅</span><br><span class="line">巨型长尾鲨</span><br><span class="line">长尾鲨</span><br><span class="line">蓑鲉</span><br><span class="line">鹦鹉螺</span><br><span class="line">狗鱼</span><br><span class="line">鲈鱼</span><br><span class="line">水母</span><br></pre></td></tr></table></figure>
+<h3 id="群系"><a href="#群系" class="headerlink" title="群系"></a>群系</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">abundance:lavender_fields</span><br><span class="line">abundance:lavender_forest</span><br><span class="line">abundance:nemophila_fields</span><br><span class="line">atmospheric:dunes</span><br><span class="line">atmospheric:dunes_hills</span><br><span class="line">atmospheric:flourishing_dunes</span><br><span class="line">atmospheric:petrified_dunes</span><br><span class="line">atmospheric:rainforest</span><br><span class="line">atmospheric:rainforest_basin</span><br><span class="line">atmospheric:rainforest_mountains</span><br><span class="line">atmospheric:rainforest_plateau</span><br><span class="line">atmospheric:rocky_dunes</span><br><span class="line">atmospheric:rocky_dunes_hills</span><br><span class="line">atmospheric:sparse_rainforest_basin</span><br><span class="line">atmospheric:hot_springs</span><br><span class="line">autumnity:maple_forest</span><br><span class="line">autumnity:maple_forest_hills</span><br><span class="line">autumnity:orange_spotted_dark_forest</span><br><span class="line">autumnity:pumpkin_fields</span><br><span class="line">autumnity:red_spotted_taiga</span><br><span class="line">autumnity:yellow_spotted_forest</span><br><span class="line">bayou_blues:bayou</span><br><span class="line">bayou_blues:bayou_hills</span><br><span class="line">endergetic:poise_forest</span><br><span class="line">environmental:blossom_highlands</span><br><span class="line">environmental:blossom_hills</span><br><span class="line">environmental:blossom_valleys</span><br><span class="line">environmental:blossom_woods</span><br><span class="line">environmental:marsh</span><br><span class="line">environmental:mushroom_marsh</span><br><span class="line">outer_end:azure_forest</span><br><span class="line">outer_end:crystal_crag</span><br></pre></td></tr></table></figure>
+<h2 id="stalwart-dungeons"><a href="#stalwart-dungeons" class="headerlink" title="stalwart dungeons"></a>stalwart dungeons</h2><h3 id="结构-9"><a href="#结构-9" class="headerlink" title="结构"></a>结构</h3><p>locate无法检索文件中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sheltrerer_dungeons.nbt</span><br><span class="line">keeping_castle_spawn.nbt</span><br><span class="line">keeping_castle.nbt</span><br><span class="line">awful_dungeon_spawn.nbt</span><br><span class="line">awful_dungeon.nbt</span><br></pre></td></tr></table></figure>
+<h3 id="生物-10"><a href="#生物-10" class="headerlink" title="生物"></a>生物</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">惊骇恶魂</span><br><span class="line">下界守卫</span><br><span class="line">惑目烈焰人</span><br><span class="line">残缺凋零</span><br><span class="line">装甲烈焰人</span><br></pre></td></tr></table></figure>
+<h3 id="群系-1"><a href="#群系-1" class="headerlink" title="群系"></a>群系</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stalwart_dungeons:poubelle</span><br></pre></td></tr></table></figure>
+
+<h2 id="Storage-Drawers"><a href="#Storage-Drawers" class="headerlink" title="Storage Drawers??"></a>Storage Drawers??</h2><p>储物抽屉，好用至极</p>
+<h2 id="Farmers-Delight"><a href="#Farmers-Delight" class="headerlink" title="Farmers Delight??"></a>Farmers Delight??</h2><p>制作食物方式独特且与abnormals系列联动非常多的食物模组，自己也有拓展</p>
+<h2 id="terraqueous"><a href="#terraqueous" class="headerlink" title="terraqueous??"></a>terraqueous??</h2><h2 id="project-vibrant-journeys"><a href="#project-vibrant-journeys" class="headerlink" title="project vibrant journeys??"></a>project vibrant journeys??</h2><h2 id="MagmaFurnaceDungeonUpdate"><a href="#MagmaFurnaceDungeonUpdate" class="headerlink" title="MagmaFurnaceDungeonUpdate??"></a>MagmaFurnaceDungeonUpdate??</h2><h2 id="NeverNeededOrWanted"><a href="#NeverNeededOrWanted" class="headerlink" title="NeverNeededOrWanted??"></a>NeverNeededOrWanted??</h2><h2 id="SimpleOres"><a href="#SimpleOres" class="headerlink" title="SimpleOres??"></a>SimpleOres??</h2><h1 id="食物拓展"><a href="#食物拓展" class="headerlink" title="食物拓展"></a>食物拓展</h1><h2 id="FD"><a href="#FD" class="headerlink" title="FD"></a>FD</h2><h2 id="ND"><a href="#ND" class="headerlink" title="ND"></a>ND</h2><h2 id="PAM"><a href="#PAM" class="headerlink" title="PAM"></a>PAM</h2><h1 id="质量提升"><a href="#质量提升" class="headerlink" title="质量提升"></a>质量提升</h1><p>此部分包含对游戏内容本质没有改变的，而是一些图形美化、丰富音效和显示效果的模组。与基础的区别在于：若感到性能有限，想提升帧率时可视情况删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2021/12/30  23:29            19,648 【质量提升】【5】物品品质框ItemBorders-1.16.5-1.1.6.jar</span><br><span class="line">2021/12/24  17:05            23,045 【质量提升】【5】物品边框LegendaryTooltips-1.16.5-1.1.5.jar</span><br><span class="line">2022/01/01  13:40            61,161 【质量提升】【前置5】Iceberg-1.16.5-1.0.34.jar</span><br><span class="line">2021/07/19  15:14            47,260 【质量提升】【显示】【7】物理掉落物ItemPhysic_v1.4.18_mc1.16.5.jar</span><br><span class="line">2021/10/26  10:59        14,746,751 【质量提升】【视听】#debug#含物理音效DynamicSurroundings-1.16.5-4.0.5.0.jar</span><br><span class="line">2021/10/26  10:58           937,719 【质量提升】【贴图】【6】更好的树叶BetterFoliage-2.7.1-Forge-1.16.5.jar</span><br><span class="line">2022/01/13  22:16        12,151,999 【质量提升】【音效】V3.0-Matmos-mod-1.16.jar</span><br><span class="line">2021/11/10  00:02        76,505,097 【质量提升】【音效】【7】自然音效AmbientSounds_v3.1.11_mc1.16.5.jar</span><br><span class="line">2021/06/04  21:01        58,565,641 【质量提升】【音效】【8】音效charmonium-forge-1.16.5-2.3.2.jar</span><br></pre></td></tr></table></figure>
+<p>#debug#意思是游戏出问题时优先排查对象</p>
+<h1 id="结构拓展"><a href="#结构拓展" class="headerlink" title="结构拓展"></a>结构拓展</h1><p>此内容包括一些比较单纯的，经过作者质量肯定的添加结构的模组</p>
+<h2 id="shrines"><a href="#shrines" class="headerlink" title="shrines??"></a>shrines??</h2><h2 id="stoneholm"><a href="#stoneholm" class="headerlink" title="stoneholm??"></a>stoneholm??</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stoneholm:underground_village</span><br></pre></td></tr></table></figure>
+<h2 id="Soaring-Structures"><a href="#Soaring-Structures" class="headerlink" title="Soaring-Structures??"></a>Soaring-Structures??</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soaring_structures2:soaring_islandf</span><br></pre></td></tr></table></figure>
+<h2 id="flying-castles"><a href="#flying-castles" class="headerlink" title="flying_castles??"></a>flying_castles??</h2><h1 id="生物拓展"><a href="#生物拓展" class="headerlink" title="生物拓展"></a>生物拓展</h1><p>此内容包括一些比较单纯的，经过作者质量肯定的添加生物的模组</p>
+<h2 id="unnamed-animal"><a href="#unnamed-animal" class="headerlink" title="unnamed animal??"></a>unnamed animal??</h2><h2 id="pandoras-creatures"><a href="#pandoras-creatures" class="headerlink" title="pandoras_creatures??"></a>pandoras_creatures??</h2><h3 id="结构-10"><a href="#结构-10" class="headerlink" title="结构"></a>结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoras_creatures:end_prison</span><br></pre></td></tr></table></figure>
+
+<h1 id="群系拓展"><a href="#群系拓展" class="headerlink" title="群系拓展"></a>群系拓展</h1><p>此内容包括一些比较单纯的，经过作者质量肯定的添加群系的模组</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h1 id="风味拓展"><a href="#风味拓展" class="headerlink" title="风味拓展"></a>风味拓展</h1><p>此内容包括作者认为很有趣，但在游戏中“戏份”很少，不是单纯添加结构生物群系的模组</p>
+<h2 id="chimes"><a href="#chimes" class="headerlink" title="chimes??"></a>chimes??</h2><p>风铃</p>
+<h2 id="nether’s-exoticism"><a href="#nether’s-exoticism" class="headerlink" title="nether’s exoticism??"></a>nether’s exoticism??</h2><p>下界拓展</p>
+<h2 id="Nef’s-Medieval-Pub"><a href="#Nef’s-Medieval-Pub" class="headerlink" title="Nef’s Medieval Pub??"></a>Nef’s Medieval Pub??</h2><p>装饰与结构</p>
+<h2 id="habitat"><a href="#habitat" class="headerlink" title="habitat??"></a>habitat??</h2><h2 id="Serene-Shrubbery"><a href="#Serene-Shrubbery" class="headerlink" title="Serene Shrubbery??"></a>Serene Shrubbery??</h2><h2 id="terraincognita"><a href="#terraincognita" class="headerlink" title="terraincognita??"></a>terraincognita??</h2><h2 id="Natural-Decor-Mod"><a href="#Natural-Decor-Mod" class="headerlink" title="Natural Decor Mod??"></a>Natural Decor Mod??</h2><h2 id="supplementaries"><a href="#supplementaries" class="headerlink" title="supplementaries??"></a>supplementaries??</h2><h1 id="小拓展"><a href="#小拓展" class="headerlink" title="小拓展"></a>小拓展</h1><h2 id="Inspirations"><a href="#Inspirations" class="headerlink" title="Inspirations??"></a>Inspirations??</h2><h1 id="全局数据包"><a href="#全局数据包" class="headerlink" title="全局数据包"></a>全局数据包</h1><p>简单来说功能就是默认添加一些数据包（文件夹<code>global_data_packs</code>中的）<br>目前选用的数据包均为非覆盖性的结构添加数据包<br>其中还可以将farlander的末影人添加到RepurposedRepurposedStructures中的地狱诡异森林村庄中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">2022/01/14  22:01            27,970 archive-v1.0.zip</span><br><span class="line">2022/01/14  20:19           224,258 FarlandersInWarpedVillages.zip</span><br><span class="line">2022/01/14  20:54            76,678 fossil_dungeons.zip</span><br><span class="line">2022/01/14  20:54           143,659 fs1-6-6.zip</span><br><span class="line">2022/01/14  22:55            58,086 Grian&#x27;s Dungeons.zip</span><br><span class="line">2022/01/14  19:55           349,367 illager-fortresses-v11-for-1-18.zip</span><br><span class="line">2022/01/14  22:53           480,666 More Structures.zip</span><br><span class="line">2022/01/14  21:41           443,535 pillager-stronghold.zip</span><br><span class="line">2022/01/14  20:25           549,446 Repurposed_Structures-Better_Strongholds_Forge.zip</span><br><span class="line">2021/12/15  01:47           138,584 Repurposed_Structures-Environmental.zip</span><br><span class="line">2021/12/15  01:47           311,098 Repurposed_Structures-Savage_And_Ravage.zip</span><br><span class="line">2022/01/14  22:46            26,912 RRS-BuzzierVillages.zip</span><br><span class="line">2022/01/14  22:46            23,914 RRS-EnvironmentallyFriendly.zip</span><br><span class="line">2022/01/14  22:47            32,523 RRS-RepurposedDelight.zip</span><br><span class="line">2022/01/14  22:50           218,104 Ships v13 for [1.18].zip</span><br><span class="line">2021/12/15  01:47         1,893,041 the-forbidden-castle-v1-1.zip</span><br><span class="line">2021/07/22  17:02                11 汇总.bat</span><br><span class="line">2021/12/15  01:47         1,454,614 简单覆盖ichphilipp-s-endcity-v1-1-1-16-2-forge.zip.disabled</span><br><span class="line">2022/01/14  22:37            54,663 简单覆盖outpost.zip.disabled</span><br><span class="line">2021/12/15  01:47           163,568 简单覆盖pillager-settlements-e2230.zip.disabled</span><br><span class="line">2022/01/14  20:19         1,890,242 简单覆盖WallsOfConquest_.zip.disabled</span><br></pre></td></tr></table></figure>
+<p>注明“简单覆盖”的数据包没有启用，但介于质量可观留备（作者本人不喜欢对原版结构进行破坏性覆盖性修改的东西）</p>
+<h1 id="kubejs"><a href="#kubejs" class="headerlink" title="kubejs"></a>kubejs</h1><p>提供直接通过配置JS文件魔改游戏的功能，如对矿石生成调整添加自定义合成表等，也有矿辞统一的功能</p>
+
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MC/" rel="tag"># MC</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/12/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A81.2/" rel="prev" title="minecraft[1.16.5]现用模组表1.2">
+      <i class="fa fa-chevron-left"></i> minecraft[1.16.5]现用模组表1.2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/23/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/DAY02%E8%A7%86%E9%A2%91/" rel="next" title="DAY02视频">
+      DAY02视频 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E7%89%A9"><span class="nav-number">1.2.</span> <span class="nav-text">生物</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%97%E8%A1%A8"><span class="nav-number">1.3.</span> <span class="nav-text">列表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83"><span class="nav-number">2.</span> <span class="nav-text">核心</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#charm"><span class="nav-number">2.1.</span> <span class="nav-text">charm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-1"><span class="nav-number">2.1.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-1"><span class="nav-number">2.1.2.</span> <span class="nav-text">生物</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alex%E2%80%99s-mobs"><span class="nav-number">2.2.</span> <span class="nav-text">alex’s mobs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-2"><span class="nav-number">2.2.1.</span> <span class="nav-text">生物</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YUNG%E2%80%99s"><span class="nav-number">2.3.</span> <span class="nav-text">YUNG’s</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-2"><span class="nav-number">2.3.1.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eidolon"><span class="nav-number">2.4.</span> <span class="nav-text">eidolon</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-3"><span class="nav-number">2.4.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-3"><span class="nav-number">2.4.2.</span> <span class="nav-text">生物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexblades-eidolon%E6%89%A9%E5%B1%95"><span class="nav-number">2.4.3.</span> <span class="nav-text">hexblades(eidolon扩展)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-4"><span class="nav-number">2.4.3.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-4"><span class="nav-number">2.4.3.2.</span> <span class="nav-text">生物</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ice-and-fire"><span class="nav-number">2.5.</span> <span class="nav-text">ice and fire</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-5"><span class="nav-number">2.5.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-5"><span class="nav-number">2.5.2.</span> <span class="nav-text">生物</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wyrmroost"><span class="nav-number">2.6.</span> <span class="nav-text">wyrmroost</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-6"><span class="nav-number">2.6.1.</span> <span class="nav-text">生物</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dungeon-gear-mobs"><span class="nav-number">2.7.</span> <span class="nav-text">dungeon gear&#x2F;mobs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-7"><span class="nav-number">2.7.1.</span> <span class="nav-text">生物</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexerei"><span class="nav-number">2.8.</span> <span class="nav-text">hexerei</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-6"><span class="nav-number">2.8.1.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Paraglider"><span class="nav-number">2.9.</span> <span class="nav-text">Paraglider</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-7"><span class="nav-number">2.9.1.</span> <span class="nav-text">结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Druidcraft"><span class="nav-number">2.10.</span> <span class="nav-text">Druidcraft??</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-8"><span class="nav-number">2.10.1.</span> <span class="nav-text">生物</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abnormals%E7%B3%BB%E5%88%97"><span class="nav-number">2.11.</span> <span class="nav-text">abnormals系列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-8"><span class="nav-number">2.11.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-9"><span class="nav-number">2.11.2.</span> <span class="nav-text">生物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BE%A4%E7%B3%BB"><span class="nav-number">2.11.3.</span> <span class="nav-text">群系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stalwart-dungeons"><span class="nav-number">2.12.</span> <span class="nav-text">stalwart dungeons</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-9"><span class="nav-number">2.12.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E7%89%A9-10"><span class="nav-number">2.12.2.</span> <span class="nav-text">生物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BE%A4%E7%B3%BB-1"><span class="nav-number">2.12.3.</span> <span class="nav-text">群系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storage-Drawers"><span class="nav-number">2.13.</span> <span class="nav-text">Storage Drawers??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Farmers-Delight"><span class="nav-number">2.14.</span> <span class="nav-text">Farmers Delight??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#terraqueous"><span class="nav-number">2.15.</span> <span class="nav-text">terraqueous??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#project-vibrant-journeys"><span class="nav-number">2.16.</span> <span class="nav-text">project vibrant journeys??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MagmaFurnaceDungeonUpdate"><span class="nav-number">2.17.</span> <span class="nav-text">MagmaFurnaceDungeonUpdate??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NeverNeededOrWanted"><span class="nav-number">2.18.</span> <span class="nav-text">NeverNeededOrWanted??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleOres"><span class="nav-number">2.19.</span> <span class="nav-text">SimpleOres??</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A3%9F%E7%89%A9%E6%8B%93%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">食物拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#FD"><span class="nav-number">3.1.</span> <span class="nav-text">FD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ND"><span class="nav-number">3.2.</span> <span class="nav-text">ND</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PAM"><span class="nav-number">3.3.</span> <span class="nav-text">PAM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%A8%E9%87%8F%E6%8F%90%E5%8D%87"><span class="nav-number">4.</span> <span class="nav-text">质量提升</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E6%8B%93%E5%B1%95"><span class="nav-number">5.</span> <span class="nav-text">结构拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shrines"><span class="nav-number">5.1.</span> <span class="nav-text">shrines??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#stoneholm"><span class="nav-number">5.2.</span> <span class="nav-text">stoneholm??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Soaring-Structures"><span class="nav-number">5.3.</span> <span class="nav-text">Soaring-Structures??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flying-castles"><span class="nav-number">5.4.</span> <span class="nav-text">flying_castles??</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E7%89%A9%E6%8B%93%E5%B1%95"><span class="nav-number">6.</span> <span class="nav-text">生物拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unnamed-animal"><span class="nav-number">6.1.</span> <span class="nav-text">unnamed animal??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pandoras-creatures"><span class="nav-number">6.2.</span> <span class="nav-text">pandoras_creatures??</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9E%84-10"><span class="nav-number">6.2.1.</span> <span class="nav-text">结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BE%A4%E7%B3%BB%E6%8B%93%E5%B1%95"><span class="nav-number">7.</span> <span class="nav-text">群系拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">7.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A3%8E%E5%91%B3%E6%8B%93%E5%B1%95"><span class="nav-number">8.</span> <span class="nav-text">风味拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chimes"><span class="nav-number">8.1.</span> <span class="nav-text">chimes??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nether%E2%80%99s-exoticism"><span class="nav-number">8.2.</span> <span class="nav-text">nether’s exoticism??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nef%E2%80%99s-Medieval-Pub"><span class="nav-number">8.3.</span> <span class="nav-text">Nef’s Medieval Pub??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#habitat"><span class="nav-number">8.4.</span> <span class="nav-text">habitat??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Serene-Shrubbery"><span class="nav-number">8.5.</span> <span class="nav-text">Serene Shrubbery??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#terraincognita"><span class="nav-number">8.6.</span> <span class="nav-text">terraincognita??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Natural-Decor-Mod"><span class="nav-number">8.7.</span> <span class="nav-text">Natural Decor Mod??</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#supplementaries"><span class="nav-number">8.8.</span> <span class="nav-text">supplementaries??</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%8F%E6%8B%93%E5%B1%95"><span class="nav-number">9.</span> <span class="nav-text">小拓展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Inspirations"><span class="nav-number">9.1.</span> <span class="nav-text">Inspirations??</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-number">10.</span> <span class="nav-text">全局数据包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kubejs"><span class="nav-number">11.</span> <span class="nav-text">kubejs</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共125.1k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
