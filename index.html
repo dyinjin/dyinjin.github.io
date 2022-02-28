@@ -402,7 +402,7 @@ byg:dead_sea</li>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN%2014-15/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -416,7 +416,463 @@ byg:dead_sea</li>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN%2014-15/" class="post-title-link" itemprop="url">ITN 14-15</a>
+            <a href="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/" class="post-title-link" itemprop="url">ITN 11-13</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-02-28 16:54:56 / 修改时间：16:56:25" itemprop="dateCreated datePublished" datetime="2022-02-28T16:54:56+08:00">2022-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="IPv4编址"><a href="#IPv4编址" class="headerlink" title="IPv4编址"></a>IPv4编址</h1><h2 id="地址结构"><a href="#地址结构" class="headerlink" title="地址结构"></a>地址结构</h2><p>IPv4 地址为32位分层地址，由网络部分和主机部分两个部分组成。<br>IPv4 地址 - 这是主机的唯一 IPv4 地址。<br>子网掩码 - 用于标识 IPv4 地址的网络部分/主机部分。</p>
+<ul>
+<li>  <strong>IPv4 主机地址 (例192.168.10.10)</strong> -主机的 IPv4 地址，采用点分十进制和二进制格式。除了根据掩码的主机位全0位（这将是网络地址）或全1位（这将是广播地址）之外，主机地址在主机部分可以有任何位的组合。<strong>注</strong>IPv4 将 <strong>224.0.0.0 到 239.255.255.255</strong> 的地址保留为组播范围（不可作为主机地址）。</li>
+<li>  <strong>子网掩码 (例255.255.255.0)</strong> -主机的子网掩码，采用点分十进制和二进制格式。</li>
+<li>  <strong>网络地址 (例192.168.10.0)</strong> -IPv4地址和子网掩码之间的逻辑AND运算产生一个点分十进制和二进制格式的IPv4网络地址。<br>例中，主机地址 192.168.10.10 与子网掩码 255.255.255.0 (/24) 之间的 AND运算会产生 IPv4 网络地址为192.168.10.0/24。<br>子网掩码与IP地址相结合用于确定设备属于哪个子网</li>
+</ul>
+<h2 id="IPv4-单播、广播和组播"><a href="#IPv4-单播、广播和组播" class="headerlink" title="IPv4 单播、广播和组播"></a>IPv4 单播、广播和组播</h2><h3 id="单播"><a href="#单播" class="headerlink" title="单播"></a>单播</h3><p>单播传输是指在一对一通信中，一个设备向另一个设备发送消息。<br>IPv4 单播主机地址的地址范围是 1.1.1.1到 223.255.255.255。不过，此范围中的很多地址被留作特殊用途。这些特殊用途的地址将在本模块后续部分讨论。</p>
+<h3 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h3><p>广播播传输是指设备在一对多通信中，向网络上的所有设备发送消息。<br>广播数据包以32个1位或主机部分全部为 1 的地址作为目的 IP地址。<br>除了 255.255.255.255 的广播地址外，每个网络还有一个广播 IPv4 地址。这个地址称为定向广播，它使用网络范围内的最大地址，即所有主机位全部为 1 的地址。例如，网络192.168.1.0/24的定向广播地址是192.168.1.255。</p>
+<h3 id="组播"><a href="#组播" class="headerlink" title="组播"></a>组播</h3><p>主机通过组播传输可以向所属组播组中的选定主机组发送一个数据包，从而减少了流量。<br>组播数据包是一个目的IP地址为组播地址的数据包。IPv4 将 <strong>224.0.0.0 到 239.255.255.255</strong> 的地址保留为组播范围。<br>接收特定组播数据包的主机称为组播客户端。组播客户端使用客户端程序请求的服务来加入组播组。<br>每个组播组由一个 IPv4 组播目的地址代表。当 IPv4 主机加入组播组后，该主机既要处理目的地址为此组播地址的数据包，也要处理发往其唯一单播地址的数据包。</p>
+<h2 id="IPv4-地址的分类"><a href="#IPv4-地址的分类" class="headerlink" title="IPv4 地址的分类"></a>IPv4 地址的分类</h2><p>公有 IPv4 地址是能在 ISP（互联网运营商）路由器之间全局路由的地址。但是，并非所有可用的 IPv4 地址都可用于互联网。大多数组织使用称为私有地址的地址块向内部主机分配 IPv4 地址。<br>由于 IPv4 地址空间耗尽，引入了私有 IPv4 地址。私有 IPv4 地址并不是唯一的，可以在任何网络内部使用它。<br>| <strong>网络地址和前缀</strong> | <strong>RFC 1918 私有地址范围</strong> |<br>| — | — |<br>| 10.0.0.0/8 | 10.0.0.0 - 10.255.255.255 |<br>| 172.16.0.0/12 | 172.16.0.0 - 172.31.255.255 |<br>| 192.168.0.0/16 | 192.168.0.0 - 192.168.255.255 |</p>
+<h2 id="私有-IPv4-地址和网络地址转换-NAT"><a href="#私有-IPv4-地址和网络地址转换-NAT" class="headerlink" title="私有 IPv4 地址和网络地址转换 (NAT)"></a>私有 IPv4 地址和网络地址转换 (NAT)</h2><p>在 ISP（Internet Service Provider 互联网服务提供商）可以转发此数据包之前，它必须使用网络地址转换 (NAT) 将源 IPv4 地址（即私有地址）转换为公有 IPv4 地址。NAT用于转换私有和公有 IPv4 地址。这通常是在将内部网络连接到 ISP 网络的路由器上完成。在路由到互联网之前，组织内部网中的私有 IPv4 地址将被转换为公有 IPv4 地址。</p>
+<h2 id="专用-IPv4-地址"><a href="#专用-IPv4-地址" class="headerlink" title="专用 IPv4 地址"></a>专用 IPv4 地址</h2><p>一些地址，比如网络地址和广播地址不能分配给主机。还有些特殊地址可以分配给主机，但这些主机在网络内的交互方式却受到限制。</p>
+<h3 id="环回地址"><a href="#环回地址" class="headerlink" title="环回地址"></a>环回地址</h3><p>环回地址（127.0.0.0 /8 或 127.0.0.1 到 127.255.255.254）通常仅被标识为127.0.0.1，主机使用这些特殊地址将流量指向其自身。</p>
+<h3 id="本地链路地址"><a href="#本地链路地址" class="headerlink" title="本地链路地址"></a>本地链路地址</h3><p>本地链路地址（169.254.0.0 /16 或 169.254.0.1 至 169.254.255.254）通常称为自动私有 IP 编址 (APIPA) 地址或自分配地址。 当没有可用的DHCP服务器时，Windows DHCP客户端使用它们进行自我配置。本地链路地址可以用于点对点连接，但通常不用于此目的。</p>
+<h3 id="IP-地址的分配"><a href="#IP-地址的分配" class="headerlink" title="IP 地址的分配"></a>IP 地址的分配</h3><p>IPv4 和 IPv6 地址是通过互联网编号指派机构 (IANA) 管理的。IANA 管理并向地区性互联网注册机构 (RIR) 分配 IP 地址块。</p>
+<ul>
+<li>  <strong>AfriNIC</strong> (非洲网络信息中心) - 非洲地区</li>
+<li>  <strong>APNIC</strong> (亚太网络信息中心) - 亚太地区</li>
+<li>  <strong>ARIN</strong> (美洲互联网号码注册管理机构) - 北美地区</li>
+<li>  <strong>LACNIC</strong> (拉丁美洲及加勒比互联网地址注册管理机构) - 拉丁美洲和部分加勒比海岛屿</li>
+<li>  <strong>RIPE NCC</strong> (欧洲 IP 地址注册中心) - 欧洲、中东和中亚<br>RIR 的职责是向 ISP 分配 IP 地址，而 ISP 将向组织和更小的 ISP 提供 IPv4 地址块。根据 RIR 的政策规定，组织也可直接从 RIR 获取地址。</li>
+</ul>
+<h2 id="网络分段"><a href="#网络分段" class="headerlink" title="网络分段"></a>网络分段</h2><h3 id="广播域和分段"><a href="#广播域和分段" class="headerlink" title="广播域和分段"></a>广播域和分段</h3><p>在以太网局域网中，设备使用广播和地址解析协议 (ARP) 来定位其他设备。地址解析协议 (ARP)将第 2 层广播发送到本地网络上的已知 IPv4 地址，以发现相关 MAC 地址。以太网局域网上的设备还可以使用服务定位其他设备。主机通常需要使用动态主机配置协议 (DHCP) 来获取 IPv4 地址配置，这会发送本地网络上的广播来定位 DHCP 服务器。<br>交换机会将广播传播到所有接口，接收它的接口除外。<br>路由器不传播广播。<br>因此，每个路由器接口都连接了一个广播域，而广播只能在特定广播域内传播。</p>
+<h3 id="大型广播域存在的问题与子网划分"><a href="#大型广播域存在的问题与子网划分" class="headerlink" title="大型广播域存在的问题与子网划分"></a>大型广播域存在的问题与子网划分</h3><p>大型广播域是连接很多主机的网络。大型广播域的一个问题是这些主机会生成太多广播，这会对网络造成不良影响。在图中，局域网1 连接了 400 个用户，可能会产生过量的广播流量。这会导致<strong>网络操作速度缓慢</strong>，因为它会导致大量的流量，而<strong>设备操作变慢</strong>是因为设备必须接受和处理每个广播数据包。</p>
+<p>解决方案是使用称为<strong>子网划分</strong>的过程缩减网络的规模以创建更小的广播域。这些较小的网络空间通常称为“子网”。<br>子网划分可以降低整体网络流量并改善网络性能。它也能让管理员实施安全策略，例如哪些子网允许或不允许进行通信。另一个原因是，它减少了由于错误配置、硬件/软件问题或恶意意图而受到异常广播流量影响的设备数量。</p>
+<h3 id="IPv4-网络的子网"><a href="#IPv4-网络的子网" class="headerlink" title="IPv4 网络的子网"></a>IPv4 网络的子网</h3><p>创建 IPv4 子网时会将一个或多个主机位作为网络位。具体做法是延长子网掩码，从地址的主机部分借用若干位来增加网络位。借用的主机位越多，可以定义的子网也就越多。为了增加子网数量而借用的位越多，每个子网的主机数量就越少。</p>
+<h2 id="VLSM-Variable-Length-Subnetwork-Mask-可变长子网掩码"><a href="#VLSM-Variable-Length-Subnetwork-Mask-可变长子网掩码" class="headerlink" title="VLSM(Variable Length Subnetwork Mask 可变长子网掩码)"></a>VLSM(Variable Length Subnetwork Mask 可变长子网掩码)</h2><p>并不是您创建的每个子网都需要这么多主机，这会导致许多IPv4地址未被使用。也许您需要一个包含更多主机的子网。这就是开发可变长子网掩码 (VLSM) 的原因。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645543803092.png"><br>所有子网都使用相同的子网掩码。这意味着每个子网有相同数量的可用主机地址。如图左边所示，传统子网划分可以创建大小相等的子网。传统方案中每个子网都使用相同的子网掩码。如图右边所示，VLSM 使网络空间能够分为大小不等的部分。使用 VLSM，子网掩码将根据特定子网所借用的位数而变化，从而成为 VLSM 的“变量”部分。<br>使用 VLSM 子网，可以为 LAN 和路由器之间网段提供地址，而不产生不必要浪费。</p>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645547232646.png"><br>n=子网掩码-网络掩码<br>2^n=子网数<br>2^(32-网络掩码-n)-2=主机数<br>子网数*(主机数+2)=2^(32-网络掩码)<br>例：<br>网络管理员将 192.168.10.0/24 网络划分成带 /26 子网掩码的子网。会创建4个相同大小的子网，每个子网可有62台主机<br>2=子网掩码-网络掩码=26-24<br>2^2=子网数=4<br>2^(32-网络掩码-n)-2=2^(8-2)-2=主机数=62<br>子网数*(主机数+2)=4*(62+2)=2^(32-网络掩码)=2^(32-24)</p>
+<p>减二因为最低位(后面全是0)用于表示主机号，最高位(后面全是1)用于表示广播地址</p>
+<p>DMZ：Demilitarized Zone 隔离区</p>
+<h1 id="IPv6编址"><a href="#IPv6编址" class="headerlink" title="IPv6编址"></a>IPv6编址</h1><p>IPv6 旨在接替 IPv4。IPv6 拥有更大的 128 位地址空间，提供 340 涧（即，340后面有36个0）个不确定地址。IETF 已经创建了各种协议和工具来协助网络管理员将网络迁移到 IPv6。迁移技术可分为三类：</p>
+<ul>
+<li><strong>双堆栈</strong>-双堆栈允许 IPv4 和 IPv6 在同一网段上共存。双堆栈设备同时运行 IPv4 和 IPv6 协议栈。称为原生 IPv6</li>
+<li><strong>隧道</strong>-隧道是一种通过 IPv4 网络传输 IPv6 数据包的方法。</li>
+<li><strong>转换</strong>-网络地址转换 64 (NAT64) 允许支持 IPv6 的设备与支持 IPv4 的设备使用类似于 IPv4 中 NAT 的转换技术进行通信。IPv6 数据包被转换为 IPv4 数据包，IPv4 数据包被转换为 IPv6 数据包。</li>
+</ul>
+<h2 id="IPv6-地址表示方法"><a href="#IPv6-地址表示方法" class="headerlink" title="IPv6 地址表示方法"></a>IPv6 地址表示方法</h2><p>书写 IPv6 地址的首选格式为 x:x:x:x:x:x:x:x，每个“x”均包括四个十六进制值。</p>
+<ul>
+<li>第一条有助于缩短 IPv6 地址记法的规则是省略十六进制数中的所有前导 0（零）</li>
+<li>第二条有助于缩短 IPv6 地址记法的规则是使用双冒号 (::) 替换任何由<strong>一个或多个</strong>全由 0 组成的16 位十六进制数组成的<strong>连续</strong>字符串</li>
+<li>双冒号 (::) 仅可在每个地址中<strong>使用一次</strong>，否则可能会得出一个以上的地址。</li>
+</ul>
+<h2 id="IPv6-地址类型"><a href="#IPv6-地址类型" class="headerlink" title="IPv6 地址类型"></a>IPv6 地址类型</h2><h3 id="IPv6-地址三大类"><a href="#IPv6-地址三大类" class="headerlink" title="IPv6 地址三大类"></a>IPv6 地址三大类</h3><ul>
+<li>  <strong>单播</strong> - IPv6 单播地址用于唯一标识支持 IPv6 的设备上的接口。</li>
+<li>  <strong>组播</strong> - IPv6 组播地址用于将单个 IPv6 数据包发送到多个目的地。</li>
+<li>  <strong>任播</strong> -IPv6 任播地址是可分配到多个设备的 IPv6 任播地址。发送至任播地址的数据包会被路由到最近的拥有该地址的设备。<br>与 IPv4 不同，IPv6 没有广播地址。但是，IPv6 具有 IPv6 全节点组播地址，这在本质上与广播地址的效果相同。</li>
+</ul>
+<h3 id="IPv6-前缀长度"><a href="#IPv6-前缀长度" class="headerlink" title="IPv6 前缀长度"></a>IPv6 前缀长度</h3><p>在 IPv4 中，/24 称为前缀。在 IPv6 中，它被称为前缀长度。IPv6 不使用点分十进制子网掩码记法(如255.255.255.0)。与IPv4一样，前缀长度以斜线记法表示，用于表示 IPv6 地址的网络部分。<br>强烈建议对大多数网络使用 64 位接口 ID。这是因为无状态地址自动配置(SLAAC)使用64位作为接口ID。它还使子网划分更易于创建和管理。</p>
+<h3 id="IPv6-单播地址"><a href="#IPv6-单播地址" class="headerlink" title="IPv6 单播地址"></a>IPv6 单播地址</h3><p><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645606597498.png"><br>IPv6地址通常有两个单播地址:</p>
+<ul>
+<li>  <strong>全局单播地址(GUA)</strong> - 这类似于公有 IPv4 地址。这些地址具有全局唯一性，是互联网可路由的地址。GUA可静态配置或动态分配</li>
+<li>  <strong>链路本地地址 (LLA)</strong> -这对于每个支持ipv6的设备都是必需的。LLA用于与同一链路中的其他设备通信。在 IPv6 中，术语“链路”是指子网。LLA仅限于单个链路。它们的唯一性仅在该链路上得到保证，因为它们在该链路之外不具有可路由性。换句话说，路由器不会转发具有本地链路源地址或目的地址的数据包。</li>
+</ul>
+<h3 id="唯一本地地址"><a href="#唯一本地地址" class="headerlink" title="唯一本地地址"></a>唯一本地地址</h3><p>（范围 fc00:: /7 到 fdff:: /7）<br>IPv6 唯一本地地址与 IPv4 的 RFC 1918 私有地址具有相似之处，但是也有着重大差异。</p>
+<ul>
+<li>唯一本地地址用于一个站点内或数量有限的站点之间的本地编址。</li>
+<li>唯一本地地址可用于从来不需要访问其他网络的设备。</li>
+<li>唯一本地地址不会全局路由或转换为全局 IPv6 地址。</li>
+</ul>
+<h3 id="IPv6-全局单播地址-GUA"><a href="#IPv6-全局单播地址-GUA" class="headerlink" title="IPv6 全局单播地址 (GUA)"></a>IPv6 全局单播地址 (GUA)</h3><p>IPv6 全局单播地址 (GUA) 具有全局唯一性，可在 IPv6互联网上路由。这些地址相当于公有 IPv4 地址。互联网名称与数字地址分配机构 (ICANN)，即 IANA 的运营商，将 IPv6 地址块分配给五家 RIR。目前分配的仅是前三位为 001 或 2000::/3 的全局单播地址（GUA）<br><strong>注意</strong>: 2001:db8::/32已经留作备档之用，包括示例用途。<br>下图显示了 GUA 的结构和范围。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645609454686.png"><br>带有 /48 全局路由前缀和 /64 前缀的 IPv6 地址</p>
+<p><strong>GUA 有三个部分：</strong></p>
+<h4 id="全局路由前缀"><a href="#全局路由前缀" class="headerlink" title="全局路由前缀"></a>全局路由前缀</h4><p>全局路由前缀为提供商（如 ISP）分配给客户或站点的地址的前缀或网络部分。例如，ISP 通常会为其客户分配 /48 全局路由前缀。<br>例如，IPv6 地址2001:db8:acad::/48 的全局路由前缀，该前缀表示ISP知道该前缀（网络）的方式是前48位（3个十六进制数）（2001:db8:acad）。/48 前缀长度后面的双冒号 (::) 表示地址的剩余部分全部为 0。全局路由前缀的大小决定子网 ID 的大小。</p>
+<h4 id="子网-ID"><a href="#子网-ID" class="headerlink" title="子网 ID"></a>子网 ID</h4><p>子网ID字段是全局路由前缀和接口ID之间的区域。与IPv4不同，在IPv4中您必须从主机部分借用位来创建子网，IPv6在设计时考虑到了子网。组织使用子网 ID 确定其站点的子网。子网 ID 越大，可用子网越多。<br>使用典型的/64前缀长度，前四个十六进制数是地址的网络部分，其中第四个十六进制数表示子网 ID。剩下的四个十六进制数用于接口 ID。</p>
+<h4 id="接口-ID"><a href="#接口-ID" class="headerlink" title="接口 ID"></a>接口 ID</h4><p>IPv6 接口 ID 相当于 IPv4 地址的主机部分。使用术语“接口 ID”是因为单个主机可能有多个接口，而每个接口又有一个或多个 IPv6 地址。<br>/64 子网或前缀（全局路由前缀 + 子网 ID）为接口 ID 留下 64 位。建议允许启用 SLAAC 的设备创建自己的 64 位接口 ID。它还使得 IPv6 编址计划的开发变得简单而有效。</p>
+<h3 id="IPv6-链路本地地址-LLA"><a href="#IPv6-链路本地地址-LLA" class="headerlink" title="IPv6 链路本地地址 (LLA)"></a>IPv6 链路本地地址 (LLA)</h3><p>IPv6 链路本地地址(LLA)允许设备与同一链路上支持 IPv6 的其他设备通信，并且只能在该链路（子网）上通信。具有源或目的LLA的数据包不能在数据包的源链路之外进行路由。<br><strong>GUA 不是一项要求。但是，每个启用 IPv6 的网络接口都必须有 LLA。</strong><br>如果没有手动为接口配置LLA，设备会在不与 DHCP 服务器通信的情况下自动创建自己的地址。支持 IPv6 的主机会创建 IPv6 LLA，即使没有为该设备分配 IPv6 全局单播地址。这允许支持 IPv6 的设备与同一子网中的其他支持 IPv6 的设备通信。这包括与默认网关（路由器）的通信。<br>IPv6 LLAs在fe80::/10范围内。/10 表示前 10 位是 1111 1110 10xx xxxx。第一个十六进制数的范围是 1111 1110 10<strong>00 0000</strong> (fe80) 到 1111 1110 10<strong>11 1111</strong> (febf)。<br>设备可以通过两种方式获取 LLA：</p>
+<ul>
+<li>  <strong>静态</strong> -这意味着设备已手动配置。</li>
+<li>  <strong>动态</strong> -这意味着设备通过使用随机生成的值或使用扩展唯一标识符 (EUI) 方法创建自己的接口 ID，该方法使用客户端 MAC 地址和其他位。</li>
+</ul>
+<p><strong>注意</strong>: 通常情况下，用作链路上其他设备的默认网关的是路由器的LLA而不是GUA。</p>
+<h2 id="GUA-和-LLA-静态配置"><a href="#GUA-和-LLA-静态配置" class="headerlink" title="GUA 和 LLA 静态配置"></a>GUA 和 LLA 静态配置</h2><p>在 思科IOS 中，大多数 IPv6 的配置和验证命令与 IPv4 的相似。在多数情况下，唯一区别是命令中使用“ipv6”取代“ip”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">使用以下地址在千兆以太网 0/0/0 接口上配置并激活 IPv6：</span><br><span class="line">R1(config)#interface g0/0/0</span><br><span class="line">将 g0/0/0 作为接口名称</span><br><span class="line">R1(config-if)#ipv6 address fe80::1:1 link-local</span><br><span class="line">设置LLA为fe80::1:1注意加“link-local”</span><br><span class="line">R1(config-if)#ipv6 address 2001:db8:acad:1::1/64</span><br><span class="line">设置GUA为2001:db8:acad:1::1/64</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">激活接口</span><br><span class="line">%LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to up</span><br><span class="line">显示已开启</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">退出接口配置模式</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">使用以下地址在串行 0/1/0 接口上配置并激活 IPv6：</span><br><span class="line">R1(config)#interface s0/1/0</span><br><span class="line">将 s0/1/0 作为接口名称</span><br><span class="line">R1(config-if)#ipv6 address fe80::3:1 link-local</span><br><span class="line">设置LLA为fe80::3:1注意加“link-local”</span><br><span class="line">R1(config-if)#ipv6 address 2001:db8:acad:3::1/64</span><br><span class="line">设置GUA为2001:db8:acad:3::1/64</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">激活接口</span><br><span class="line">%LINK-3-UPDOWN: Interface Serial0/1/0, changed state to up</span><br><span class="line">显示已开启</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">退出接口配置模式</span><br></pre></td></tr></table></figure>
+
+<h2 id="GUA动态编址"><a href="#GUA动态编址" class="headerlink" title="GUA动态编址"></a>GUA动态编址</h2><h3 id="RS-and-RA-消息"><a href="#RS-and-RA-消息" class="headerlink" title="RS and RA 消息"></a>RS and RA 消息</h3><p>大多数设备会动态获取其 IPv6 GUA。<br>对于 GUA，设备通过 Internet 控制消息协议版本 6 (ICMPv6) 消息动态获取地址。IPv6 路由器每 200 秒定期将 ICMPv6 RA 消息发送到网络上所有支持 IPv6 的设备。在响应发送 ICMPv6 路由器请求 (RS) 消息的主机时，也会发送 RA 消息，RS消息是对RA消息的请求。</p>
+<p>为路由器启用 IPv6 路由，这在默认情况下是不启用的。若要将路由器启用为 IPv6 路由器，必须使用 <code>ipv6 unicast-routing</code> 全局配置命令。<br>ICMPv6 RA 消息提示设备获取 IPv6 GUA的方式。最终决定取决于设备的操作系统。ICMPv6 RA 消息包括以下：</p>
+<ul>
+<li>  <strong>网络前缀和前缀长度</strong> – 这会告知设备其所属的网络。</li>
+<li>  <strong>默认网关</strong> – IPv6 LLA，RA 消息的源 IPv6 地址。</li>
+<li>  <strong>DNS 地址和域名</strong> – 这些是DNS 服务器的地址和域名。<br>RA 消息有三种方法：</li>
+</ul>
+<h4 id="方法-1：SLAAC-Stateless-address-auto-configuration，无状态地址自动配置"><a href="#方法-1：SLAAC-Stateless-address-auto-configuration，无状态地址自动配置" class="headerlink" title="方法 1：SLAAC(Stateless address auto-configuration，无状态地址自动配置)"></a>方法 1：SLAAC(Stateless address auto-configuration，无状态地址自动配置)</h4><p>SLAAC是一种允许设备在没有DHCPv6服务的情况下创建自己的GUA的方法。使用 SLAAC，设备根据本地路由器的 ICMPv6 路由器通告 (RA) 消息获取必要信息。<br>默认情况下，RA 消息会提示接收设备使用 RA 消息中的信息创建其自己的 IPv6 GUA及其他必要信息。DHCPv6 服务器的服务不是必需项。<br>SLAAC 是无状态的，也就是说没有中央服务器（例如有状态DHCPv6 服务器）来分配GUA和维持设备及其地址的清单。借助 SLAAC，客户端设备使用 RA 消息中的信息创建其自己的GUA。<br>地址的两部分生成如下：</p>
+<ul>
+<li>  <strong>前缀</strong> -这是在 RA 消息中通告的。</li>
+<li>  <strong>接口 ID</strong> -使用 EUI-64 流程或通过生成一个随机 64 位数字产生，取决于设备的操作系统。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645702011889.png" alt="enter description here"></li>
+</ul>
+<h4 id="方法-2：SLAAC-和无状态-DHCPv6-Dynamic-Host-Configuration-Protocol动态主机配置协议"><a href="#方法-2：SLAAC-和无状态-DHCPv6-Dynamic-Host-Configuration-Protocol动态主机配置协议" class="headerlink" title="方法 2：SLAAC 和无状态 DHCPv6(Dynamic Host Configuration Protocol动态主机配置协议)"></a>方法 2：SLAAC 和无状态 DHCPv6(Dynamic Host Configuration Protocol动态主机配置协议)</h4><p>路由器的接口可配置为使用 SLAAC 和无状态 DHCPv6 或仅使用有状态 DHCPv6 发送路由器通告。<br>如图所示，使用此方法，RA 消息建议设备使用以下内容：</p>
+<ul>
+<li>  SLAAC创建自己的IPv6 GUA</li>
+<li>  路由器LLA，是RA源IPv6地址，作为默认网关地址</li>
+<li>  使用无状态 DHCPv6 服务器获取其他信息，例如 DNS 服务器地址和域名。</li>
+<li><em>注意</em>*: 使用无状态 DHCPv6 服务器分配 DNS 服务器地址和域名。它不分配 GUA。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645702026814.png" alt="enter description here"></li>
+</ul>
+<h4 id="方法-3：有状态的DHCPv6"><a href="#方法-3：有状态的DHCPv6" class="headerlink" title="方法 3：有状态的DHCPv6"></a>方法 3：有状态的DHCPv6</h4><p>路由器接口可以配置为仅使用有状态的DHCPv6发送RA。<br>有状态 DHCPv6 与 IPv4 的 DHCP 相似。设备可以从有状态 DHCPv6 服务器自动接收编址信息，包括GUA、前缀长度和 DNS 服务器地址。<br>如图所示，使用此方法，RA 消息建议设备使用以下内容：</p>
+<ul>
+<li>  路由器LLA，是RA源IPv6地址，作为默认网关地址。</li>
+<li>  使用有状态 DHCPv6 服务器获取GUA、DNS 服务器地址、域名和其他必要信息。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645702073373.png" alt="enter description here"><br>使用有状态 DHCPv6 服务器分配并维持哪台设备接收哪个 IPv6 地址的清单。IPv4 的 DHCP 是有状态的。</li>
+<li><em>注意:</em>* 默认网关地址仅可从 RA 消息中动态获取。无状态或有状态 DHCPv6 服务器均不提供默认网关地址。</li>
+</ul>
+<h3 id="EUI-64-流程和随机生成"><a href="#EUI-64-流程和随机生成" class="headerlink" title="EUI-64 流程和随机生成"></a>EUI-64 流程和随机生成</h3><p>当 RA 消息为 SLAAC 或 SLAAC 和无状态 DHCPv6 时，客户端必须生成自己的接口 ID。客户端从 RA 消息中获知地址的前缀部分，但必须创建自己的接口 ID。如图所示，接口 ID 可使用 EUI-64 流程或随机生成的 64 位数字创建。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645702541865.png"><br>IEEE 定义了扩展唯一标识符 (Extended Unique Identifier) 或修改的 EUI-64 流程。该流程使用客户端的 48 位以太网 MAC 地址，并在该 48 位 MAC 地址的中间插入另外 16 位来创建 64 位接口 ID。<br>以太网 MAC 地址一般使用十六进制表示，由两部分组成：</p>
+<ul>
+<li>  **组织唯一标识符 (OUI) **- OUI 为 IEEE 分配的 24 位（6 个十六进制数字）厂商代码。</li>
+<li>  <strong>设备标识符</strong> - 设备标识符是通用 OUI 内的唯一 24 位（6 个十六进制数字）值。<br>EUI-64 接口 ID 以二进制表示，共分三个部分：</li>
+<li>  客户端 MAC 地址的 24 位 OUI，但是第 7 位（通用/本地 (U/L) 位）颠倒。这意味着，如果第 7 位是 0，则它会变为 1，反之亦然。U/L 位的用途和该位值的翻转原因会在 RFC 5342 中讨论。</li>
+<li>  插入的 16 位值 fffe（十六进制）。</li>
+<li>  客户端 MAC 地址的 24 位设备标识符。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645703120047.png"><br>EUI-64 优势在于可以使用以太网 MAC 地址确定接口 ID。这也允许网络管理员使用唯一 MAC 地址轻松跟踪终端设备的 IPv6 地址。</li>
+</ul>
+<p>然而，这引起了许多用户的隐私担忧，他们担心自己的数据包可能会被追踪到实际的物理计算机。出于这些顾虑，可以转而使用<strong>随机生成</strong>的接口 ID。<br>根据操作系统，设备可以使用随机生成的接口 ID，而不使用 MAC 地址和 EUI-64 流程。从 Windows Vista 开始，Windows 使用随机生成的接口 ID，而不是 EUI-64 创建的接口 ID。Windows XP 和之前的 Windows 操作系统均使用 EUI-64。<br><strong>注意</strong>:为确保任何 IPv6 单播地址的唯一性，客户端可以使用重复地址检测 (DAD) 流程。这与 ARP 请求其地址的流程相似。如该请求没有响应，则地址是唯一的。</p>
+<h2 id="LLA动态编址"><a href="#LLA动态编址" class="headerlink" title="LLA动态编址"></a>LLA动态编址</h2><p>所有 IPv6 设备都必须有 IPv6 LLA。与 IPv6 GUA一样，您也可以动态创建 LLA。无论您如何创建LLA(和GUA)，重要的是要验证所有IPv6地址配置。<br>使用fe80::/10 前缀和通过 EUI-64 流程或随机生成的 64 位数字创建的接口 ID 动态创建LLA。</p>
+<h3 id="Windows上的动态LLA"><a href="#Windows上的动态LLA" class="headerlink" title="Windows上的动态LLA"></a>Windows上的动态LLA</h3><p>操作系统，如Windows，通常会对SLAAC创建的GUA和动态分配的LLA使用相同的方法（EUI-64 生成、随机生成）</p>
+<h3 id="思科路由器上的动态LLA"><a href="#思科路由器上的动态LLA" class="headerlink" title="思科路由器上的动态LLA"></a>思科路由器上的动态LLA</h3><p>当为接口分配GUA时，思科路由器会自动创建 IPv6 LLA。默认情况下，思科 IOS 路由器使用 EUI-64 为 IPv6 接口上的所有LLA生成接口 ID。对于串行接口，路由器会使用以太网接口的 MAC 地址。回想一下，LLA在该链路或网络上必须具有唯一性。但是，使用动态分配的LLA的缺点在于其接口 ID 较长，因此很难识别并记住分配的地址。示例显示了路由器 R1 千兆以太网0/0/0 接口的 MAC 地址。该地址用于在同一接口上动态创建LLA，也用于串行0/1/0接口。<br>为了更容易在路由器上识别和记忆这些地址，通常要在路由器上静态配置 IPv6 LLA。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645704177487.png"></p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p><strong>show ipv6 interface brief</strong> 命令会显示以太网接口的 MAC 地址。EUI-64 使用此 MAC 地址生成LLA的接口 ID。此外，<strong>show ipv6 interface brief</strong> 命令用于显示各个接口的缩略输出。与接口位于同一行的 [up/up] 输出指示第 1 层/第 2 层接口状态。这与等效的 IPv4 命令的状态和协议列相同。<br><strong>show ipv6 route</strong> 命令可用于检验 IPv6 网络和特定 IPv6 接口地址已添加到 IPv6 路由表中。该 <strong>show ipv6 route</strong> 命令将仅显示 IPv6 网络，而不显示 IPv4 网络。<br>IPv6 的 <strong>ping</strong> 命令和 IPv4 中这条命令的用法相同，只不过后接使用的是 IPv6 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">输入显示 IPv6 接口状态摘要的 show 命令。</span><br><span class="line">R1#show ipv6 interface brief</span><br><span class="line">GigabitEthernet0/0/0   [up/up]</span><br><span class="line">    FE80::1:1</span><br><span class="line">    2001:DB8:ACAD:1::1</span><br><span class="line">GigabitEthernet0/0/1   [up/up]</span><br><span class="line">    FE80::2:1</span><br><span class="line">    2001:DB8:ACAD:2::1</span><br><span class="line">Serial0/1/0            [up/up]</span><br><span class="line">    FE80::3:1</span><br><span class="line">    2001:DB8:ACAD:3::1</span><br><span class="line">Serial0/1/1            [down/down]</span><br><span class="line">    unassigned</span><br><span class="line">GigabitEthernet0       [administratively down/down]</span><br><span class="line">    unassigned</span><br><span class="line">验证从R1到PC2在2001:db8:acad:1::10的连接性。</span><br><span class="line">R1#show ipv6 route</span><br><span class="line">IPv6 Routing Table - default - 7 entries</span><br><span class="line">Codes: C - Connected, L - Local, S - Static, U - Per-user Static route</span><br><span class="line">       B - BGP, HA - Home Agent, MR - Mobile Router, R - RIP</span><br><span class="line">       H - NHRP, I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea</span><br><span class="line">       IS - ISIS summary, D - EIGRP, EX - EIGRP external, NM - NEMO</span><br><span class="line">       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect</span><br><span class="line">       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2</span><br><span class="line">       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2, la - LISP alt</span><br><span class="line">       lr - LISP site-registrations, ld - LISP dyn-eid, a - Application</span><br><span class="line">C   2001:DB8:ACAD:1::/64 [0/0]</span><br><span class="line">     via GigabitEthernet0/0, directly connected</span><br><span class="line">L   2001:DB8:ACAD:1::1/128 [0/0]</span><br><span class="line">     via GigabitEthernet0/0, receive</span><br><span class="line">C   2001:DB8:ACAD:2::/64 [0/0]</span><br><span class="line">     via GigabitEthernet0/1, directly connected</span><br><span class="line">L   2001:DB8:ACAD:2::1/128 [0/0]</span><br><span class="line">     via GigabitEthernet0/1, receive</span><br><span class="line">C   2001:DB8:ACAD:3::/64 [0/0]</span><br><span class="line">     via Serial0/0/1, directly connected</span><br><span class="line">L   2001:DB8:ACAD:3::1/128 [0/0]</span><br><span class="line">     via Serial0/0/1, receive</span><br><span class="line">L   FF00::/8 [0/0]</span><br><span class="line">     via Null0, receive</span><br><span class="line"></span><br><span class="line">R1#ping 2001:db8:acad:1::10</span><br><span class="line">Type escape sequence to abort.</span><br><span class="line">Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:1::10, timeout is 2 seconds:</span><br><span class="line">!!!!!</span><br><span class="line">Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms</span><br><span class="line">您已成功验证 IPv6 地址配置。</span><br></pre></td></tr></table></figure>
+
+<h2 id="IPv6-组播地址"><a href="#IPv6-组播地址" class="headerlink" title="IPv6 组播地址"></a>IPv6 组播地址</h2><p>IPv6 组播地址类似于 IPv4 组播地址。回想一下，组播地址用于发送单个数据包到一个或多个目标（组播组）。IPv6 组播地址的前缀为ff00::/8。<br>IPv6 组播地址分为两种类型：</p>
+<ul>
+<li>  知名组播地址</li>
+<li>  请求节点组播地址</li>
+</ul>
+<h3 id="知名组播地址"><a href="#知名组播地址" class="headerlink" title="知名组播地址"></a>知名组播地址</h3><p>已分配的知名IPv6 组播地址。分配的组播地址是为预先定义的设备组保留的组播地址。<br>这些是两种常见的 IPv6 分配组播组：</p>
+<ul>
+<li>  <strong>ff02::1全节点组播组</strong> -这是一个包含<strong>所有支持 IPv6 的设备的组播组</strong>。发送到该组的数据包由该链路或网络上的所有 IPv6 接口接收和处理。这与 IPv4 中的广播地址具有相同的效果。</li>
+<li>  <strong>ff02::2:全路由器组播组</strong> - 这是<strong>所有IPv6路由器加入的组播组</strong>。当在IPv6路由器全局模式下启用ipv6 unicast-routing命令后，该路由器即成为该组的成员。发送到该组的数据包由该链路或网络上的所有 IPv6 路由器接收和处理。</li>
+</ul>
+<h3 id="请求节点组播地址"><a href="#请求节点组播地址" class="headerlink" title="请求节点组播地址"></a>请求节点组播地址</h3><p>请求节点组播地址类似于全节点组播地址(ff02)。请求节点组播地址的优势在于它被映射到特殊的以太网组播地址。这使得以太网网卡可以通过检查目的 MAC 地址过滤该帧，而不是将它发送给 IPv6 流程来判断该设备是否是 IPv6 数据包的既定目标。</p>
+<h2 id="IPv6-网络的子网划分"><a href="#IPv6-网络的子网划分" class="headerlink" title="IPv6 网络的子网划分"></a>IPv6 网络的子网划分</h2><p>使用IPv4时，我们必须从主机部分借用位来创建子网。这是因为对IPv4来说，子网划分是事后才想到的。但是，IPv6 的设计考虑到了子网划分。IPv6 GUA中的一个单独的子网ID字段用于创建子网。如图所示，子网ID字段是全局路由前缀和接口ID之间的区域。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN11-13/1645704992473.png"><br>128 位地址的好处在是，它可以为每个网络支持足够多的子网并为每个子网支持足够多的主机。地址保留不是问题。</p>
+<ul>
+<li>  <strong>16 位子网 ID</strong> -创建多达 65,536 个子网</li>
+<li>  <strong>64 位接口 ID</strong> -每个子网支持多达 1800亿亿个主机 IPv6 地址（即 18,000,000,000,000,000,000）</li>
+</ul>
+<h3 id="配置命令"><a href="#配置命令" class="headerlink" title="配置命令"></a>配置命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">R1(config)# interface gigabitethernet 0/0/0</span><br><span class="line">R1(config-if)# ipv6 address 2001:db8:acad:1::1/64</span><br><span class="line">R1(config-if)# no shutdown</span><br><span class="line">R1(config-if)# exit</span><br><span class="line">R1(config)# interface gigabitethernet 0/0/1</span><br><span class="line">R1(config-if)# ipv6 address 2001:db8:acad:2::1/64</span><br><span class="line">R1(config-if)# no shutdown</span><br><span class="line">R1(config-if)# exit</span><br><span class="line">R1(config)# interface serial 0/1/0</span><br><span class="line">R1(config-if)# ipv6 address 2001:db8:acad:3::1/64</span><br><span class="line">R1(config-if)# no shutdown</span><br></pre></td></tr></table></figure>
+
+<p>命令<strong>ping ::1</strong>用于测试IPv6主机的内部配置<br><strong>::1</strong> 是一个环回地址。成功地ping到这个地址意味着正确地安装了TCP/IP堆栈。</p>
+<h1 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h1><h2 id="ICMP-消息"><a href="#ICMP-消息" class="headerlink" title="ICMP 消息"></a>ICMP 消息</h2><p>虽然 IP 只是“尽最大努力”的协议，但在与另一个IP设备通信时，TCP/IP套件确实提供了错误消息和参考消息。这些消息使用 ICMP 服务发送。其用途是就特定情况下处理 IP 数据包的相关问题提供反馈，而并非是使 IP 可靠。ICMP 消息并非必需的，而且在网络内通常出于安全原因而被禁止。<br>ICMP 可同时用于 IPv4 和 IPv6。ICMPv4 是 IPv4 的消息协议。ICMPv6 为 IPv6 提供相同的服务，此外，还包括其他功能。在本课程中，涉及 ICMPv4 和 ICMPv6 时均会使用术语 ICMP。<br>ICMP 消息的类型及其发送原因非常多。ICMPv4 和 ICMPv6 <strong>通用的</strong> ICMP 消息包括：</p>
+<h3 id="主机联通性"><a href="#主机联通性" class="headerlink" title="主机联通性"></a>主机联通性</h3><p>ICMP Echo消息可用于测试 IP 网络上主机的可达性。</p>
+<h3 id="目的地或服务不可达"><a href="#目的地或服务不可达" class="headerlink" title="目的地或服务不可达"></a>目的地或服务不可达</h3><p>当主机或网关收到无法传送的数据包时，它会使用 ICMP 目的地不可达消息通知源主机，目的地或服务无法到达。消息包括指示数据包为何无法传送的代码。<br>ICMPv4 的目的地不可达代码示例有：</p>
+<ul>
+<li>  0 - 网络不可达。</li>
+<li>  1 - 主机不可达。</li>
+<li>  2 - 协议不可达。</li>
+<li>  3 - 端口不可达。</li>
+</ul>
+<p>ICMPv6 的目的地不可达代码示例有：</p>
+<ul>
+<li>  0-没有通往目标的路由。</li>
+<li>  1-管理上禁止与目的地通信（例如防火墙）</li>
+<li>  2-超出源地址的范围</li>
+<li>  3-地址无法访问</li>
+<li>  4-端口不可达。</li>
+<li><em>注意</em>*: ICMPv6 的目的地不可达消息代码与此类似，但稍有不同。</li>
+</ul>
+<h3 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h3><p>路由器使用 ICMPv4 超时消息表明，因为数据包的生存时间 (TTL) 字段递减到 0 而不能转发该数据包。如果路由器接收数据包并且将 IPv4 数据包的 TTL 字段的值递减为零，则它会丢弃数据包并向源主机发送超时消息。<br>如果路由器因数据包过期而无法转发 IPv6 数据包，ICMPv6 也会发送超时消息。ICMPv6使用IPv6<strong>跳数限制</strong>字段来确定数据包是否已过期，而不是IPv4 TTL字段。</p>
+<h3 id="ICMPv6-特有-消息"><a href="#ICMPv6-特有-消息" class="headerlink" title="ICMPv6 (特有)消息"></a>ICMPv6 (特有)消息</h3><p>在 ICMPv6 中发现的信息和错误消息非常类似于 ICMPv4 的控制和错误消息。但是，ICMPv6 拥有 ICMPv4 中所没有的新特性和功能提升。ICMPv6 消息封装在 IPv6 中。<br>ICMPv6 在邻居发现协议（ND 或 NDP）中包括四个新协议。<br>IPv6 路由器和 IPv6 设备之间的消息传递，包括动态地址分配如下所示：</p>
+<ul>
+<li>  <strong>路由器请求 (RS) 消息</strong>-RS消息是对RA消息的请求。一个IPv6主机启动后将发送一个RS。</li>
+<li>  <strong>路由器通告 (RA) 消息</strong>-启用IPv6的路由器每200秒发送RA消息，向启用IPv6的主机提供编址信息。RA 消息中可以包含主机的编址信息，例如前缀、前缀长度、DNS 地址和域名。使用 SLAAC 的主机会将其默认网关设置为发送 RA 的路由器的本地链路地址。<br>IPv6 设备之间的消息传递，包括重复的地址检测和地址解析如下所示：</li>
+<li>  <strong>邻居请求 (NS) 消息</strong>-当设备分配有全局IPv6单播或本地链路单播地址时，则建议对地址执行 重复检测（DAD） 来确保IPv6地址的唯一性。如果网络中的其他设备具有该地址，则会使用 NA 消息进行响应。此 NA 消息通知发送方设备地址已在使用。如果回应的 NA 消息未在固定的一段时间返回，则单播地址是唯一的，可以使用。</li>
+<li>  <strong>邻居通告 (NA) 消息</strong>-当 LAN 上的设备知道目的 IPv6 单播地址，但不知道其以太网 MAC 地址时，会使用地址解析。要确定目的 MAC 地址，设备会将 NS 消息发送到请求节点地址。该消息包括已知（目标）IPv6 地址。具有目标 IPv6 地址的设备会使用包含其以太网 MAC 地址的 NA 消息进行回应。</li>
+<li><em>注意</em>*: ICMPv6 ND 还包括重定向消息，与 ICMPv4 中使用的重定向消息功能相似。</li>
+</ul>
+<h2 id="Ping-和-Traceroute-测试"><a href="#Ping-和-Traceroute-测试" class="headerlink" title="Ping 和 Traceroute 测试"></a>Ping 和 Traceroute 测试</h2><h3 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h3><p>Ping 是一种测试程序，它使用 ICMP Echo请求和Echo应答消息来测试主机之间的连接。<br>为了测试与网络上的另一台主机的连接，可使用 ping 命令将回应请求发送给该主机地址。若指定地址处的主机收到回应请求，便会使用Echo应答进行响应。每收到一个Echo应答，ping都会提供发出请求与收到应答的时间反馈。这可以作为网络性能的度量。<br>Ping 对响应规定了超时值。如果在超时前没有收到应答，ping 会提供一条消息，表示未收到响应。这可能表示存在问题，但是，还可能表示在网络上启用了阻止 ping 消息的安全功能。如果在发送ICMP Echo请求之前需要执行地址解析(ARP或ND)，那么第一次ping通常会超时。<br>所有请求发送完毕后，ping实用程序会提供摘要，包括成功率和到达目的地的平均往返时间。</p>
+<p>在路由器上输入 <strong>ping</strong> 命令时，最常见的指示符如下所示：</p>
+<ul>
+<li>  <strong>!</strong> - 表示收到一个 ICMP Echo 应答消息</li>
+<li>  <strong>.</strong> - 表示超时，正在等待 ICMP Echo应答消息</li>
+<li>  <strong>U</strong> - 表示收到了一个 ICMP 无法到达的消息</li>
+</ul>
+<p>使用<strong>ping</strong>进行的连通性测试的类型包括:</p>
+<ul>
+<li>  <strong>Ping 本地环回</strong>-从 127.0.0.1 接收的 IPv4 响应或从 ::1 接收的 IPv6 响应，表示主机上的 IP 安装正确。此响应来自网络层。但是，此响应并不代表地址、掩码或网关配置正确。它也不能说明有关网络协议栈下层的任何状态。它只测试 IP 网络层的 IP 连接。如果收到错误消息，则表示该主机上的 TCP/IP 无法正常运行。</li>
+<li>  <strong>向默认网关发出 ping 命令</strong>-成功 ping通网关表示主机和充当网关的路由器接口在本地网络中均运行正常。</li>
+<li>  <strong>Ping 远程主机</strong>-如果 ping 成功，则说明网际网络大部分运行正常。在互联网络上成功 ping通即确认本地网络上的通信正常，充当网关的路由器运行正常，且可能位于本地网络和远程主机网络之间路径上的所有其他路由器运行正常。</li>
+</ul>
+<h3 id="Traceroute"><a href="#Traceroute" class="headerlink" title="Traceroute"></a>Traceroute</h3><p>Ping 用于测试两台主机之间的连接，但是不提供关于主机之间设备的详细信息。Traceroute <strong>tracert</strong>实用程序可以生成通信路径上成功到达的设备列表。此列表可以提供重要的验证和故障排除信息。如果数据到达目的地，则 Trace 就会列出主机之间的路径中每台路由器上的接口。如果数据在沿途的某一跳上失败，则回应 Trace 的最后一个路由器的地址可以提供指示，说明发现问题或有安全限制的地方。<br><strong>往返时间</strong><br>Traceroute 可提供沿路径每一跳的往返时间并指示是否有某一跳未响应。往返时间是数据包到达远程主机以及从该主机返回响应所花费的时间。星号 * 用于表示丢失的或无应答的数据包。<br>此信息可用于在路径中定位有问题的路由器，或表示路由器配置为不应答。如果显示器显示特定的某一跳响应时间长或数据丢失，这表示该路由器的资源或其连接可能压力过大。<br><strong>IPv4 TTL 和 IPv6 跳数限制</strong><br>Traceroute 使用第 3 层报头中的 IPv4 TTL 字段功能和 IPv6 跳数限制字段功能以及 ICMP 超时消息。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN8-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN8-10/" class="post-title-link" itemprop="url">ITN 8-10</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-28 16:53:18" itemprop="dateCreated datePublished" datetime="2022-02-28T16:53:18+08:00">2022-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>IP 版本 4 (IPv4) 和 IP 版本 6 (IPv6) 是主要的网络层通信协议。其他网络层协议包括路由协议，如开放式最短路径优先协议(OSPF)，和消息传递协议，如Internet控制消息协议(ICMP)。</p>
+<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><p>为了实现跨网络边界的端到端通信，网络层协议执行四个基本操作:</p>
+<ul>
+<li>  <strong>终端设备编址</strong> - 必须为终端设备配置唯一的 IP 地址，以便在网络上进行识别。</li>
+<li>  <strong>封装</strong> - 网络层将来自传输层的协议数据单元 (PDU) 封装到数据包中。封装过程中会添加 IP 报头信息，例如来源（发送）和目的（接收）主机的 IP 地址。封装过程由 IP 数据包的源主机执行。</li>
+<li>  <strong>路由</strong> - 网络层提供服务，将数据包转发至另一网络上的目的主机。要传送到其他网络，数据包必须经过路由器的处理。路由器的作用是为数据包选择最佳路径，并将其转发至目的主机，该过程称为路由。数据包可能需要经过很多路由器才能到达目的主机。数据包在到达目的主机的过程中经过的每个路由器均称作一跳。</li>
+<li>  <strong>解封</strong> - 当数据包到达目的主机的网络层时，主机会检查数据包的 IP 报头。如果在报头中的目的 IP 地址与其自身的 IP 地址匹配，IP 报头将被会从数据包中删除。网络层解封数据包后，后继的第 4 层 PDU 会向上传递到传输层的相应服务。解封过程由 IP 数据包的目的主机执行。</li>
+</ul>
+<h3 id="IP封装"><a href="#IP封装" class="headerlink" title="IP封装"></a>IP封装</h3><p>IP 通过添加 IP 报头将传输层数据段或其他数据进行封装。IP报头用于将数据包传送到目的主机。<br>路由器实施路由协议以在网络之间路由数据包。这些中间设备所执行的路由进程会检查数据包报头中的网络层地址。在任何情况下，数据包的数据部分，即封装的传输层 PDU或其他数据，在网络层的各个过程中都保持不变。</p>
+<h3 id="IP特征"><a href="#IP特征" class="headerlink" title="IP特征"></a>IP特征</h3><p>IP 被设计为一种低开销协议只提供通过互连的网络系统从源主机向目的主机传送数据包所必需的功能。该协议并不负责跟踪和管理数据包的流动。<br>IP的基本特征：</p>
+<ul>
+<li>  <strong>无连接</strong> - 发送数据包前不与目的地建立连接。</li>
+<li>  <strong>尽力而为</strong> - IP本质上是不可靠的，因为不保证数据包交付。</li>
+<li>  <strong>介质无关性</strong> - 其工作与传输数据的介质（即铜缆、光纤或无线）无关。但是网络层会考虑介质的一个重要特征：每种介质可以传输的最大 PDU 大小。此特征称为最大传输单位 (MTU)。数据链路层为网络层指示所用介质的 MTU</li>
+</ul>
+<h2 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h2><p>IPv4 数据包报头是由包含重要数据包信息的字段组成。这些字段中包含的二进制数字由第 3 层进程进行检查。<br>图中所示的 IP 协议报头图标识了 IPv4 数据包中的字段。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN8-10/1645441397036.png"><br>IPv4 <strong>报头</strong>中的重要字段包括以下：</p>
+<ul>
+<li>  <strong>版本 -</strong> 包含一个 4 位二进制值 0100，<strong>用于</strong>标识这是 IPv4 数据包。</li>
+<li>  <strong>差分服务或区分服务 (DS) -</strong> 以前称为服务类型 (ToS) 字段，DS 字段是一个 8 位字段，<strong>用于</strong>确定每个数据包的优先级。DiffServ 字段的六个最高有效位是区分服务代码点 (DSCP)位，而后两位是显式拥塞通知 (ECN) 位。</li>
+<li>  <strong>报头校验和 -</strong> 这<strong>用于</strong>检测 IPv4 报头中的损坏。</li>
+<li>  <strong>生存时间 (TTL) -</strong> TTL包含一个 8 位二进制值，<strong>用于</strong>限制数据包的生命周期。IPv4 数据包的源设备设置初始 TTL 值。当数据包每被路由器处理一次，数值就减少一。如果 TTL 字段的值减为零，则路由器将丢弃该数据包并向源 IP 地址发送互联网控制消息协议 (ICMP) 超时消息。由于路由器减少每个数据包的 TTL，因此路由器也必须重新计算报头校验和。</li>
+<li>  <strong>协议 -</strong> 该字段<strong>用于</strong>标识下一级协议。此 8 位二进制值表示数据包包含的数据负载类型，使网络层将数据传送到相应的上层协议。常用的值包括 ICMP (1)、TCP (6) 和 UDP (17)。</li>
+<li>  <strong>源 IPv4 地址 -</strong> 包含表示数据包源 IPv4 地址的 32 位二进制值。源 IPv4 地址始终为单播地址。</li>
+<li>  <strong>目的 IPv4 地址 -</strong> 包含 32 位二进制值，表示数据包的目的 IPv4 地址。目的 IPv4 地址为单播、组播或广播地址。</li>
+<li>  <strong>互联网报头长度</strong> (IHL)、<strong>总长度</strong>和<strong>报头校验和</strong>字段均<strong>用于</strong>识别和验证数据包。</li>
+<li>  具体而言，IPv4 数据包使用标识符、标志和片偏移量字段跟踪分段。路由器从一种介质向具有较小 MTU(最大传输单元) 的另一种介质转发IPv4数据包时必须将它分片。</li>
+</ul>
+<h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><p>IPv4 三个重要问题：</p>
+<ul>
+<li>  <strong>IPv4地址耗尽</strong> - IPv4 的可用唯一公有地址数量有限。尽管有大约 40 亿(32位)的 IPv4 地址，但是支持 IP 的新设备数量的不断增加，以及始终在线的连接的增加，和欠发达地区的潜在连接的增加，不断催生更多的地址需求。</li>
+<li>  <strong>缺乏端到端连接</strong> - 网络地址转换 (NAT) 是 IPv4 网络中经常实施的一项技术。NAT 为多种设备共享单一的公有 IPv4 地址提供方法。但是，因为共享了公有 IPv4 地址，内部网络主机的 IPv4 地址会隐藏起来。这会给需要端到端连接的技术造成难题。</li>
+<li>  <strong>增加的网络复杂性</strong> - 虽然NAT延长了IPv4的寿命，但它只是作为一种过渡到IPv6的机制。NAT在其各种实施中增加了网络的复杂性，从而造成延迟并使故障排除更加困难。<br>IPv6 的功能提升包括：</li>
+<li>  <strong>更大的地址空间</strong> - IPv6 地址基于 128 位分层编址，而 IPv4 采用的是 32 位。</li>
+<li>  <strong>改进数据包处理过程</strong> - IPv6 报头简化为更少的字段。</li>
+<li>  <strong>消除了对 NAT 的需求</strong> - 有了数额如此巨大的公有 IPv6 地址，私有 IPv4 地址和公有 IPv4 地址之间不再需要 NAT。这可避免需要端到端连接的应用程序遇到某些由 NAT 引起的故障。</li>
+</ul>
+<h3 id="报头"><a href="#报头" class="headerlink" title="报头"></a>报头</h3><p><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN8-10/1645442014282.png"><br>IPv6 数据包报头中的字段包括以下：</p>
+<ul>
+<li>  <strong>版本</strong> - 此字段包含一个 4 位二进制值 0110，<strong>用于</strong>标识这是 IPv6 数据包。</li>
+<li>  <strong>流量类别</strong> - 此 8 位字段<strong>相当于</strong>IPv4 区分服务 (DS)字段。</li>
+<li>  <strong>流标签</strong> - 此 20 位字段建议所有含相同流标签的数据包接受相同类型的路由器处理。</li>
+<li>  <strong>负载长度</strong> - 此 16 位字段<strong>表示</strong> IPv6 数据包的数据部分或负载的长度。这不包括 IPv6 报头的长度，它是固定的 40 字节报头。</li>
+<li>  <strong>下一报头</strong> - 此 8 位字段<strong>相当于</strong>“IPv4 协议”字段。它表示数据包传送的数据负载类型，使网络层将数据传送到相应的上层协议。</li>
+<li>  <strong>跳数限制</strong> - 此 8 位字段<strong>取代</strong> IPv4 的 TTL 字段。每个转发数据包的路由器均会使此数值减一。当跳数达到 0 时，会丢弃此数据包，并且会向发送主机转发 ICMPv6 超时消息。这表明包没有到达目的地，因为超出了跳数限制。与 IPv4 不同，IPv6 不包括 IPv6 报头校验和，因为此功能同时在下层和上层执行。这意味着校验和不需要在每个路由器降低跳数限制字段时重新计算，这也提高了网络性能。</li>
+<li>  <strong>源 IPv6 地址</strong> - 此 128 位字段用于标识发送主机的 IPv6 地址。</li>
+<li>  <strong>目的 IPv6 地址</strong> - 此 128 位字段用于标识接收主机的 IPv6 地址。<br>IPv6 数据包还可能包含扩展报头 (EH)，以便提供可选的网络层信息。扩展报头为可选项，位于 IPv6 报头及负载之间。EH 用于分段、安全性、移动性支持等。<br>与 IPv4 不同，路由器不会对路由的 IPv6 数据包进行分段。</li>
+</ul>
+<h2 id="主机路由方式"><a href="#主机路由方式" class="headerlink" title="主机路由方式"></a>主机路由方式</h2><p>对于IPv4和IPv6，数据包总是在源主机上创建，为此主机终端设备将创建自己的路由表。<br>主机可以将数据包发送至如下：</p>
+<ul>
+<li>  <strong>主机自己</strong> - 主机可以通过向特定的地址发送数据包来向自己发起ping测试，这个<strong>特定的地址</strong>是：IPv4地址127.0.0.1，或者IPv6地址 ::1，它被称为环回接口。对环回接口执行 ping 操作可以测试主机上的 TCP/IP 协议堆栈。</li>
+<li>  <strong>本地主机</strong>- 目的主机与发送主机位于同一本地网络。源和目的主机共享同一个网络地址。</li>
+<li>  <strong>远程主机</strong> - 这是位于远程网络上的目的主机。源和目的主机不共享同一个网络地址。<br>数据包是要发送到本地主机还是远程主机是由源端设备决定的。源端设备确定目的 IP 地址是否与源设备本身所在的网络相同。确定方法因 IP 版本不同而异：</li>
+<li>  <strong>在 IPv4 中</strong> -源设备使用自己的子网掩码以及自己的 IPv4 地址和目的 IPv4 地址来进行此判断。</li>
+<li>  <strong>在 IPv6 中</strong> -本地路由器将本地网络地址（前缀）通告给网络上的所有设备。</li>
+</ul>
+<h3 id="默认网关"><a href="#默认网关" class="headerlink" title="默认网关"></a>默认网关</h3><p>默认网关是可以将流量路由到其他网络的网络设备，通常是具有以下功能的路由器：</p>
+<ul>
+<li>  它拥有与本地网络其他主机位于相同地址范围的本地 IP 地址。</li>
+<li>  它可以接受数据到本地网络，并将数据转发出本地网络。</li>
+<li>  它向其他网络路由流量。<br>主机的路由表通常包括默认网关。在IPv4中，主机通过动态主机配置协议 (DHCP) 动态接收默认网关 IPv4 地址，或者通过手动配置。在 IPv6 中，路由器通告默认网关地址，或者可以在主机上手动配置。<br>配置默认网关会在 PC 的路由表中创建一个默认路由。默认路由是计算机尝试联系远程网络时所用的路由或路径。<br>PC1 和 PC2 都会使用默认路由将去往远程网络的所有流量发送到 R1。</li>
+</ul>
+<h3 id="路由表"><a href="#路由表" class="headerlink" title="路由表"></a>路由表</h3><p>路由表存储三种类型的路由条目：</p>
+<ul>
+<li>  <strong>直连网络-</strong> 这些网络路由条目是活动的路由器接口。当接口配置了 IP 地址并激活时，路由器会添加直连路由。每个路由器接口均连接到一个不同的网段。在图中，R1 IPv4路由表中的直连网络为192.168.10.0/24和209.165.200.224/30。</li>
+<li>  <strong>远程网络</strong> - 这些网络路由条目连接到其他路由器。路由器通过由管理员明确配置或使用动态路由协议交换路由信息来学习远程网络。在图中，R1 IPv4路由表中的远程网络为10.1.1 /24。</li>
+<li>  <strong>默认路由</strong> -像主机一样，大多数路由器还包含默认路由条目，即默认网关。当IP路由表中没有更好(更长)的匹配时，将使用默认路由。在图中，R1 IPv4路由表很可能包含一个将所有数据包转发到路由器R2的默认路由。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN8-10/1645444562285.png"></li>
+</ul>
+<h3 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h3><p>静态路由是手动配置的路由条目。如果网络拓扑改变，静态路由不会自动更新<br>静态路由具有以下特征：</p>
+<ul>
+<li>  必须手动配置静态路由。</li>
+<li>  如果拓扑发生变化，且静态路由不再可用，则管理员需要重新配置静态路由。</li>
+<li>  静态路由适用于小型网络且当冗余链路很少或没有冗余链路的情况。</li>
+<li>  静态路由通常与动态路由协议一起用于配置默认路由。<h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3>动态路由协议可让路由器从其他路由器那里自动学习远程网络，包括默认路由。如果使用动态路由协议，则路由器无需网络管理员的参与，即可自动与其它路由器共享路由信息并对拓扑结构的变化作出反应。如果网络拓扑发生变化，路由器将使用动态路由协议共享此信息，并自动更新路由表。<br>动态路由协议包括<strong>OSPF</strong>和增强型内部网关路由协议 (<strong>EIGRP</strong>)。<br>动态路由协议将自动执行如下操作：</li>
+<li>  发现远程网络</li>
+<li>  维护最新路由信息</li>
+<li>  选择通往目的网络的最佳路径</li>
+<li>  当前路径无法再使用时尝试找出新的最佳路径<br>通常一些路由器会同时使用静态路由和动态路由协议。</li>
+</ul>
+<h3 id="路由表命令"><a href="#路由表命令" class="headerlink" title="路由表命令"></a>路由表命令</h3><p>在 Windows 主机上，使用route print或命netstat -r令可以显示主机路由表。<br>特权 EXEC 模式命令 <strong>show ip route</strong> 用于查看思科 IOS 路由器上的 IPv4 路由表。每个路由表条目的开头都有一个代码，用于标识路由的类型或路由的学习方式。常见路由源（代码）包括以下内容：</p>
+<ul>
+<li>  <strong>L</strong> - 直连的本地接口 IP 地址</li>
+<li>  <strong>C</strong> - 直连网络</li>
+<li>  <strong>S</strong> - 静态路由由管理员手动配置</li>
+<li>  <strong>O</strong> - OSPF</li>
+<li>  <strong>D</strong> - EIGRP</li>
+</ul>
+<h1 id="地址解析"><a href="#地址解析" class="headerlink" title="地址解析"></a>地址解析</h1><p>有时，主机必须发送消息，但它只知道目的设备的 IP 地址。主机需要知道该设备的MAC地址，但是如何才能发现它呢? 这就是地址解析变得至关重要的地方。</p>
+<h2 id="MAC-和-IP"><a href="#MAC-和-IP" class="headerlink" title="MAC 和 IP"></a>MAC 和 IP</h2><ul>
+<li>物理地址（MAC 地址） – 用于同一网络上的以太网网卡之间的通信。</li>
+<li>逻辑地址（IP地址） – 用于将数据包从源设备发送到目的设备。目的IP地址可能与源地址在同一个IP网络上，也可能在远程网络上<br>数据流中 IP 数据包的 IP 地址如何与通往目的地路径中每条链路上的 MAC 地址相关联？对于IPv4数据包，这可以通过地址解析协议 (ARP) 过程来完成。对于IPv6数据包，这个过程是ICMPv6邻居发现(ND)。</li>
+</ul>
+<h2 id="⁪ARP"><a href="#⁪ARP" class="headerlink" title="⁪ARP"></a>⁪ARP</h2><p>设备使用地址解析协议(ARP)来确定一个已知 IPv4 地址的本地设备的目的MAC地址。当数据包发送到要封装入以太网帧的数据链路层时，设备将参照其内存中的表来查找映射至 IPv4 地址的 MAC 地址。此表临时存储在RAM内存中，称为 ARP 表或 ARP 缓存。<br>ARP 提供两个基本功能：</p>
+<ul>
+<li>  将 IPv4 地址解析为 MAC 地址</li>
+<li>  维护IPv4到MAC地址映射表</li>
+</ul>
+<h3 id="ARP请求与应答"><a href="#ARP请求与应答" class="headerlink" title="ARP请求与应答"></a>ARP请求与应答</h3><p>如果设备找到 IPv4 地址，其相应的 MAC 地址将作为帧中的目的 MAC 地址。如果找不到该条目，设备会发送一个 ARP 请求。<br>ARP 请求使用以下帧头信息封装在以太网帧中：</p>
+<ul>
+<li>  <strong>目的 MAC 地址</strong> – 这是一种要求 LAN 上的所有以太网网卡接受并处理 ARP 请求的广播地址FF-FF-FF-FF-FF-FF。</li>
+<li>  <strong>源 MAC 地址</strong> – 这是ARP请求发送方的MAC地址。</li>
+<li>  <strong>类型</strong> - ARP 消息的类型字段为 0x806。该类型字段会通知接收网卡需要将帧的数据部分传递给 ARP 进程处理。<br>只有具有与ARP请求相应的目的IPv4地址的设备才会以ARP应答做出响应。ARP 应答使用以下帧头信息封装在以太网帧中：</li>
+<li>  <strong>目的 MAC 地址</strong> – 这是ARP请求发送方的MAC地址。</li>
+<li>  <strong>源 MAC 地址</strong> – 这是ARP应答发送方的MAC地址。</li>
+<li>  <strong>类型</strong> – ARP 消息的类型字段为 0x806。该类型字段会通知接收网卡需要将帧的数据部分传递给 ARP 进程处理。<br>只有原始发送 ARP 请求的设备会收到单播 ARP 应答。收到该 ARP 应答后，设备会将 IPv4 地址及相应的 MAC 地址添加到自身的 ARP 表中。</li>
+</ul>
+<h3 id="ARP表的删除"><a href="#ARP表的删除" class="headerlink" title="ARP表的删除"></a>ARP表的删除</h3><p>对于每台设备，ARP 缓存定时器将会删除在指定时间内未使用的 ARP 条目。时间根据设备的操作系统不同而不同。例如，较新的 Windows 操作系统将 ARP 表条目存储 15 秒到 45 秒之间，如图所示。</p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p>在思科路由器上，show ip arp命令用于显示 ARP 表。<br>在 Windows 10 PC 上，arp –a命令用于显示 ARP 表。</p>
+<h3 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h3><ul>
+<li>广播时对性能的影响<br>作为广播帧，本地网络上的每台设备都会收到并处理 ARP 请求。在一般的商业网络中，这些广播对网络性能的影响可能微不足道。但是，如图所示，如果大量设备都已启动，并且同时开始使用网络服务，网络性能可能会有短时间的下降。在设备发出初始 ARP 广播并获取必要的 MAC 地址之后，网络受到的影响将会降至最小。</li>
+<li>ARP欺骗<br>有时，使用 ARP 可能会造成潜在的安全风险。威胁发起者可以使用 ARP 欺骗来执行 ARP 毒化攻击。威胁发起者使用这种技术来应答属于另一台设备（例如默认网关）的 IPv4 地址的 ARP 请求。威胁发起者会发送一个带有自己 MAC 地址的 ARP 应答。ARP 应答的接收方会将错误的 MAC 地址添加到其 ARP 表中，并将这些数据包发送给威胁发起者。<br>企业级的交换机包含称为动态 ARP 检查 (DAI) 的缓解技术。</li>
+</ul>
+<h2 id="邻居发现"><a href="#邻居发现" class="headerlink" title="邻居发现"></a>邻居发现</h2><p>IPv6 使用与 IPv4 类似的 ARP 流程，称为 ICMPv6 邻居发现(ND或NDP)。与 IPv4 的 ARP 请求和 ARP 应答类似，IPv6 使用邻居请求和邻居通告消息。<br>ICMPv6 ND （在 IETF RFC 4861 中定义）使用五种 ICMPv6 消息来执行这些服务：</p>
+<ul>
+<li>  邻居请求消息</li>
+<li>  邻居通告消息</li>
+<li>  路由器请求消息</li>
+<li>  路由器通告消息</li>
+<li>  重定向消息<br>邻居请求和邻居通告消息用于设备到设备的消息传递，例如地址解析（类似于 IPv4 的 ARP）。设备包括主机计算机和路由器。ICMPv6邻居请求消息使用特定的以太网和IPv6组播地址发送。<br>路由器请求和路由器通告消息用于设备和路由器之间的消息传递。通常，路由器发现用于动态地址分配和<strong>无状态地址自动配置</strong> (SLAAC)。<br>重定向消息用于更好的下一跳选择。</li>
+</ul>
+<h1 id="路由器基本配置"><a href="#路由器基本配置" class="headerlink" title="路由器基本配置"></a>路由器基本配置</h1><h2 id="配置初始路由器设置"><a href="#配置初始路由器设置" class="headerlink" title="配置初始路由器设置"></a>配置初始路由器设置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">进入全局配置模式将路由器名称配置为“R1”。</span><br><span class="line">Router&gt;enable</span><br><span class="line">Router#configure terminal</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">Router(config)#hostname R1</span><br><span class="line">将加密密码配置为“class”。</span><br><span class="line">R1(config)#enable secret class</span><br><span class="line">将控制台线路密码配置为“cisco”并要求用户登录，然后返回全局模式。</span><br><span class="line">R1(config)#line console 0</span><br><span class="line">R1(config-line)#password cisco</span><br><span class="line">R1(config-line)#login</span><br><span class="line">R1(config-line)#exit</span><br><span class="line">对于vty线路0到4，将密码配置为“cisco”并要求用户登录，启用SSH和Telnet访问，然后返回全局模式。</span><br><span class="line">R1(config)#line vty 0 4</span><br><span class="line">R1(config-line)#password cisco</span><br><span class="line">R1(config-line)#login</span><br><span class="line">R1(config-line)#transport input ssh telnet</span><br><span class="line">R1(config-line)#exit</span><br><span class="line">加密所有明文密码</span><br><span class="line">R1(config)#service password-encryption</span><br><span class="line">输入标语“Authorized Access Only!”并使用# 作为定界符。</span><br><span class="line">R1(config)#banner motd #Authorized Access Only!#</span><br><span class="line">退出全局配置模式。</span><br><span class="line">R1(config)#exit</span><br><span class="line">R1#</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置接口"><a href="#配置接口" class="headerlink" title="配置接口"></a>配置接口</h2><p>此表总结了用于验证接口配置的更常用 <strong>show</strong> 命令。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN8-10/1645452335823.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">进入全局配置模式。</span><br><span class="line">R1#configure terminal</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">配置接口GigabitEthernet 0/0/0。</span><br><span class="line">R1(config)#interface gigabitethernet 0/0/0</span><br><span class="line">将链路描述为“Link to LAN”。</span><br><span class="line">R1(config-if)#description Link to LAN</span><br><span class="line">使用 IPv4 地址192.168.10.1和子网掩码255.255.255.0配置接口。</span><br><span class="line">R1(config-if)#ip address 192.168.10.1 255.255.255.0</span><br><span class="line">使用 IPv6 地址 2001:db8:acad:10::1 和前缀长度/64配置接口。</span><br><span class="line">R1(config-if)#ipv6 address 2001:db8:acad:10::1/64</span><br><span class="line">启用接口并返回全局配置模式。</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">*Aug  1 01:43:53.435: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to down</span><br><span class="line">*Aug  1 01:43:56.447: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to up</span><br><span class="line">*Aug  1 01:43:57.447: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">R1#</span><br><span class="line">您已成功配置路由器 R1 上的初始设置。</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置默认网关"><a href="#配置默认网关" class="headerlink" title="配置默认网关"></a>配置默认网关</h2><p>要为交换机配置默认网关，请使用ip default-gateway ip-address 全局配置命令。配置的 IP 地址是连接到交换机的本地路由器接口的 IP 地址。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进入全局配置模式。</span><br><span class="line">S1#configure terminal</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">将 S1 的默认网关配置为“192.168.10.1”。</span><br><span class="line">S1(config)#ip default-gateway 192.168.10.1</span><br><span class="line">S1(config)#</span><br><span class="line">您已在交换机S1上成功配置默认网关。</span><br></pre></td></tr></table></figure>
+<h1 id="查漏补缺"><a href="#查漏补缺" class="headerlink" title="查漏补缺"></a>查漏补缺</h1><p>当有多个可用路由时，路由器使用哪项参数来选择到达目的网络的路径？</p>
+<ul>
+<li>与目的网络相关的较低度量值</li>
+</ul>
+<p>当有多个可用路由时，路由器使用哪项参数来选择到达目的网络的路径？</p>
+<ul>
+<li>流标签</li>
+</ul>
+<p>当在交换机 vty 线路上输入 transport input ssh 命令时会发生什么?</p>
+<ul>
+<li>交换机和远程用户之间的通信是加密的</li>
+</ul>
+<p>思科路由器启动过程分为四个主要阶段：</p>
+<ol>
+<li> 执行POST</li>
+<li> 加载 bootstrap 程序</li>
+<li> 查找并加载 Cisco IOS 软件</li>
+<li> 查找并加载启动配置文件，或进入设置模式</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/" class="post-title-link" itemprop="url">ITN 14-15</a>
         </h2>
 
         <div class="post-meta">
@@ -458,392 +914,12 @@ byg:dead_sea</li>
 <li><strong>数据分段和数据段重组</strong>-将应用程序数据划分为适当大小的块。根据所使用的传输层协议，传输层块称为数据段或数据报。</li>
 <li><strong>添加报头信息</strong>-将包含二进制数据的报头信息添加到每个数据块中，这些数据被组织成几个字段。不同的传输层协议通过这些字段值在管理数据通信过程中执行各自的功能。</li>
 <li><strong>标识应用</strong>-为了将数据流传递到适当的应用程序，传输层使用称为端口号的标识符来标识目标应用。</li>
-<li><strong>会话多路复用</strong>-使不同的通信会话在同一网络上交错。<h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2>传输层协议指定如何在主机之间传输消息，并负责管理会话的可靠性要求。传输层包括 TCP 和 UDP 协议。<br>不同的应用有不同的传输可靠性要求。因此，TCP/IP 提供了两个传输层协议，如图所示<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN%2014-15/1645790168846.png" alt="enter description here"><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3>TCP 被认为是可靠且功能齐全的传输层协议，用于确保所有数据到达目的设备。TCP包含确保应用数据传递的字段。这些字段需要发送和接收的主机进行额外处理。<br>TCP将数据分为若干个数据段。<br>TCP 使用以下基本操作提供可靠性和流量控制：</li>
+<li><strong>会话多路复用</strong>-使不同的通信会话在同一网络上交错。<h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2>传输层协议指定如何在主机之间传输消息，并负责管理会话的可靠性要求。传输层包括 TCP 和 UDP 协议。<br>不同的应用有不同的传输可靠性要求。因此，TCP/IP 提供了两个传输层协议，如图所示<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645790168846.png" alt="enter description here"><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3>TCP 被认为是可靠且功能齐全的传输层协议，用于确保所有数据到达目的设备。TCP包含确保应用数据传递的字段。这些字段需要发送和接收的主机进行额外处理。<br>TCP将数据分为若干个数据段。<br>TCP 使用以下基本操作提供可靠性和流量控制：</li>
 <li>  编号并跟踪从特定应用程序发送到特定主机的数据段。</li>
 <li>  确认收到数据</li>
 <li>  在一定时间段后重新传输未确认的数据</li>
-<li>  有顺序的数据可能以错误的顺序到达 以接收方可以接受的有效速率* 发送数据<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3>UDP是一种比TCP更简单的传输层协议。它不提供可靠性和流量控制，这意味着它需要更少的报头字段。由于发送方和接收方UDP进程不需要管理可靠性和流量控制，这意味着 UDP 数据报的处理速度比 TCP 数据段快。UDP 仅提供在相应应用之间传输数据报的基本功能，需要很少的开销和数据检查。<br>UDP 将数据划分为数据报，也称为数据段。<br>UDP是一种无连接协议。由于 UDP 不提供可靠性或流量控制，因此不需要建立连接。由于 UDP 不跟踪客户端和服务器之间发送或接收的信息，因此UDP 也称为无状态协议。<br>UDP 也称为最大努力交付协议，因为在目的地接收到数据后没有确认消息。UDP 中没有通知发送方是否成功传输的传输层流程。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN%2014-15/1645791005727.png" alt="enter description here"><br>UDP 是一个尽最大努力传输协议，而 TCP 是一个可靠的传输协议。</li>
+<li>  有顺序的数据可能以错误的顺序到达 以接收方可以接受的有效速率* 发送数据<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3>UDP是一种比TCP更简单的传输层协议。它不提供可靠性和流量控制，这意味着它需要更少的报头字段。由于发送方和接收方UDP进程不需要管理可靠性和流量控制，这意味着 UDP 数据报的处理速度比 TCP 数据段快。UDP 仅提供在相应应用之间传输数据报的基本功能，需要很少的开销和数据检查。<br>UDP 将数据划分为数据报，也称为数据段。<br>UDP是一种无连接协议。由于 UDP 不提供可靠性或流量控制，因此不需要建立连接。由于 UDP 不跟踪客户端和服务器之间发送或接收的信息，因此UDP 也称为无状态协议。<br>UDP 也称为最大努力交付协议，因为在目的地接收到数据后没有确认消息。UDP 中没有通知发送方是否成功传输的传输层流程。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645791005727.png" alt="enter description here"><br>UDP 是一个尽最大努力传输协议，而 TCP 是一个可靠的传输协议。</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/" class="post-title-link" itemprop="url">ITN 11-13</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-23 00:15:29" itemprop="dateCreated datePublished" datetime="2022-02-23T00:15:29+08:00">2022-02-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-24 22:31:22" itemprop="dateModified" datetime="2022-02-24T22:31:22+08:00">2022-02-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="IPv4编址"><a href="#IPv4编址" class="headerlink" title="IPv4编址"></a>IPv4编址</h1><h2 id="地址结构"><a href="#地址结构" class="headerlink" title="地址结构"></a>地址结构</h2><p>IPv4 地址为32位分层地址，由网络部分和主机部分两个部分组成。<br>IPv4 地址 - 这是主机的唯一 IPv4 地址。<br>子网掩码 - 用于标识 IPv4 地址的网络部分/主机部分。</p>
-<ul>
-<li>  <strong>IPv4 主机地址 (例192.168.10.10)</strong> -主机的 IPv4 地址，采用点分十进制和二进制格式。除了根据掩码的主机位全0位（这将是网络地址）或全1位（这将是广播地址）之外，主机地址在主机部分可以有任何位的组合。<strong>注</strong>IPv4 将 <strong>224.0.0.0 到 239.255.255.255</strong> 的地址保留为组播范围（不可作为主机地址）。</li>
-<li>  <strong>子网掩码 (例255.255.255.0)</strong> -主机的子网掩码，采用点分十进制和二进制格式。</li>
-<li>  <strong>网络地址 (例192.168.10.0)</strong> -IPv4地址和子网掩码之间的逻辑AND运算产生一个点分十进制和二进制格式的IPv4网络地址。<br>例中，主机地址 192.168.10.10 与子网掩码 255.255.255.0 (/24) 之间的 AND运算会产生 IPv4 网络地址为192.168.10.0/24。<br>子网掩码与IP地址相结合用于确定设备属于哪个子网<h2 id="IPv4-单播、广播和组播"><a href="#IPv4-单播、广播和组播" class="headerlink" title="IPv4 单播、广播和组播"></a>IPv4 单播、广播和组播</h2><h3 id="单播"><a href="#单播" class="headerlink" title="单播"></a>单播</h3>单播传输是指在一对一通信中，一个设备向另一个设备发送消息。<br>IPv4 单播主机地址的地址范围是 1.1.1.1到 223.255.255.255。不过，此范围中的很多地址被留作特殊用途。这些特殊用途的地址将在本模块后续部分讨论。<h3 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h3>广播播传输是指设备在一对多通信中，向网络上的所有设备发送消息。<br>广播数据包以32个1位或主机部分全部为 1 的地址作为目的 IP地址。<br>除了 255.255.255.255 的广播地址外，每个网络还有一个广播 IPv4 地址。这个地址称为定向广播，它使用网络范围内的最大地址，即所有主机位全部为 1 的地址。例如，网络192.168.1.0/24的定向广播地址是192.168.1.255。<h3 id="组播"><a href="#组播" class="headerlink" title="组播"></a>组播</h3>主机通过组播传输可以向所属组播组中的选定主机组发送一个数据包，从而减少了流量。<br>组播数据包是一个目的IP地址为组播地址的数据包。IPv4 将 <strong>224.0.0.0 到 239.255.255.255</strong> 的地址保留为组播范围。<br>接收特定组播数据包的主机称为组播客户端。组播客户端使用客户端程序请求的服务来加入组播组。<br>每个组播组由一个 IPv4 组播目的地址代表。当 IPv4 主机加入组播组后，该主机既要处理目的地址为此组播地址的数据包，也要处理发往其唯一单播地址的数据包。<h2 id="IPv4-地址的分类"><a href="#IPv4-地址的分类" class="headerlink" title="IPv4 地址的分类"></a>IPv4 地址的分类</h2>公有 IPv4 地址是能在 ISP（互联网运营商）路由器之间全局路由的地址。但是，并非所有可用的 IPv4 地址都可用于互联网。大多数组织使用称为私有地址的地址块向内部主机分配 IPv4 地址。<br>由于 IPv4 地址空间耗尽，引入了私有 IPv4 地址。私有 IPv4 地址并不是唯一的，可以在任何网络内部使用它。<table>
-<thead>
-<tr>
-<th><strong>网络地址和前缀</strong></th>
-<th><strong>RFC 1918 私有地址范围</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>10.0.0.0/8</td>
-<td>10.0.0.0 - 10.255.255.255</td>
-</tr>
-<tr>
-<td>172.16.0.0/12</td>
-<td>172.16.0.0 - 172.31.255.255</td>
-</tr>
-<tr>
-<td>192.168.0.0/16</td>
-<td>192.168.0.0 - 192.168.255.255</td>
-</tr>
-</tbody></table>
-<h2 id="私有-IPv4-地址和网络地址转换-NAT"><a href="#私有-IPv4-地址和网络地址转换-NAT" class="headerlink" title="私有 IPv4 地址和网络地址转换 (NAT)"></a>私有 IPv4 地址和网络地址转换 (NAT)</h2>在 ISP（Internet Service Provider 互联网服务提供商）可以转发此数据包之前，它必须使用网络地址转换 (NAT) 将源 IPv4 地址（即私有地址）转换为公有 IPv4 地址。NAT用于转换私有和公有 IPv4 地址。这通常是在将内部网络连接到 ISP 网络的路由器上完成。在路由到互联网之前，组织内部网中的私有 IPv4 地址将被转换为公有 IPv4 地址。<h2 id="专用-IPv4-地址"><a href="#专用-IPv4-地址" class="headerlink" title="专用 IPv4 地址"></a>专用 IPv4 地址</h2>一些地址，比如网络地址和广播地址不能分配给主机。还有些特殊地址可以分配给主机，但这些主机在网络内的交互方式却受到限制。<h3 id="环回地址"><a href="#环回地址" class="headerlink" title="环回地址"></a>环回地址</h3>环回地址（127.0.0.0 /8 或 127.0.0.1 到 127.255.255.254）通常仅被标识为127.0.0.1，主机使用这些特殊地址将流量指向其自身。<h3 id="本地链路地址"><a href="#本地链路地址" class="headerlink" title="本地链路地址"></a>本地链路地址</h3>本地链路地址（169.254.0.0 /16 或 169.254.0.1 至 169.254.255.254）通常称为自动私有 IP 编址 (APIPA) 地址或自分配地址。 当没有可用的DHCP服务器时，Windows DHCP客户端使用它们进行自我配置。本地链路地址可以用于点对点连接，但通常不用于此目的。<h3 id="IP-地址的分配"><a href="#IP-地址的分配" class="headerlink" title="IP 地址的分配"></a>IP 地址的分配</h3>IPv4 和 IPv6 地址是通过互联网编号指派机构 (IANA) 管理的。IANA 管理并向地区性互联网注册机构 (RIR) 分配 IP 地址块。</li>
-<li>  <strong>AfriNIC</strong> (非洲网络信息中心) - 非洲地区</li>
-<li>  <strong>APNIC</strong> (亚太网络信息中心) - 亚太地区</li>
-<li>  <strong>ARIN</strong> (美洲互联网号码注册管理机构) - 北美地区</li>
-<li>  <strong>LACNIC</strong> (拉丁美洲及加勒比互联网地址注册管理机构) - 拉丁美洲和部分加勒比海岛屿</li>
-<li>  <strong>RIPE NCC</strong> (欧洲 IP 地址注册中心) - 欧洲、中东和中亚<br>RIR 的职责是向 ISP 分配 IP 地址，而 ISP 将向组织和更小的 ISP 提供 IPv4 地址块。根据 RIR 的政策规定，组织也可直接从 RIR 获取地址。<h2 id="网络分段"><a href="#网络分段" class="headerlink" title="网络分段"></a>网络分段</h2><h3 id="广播域和分段"><a href="#广播域和分段" class="headerlink" title="广播域和分段"></a>广播域和分段</h3>在以太网局域网中，设备使用广播和地址解析协议 (ARP) 来定位其他设备。地址解析协议 (ARP)将第 2 层广播发送到本地网络上的已知 IPv4 地址，以发现相关 MAC 地址。以太网局域网上的设备还可以使用服务定位其他设备。主机通常需要使用动态主机配置协议 (DHCP) 来获取 IPv4 地址配置，这会发送本地网络上的广播来定位 DHCP 服务器。<br>交换机会将广播传播到所有接口，接收它的接口除外。<br>路由器不传播广播。<br>因此，每个路由器接口都连接了一个广播域，而广播只能在特定广播域内传播。<h3 id="大型广播域存在的问题与子网划分"><a href="#大型广播域存在的问题与子网划分" class="headerlink" title="大型广播域存在的问题与子网划分"></a>大型广播域存在的问题与子网划分</h3>大型广播域是连接很多主机的网络。大型广播域的一个问题是这些主机会生成太多广播，这会对网络造成不良影响。在图中，局域网1 连接了 400 个用户，可能会产生过量的广播流量。这会导致<strong>网络操作速度缓慢</strong>，因为它会导致大量的流量，而<strong>设备操作变慢</strong>是因为设备必须接受和处理每个广播数据包。</li>
-</ul>
-<p>解决方案是使用称为<strong>子网划分</strong>的过程缩减网络的规模以创建更小的广播域。这些较小的网络空间通常称为“子网”。<br>子网划分可以降低整体网络流量并改善网络性能。它也能让管理员实施安全策略，例如哪些子网允许或不允许进行通信。另一个原因是，它减少了由于错误配置、硬件/软件问题或恶意意图而受到异常广播流量影响的设备数量。</p>
-<h3 id="IPv4-网络的子网"><a href="#IPv4-网络的子网" class="headerlink" title="IPv4 网络的子网"></a>IPv4 网络的子网</h3><p>创建 IPv4 子网时会将一个或多个主机位作为网络位。具体做法是延长子网掩码，从地址的主机部分借用若干位来增加网络位。借用的主机位越多，可以定义的子网也就越多。为了增加子网数量而借用的位越多，每个子网的主机数量就越少。</p>
-<h2 id="VLSM-Variable-Length-Subnetwork-Mask-可变长子网掩码"><a href="#VLSM-Variable-Length-Subnetwork-Mask-可变长子网掩码" class="headerlink" title="VLSM(Variable Length Subnetwork Mask 可变长子网掩码)"></a>VLSM(Variable Length Subnetwork Mask 可变长子网掩码)</h2><p>并不是您创建的每个子网都需要这么多主机，这会导致许多IPv4地址未被使用。也许您需要一个包含更多主机的子网。这就是开发可变长子网掩码 (VLSM) 的原因。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645543803092.png"><br>所有子网都使用相同的子网掩码。这意味着每个子网有相同数量的可用主机地址。如图左边所示，传统子网划分可以创建大小相等的子网。传统方案中每个子网都使用相同的子网掩码。如图右边所示，VLSM 使网络空间能够分为大小不等的部分。使用 VLSM，子网掩码将根据特定子网所借用的位数而变化，从而成为 VLSM 的“变量”部分。<br>使用 VLSM 子网，可以为 LAN 和路由器之间网段提供地址，而不产生不必要浪费。</p>
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645547232646.png"><br>n=子网掩码-网络掩码<br>2^n=子网数<br>2^(32-网络掩码-n)-2=主机数<br>子网数*(主机数+2)=2^(32-网络掩码)<br>例：<br>网络管理员将 192.168.10.0/24 网络划分成带 /26 子网掩码的子网。会创建4个相同大小的子网，每个子网可有62台主机<br>2=子网掩码-网络掩码=26-24<br>2^2=子网数=4<br>2^(32-网络掩码-n)-2=2^(8-2)-2=主机数=62<br>子网数*(主机数+2)=4*(62+2)=2^(32-网络掩码)=2^(32-24)</p>
-<p>减二因为最低位(后面全是0)用于表示主机号，最高位(后面全是1)用于表示广播地址</p>
-<p>DMZ：Demilitarized Zone 隔离区</p>
-<h1 id="IPv6编址"><a href="#IPv6编址" class="headerlink" title="IPv6编址"></a>IPv6编址</h1><p>IPv6 旨在接替 IPv4。IPv6 拥有更大的 128 位地址空间，提供 340 涧（即，340后面有36个0）个不确定地址。IETF 已经创建了各种协议和工具来协助网络管理员将网络迁移到 IPv6。迁移技术可分为三类：</p>
-<ul>
-<li><strong>双堆栈</strong>-双堆栈允许 IPv4 和 IPv6 在同一网段上共存。双堆栈设备同时运行 IPv4 和 IPv6 协议栈。称为原生 IPv6</li>
-<li><strong>隧道</strong>-隧道是一种通过 IPv4 网络传输 IPv6 数据包的方法。</li>
-<li><strong>转换</strong>-网络地址转换 64 (NAT64) 允许支持 IPv6 的设备与支持 IPv4 的设备使用类似于 IPv4 中 NAT 的转换技术进行通信。IPv6 数据包被转换为 IPv4 数据包，IPv4 数据包被转换为 IPv6 数据包。<h2 id="IPv6-地址表示方法"><a href="#IPv6-地址表示方法" class="headerlink" title="IPv6 地址表示方法"></a>IPv6 地址表示方法</h2>书写 IPv6 地址的首选格式为 x:x:x:x:x:x:x:x，每个“x”均包括四个十六进制值。</li>
-<li>第一条有助于缩短 IPv6 地址记法的规则是省略十六进制数中的所有前导 0（零）</li>
-<li>第二条有助于缩短 IPv6 地址记法的规则是使用双冒号 (::) 替换任何由<strong>一个或多个</strong>全由 0 组成的16 位十六进制数组成的<strong>连续</strong>字符串</li>
-<li>双冒号 (::) 仅可在每个地址中<strong>使用一次</strong>，否则可能会得出一个以上的地址。<h2 id="IPv6-地址类型"><a href="#IPv6-地址类型" class="headerlink" title="IPv6 地址类型"></a>IPv6 地址类型</h2><h3 id="IPv6-地址三大类"><a href="#IPv6-地址三大类" class="headerlink" title="IPv6 地址三大类"></a>IPv6 地址三大类</h3></li>
-<li>  <strong>单播</strong> - IPv6 单播地址用于唯一标识支持 IPv6 的设备上的接口。</li>
-<li>  <strong>组播</strong> - IPv6 组播地址用于将单个 IPv6 数据包发送到多个目的地。</li>
-<li>  <strong>任播</strong> -IPv6 任播地址是可分配到多个设备的 IPv6 任播地址。发送至任播地址的数据包会被路由到最近的拥有该地址的设备。<br>与 IPv4 不同，IPv6 没有广播地址。但是，IPv6 具有 IPv6 全节点组播地址，这在本质上与广播地址的效果相同。<h3 id="IPv6-前缀长度"><a href="#IPv6-前缀长度" class="headerlink" title="IPv6 前缀长度"></a>IPv6 前缀长度</h3>在 IPv4 中，/24 称为前缀。在 IPv6 中，它被称为前缀长度。IPv6 不使用点分十进制子网掩码记法(如255.255.255.0)。与IPv4一样，前缀长度以斜线记法表示，用于表示 IPv6 地址的网络部分。<br>强烈建议对大多数网络使用 64 位接口 ID。这是因为无状态地址自动配置(SLAAC)使用64位作为接口ID。它还使子网划分更易于创建和管理。<h3 id="IPv6-单播地址"><a href="#IPv6-单播地址" class="headerlink" title="IPv6 单播地址"></a>IPv6 单播地址</h3><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645606597498.png"><br>IPv6地址通常有两个单播地址:</li>
-<li>  <strong>全局单播地址(GUA)</strong> - 这类似于公有 IPv4 地址。这些地址具有全局唯一性，是互联网可路由的地址。GUA可静态配置或动态分配</li>
-<li>  <strong>链路本地地址 (LLA)</strong> -这对于每个支持ipv6的设备都是必需的。LLA用于与同一链路中的其他设备通信。在 IPv6 中，术语“链路”是指子网。LLA仅限于单个链路。它们的唯一性仅在该链路上得到保证，因为它们在该链路之外不具有可路由性。换句话说，路由器不会转发具有本地链路源地址或目的地址的数据包。<h3 id="唯一本地地址"><a href="#唯一本地地址" class="headerlink" title="唯一本地地址"></a>唯一本地地址</h3>（范围 fc00:: /7 到 fdff:: /7）<br>IPv6 唯一本地地址与 IPv4 的 RFC 1918 私有地址具有相似之处，但是也有着重大差异。</li>
-<li>唯一本地地址用于一个站点内或数量有限的站点之间的本地编址。</li>
-<li>唯一本地地址可用于从来不需要访问其他网络的设备。</li>
-<li>唯一本地地址不会全局路由或转换为全局 IPv6 地址。<h3 id="IPv6-全局单播地址-GUA"><a href="#IPv6-全局单播地址-GUA" class="headerlink" title="IPv6 全局单播地址 (GUA)"></a>IPv6 全局单播地址 (GUA)</h3>IPv6 全局单播地址 (GUA) 具有全局唯一性，可在 IPv6互联网上路由。这些地址相当于公有 IPv4 地址。互联网名称与数字地址分配机构 (ICANN)，即 IANA 的运营商，将 IPv6 地址块分配给五家 RIR。目前分配的仅是前三位为 001 或 2000::/3 的全局单播地址（GUA）</li>
-<li><em>注意</em>*: 2001:db8::/32已经留作备档之用，包括示例用途。<br>下图显示了 GUA 的结构和范围。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645609454686.png"><br>带有 /48 全局路由前缀和 /64 前缀的 IPv6 地址</li>
-</ul>
-<p><strong>GUA 有三个部分：</strong></p>
-<h4 id="全局路由前缀"><a href="#全局路由前缀" class="headerlink" title="全局路由前缀"></a>全局路由前缀</h4><p>全局路由前缀为提供商（如 ISP）分配给客户或站点的地址的前缀或网络部分。例如，ISP 通常会为其客户分配 /48 全局路由前缀。<br>例如，IPv6 地址2001:db8:acad::/48 的全局路由前缀，该前缀表示ISP知道该前缀（网络）的方式是前48位（3个十六进制数）（2001:db8:acad）。/48 前缀长度后面的双冒号 (::) 表示地址的剩余部分全部为 0。全局路由前缀的大小决定子网 ID 的大小。</p>
-<h4 id="子网-ID"><a href="#子网-ID" class="headerlink" title="子网 ID"></a>子网 ID</h4><p>子网ID字段是全局路由前缀和接口ID之间的区域。与IPv4不同，在IPv4中您必须从主机部分借用位来创建子网，IPv6在设计时考虑到了子网。组织使用子网 ID 确定其站点的子网。子网 ID 越大，可用子网越多。<br>使用典型的/64前缀长度，前四个十六进制数是地址的网络部分，其中第四个十六进制数表示子网 ID。剩下的四个十六进制数用于接口 ID。</p>
-<h4 id="接口-ID"><a href="#接口-ID" class="headerlink" title="接口 ID"></a>接口 ID</h4><p>IPv6 接口 ID 相当于 IPv4 地址的主机部分。使用术语“接口 ID”是因为单个主机可能有多个接口，而每个接口又有一个或多个 IPv6 地址。<br>/64 子网或前缀（全局路由前缀 + 子网 ID）为接口 ID 留下 64 位。建议允许启用 SLAAC 的设备创建自己的 64 位接口 ID。它还使得 IPv6 编址计划的开发变得简单而有效。</p>
-<h3 id="IPv6-链路本地地址-LLA"><a href="#IPv6-链路本地地址-LLA" class="headerlink" title="IPv6 链路本地地址 (LLA)"></a>IPv6 链路本地地址 (LLA)</h3><p>IPv6 链路本地地址(LLA)允许设备与同一链路上支持 IPv6 的其他设备通信，并且只能在该链路（子网）上通信。具有源或目的LLA的数据包不能在数据包的源链路之外进行路由。<br><strong>GUA 不是一项要求。但是，每个启用 IPv6 的网络接口都必须有 LLA。</strong><br>如果没有手动为接口配置LLA，设备会在不与 DHCP 服务器通信的情况下自动创建自己的地址。支持 IPv6 的主机会创建 IPv6 LLA，即使没有为该设备分配 IPv6 全局单播地址。这允许支持 IPv6 的设备与同一子网中的其他支持 IPv6 的设备通信。这包括与默认网关（路由器）的通信。<br>IPv6 LLAs在fe80::/10范围内。/10 表示前 10 位是 1111 1110 10xx xxxx。第一个十六进制数的范围是 1111 1110 10<strong>00 0000</strong> (fe80) 到 1111 1110 10<strong>11 1111</strong> (febf)。<br>设备可以通过两种方式获取 LLA：</p>
-<ul>
-<li>  <strong>静态</strong> -这意味着设备已手动配置。</li>
-<li>  <strong>动态</strong> -这意味着设备通过使用随机生成的值或使用扩展唯一标识符 (EUI) 方法创建自己的接口 ID，该方法使用客户端 MAC 地址和其他位。</li>
-</ul>
-<p><strong>注意</strong>: 通常情况下，用作链路上其他设备的默认网关的是路由器的LLA而不是GUA。</p>
-<h2 id="GUA-和-LLA-静态配置"><a href="#GUA-和-LLA-静态配置" class="headerlink" title="GUA 和 LLA 静态配置"></a>GUA 和 LLA 静态配置</h2><p>在 思科IOS 中，大多数 IPv6 的配置和验证命令与 IPv4 的相似。在多数情况下，唯一区别是命令中使用“ipv6”取代“ip”</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">使用以下地址在千兆以太网 0/0/0 接口上配置并激活 IPv6：</span><br><span class="line">R1(config)#interface g0/0/0</span><br><span class="line">将 g0/0/0 作为接口名称</span><br><span class="line">R1(config-if)#ipv6 address fe80::1:1 link-local</span><br><span class="line">设置LLA为fe80::1:1注意加“link-local”</span><br><span class="line">R1(config-if)#ipv6 address 2001:db8:acad:1::1/64</span><br><span class="line">设置GUA为2001:db8:acad:1::1/64</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">激活接口</span><br><span class="line">%LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to up</span><br><span class="line">显示已开启</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">退出接口配置模式</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">使用以下地址在串行 0/1/0 接口上配置并激活 IPv6：</span><br><span class="line">R1(config)#interface s0/1/0</span><br><span class="line">将 s0/1/0 作为接口名称</span><br><span class="line">R1(config-if)#ipv6 address fe80::3:1 link-local</span><br><span class="line">设置LLA为fe80::3:1注意加“link-local”</span><br><span class="line">R1(config-if)#ipv6 address 2001:db8:acad:3::1/64</span><br><span class="line">设置GUA为2001:db8:acad:3::1/64</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">激活接口</span><br><span class="line">%LINK-3-UPDOWN: Interface Serial0/1/0, changed state to up</span><br><span class="line">显示已开启</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">退出接口配置模式</span><br></pre></td></tr></table></figure>
-<h2 id="GUA动态编址"><a href="#GUA动态编址" class="headerlink" title="GUA动态编址"></a>GUA动态编址</h2><h3 id="RS-and-RA-消息"><a href="#RS-and-RA-消息" class="headerlink" title="RS and RA 消息"></a>RS and RA 消息</h3><p>大多数设备会动态获取其 IPv6 GUA。<br>对于 GUA，设备通过 Internet 控制消息协议版本 6 (ICMPv6) 消息动态获取地址。IPv6 路由器每 200 秒定期将 ICMPv6 RA 消息发送到网络上所有支持 IPv6 的设备。在响应发送 ICMPv6 路由器请求 (RS) 消息的主机时，也会发送 RA 消息，RS消息是对RA消息的请求。</p>
-<p>为路由器启用 IPv6 路由，这在默认情况下是不启用的。若要将路由器启用为 IPv6 路由器，必须使用 <code>ipv6 unicast-routing</code> 全局配置命令。<br>ICMPv6 RA 消息提示设备获取 IPv6 GUA的方式。最终决定取决于设备的操作系统。ICMPv6 RA 消息包括以下：</p>
-<ul>
-<li>  <strong>网络前缀和前缀长度</strong> – 这会告知设备其所属的网络。</li>
-<li>  <strong>默认网关</strong> – IPv6 LLA，RA 消息的源 IPv6 地址。</li>
-<li>  <strong>DNS 地址和域名</strong> – 这些是DNS 服务器的地址和域名。<br>RA 消息有三种方法：<h4 id="方法-1：SLAAC-Stateless-address-auto-configuration，无状态地址自动配置"><a href="#方法-1：SLAAC-Stateless-address-auto-configuration，无状态地址自动配置" class="headerlink" title="方法 1：SLAAC(Stateless address auto-configuration，无状态地址自动配置)"></a>方法 1：SLAAC(Stateless address auto-configuration，无状态地址自动配置)</h4>SLAAC是一种允许设备在没有DHCPv6服务的情况下创建自己的GUA的方法。使用 SLAAC，设备根据本地路由器的 ICMPv6 路由器通告 (RA) 消息获取必要信息。<br>默认情况下，RA 消息会提示接收设备使用 RA 消息中的信息创建其自己的 IPv6 GUA及其他必要信息。DHCPv6 服务器的服务不是必需项。<br>SLAAC 是无状态的，也就是说没有中央服务器（例如有状态DHCPv6 服务器）来分配GUA和维持设备及其地址的清单。借助 SLAAC，客户端设备使用 RA 消息中的信息创建其自己的GUA。<br>地址的两部分生成如下：</li>
-<li>  <strong>前缀</strong> -这是在 RA 消息中通告的。</li>
-<li>  <strong>接口 ID</strong> -使用 EUI-64 流程或通过生成一个随机 64 位数字产生，取决于设备的操作系统。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645702011889.png" alt="enter description here"><h4 id="方法-2：SLAAC-和无状态-DHCPv6-Dynamic-Host-Configuration-Protocol动态主机配置协议"><a href="#方法-2：SLAAC-和无状态-DHCPv6-Dynamic-Host-Configuration-Protocol动态主机配置协议" class="headerlink" title="方法 2：SLAAC 和无状态 DHCPv6(Dynamic Host Configuration Protocol动态主机配置协议)"></a>方法 2：SLAAC 和无状态 DHCPv6(Dynamic Host Configuration Protocol动态主机配置协议)</h4>路由器的接口可配置为使用 SLAAC 和无状态 DHCPv6 或仅使用有状态 DHCPv6 发送路由器通告。<br>如图所示，使用此方法，RA 消息建议设备使用以下内容：</li>
-<li>  SLAAC创建自己的IPv6 GUA</li>
-<li>  路由器LLA，是RA源IPv6地址，作为默认网关地址</li>
-<li>  使用无状态 DHCPv6 服务器获取其他信息，例如 DNS 服务器地址和域名。</li>
-<li><em>注意</em>*: 使用无状态 DHCPv6 服务器分配 DNS 服务器地址和域名。它不分配 GUA。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645702026814.png" alt="enter description here"><h4 id="方法-3：有状态的DHCPv6"><a href="#方法-3：有状态的DHCPv6" class="headerlink" title="方法 3：有状态的DHCPv6"></a>方法 3：有状态的DHCPv6</h4>路由器接口可以配置为仅使用有状态的DHCPv6发送RA。<br>有状态 DHCPv6 与 IPv4 的 DHCP 相似。设备可以从有状态 DHCPv6 服务器自动接收编址信息，包括GUA、前缀长度和 DNS 服务器地址。<br>如图所示，使用此方法，RA 消息建议设备使用以下内容：</li>
-<li>  路由器LLA，是RA源IPv6地址，作为默认网关地址。</li>
-<li>  使用有状态 DHCPv6 服务器获取GUA、DNS 服务器地址、域名和其他必要信息。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645702073373.png" alt="enter description here"><br>使用有状态 DHCPv6 服务器分配并维持哪台设备接收哪个 IPv6 地址的清单。IPv4 的 DHCP 是有状态的。</li>
-<li><em>注意:</em>* 默认网关地址仅可从 RA 消息中动态获取。无状态或有状态 DHCPv6 服务器均不提供默认网关地址。<h3 id="EUI-64-流程和随机生成"><a href="#EUI-64-流程和随机生成" class="headerlink" title="EUI-64 流程和随机生成"></a>EUI-64 流程和随机生成</h3>当 RA 消息为 SLAAC 或 SLAAC 和无状态 DHCPv6 时，客户端必须生成自己的接口 ID。客户端从 RA 消息中获知地址的前缀部分，但必须创建自己的接口 ID。如图所示，接口 ID 可使用 EUI-64 流程或随机生成的 64 位数字创建。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645702541865.png"><br>IEEE 定义了扩展唯一标识符 (Extended Unique Identifier) 或修改的 EUI-64 流程。该流程使用客户端的 48 位以太网 MAC 地址，并在该 48 位 MAC 地址的中间插入另外 16 位来创建 64 位接口 ID。<br>以太网 MAC 地址一般使用十六进制表示，由两部分组成：</li>
-<li>  **组织唯一标识符 (OUI) **- OUI 为 IEEE 分配的 24 位（6 个十六进制数字）厂商代码。</li>
-<li>  <strong>设备标识符</strong> - 设备标识符是通用 OUI 内的唯一 24 位（6 个十六进制数字）值。<br>EUI-64 接口 ID 以二进制表示，共分三个部分：</li>
-<li>  客户端 MAC 地址的 24 位 OUI，但是第 7 位（通用/本地 (U/L) 位）颠倒。这意味着，如果第 7 位是 0，则它会变为 1，反之亦然。U/L 位的用途和该位值的翻转原因会在 RFC 5342 中讨论。</li>
-<li>  插入的 16 位值 fffe（十六进制）。</li>
-<li>  客户端 MAC 地址的 24 位设备标识符。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645703120047.png"><br>EUI-64 优势在于可以使用以太网 MAC 地址确定接口 ID。这也允许网络管理员使用唯一 MAC 地址轻松跟踪终端设备的 IPv6 地址。</li>
-</ul>
-<p>然而，这引起了许多用户的隐私担忧，他们担心自己的数据包可能会被追踪到实际的物理计算机。出于这些顾虑，可以转而使用<strong>随机生成</strong>的接口 ID。<br>根据操作系统，设备可以使用随机生成的接口 ID，而不使用 MAC 地址和 EUI-64 流程。从 Windows Vista 开始，Windows 使用随机生成的接口 ID，而不是 EUI-64 创建的接口 ID。Windows XP 和之前的 Windows 操作系统均使用 EUI-64。<br><strong>注意</strong>:为确保任何 IPv6 单播地址的唯一性，客户端可以使用重复地址检测 (DAD) 流程。这与 ARP 请求其地址的流程相似。如该请求没有响应，则地址是唯一的。</p>
-<h2 id="LLA动态编址"><a href="#LLA动态编址" class="headerlink" title="LLA动态编址"></a>LLA动态编址</h2><p>所有 IPv6 设备都必须有 IPv6 LLA。与 IPv6 GUA一样，您也可以动态创建 LLA。无论您如何创建LLA(和GUA)，重要的是要验证所有IPv6地址配置。<br>使用fe80::/10 前缀和通过 EUI-64 流程或随机生成的 64 位数字创建的接口 ID 动态创建LLA。</p>
-<h3 id="Windows上的动态LLA"><a href="#Windows上的动态LLA" class="headerlink" title="Windows上的动态LLA"></a>Windows上的动态LLA</h3><p>操作系统，如Windows，通常会对SLAAC创建的GUA和动态分配的LLA使用相同的方法（EUI-64 生成、随机生成）</p>
-<h3 id="思科路由器上的动态LLA"><a href="#思科路由器上的动态LLA" class="headerlink" title="思科路由器上的动态LLA"></a>思科路由器上的动态LLA</h3><p>当为接口分配GUA时，思科路由器会自动创建 IPv6 LLA。默认情况下，思科 IOS 路由器使用 EUI-64 为 IPv6 接口上的所有LLA生成接口 ID。对于串行接口，路由器会使用以太网接口的 MAC 地址。回想一下，LLA在该链路或网络上必须具有唯一性。但是，使用动态分配的LLA的缺点在于其接口 ID 较长，因此很难识别并记住分配的地址。示例显示了路由器 R1 千兆以太网0/0/0 接口的 MAC 地址。该地址用于在同一接口上动态创建LLA，也用于串行0/1/0接口。<br>为了更容易在路由器上识别和记忆这些地址，通常要在路由器上静态配置 IPv6 LLA。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645704177487.png"></p>
-<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><p><strong>show ipv6 interface brief</strong> 命令会显示以太网接口的 MAC 地址。EUI-64 使用此 MAC 地址生成LLA的接口 ID。此外，<strong>show ipv6 interface brief</strong> 命令用于显示各个接口的缩略输出。与接口位于同一行的 [up/up] 输出指示第 1 层/第 2 层接口状态。这与等效的 IPv4 命令的状态和协议列相同。<br><strong>show ipv6 route</strong> 命令可用于检验 IPv6 网络和特定 IPv6 接口地址已添加到 IPv6 路由表中。该 <strong>show ipv6 route</strong> 命令将仅显示 IPv6 网络，而不显示 IPv4 网络。<br>IPv6 的 <strong>ping</strong> 命令和 IPv4 中这条命令的用法相同，只不过后接使用的是 IPv6 地址。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">输入显示 IPv6 接口状态摘要的 show 命令。</span><br><span class="line">R1#show ipv6 interface brief</span><br><span class="line">GigabitEthernet0/0/0   [up/up]</span><br><span class="line">    FE80::1:1</span><br><span class="line">    2001:DB8:ACAD:1::1</span><br><span class="line">GigabitEthernet0/0/1   [up/up]</span><br><span class="line">    FE80::2:1</span><br><span class="line">    2001:DB8:ACAD:2::1</span><br><span class="line">Serial0/1/0            [up/up]</span><br><span class="line">    FE80::3:1</span><br><span class="line">    2001:DB8:ACAD:3::1</span><br><span class="line">Serial0/1/1            [down/down]</span><br><span class="line">    unassigned</span><br><span class="line">GigabitEthernet0       [administratively down/down]</span><br><span class="line">    unassigned</span><br><span class="line">验证从R1到PC2在2001:db8:acad:1::10的连接性。</span><br><span class="line">R1#show ipv6 route</span><br><span class="line">IPv6 Routing Table - default - 7 entries</span><br><span class="line">Codes: C - Connected, L - Local, S - Static, U - Per-user Static route</span><br><span class="line">       B - BGP, HA - Home Agent, MR - Mobile Router, R - RIP</span><br><span class="line">       H - NHRP, I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea</span><br><span class="line">       IS - ISIS summary, D - EIGRP, EX - EIGRP external, NM - NEMO</span><br><span class="line">       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect</span><br><span class="line">       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2</span><br><span class="line">       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2, la - LISP alt</span><br><span class="line">       lr - LISP site-registrations, ld - LISP dyn-eid, a - Application</span><br><span class="line">C   2001:DB8:ACAD:1::/64 [0/0]</span><br><span class="line">     via GigabitEthernet0/0, directly connected</span><br><span class="line">L   2001:DB8:ACAD:1::1/128 [0/0]</span><br><span class="line">     via GigabitEthernet0/0, receive</span><br><span class="line">C   2001:DB8:ACAD:2::/64 [0/0]</span><br><span class="line">     via GigabitEthernet0/1, directly connected</span><br><span class="line">L   2001:DB8:ACAD:2::1/128 [0/0]</span><br><span class="line">     via GigabitEthernet0/1, receive</span><br><span class="line">C   2001:DB8:ACAD:3::/64 [0/0]</span><br><span class="line">     via Serial0/0/1, directly connected</span><br><span class="line">L   2001:DB8:ACAD:3::1/128 [0/0]</span><br><span class="line">     via Serial0/0/1, receive</span><br><span class="line">L   FF00::/8 [0/0]</span><br><span class="line">     via Null0, receive</span><br><span class="line"></span><br><span class="line">R1#ping 2001:db8:acad:1::10</span><br><span class="line">Type escape sequence to abort.</span><br><span class="line">Sending 5, 100-byte ICMP Echos to 2001:DB8:ACAD:1::10, timeout is 2 seconds:</span><br><span class="line">!!!!!</span><br><span class="line">Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms</span><br><span class="line">您已成功验证 IPv6 地址配置。</span><br></pre></td></tr></table></figure>
-<h2 id="IPv6-组播地址"><a href="#IPv6-组播地址" class="headerlink" title="IPv6 组播地址"></a>IPv6 组播地址</h2><p>IPv6 组播地址类似于 IPv4 组播地址。回想一下，组播地址用于发送单个数据包到一个或多个目标（组播组）。IPv6 组播地址的前缀为ff00::/8。<br>IPv6 组播地址分为两种类型：</p>
-<ul>
-<li>  知名组播地址</li>
-<li>  请求节点组播地址<h3 id="知名组播地址"><a href="#知名组播地址" class="headerlink" title="知名组播地址"></a>知名组播地址</h3>已分配的知名IPv6 组播地址。分配的组播地址是为预先定义的设备组保留的组播地址。<br>这些是两种常见的 IPv6 分配组播组：</li>
-<li>  <strong>ff02::1全节点组播组</strong> -这是一个包含<strong>所有支持 IPv6 的设备的组播组</strong>。发送到该组的数据包由该链路或网络上的所有 IPv6 接口接收和处理。这与 IPv4 中的广播地址具有相同的效果。</li>
-<li>  <strong>ff02::2:全路由器组播组</strong> - 这是<strong>所有IPv6路由器加入的组播组</strong>。当在IPv6路由器全局模式下启用ipv6 unicast-routing命令后，该路由器即成为该组的成员。发送到该组的数据包由该链路或网络上的所有 IPv6 路由器接收和处理。<h3 id="请求节点组播地址"><a href="#请求节点组播地址" class="headerlink" title="请求节点组播地址"></a>请求节点组播地址</h3>请求节点组播地址类似于全节点组播地址(ff02)。请求节点组播地址的优势在于它被映射到特殊的以太网组播地址。这使得以太网网卡可以通过检查目的 MAC 地址过滤该帧，而不是将它发送给 IPv6 流程来判断该设备是否是 IPv6 数据包的既定目标。<h2 id="IPv6-网络的子网划分"><a href="#IPv6-网络的子网划分" class="headerlink" title="IPv6 网络的子网划分"></a>IPv6 网络的子网划分</h2>使用IPv4时，我们必须从主机部分借用位来创建子网。这是因为对IPv4来说，子网划分是事后才想到的。但是，IPv6 的设计考虑到了子网划分。IPv6 GUA中的一个单独的子网ID字段用于创建子网。如图所示，子网ID字段是全局路由前缀和接口ID之间的区域。<br><img src="/2022/02/23/%E7%BD%91%E7%BB%9C/ITN%2011-13/1645704992473.png"><br>128 位地址的好处在是，它可以为每个网络支持足够多的子网并为每个子网支持足够多的主机。地址保留不是问题。</li>
-<li>  <strong>16 位子网 ID</strong> -创建多达 65,536 个子网</li>
-<li>  <strong>64 位接口 ID</strong> -每个子网支持多达 1800亿亿个主机 IPv6 地址（即 18,000,000,000,000,000,000）<h3 id="配置命令"><a href="#配置命令" class="headerlink" title="配置命令"></a>配置命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">R1(config)# interface gigabitethernet 0/0/0</span><br><span class="line">R1(config-if)# ipv6 address 2001:db8:acad:1::1/64</span><br><span class="line">R1(config-if)# no shutdown</span><br><span class="line">R1(config-if)# exit</span><br><span class="line">R1(config)# interface gigabitethernet 0/0/1</span><br><span class="line">R1(config-if)# ipv6 address 2001:db8:acad:2::1/64</span><br><span class="line">R1(config-if)# no shutdown</span><br><span class="line">R1(config-if)# exit</span><br><span class="line">R1(config)# interface serial 0/1/0</span><br><span class="line">R1(config-if)# ipv6 address 2001:db8:acad:3::1/64</span><br><span class="line">R1(config-if)# no shutdown</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>命令<strong>ping ::1</strong>用于测试IPv6主机的内部配置<br><strong>::1</strong> 是一个环回地址。成功地ping到这个地址意味着正确地安装了TCP/IP堆栈。</p>
-<h1 id="ICMP"><a href="#ICMP" class="headerlink" title="ICMP"></a>ICMP</h1><h2 id="ICMP-消息"><a href="#ICMP-消息" class="headerlink" title="ICMP 消息"></a>ICMP 消息</h2><p>虽然 IP 只是“尽最大努力”的协议，但在与另一个IP设备通信时，TCP/IP套件确实提供了错误消息和参考消息。这些消息使用 ICMP 服务发送。其用途是就特定情况下处理 IP 数据包的相关问题提供反馈，而并非是使 IP 可靠。ICMP 消息并非必需的，而且在网络内通常出于安全原因而被禁止。<br>ICMP 可同时用于 IPv4 和 IPv6。ICMPv4 是 IPv4 的消息协议。ICMPv6 为 IPv6 提供相同的服务，此外，还包括其他功能。在本课程中，涉及 ICMPv4 和 ICMPv6 时均会使用术语 ICMP。<br>ICMP 消息的类型及其发送原因非常多。ICMPv4 和 ICMPv6 <strong>通用的</strong> ICMP 消息包括：</p>
-<h3 id="主机联通性"><a href="#主机联通性" class="headerlink" title="主机联通性"></a>主机联通性</h3><p>ICMP Echo消息可用于测试 IP 网络上主机的可达性。</p>
-<h3 id="目的地或服务不可达"><a href="#目的地或服务不可达" class="headerlink" title="目的地或服务不可达"></a>目的地或服务不可达</h3><p>当主机或网关收到无法传送的数据包时，它会使用 ICMP 目的地不可达消息通知源主机，目的地或服务无法到达。消息包括指示数据包为何无法传送的代码。<br>ICMPv4 的目的地不可达代码示例有：</p>
-<ul>
-<li>  0 - 网络不可达。</li>
-<li>  1 - 主机不可达。</li>
-<li>  2 - 协议不可达。</li>
-<li>  3 - 端口不可达。</li>
-</ul>
-<p>ICMPv6 的目的地不可达代码示例有：</p>
-<ul>
-<li>  0-没有通往目标的路由。</li>
-<li>  1-管理上禁止与目的地通信（例如防火墙）</li>
-<li>  2-超出源地址的范围</li>
-<li>  3-地址无法访问</li>
-<li>  4-端口不可达。</li>
-<li><em>注意</em>*: ICMPv6 的目的地不可达消息代码与此类似，但稍有不同。<h3 id="超时"><a href="#超时" class="headerlink" title="超时"></a>超时</h3>路由器使用 ICMPv4 超时消息表明，因为数据包的生存时间 (TTL) 字段递减到 0 而不能转发该数据包。如果路由器接收数据包并且将 IPv4 数据包的 TTL 字段的值递减为零，则它会丢弃数据包并向源主机发送超时消息。<br>如果路由器因数据包过期而无法转发 IPv6 数据包，ICMPv6 也会发送超时消息。ICMPv6使用IPv6<strong>跳数限制</strong>字段来确定数据包是否已过期，而不是IPv4 TTL字段。<h3 id="ICMPv6-特有-消息"><a href="#ICMPv6-特有-消息" class="headerlink" title="ICMPv6 (特有)消息"></a>ICMPv6 (特有)消息</h3>在 ICMPv6 中发现的信息和错误消息非常类似于 ICMPv4 的控制和错误消息。但是，ICMPv6 拥有 ICMPv4 中所没有的新特性和功能提升。ICMPv6 消息封装在 IPv6 中。<br>ICMPv6 在邻居发现协议（ND 或 NDP）中包括四个新协议。<br>IPv6 路由器和 IPv6 设备之间的消息传递，包括动态地址分配如下所示：</li>
-<li>  <strong>路由器请求 (RS) 消息</strong>-RS消息是对RA消息的请求。一个IPv6主机启动后将发送一个RS。</li>
-<li>  <strong>路由器通告 (RA) 消息</strong>-启用IPv6的路由器每200秒发送RA消息，向启用IPv6的主机提供编址信息。RA 消息中可以包含主机的编址信息，例如前缀、前缀长度、DNS 地址和域名。使用 SLAAC 的主机会将其默认网关设置为发送 RA 的路由器的本地链路地址。<br>IPv6 设备之间的消息传递，包括重复的地址检测和地址解析如下所示：</li>
-<li>  <strong>邻居请求 (NS) 消息</strong>-当设备分配有全局IPv6单播或本地链路单播地址时，则建议对地址执行 重复检测（DAD） 来确保IPv6地址的唯一性。如果网络中的其他设备具有该地址，则会使用 NA 消息进行响应。此 NA 消息通知发送方设备地址已在使用。如果回应的 NA 消息未在固定的一段时间返回，则单播地址是唯一的，可以使用。</li>
-<li>  <strong>邻居通告 (NA) 消息</strong>-当 LAN 上的设备知道目的 IPv6 单播地址，但不知道其以太网 MAC 地址时，会使用地址解析。要确定目的 MAC 地址，设备会将 NS 消息发送到请求节点地址。该消息包括已知（目标）IPv6 地址。具有目标 IPv6 地址的设备会使用包含其以太网 MAC 地址的 NA 消息进行回应。</li>
-<li><em>注意</em>*: ICMPv6 ND 还包括重定向消息，与 ICMPv4 中使用的重定向消息功能相似。<h2 id="Ping-和-Traceroute-测试"><a href="#Ping-和-Traceroute-测试" class="headerlink" title="Ping 和 Traceroute 测试"></a>Ping 和 Traceroute 测试</h2><h3 id="Ping"><a href="#Ping" class="headerlink" title="Ping"></a>Ping</h3>Ping 是一种测试程序，它使用 ICMP Echo请求和Echo应答消息来测试主机之间的连接。<br>为了测试与网络上的另一台主机的连接，可使用 ping 命令将回应请求发送给该主机地址。若指定地址处的主机收到回应请求，便会使用Echo应答进行响应。每收到一个Echo应答，ping都会提供发出请求与收到应答的时间反馈。这可以作为网络性能的度量。<br>Ping 对响应规定了超时值。如果在超时前没有收到应答，ping 会提供一条消息，表示未收到响应。这可能表示存在问题，但是，还可能表示在网络上启用了阻止 ping 消息的安全功能。如果在发送ICMP Echo请求之前需要执行地址解析(ARP或ND)，那么第一次ping通常会超时。<br>所有请求发送完毕后，ping实用程序会提供摘要，包括成功率和到达目的地的平均往返时间。</li>
-</ul>
-<p>在路由器上输入 <strong>ping</strong> 命令时，最常见的指示符如下所示：</p>
-<ul>
-<li>  <strong>!</strong> - 表示收到一个 ICMP Echo 应答消息</li>
-<li>  <strong>.</strong> - 表示超时，正在等待 ICMP Echo应答消息</li>
-<li>  <strong>U</strong> - 表示收到了一个 ICMP 无法到达的消息</li>
-</ul>
-<p>使用<strong>ping</strong>进行的连通性测试的类型包括:</p>
-<ul>
-<li>  <strong>Ping 本地环回</strong>-从 127.0.0.1 接收的 IPv4 响应或从 ::1 接收的 IPv6 响应，表示主机上的 IP 安装正确。此响应来自网络层。但是，此响应并不代表地址、掩码或网关配置正确。它也不能说明有关网络协议栈下层的任何状态。它只测试 IP 网络层的 IP 连接。如果收到错误消息，则表示该主机上的 TCP/IP 无法正常运行。</li>
-<li>  <strong>向默认网关发出 ping 命令</strong>-成功 ping通网关表示主机和充当网关的路由器接口在本地网络中均运行正常。</li>
-<li>  <strong>Ping 远程主机</strong>-如果 ping 成功，则说明网际网络大部分运行正常。在互联网络上成功 ping通即确认本地网络上的通信正常，充当网关的路由器运行正常，且可能位于本地网络和远程主机网络之间路径上的所有其他路由器运行正常。<h3 id="Traceroute"><a href="#Traceroute" class="headerlink" title="Traceroute"></a>Traceroute</h3>Ping 用于测试两台主机之间的连接，但是不提供关于主机之间设备的详细信息。Traceroute <strong>tracert</strong>实用程序可以生成通信路径上成功到达的设备列表。此列表可以提供重要的验证和故障排除信息。如果数据到达目的地，则 Trace 就会列出主机之间的路径中每台路由器上的接口。如果数据在沿途的某一跳上失败，则回应 Trace 的最后一个路由器的地址可以提供指示，说明发现问题或有安全限制的地方。</li>
-<li><em>往返时间</em>*<br>Traceroute 可提供沿路径每一跳的往返时间并指示是否有某一跳未响应。往返时间是数据包到达远程主机以及从该主机返回响应所花费的时间。星号 * 用于表示丢失的或无应答的数据包。<br>此信息可用于在路径中定位有问题的路由器，或表示路由器配置为不应答。如果显示器显示特定的某一跳响应时间长或数据丢失，这表示该路由器的资源或其连接可能压力过大。</li>
-<li><em>IPv4 TTL 和 IPv6 跳数限制</em>*<br>Traceroute 使用第 3 层报头中的 IPv4 TTL 字段功能和 IPv6 跳数限制字段功能以及 ICMP 超时消息。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/21/%E7%BD%91%E7%BB%9C/ITN%208-10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/21/%E7%BD%91%E7%BB%9C/ITN%208-10/" class="post-title-link" itemprop="url">ITN 8-10</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-02-21 22:12:19 / 修改时间：22:51:52" itemprop="dateCreated datePublished" datetime="2022-02-21T22:12:19+08:00">2022-02-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>IP 版本 4 (IPv4) 和 IP 版本 6 (IPv6) 是主要的网络层通信协议。其他网络层协议包括路由协议，如开放式最短路径优先协议(OSPF)，和消息传递协议，如Internet控制消息协议(ICMP)。</p>
-<h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><p>为了实现跨网络边界的端到端通信，网络层协议执行四个基本操作:</p>
-<ul>
-<li>  <strong>终端设备编址</strong> - 必须为终端设备配置唯一的 IP 地址，以便在网络上进行识别。</li>
-<li>  <strong>封装</strong> - 网络层将来自传输层的协议数据单元 (PDU) 封装到数据包中。封装过程中会添加 IP 报头信息，例如来源（发送）和目的（接收）主机的 IP 地址。封装过程由 IP 数据包的源主机执行。</li>
-<li>  <strong>路由</strong> - 网络层提供服务，将数据包转发至另一网络上的目的主机。要传送到其他网络，数据包必须经过路由器的处理。路由器的作用是为数据包选择最佳路径，并将其转发至目的主机，该过程称为路由。数据包可能需要经过很多路由器才能到达目的主机。数据包在到达目的主机的过程中经过的每个路由器均称作一跳。</li>
-<li>  <strong>解封</strong> - 当数据包到达目的主机的网络层时，主机会检查数据包的 IP 报头。如果在报头中的目的 IP 地址与其自身的 IP 地址匹配，IP 报头将被会从数据包中删除。网络层解封数据包后，后继的第 4 层 PDU 会向上传递到传输层的相应服务。解封过程由 IP 数据包的目的主机执行。<h3 id="IP封装"><a href="#IP封装" class="headerlink" title="IP封装"></a>IP封装</h3>IP 通过添加 IP 报头将传输层数据段或其他数据进行封装。IP报头用于将数据包传送到目的主机。<br>路由器实施路由协议以在网络之间路由数据包。这些中间设备所执行的路由进程会检查数据包报头中的网络层地址。在任何情况下，数据包的数据部分，即封装的传输层 PDU或其他数据，在网络层的各个过程中都保持不变。<h3 id="IP特征"><a href="#IP特征" class="headerlink" title="IP特征"></a>IP特征</h3>IP 被设计为一种低开销协议只提供通过互连的网络系统从源主机向目的主机传送数据包所必需的功能。该协议并不负责跟踪和管理数据包的流动。<br>IP的基本特征：</li>
-<li>  <strong>无连接</strong> - 发送数据包前不与目的地建立连接。</li>
-<li>  <strong>尽力而为</strong> - IP本质上是不可靠的，因为不保证数据包交付。</li>
-<li>  <strong>介质无关性</strong> - 其工作与传输数据的介质（即铜缆、光纤或无线）无关。但是网络层会考虑介质的一个重要特征：每种介质可以传输的最大 PDU 大小。此特征称为最大传输单位 (MTU)。数据链路层为网络层指示所用介质的 MTU<h2 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h2>IPv4 数据包报头是由包含重要数据包信息的字段组成。这些字段中包含的二进制数字由第 3 层进程进行检查。<br>图中所示的 IP 协议报头图标识了 IPv4 数据包中的字段。<br><img src="/2022/02/21/%E7%BD%91%E7%BB%9C/ITN%208-10/1645441397036.png"><br>IPv4 <strong>报头</strong>中的重要字段包括以下：</li>
-<li>  <strong>版本 -</strong> 包含一个 4 位二进制值 0100，<strong>用于</strong>标识这是 IPv4 数据包。</li>
-<li>  <strong>差分服务或区分服务 (DS) -</strong> 以前称为服务类型 (ToS) 字段，DS 字段是一个 8 位字段，<strong>用于</strong>确定每个数据包的优先级。DiffServ 字段的六个最高有效位是区分服务代码点 (DSCP)位，而后两位是显式拥塞通知 (ECN) 位。</li>
-<li>  <strong>报头校验和 -</strong> 这<strong>用于</strong>检测 IPv4 报头中的损坏。</li>
-<li>  <strong>生存时间 (TTL) -</strong> TTL包含一个 8 位二进制值，<strong>用于</strong>限制数据包的生命周期。IPv4 数据包的源设备设置初始 TTL 值。当数据包每被路由器处理一次，数值就减少一。如果 TTL 字段的值减为零，则路由器将丢弃该数据包并向源 IP 地址发送互联网控制消息协议 (ICMP) 超时消息。由于路由器减少每个数据包的 TTL，因此路由器也必须重新计算报头校验和。</li>
-<li>  <strong>协议 -</strong> 该字段<strong>用于</strong>标识下一级协议。此 8 位二进制值表示数据包包含的数据负载类型，使网络层将数据传送到相应的上层协议。常用的值包括 ICMP (1)、TCP (6) 和 UDP (17)。</li>
-<li>  <strong>源 IPv4 地址 -</strong> 包含表示数据包源 IPv4 地址的 32 位二进制值。源 IPv4 地址始终为单播地址。</li>
-<li>  <strong>目的 IPv4 地址 -</strong> 包含 32 位二进制值，表示数据包的目的 IPv4 地址。目的 IPv4 地址为单播、组播或广播地址。</li>
-<li>  <strong>互联网报头长度</strong> (IHL)、<strong>总长度</strong>和<strong>报头校验和</strong>字段均<strong>用于</strong>识别和验证数据包。</li>
-<li>  具体而言，IPv4 数据包使用标识符、标志和片偏移量字段跟踪分段。路由器从一种介质向具有较小 MTU(最大传输单元) 的另一种介质转发IPv4数据包时必须将它分片。<h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2>IPv4 三个重要问题：</li>
-<li>  <strong>IPv4地址耗尽</strong> - IPv4 的可用唯一公有地址数量有限。尽管有大约 40 亿(32位)的 IPv4 地址，但是支持 IP 的新设备数量的不断增加，以及始终在线的连接的增加，和欠发达地区的潜在连接的增加，不断催生更多的地址需求。</li>
-<li>  <strong>缺乏端到端连接</strong> - 网络地址转换 (NAT) 是 IPv4 网络中经常实施的一项技术。NAT 为多种设备共享单一的公有 IPv4 地址提供方法。但是，因为共享了公有 IPv4 地址，内部网络主机的 IPv4 地址会隐藏起来。这会给需要端到端连接的技术造成难题。</li>
-<li>  <strong>增加的网络复杂性</strong> - 虽然NAT延长了IPv4的寿命，但它只是作为一种过渡到IPv6的机制。NAT在其各种实施中增加了网络的复杂性，从而造成延迟并使故障排除更加困难。<br>IPv6 的功能提升包括：</li>
-<li>  <strong>更大的地址空间</strong> - IPv6 地址基于 128 位分层编址，而 IPv4 采用的是 32 位。</li>
-<li>  <strong>改进数据包处理过程</strong> - IPv6 报头简化为更少的字段。</li>
-<li>  <strong>消除了对 NAT 的需求</strong> - 有了数额如此巨大的公有 IPv6 地址，私有 IPv4 地址和公有 IPv4 地址之间不再需要 NAT。这可避免需要端到端连接的应用程序遇到某些由 NAT 引起的故障。<h3 id="报头"><a href="#报头" class="headerlink" title="报头"></a>报头</h3><img src="/2022/02/21/%E7%BD%91%E7%BB%9C/ITN%208-10/1645442014282.png"><br>IPv6 数据包报头中的字段包括以下：</li>
-<li>  <strong>版本</strong> - 此字段包含一个 4 位二进制值 0110，<strong>用于</strong>标识这是 IPv6 数据包。</li>
-<li>  <strong>流量类别</strong> - 此 8 位字段<strong>相当于</strong>IPv4 区分服务 (DS)字段。</li>
-<li>  <strong>流标签</strong> - 此 20 位字段建议所有含相同流标签的数据包接受相同类型的路由器处理。</li>
-<li>  <strong>负载长度</strong> - 此 16 位字段<strong>表示</strong> IPv6 数据包的数据部分或负载的长度。这不包括 IPv6 报头的长度，它是固定的 40 字节报头。</li>
-<li>  <strong>下一报头</strong> - 此 8 位字段<strong>相当于</strong>“IPv4 协议”字段。它表示数据包传送的数据负载类型，使网络层将数据传送到相应的上层协议。</li>
-<li>  <strong>跳数限制</strong> - 此 8 位字段<strong>取代</strong> IPv4 的 TTL 字段。每个转发数据包的路由器均会使此数值减一。当跳数达到 0 时，会丢弃此数据包，并且会向发送主机转发 ICMPv6 超时消息。这表明包没有到达目的地，因为超出了跳数限制。与 IPv4 不同，IPv6 不包括 IPv6 报头校验和，因为此功能同时在下层和上层执行。这意味着校验和不需要在每个路由器降低跳数限制字段时重新计算，这也提高了网络性能。</li>
-<li>  <strong>源 IPv6 地址</strong> - 此 128 位字段用于标识发送主机的 IPv6 地址。</li>
-<li>  <strong>目的 IPv6 地址</strong> - 此 128 位字段用于标识接收主机的 IPv6 地址。<br>IPv6 数据包还可能包含扩展报头 (EH)，以便提供可选的网络层信息。扩展报头为可选项，位于 IPv6 报头及负载之间。EH 用于分段、安全性、移动性支持等。<br>与 IPv4 不同，路由器不会对路由的 IPv6 数据包进行分段。<h2 id="主机路由方式"><a href="#主机路由方式" class="headerlink" title="主机路由方式"></a>主机路由方式</h2>对于IPv4和IPv6，数据包总是在源主机上创建，为此主机终端设备将创建自己的路由表。<br>主机可以将数据包发送至如下：</li>
-<li>  <strong>主机自己</strong> - 主机可以通过向特定的地址发送数据包来向自己发起ping测试，这个<strong>特定的地址</strong>是：IPv4地址127.0.0.1，或者IPv6地址 ::1，它被称为环回接口。对环回接口执行 ping 操作可以测试主机上的 TCP/IP 协议堆栈。</li>
-<li>  <strong>本地主机</strong>- 目的主机与发送主机位于同一本地网络。源和目的主机共享同一个网络地址。</li>
-<li>  <strong>远程主机</strong> - 这是位于远程网络上的目的主机。源和目的主机不共享同一个网络地址。<br>数据包是要发送到本地主机还是远程主机是由源端设备决定的。源端设备确定目的 IP 地址是否与源设备本身所在的网络相同。确定方法因 IP 版本不同而异：</li>
-<li>  <strong>在 IPv4 中</strong> -源设备使用自己的子网掩码以及自己的 IPv4 地址和目的 IPv4 地址来进行此判断。</li>
-<li>  <strong>在 IPv6 中</strong> -本地路由器将本地网络地址（前缀）通告给网络上的所有设备。<h3 id="默认网关"><a href="#默认网关" class="headerlink" title="默认网关"></a>默认网关</h3>默认网关是可以将流量路由到其他网络的网络设备，通常是具有以下功能的路由器：</li>
-<li>  它拥有与本地网络其他主机位于相同地址范围的本地 IP 地址。</li>
-<li>  它可以接受数据到本地网络，并将数据转发出本地网络。</li>
-<li>  它向其他网络路由流量。<br>主机的路由表通常包括默认网关。在IPv4中，主机通过动态主机配置协议 (DHCP) 动态接收默认网关 IPv4 地址，或者通过手动配置。在 IPv6 中，路由器通告默认网关地址，或者可以在主机上手动配置。<br>配置默认网关会在 PC 的路由表中创建一个默认路由。默认路由是计算机尝试联系远程网络时所用的路由或路径。<br>PC1 和 PC2 都会使用默认路由将去往远程网络的所有流量发送到 R1。<h3 id="路由表"><a href="#路由表" class="headerlink" title="路由表"></a>路由表</h3>路由表存储三种类型的路由条目：</li>
-<li>  <strong>直连网络-</strong> 这些网络路由条目是活动的路由器接口。当接口配置了 IP 地址并激活时，路由器会添加直连路由。每个路由器接口均连接到一个不同的网段。在图中，R1 IPv4路由表中的直连网络为192.168.10.0/24和209.165.200.224/30。</li>
-<li>  <strong>远程网络</strong> - 这些网络路由条目连接到其他路由器。路由器通过由管理员明确配置或使用动态路由协议交换路由信息来学习远程网络。在图中，R1 IPv4路由表中的远程网络为10.1.1 /24。</li>
-<li>  <strong>默认路由</strong> -像主机一样，大多数路由器还包含默认路由条目，即默认网关。当IP路由表中没有更好(更长)的匹配时，将使用默认路由。在图中，R1 IPv4路由表很可能包含一个将所有数据包转发到路由器R2的默认路由。<br><img src="/2022/02/21/%E7%BD%91%E7%BB%9C/ITN%208-10/1645444562285.png"><h3 id="静态路由"><a href="#静态路由" class="headerlink" title="静态路由"></a>静态路由</h3>静态路由是手动配置的路由条目。如果网络拓扑改变，静态路由不会自动更新<br>静态路由具有以下特征：</li>
-<li>  必须手动配置静态路由。</li>
-<li>  如果拓扑发生变化，且静态路由不再可用，则管理员需要重新配置静态路由。</li>
-<li>  静态路由适用于小型网络且当冗余链路很少或没有冗余链路的情况。</li>
-<li>  静态路由通常与动态路由协议一起用于配置默认路由。<h3 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h3>动态路由协议可让路由器从其他路由器那里自动学习远程网络，包括默认路由。如果使用动态路由协议，则路由器无需网络管理员的参与，即可自动与其它路由器共享路由信息并对拓扑结构的变化作出反应。如果网络拓扑发生变化，路由器将使用动态路由协议共享此信息，并自动更新路由表。<br>动态路由协议包括<strong>OSPF</strong>和增强型内部网关路由协议 (<strong>EIGRP</strong>)。<br>动态路由协议将自动执行如下操作：</li>
-<li>  发现远程网络</li>
-<li>  维护最新路由信息</li>
-<li>  选择通往目的网络的最佳路径</li>
-<li>  当前路径无法再使用时尝试找出新的最佳路径<br>通常一些路由器会同时使用静态路由和动态路由协议。<h3 id="路由表命令"><a href="#路由表命令" class="headerlink" title="路由表命令"></a>路由表命令</h3>在 Windows 主机上，使用route print或命netstat -r令可以显示主机路由表。<br>特权 EXEC 模式命令 <strong>show ip route</strong> 用于查看思科 IOS 路由器上的 IPv4 路由表。每个路由表条目的开头都有一个代码，用于标识路由的类型或路由的学习方式。常见路由源（代码）包括以下内容：</li>
-<li>  <strong>L</strong> - 直连的本地接口 IP 地址</li>
-<li>  <strong>C</strong> - 直连网络</li>
-<li>  <strong>S</strong> - 静态路由由管理员手动配置</li>
-<li>  <strong>O</strong> - OSPF</li>
-<li>  <strong>D</strong> - EIGRP<h1 id="地址解析"><a href="#地址解析" class="headerlink" title="地址解析"></a>地址解析</h1>有时，主机必须发送消息，但它只知道目的设备的 IP 地址。主机需要知道该设备的MAC地址，但是如何才能发现它呢? 这就是地址解析变得至关重要的地方。<h2 id="MAC-和-IP"><a href="#MAC-和-IP" class="headerlink" title="MAC 和 IP"></a>MAC 和 IP</h2></li>
-<li>物理地址（MAC 地址） – 用于同一网络上的以太网网卡之间的通信。</li>
-<li>逻辑地址（IP地址） – 用于将数据包从源设备发送到目的设备。目的IP地址可能与源地址在同一个IP网络上，也可能在远程网络上<br>数据流中 IP 数据包的 IP 地址如何与通往目的地路径中每条链路上的 MAC 地址相关联？对于IPv4数据包，这可以通过地址解析协议 (ARP) 过程来完成。对于IPv6数据包，这个过程是ICMPv6邻居发现(ND)。<h2 id="⁪ARP"><a href="#⁪ARP" class="headerlink" title="⁪ARP"></a>⁪ARP</h2>设备使用地址解析协议(ARP)来确定一个已知 IPv4 地址的本地设备的目的MAC地址。当数据包发送到要封装入以太网帧的数据链路层时，设备将参照其内存中的表来查找映射至 IPv4 地址的 MAC 地址。此表临时存储在RAM内存中，称为 ARP 表或 ARP 缓存。<br>ARP 提供两个基本功能：</li>
-<li>  将 IPv4 地址解析为 MAC 地址</li>
-<li>  维护IPv4到MAC地址映射表<h3 id="ARP请求与应答"><a href="#ARP请求与应答" class="headerlink" title="ARP请求与应答"></a>ARP请求与应答</h3>如果设备找到 IPv4 地址，其相应的 MAC 地址将作为帧中的目的 MAC 地址。如果找不到该条目，设备会发送一个 ARP 请求。<br>ARP 请求使用以下帧头信息封装在以太网帧中：</li>
-<li>  <strong>目的 MAC 地址</strong> – 这是一种要求 LAN 上的所有以太网网卡接受并处理 ARP 请求的广播地址FF-FF-FF-FF-FF-FF。</li>
-<li>  <strong>源 MAC 地址</strong> – 这是ARP请求发送方的MAC地址。</li>
-<li>  <strong>类型</strong> - ARP 消息的类型字段为 0x806。该类型字段会通知接收网卡需要将帧的数据部分传递给 ARP 进程处理。<br>只有具有与ARP请求相应的目的IPv4地址的设备才会以ARP应答做出响应。ARP 应答使用以下帧头信息封装在以太网帧中：</li>
-<li>  <strong>目的 MAC 地址</strong> – 这是ARP请求发送方的MAC地址。</li>
-<li>  <strong>源 MAC 地址</strong> – 这是ARP应答发送方的MAC地址。</li>
-<li>  <strong>类型</strong> – ARP 消息的类型字段为 0x806。该类型字段会通知接收网卡需要将帧的数据部分传递给 ARP 进程处理。<br>只有原始发送 ARP 请求的设备会收到单播 ARP 应答。收到该 ARP 应答后，设备会将 IPv4 地址及相应的 MAC 地址添加到自身的 ARP 表中。<h3 id="ARP表的删除"><a href="#ARP表的删除" class="headerlink" title="ARP表的删除"></a>ARP表的删除</h3>对于每台设备，ARP 缓存定时器将会删除在指定时间内未使用的 ARP 条目。时间根据设备的操作系统不同而不同。例如，较新的 Windows 操作系统将 ARP 表条目存储 15 秒到 45 秒之间，如图所示。<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3>在思科路由器上，show ip arp命令用于显示 ARP 表。<br>在 Windows 10 PC 上，arp –a命令用于显示 ARP 表。<h3 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h3></li>
-<li>广播时对性能的影响<br>作为广播帧，本地网络上的每台设备都会收到并处理 ARP 请求。在一般的商业网络中，这些广播对网络性能的影响可能微不足道。但是，如图所示，如果大量设备都已启动，并且同时开始使用网络服务，网络性能可能会有短时间的下降。在设备发出初始 ARP 广播并获取必要的 MAC 地址之后，网络受到的影响将会降至最小。</li>
-<li>ARP欺骗<br>有时，使用 ARP 可能会造成潜在的安全风险。威胁发起者可以使用 ARP 欺骗来执行 ARP 毒化攻击。威胁发起者使用这种技术来应答属于另一台设备（例如默认网关）的 IPv4 地址的 ARP 请求。威胁发起者会发送一个带有自己 MAC 地址的 ARP 应答。ARP 应答的接收方会将错误的 MAC 地址添加到其 ARP 表中，并将这些数据包发送给威胁发起者。<br>企业级的交换机包含称为动态 ARP 检查 (DAI) 的缓解技术。<h2 id="邻居发现"><a href="#邻居发现" class="headerlink" title="邻居发现"></a>邻居发现</h2>IPv6 使用与 IPv4 类似的 ARP 流程，称为 ICMPv6 邻居发现(ND或NDP)。与 IPv4 的 ARP 请求和 ARP 应答类似，IPv6 使用邻居请求和邻居通告消息。<br>ICMPv6 ND （在 IETF RFC 4861 中定义）使用五种 ICMPv6 消息来执行这些服务：</li>
-<li>  邻居请求消息</li>
-<li>  邻居通告消息</li>
-<li>  路由器请求消息</li>
-<li>  路由器通告消息</li>
-<li>  重定向消息<br>邻居请求和邻居通告消息用于设备到设备的消息传递，例如地址解析（类似于 IPv4 的 ARP）。设备包括主机计算机和路由器。ICMPv6邻居请求消息使用特定的以太网和IPv6组播地址发送。<br>路由器请求和路由器通告消息用于设备和路由器之间的消息传递。通常，路由器发现用于动态地址分配和<strong>无状态地址自动配置</strong> (SLAAC)。<br>重定向消息用于更好的下一跳选择。<h1 id="路由器基本配置"><a href="#路由器基本配置" class="headerlink" title="路由器基本配置"></a>路由器基本配置</h1><h2 id="配置初始路由器设置"><a href="#配置初始路由器设置" class="headerlink" title="配置初始路由器设置"></a>配置初始路由器设置</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">进入全局配置模式将路由器名称配置为“R1”。</span><br><span class="line">Router&gt;enable</span><br><span class="line">Router#configure terminal</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">Router(config)#hostname R1</span><br><span class="line">将加密密码配置为“class”。</span><br><span class="line">R1(config)#enable secret class</span><br><span class="line">将控制台线路密码配置为“cisco”并要求用户登录，然后返回全局模式。</span><br><span class="line">R1(config)#line console 0</span><br><span class="line">R1(config-line)#password cisco</span><br><span class="line">R1(config-line)#login</span><br><span class="line">R1(config-line)#exit</span><br><span class="line">对于vty线路0到4，将密码配置为“cisco”并要求用户登录，启用SSH和Telnet访问，然后返回全局模式。</span><br><span class="line">R1(config)#line vty 0 4</span><br><span class="line">R1(config-line)#password cisco</span><br><span class="line">R1(config-line)#login</span><br><span class="line">R1(config-line)#transport input ssh telnet</span><br><span class="line">R1(config-line)#exit</span><br><span class="line">加密所有明文密码</span><br><span class="line">R1(config)#service password-encryption</span><br><span class="line">输入标语“Authorized Access Only!”并使用# 作为定界符。</span><br><span class="line">R1(config)#banner motd #Authorized Access Only!#</span><br><span class="line">退出全局配置模式。</span><br><span class="line">R1(config)#exit</span><br><span class="line">R1#</span><br></pre></td></tr></table></figure>
-<h2 id="配置接口"><a href="#配置接口" class="headerlink" title="配置接口"></a>配置接口</h2>此表总结了用于验证接口配置的更常用 <strong>show</strong> 命令。<br><img src="/2022/02/21/%E7%BD%91%E7%BB%9C/ITN%208-10/1645452335823.png"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">进入全局配置模式。</span><br><span class="line">R1#configure terminal</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">配置接口GigabitEthernet 0/0/0。</span><br><span class="line">R1(config)#interface gigabitethernet 0/0/0</span><br><span class="line">将链路描述为“Link to LAN”。</span><br><span class="line">R1(config-if)#description Link to LAN</span><br><span class="line">使用 IPv4 地址192.168.10.1和子网掩码255.255.255.0配置接口。</span><br><span class="line">R1(config-if)#ip address 192.168.10.1 255.255.255.0</span><br><span class="line">使用 IPv6 地址 2001:db8:acad:10::1 和前缀长度/64配置接口。</span><br><span class="line">R1(config-if)#ipv6 address 2001:db8:acad:10::1/64</span><br><span class="line">启用接口并返回全局配置模式。</span><br><span class="line">R1(config-if)#no shutdown</span><br><span class="line">*Aug  1 01:43:53.435: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to down</span><br><span class="line">*Aug  1 01:43:56.447: %LINK-3-UPDOWN: Interface GigabitEthernet0/0/0, changed state to up</span><br><span class="line">*Aug  1 01:43:57.447: %LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0/0, changed state to up</span><br><span class="line">R1(config-if)#exit</span><br><span class="line">R1#</span><br><span class="line">您已成功配置路由器 R1 上的初始设置。</span><br></pre></td></tr></table></figure>
-<h2 id="配置默认网关"><a href="#配置默认网关" class="headerlink" title="配置默认网关"></a>配置默认网关</h2>要为交换机配置默认网关，请使用ip default-gateway ip-address 全局配置命令。配置的 IP 地址是连接到交换机的本地路由器接口的 IP 地址。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">进入全局配置模式。</span><br><span class="line">S1#configure terminal</span><br><span class="line">Enter configuration commands, one per line. End with CNTL/Z.</span><br><span class="line">将 S1 的默认网关配置为“192.168.10.1”。</span><br><span class="line">S1(config)#ip default-gateway 192.168.10.1</span><br><span class="line">S1(config)#</span><br><span class="line">您已在交换机S1上成功配置默认网关。</span><br></pre></td></tr></table></figure>
-<h1 id><a href="#" class="headerlink" title></a></h1>当有多个可用路由时，路由器使用哪项参数来选择到达目的网络的路径？</li>
-<li>与目的网络相关的较低度量值</li>
-</ul>
-<p>当有多个可用路由时，路由器使用哪项参数来选择到达目的网络的路径？</p>
-<ul>
-<li>流标签</li>
-</ul>
-<p>当在交换机 vty 线路上输入 transport input ssh 命令时会发生什么?</p>
-<ul>
-<li>交换机和远程用户之间的通信是加密的</li>
-</ul>
-<p>思科路由器启动过程分为四个主要阶段：</p>
-<ol>
-<li> 执行POST</li>
-<li> 加载 bootstrap 程序</li>
-<li> 查找并加载 Cisco IOS 软件</li>
-<li> 查找并加载启动配置文件，或进入设置模式</li>
-</ol>
 
       
     </div>
@@ -896,7 +972,7 @@ byg:dead_sea</li>
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-21 18:55:18" itemprop="dateModified" datetime="2022-02-21T18:55:18+08:00">2022-02-21</time>
+                <time title="修改时间：2022-02-28 16:50:06" itemprop="dateModified" datetime="2022-02-28T16:50:06+08:00">2022-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -927,7 +1003,13 @@ byg:dead_sea</li>
 <li>  国际电信联盟 (ITU)</li>
 <li>  美国国家标准学会 (ANSI)</li>
 <li>  电气电子工程师协会 (IEEE)</li>
-<li>  国家级电信管理局包括美国联邦通信委员会 (FCC) 和欧洲电信标准协会 (ETSI)。<br>除了这些组织之外，通常还有地方性布线标准组织，例如 CSA（加拿大标准协会）、CENELEC（欧洲电工标准化委员会）和 JSA/JIS（日本标准协会），开发本地规范。<h3 id="物理组件"><a href="#物理组件" class="headerlink" title="物理组件"></a>物理组件</h3>物理组件是电子硬件设备、介质和其他连接器，它们用于传输用于表示位的信号。网卡、接口和连接器、线缆材料以及线缆设计等硬件组件均按照物理层的相关标准进行规定。<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3>编码或线路编码是一种将数据位流转换为预先定义“代码”的方法。这些代码就是位的编组，用于提供一种可预测模式，以便发送者和接收者均能识别。换句话说，编码是用于表示数字信息的方法或模式。<h3 id="信令"><a href="#信令" class="headerlink" title="信令"></a>信令</h3>物理层必须在介质上生成代表“1”和“0”的电信号、光信号或无线信号。<strong>表示位的方法称为信令方法。</strong> 物理层标准必须定义哪种类型的信号代表“1”，而哪种类型的信号代表“0”。这可以简单到只是改变电信号或光脉冲的级别。例如，长脉冲可能代表 1，而短脉冲可能代表 0。<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3>不同的物理介质所支持的位传输速率不同。数据传输的讨论通常都会提及带宽。带宽是介质承载数据的能力。数字带宽可以测量在给定时间内从一个位置流向另一个位置的数据量。<br>多种因素的结合，决定了网络的实际带宽：</li>
+<li>  国家级电信管理局包括美国联邦通信委员会 (FCC) 和欧洲电信标准协会 (ETSI)。<br>除了这些组织之外，通常还有地方性布线标准组织，例如 CSA（加拿大标准协会）、CENELEC（欧洲电工标准化委员会）和 JSA/JIS（日本标准协会），开发本地规范。</li>
+</ul>
+<h3 id="物理组件"><a href="#物理组件" class="headerlink" title="物理组件"></a>物理组件</h3><p>物理组件是电子硬件设备、介质和其他连接器，它们用于传输用于表示位的信号。网卡、接口和连接器、线缆材料以及线缆设计等硬件组件均按照物理层的相关标准进行规定。</p>
+<h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>编码或线路编码是一种将数据位流转换为预先定义“代码”的方法。这些代码就是位的编组，用于提供一种可预测模式，以便发送者和接收者均能识别。换句话说，编码是用于表示数字信息的方法或模式。</p>
+<h3 id="信令"><a href="#信令" class="headerlink" title="信令"></a>信令</h3><p>物理层必须在介质上生成代表“1”和“0”的电信号、光信号或无线信号。<strong>表示位的方法称为信令方法。</strong> 物理层标准必须定义哪种类型的信号代表“1”，而哪种类型的信号代表“0”。这可以简单到只是改变电信号或光脉冲的级别。例如，长脉冲可能代表 1，而短脉冲可能代表 0。</p>
+<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3><p>不同的物理介质所支持的位传输速率不同。数据传输的讨论通常都会提及带宽。带宽是介质承载数据的能力。数字带宽可以测量在给定时间内从一个位置流向另一个位置的数据量。<br>多种因素的结合，决定了网络的实际带宽：</p>
+<ul>
 <li>  物理介质的属性</li>
 <li>  信令和检测网络信号所选用的技术<table>
 <thead>
@@ -966,22 +1048,30 @@ byg:dead_sea</li>
 </li>
 <li><strong>延迟</strong>延迟是指数据从一个给定点传送到另一给定点所用的时间，包括时延。</li>
 <li><strong>吞吐量</strong>吞吐量是给定时段内通过介质传输的位的量度。</li>
-<li><strong>实际吞吐量</strong>实际吞吐量是在给定时间段内传输的有用数据的衡量标准。<br>  实际吞吐量就是吞吐量减去建立会话、确认、封装和重传所产生的流量开销。<br>  实际吞吐量总是低于吞吐量，而吞吐量通常低于带宽。<h2 id="铜缆布线"><a href="#铜缆布线" class="headerlink" title="铜缆布线"></a>铜缆布线</h2>网络使用铜介质是因为其价格低廉、易于安装、对电流的电阻低。但是，铜介质受到距离和信号干扰的限制。<br>在铜缆中，通过电脉冲传输数据。目的设备网络接口中的探测器接收的信号必须可成功解码为与发送的信号相符。但是，信号传输的距离越远，信号下降就越多。这称为信号衰减。因此，所有铜介质必须严格遵循指导标准所指定的距离限制。<br>电脉冲的时间和电压值易受两个干扰源的干扰：</li>
+<li><strong>实际吞吐量</strong>实际吞吐量是在给定时间段内传输的有用数据的衡量标准。<br>  实际吞吐量就是吞吐量减去建立会话、确认、封装和重传所产生的流量开销。<br>  实际吞吐量总是低于吞吐量，而吞吐量通常低于带宽。</li>
+</ul>
+<h2 id="铜缆布线"><a href="#铜缆布线" class="headerlink" title="铜缆布线"></a>铜缆布线</h2><p>网络使用铜介质是因为其价格低廉、易于安装、对电流的电阻低。但是，铜介质受到距离和信号干扰的限制。<br>在铜缆中，通过电脉冲传输数据。目的设备网络接口中的探测器接收的信号必须可成功解码为与发送的信号相符。但是，信号传输的距离越远，信号下降就越多。这称为信号衰减。因此，所有铜介质必须严格遵循指导标准所指定的距离限制。<br>电脉冲的时间和电压值易受两个干扰源的干扰：</p>
+<ul>
 <li>  <strong>电磁干扰 (EMI) 或射频干扰 (RFI)</strong>- EMI 和 RFI 干扰信号会扭曲和损坏通过铜介质承载的数据信号。EMI 和 RFI 的潜在来源包括无线电波和电磁设备（如荧光灯或电动机）。</li>
 <li>  <strong>串扰</strong> - 串扰是一根电线中信号的电场或磁场对邻近电线中的信号造成的干扰。在电话线上，串扰会由相邻电路中另一语音会话的接听部分引起。具体而言，当电流流经电线时，会在电线周围产生一个较小的环形磁场，而相邻电线可能接收到该磁场。<br>为了应对 EMI 和 RFI 的负面影响，某些类型的铜缆会用金属屏蔽套包裹，并要求适当的接地连接。<br>为了应对串扰的负面影响，某些类型的铜缆将相反电路线对绞合在一起以有效消除串扰。<br>使用以下建议也可以限制电子噪音对铜缆的影响：</li>
 <li>  选择的电缆类型或类别要适合特定的网络环境。</li>
 <li>  设计电缆基础设施时应规避建筑结构中已知和潜在的干扰源。</li>
-<li>  使用包括正确处理和端接电缆的布线技术。<h3 id="非屏蔽双绞线-UTP"><a href="#非屏蔽双绞线-UTP" class="headerlink" title="非屏蔽双绞线 (UTP)"></a>非屏蔽双绞线 (UTP)</h3>通过 RJ-45 连接器端接的 UTP 布线用于网络主机与中间网络设备的互连，例如交换机和路由器。<br>在 LAN 中，UTP 电缆由四对用颜色标记的电线组成。这些电线绞合在一起，并用软塑料套包裹，以避免较小的物理损坏。电线的扭绞有助于防止电线之间的串扰。<br>关键特征:</li>
+<li>  使用包括正确处理和端接电缆的布线技术。</li>
 </ul>
+<h3 id="非屏蔽双绞线-UTP"><a href="#非屏蔽双绞线-UTP" class="headerlink" title="非屏蔽双绞线 (UTP)"></a>非屏蔽双绞线 (UTP)</h3><p>通过 RJ-45 连接器端接的 UTP 布线用于网络主机与中间网络设备的互连，例如交换机和路由器。<br>在 LAN 中，UTP 电缆由四对用颜色标记的电线组成。这些电线绞合在一起，并用软塑料套包裹，以避免较小的物理损坏。电线的扭绞有助于防止电线之间的串扰。<br>关键特征:</p>
 <ol>
 <li> 外层护套可防止铜缆受到物理损坏。</li>
 <li> 线对扭绞可防止信号串扰。</li>
-<li> 颜色编码的塑料绝缘层使电线之间相互隔离并标识每个线对。<h3 id="屏蔽双绞线-STP"><a href="#屏蔽双绞线-STP" class="headerlink" title="屏蔽双绞线 (STP)"></a>屏蔽双绞线 (STP)</h3>屏蔽双绞线 (STP) 比 UTP 布线提供更好的噪声防护。但是，与 UTP 电缆相比，STP 电缆更加昂贵而且不易安装。和 UTP 相同，STP 也使用 RJ-45 连接器。STP 电缆结合屏蔽技术来应对 EMI 和 RFI，使用线缆扭绞技术来应对串扰。为了充分利用屏蔽的优势，STP 电缆使用特殊屏蔽 STP 数据连接器进行端接。如果电缆接地不正确，屏蔽就相当于一个天线，会接听多余信号。<br>关键特征:</li>
+<li> 颜色编码的塑料绝缘层使电线之间相互隔离并标识每个线对。</li>
+</ol>
+<h3 id="屏蔽双绞线-STP"><a href="#屏蔽双绞线-STP" class="headerlink" title="屏蔽双绞线 (STP)"></a>屏蔽双绞线 (STP)</h3><p>屏蔽双绞线 (STP) 比 UTP 布线提供更好的噪声防护。但是，与 UTP 电缆相比，STP 电缆更加昂贵而且不易安装。和 UTP 相同，STP 也使用 RJ-45 连接器。STP 电缆结合屏蔽技术来应对 EMI 和 RFI，使用线缆扭绞技术来应对串扰。为了充分利用屏蔽的优势，STP 电缆使用特殊屏蔽 STP 数据连接器进行端接。如果电缆接地不正确，屏蔽就相当于一个天线，会接听多余信号。<br>关键特征:</p>
+<ol>
 <li> 外层护套</li>
 <li> 金属编织或箔屏蔽</li>
 <li> 金属箔屏蔽</li>
-<li> 双绞线<h3 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h3>同轴电缆用于有线电视和互联网服务，并将天线连接到无线设备，它使用多种类型的连接器，包括BNC、N型和F型连接器。<br>虽然 UTP 电缆在现代以太网安装中最终取代了同轴电缆，但在以下情形中仍采用同轴电缆设计：</li>
+<li> 双绞线</li>
 </ol>
+<h3 id="同轴电缆"><a href="#同轴电缆" class="headerlink" title="同轴电缆"></a>同轴电缆</h3><p>同轴电缆用于有线电视和互联网服务，并将天线连接到无线设备，它使用多种类型的连接器，包括BNC、N型和F型连接器。<br>虽然 UTP 电缆在现代以太网安装中最终取代了同轴电缆，但在以下情形中仍采用同轴电缆设计：</p>
 <ul>
 <li>  <strong>无线安装</strong> - 用同轴电缆将天线连接到无线设备。同轴电缆可传送天线和无线电设备之间的射频 (RF) 能量。</li>
 <li>  <strong>有线电视互联网安装</strong> - 有线电视服务提供商为其客户提供互联网连接，他们会使用光缆替换同轴电缆和支撑放大元件部分。但是，客户所在地的布线仍采用同轴电缆。<br>关键特征:</li>
@@ -990,13 +1080,14 @@ byg:dead_sea</li>
 <li> 外层护套</li>
 <li> 铜网屏蔽</li>
 <li> 塑料绝缘层</li>
-<li> 铜质导线<h2 id="UTP-布线"><a href="#UTP-布线" class="headerlink" title="UTP 布线"></a>UTP 布线</h2>用作网络介质时，UTP电缆由四对用颜色标记的铜线组成。这些铜线扭绞在一起，并用软塑料套包裹。在安装过程中，它尺寸较小是有利的。<br>UTP 电缆并不使用屏蔽层来对抗 EMI 和 RFI 的影响。相反，电缆设计者发现他们可以通过以下方式来减少串扰的负面影响：</li>
+<li> 铜质导线</li>
 </ol>
+<h2 id="UTP-布线"><a href="#UTP-布线" class="headerlink" title="UTP 布线"></a>UTP 布线</h2><p>用作网络介质时，UTP电缆由四对用颜色标记的铜线组成。这些铜线扭绞在一起，并用软塑料套包裹。在安装过程中，它尺寸较小是有利的。<br>UTP 电缆并不使用屏蔽层来对抗 EMI 和 RFI 的影响。相反，电缆设计者发现他们可以通过以下方式来减少串扰的负面影响：</p>
 <ul>
 <li>  <strong>抵消</strong> - 电缆设计者现在对电路中的电线进行配对。当电路中的两根电线紧密排列时，彼此的磁场正好相反。因此，这两个磁场相互抵消，也抵消了所有的外部 EMI 和 RFI 干扰信号。</li>
-<li>  <strong>变化每个线对中的扭绞次数</strong> - 为了进一步增强配对电线的抵消效果，设计者会变化电缆中每个线对的扭绞次数。UTP 电缆必须遵守精确的规定来管理每米（3.28 英尺）电缆所允许的扭绞次数或编织数。请注意，图中橙色/橙白色线对比蓝色/蓝白色线对的扭绞次数要少。每个彩色线对扭绞的次数不同。<br>UTP 电缆仅通过线对扭绞的抵消效果来减小信号衰减，并为网络介质中的线对提供有效的自屏蔽。<h3 id="标准-1"><a href="#标准-1" class="headerlink" title="标准"></a>标准</h3>UTP 布线遵循由 TIA/EIA 共同制定的标准。具体而言，TIA/EIA-568 规定了 LAN 安装的商业布线标准，它是 LAN 布线环境中最常用的标准。<br>电气电子工程师协会 (IEEE) 定义了铜缆的电气特性。IEEE 按照它的性能对 UTP 布线划分等级。电缆分类的依据是它们承载更高速率带宽的能力。</li>
+<li>  <strong>变化每个线对中的扭绞次数</strong> - 为了进一步增强配对电线的抵消效果，设计者会变化电缆中每个线对的扭绞次数。UTP 电缆必须遵守精确的规定来管理每米（3.28 英尺）电缆所允许的扭绞次数或编织数。请注意，图中橙色/橙白色线对比蓝色/蓝白色线对的扭绞次数要少。每个彩色线对扭绞的次数不同。<br>UTP 电缆仅通过线对扭绞的抵消效果来减小信号衰减，并为网络介质中的线对提供有效的自屏蔽。</li>
 </ul>
-<p>-3 类电缆最初用于语音线路的语音通信，但后来用于数据传输。<br>-5 类和5e 类电缆用于数据传输。5类电缆支持 100Mbps，5e 类电缆支持 1000 Mbps<br>-6类电缆在每对线之间增加了一个分隔器以支持更高的速度。 6类电缆支持高达 10 Gbps。 -7类电缆也支持 10 Gbps。 -8类电缆支持 40 Gbps。<br>一些制造商制造的电缆超出了 TIA/EIA 6a 类电缆的规格，将其称为 7 类电缆。<br> UTP 电缆类别之间的结构差异：3类电缆有四根电线（直）。5类电缆 和 5e类电缆有四对双绞线。6类电缆(STP)有四对双绞线，每对之间都有一个塑料分隔器。</p>
+<h3 id="标准-1"><a href="#标准-1" class="headerlink" title="标准"></a>标准</h3><p>UTP 布线遵循由 TIA/EIA 共同制定的标准。具体而言，TIA/EIA-568 规定了 LAN 安装的商业布线标准，它是 LAN 布线环境中最常用的标准。<br>电气电子工程师协会 (IEEE) 定义了铜缆的电气特性。IEEE 按照它的性能对 UTP 布线划分等级。电缆分类的依据是它们承载更高速率带宽的能力。<br>-3 类电缆最初用于语音线路的语音通信，但后来用于数据传输。<br>-5 类和5e 类电缆用于数据传输。5类电缆支持 100Mbps，5e 类电缆支持 1000 Mbps<br>-6类电缆在每对线之间增加了一个分隔器以支持更高的速度。 6类电缆支持高达 10 Gbps。 -7类电缆也支持 10 Gbps。 -8类电缆支持 40 Gbps。<br>一些制造商制造的电缆超出了 TIA/EIA 6a 类电缆的规格，将其称为 7 类电缆。<br> UTP 电缆类别之间的结构差异：3类电缆有四根电线（直）。5类电缆 和 5e类电缆有四对双绞线。6类电缆(STP)有四对双绞线，每对之间都有一个塑料分隔器。</p>
 <h3 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h3><p><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493043317.png" alt="RJ-45 UTP"></p>
 <h3 id="直通和交叉UTP电缆"><a href="#直通和交叉UTP电缆" class="headerlink" title="直通和交叉UTP电缆"></a>直通和交叉UTP电缆</h3><ul>
 <li>  <strong>以太网直通电缆</strong> -最常见的网络电缆类型。它通常用于主机到交换机和交换机到路由器的互连。</li>
@@ -1030,41 +1121,57 @@ byg:dead_sea</li>
 </tr>
 </tbody></table>
 </li>
-<li><em>蓝中间，棕右边，左绿为A橘为B，花线左但中间反</em>*<h2 id="光纤布线"><a href="#光纤布线" class="headerlink" title="光纤布线"></a>光纤布线</h2>因为它是昂贵的，所以在各种类型的铜缆布线中并不常用。但是光纤布线具有某些特性，使其成为某些情况下的最佳选择<br>与其他网络介质相比，光缆能够以更远的距离和更高的带宽传输数据。不同于铜缆，光缆传输信号的衰减更少，并且完全不受 EMI 和 RFI 影响。光纤常用于互连网络设备。<br>目前光纤布线用于四类行业：</li>
+<li><em>蓝中间，棕右边，左绿为A橘为B，花线左但中间反</em>*</li>
+</ul>
+<h2 id="光纤布线"><a href="#光纤布线" class="headerlink" title="光纤布线"></a>光纤布线</h2><p>因为它是昂贵的，所以在各种类型的铜缆布线中并不常用。但是光纤布线具有某些特性，使其成为某些情况下的最佳选择<br>与其他网络介质相比，光缆能够以更远的距离和更高的带宽传输数据。不同于铜缆，光缆传输信号的衰减更少，并且完全不受 EMI 和 RFI 影响。光纤常用于互连网络设备。<br>目前光纤布线用于四类行业：</p>
+<ul>
 <li>  <strong>企业网络</strong> - 用于主干布线和基础设施设备互连。</li>
 <li>  <strong>光纤到户 (FTTH)</strong> - 用于为家庭和小型企业提供不间断宽带服务。</li>
 <li>  <strong>长距离传输网络</strong> - 由服务提供商用于连接国家/地区与城市。</li>
-<li>  <strong>水下有线网络</strong> - 用于提供可靠高速、高容量的网络解决方案，使其在深度与横跨海洋的距离相当的严酷海下环境中仍能生存。在互联网上搜索“海底电缆电信地理地图”，以在线查看各种地图。<h3 id="两种类型："><a href="#两种类型：" class="headerlink" title="两种类型："></a>两种类型：</h3></li>
-<li>单模光纤 (SMF)单模光纤包含一个极小的芯，使用昂贵的激光技术来发送单束光，如图所示。单模光纤在跨越数百公里的长距离传输情况下很受欢迎，例如应用于长途电话和有线电视中的光纤。<br>  <img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493679542.png" alt="enter description here"></li>
-<li>多模光纤 (MMF)多模光纤包含一个稍大的芯，使用 LED 发射器发送光脉冲。具体而言，LED 发出的光从不同角度进入多模光纤，如图所示。普遍用于 LAN 中，因为它们可以由低成本的 LED 提供支持。它可以通过长达 550 米的链路提供高达 10 Gb/s 的带宽。<br>  <img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493708281.png" alt="enter description here"><br>多模和单模光纤之间的主要区别之一就是色散的数量。色散是指光脉冲在时间上的分布。色散增加意味着信号强度损失增加。多模光纤具有比单模光纤更大的色散。这就是为什么多模光纤在信号丢失之前只能传播 500 米。<h3 id="光纤连接器与光纤插接线略"><a href="#光纤连接器与光纤插接线略" class="headerlink" title="光纤连接器与光纤插接线略"></a>光纤连接器与光纤插接线略</h3></li>
+<li>  <strong>水下有线网络</strong> - 用于提供可靠高速、高容量的网络解决方案，使其在深度与横跨海洋的距离相当的严酷海下环境中仍能生存。在互联网上搜索“海底电缆电信地理地图”，以在线查看各种地图。</li>
 </ul>
-<p>4.5.4、4.5.5</p>
+<h3 id="两种类型："><a href="#两种类型：" class="headerlink" title="两种类型："></a>两种类型：</h3><ul>
+<li>单模光纤 (SMF)单模光纤包含一个极小的芯，使用昂贵的激光技术来发送单束光，如图所示。单模光纤在跨越数百公里的长距离传输情况下很受欢迎，例如应用于长途电话和有线电视中的光纤。<br>  <img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493679542.png" alt="enter description here"></li>
+<li>多模光纤 (MMF)多模光纤包含一个稍大的芯，使用 LED 发射器发送光脉冲。具体而言，LED 发出的光从不同角度进入多模光纤，如图所示。普遍用于 LAN 中，因为它们可以由低成本的 LED 提供支持。它可以通过长达 550 米的链路提供高达 10 Gb/s 的带宽。<br>  <img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1644493708281.png" alt="enter description here"><br>多模和单模光纤之间的主要区别之一就是色散的数量。色散是指光脉冲在时间上的分布。色散增加意味着信号强度损失增加。多模光纤具有比单模光纤更大的色散。这就是为什么多模光纤在信号丢失之前只能传播 500 米。</li>
+</ul>
+<h3 id="光纤连接器与光纤插接线略"><a href="#光纤连接器与光纤插接线略" class="headerlink" title="光纤连接器与光纤插接线略"></a>光纤连接器与光纤插接线略</h3><p>4.5.4、4.5.5</p>
 <h2 id="无线介质"><a href="#无线介质" class="headerlink" title="无线介质"></a>无线介质</h2><p>无线介质使用无线电或微波频率来承载代表数据通信二进制数字的电磁信号。<br>无线介质提供所有介质中最好的移动特性，而且启用无线的设备数量不断增加。无线现在是用户连接到家庭和企业网络的主要方式。<br>以下是无线网络的一些局限性:</p>
 <ul>
 <li>  <strong>覆盖面积</strong> - 无线数据通信技术非常适合开放环境。但是，在楼宇和建筑物中使用的某些建筑材料以及当地地形将会限制它的有效覆盖。</li>
 <li>  <strong>干扰</strong> - 无线电易受干扰，可能会受到家庭无绳电话、某些类型的荧光灯、微波炉和其他无线通信装置等常见设备的干扰。</li>
 <li>  <strong>安全性</strong> - 无线通信覆盖无需进行介质的物理接线。因此，未获得网络访问授权的设备和用户可以访问传输。所以网络安全是无线网络管理的重要组成部分。</li>
-<li>  <strong>共享介质</strong> - WLAN 以半双工模式运行，意味着一台设备一次只能发送或接收。无线介质由所有无线用户共享。许多用户同时访问WLAN会导致每个用户的带宽减少。<br>虽然无线在桌面连接中逐渐普及，但铜缆和光纤仍是部署网络中间设备（如路由器和交换机）最常见的物理层介质。<h3 id="标准-2"><a href="#标准-2" class="headerlink" title="标准"></a>标准</h3></li>
+<li>  <strong>共享介质</strong> - WLAN 以半双工模式运行，意味着一台设备一次只能发送或接收。无线介质由所有无线用户共享。许多用户同时访问WLAN会导致每个用户的带宽减少。<br>虽然无线在桌面连接中逐渐普及，但铜缆和光纤仍是部署网络中间设备（如路由器和交换机）最常见的物理层介质。</li>
+</ul>
+<h3 id="标准-2"><a href="#标准-2" class="headerlink" title="标准"></a>标准</h3><ul>
 <li>  <strong>Wi-Fi (IEEE 802.11)</strong> - 无线 LAN (WLAN) 技术，通常称为 Wi-Fi。WLAN 使用一种称为“载波侦听多路访问/冲突避免 (CSMA/CA)”的争用协议。无线 NIC 在传输数据之前必须先侦听，以确定无线信道是否空闲。如果其他无线设备正在传输，则 NIC 必须等待信道空闲。Wi-Fi 是 Wi-Fi 联盟的标记。Wi-Fi 与基于 IEEE 802.11 标准的认证 WLAN 设备结合使用。</li>
 <li>  <strong>蓝牙 (IEEE 802.15)</strong> - 这是一个无线个人局域网 (WPAN) 标准，通常称为 “蓝牙”。它采用设备配对过程进行通信，距离为 1 到 100 米。</li>
 <li>  <strong>WiMAX (IEEE 802:16)</strong> - 通常称为微波接入全球互通 (WiMAX)，这个无线标准采用点到多点拓扑结构，提供无线带宽接入。</li>
-<li>  <strong>Zigbee (IEEE 802.15.4)</strong> - Zigbee是一种用于低数据速率、低功耗通信的规范。它适用于需要短距离、低数据速率和长电池寿命的应用。Zigbee 通常用于工业和物联网 (IoT) 环境，如无线照明开关和医疗设备数据采集。<h3 id="常见方式-WLAN"><a href="#常见方式-WLAN" class="headerlink" title="常见方式-WLAN"></a>常见方式-WLAN</h3>常见的无线数据实施方式是使设备通过LAN以无线方式连接。通常，WLAN 要求具备下列网络设备：</li>
-<li>  <strong>无线接入点 (AP)</strong> - 集中用户的无线信号，并连接到现有基于铜介质的网络基础设施，如以太网。如图所示，家庭和小型企业无线路由器将路由器、交换机和接入点的功能整合到了一起。</li>
-<li>  <strong>无线网卡适配器</strong> - 能够为每台网络主机提供无线通信。<br>随着技术的发展，许多以太网 WLAN 标准应运而生。在购买无线设备时，必须确保它的兼容性和互操作性。<br>无线数据通信技术的益处是显而易见的，尤其是节省了昂贵的房屋布线，而且方便主机移动。网络管理员必须制定和应用严格的安全策略和流程保护WLAN，防止网络遭受不速之客的访问和破坏。<h1 id="4查漏补缺"><a href="#4查漏补缺" class="headerlink" title="4查漏补缺"></a>4查漏补缺</h1>物理层负责通过物理介质将实际信号作为<strong>位</strong>传输。<br>交换帧、控制介质访问和执行错误检测都是数据链路层的功能。</li>
+<li>  <strong>Zigbee (IEEE 802.15.4)</strong> - Zigbee是一种用于低数据速率、低功耗通信的规范。它适用于需要短距离、低数据速率和长电池寿命的应用。Zigbee 通常用于工业和物联网 (IoT) 环境，如无线照明开关和医疗设备数据采集。</li>
 </ul>
+<h3 id="常见方式-WLAN"><a href="#常见方式-WLAN" class="headerlink" title="常见方式-WLAN"></a>常见方式-WLAN</h3><p>常见的无线数据实施方式是使设备通过LAN以无线方式连接。通常，WLAN 要求具备下列网络设备：</p>
+<ul>
+<li>  <strong>无线接入点 (AP)</strong> - 集中用户的无线信号，并连接到现有基于铜介质的网络基础设施，如以太网。如图所示，家庭和小型企业无线路由器将路由器、交换机和接入点的功能整合到了一起。</li>
+<li>  <strong>无线网卡适配器</strong> - 能够为每台网络主机提供无线通信。<br>随着技术的发展，许多以太网 WLAN 标准应运而生。在购买无线设备时，必须确保它的兼容性和互操作性。<br>无线数据通信技术的益处是显而易见的，尤其是节省了昂贵的房屋布线，而且方便主机移动。网络管理员必须制定和应用严格的安全策略和流程保护WLAN，防止网络遭受不速之客的访问和破坏。</li>
+</ul>
+<h1 id="查漏补缺"><a href="#查漏补缺" class="headerlink" title="查漏补缺"></a>查漏补缺</h1><p>物理层负责通过物理介质将实际信号作为<strong>位</strong>传输。<br>交换帧、控制介质访问和执行错误检测都是数据链路层的功能。</p>
 <p>帧编码会将<strong>位</strong>转化为预定义的代码，以便提供一种可预测模式，帮助区分数据位和控制位。</p>
 <ul>
 <li>  数据 - 一般术语，泛指应用层使用的 PDU</li>
 <li>  段 - 传输层 PDU</li>
 <li>  数据包 - 网络层 PDU</li>
 <li>  帧 - 数据链路层 PDU</li>
-<li>  位 - 通过介质实际传输数据时使用的物理层 PDU<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1>OSI模型的数据链路层(第2层)为物理网络准备网络数据。数据链路层负责网络接口卡 (NIC) 到网络接口卡的通信。数据链路层执行以下操作：</li>
+<li>  位 - 通过介质实际传输数据时使用的物理层 PDU</li>
+</ul>
+<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p>OSI模型的数据链路层(第2层)为物理网络准备网络数据。数据链路层负责网络接口卡 (NIC) 到网络接口卡的通信。数据链路层执行以下操作：</p>
+<ul>
 <li>  允许上层访问介质。上层协议完全不知道用于转发数据的介质类型。</li>
 <li>  接受数据，通常是第 3 层数据包（即 IPv4 或 IPv6），并将它们封装到第 2 层帧中。</li>
 <li>  控制数据在介质上的放置和接收方式，</li>
 <li>  通过网络介质在终端之间交换帧。</li>
 <li>  接收封装的数据，通常是第 3 层数据包，并将它们定向到适当的上层协议。</li>
-<li>  执行错误检测并拒绝任何损坏的帧。<h2 id="IEEE-802LAN-MAN-数据链路子层"><a href="#IEEE-802LAN-MAN-数据链路子层" class="headerlink" title="IEEE 802LAN/MAN 数据链路子层"></a>IEEE 802LAN/MAN 数据链路子层</h2></li>
+<li>  执行错误检测并拒绝任何损坏的帧。</li>
+</ul>
+<h2 id="IEEE-802LAN-MAN-数据链路子层"><a href="#IEEE-802LAN-MAN-数据链路子层" class="headerlink" title="IEEE 802LAN/MAN 数据链路子层"></a>IEEE 802LAN/MAN 数据链路子层</h2><ul>
 <li><strong>逻辑链路控制 (LLC)</strong> - 这个 IEEE 802.2 子层在<strong>上层的网络软件与下层的设备硬件之间进行通信</strong>。它放入帧中的信息用于<strong>确定帧所使用的网络层协议</strong>。此信息允许多个第 3 层协议（如 IPv4 和 IPv6）使用相同的网络接口和介质。<pre><code>LLC 子层获取网络协议数据（通常是 IPv4 或 IPv6数据包）并加入第2层控制信息，帮助将数据包传送到目的节点。 
 </code></pre>
 </li>
@@ -1075,21 +1182,27 @@ MAC 子层提供数据封装：
 *   **错误检测** - 包含一个帧尾，用于检测传输错误。
 MAC 子层还提供介质访问控制，允许多个设备通过共享（半双工）介质进行通信。全双工通信不需要访问控制。
 </code></pre>
-<h3 id="介质访问方法"><a href="#介质访问方法" class="headerlink" title="介质访问方法"></a>介质访问方法</h3>在数据包从本地主机传送到远程主机的过程中，其遇到的各种网络环境可能具有不同的特性。对于串行链路，访问方法可能只包括两个设备之间的直接连接，通常是两个路由器。因此，它们不需要 IEEE 802 MAC 子层所使用的技术。<br>使用合适的介质访问控制方法来访问每个链路。<br>确定所使用的介质访问控制方法的两个条件是所涉及的<strong>介质共享类型</strong>和<strong>拓扑</strong>。<br>在路径上的每一跳，路由器都执行以下第 2 层功能：</li>
+</li>
 </ul>
+<h3 id="介质访问方法"><a href="#介质访问方法" class="headerlink" title="介质访问方法"></a>介质访问方法</h3><p>在数据包从本地主机传送到远程主机的过程中，其遇到的各种网络环境可能具有不同的特性。对于串行链路，访问方法可能只包括两个设备之间的直接连接，通常是两个路由器。因此，它们不需要 IEEE 802 MAC 子层所使用的技术。<br>使用合适的介质访问控制方法来访问每个链路。<br>确定所使用的介质访问控制方法的两个条件是所涉及的<strong>介质共享类型</strong>和<strong>拓扑</strong>。<br>在路径上的每一跳，路由器都执行以下第 2 层功能：</p>
 <ol>
 <li> 从介质接受帧</li>
 <li> 解封帧</li>
 <li> 将数据包重新封装到新帧中</li>
-<li> 从适合该物理网络网段的介质转发新帧<h2 id="数据链路层标准"><a href="#数据链路层标准" class="headerlink" title="数据链路层标准"></a>数据链路层标准</h2>与 TCP/IP 的上层协议不同，数据链路层协议通常不是由征求意见 (RFC) 文档定义的。互联网工程任务组 (IETF) 虽然维护着 TCP/IP 协议簇上层的工作协议和服务，但它没有定义TCP/IP模型的网络接入层的功能和操作。<br>定义适用于网络接入层（即，OSI的物理和数据链路层）的开放标准和协议的工程组织包括：</li>
+<li> 从适合该物理网络网段的介质转发新帧</li>
 </ol>
+<h2 id="数据链路层标准"><a href="#数据链路层标准" class="headerlink" title="数据链路层标准"></a>数据链路层标准</h2><p>与 TCP/IP 的上层协议不同，数据链路层协议通常不是由征求意见 (RFC) 文档定义的。互联网工程任务组 (IETF) 虽然维护着 TCP/IP 协议簇上层的工作协议和服务，但它没有定义TCP/IP模型的网络接入层的功能和操作。<br>定义适用于网络接入层（即，OSI的物理和数据链路层）的开放标准和协议的工程组织包括：</p>
 <ul>
 <li>  电气电子工程师协会 (IEEE)</li>
 <li>  国际电信联盟 (ITU)</li>
 <li>  国际标准化组织 (ISO)</li>
-<li>  美国国家标准学会 (ANSI)<h2 id="拓扑"><a href="#拓扑" class="headerlink" title="拓扑"></a>拓扑</h2></li>
+<li>  美国国家标准学会 (ANSI)</li>
+</ul>
+<h2 id="拓扑"><a href="#拓扑" class="headerlink" title="拓扑"></a>拓扑</h2><ul>
 <li>  <strong>物理拓扑</strong> - 标识物理连接，以及终端设备和中间设备（即，路由器、交换机和无线接入点）如何互连。这个拓扑还可能包括特定的设备位置，如房间号和设备机架上的位置。物理拓扑通常是点对点拓扑或星型拓扑。</li>
-<li>  <strong>逻辑拓扑</strong> - 是指网络将帧从一个节点传输到另一节点的方法。此拓扑使用设备接口和第 3 层 IP 寻址方案识别虚拟连接。<h3 id="访问控制方法"><a href="#访问控制方法" class="headerlink" title="访问控制方法"></a>访问控制方法</h3></li>
+<li>  <strong>逻辑拓扑</strong> - 是指网络将帧从一个节点传输到另一节点的方法。此拓扑使用设备接口和第 3 层 IP 寻址方案识别虚拟连接。</li>
+</ul>
+<h3 id="访问控制方法"><a href="#访问控制方法" class="headerlink" title="访问控制方法"></a>访问控制方法</h3><ul>
 <li><strong>基于竞争的访问</strong>-在基于竞争的多路访问网络中，所有节点都工作在半双工方式，争夺介质的使用。然而，一次只有一台设备能够发送。因此，当多台设备同时传输时，会使用一个处理过程。基于竞争的访问方法示例如下：<ul>
 <li>在传统总线拓扑以太网局域网上使用<strong>载波侦听多路访问/冲突检测</strong>(CSMA/CD)</li>
 <li>在无线局域网上使用<strong>载波侦听多路访问/冲突避免</strong>(CSMA/CA)</li>
@@ -1100,7 +1213,10 @@ MAC 子层还提供介质访问控制，允许多个设备通过共享（半双�
 <li>传统ARCNET</li>
 </ul>
 </li>
-<li>如今，以太网网络以全双工方式运行，不需要访问方法。使用交换机的以太网 LAN 不使用基于竞争的系统，因为交换机和主机网卡在全双工模式下运行。无线局域网 (WLAN)只支持半双工，因为同一时间只有一台设备可以访问介质。<h2 id="数据链路帧"><a href="#数据链路帧" class="headerlink" title="数据链路帧"></a>数据链路帧</h2>虽然有许多描述数据链路层帧的不同数据链路层协议，但每种帧均有三个基本组成部分：</li>
+<li>如今，以太网网络以全双工方式运行，不需要访问方法。使用交换机的以太网 LAN 不使用基于竞争的系统，因为交换机和主机网卡在全双工模式下运行。无线局域网 (WLAN)只支持半双工，因为同一时间只有一台设备可以访问介质。</li>
+</ul>
+<h2 id="数据链路帧"><a href="#数据链路帧" class="headerlink" title="数据链路帧"></a>数据链路帧</h2><p>虽然有许多描述数据链路层帧的不同数据链路层协议，但每种帧均有三个基本组成部分：</p>
+<ul>
 <li>  帧头</li>
 <li>  数据</li>
 <li>  帧尾<br>成帧技术将位流拆分成可破解的多个分组，且将控制信息作为不同字段值插入帧头和帧尾中。此格式使物理信号具备能被节点识别且可在目的地解码成数据包的一种结构。<br>图中显示了通用帧字段。并非所有协议均包含全部此类字段。特定数据链路协议的标准定义了实际帧格式。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645012614617.png"><br>帧字段包括以下内容：</li>
@@ -1109,59 +1225,31 @@ MAC 子层还提供介质访问控制，允许多个设备通过共享（半双�
 <li>  <strong>类型</strong> - 用于标识数据字段中的第 3 层协议。</li>
 <li>  <strong>控制</strong> - 用于标识特殊流量控制服务，比如服务质量 (QoS)。QoS 为某些类型的消息提供转发优先权。例如，IP 语音 (VoIP) 帧通常优先接收，因为它们对延迟敏感。</li>
 <li>  <strong>数据</strong> - 包含帧负载（即数据包报头、数据段报头和数据）。</li>
-<li><strong>错误检测</strong> - 包含在数据之后以形成帧尾。<br>数据链路层协议将帧尾添加到各帧结尾处。在一个叫做错误检测的过程中，帧尾会判断帧是否到达时没有错误。它将组成帧的各个位的逻辑或数学摘要放入帧尾中。要将错误检测添加到数据链路层，因为介质中的信号可能遭受干扰、失真或丢失，从而大幅更改这些信号所代表的位值。<br>发送节点会创建帧内容的逻辑摘要，称为循环冗余校验 (CRC) 值。此值将放入帧校验序列 (FCS) 字段中以代表帧内容。在以太网尾部，FCS 为接收节点提供一种方法，用于确定帧是否出现传输错误。<br>数据链路层向第3层数据包添加一个包含源和目的第2层地址的<strong>帧头</strong>和一个包含帧检查序列(FCS)的<strong>帧尾</strong>。<h1 id="6查漏补缺"><a href="#6查漏补缺" class="headerlink" title="6查漏补缺"></a>6查漏补缺</h1>以太网帧在数据链路层由它们的MAC地址来标识，每个网卡的地址都是唯一的<br>MAC 子层的功能：提供数据链路层编址，检查位错误，支持以太网技术，由硬件执行控制对介质的访问<br>数据链路层接受第3层的数据包并将它们封装到称为帧的数据单元中<h1 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h1>以太网标准同时定义第 2 层协议和第 1 层技术。<br>以太网在数据链路层和物理层运行，是 IEEE 802.2 和 802.3 标准中定义的一系列网络技术。<h2 id="以太网帧"><a href="#以太网帧" class="headerlink" title="以太网帧"></a>以太网帧</h2>以太网帧大小的最小值为 64 个字节，最大值为 1518 个字节。这包括从“目的 MAC 地址”字段到“帧校验序列 (FCS)”字段的所有字节。在描述帧的大小时，不包含“前导码”字段。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645186890628.png"><table>
-<thead>
-<tr>
-<th>字段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>前导码和帧首定界符字段(SFD)</td>
-<td>前导码（7 字节）和帧首定界符（SFD），也称为 帧首（1 字节），该字段用于发送设备 与接收设备之间的同步。帧开头的八个字节 用于引起接收节点的注意。基本上，前几个字节的 作用是告诉接收方准备接收新帧。</td>
-</tr>
-<tr>
-<td>目的 MAC 地址字段</td>
-<td>该 6 字节字段是预期接收方的标识符。读者应该还记得， 此地址被第2层用来协助设备 确定帧是否发送到目的地。帧中的地址将会与设备中的 MAC 地址进行比对。如果匹配， 设备就接受该帧。可以是单播、组播或广播 地址。</td>
-</tr>
-<tr>
-<td>源 MAC 地址字段</td>
-<td>该 6 字节字段标识发出帧的网卡 或接口。</td>
-</tr>
-<tr>
-<td>类型/长度</td>
-<td>该字段包含两个字节，标识封装于以太网帧中的 上层协议。常见值为十六进制，0x800 用于 IPv4， 0x86DD 用于 IPv6，0x806 用于 ARP。</td>
-</tr>
-</tbody></table>
-</li>
-<li>*注意**：您也可能会看到此字段称为 EtherType、类型或长度。 |<br>| 数据字段 | 该字段（46-1500 字节）包含来自 较高层的封装数据，一般是第3层PDU或更常见的IPv4 数据包。所有帧至少必须有 64 个字节。如果封装的是小数据包， 则使用填充位将帧 增大到最小值。 |<br>| 帧校验序列字段 | “帧校验序列 (FCS)”字段（4 个字节）用于检测帧中 的错误。它使用循环冗余校验 (CRC)。发送设备 在帧的 FCS 字段中包含 CRC 的结果。接收设备 接收帧并生成 CRC 以查找 错误。如果计算匹配，就不会发生错误。计算 不匹配则表明数据已经改变。因此， 帧会被丢弃。数据的变化可能是 由于代表比特位的电信号受到干扰所致。 |<h2 id="以太网MAC地址"><a href="#以太网MAC地址" class="headerlink" title="以太网MAC地址"></a>以太网MAC地址</h2>在以太网中，每台网络设备都连接到同一个共享介质。MAC 地址用于标识本地网段上的物理源和目的设备。MAC 编址为 OSI 模型的数据链路层提供了设备识别方法。<br>以太网 MAC 地址是使用 12个十六进制数字表示的 48 位地址，一个字节等于 8 位，也可以说 一个MAC 地址长度为 6 个字节。<br>所有 MAC 地址对于以太网设备或以太网接口必须是唯一的。为了确保这一点，所有销售以太网设备的供应商必须向 IEEE 注册才能获得唯一的 6个十六进制（即 24 位或 3 字节）代码，称为组织唯一标识符 (OUI)。使用其分配的 OUI 作为前 6 个十六进制数字。为后 6 个十六进制数字分配唯一值。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645188061139.png" alt="enter description here"><br>MAC 地址通常称为烧录地址 (BIA)，因为传统上该地址被烧录到网卡的只读存储器（ROM）中。这意味着该地址会永久编码到 ROM 芯片中。<br>收到以太网帧时，网卡会查看帧中的目的 MAC 地址是否与设备 RAM 中存储的物理 MAC 地址匹配。如果不匹配，设备就会丢弃帧。如果与帧中的目的 MAC 匹配，则网卡会将帧向上传送到 OSI 层进行解封处理。</li>
+<li>  <strong>错误检测</strong> - 包含在数据之后以形成帧尾。<br>数据链路层协议将帧尾添加到各帧结尾处。在一个叫做错误检测的过程中，帧尾会判断帧是否到达时没有错误。它将组成帧的各个位的逻辑或数学摘要放入帧尾中。要将错误检测添加到数据链路层，因为介质中的信号可能遭受干扰、失真或丢失，从而大幅更改这些信号所代表的位值。<br>发送节点会创建帧内容的逻辑摘要，称为循环冗余校验 (CRC) 值。此值将放入帧校验序列 (FCS) 字段中以代表帧内容。在以太网尾部，FCS 为接收节点提供一种方法，用于确定帧是否出现传输错误。<br>数据链路层向第3层数据包添加一个包含源和目的第2层地址的<strong>帧头</strong>和一个包含帧检查序列(FCS)的<strong>帧尾</strong>。</li>
 </ul>
+<h1 id="查漏补缺-1"><a href="#查漏补缺-1" class="headerlink" title="查漏补缺"></a>查漏补缺</h1><p>以太网帧在数据链路层由它们的MAC地址来标识，每个网卡的地址都是唯一的<br> MAC 子层的功能：提供数据链路层编址，检查位错误，支持以太网技术，由硬件执行控制对介质的访问<br>数据链路层接受第3层的数据包并将它们封装到称为帧的数据单元中</p>
+<h1 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h1><p>以太网标准同时定义第 2 层协议和第 1 层技术。<br>以太网在数据链路层和物理层运行，是 IEEE 802.2 和 802.3 标准中定义的一系列网络技术。</p>
+<h2 id="以太网帧"><a href="#以太网帧" class="headerlink" title="以太网帧"></a>以太网帧</h2><p>以太网帧大小的最小值为 64 个字节，最大值为 1518 个字节。这包括从“目的 MAC 地址”字段到“帧校验序列 (FCS)”字段的所有字节。在描述帧的大小时，不包含“前导码”字段。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645186890628.png"><br>| 字段 | 说明 |<br>| — | — |<br>| 前导码和帧首定界符字段(SFD) | 前导码（7 字节）和帧首定界符（SFD），也称为 帧首（1 字节），该字段用于发送设备 与接收设备之间的同步。帧开头的八个字节 用于引起接收节点的注意。基本上，前几个字节的 作用是告诉接收方准备接收新帧。 |<br>| 目的 MAC 地址字段 | 该 6 字节字段是预期接收方的标识符。读者应该还记得， 此地址被第2层用来协助设备 确定帧是否发送到目的地。帧中的地址将会与设备中的 MAC 地址进行比对。如果匹配， 设备就接受该帧。可以是单播、组播或广播 地址。 |<br>| 源 MAC 地址字段 | 该 6 字节字段标识发出帧的网卡 或接口。 |<br>| 类型/长度 | 该字段包含两个字节，标识封装于以太网帧中的 上层协议。常见值为十六进制，0x800 用于 IPv4， 0x86DD 用于 IPv6，0x806 用于 ARP。<br><strong>注意</strong>：您也可能会看到此字段称为 EtherType、类型或长度。 |<br>| 数据字段 | 该字段（46-1500 字节）包含来自 较高层的封装数据，一般是第3层PDU或更常见的IPv4 数据包。所有帧至少必须有 64 个字节。如果封装的是小数据包， 则使用填充位将帧 增大到最小值。 |<br>| 帧校验序列字段 | “帧校验序列 (FCS)”字段（4 个字节）用于检测帧中 的错误。它使用循环冗余校验 (CRC)。发送设备 在帧的 FCS 字段中包含 CRC 的结果。接收设备 接收帧并生成 CRC 以查找 错误。如果计算匹配，就不会发生错误。计算 不匹配则表明数据已经改变。因此， 帧会被丢弃。数据的变化可能是 由于代表比特位的电信号受到干扰所致。 |</p>
+<h2 id="以太网MAC地址"><a href="#以太网MAC地址" class="headerlink" title="以太网MAC地址"></a>以太网MAC地址</h2><p>在以太网中，每台网络设备都连接到同一个共享介质。MAC 地址用于标识本地网段上的物理源和目的设备。MAC 编址为 OSI 模型的数据链路层提供了设备识别方法。<br>以太网 MAC 地址是使用 12个十六进制数字表示的 48 位地址，一个字节等于 8 位，也可以说 一个MAC 地址长度为 6 个字节。<br>所有 MAC 地址对于以太网设备或以太网接口必须是唯一的。为了确保这一点，所有销售以太网设备的供应商必须向 IEEE 注册才能获得唯一的 6个十六进制（即 24 位或 3 字节）代码，称为组织唯一标识符 (OUI)。使用其分配的 OUI 作为前 6 个十六进制数字。为后 6 个十六进制数字分配唯一值。<br><img src="/2022/02/10/%E7%BD%91%E7%BB%9C/ITN4-7/1645188061139.png" alt="enter description here"><br>MAC 地址通常称为烧录地址 (BIA)，因为传统上该地址被烧录到网卡的只读存储器（ROM）中。这意味着该地址会永久编码到 ROM 芯片中。<br>收到以太网帧时，网卡会查看帧中的目的 MAC 地址是否与设备 RAM 中存储的物理 MAC 地址匹配。如果不匹配，设备就会丢弃帧。如果与帧中的目的 MAC 匹配，则网卡会将帧向上传送到 OSI 层进行解封处理。</p>
 <p>IPv4 目的地址为<strong>广播</strong>地址 <strong>192.168.1.255</strong>。<br>当封装数据为IPv4<strong>组播</strong>包时，目的MAC地址为<strong>01-00-5E</strong>;当封装数据为IPv6组播包时，目的MAC地址为<strong>33-33</strong>。</p>
 <h2 id="MAC地址表"><a href="#MAC地址表" class="headerlink" title="MAC地址表"></a>MAC地址表</h2><p>交换机通过检查端口传入帧的源 MAC 地址来动态构建 MAC 地址表。交换机通过匹配帧中的目的 MAC 地址与 MAC 地址表中的条目来转发帧。<br>如果目的 MAC 地址为单播地址，该交换机会看帧中的目的 MAC 地址与 MAC 地址表中的条目是否匹配。如果表中存在该目的MAC地址，交换机会从指定端口转发帧。如果表中不存在该目的MAC地址，交换机会从除传入端口外的所有端口转发帧。这称为未知单播。</p>
 <h2 id="交换机"><a href="#交换机" class="headerlink" title="交换机"></a>交换机</h2><h3 id="存储转发交换"><a href="#存储转发交换" class="headerlink" title="存储转发交换"></a>存储转发交换</h3><p>这个帧转发的方法接收整个帧并计算CRC。CRC 根据帧中的比特位为 1 的位数量，使用数学公式来确定收到的帧是否有错。如果 CRC 有效，则交换机查找目的地址，目的地址决定了转发接口。帧然后从正确的端口转发出去。<br>存储转发交换的一大优点是，它可以在传播帧之前确定帧是否有错误。当在帧中检测到错误时，交换机丢弃该帧。丢弃有错的帧可减少损坏的数据所耗用的带宽量。存储转发交换对于融合网络中的服务质量 (QoS) 分析是必需的</p>
 <h3 id="直通交换"><a href="#直通交换" class="headerlink" title="直通交换"></a>直通交换</h3><p>在直通交换中，交换机在收到数据时立即处理数据，即使传输尚未完成。交换机只缓冲帧的一部分，缓冲的量仅足以读取目的 MAC 地址，以便确定转发数据时应使用的端口。<br>直通交换有两种变体：</p>
 <ul>
 <li>  <strong>快速转发交换</strong> -  快速转发交换提供最低程度的延时。快速转发交换在读取目的地址之后立即转发数据包。由于快速转发交换在收到整个数据包之前就开始转发，因此有时候中继数据包时会出错。这种情况并不经常发生，而且目的网络适配器在收到含错数据包时会将其丢弃。在快速转发模式下，延时是指从收到第一个位到传出第一个位之间的时间差。快速转发交换是典型的直通交换方法。</li>
-<li>  <strong>免分片交换 -</strong>  在免分片交换中，交换机在转发之前存储帧的前 64 个字节。可以将免分片交换视为存储转发交换和直通交换之间的折衷。免分片交换只存储帧的前 64 个字节的原因是，大部分网络错误和冲突都发生在前 64 个字节。免分片交换在转发帧之前对帧的前 64 个字节执行小错误检查以确保没有发生过冲突，并且尝试通过这种方法来增强快速转发交换功能。免分片交换是存储转发交换的高延时和高完整性与快速转发交换的低延时和弱完整性之间的折衷。<h3 id="交换机上的内存缓冲"><a href="#交换机上的内存缓冲" class="headerlink" title="交换机上的内存缓冲"></a>交换机上的内存缓冲</h3>以太网交换机在转发帧之前，可以使用缓冲技术存储帧。当目的端口由于拥塞而繁忙时，也可以使用缓冲。交换机将帧存储起来，直到可以传输。<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>基于端口的内存</strong></td>
-<td></td>
-</tr>
-</tbody></table>
-</li>
+<li>  <strong>免分片交换 -</strong>  在免分片交换中，交换机在转发之前存储帧的前 64 个字节。可以将免分片交换视为存储转发交换和直通交换之间的折衷。免分片交换只存储帧的前 64 个字节的原因是，大部分网络错误和冲突都发生在前 64 个字节。免分片交换在转发帧之前对帧的前 64 个字节执行小错误检查以确保没有发生过冲突，并且尝试通过这种方法来增强快速转发交换功能。免分片交换是存储转发交换的高延时和高完整性与快速转发交换的低延时和弱完整性之间的折衷。</li>
+</ul>
+<h3 id="交换机上的内存缓冲"><a href="#交换机上的内存缓冲" class="headerlink" title="交换机上的内存缓冲"></a>交换机上的内存缓冲</h3><p>以太网交换机在转发帧之前，可以使用缓冲技术存储帧。当目的端口由于拥塞而繁忙时，也可以使用缓冲。交换机将帧存储起来，直到可以传输。<br>| 方法 | 描述 |<br>| — | — |<br>| <strong>基于端口的内存</strong> | </p>
+<ul>
 <li>  帧存储在链接到特定传入端口和传出 端口的队列中。</li>
 <li>  只有当队列前面的所有帧都成功传输后， 才会将帧传输到传出端口。</li>
 <li>  由于目地端口繁忙， 单个帧可能会造成内存中所有帧的传输延迟。</li>
 <li>即使其他帧可以传送到开放的目的端口， 这种延迟仍然会发生。<br>|<br>| <strong>共享内存</strong> | </li>
 <li>  将所有帧存储到由所有交换端口共享的公共内存缓冲区中， 并且动态分配一个端口所需的 缓冲区内存量。</li>
-<li>缓冲区中的帧动态地链接到目的端口， 允许在一个端口上接收数据包，然后 在另一个端口上发送，而无需移动到另一个队列。<br>|<h3 id="自动协商"><a href="#自动协商" class="headerlink" title="自动协商"></a>自动协商</h3>交换机上最基本的两个设置是带宽(有时称为“速率”)和每个交换机端口的双工设置。交换机端口和连接的设备（例如计算机或另一台交换机）的双工设置和带宽设置必须匹配。<br>当链路上的一个或两个端口被重置时，会发生双工不匹配，自动协调过程并不会使链路上的两个端口的配置相同。当用户重新配置链路的一端而忘记重新配置另一端时，也会出现这样的情况。链路的两端均应都使用或都不使用自动协商。最佳实践是将两个以太网交换端口都配置为全双工。<h3 id="Auto-MDIX"><a href="#Auto-MDIX" class="headerlink" title="Auto-MDIX"></a>Auto-MDIX</h3>大多数交换机设备都支持自动介质相关接口交叉 (auto-MDIX) 功能。当该功能启用时，交换机可检测连接到端口的线缆类型，并相应地配置接口。因此，如果要连接到交换机上的铜缆 10/100/1000 端口，您既可以使用交叉线，也可以使用直通线，而无需考虑连接另一端的设备类型。</li>
+<li>缓冲区中的帧动态地链接到目的端口， 允许在一个端口上接收数据包，然后 在另一个端口上发送，而无需移动到另一个队列。<br>|</li>
 </ul>
+<h3 id="自动协商"><a href="#自动协商" class="headerlink" title="自动协商"></a>自动协商</h3><p> 交换机上最基本的两个设置是带宽(有时称为“速率”)和每个交换机端口的双工设置。交换机端口和连接的设备（例如计算机或另一台交换机）的双工设置和带宽设置必须匹配。<br> 当链路上的一个或两个端口被重置时，会发生双工不匹配，自动协调过程并不会使链路上的两个端口的配置相同。当用户重新配置链路的一端而忘记重新配置另一端时，也会出现这样的情况。链路的两端均应都使用或都不使用自动协商。最佳实践是将两个以太网交换端口都配置为全双工。</p>
+<h3 id="Auto-MDIX"><a href="#Auto-MDIX" class="headerlink" title="Auto-MDIX"></a>Auto-MDIX</h3><p> 大多数交换机设备都支持自动介质相关接口交叉 (auto-MDIX) 功能。当该功能启用时，交换机可检测连接到端口的线缆类型，并相应地配置接口。因此，如果要连接到交换机上的铜缆 10/100/1000 端口，您既可以使用交叉线，也可以使用直通线，而无需考虑连接另一端的设备类型。</p>
 
       
     </div>
@@ -1214,7 +1302,7 @@ MAC 子层还提供介质访问控制，允许多个设备通过共享（半双�
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-28 16:39:25" itemprop="dateModified" datetime="2022-02-28T16:39:25+08:00">2022-02-28</time>
+                <time title="修改时间：2022-02-28 16:47:18" itemprop="dateModified" datetime="2022-02-28T16:47:18+08:00">2022-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1565,7 +1653,7 @@ MAC 子层还提供介质访问控制，允许多个设备通过共享（半双�
 <li>  <strong>源 MAC 地址</strong> - 发送设备 PC1 的以太网 MAC 地址。PC1 以太网接口的 MAC 地址是 AA-AA-AA-AA-AA-AA。</li>
 <li>  <strong>目的 MAC 地址</strong> - 当接收设备（目的 IP 地址）与发送设备位于不同网络时，发送设备使用默认网关或路由器的以太网 MAC 地址。在本示例中，目的 MAC 地址是 R1 的以太网接口的 MAC 地址：11-11-11-11-11-11。这是连接到与PC1相同的网络的接口，如图所示。</li>
 </ul>
-<h1 id="3查漏补缺"><a href="#3查漏补缺" class="headerlink" title="3查漏补缺"></a>3查漏补缺</h1><p>主题 3.6.0-在网络上发送消息时，封装过程从 OSI 或 TCP/IP 模型的<strong>顶层开始自上而下</strong>工作。在该模型的各层上，上层信息被封装到下一协议的数据字段中。例如，在 IP 数据包可以发送之前，会将其封装到第 2 层的数据链路帧中，以便其能够通过物理介质发送。<br>主题 3.6.0-<strong>术语协议数据单元 (PDU)</strong> 用于描述网络模型的任一层上的一段数据。数据包是网络层PDU。帧是数据链路层PDU。数据段是传输层PDU。<br>主题 3.1.0-双工通信指的是介质在两个方向上传送消息的能力。</p>
+<h1 id="查漏补缺"><a href="#查漏补缺" class="headerlink" title="查漏补缺"></a>查漏补缺</h1><p>主题 3.6.0-在网络上发送消息时，封装过程从 OSI 或 TCP/IP 模型的<strong>顶层开始自上而下</strong>工作。在该模型的各层上，上层信息被封装到下一协议的数据字段中。例如，在 IP 数据包可以发送之前，会将其封装到第 2 层的数据链路帧中，以便其能够通过物理介质发送。<br>主题 3.6.0-<strong>术语协议数据单元 (PDU)</strong> 用于描述网络模型的任一层上的一段数据。数据包是网络层PDU。帧是数据链路层PDU。数据段是传输层PDU。<br>主题 3.1.0-双工通信指的是介质在两个方向上传送消息的能力。</p>
 
       
     </div>
