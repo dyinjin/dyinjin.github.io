@@ -23,17 +23,17 @@
   <meta name="description" content="GNUGUN’s Not Unix开源操作系统(unix-like)GNU是一个自由的操作系统，其内容软件完全以GPL方式发布。这个操作系统是GNU计划的主要目标，名称来自GNU’s Not Unix!的递归缩写，因为GNU的设计类似Unix，但它不包含具著作权的Unix代码。 GCC为GNU操作系统专门编写的一款编译器GCC（GNU Compiler Collection，GNU编译器套件）是由">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机名词">
-<meta property="og:url" content="http://example.com/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/index.html">
+<meta property="og:url" content="http://example.com/2021/09/23/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/index.html">
 <meta property="og:site_name" content="岛屿尽">
 <meta property="og:description" content="GNUGUN’s Not Unix开源操作系统(unix-like)GNU是一个自由的操作系统，其内容软件完全以GPL方式发布。这个操作系统是GNU计划的主要目标，名称来自GNU’s Not Unix!的递归缩写，因为GNU的设计类似Unix，但它不包含具著作权的Unix代码。 GCC为GNU操作系统专门编写的一款编译器GCC（GNU Compiler Collection，GNU编译器套件）是由">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-23T09:08:33.979Z">
-<meta property="article:modified_time" content="2021-09-26T13:47:27.832Z">
+<meta property="article:modified_time" content="2022-02-28T06:08:05.285Z">
 <meta property="article:author" content="dyinjin">
 <meta property="article:tag" content="嵌入式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/">
+<link rel="canonical" href="http://example.com/2021/09/23/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/">
 
 
 <script id="page-configurations">
@@ -186,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/23/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -216,7 +216,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-26 21:47:27" itemprop="dateModified" datetime="2021-09-26T21:47:27+08:00">2021-09-26</time>
+                <time title="修改时间：2022-02-28 14:08:05" itemprop="dateModified" datetime="2022-02-28T14:08:05+08:00">2022-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,6 +253,38 @@
 <h1 id="DSP"><a href="#DSP" class="headerlink" title="DSP"></a>DSP</h1><p>数字信号处理<br>大部分信号的初始形态是事物的运动变化，为了测量它们和处理它们，先要用传感器把它们的特征转换成电信号，等到这些电信号处理完后，再把它们转变为我们能看见、能听见或能利用的形态。<br>数字信号处理单元实际上是一个计算机，它按照指令对二进制的数字信号进行计算。例如，将声波信号与一个高频正弦波信号相乘，可实现幅度调制。实际上，数字信号往往还要变回模拟信号，才能发挥它的作用。例如，无线电是电磁波通过天线向外发射的，这时的电磁波只能是模拟信号。</p>
 <h1 id="PSP"><a href="#PSP" class="headerlink" title="PSP"></a>PSP</h1><p>一般来说PSP是256个字节，当程序生成了可执行文件以后，在执行时会先将程序调入内存，这个时候ds中存入程序在内存中的段地址，紧接着是程序的一些说明，比如程序占用多少空间等，这就是PSP，然后才是真正的程序地址，将cs指向这里，且ip设为0000h</p>
 <h1 id="BootLoader"><a href="#BootLoader" class="headerlink" title="BootLoader"></a>BootLoader</h1><p>在嵌入式操作系统中，BootLoader是在操作系统内核运行之前运行。可以初始化硬件设备、建立内存空间映射图，从而将系统的软硬件环境带到一个合适状态，以便为最终调用操作系统内核准备好正确的环境。在嵌入式系统中，通常并没有像BIOS那样的固件程序（注，有的嵌入式CPU也会内嵌一段短小的启动程序），因此整个系统的加载启动任务就完全由BootLoader来完成。</p>
+<h1 id="SOC片上系统"><a href="#SOC片上系统" class="headerlink" title="SOC片上系统"></a>SOC片上系统</h1><p>一个芯片就是一个系统，或将一个系统放在一个芯片中。SOC最大特点是实现了软/硬件的无缝结合，直接在处理器芯片内部嵌入操作系统代码模块</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>Linux操作系统简介 嵌入式 Linux 的特点： </p>
+<ol>
+<li>Linux 是开放源代码的； </li>
+<li>Linux 的内核小、效率高，内核的更新速度很快； </li>
+<li>Linux 是免费的 OS，在价格上极具竞争力</li>
+</ol>
+<p>嵌入式 Linux 系统产品主要分为三类： </p>
+<ul>
+<li>第一：专门为 Linux 的嵌入式方向做的 如何让 Linux 更小、更容易嵌入到体积要求和功能、性 能要求更高的硬件中去，是产品的开发方向，如 Monta Vista 的Hard Hat Linux等。</li>
+<li>第二：专门为Linux的实时特性设计的产品 将 Linux 开发成实时操作系统，尤其是硬实时系统，应 用于一些关键的控制场合。如 Fsmlabs 公司的 RT-Linux。 </li>
+<li>第三：将实时性和嵌入式方案结合起来的方案，并且提供集 成化的解决方案。如Lineo、TimeSys等。</li>
+</ul>
+<h1 id="VxWorks"><a href="#VxWorks" class="headerlink" title="VxWorks"></a>VxWorks</h1><p>VxWorks 操作系统是美国WindRiver公司于1983年设计开发的一种嵌入式实时操作系统（RTOS）。<br>VxWorks具有良好的持续发展能力、高性能的内核以及友好的用户开发环境，具有良好的可靠性和卓越的实时性，在嵌入式实时操作系统领域占据一席之地。<br>VxWorks被广泛的应用于<strong>通信、军事、航空、航天</strong>等 高精尖技术及实时性要求极高的领域中。如卫星通讯、军事演习、导弹制导、飞机导航等</p>
+<h1 id="WinCE"><a href="#WinCE" class="headerlink" title="WinCE"></a>WinCE</h1><p>Windows CE 是一个全新开发的操作系统，是一个开放的、可裁剪的、32位的实时嵌入式<strong>窗口</strong>操作系统。<br>Windows CE 的基本特性如下： </p>
+<ol>
+<li>适应小型系统，为低成本、计算能力较差的系统提供简洁、 高效、完善的控制机制； </li>
+<li>支持多种处理器和计算机架构，并支持多种装置接口； </li>
+<li>遵循Windows平台的应用开发规范，提供Win32API等； </li>
+<li>操作系统各部分模块化，可根据特性定制，以适应ROM； </li>
+<li>为应用程序提供网络通信、图形使用接口、数据库、档案 等支持； </li>
+<li>支持实时应用； </li>
+<li>提供进阶电源管理功能</li>
+</ol>
+<h1 id="uC-os-Ⅱ"><a href="#uC-os-Ⅱ" class="headerlink" title="uC/os-Ⅱ"></a>uC/os-Ⅱ</h1><p>uC/os-Ⅱ是一种<strong>基于优先级的抢占式</strong>多任务实时操作系统，包含了：实时内核、任务管理、时间管理、任务间通信同步（信号量、邮箱、消息队列）和内存管理等功能。<br>uC/os-Ⅱ可以使各个任务独立工作，互不干涉，很容易实现准时而且无误执行，使实际应用程序的设计和扩展变得容易，使应用程序的设计过程大为简单。<br>uC/os-Ⅱ绝大部分的代码是用ANSI的C语言写的</p>
+<h1 id="pSOSystem"><a href="#pSOSystem" class="headerlink" title="pSOSystem"></a>pSOSystem</h1><p>pSOSystem 是一个专门为嵌入式微处理器设计和开发的模块、高效率的实时操作系统。<br>pSOSystem 的每一部分都是完全“自包含”的，这种机制允许开发者根据每个应用的特殊要求，对操作系统的功能和内存进行裁剪和配置。<br>pSOSystem 提供了<strong>一套集成化的交叉开发工具</strong>，以支持应用系统的开发。该集成环境可在 PC 机或工作站上运行，这些工具可通过多种连接机制与目标机通信</p>
+<h1 id="uClinux"><a href="#uClinux" class="headerlink" title="uClinux"></a>uClinux</h1><p>Linux是一种很受欢迎的操作系统，它与UNIX系统兼容，开放源代码。它原本被设计为桌面系统，现在广泛应用于服务器领域。而更大的影响在于它正逐渐的应用于嵌入式设备。uClinux正是在这种氛围下产生的。在uClinux这个英文单词中u表示Micro，小的意思，C表示Control，控制的意思，所以uClinux就是Micro-Control-Linux，字面上的理解就是”针对微控制领域而设计的Linux系统”。<br>uCLinux主要是针对目标处理器<strong>没有存储管理单元</strong>MMU（Memory Management Unit）的嵌入式系统而设计的。它已经被成功地移植到了很多平台上。由于没有MMU，其多任务的实现需要一定技巧。</p>
+<h1 id="ThreadX"><a href="#ThreadX" class="headerlink" title="ThreadX"></a>ThreadX</h1><p>ThreadX是小型RTOS的巅峰之作，通过了各行各业的安全认证，并且大部分都是<strong>最高安全标准</strong>，适用于深嵌入式应用中，具有规模小、实时性强、可靠性高、无产品版权费、易于使用等特点，并且支持大量的处理器和SoC<br>文件系统FileX、网络协议栈NetX十分优秀安全性突出</p>
+<h1 id="QNX"><a href="#QNX" class="headerlink" title="QNX"></a>QNX</h1><p>QNX是一个分布式、嵌入式、可规模扩展的硬实时操作系统，是一种商用的遵从可移植操作系统接口（Portable Operating System Interface of UNIX，缩写为 <strong>POSIX</strong> ）规范的类Unix实时操作系统，在汽车领域，网络通信领域应用广泛在轨道交通、医疗器械、智能电网及航空航天中，都发挥着积极作用。</p>
+<h1 id="OSE"><a href="#OSE" class="headerlink" title="OSE"></a>OSE</h1><p>Operating System Embedded是具有性能高、<strong>代码小</strong>和可确定性实时操作系统。<br>OSE专门针对移动计算应用进行了优化，支持从基于DSP的基带处理到RISC的应用处理<br>特点：极高的处理能力 支持复杂的分布式系统 强大的容错能力 丰富的功能模块 广泛的应用 严格的安全认证 强大的第三方支持。</p>
+<h1 id="PalmOS"><a href="#PalmOS" class="headerlink" title="PalmOS"></a>PalmOS</h1><p>Palm OS是一种<strong>32 bit</strong>的嵌入式操作系统，广泛应用于移动终端设备特别是在<strong>PDA掌上电脑</strong>市场占据90%市场。<br>但随着掌上电脑市场的缩减也逐渐没落</p>
+<h1 id="Symbian"><a href="#Symbian" class="headerlink" title="Symbian"></a>Symbian</h1><p>即塞班系统，是塞班公司为手机而设计的操作系统，也即曾经的诺基亚手机的主要操作系统.<br>2011年11月，塞班在全球的市场占有率降至22.1%，霸主地位已彻底被Android取代，中国市场占有率则降为23%。12月21日，诺基亚宣布放弃Symbian品牌。</p>
 
     </div>
 
@@ -346,7 +378,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GNU"><span class="nav-number">1.</span> <span class="nav-text">GNU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC"><span class="nav-number">2.</span> <span class="nav-text">GCC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GDB"><span class="nav-number">3.</span> <span class="nav-text">GDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BSP"><span class="nav-number">4.</span> <span class="nav-text">BSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DSP"><span class="nav-number">5.</span> <span class="nav-text">DSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PSP"><span class="nav-number">6.</span> <span class="nav-text">PSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BootLoader"><span class="nav-number">7.</span> <span class="nav-text">BootLoader</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GNU"><span class="nav-number">1.</span> <span class="nav-text">GNU</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC"><span class="nav-number">2.</span> <span class="nav-text">GCC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GDB"><span class="nav-number">3.</span> <span class="nav-text">GDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BSP"><span class="nav-number">4.</span> <span class="nav-text">BSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DSP"><span class="nav-number">5.</span> <span class="nav-text">DSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PSP"><span class="nav-number">6.</span> <span class="nav-text">PSP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BootLoader"><span class="nav-number">7.</span> <span class="nav-text">BootLoader</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SOC%E7%89%87%E4%B8%8A%E7%B3%BB%E7%BB%9F"><span class="nav-number">8.</span> <span class="nav-text">SOC片上系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux"><span class="nav-number">9.</span> <span class="nav-text">Linux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VxWorks"><span class="nav-number">10.</span> <span class="nav-text">VxWorks</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WinCE"><span class="nav-number">11.</span> <span class="nav-text">WinCE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uC-os-%E2%85%A1"><span class="nav-number">12.</span> <span class="nav-text">uC&#x2F;os-Ⅱ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pSOSystem"><span class="nav-number">13.</span> <span class="nav-text">pSOSystem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#uClinux"><span class="nav-number">14.</span> <span class="nav-text">uClinux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ThreadX"><span class="nav-number">15.</span> <span class="nav-text">ThreadX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#QNX"><span class="nav-number">16.</span> <span class="nav-text">QNX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OSE"><span class="nav-number">17.</span> <span class="nav-text">OSE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PalmOS"><span class="nav-number">18.</span> <span class="nav-text">PalmOS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Symbian"><span class="nav-number">19.</span> <span class="nav-text">Symbian</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -362,7 +394,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -411,7 +443,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共125.1k字呐~</span>
+  <span class="post-count">本博客全站共137.3k字呐~</span>
 </div>
 
         

@@ -182,6 +182,236 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/16/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%8A%A0%E5%AF%86%E4%B8%8E%E5%AD%98%E5%82%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/16/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%8A%A0%E5%AF%86%E4%B8%8E%E5%AD%98%E5%82%A8/" class="post-title-link" itemprop="url">区块链的加密与存储</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-16 01:16:06" itemprop="dateCreated datePublished" datetime="2021-10-16T01:16:06+08:00">2021-10-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-25 18:57:30" itemprop="dateModified" datetime="2021-10-25T18:57:30+08:00">2021-10-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>谈谈我的理解：关于数据存储，一般数据不都是在每个分机生成的区块中的，可以有单独数据库而区块链起到传输修改信息的作用（账本记录的就是入账出账信息，通过这些信息自然可得余额信息）；争对我们的课题网上的架构不一定适用，我觉得可以在每个患者挂号时，为每一个患者创立独立的<em>创世区块</em>且记入数据库，然后根据需要，在构想的手环分机中，开始生成子需要传输信息的区块，且分机每次在成功传输信息后，仅需储存上一个区块值；可以简单的把区块生成视作加密，那么区块链就仅起到加密信息传输的作用（这样已经可以保证无法通过分机得到患者信息）；所以我们还可以利用区块链分块储存的架构，将总数据库进行较大型的分布式储存。</p>
+<p><em>以下文字为摘录</em></p>
+<hr>
+<h1 id="区块链-≠-分布式存储这篇强推"><a href="#区块链-≠-分布式存储这篇强推" class="headerlink" title="区块链 ≠ 分布式存储这篇强推"></a><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/411768627">区块链 ≠ 分布式存储</a><em>这篇强推</em></h1><p>直观的角度来看，完整的区块链系统内部一定会包含一个「存储模块」，整体而言，区块链系统确实可以起到持久化数据的作用。<br>但是如果从这个角度出发，直接将区块链系统看作是一个数据库，这样的观点也是有待商榷的。<br>当我们站在区块链系统内部“数据存储”功能的角度看待“区块链系统”时，我们会发现，区块链系统具有确定性的系统架构、确定性的内部业务逻辑，以及一些通用的数据组织格式（比如：区块是一种append-only形式的数据、只有虚拟机执行指令的过程中会修改状态数据等）。区块链系统中的数据存储只需要满足这一套运转逻辑过程中的持久化需求即可，也就是说，<strong>区块链系统为其存储模块划定了比通用数据库更小的模块功能边界</strong>。</p>
+<h1 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h1><p>Hash是一个把任意长度的数据映射成固定长度数据的函数。例如，对于数据完整性校验，最简单的方法是对整个数据做Hash运算得到固定长度的Hash值，然后把得到的Hash值公布在网上，这样用户下载到数据之后，对数据再次进行Hash运算，比较运算结果和网上公布的Hash值进行比较，如果两个Hash值相等，说明下载的数据没有损坏。可以这样做是因为输入数据的稍微改变就会引起Hash运算结果的面目全非，而且根据Hash值反推原始输入数据的特征是困难的。</p>
+<h1 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h1><blockquote>
+<p><strong>非对称加密技术在区块链的应用场景：</strong></p>
+</blockquote>
+<ol>
+<li> <strong>信息加密场景</strong>：主要是由信息发送者(记为A)使用接受者(记为B)的公钥对信息加密后再发送给B，B利用自己的私钥对信息解密。比特币交易的加密即属于此场景。</li>
+<li><strong>数字签名场景</strong>：由发送者A采用自己的私钥加密信息后发送给B，B使用A的公钥对信息解密、从而可确保信息是由A发送的。<br> 数字签名，可以保证收到的文件没有被篡改，也可以保证发送者的身份。因为私钥生产了数字签名，私钥是不公开的。</li>
+<li><strong>登录认证场景</strong>：是由客户端使用私钥加密登录信息后发送给服务器，后者接收后采用该客户端的公钥解密并认证登录信息.</li>
+</ol>
+<p><strong>上述三种场景加密的不同之处主要在于：</strong></p>
+<ul>
+<li>  信息加密是公钥加密，私钥解密，确保信息的安全性；</li>
+<li>  数字签名是私钥加密公钥解密，确保数字签名的归属性；</li>
+<li>  登录认证私钥加密，公钥解密。</li>
+</ul>
+<h1 id="如何存储大型数据"><a href="#如何存储大型数据" class="headerlink" title="如何存储大型数据"></a>如何存储大型数据</h1><p>现在众多项目自称是基于区块链的，因为区块的数据大小，格式受限，其实是一些重要的信息，如账户信息，交易信息等放在区块里，其他的程序还是需要中心化的服务器执行，还有一些自身的需要存储的大数据，只是把其中的根节点HASH值，存入区块链。<br>大部分的的项目基于区块链是如下的一个思路，将需要用到区块链的部分抽离出来，逻辑上分成应用系统和区块链系统，用公链（如以太坊）实现区块链的功能，优点如下：</p>
+<ol>
+<li>应用系统，区块链系统分类，最大程度的用原有中心化服务器系统。</li>
+<li>利用公有区块链的网络安全强大，不可篡改等特性保证区块链功能。<br>基于以太坊的应用场景解决方案，一些大量数据可以做如下操作：</li>
+<li>在以太坊智能合约中维护自身区块链的头部信息； →网络安全、防篡改</li>
+<li>自身区块链区块内容放在二级存储（安全的企业存储环境中）；→自身信息隐私保护，省钱</li>
+<li>对于历史头信息进行剪裁；→省钱</li>
+<li>关联以太坊地址和自身身份；→不可抵赖</li>
+</ol>
+<h1 id="IAM的架构模式"><a href="#IAM的架构模式" class="headerlink" title="IAM的架构模式"></a>IAM的架构模式</h1><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634318416611.png" alt="enter description here"><br>IAM环境中包括很多用户和服务提供商。IAM系统为每个用户分配 一个账户以及一组访问能力，用户基于其账户权限及访问能力访问提供商 的服务。可以采用以如下方式利用W3C的DID规范和W3C的可验证声明规范：<br>假设Alice需要一个身份（DID，唯一标识符）。如上图所示，为了创建一个 新的DID，Alice需要在区块链上创建一个数据项，该数据项中包含了随机 生成的标识符、指向其个人档案数据的链接、以及其个人档案数据的哈希。 档案数据中包含了公钥以及一组可验证的声明，所生成的随机标识符现在 成为Alice的DID，因为只有她持有与公钥对应的私钥。<br>可验证声明是由授权机构签名的通证，创建者同时也会在区块链上记录 声明数据的哈希，类似于DID的实现方式。<br>Alice首先前往权威机构获取可验证声明。例如，个人注册部可能是姓名、 地址、出生日期这些信息的负责机构。假设权威机构签发了可验证的声明， Alice首先展示其对DID的所有权，然后提交对可验证声明的请求。为了更新 其个人档案数据，Alice需要在区块链中添加一个新的数据项，其中包含 更新后的个人档案数据的新的哈希。<br>在验证Alice对DID的所有权时使用的挑战-应答协议，验证者会生成一个随机 种子，然后使用ALice的公钥进行加密，接下来Alice需要使用其私钥解密种子 以展示其确实持有公钥对应的私钥。<br>另一个希望识别Alice身份的用户或机构，例如Bob，首先会从Alice处接收到 DID，然后从区块链上读取所有该DID相关的数据并进行验证。Bob可以同样的 挑战-应答方式验证Alice的身份。</p>
+<h1 id="联盟链"><a href="#联盟链" class="headerlink" title="联盟链"></a>联盟链</h1><p>联盟链，只针对特定某个群体的成员和有限的第三方，内部指定多个预选的节点为记账人，每个块的生成由所有的预选节点共同决定，其他接入节点可以参与交易，但不过问记账过程，其他第三方可以通过该区块链开放的API进行限定查询。为了获得更好的性能，联盟链对于共识或验证节点的配置和网络环境有一定要求。有了准入机制，可以使得交易性能更容易提高，避免由参次不齐的参与者产生的一些问题。</p>
+<h1 id="区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？"><a href="#区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？" class="headerlink" title="区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？"></a>区块链的数据到底什么时候是存储在链上，什么时候又储存在相应节点的数据库中间呢？</h1><p>我们必须了解清楚两个概念：</p>
+<ol>
+<li> 区块链数据；</li>
+<li> 链上数据；<h2 id="首先：区块链数据-包括区块数据和状态数据两者"><a href="#首先：区块链数据-包括区块数据和状态数据两者" class="headerlink" title="首先：区块链数据(包括区块数据和状态数据两者)"></a>首先：区块链数据(包括区块数据和状态数据两者)</h2></li>
+<li> 区块数据描述的实际是区块链上面发生的每一笔交易的记录（如小帅给小王转账了50元，小帅充值了20元之类的数据）</li>
+<li> 而状态数据则是记录了每个账户和智能合约的当前状态（如小帅余额200元，小王20元）<br>而无论是区块数据还是状态数据都是由我们的区块链节点使用和储存的，区块链节点是一个<strong>程序</strong>，允许在我们的电脑，虚拟机等上，而多个节点通过网络的方式进行链接最终形成了完整的区块链网络。<br>而这其中区块链节点的数据存储最普遍的方式就是存入我们的磁盘中间，而我们的区块链不会直接的访问我们的磁盘，而是通过特定的数据库如LevelIDB，RocksDB，MySQL等独立和分布式的数据库来操作我们的数据（目前最重要的另外一个技术就是加入缓存区域，减少磁盘的寻道时间，加快区块链对磁盘数据的使用和存储），而相比于直接访问磁盘，用数据库作为中间媒介的<strong>特定数据访问模型对区块链节点更加的友好。</strong><br>所以数据存储的过程可以解释为<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1634315188441.png" alt="enter description here"></li>
+</ol>
+<p><strong>而数据库分为独立和嵌入式：其最大的区别就是是否需要独立的部署，嵌入式的数据库和区块链节点整合在同一个进程中间，同动同停，基本感受不到独立的存在感。</strong></p>
+<h2 id="其次：链上数据"><a href="#其次：链上数据" class="headerlink" title="其次：链上数据"></a>其次：链上数据</h2><p><strong>解释：链上数据是直接或者间接由区块链共识产生的数据；</strong></p>
+<ol>
+<li>而回到我们的问题，我们会发现区块链中间的区块数据和状态数据并不是凭空的产生的，区块中间的数据是因为不同节点之间的交易数据存储然后被广播到所有区块链节点的共识状态，所以区块数据也是因为共识而产生的数据之一；</li>
+<li>而反观状态数据，由于交易的产生，共识的一致，最终会引起状态的改变，所以在此角度中间，状态数据也一样可以被认为是链上数据；</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/14/%E5%89%8D%E7%AB%AF/JavaScript%E7%AE%80%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/14/%E5%89%8D%E7%AB%AF/JavaScript%E7%AE%80%E8%AE%B0/" class="post-title-link" itemprop="url">JavaScript简记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-14 19:26:20" itemprop="dateCreated datePublished" datetime="2021-10-14T19:26:20+08:00">2021-10-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-17 10:22:24" itemprop="dateModified" datetime="2021-10-17T10:22:24+08:00">2021-10-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://www.runoob.com/js/js-tutorial.html">菜鸟教程</a></p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="JavaScript-是脚本语言"><a href="#JavaScript-是脚本语言" class="headerlink" title="JavaScript 是脚本语言"></a>JavaScript 是脚本语言</h2><p>JavaScript 是一种轻量级的编程语言；是可插入 HTML 页面的编程代码；插入 HTML 页面后，可由所有的现代浏览器执行。</p>
+<h2 id="可直接写入HTML输入流"><a href="#可直接写入HTML输入流" class="headerlink" title="可直接写入HTML输入流"></a>可直接写入HTML输入流</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;h1&gt;这是一个标题&lt;/h1&gt;&quot;</span>);</span></span><br><span class="line"><span class="javascript"><span class="built_in">document</span>.write(<span class="string">&quot;&lt;p&gt;这是一个段落。&lt;/p&gt;&quot;</span>);</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="简单逻辑判断"><a href="#简单逻辑判断" class="headerlink" title="简单逻辑判断"></a>简单逻辑判断</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>我JavaScript<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>请输入数字。如果输入值不是数字，浏览器会弹出提示框。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;demo&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>)</span></span></span><br><span class="line"><span class="function"><span class="javascript"></span>&#123;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> x=<span class="built_in">document</span>.getElementById(<span class="string">&quot;demo&quot;</span>).value;</span></span><br><span class="line"><span class="javascript">	<span class="keyword">if</span>(x==<span class="string">&quot;&quot;</span>||<span class="built_in">isNaN</span>(x))</span></span><br><span class="line"><span class="javascript">	&#123;</span></span><br><span class="line"><span class="javascript">		alert(<span class="string">&quot;不是数字&quot;</span>);</span></span><br><span class="line"><span class="javascript">	&#125;</span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">onclick</span>=<span class="string">&quot;myFunction()&quot;</span>&gt;</span>点击这里<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="在HTML中使用"><a href="#在HTML中使用" class="headerlink" title="在HTML中使用"></a>在HTML中使用</h1><p>HTML 中的脚本必须位于 &lt;script&gt; 与 &lt;/script&gt; 标签之间。<br>脚本可被放置在 HTML 页面的 &lt;body&gt; 和 &lt;head&gt; 部分中。<br>内部使用如上例，外部调用如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;myScript.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><h3 id="JavaScript-字面量"><a href="#JavaScript-字面量" class="headerlink" title="JavaScript 字面量"></a>JavaScript 字面量</h3><p>自然有</p>
+<ul>
+<li>数字（Number）字面量</li>
+</ul>
+<p>3.14<br>101<br>123e5（科学计数）</p>
+<ul>
+<li>字符串（String）字面量<br>“John Doe”<br>‘John Doe’（单引号或双引号）</li>
+<li>表达式字面量<br>5 + 6<br>5 * 10（直接算出答案）</li>
+<li>数组（Array）字面量<br>[40, 100, 1, 10]</li>
+<li>对象（Object）字面量<br>{firstName:”John”, lastName:”Doe”, age:50, eyeColor:”blue”}</li>
+<li>函数（Function）字面量<br>function myFunction(a, b) { return a * b;}</li>
+</ul>
+<h3 id="JavaScript-变量"><a href="#JavaScript-变量" class="headerlink" title="JavaScript 变量"></a>JavaScript 变量</h3><p>JavaScript 使用关键字 <strong>var</strong> 来定义变量， 使用等号来为变量赋值：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var x, length</span><br><span class="line">x = 5</span><br><span class="line">length = 6</span><br></pre></td></tr></table></figure>
+<p>JavaScript 使用动态弱类型<br>实际数据类型是根据赋值确定，具有兼容性（可16+“0”输出160）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var length = 16;                                  // Number 通过数字字面量赋值</span><br><span class="line">var points = x * 10;                              // Number 通过表达式字面量赋值</span><br><span class="line">var lastName = &quot;Johnson&quot;;                         // String 通过字符串字面量赋值</span><br><span class="line">var cars = [&quot;Saab&quot;, &quot;Volvo&quot;, &quot;BMW&quot;];              // Array  通过数组字面量赋值</span><br><span class="line">var person = &#123;firstName:&quot;John&quot;, lastName:&quot;Doe&quot;&#125;;  // Object 通过对象字面量赋值</span><br></pre></td></tr></table></figure>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>可以用<code>//123456</code>来<br>可多行注释以 /* 开始，以 */ 结尾。</p>
+<h3 id="对代码行进行折行"><a href="#对代码行进行折行" class="headerlink" title="对代码行进行折行"></a>对代码行进行折行</h3><p>可用以下输出<code>你好 世界!</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.write(&quot;你好 \</span><br><span class="line">世界!&quot;);</span><br></pre></td></tr></table></figure>
+<p>不可（报错）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">document.write \ </span><br><span class="line">(&quot;你好世界!&quot;);</span><br></pre></td></tr></table></figure>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>JavaScript 没有任何打印或者输出的函数，但可通过以下方法来输出数据：</p>
+<h3 id="使用-window-alert-弹出警告框。"><a href="#使用-window-alert-弹出警告框。" class="headerlink" title="使用 window.alert() 弹出警告框。"></a>使用 <strong>window.alert()</strong> 弹出警告框。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">window.alert(5 + 6);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>显示11</p>
+<h3 id="使用-document-write-方法将内容写到-HTML-文档中-使用innerHTML-写入到-HTML-元素。"><a href="#使用-document-write-方法将内容写到-HTML-文档中-使用innerHTML-写入到-HTML-元素。" class="headerlink" title="使用 document.write() 方法将内容写到 HTML 文档中 使用innerHTML 写入到 HTML 元素。"></a>使用 <strong>document.write()</strong> 方法将内容写到 HTML 文档中 使用<strong>innerHTML</strong> 写入到 HTML 元素。</h3><p>如需从 JavaScript 访问某个 HTML 元素，您可以使用 document.getElementById(id) 方法。使用 “id” 属性来标识 HTML 元素，并 innerHTML 来获取或插入元素内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p id=&quot;demo&quot;&gt;我的第一个段落&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;demo&quot;).innerHTML = &quot;段落已修改。&quot;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.write(Date());</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>显示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">我的第一个 Web 页面</span><br><span class="line">段落已修改。</span><br><span class="line">Thu Oct 14 2021 19:51:02 GMT+0800 (中国标准时间)</span><br></pre></td></tr></table></figure>
+<p>这种写入有覆盖的顺序，以上代码是在加载HTML时便写入，而以下是后来写入则会覆盖</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>我的第一个 Web 页面<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>我的第一个段落。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;myFunction()&quot;</span>&gt;</span>点我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.write(<span class="built_in">Date</span>());</span></span><br><span class="line"><span class="javascript">&#125;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="使用-console-log-写入到浏览器的控制台。"><a href="#使用-console-log-写入到浏览器的控制台。" class="headerlink" title="使用 console.log() 写入到浏览器的控制台。"></a>使用 <strong>console.log()</strong> 写入到浏览器的控制台。</h3><p>如果您的浏览器支持调试，可以使用 console.log() 方法在浏览器中显示 JavaScript 值。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+ 
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/14/%E5%89%8D%E7%AB%AF/CSS%E7%AE%80%E5%8D%95%E9%80%9F%E6%88%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -645,7 +875,7 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/23/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -659,7 +889,7 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/23/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/" class="post-title-link" itemprop="url">计算机名词</a>
+            <a href="/2021/09/23/%E5%B5%8C%E5%85%A5%E5%BC%8F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%8D%E8%AF%8D/" class="post-title-link" itemprop="url">计算机名词</a>
         </h2>
 
         <div class="post-meta">
@@ -676,7 +906,7 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-26 21:47:27" itemprop="dateModified" datetime="2021-09-26T21:47:27+08:00">2021-09-26</time>
+                <time title="修改时间：2022-02-28 14:08:05" itemprop="dateModified" datetime="2022-02-28T14:08:05+08:00">2022-02-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -706,6 +936,38 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
 <h1 id="DSP"><a href="#DSP" class="headerlink" title="DSP"></a>DSP</h1><p>数字信号处理<br>大部分信号的初始形态是事物的运动变化，为了测量它们和处理它们，先要用传感器把它们的特征转换成电信号，等到这些电信号处理完后，再把它们转变为我们能看见、能听见或能利用的形态。<br>数字信号处理单元实际上是一个计算机，它按照指令对二进制的数字信号进行计算。例如，将声波信号与一个高频正弦波信号相乘，可实现幅度调制。实际上，数字信号往往还要变回模拟信号，才能发挥它的作用。例如，无线电是电磁波通过天线向外发射的，这时的电磁波只能是模拟信号。</p>
 <h1 id="PSP"><a href="#PSP" class="headerlink" title="PSP"></a>PSP</h1><p>一般来说PSP是256个字节，当程序生成了可执行文件以后，在执行时会先将程序调入内存，这个时候ds中存入程序在内存中的段地址，紧接着是程序的一些说明，比如程序占用多少空间等，这就是PSP，然后才是真正的程序地址，将cs指向这里，且ip设为0000h</p>
 <h1 id="BootLoader"><a href="#BootLoader" class="headerlink" title="BootLoader"></a>BootLoader</h1><p>在嵌入式操作系统中，BootLoader是在操作系统内核运行之前运行。可以初始化硬件设备、建立内存空间映射图，从而将系统的软硬件环境带到一个合适状态，以便为最终调用操作系统内核准备好正确的环境。在嵌入式系统中，通常并没有像BIOS那样的固件程序（注，有的嵌入式CPU也会内嵌一段短小的启动程序），因此整个系统的加载启动任务就完全由BootLoader来完成。</p>
+<h1 id="SOC片上系统"><a href="#SOC片上系统" class="headerlink" title="SOC片上系统"></a>SOC片上系统</h1><p>一个芯片就是一个系统，或将一个系统放在一个芯片中。SOC最大特点是实现了软/硬件的无缝结合，直接在处理器芯片内部嵌入操作系统代码模块</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><p>Linux操作系统简介 嵌入式 Linux 的特点： </p>
+<ol>
+<li>Linux 是开放源代码的； </li>
+<li>Linux 的内核小、效率高，内核的更新速度很快； </li>
+<li>Linux 是免费的 OS，在价格上极具竞争力</li>
+</ol>
+<p>嵌入式 Linux 系统产品主要分为三类： </p>
+<ul>
+<li>第一：专门为 Linux 的嵌入式方向做的 如何让 Linux 更小、更容易嵌入到体积要求和功能、性 能要求更高的硬件中去，是产品的开发方向，如 Monta Vista 的Hard Hat Linux等。</li>
+<li>第二：专门为Linux的实时特性设计的产品 将 Linux 开发成实时操作系统，尤其是硬实时系统，应 用于一些关键的控制场合。如 Fsmlabs 公司的 RT-Linux。 </li>
+<li>第三：将实时性和嵌入式方案结合起来的方案，并且提供集 成化的解决方案。如Lineo、TimeSys等。</li>
+</ul>
+<h1 id="VxWorks"><a href="#VxWorks" class="headerlink" title="VxWorks"></a>VxWorks</h1><p>VxWorks 操作系统是美国WindRiver公司于1983年设计开发的一种嵌入式实时操作系统（RTOS）。<br>VxWorks具有良好的持续发展能力、高性能的内核以及友好的用户开发环境，具有良好的可靠性和卓越的实时性，在嵌入式实时操作系统领域占据一席之地。<br>VxWorks被广泛的应用于<strong>通信、军事、航空、航天</strong>等 高精尖技术及实时性要求极高的领域中。如卫星通讯、军事演习、导弹制导、飞机导航等</p>
+<h1 id="WinCE"><a href="#WinCE" class="headerlink" title="WinCE"></a>WinCE</h1><p>Windows CE 是一个全新开发的操作系统，是一个开放的、可裁剪的、32位的实时嵌入式<strong>窗口</strong>操作系统。<br>Windows CE 的基本特性如下： </p>
+<ol>
+<li>适应小型系统，为低成本、计算能力较差的系统提供简洁、 高效、完善的控制机制； </li>
+<li>支持多种处理器和计算机架构，并支持多种装置接口； </li>
+<li>遵循Windows平台的应用开发规范，提供Win32API等； </li>
+<li>操作系统各部分模块化，可根据特性定制，以适应ROM； </li>
+<li>为应用程序提供网络通信、图形使用接口、数据库、档案 等支持； </li>
+<li>支持实时应用； </li>
+<li>提供进阶电源管理功能</li>
+</ol>
+<h1 id="uC-os-Ⅱ"><a href="#uC-os-Ⅱ" class="headerlink" title="uC/os-Ⅱ"></a>uC/os-Ⅱ</h1><p>uC/os-Ⅱ是一种<strong>基于优先级的抢占式</strong>多任务实时操作系统，包含了：实时内核、任务管理、时间管理、任务间通信同步（信号量、邮箱、消息队列）和内存管理等功能。<br>uC/os-Ⅱ可以使各个任务独立工作，互不干涉，很容易实现准时而且无误执行，使实际应用程序的设计和扩展变得容易，使应用程序的设计过程大为简单。<br>uC/os-Ⅱ绝大部分的代码是用ANSI的C语言写的</p>
+<h1 id="pSOSystem"><a href="#pSOSystem" class="headerlink" title="pSOSystem"></a>pSOSystem</h1><p>pSOSystem 是一个专门为嵌入式微处理器设计和开发的模块、高效率的实时操作系统。<br>pSOSystem 的每一部分都是完全“自包含”的，这种机制允许开发者根据每个应用的特殊要求，对操作系统的功能和内存进行裁剪和配置。<br>pSOSystem 提供了<strong>一套集成化的交叉开发工具</strong>，以支持应用系统的开发。该集成环境可在 PC 机或工作站上运行，这些工具可通过多种连接机制与目标机通信</p>
+<h1 id="uClinux"><a href="#uClinux" class="headerlink" title="uClinux"></a>uClinux</h1><p>Linux是一种很受欢迎的操作系统，它与UNIX系统兼容，开放源代码。它原本被设计为桌面系统，现在广泛应用于服务器领域。而更大的影响在于它正逐渐的应用于嵌入式设备。uClinux正是在这种氛围下产生的。在uClinux这个英文单词中u表示Micro，小的意思，C表示Control，控制的意思，所以uClinux就是Micro-Control-Linux，字面上的理解就是”针对微控制领域而设计的Linux系统”。<br>uCLinux主要是针对目标处理器<strong>没有存储管理单元</strong>MMU（Memory Management Unit）的嵌入式系统而设计的。它已经被成功地移植到了很多平台上。由于没有MMU，其多任务的实现需要一定技巧。</p>
+<h1 id="ThreadX"><a href="#ThreadX" class="headerlink" title="ThreadX"></a>ThreadX</h1><p>ThreadX是小型RTOS的巅峰之作，通过了各行各业的安全认证，并且大部分都是<strong>最高安全标准</strong>，适用于深嵌入式应用中，具有规模小、实时性强、可靠性高、无产品版权费、易于使用等特点，并且支持大量的处理器和SoC<br>文件系统FileX、网络协议栈NetX十分优秀安全性突出</p>
+<h1 id="QNX"><a href="#QNX" class="headerlink" title="QNX"></a>QNX</h1><p>QNX是一个分布式、嵌入式、可规模扩展的硬实时操作系统，是一种商用的遵从可移植操作系统接口（Portable Operating System Interface of UNIX，缩写为 <strong>POSIX</strong> ）规范的类Unix实时操作系统，在汽车领域，网络通信领域应用广泛在轨道交通、医疗器械、智能电网及航空航天中，都发挥着积极作用。</p>
+<h1 id="OSE"><a href="#OSE" class="headerlink" title="OSE"></a>OSE</h1><p>Operating System Embedded是具有性能高、<strong>代码小</strong>和可确定性实时操作系统。<br>OSE专门针对移动计算应用进行了优化，支持从基于DSP的基带处理到RISC的应用处理<br>特点：极高的处理能力 支持复杂的分布式系统 强大的容错能力 丰富的功能模块 广泛的应用 严格的安全认证 强大的第三方支持。</p>
+<h1 id="PalmOS"><a href="#PalmOS" class="headerlink" title="PalmOS"></a>PalmOS</h1><p>Palm OS是一种<strong>32 bit</strong>的嵌入式操作系统，广泛应用于移动终端设备特别是在<strong>PDA掌上电脑</strong>市场占据90%市场。<br>但随着掌上电脑市场的缩减也逐渐没落</p>
+<h1 id="Symbian"><a href="#Symbian" class="headerlink" title="Symbian"></a>Symbian</h1><p>即塞班系统，是塞班公司为手机而设计的操作系统，也即曾经的诺基亚手机的主要操作系统.<br>2011年11月，塞班在全球的市场占有率降至22.1%，霸主地位已彻底被Android取代，中国市场占有率则降为23%。12月21日，诺基亚宣布放弃Symbian品牌。</p>
 
       
     </div>
@@ -1069,246 +1331,6 @@ HTML 标签对大小写不敏感，而万维网联盟（W3C）在 HTML 4 中推�
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/19/MC/modslists/minecraft[1.16.5]%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/19/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A80.4/" class="post-title-link" itemprop="url">minecraft[1.16.5]现用模组表0.4</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-19 19:43:12" itemprop="dateCreated datePublished" datetime="2021-09-19T19:43:12+08:00">2021-09-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-29 22:51:57" itemprop="dateModified" datetime="2021-10-29T22:51:57+08:00">2021-10-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MC/" itemprop="url" rel="index"><span itemprop="name">MC</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>2021/08/29  20:46        12,798,561 [[[[重要 不要创建世界时使用]]]]【群系】【前置4】CavesAndCliffsBackport-1.16.5-6.3.jar<br>2021/04/24  04:52            23,054 【优化】【前置15】byg群系生成修复chocolate-1.3.0-1.16.4.jar<br>2021/09/09  00:56            10,475 【优化】储物抽屉优化drawerfps-2.1.jar.disabled<br>2021/07/19  18:33            98,900 【优化】区块加载ferritecore-2.0.5-forge.jar<br>2021/04/26  08:04           437,841 【优化】区块预加载Chunk Pregenerator-V1.16-3.0.5.jar<br>2021/07/20  22:25           129,304 【优化】合成冲突化解polymorph-forge-1.16.5-0.25.jar<br>2021/10/17  21:26         1,675,339 【优化】地形生成TerraForged-1.16.5-0.2.16-BETA-2 .jar<br>2021/07/19  14:56            60,714 【优化】实体优化EntityCulling-1.16.5-2.1.6.jar<br>2021/04/10  00:04            84,744 【优化】平滑加载smoothboot-forge-1.16.4-1.2.2.jar<br>2021/07/20  23:04            94,028 【优化】模组目录catalogue-1.2.1-1.16.5.jar<br>2021/07/20  23:05            72,657 【优化】模组设置configured-1.1.0-1.16.5.jar<br>2021/05/04  07:33            13,677 【优化】渲染优化（针对多人） out_of_sight-1.16.4-1.0.1.jar<br>2021/07/19  14:53           232,291 【优化】生物AI优化performant-1.16.2-5-3.71m.jar<br>2021/07/19  15:42            19,038 【优化】生物群系修复(争对新添加群系)biomeidfixer-1.16.5-1.0.1.s4.jar<br>2021/04/17  01:14           423,940 【优化】（补丁）随意修复randompatches-2.4.4-forge.jar<br>2021/07/06  15:29           947,047 【前置01】abnormals_core-1.16.5-3.2.0.jar<br>2021/07/21  21:33           812,772 【前置10】【辅助】jei-1.16.5-7.7.1.110.jar<br>2021/07/19  15:23            43,358 【前置11】expandability-2.0.1-forge.jar<br>2021/07/19  15:51           592,958 【前置12】帕秋莉Patchouli-1.16.4-53.1.jar<br>2021/09/03  16:02         3,365,639 【前置13】【生物】【前置12】mysticalworld-1.16.5-0.3.3.19.jar<br>2021/10/20  14:42         8,768,876 【前置14】【前置21】Quark-r2.4-319.jar<br>2021/09/03  15:58        10,313,922 【前置15】【群系】byg-1.3.4.jar<br>2021/04/09  23:44           328,828 【前置16】【食物】潘马斯农村食物核心pamhc2foodcore-1.16.3-1.0.2.jar<br>2021/07/06  16:13         1,259,031 【前置17】【食物】FarmersDelight-1.16.5-0.4.5.jar<br>2021/07/19  16:53           167,613 【前置18】【食物】simplytea-1.16.5-2.4.0.jar<br>2021/06/20  16:17           912,234 【前置19】rhino-1605.1.1-build.23.jar<br>2021/07/19  19:35         1,337,675 【前置20】cloth-config-4.11.26-forge.jar<br>2021/07/19  19:19            57,279 【前置21】AutoRegLib-1.6-49.jar<br>2021/07/19  21:41         3,374,203 【前置22】geckolib-forge-1.16.5-3.0.41.jar<br>2021/08/29  21:25         1,470,868 【前置23】【杂项】血月丰收月enhancedcelestials-2.0.6-1.16.5.jar<br>2021/09/03  16:03           253,717 【前置25.1】(25取其一)【辅助】1高亮显示Jade-1.16.4-2.7.4.jar<br>2021/07/20  19:49            61,910 【前置27】bgcore-1.16.5-3.2.jar<br>2021/07/20  19:41           309,330 【前置28】Bookshelf-1.16.5-10.1.11.jar<br>2021/07/20  19:38           714,054 【前置29】Mantle-1.16.5-1.6.115.jar<br>2021/07/19  18:15           501,225 【前置2】architectury-1.20.28-forge.jar<br>2021/07/20  19:37         6,638,824 【前置30】kotlinforforge-1.14.0-obf.jar<br>2021/07/06  12:18           105,282 【前置31】morevanillalib-1.16.4-1.4.0.jar<br>2021/06/04  22:42           260,027 【前置32】structure_gel-1.16.5-1.7.7.jar<br>2021/06/05  02:28            32,203 【前置33】SimpleCoreLib-1.16.5-2.0.7.5.jar<br>2021/04/27  10:48         1,067,855 【前置36】附魔前置cofh_core-1.16.4-1.2.1.jar<br>2021/09/13  00:35           140,636 【前置37】collective-1.16.5-2.64.jar<br>2021/07/20  23:13           140,070 【前置38】Placebo-1.16.4-4.5.0.jar<br>2021/07/20  23:18           208,147 【前置39】selene-1.16.5-1.5.jar<br>2021/09/03  15:54           106,044 【前置3】YungsApi-1.16.4-Forge-12.jar<br>2021/09/04  22:58           125,835 【前置40】valhelsia_core-16.0.10.jar<br>2021/07/19  18:14           740,946 【前置41】【辅助】【前置19】或【前置2】添加合成表kubejs-forge-1605.3.12-build.38.jar<br>2021/08/17  17:04           509,849 【前置42】Penguin-Lib-1.16.5-0.4.3.jar<br>2021/08/17  13:42           395,978 【前置43】shetiphiancore-1.16-3.8.5.jar<br>2021/08/29  21:43            88,373 【前置44】majrusz-library-1.16.4-2.0.1.jar<br>2021/08/29  20:46           150,833 【前置4】cavebiomeapi-1.16.5-1.3.7.jar<br>2021/07/19  15:12           631,288 【前置5】CreativeCore_v2.2.0_mc1.16.5.jar<br>2021/06/04  21:05         2,660,414 【前置6】【杂项】charm-forge-1.16.5-2.3.2.jar<br>2021/08/29  21:52           482,439 【前置7】citadel-1.8.1-1.16.5.jar<br>2021/06/04  19:07           102,333 【前置8】cuneiform-1.16.3-1.2.5.jar<br>2021/07/20  15:08           244,720 【前置9】饰品栏curios-forge-1.16.5-4.0.5.2.jar<br>2021/07/21  14:07             8,013 【前置】全局数据包globaldataandresourcepacks-1.16.4-1.7.4.jar<br>2021/06/04  22:37         2,004,590 【杂项】[NNOW]NeverNeededOrWanted-1.16.5-1.0.9a.jar<br>2021/07/19  17:22           538,708 【杂项】【前置01】extra_boats-1.16.5-2.1.0.jar<br>2021/07/19  18:27           288,116 【杂项】【前置01】动作personality-1.16.5-1.0.2.jar<br>2021/06/04  22:28           962,042 【杂项】【前置01】残暴与掠夺savageandravage-1.16.5-3.1.0.jar<br>2021/07/19  17:23         3,009,108 【杂项】【前置01】甜浆果优化berry_good-1.16.5-4.1.1.jar<br>2021/07/23  18:01             1,896 【杂项】【前置14】夸克奇思妙想QuarkOddities-1.16.3.jar<br>2021/07/19  16:51            22,188 【杂项】【前置17】农夫乐事兼容性compats_farmersdelightintegrations-1.16.5-1.1.jar<br>2021/07/19  16:53             3,063 【杂项】【前置17】农夫乐事兼容性farmersdelightintegration-1.16.5-1.0.3.jar<br>2021/07/19  16:54           260,586 【杂项】【前置17】农夫乐事铜锅copperpot-1.16.5-1.1.1.jar<br>2021/06/05  02:28           321,605 【杂项】【前置33】矿石SimpleOres2-1.16.5-2.4.6.7.jar<br>2021/09/21  01:42            12,082 【杂项】【前置37】围火无怪nohostilesaroundcampfire_1.16.5-3.6.jar<br>2021/07/20  22:17             9,491 【杂项】【前置37】治疗篝火healingcampfire_1.16.5-3.3.jar<br>2021/04/11  15:24            32,462 【杂项】【前置38】末影袋(提升大量储存空间）EnderBags-1.16.4-6.3.1.jar<br>2021/07/20  17:34            28,216 【杂项】【前置3】群系标题yung_TravelersTitles-1.16.4-1.3.jar<br>2021/07/19  15:14            47,260 【杂项】【前置5】物理掉落物ItemPhysic_v1.4.18_mc1.16.5.jar<br>2021/07/20  15:04            67,143 【杂项】【前置9】【前置24】潜影贝栏位curiousshulkerboxes-forge-1.16.5-4.0.1.0.jar<br>2021/07/20  15:10            27,890 【杂项】【前置9】不死图腾栏位curioofundying-forge-1.16.5-5.2.0.0.jar<br>2021/04/27  08:30           494,228 【杂项】储物抽屉StorageDrawers-1.16.3-8.2.2.jar<br>2021/05/04  08:31             9,772 【杂项】农田不再被踩坏.jar<br>2021/04/24  04:44         2,040,762 【杂项】幻梦eidolon-0.2.7.jar<br>2021/07/20  22:53           193,910 【杂项】建筑权杖constructionwand-1.16.5-2.2.jar<br>2021/06/04  22:44         1,486,283 【杂项】德鲁伊工艺Druidcraft-1.16.5-0.4.52.jar<br>2021/04/09  23:42            18,175 【杂项】快速树叶腐烂FastLeafDecay-v25.jar<br>2021/06/08  00:35           312,299 【杂项】旅行背包TravelersBackpack-1.16.5-5.4.2.jar<br>2021/04/25  03:41            40,702 【杂项】晃动镜头.jar<br>2021/06/05  00:31           560,732 【杂项】更多洞穴特征extcaves.jar<br>2021/07/20  17:29         1,402,482 【杂项】更好的洞穴yung_BetterCaves-Forge-1.16.4-1.1.2.jar<br>2021/07/24  18:19             4,903 【杂项】村庄出生点villagespawnpoint_1.16.5-1.6.jar<br>2021/09/12  04:01            11,857 【杂项】村民名称villagernames_1.16.5-3.3.jar<br>2021/08/17  17:07             2,661 【杂项】白天睡觉插件Daydreamer-1.16.5-1.0.jar<br>2021/06/05  02:31           133,745 【杂项】稀有精英怪infernalmobs-1.16.2.1.jar<br>2021/07/20  22:36           378,040 【杂项】荒野之息Paraglider-1.16.5-1.3.2.0-beta.4.jar<br>2021/08/30  00:16            11,191 【杂项】龙栖生成管理wyrmroostspawncontrol-0.1.2.jar<br>2021/04/25  08:54           112,845 【杂项】（再也不用经验修补了）维修箱子RepairChests-1.16.5-1.7.jar<br>2021/08/29  21:07        18,109,537 【生物】alexsmobs-1.12.0.jar<br>2021/08/29  21:07        21,314,646 【生物】iceandfire-2.1.9-1.16.5.jar.disabled<br>2021/07/20  21:55         5,522,069 【生物】mowziesmobs-1.5.19.jar<br>2021/09/05  02:30         1,271,721 【生物】Wilds+Version+2.2.1.jar<br>2021/07/21  13:20         2,970,312 【生物】Zonko’s+Monsters+1.16.5+1.2.jar<br>2021/07/19  17:23           841,753 【生物】【前置01】buzzier_bees-1.16.5-3.0.1.jar<br>2021/06/04  18:57        11,003,946 【生物】【前置01】endergetic-1.16.4-3.0.0.jar<br>2021/06/04  20:58         3,668,858 【生物】【前置01】碧海新生upgrade_aquatic-1.16.5-3.1.0.jar<br>2021/07/21  14:07           963,433 【生物】【前置22】生物与怪物CNB-1.16.3_5-1.2.11.jar<br>2021/06/04  22:35         5,428,670 【生物】【前置32】更多末影人farlanders-1.16.4-1.3.9.jar<br>2021/08/17  16:57           447,935 【生物】【前置42】鱼Piscary-1.16.5-1.0.3.jar<br>2021/08/29  21:22           658,320 【生物】【前置44】难度渐进(宝藏袋)majruszs-difficulty-1.16.4-1.1.0.jar<br>2021/10/22  13:54         4,590,562 【生物】厄运（地狱恶魔）MCDoom-1.16.5-4.0.26.jar<br>2021/06/04  22:26         1,289,476 【生物】变异生物MutantBeasts-1.16.4-1.1.3.jar<br>2021/09/03  16:23         7,681,362 【生物】古老水生物OddWaterMobs[1.16.5]_1.4.0.jar<br>2021/07/20  16:23           845,975 【生物】地下城怪物dungeons_mobs-1.16.5-1.0.5.jar<br>2021/08/29  20:57         8,878,253 【生物】外来物种Exotic+Critters+1.16+Experimental+1.14.1.jar<br>2021/08/29  21:06           511,424 【生物】寂静岭Silent+Mine+1.16.5+0.1.jar<br>2021/09/03  21:10        88,425,620 【生物】恐怖生物lycanitesmobs-1.16.5-2.3.2.2.jar.disabled<br>2021/07/21  17:55         1,225,543 【生物】无名生物(优质无汉化)unnamedanimalmod-1.0.2.jar<br>2021/07/20  16:51        14,493,152 【生物】更多下界生物infernal-expansion-2.0.0-beta.7.jar<br>2021/07/06  10:33         1,102,070 【生物】更多傀儡extragolems-11.3.1.jar<br>2021/08/29  21:13        10,032,735 【生物】更多僵尸UNDEADv.1.1release.jar<br>2021/08/29  21:14         1,743,711 【生物】更多挑战DungeonsMod-1.16.3-1.4.40.jar<br>2021/07/21  14:06           259,576 【生物】更多职业村民morevillagers-FORGE-1.16.5-1.5.3.jar<br>2021/07/20  19:50           308,282 【生物】更多骷髅bones-1.16.5-2.1.0.jar<br>2021/04/24  05:02         8,356,809 【生物】更好动物betteranimalsplus#-1.16.5-10.2.0.jar<br>2021/07/19  19:05           382,707 【生物】末地重生EndReborn+[0.8.4].jar<br>2021/09/05  16:27           190,249 【生物】村民护卫guardvillagers-1.16.5.1.2.6.jar<br>2021/09/25  19:09           551,025 【生物】水产养殖Aquaculture-1.16.5-2.1.21.jar<br>2021/07/19  16:25           235,050 【生物】海洋生物risingtides-1.16.5-1.3.0.jar<br>2021/06/04  22:21         1,454,383 【生物】潘多拉的生物pandoras_creatures-1.16.3-2.0.1.jar<br>2021/07/21  14:07           427,537 【生物】灾祸村民illagers_plus-1.16.4v1.5.jar<br>2021/04/09  22:46         2,044,414 【生物】珍奇鸟类exoticbirds-1.16.4-1.1.0.jar<br>2021/06/04  22:44           466,557 【生物】落选生物outvoted-1.16.5-1.2.4.jar<br>2021/09/18  22:22         9,275,633 【生物】阿斯特米尔的森林(地狱门与钓鱼方式改变)astemir_forestcraft-1.599.jar<br>2021/07/06  10:33           327,809 【生物】附魔师enchantwithmob-1.16.5-1.4.6.jar<br>2021/08/29  21:30           274,624 【生物】非虔诚Impish+Tome+(1.16.5_ver.1.0.2).jar<br>2021/08/30  00:25         4,969,566 【生物】龙栖Wyrmroost-1.16.3-1.2.11.jar<br>2021/07/21  14:07           389,176 【结构】 【前置32】更多地牢dungeons_plus-1.16.5-1.1.5.jar<br>2021/10/22  13:45           756,298 【结构】DungeonCrawl-1.16.5-2.3.2.jar<br>2021/10/22  13:44           590,639 【结构】StructuresPlusEnd.jar<br>2021/09/03  15:54           509,890 【结构】yung_BetterDungeons-1.16.4-1.2.jar<br>2021/07/20  17:24           289,307 【结构】yung_BetterMineshafts-Forge-1.16.4-2.0.4.jar<br>2021/07/20  17:30            64,256 【结构】【前置3】yung-YungsExtras-Forge-1.16.4-1.0.jar<br>2021/09/03  15:54           541,396 【结构】【前置3】yung_BetterStrongholds-1.16.4-1.2.1.jar<br>2021/07/21  14:06         1,537,457 【结构】【前置40】valhelsia_structures-1.16.5-0.1.3.jar<br>2021/09/03  16:07         1,540,625 【结构】【前置40】valhelsia_structures-1.16.5-0.1.5.jar<br>2021/09/03  16:26         2,499,542 【结构】中世纪城堡MedievalCraft-1.16.5-1.15.11.jar<br>2021/06/17  01:05            85,877 【结构】刷怪castle_dungeons-2.3-1.16.5-forge.jar<br>2021/07/20  21:29         4,676,349 【结构】地下城DungeonsArise-1.16.5-2.1.47-release.jar<br>2021/06/17  01:03           218,290 【结构】地下村庄stoneholm-1.2.2.jar<br>2021/09/05  02:31            22,253 【结构】地下群系Below+1.0+Forge.jar<br>2021/09/05  16:28         1,061,118 【结构】坚毅堡垒stalwart-dungeons-1.16.5-1.1.3.jar<br>2021/06/29  16:58           915,982 【结构】大型结构Shrines-1.16.5-1.8.1.jar<br>2021/04/20  20:54           157,181 【结构】旷野塔towers_of_the_wild-1.16.4-2.0.1.jar<br>2021/09/05  00:12         5,240,491 【结构】更多结构repurposed_structures_forge-3.2.4+1.16.5.jar<br>2021/10/22  13:45           141,714 【结构】沙漠下界元素NMN_1.16.5_v0.1.jar<br>2021/09/18  02:46           781,636 【结构】遗迹relics-0.2.9.jar<br>2021/10/22  13:44           281,735 【结构】（墙壁宝石快）Forgotten+Treasures+V12+1.16.5.jar<br>2021/06/04  22:35         1,288,335 【群系】BetterDefaultBiomes-1.16.4+-Alpha+2.5.3.jar<br>2021/06/04  19:41        70,790,929 【群系】betterendforge-1.16.4-1.6.0.jar<br>2021/07/19  16:20         3,651,050 【群系】BOP_BiomesOPlenty-1.16.5-13.1.0.480-universal.jar<br>2021/07/21  14:07         4,751,584 【群系】Spheric 1.0.3 1.16.5.jar<br>2021/07/21  14:09        57,325,484 【群系】【前置01】末地OuterEnd-0.2.13.jar<br>2021/06/04  20:58           961,236 【群系】【前置01】秋原autumnity-1.16.5-2.1.1.jar<br>2021/04/24  04:00         9,049,133 【群系】【前置01】自然环境（有生物）environmental-1.16.5-1.0.0.jar<br>2021/07/19  17:16           665,178 【群系】【前置01】薰衣草Abundance-1.16.5-1.0.5.jar<br>2021/07/19  17:31         1,527,658 【群系】【前置01】雨林沙丘atmospheric-1.16.5-3.1.0.jar<br>2021/09/03  16:02           365,168 【群系】【前置13】【前置12】mysticalbiomes-1.16.5-0.0.0.5.jar<br>2021/07/19  21:30           305,286 【群系】【前置22】无尽海洋endless_oceans-1.0.5-forge.jar<br>2021/06/04  22:26           471,619 【群系】【前置4】【前置27】岩石DarkerDepths-1.16.5-1.0.1.jar<br>2021/09/03  16:22           461,928 【群系】地狱生物ShretNether+-+Release+-1.3.2.jar<br>2021/07/19  15:44           280,211 【群系】彩色世界MysticsBiomes-1.16.4-1.1.0.jar<br>2021/07/21  14:07         2,365,497 【群系】恶地改造Betterlands-1.16.5-0.5.0.jar<br>2021/07/19  21:50         1,238,112 【群系】探险者explorercraft-5.0.4.jar<br>2021/09/18  22:32        22,419,768 【群系】更好地狱BetterNetherReforged_Pr1.jar<br>2021/07/19  14:45           554,081 【群系】河口群系Bayou-Blues-1.16.5-1.0.5.jar<br>2021/07/21  14:06         1,700,785 【群系】灰烬之地Desolation 1.1.0-1 1.16.5.jar<br>2021/09/05  00:01         7,273,457 【群系】舒适下界ComfortableNether4.9.jar<br>2021/07/19  15:22           464,318 【装备】【前置9】【前置11】奇异饰品Artifacts-1.16.5-2.10.0.jar<br>2021/05/24  21:50           327,436 【装备】【前置9】泰拉瑞亚更多饰品curioBountiful+Baubles+FORGE-1.16.3-0.0.2.jar<br>2021/07/20  15:10            30,293 【装备】【前置9】经验护符CrimsonXP-1.1.1.jar<br>2021/07/19  12:54           770,079 【装备】升级下界合金装备Upgraded+Netherite+1.16.5+-+1.9.13.jar<br>2021/07/06  10:33         2,049,774 【装备】地下城装备dungeons_gear-1.16.5-3.0.17.jar<br>2021/07/20  22:43         2,033,912 【装饰】cfm-7.0.0pre22-1.16.3.jar<br>2021/07/20  17:01         1,462,309 【装饰】【前置29】灵感原版装饰Inspirations-1.16.5-1.2.3.37.jar<br>2021/07/19  12:49            65,945 【装饰】【前置2】更多竹制品bambooeverything-1.16.5-1.0.0-forge.jar<br>2021/06/20  18:15           770,081 【装饰】【前置30】更好的树叶Better_Foliage-2.6.5-Forge-1.16.5.jar<br>2021/07/20  21:51         5,723,810 【装饰】【前置39】supplementaries-1.16.5-0.14.5.jar<br>2021/08/17  13:36         7,824,319 【装饰】【前置43】地灵云心海树山花terraqueous-1.16-1.7.15.jar<br>2021/06/04  18:58           954,765 【装饰】【前置8】装饰性环境植物terraincognita-1.16.3-1.6.4.2.jar<br>2021/07/20  22:38           395,348 【装饰】活力之旅projectvibrantjourneys-1.16.5-3.1.0.jar<br>2021/07/19  14:47         8,666,985 【装饰】自然装饰Natural+Decor+Mod+1.16+II+V0.21.3.7.jar<br>2021/04/25  00:11            61,580 【装饰】花finallyfarmabledyes-1.16.4-1.2.0.1.jar<br>2021/07/20  22:35           280,581 【装饰】花草灌木SereneShrubbery-1.16.5-1.1.0.jar<br>2021/07/20  22:52         6,132,491 【装饰】（cfm系）morecfm-1.3.1-1.16.3.jar<br>2021/07/20  23:03         5,398,623 【装饰】（菜篮）NefsMedievalPub+v0.9(1.16.5).jar<br>2021/08/07  00:01            30,493 【辅助】jei找东西findme-1.16.3-2.2.0.0.jar<br>2021/04/27  11:23            92,540 【辅助】mod设置GameMenuModOption-1.16.4-1.8.jar<br>2021/05/03  15:29           792,263 【辅助】Xaeros_Better_PvP_21.8.0_Forge_1.16.5.jar<br>2021/07/21  14:07            19,362 【辅助】【前置10】jei-professions-1.0.0-1.16.4.jar<br>2021/04/09  02:10            24,981 【辅助】【前置10】JEI拓展jeiintegration_1.16.5-7.0.1.15.jar<br>2021/08/29  21:33           235,574 【辅助】【前置10】JEI资源显示JustEnoughResources-1.16.5-0.12.1.128.jar<br>2021/07/19  15:19           262,656 【辅助】【前置10】拼音搜索JustEnoughCharacters-1.16.4-4.3.0.jar<br>2021/07/21  14:06            31,243 【辅助】【前置10】附魔信息JEIEnchantmentInfo-1.16.4-1.2.1.jar<br>2021/04/09  23:51           123,705 【辅助】【前置20】边拿边走InvMove-1.16.3-0.4.6.jar<br>2021/07/20  16:16            29,421 【辅助】【前置25】12高亮显示扩展WailaHarvestability-mc1.16.x-forge-1.1.15.jar<br>2021/07/19  15:24            21,734 【辅助】【前置9】盔甲架显示饰品Curious+Armor+Stands-1.16.5-2.1.2.jar<br>2021/07/17  10:12           483,347 【辅助】世界地图XaerosWorldMap_1.14.6.1_Forge_1.16.5.jar<br>2021/04/25  03:14            14,660 【辅助】伤害显示TextDamageIndicators-1.16.3-2.0.1.jar<br>2021/07/30  18:11           460,711 【辅助】回收箱Corail-Recycler-NE-1.16.4-385.jar<br>2021/04/24  15:37            42,604 【辅助】拾取通知PickUpNotifier-v1.2-1.16.3.jar<br>2021/07/20  21:23           330,091 【辅助】搬箱子carryon-1.16.5-1.15.5.15.jar<br>2021/07/19  15:41            86,425 【辅助】时装盔甲架CosmeticArmorReworked-1.16.5-v3a.jar<br>2021/07/20  23:26            78,198 【辅助】更好的第三人称视角BetterThirdPerson-Forge-1.16.4-1.5.1.jar<br>2021/07/20  22:24             8,514 【辅助】汉化i18nupdatemod-1.16.5-2.0.2-hotfix-4.jar<br>2021/04/11  16:07            22,624 【辅助】物品堆叠upsizer-mc1.16.4-6.1.1.jar<br>2021/09/20  22:39            33,125 【辅助】生物生成管理SpawnBalanceUtility-1.36.0.11.jar<br>2021/05/04  07:49            22,955 【辅助】穿草swingthroughgrass-1.16.4-1.5.3.jar<br>2021/09/26  01:06           134,996 【辅助】结构指南针ExplorersCompass-1.16.5-1.1.2-forge.jar<br>2021/09/26  01:06           203,573 【辅助】群系指南针NaturesCompass-1.16.5-1.9.1-forge.jar<br>2021/08/02  11:50            46,287 【辅助】饱和度状态栏appleskin-forge-mc1.16.x-2.1.0.jar<br>2021/04/09  22:58           281,216 【辅助】（区域挖掘）OreExcavation-1.8.157.jar<br>2021/07/29  18:20           120,959 【辅助】（查看物品是否接触过）travelers_index-1.16.4-1.0.2.jar<br>2021/07/19  18:27           585,049 【附魔】【前置01】allurement-1.16.5-1.2.0.jar<br>2021/07/20  15:51            51,875 【附魔】【前置28】附魔描述EnchantmentDescriptions-1.16.5-7.0.14.jar<br>2021/04/27  10:48           124,792 【附魔】【前置36】更多附魔ensorcellation-1.16.4-1.2.0.jar<br>2021/07/20  15:48           472,341 【附魔】更多附魔flowingagony-1.16.5-beta-0.4.3.jar<br>2021/07/20  21:14           136,931 【附魔】更多附魔Unique+Enchantments-1.16.5-2.0.1.jar<br>2021/07/20  21:14            11,607 【附魔】更多附魔—战斗Unique+Enchantments+Battle-1.16.5-1.0.jar<br>2021/07/20  21:14            31,406 【附魔】更多附魔工具Unique+Enchantments+Utils-1.16.5-1.3.jar<br>2021/04/25  04:14            47,064 【附魔】附魔拆解台Disenchanting-forge-1.16.5-1.7.1.jar<br>2021/07/19  11:38        76,505,060 【音效】【前置5】自然音效AmbientSounds_v3.1.9_mc1.16.5.jar<br>2021/06/04  21:01        58,565,641 【音效】【前置6】音效charmonium-forge-1.16.5-2.3.2.jar<br>2021/04/27  09:39        14,853,313 【音效】动态环绕4.26DynamicSurroundings-1.16.4-4.0.4.2.jar<br>2021/07/19  17:16           937,114 【食物】【前置01】neapolitan-1.16.5-2.1.0.jar<br>2021/06/04  20:57           487,649 【食物】【前置01】【前置17】A系融合农夫乐事abnormals_delight-1.16.5-1.1.1.jar<br>2021/04/27  12:06           804,052 【食物】【前置16】潘马斯作物pamhc2crops-1.16.3-1.0.2.jar<br>2021/04/27  12:17           545,339 【食物】【前置16】潘马斯树木pamhc2trees-1.16.3-1.0.1.jar<br>2021/04/27  12:18           913,219 【食物】【前置16】潘马斯食物拓展pamhc2foodextended-1.16.3-1.0.2.jar<br>2021/07/19  16:52            14,411 【食物】【前置17】【前置18】farmerstea-1.16.5-1.2.jar<br>2021/07/19  16:52           107,061 【食物】【前置17】农夫乐事下界扩展nethers_delight-1.1.jar<br>2021/07/19  16:54           130,982 【食物】【前置17】农夫乐事扩展Farmers_Extra_Foods_1.2.jar<br>2021/07/19  16:54           182,667 【食物】【前置17】（巨多联动）农夫乐事非正规厨师irregularchef-1.16.5-1.0.0.jar<br>2021/08/17  17:07           496,315 【食物】【前置42】Horticulture-1.16.5-1.0.2.jar<br>2021/07/20  23:03           682,828 【食物】懒人厨房CookingForBlockheads_1.16.5-9.3.3.jar</p>
-
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/19/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%966/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="dyinjin">
-      <meta itemprop="description" content="摸鱼窝">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="岛屿尽">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/19/%E6%B1%87%E7%BC%96%E5%AD%A6%E4%B9%A0/%E6%B1%87%E7%BC%966/" class="post-title-link" itemprop="url">汇编6</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-19 18:02:46" itemprop="dateCreated datePublished" datetime="2021-09-19T18:02:46+08:00">2021-09-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-07 18:19:56" itemprop="dateModified" datetime="2021-12-07T18:19:56+08:00">2021-12-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h1><p>CPU有这样一种功能：在执行完当前指令后，检测到cpu外部发送过来的或内部产生的一种特殊信息，且可以立即对接收到信息进行处理，这种信息呢，就叫中断信息。</p>
-<h2 id="内中断"><a href="#内中断" class="headerlink" title="内中断"></a>内中断</h2><p>当CPU内部有什么事情发生的时候，将产生需要马上处理的中断信息呢？对于8086来说，当cpu内部有下面的情况发生时，产生相应中断； </p>
-<ol>
-<li>除法错误，比如，执行div指令产生的除法溢出; </li>
-<li>单步执行； </li>
-<li>执行into指令； </li>
-<li>执行int指令。<br>上面的四种中断源，在8086中中断类型码如下。 </li>
-<li>除法错误：0 </li>
-<li>单步执行：1 </li>
-<li>执行into指令：4 </li>
-<li>执行int指令，该指令的格式为int n,指令中的n为字节型立即数，是提供给CPU的中断类型码。<br>cpu收到中断信息后，需要对中断信息进行处理，需要对不同的中断信息编写不同的处理程序。<br>若要定位中断处理程序，需要知道它的段地址和偏移地址<br>中断向量表就是中断向量的列表，中断向量就是中断处理程序的入口。<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782048.png" alt="enter description here"></li>
-</ol>
-<h3 id="中断过程："><a href="#中断过程：" class="headerlink" title="中断过程："></a><font size="4">中断过程：</font></h3><p>中断类型码-&gt;中断向量表-&gt;修改CS:IP-&gt;中断处理程序</p>
-<ol>
-<li>（从中断信息中）取得中断信息码； </li>
-<li>标志寄存器的值入栈（因为在中断过程中要改变标志寄存器的值，所以先将其保存在栈中）； </li>
-<li>设置标志寄存器的第8位TF和第9位IF的值为0（以后解释） </li>
-<li>CS的内容入栈； </li>
-<li>IP的内容入栈； </li>
-<li>从内存地址位中断类型码*4 和中断类型码*4+2的两个字单元中读取中断处理程序入口地址设置IP和CS。</li>
-</ol>
-<h3 id="中断处理程序"><a href="#中断处理程序" class="headerlink" title="中断处理程序"></a><font size="4">中断处理程序</font></h3><p>中断信息可能随时被检测到，所以中断处理程序必须一直存储在内存某段空间之中。中断处理程序入口地址，即中断向量，必须存储在对应表项中。 </p>
-<ol>
-<li>保存用到的寄存器；</li>
-<li> 处理中断 </li>
-<li> 恢复用到的寄存器</li>
-<li> 用iret指令返回。<br>iret:<br>pop ip<br>pop cs<br>popf</li>
-</ol>
-<h3 id="经典除法中断（0号中断）"><a href="#经典除法中断（0号中断）" class="headerlink" title="经典除法中断（0号中断）"></a>经典除法中断（0号中断）</h3><p>再实现</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,offset do0<span class="comment">;要存的中断处理程序</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">200h</span><span class="comment">;存放地址(这里随便放在了中断表的后面空闲位置中)</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,offset do0end-offset do0<span class="comment">;存放的量(编译器可以进行简单运算)</span></span><br><span class="line">	<span class="keyword">cld</span><span class="comment">; cld是来控制重复移动时候的si 和di的递增方式即+1(用std是-1)。</span></span><br><span class="line">	<span class="keyword">rep</span> <span class="keyword">movsb</span><span class="comment">;逐字节移动复制</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">0</span>*<span class="number">4</span>],<span class="number">200h</span><span class="comment">;写入中断向量表入口地址ip</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">0</span>*<span class="number">4</span>+<span class="number">2</span>],<span class="number">0</span><span class="comment">;cs</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span><span class="comment">;这只是将中断处理程序写入的结束</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">do0:</span></span><br><span class="line">	<span class="keyword">jmp</span> short do0start</span><br><span class="line">	<span class="built_in">db</span> <span class="string">&quot;overflow!!!&quot;</span></span><br><span class="line">	<span class="built_in">db</span> <span class="number">0ach</span></span><br><span class="line"><span class="symbol">do0start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="built_in">cs</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">si</span>,<span class="number">201h</span><span class="comment">;o开始处</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0b800h</span><span class="comment">;老规矩的显存修改</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">ax</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">di</span>,<span class="number">12</span>*<span class="number">160</span>+<span class="number">36</span>*<span class="number">2</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="number">ah</span>,[<span class="built_in">si</span>+<span class="number">24</span>]</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">12</span></span><br><span class="line"><span class="symbol">s:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,[<span class="built_in">si</span>]</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">di</span>],<span class="built_in">al</span></span><br><span class="line">    <span class="keyword">mov</span> <span class="built_in">es</span>:[<span class="built_in">di</span>+<span class="number">1</span>],<span class="number">ah</span></span><br><span class="line">	<span class="keyword">inc</span> <span class="built_in">si</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">di</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">loop</span> s</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span><span class="comment">;中断处理结束</span></span><br><span class="line"><span class="symbol">	</span></span><br><span class="line"><span class="symbol">do0end:</span></span><br><span class="line">	<span class="keyword">nop</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782042.png" alt="enter description here"></p>
-<h2 id="int"><a href="#int" class="headerlink" title="int"></a>int</h2><p>int n ;引发中断过程 过程：</p>
-<ol>
-<li>取中断类型码n</li>
-<li>标志寄存器入栈，TF=0，IF=0</li>
-<li>CS、IP入栈</li>
-<li>(IP)=(n*4),(CS)=(n*4+2)</li>
-<li>执行中断处理程序<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[aaaa*<span class="number">4</span>],<span class="number">200h</span><span class="comment">;写入中断向量表入口地址ip</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">word</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[aaaa*<span class="number">4</span>+<span class="number">2</span>],<span class="number">0</span><span class="comment">;cs</span></span><br></pre></td></tr></table></figure>
-aaaa是多少就是int多少</li>
-</ol>
-<h2 id="BIOS-DOS提供的中断例程"><a href="#BIOS-DOS提供的中断例程" class="headerlink" title="BIOS/DOS提供的中断例程"></a>BIOS/DOS提供的中断例程</h2><p>在系统的ROM中存放着一套程序，称为BIOS，主要有： </p>
-<ol>
-<li>硬件系统的检测和初始化程序； </li>
-<li>外部中断和内部中断的中断例程； </li>
-<li>用于对硬件设备进行I/O操作的中断例程； </li>
-<li>其他和硬件系统相关的中断例程。<br>DOS中也提供了中断例程，DOS的中断例程就是操作系统向程序员提供的编程资源。</li>
-</ol>
-<h3 id="BIOS中断例程应用"><a href="#BIOS中断例程应用" class="headerlink" title="BIOS中断例程应用"></a>BIOS中断例程应用</h3><p>int 10h的使用</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">2</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">bh</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">dh</span>,<span class="number">5</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">dl</span>,<span class="number">12</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">10h</span><span class="comment">;解释：ah=2表示调用第10h号中断例程的2号子程序，功能为设置光标位置可以提供光标所在的行号、列号和页号作为参数。bh=0,dh=5,dl=12，设置光标到第0页，第5行，第12列。</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">9</span><span class="comment">;在光标位置显示字符</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,<span class="string">&#x27;a&#x27;</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bl</span>,<span class="number">11001010b</span><span class="comment">;同显存设置颜色属性</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="number">bh</span>,<span class="number">0</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cx</span>,<span class="number">3</span><span class="comment">;字符重复个数</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">10h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782053.png" alt="enter description here"></p>
-<h3 id="DOS中断例程应用"><a href="#DOS中断例程应用" class="headerlink" title="DOS中断例程应用"></a>DOS中断例程应用</h3><p>经典：</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line"><span class="keyword">int</span> <span class="number">21h</span></span><br></pre></td></tr></table></figure>
-<p>int 21h ;    DOS提供的中断例程，包含了很多子程序<br>我们使用4ch号功能，即程序返回功能</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="number">ah</span>,<span class="number">4ch</span><span class="comment">;程序返回功能号</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">al</span>,<span class="number">0</span><span class="comment">;返回值</span></span><br><span class="line"><span class="keyword">int</span> <span class="number">21h</span></span><br></pre></td></tr></table></figure>
-<p>又如：<br>在屏幕的5行12列显示字符串“Welcome to cloud”<br><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632045782052.png" alt="enter description here"></p>
-<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>在访问端口的时候，cpu通过端口地址来定位端口。因为端口所在的芯片和cpu通过总线相连，所以，端口地址和内存地址一样，通过地址总线来传送。在pc系统中，cpu最多可以定位64KB个不同的端口。则端口地址的范围为0~65535。</p>
-<p>对端口的读写不能用mov,push,pop等内存读写指令。只能用<strong>in</strong>和<strong>out</strong>这两条，分别用于从端口读取数据和向写入数据。</p>
-<p>在in和out指令中，<strong>只能使用ax或al</strong>来存放从端口中读入的数据或要发送到端口中的数据。<strong>访问8位端口时用al，访问16位端口时用ax</strong>。</p>
-<p>对0~255以内的端口读写：<br>in al,20h<br>out 20h,al</p>
-<p>对256~65535端口读写,<strong>端口号放在dx中</strong>：<br>mov dx,3f8h<br>in al,dx<br>out dx,al</p>
-<h2 id="CMOS-RAM"><a href="#CMOS-RAM" class="headerlink" title="CMOS-RAM"></a>CMOS-RAM</h2><p>PC机中，有一个CMOS RAM芯片，一般简称位CMOS。特征如下：</p>
-<ol>
-<li>含一个实时钟和一个有128个存储单元的RAM存储器（早期为64个字节）。</li>
-<li>该芯片靠电池供电。所以关机后其内部的实时钟仍可正常工作，RAM中的信息不丢失。</li>
-<li>128个字节的RAM中内部实时钟占用0~0dh单元保存信息，其余大部分单元用于保存系统配置信息，供系统启动时BIOS程序读取。BIOS也提供了相关的程序，使我们可以再开机的时候配置CMOS RAM中的系统信息。</li>
-<li>该芯片内部有两个端口，端口地址为70h和71h。CPU通过这两个端口来读写CMOS RAM。</li>
-<li><strong>70h为地址端口</strong>，存放要访问的CMOS RAM单元的地址；<strong>71h为数据端口</strong>，存放从选定的CMOS RAM单元中读取的数据，或要写入到其中的数据。可见，CPU对CMOS RAM的读写分两步进行，比如，读CMOS RAM的2号单元：<ol>
-<li>将2送入端口70h；</li>
-<li>从端口71h读出2号单元的内容。</li>
-</ol>
-</li>
-</ol>
-<h1 id="shl-shr"><a href="#shl-shr" class="headerlink" title="shl/shr"></a>shl/shr</h1><p>shr和shl是逻辑移位指令<br>shl逻辑左移</p>
-<ol>
-<li>将一个寄存器或内部单元中的数据向左位移；</li>
-<li>将最后移出的一位写入CF中；</li>
-<li>最低位用0补充；</li>
-<li>如果移动位数大于1时，必须将移动位数放在cl中。<br>shr是逻辑右移指令，与shl相反。</li>
-<li>将一个寄存器或内存单元的数据向右移位。</li>
-<li>将最后移出的一位写入CF。</li>
-<li>最高位用0补充。<br>用法与shl一致。</li>
-</ol>
-<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621983.png" alt="enter description here"><br>在屏幕中间显示当前月份</p>
-<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">assume</span> <span class="built_in">cs</span>:code</span><br><span class="line">code <span class="meta">segment</span></span><br><span class="line"><span class="symbol">start:</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">al</span>,<span class="number">8</span></span><br><span class="line">	<span class="keyword">out</span> <span class="number">70h</span>,<span class="built_in">al</span></span><br><span class="line">	<span class="keyword">in</span> <span class="built_in">al</span>,<span class="number">71h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="number">ah</span>,<span class="built_in">al</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">cl</span>,<span class="number">4</span></span><br><span class="line">	<span class="keyword">shr</span> <span class="number">ah</span>,<span class="built_in">al</span><span class="comment">;取前4位BCD码</span></span><br><span class="line">	<span class="keyword">and</span> <span class="built_in">al</span>,<span class="number">00001111b</span><span class="comment">;取后4位BCD码</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">add</span> <span class="number">ah</span>,<span class="number">30h</span></span><br><span class="line">	<span class="keyword">add</span> <span class="built_in">al</span>,<span class="number">30h</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">bx</span>,<span class="number">0b800h</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">es</span>,<span class="built_in">bx</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">160</span>*<span class="number">12</span>+<span class="number">40</span>*<span class="number">2</span>],<span class="number">ah</span></span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">byte</span> <span class="built_in">ptr</span> <span class="built_in">es</span>:[<span class="number">160</span>*<span class="number">12</span>+<span class="number">40</span>*<span class="number">2</span>+<span class="number">2</span>],<span class="built_in">al</span></span><br><span class="line">	</span><br><span class="line">	<span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">4c00h</span></span><br><span class="line">	<span class="keyword">int</span> <span class="number">21h</span></span><br><span class="line">code ends</span><br><span class="line">end start</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/dyinjin/xiaoshujiang/main/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1632049621982.png" alt="enter description here"></p>
-<h1 id="外中断"><a href="#外中断" class="headerlink" title="外中断"></a>外中断</h1><ul>
-<li>可屏蔽中断<br>  sti：IF置为1，响应中断<br>  cli：IF置为0，不响应可屏蔽中断</li>
-<li>不可屏蔽中断<br>  8086CPU，不可屏蔽中断的中断类型码固定为2<br>还是in，out</li>
-</ul>
-<h1 id="…"><a href="#…" class="headerlink" title="…"></a>…</h1>
-      
-    </div>
-
-    
-    
-    
-
- 
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1380,7 +1402,7 @@ aaaa是多少就是int多少</li>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-count">54</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1429,7 +1451,7 @@ aaaa是多少就是int多少</li>
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共125.1k字呐~</span>
+  <span class="post-count">本博客全站共137.3k字呐~</span>
 </div>
 
         
