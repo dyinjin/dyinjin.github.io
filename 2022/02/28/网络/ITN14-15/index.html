@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="传输层传输层负责在不同主机上运行的应用程序之间进行的逻辑通信。传输层包括两个协议：    传输控制协议 (TCP Transmission Control Protocol)   用户数据报协议 (UDP User Datagram Protocol)传输层的职责 跟踪各个会话-源应用和目的应用之间传输的每个数据集称为会话并分别进行跟踪 数据分段和数据段重组-将应用程序数据划分为适当大小的块。根据">
+  <meta name="description" content="传输层传输层负责在不同主机上运行的应用程序之间进行的逻辑通信。传输层包括两个协议：    传输控制协议 (TCP Transmission Control Protocol)   用户数据报协议 (UDP User Datagram Protocol)  传输层的职责 跟踪各个会话-源应用和目的应用之间传输的每个数据集称为会话并分别进行跟踪 数据分段和数据段重组-将应用程序数据划分为适当大小的块。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ITN 14-15">
 <meta property="og:url" content="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/index.html">
 <meta property="og:site_name" content="岛屿尽">
-<meta property="og:description" content="传输层传输层负责在不同主机上运行的应用程序之间进行的逻辑通信。传输层包括两个协议：    传输控制协议 (TCP Transmission Control Protocol)   用户数据报协议 (UDP User Datagram Protocol)传输层的职责 跟踪各个会话-源应用和目的应用之间传输的每个数据集称为会话并分别进行跟踪 数据分段和数据段重组-将应用程序数据划分为适当大小的块。根据">
+<meta property="og:description" content="传输层传输层负责在不同主机上运行的应用程序之间进行的逻辑通信。传输层包括两个协议：    传输控制协议 (TCP Transmission Control Protocol)   用户数据报协议 (UDP User Datagram Protocol)  传输层的职责 跟踪各个会话-源应用和目的应用之间传输的每个数据集称为会话并分别进行跟踪 数据分段和数据段重组-将应用程序数据划分为适当大小的块。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645790168846.png">
 <meta property="og:image" content="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645791005727.png">
+<meta property="og:image" content="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1646123477727.png">
+<meta property="og:image" content="http://example.com/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1646123863260.png">
 <meta property="article:published_time" content="2022-02-28T06:08:11.931Z">
-<meta property="article:modified_time" content="2022-02-28T06:08:14.478Z">
+<meta property="article:modified_time" content="2022-03-01T08:42:48.622Z">
 <meta property="article:author" content="dyinjin">
 <meta property="article:tag" content="网络">
 <meta name="twitter:card" content="summary">
@@ -211,10 +213,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-02-28 14:08:11 / 修改时间：14:08:14" itemprop="dateCreated datePublished" datetime="2022-02-28T14:08:11+08:00">2022-02-28</time>
+              <time title="创建时间：2022-02-28 14:08:11" itemprop="dateCreated datePublished" datetime="2022-02-28T14:08:11+08:00">2022-02-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-01 16:42:48" itemprop="dateModified" datetime="2022-03-01T16:42:48+08:00">2022-03-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -246,18 +254,120 @@
         <h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><p>传输层负责在不同主机上运行的应用程序之间进行的逻辑通信。<br>传输层包括两个协议：</p>
 <ul>
 <li>  传输控制协议 (TCP Transmission Control Protocol)</li>
-<li>  用户数据报协议 (UDP User Datagram Protocol)<h2 id="传输层的职责"><a href="#传输层的职责" class="headerlink" title="传输层的职责"></a>传输层的职责</h2></li>
+<li>  用户数据报协议 (UDP User Datagram Protocol)</li>
+</ul>
+<h2 id="传输层的职责"><a href="#传输层的职责" class="headerlink" title="传输层的职责"></a>传输层的职责</h2><ul>
 <li><strong>跟踪各个会话</strong>-源应用和目的应用之间传输的每个数据集称为会话并分别进行跟踪</li>
 <li><strong>数据分段和数据段重组</strong>-将应用程序数据划分为适当大小的块。根据所使用的传输层协议，传输层块称为数据段或数据报。</li>
 <li><strong>添加报头信息</strong>-将包含二进制数据的报头信息添加到每个数据块中，这些数据被组织成几个字段。不同的传输层协议通过这些字段值在管理数据通信过程中执行各自的功能。</li>
 <li><strong>标识应用</strong>-为了将数据流传递到适当的应用程序，传输层使用称为端口号的标识符来标识目标应用。</li>
-<li><strong>会话多路复用</strong>-使不同的通信会话在同一网络上交错。<h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2>传输层协议指定如何在主机之间传输消息，并负责管理会话的可靠性要求。传输层包括 TCP 和 UDP 协议。<br>不同的应用有不同的传输可靠性要求。因此，TCP/IP 提供了两个传输层协议，如图所示<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645790168846.png" alt="enter description here"><h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3>TCP 被认为是可靠且功能齐全的传输层协议，用于确保所有数据到达目的设备。TCP包含确保应用数据传递的字段。这些字段需要发送和接收的主机进行额外处理。<br>TCP将数据分为若干个数据段。<br>TCP 使用以下基本操作提供可靠性和流量控制：</li>
+<li><strong>会话多路复用</strong>-使不同的通信会话在同一网络上交错。</li>
+</ul>
+<h2 id="传输层协议"><a href="#传输层协议" class="headerlink" title="传输层协议"></a>传输层协议</h2><p>传输层协议指定如何在主机之间传输消息，并负责管理会话的可靠性要求。传输层包括 TCP 和 UDP 协议。<br>不同的应用有不同的传输可靠性要求。因此，TCP/IP 提供了两个传输层协议，如图所示<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645790168846.png" alt="enter description here"></p>
+<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p>TCP 被认为是可靠且功能齐全的传输层协议，用于确保所有数据到达目的设备。TCP包含确保应用数据传递的字段。这些字段需要发送和接收的主机进行额外处理。<br>TCP将数据分为若干个数据段。<br>TCP 使用以下基本操作提供可靠性和流量控制：</p>
+<ul>
 <li>  编号并跟踪从特定应用程序发送到特定主机的数据段。</li>
 <li>  确认收到数据</li>
 <li>  在一定时间段后重新传输未确认的数据</li>
-<li>  有顺序的数据可能以错误的顺序到达 以接收方可以接受的有效速率* 发送数据<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3>UDP是一种比TCP更简单的传输层协议。它不提供可靠性和流量控制，这意味着它需要更少的报头字段。由于发送方和接收方UDP进程不需要管理可靠性和流量控制，这意味着 UDP 数据报的处理速度比 TCP 数据段快。UDP 仅提供在相应应用之间传输数据报的基本功能，需要很少的开销和数据检查。<br>UDP 将数据划分为数据报，也称为数据段。<br>UDP是一种无连接协议。由于 UDP 不提供可靠性或流量控制，因此不需要建立连接。由于 UDP 不跟踪客户端和服务器之间发送或接收的信息，因此UDP 也称为无状态协议。<br>UDP 也称为最大努力交付协议，因为在目的地接收到数据后没有确认消息。UDP 中没有通知发送方是否成功传输的传输层流程。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645791005727.png" alt="enter description here"><br>UDP 是一个尽最大努力传输协议，而 TCP 是一个可靠的传输协议。</li>
+<li>  有顺序的数据可能以错误的顺序到达 以接收方可以接受的有效速率* 发送数据</li>
 </ul>
-
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p>UDP是一种比TCP更简单的传输层协议。它不提供可靠性和流量控制，这意味着它需要更少的报头字段。由于发送方和接收方UDP进程不需要管理可靠性和流量控制，这意味着 UDP 数据报的处理速度比 TCP 数据段快。UDP 仅提供在相应应用之间传输数据报的基本功能，需要很少的开销和数据检查。<br>UDP 将数据划分为数据报，也称为数据段。<br>UDP是一种无连接协议。由于 UDP 不提供可靠性或流量控制，因此不需要建立连接。由于 UDP 不跟踪客户端和服务器之间发送或接收的信息，因此UDP 也称为无状态协议。<br>UDP 也称为最大努力交付协议，因为在目的地接收到数据后没有确认消息。UDP 中没有通知发送方是否成功传输的传输层程。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1645791005727.png" alt="enter description here"><br>UDP 是一个尽最大努力传输协议，而 TCP 是一个可靠的传输协议。<br><strong>实时视频和语音应用</strong>能够容忍具有极小或没有明显影响的一些数据丢失，非常适合于 UDP。</p>
+<h2 id="TCP概述"><a href="#TCP概述" class="headerlink" title="TCP概述"></a>TCP概述</h2><h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>除了支持<strong>数据分段和重组</strong>的基本功能之外，TCP 还提供以下服务：</p>
+<ul>
+<li>  <strong>建立会话</strong> -TCP是一种面向连接的协议，在转发任何流量之前，在源设备和目的设备之间协商并建立永久连接（或会话）。通过建立会话，设备可以协商特定时间能够转发的流量，而且两个设备之间的通信数据可得到严格管理。</li>
+<li>  <strong>确保可靠的传递</strong> -由于多种原因，数据段在网络传输过程中可能会损坏或者完全丢失。TCP确保从源设备发送的每个数据段都能够到达目的地。</li>
+<li>  <strong>提供相同顺序的传递</strong> -由于网络可能提供了多条路由，每条路由又有不同的传输速率，所以可能导致数据抵达的顺序错乱。通过对数据段编号和排序，TCP 确保按正确的顺序重组这些数据段。</li>
+<li>  <strong>支持流量控制</strong> -网络主机的资源有限（即，内存或处理能力）。当 TCP 发现这些资源超负荷运转时，它可以请求源应用程序降低数据流速。为此，TCP 会调整源设备传输的数据量。流量控制可避免当接收主机的资源不堪重负时，数据的重新传输。</li>
+</ul>
+<h3 id="报头"><a href="#报头" class="headerlink" title="报头"></a>报头</h3><p>在封装应用层数据时，TCP 数据段会增加 20 个字节（即 160 位）的开销。该图显示的是 TCP 报头中的字段。(10个)<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1646123477727.png" alt="enter description here"></p>
+<h3 id="报头字段"><a href="#报头字段" class="headerlink" title="报头字段"></a>报头字段</h3><table>
+<thead>
+<tr>
+<th><strong>TCP 报头字段</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>源端口</strong></td>
+<td>一个16位字段, 用于通过端口号标识源应用程序。</td>
+</tr>
+<tr>
+<td><strong>目的端口</strong></td>
+<td>一个16位字段, 用于通过端口号标识目的应用 程序。</td>
+</tr>
+<tr>
+<td><strong>序列号</strong></td>
+<td>一个32位字段, 用于数据重组。</td>
+</tr>
+<tr>
+<td><strong>确认号</strong></td>
+<td>一个32位的字段, 用于指示已接收到数据, 并且期望从源 接收下一个字节。</td>
+</tr>
+<tr>
+<td><strong>报头长度</strong></td>
+<td>一个4位字段, 称为“数据偏移”, 表示 TCP数据段报头的长度。</td>
+</tr>
+<tr>
+<td><strong>保留</strong></td>
+<td>一个6位字段, 保留供将来使用。</td>
+</tr>
+<tr>
+<td><strong>控制位</strong></td>
+<td>一个6位字段, 包括位代码或标志, 指示 TCP段的目的和功能。</td>
+</tr>
+<tr>
+<td><strong>窗口大小</strong></td>
+<td>一个16位字段, 用于指示一次可以接受的 字节数。</td>
+</tr>
+<tr>
+<td><strong>校验和</strong></td>
+<td>一个16位字段, 用于数据段报头和数据的错误检查。</td>
+</tr>
+<tr>
+<td><strong>紧急</strong></td>
+<td>一个 16 位字段, 用于指示包含的数据是否紧急。</td>
+</tr>
+</tbody></table>
+<h3 id="应用程序"><a href="#应用程序" class="headerlink" title="应用程序"></a>应用程序</h3><p>FTP、HTTP、SMTP、SSH</p>
+<h2 id="UDP概述"><a href="#UDP概述" class="headerlink" title="UDP概述"></a>UDP概述</h2><h3 id="功能-1"><a href="#功能-1" class="headerlink" title="功能"></a>功能</h3><p>UDP 是一种尽最大努力传输协议。UDP 是一种轻型传输协议，提供与 TCP 相同的<strong>数据分段和重组功能</strong>，但是<strong>没有 TCP 所提供的可靠性和流量控制</strong>。<br>UDP 协议非常简单，它通常被描述为与 TCP 比较所不提供的功能。<br>UDP的特点包括以下几种：</p>
+<ul>
+<li>  数据按照接收顺序重构。</li>
+<li>  丢失的任何数据段都不会重新发送。</li>
+<li>  不会建立会话。</li>
+<li>  不会告知发送者资源可用性。</li>
+</ul>
+<h3 id="报头-1"><a href="#报头-1" class="headerlink" title="报头"></a>报头</h3><p>UDP 是无状态协议，这意味着客户端和服务器都不会跟踪通信会话的状态。如果使用 UDP 作为传输协议时要求可靠性，<strong>必须由应用来处理可靠性</strong>。<br>UDP 中的通信块称为数据报或数据段，这些数据报通过传输层协议尽力传送，有四个字段，需要8个字节(即64位)。该图显示的是 UDP 报头中的字段。<br><img src="/2022/02/28/%E7%BD%91%E7%BB%9C/ITN14-15/1646123863260.png" alt="enter description here"></p>
+<h3 id="报头字段-1"><a href="#报头字段-1" class="headerlink" title="报头字段"></a>报头字段</h3><table>
+<thead>
+<tr>
+<th><strong>UDP 报头字段</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>源端口</strong></td>
+<td>一个16位字段,用于通过端口号标识源应用程序。</td>
+</tr>
+<tr>
+<td><strong>目的端口</strong></td>
+<td>一个16位字段,用于通过端口号标识目的应用 程序。</td>
+</tr>
+<tr>
+<td><strong>长度</strong></td>
+<td>一个16位字段,指示UDP数据报报头的长度。</td>
+</tr>
+<tr>
+<td><strong>校验和</strong></td>
+<td>一个16位字段,用于数据报报头和数据的错误检查。</td>
+</tr>
+</tbody></table>
+<h3 id="应用程序-1"><a href="#应用程序-1" class="headerlink" title="应用程序"></a>应用程序</h3><p>最适合采用 UDP 协议的三种应用程序包括：</p>
+<ul>
+<li>  <strong>实时视频和多媒体应用程序</strong> - 这些应用可以容忍部分数据丢失但要求延迟极小或没有延迟的应用程序。示例包括 VoIP 和实时流传输视频。</li>
+<li>  <strong>简单请求和应答应用程序</strong>- 处理简单事务的应用程序，其中主机发送请求，但不一定收到应答。示例包括 DNS 和 DHCP。</li>
+<li>  <strong>处理可靠性的应用程序</strong> - 不要求进行流量控制、错误检测、确认和错误恢复，或这些功能由应用程序来执行的单向通信。示例包括 SNMP 和 TFTP。<br>即：DHCP、DNS、SNMP、TFTP、VoIP、视频会议</li>
+</ul>
+<h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2>
     </div>
 
     
@@ -350,7 +460,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E8%81%8C%E8%B4%A3"><span class="nav-number">1.1.</span> <span class="nav-text">传输层的职责</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.</span> <span class="nav-text">传输层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP"><span class="nav-number">1.2.1.</span> <span class="nav-text">TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP"><span class="nav-number">1.2.2.</span> <span class="nav-text">UDP</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">传输层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E8%81%8C%E8%B4%A3"><span class="nav-number">1.1.</span> <span class="nav-text">传输层的职责</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.2.</span> <span class="nav-text">传输层协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP"><span class="nav-number">1.2.1.</span> <span class="nav-text">TCP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP"><span class="nav-number">1.2.2.</span> <span class="nav-text">UDP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP%E6%A6%82%E8%BF%B0"><span class="nav-number">1.3.</span> <span class="nav-text">TCP概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.3.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E5%A4%B4"><span class="nav-number">1.3.2.</span> <span class="nav-text">报头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E5%A4%B4%E5%AD%97%E6%AE%B5"><span class="nav-number">1.3.3.</span> <span class="nav-text">报头字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="nav-number">1.3.4.</span> <span class="nav-text">应用程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP%E6%A6%82%E8%BF%B0"><span class="nav-number">1.4.</span> <span class="nav-text">UDP概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E5%A4%B4-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">报头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E5%A4%B4%E5%AD%97%E6%AE%B5-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">报头字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-1"><span class="nav-number">1.4.4.</span> <span class="nav-text">应用程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-number">1.5.</span> <span class="nav-text">端口号</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -366,7 +476,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -379,7 +489,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -415,7 +525,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共137.3k字呐~</span>
+  <span class="post-count">本博客全站共140.7k字呐~</span>
 </div>
 
         
