@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="参考从0到1：Hyperledger Fabric开发精要【最系统】hubwiz私人博客CSDN TLpigff博客CSDN 烟火不完美博客 github.com&#x2F;hyperledger&#x2F;fabric&#x2F;core&#x2F;chaincode&#x2F;shimgithub.com&#x2F;hyperledger&#x2F;fabric&#x2F;protos&#x2F;peer改为github.com&#x2F;hyperledger&#x2F;fabric-chainco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链简单成绩系统实现">
+<meta property="og:url" content="http://example.com/2022/03/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/qkledu/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="参考从0到1：Hyperledger Fabric开发精要【最系统】hubwiz私人博客CSDN TLpigff博客CSDN 烟火不完美博客 github.com&#x2F;hyperledger&#x2F;fabric&#x2F;core&#x2F;chaincode&#x2F;shimgithub.com&#x2F;hyperledger&#x2F;fabric&#x2F;protos&#x2F;peer改为github.com&#x2F;hyperledger&#x2F;fabric-chainco">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/03/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/qkledu/1647281435396.png">
+<meta property="article:published_time" content="2022-03-11T09:37:54.389Z">
+<meta property="article:modified_time" content="2022-03-31T09:22:33.648Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="区块链">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/03/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/qkledu/1647281435396.png">
+
+<link rel="canonical" href="http://example.com/2022/03/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/qkledu/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>区块链简单成绩系统实现 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/qkledu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          区块链简单成绩系统实现
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-11 17:37:54" itemprop="dateCreated datePublished" datetime="2022-03-11T17:37:54+08:00">2022-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-31 17:22:33" itemprop="dateModified" datetime="2022-03-31T17:22:33+08:00">2022-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>参考<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39200980?type=blog">从0到1：Hyperledger Fabric开发精要【最系统】</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/lvyibin890?type=blog">hubwiz私人博客</a><br><a target="_blank" rel="noopener" href="http://blog.hubwiz.com/categories/Hyperledger-Fabric/">CSDN TLpigff博客</a><br><a target="_blank" rel="noopener" href="https://www.chaindesk.cn/witbook/11/217">CSDN 烟火不完美博客</a></p>
+<p><code>github.com/hyperledger/fabric/core/chaincode/shim</code><br><code>github.com/hyperledger/fabric/protos/peer</code><br>改为<br><code>github.com/hyperledger/fabric-chaincode-go/shim</code><br><code>github.com/hyperledger/fabric-protos-go/peer</code></p>
+<p>报错：<code>undefined:discovery.ChaincodeCall</code><br>go.mod中<br><code>github.com/hyperledger/fabric-protos-go v0.0.0-20211006172752-14f4318ce71c</code><br>改为<br><code>github.com/hyperledger/fabric-protos-go v0.0.0-20200707132912-fee30f3ccd23</code></p>
+<h1 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h1><p>以目录为检索结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">│  config.yaml</span><br><span class="line">│  main.go//重点，执行入口</span><br><span class="line">│  </span><br><span class="line">├─chaincode</span><br><span class="line">│  │  edu.go//业务层重点</span><br><span class="line">│  │  go.mod</span><br><span class="line">│  │  go.sum</span><br><span class="line">│  └─vendor</span><br><span class="line">│</span><br><span class="line">├─fixtures</span><br><span class="line">│  │  configtx.yaml//网络层重点</span><br><span class="line">│  │  crypto-config.yaml//网络层重点</span><br><span class="line">│  │  docker-compose.yaml//网络层重点</span><br><span class="line">│  ├─channel-artifacts    </span><br><span class="line">│  └─crypto-config </span><br><span class="line">│</span><br><span class="line">├─sdkInit</span><br><span class="line">│      integration.go//重点</span><br><span class="line">│      sdkInfo.go//重点</span><br><span class="line">│      sdkSetting.go//重点</span><br><span class="line">│</span><br><span class="line">├─service</span><br><span class="line">│      domain.go//业务层重点</span><br><span class="line">│      eduService.go//业务层重点</span><br><span class="line">│</span><br><span class="line">└─web//常见go网页应用工程MVC模式</span><br><span class="line">    │  webServer.go//各种http.HandleFunc</span><br><span class="line">    ├─controller    </span><br><span class="line">    ├─static      </span><br><span class="line">    └─tpl</span><br></pre></td></tr></table></figure>
+
+<h2 id="fixtures"><a href="#fixtures" class="headerlink" title="fixtures"></a>fixtures</h2><p>三种配置文件、根据配置文件生成的组织结构以及基础区块</p>
+<h3 id="crypto-config-yaml"><a href="#crypto-config-yaml" class="headerlink" title="crypto-config.yaml"></a>crypto-config.yaml</h3><p>用于生成相关组织的私钥和证书<br>Fabric 中会有两种类型的公私钥和证书</p>
+<ul>
+<li>  给节点之间通讯安全而准备的TLS证书</li>
+<li>  用户登录和权限控制的用户证书。</li>
+</ul>
+<p>配置参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/lvyibin890/article/details/106213960">crypto-config配置参考</a></p>
+<h3 id="configtx-yaml"><a href="#configtx-yaml" class="headerlink" title="configtx.yaml"></a>configtx.yaml</h3><p>configtx.yaml主要用来配置fabric的组织结构，通道及锚节点的配置。它主要完成以下几个功能：</p>
+<ul>
+<li>生成启动 Orderer 需要的创世区块orderer.block(genesis.block)</li>
+<li>创建应用通道所需的配置交易文件</li>
+<li>生成组织锚节点更新配置交易文件</li>
+</ul>
+<p>配置参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/lvyibin890/article/details/106217716?spm=1001.2014.3001.5502">configtx配置参考</a><br>之后可以使用configtxgen进行生成操作</p>
+<h3 id="docker-compose-yaml"><a href="#docker-compose-yaml" class="headerlink" title="docker-compose.yaml"></a>docker-compose.yaml</h3><p>用以配置fabric网络的相关容器<br>Compose 是用于定义和运行多容器 Docker 应用程序的工具。通过 Compose，您可以使用 YML 文件来配置应用程序需要的所有服务。<br>fabric区块链中多使用docker来创建虚拟容器</p>
+<h2 id="chaincode"><a href="#chaincode" class="headerlink" title="chaincode"></a>chaincode</h2><p>链码，合约，或者这里我们理解为接口API<br>是在可执行代码中定义不同组织之间业务规则的代码<br>是业务逻辑中需要的组织交互逻辑而不是全部业务逻辑</p>
+<h2 id="sdkinit"><a href="#sdkinit" class="headerlink" title="sdkinit"></a>sdkinit</h2><p>这一块结合main.go主函数理解，主要用于初始化启动SDK</p>
+<h2 id="按执行顺序"><a href="#按执行顺序" class="headerlink" title="按执行顺序"></a>按执行顺序</h2><p>.sh脚本内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo docker rm -f $(sudo docker ps -aq)</span><br><span class="line">sudo docker network prune</span><br><span class="line">sudo docker volume prune</span><br><span class="line">删除可能的网络与容器</span><br><span class="line">cd fixtures &amp;&amp; docker-compose up -d</span><br><span class="line">启动docker容器（按fixtures配置）</span><br><span class="line">cd ..</span><br><span class="line">sudo rm education</span><br><span class="line">go build</span><br><span class="line">编译主函数</span><br><span class="line">./education</span><br><span class="line">执行</span><br></pre></td></tr></table></figure>
+
+<h3 id="第一步："><a href="#第一步：" class="headerlink" title="第一步："></a>第一步：</h3><p>sdkInit.Setup<br>包含</p>
+<ul>
+<li>fabsdk.New</li>
+<li>sdk.Context</li>
+</ul>
+<p>主要工作：初始化SDK</p>
+<h3 id="第二步："><a href="#第二步：" class="headerlink" title="第二步："></a>第二步：</h3><p>sdkInit.CreateAndJoinChannel<br>包含</p>
+<ul>
+<li>createChannel</li>
+<li>org.OrgResMgmt.JoinChannel</li>
+</ul>
+<p>主要工作：创建通道并将组织加入通道</p>
+<h3 id="第三步："><a href="#第三步：" class="headerlink" title="第三步："></a>第三步：</h3><p>sdkInit.CreateCCLifecycle<br>分为：</p>
+<ul>
+<li>打包智能合约</li>
+<li>安装智能合约</li>
+<li>“认可”智能合约(Approve)</li>
+<li>智能合约初始化</li>
+</ul>
+<p>主要工作：智能合约上链与初始化</p>
+<h3 id="第四步："><a href="#第四步：" class="headerlink" title="第四步："></a>第四步：</h3><p>service.InitService<br>包含</p>
+<ul>
+<li>sdk.ChannelContext</li>
+<li>channel.New</li>
+</ul>
+<p>主要功能：创建通道客户端实例。<br>通道客户端用于查询链码，执行链码，注册/取消特定通道上的链码事件。</p>
+<h3 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h3><p>serviceSetup.SaveEdu<br>进行交易实验（添加信息）<br><strong>可跳过</strong></p>
+<h3 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h3><p>serviceSetup.FindEduInfoByEntityID<br>进行交易实验（查询信息）<br><strong>可跳过</strong></p>
+<h3 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(&quot;第七步&quot;)</span><br><span class="line">app := controller.Application&#123;</span><br><span class="line">	Setup: serviceSetup,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>启动服务</p>
+<h3 id="第八步"><a href="#第八步" class="headerlink" title="第八步"></a>第八步</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(&quot;第八步&quot;)</span><br><span class="line">web.WebStart(app)</span><br></pre></td></tr></table></figure>
+<p>建立服务网站</p>
+<h3 id="怎么调用链码的"><a href="#怎么调用链码的" class="headerlink" title="怎么调用链码的"></a>怎么调用链码的</h3><p><code>req := channel.Request&#123;ChaincodeID: t.ChaincodeID, Fcn: &quot;addEdu&quot;, Args: [][]byte&#123;b, []byte(eventID)&#125;&#125;</code><br>用这种语句在GO中调用链码写入信息</p>
+<h3 id="couchDB"><a href="#couchDB" class="headerlink" title="couchDB"></a>couchDB</h3><p>fabric支持的唯二数据库，是一个NoSQL文档存储数据库。<br>它使用JSON存储数据（文档），使用http协议为api访问文档，使用Web浏览器查询索引。</p>
+<h3 id="问题：为什么老是运行的以前的链码？"><a href="#问题：为什么老是运行的以前的链码？" class="headerlink" title="问题：为什么老是运行的以前的链码？"></a>问题：为什么老是运行的以前的链码？</h3><p>太大意了！<br><img src="/2022/03/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/qkledu/1647281435396.png"><br>已经将文件命名为5edu了，却没有改对应路径QAQ</p>
+
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag"># 区块链</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/08/%E7%BD%91%E7%BB%9C/SRWE1-4/" rel="prev" title="SRWE 1-4">
+      <i class="fa fa-chevron-left"></i> SRWE 1-4
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/20/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BENFT/" rel="next" title="区块链NFT">
+      区块链NFT <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">开发流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fixtures"><span class="nav-number">1.1.</span> <span class="nav-text">fixtures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#crypto-config-yaml"><span class="nav-number">1.1.1.</span> <span class="nav-text">crypto-config.yaml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configtx-yaml"><span class="nav-number">1.1.2.</span> <span class="nav-text">configtx.yaml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-compose-yaml"><span class="nav-number">1.1.3.</span> <span class="nav-text">docker-compose.yaml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chaincode"><span class="nav-number">1.2.</span> <span class="nav-text">chaincode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sdkinit"><span class="nav-number">1.3.</span> <span class="nav-text">sdkinit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%89%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.4.</span> <span class="nav-text">按执行顺序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A"><span class="nav-number">1.4.1.</span> <span class="nav-text">第一步：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A"><span class="nav-number">1.4.2.</span> <span class="nav-text">第二步：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A"><span class="nav-number">1.4.3.</span> <span class="nav-text">第三步：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A"><span class="nav-number">1.4.4.</span> <span class="nav-text">第四步：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5"><span class="nav-number">1.4.5.</span> <span class="nav-text">第五步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E6%AD%A5"><span class="nav-number">1.4.6.</span> <span class="nav-text">第六步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%83%E6%AD%A5"><span class="nav-number">1.4.7.</span> <span class="nav-text">第七步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E5%85%AB%E6%AD%A5"><span class="nav-number">1.4.8.</span> <span class="nav-text">第八步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E8%B0%83%E7%94%A8%E9%93%BE%E7%A0%81%E7%9A%84"><span class="nav-number">1.4.9.</span> <span class="nav-text">怎么调用链码的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#couchDB"><span class="nav-number">1.4.10.</span> <span class="nav-text">couchDB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%80%81%E6%98%AF%E8%BF%90%E8%A1%8C%E7%9A%84%E4%BB%A5%E5%89%8D%E7%9A%84%E9%93%BE%E7%A0%81%EF%BC%9F"><span class="nav-number">1.4.11.</span> <span class="nav-text">问题：为什么老是运行的以前的链码？</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共170.7k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>

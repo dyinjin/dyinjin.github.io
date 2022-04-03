@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="ERC721《什么是ERC-721 代币？》《智能合约NFT之ERC721代币详解》 本质上说就是定义的函数接口标准 ERC721标准12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链NFT">
+<meta property="og:url" content="http://example.com/2022/03/20/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BENFT/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="ERC721《什么是ERC-721 代币？》《智能合约NFT之ERC721代币详解》 本质上说就是定义的函数接口标准 ERC721标准12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970pr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-20T11:16:52.964Z">
+<meta property="article:modified_time" content="2022-03-30T11:30:18.733Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="区块链">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/03/20/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BENFT/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>区块链NFT | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/20/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/%E5%8C%BA%E5%9D%97%E9%93%BENFT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          区块链NFT
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-20 19:16:52" itemprop="dateCreated datePublished" datetime="2022-03-20T19:16:52+08:00">2022-03-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-30 19:30:18" itemprop="dateModified" datetime="2022-03-30T19:30:18+08:00">2022-03-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="ERC721"><a href="#ERC721" class="headerlink" title="ERC721"></a>ERC721</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/41437f66afa8">《什么是ERC-721 代币？》</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/393935101">《智能合约NFT之ERC721代币详解》</a></p>
+<p>本质上说就是定义的函数接口标准</p>
+<h2 id="ERC721标准"><a href="#ERC721标准" class="headerlink" title="ERC721标准"></a>ERC721标准</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.20;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">interface ERC721 &#123;</span><br><span class="line">    /// @dev 当任何NFT的所有权更改时（不管哪种方式），就会触发此事件。</span><br><span class="line">    ///  包括在创建时（`from` == 0）和销毁时(`to` == 0), 合约创建时除外。</span><br><span class="line">    event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);</span><br><span class="line"></span><br><span class="line">    /// @dev 当更改或确认NFT的授权地址时触发。</span><br><span class="line">    ///  零地址表示没有授权的地址。</span><br><span class="line">    ///  发生 `Transfer` 事件时，同样表示该NFT的授权地址（如果有）被重置为“无”（零地址）。</span><br><span class="line">    event Approval(address indexed _owner, address indexed _approved, uint256 indexed _tokenId);</span><br><span class="line"></span><br><span class="line">    /// @dev 所有者启用或禁用操作员时触发。（操作员可管理所有者所持有的NFTs）</span><br><span class="line">    event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);</span><br><span class="line"></span><br><span class="line">    /// @notice 统计所持有的NFTs数量</span><br><span class="line">    /// @dev NFT 不能分配给零地址，查询零地址同样会异常</span><br><span class="line">    /// @param _owner ： 待查地址</span><br><span class="line">    /// @return 返回数量，也许是0</span><br><span class="line">    function balanceOf(address _owner) external view returns (uint256);</span><br><span class="line"></span><br><span class="line">    /// @notice 返回所有者</span><br><span class="line">    /// @dev NFT 不能分配给零地址，查询零地址抛出异常</span><br><span class="line">    /// @param _tokenId NFT 的id</span><br><span class="line">    /// @return 返回所有者地址</span><br><span class="line">    function ownerOf(uint256 _tokenId) external view returns (address);</span><br><span class="line"></span><br><span class="line">    /// @notice 将NFT的所有权从一个地址转移到另一个地址</span><br><span class="line">    /// @dev 如果`msg.sender` 不是当前的所有者（或授权者）抛出异常</span><br><span class="line">    /// 如果 `_from` 不是所有者、`_to` 是零地址、`_tokenId` 不是有效id 均抛出异常。</span><br><span class="line">    ///  当转移完成时，函数检查  `_to` 是否是合约，如果是，调用 `_to`的 `onERC721Received` 并且检查返回值是否是 `0x150b7a02` (即：`bytes4(keccak256(&quot;onERC721Received(address,address,uint256,bytes)&quot;))`)  如果不是抛出异常。</span><br><span class="line">    /// @param _from ：当前的所有者</span><br><span class="line">    /// @param _to ：新的所有者</span><br><span class="line">    /// @param _tokenId ：要转移的token id.</span><br><span class="line">    /// @param data : 附加额外的参数（没有指定格式），传递给接收者。</span><br><span class="line">    function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes data) external payable;</span><br><span class="line"></span><br><span class="line">    /// @notice 将NFT的所有权从一个地址转移到另一个地址，功能同上，不带data参数。</span><br><span class="line">    function safeTransferFrom(address _from, address _to, uint256 _tokenId) external payable;</span><br><span class="line"></span><br><span class="line">    /// @notice 转移所有权 -- 调用者负责确认`_to`是否有能力接收NFTs，否则可能永久丢失。</span><br><span class="line">    /// @dev 如果`msg.sender` 不是当前的所有者（或授权者、操作员）抛出异常</span><br><span class="line">    /// 如果 `_from` 不是所有者、`_to` 是零地址、`_tokenId` 不是有效id 均抛出异常。</span><br><span class="line">    function transferFrom(address _from, address _to, uint256 _tokenId) external payable;</span><br><span class="line"></span><br><span class="line">    /// @notice 更改或确认NFT的授权地址</span><br><span class="line">    /// @dev 零地址表示没有授权的地址。</span><br><span class="line">    ///  如果`msg.sender` 不是当前的所有者或操作员</span><br><span class="line">    /// @param _approved 新授权的控制者</span><br><span class="line">    /// @param _tokenId ： token id</span><br><span class="line">    function approve(address _approved, uint256 _tokenId) external payable;</span><br><span class="line"></span><br><span class="line">    /// @notice 启用或禁用第三方（操作员）管理 `msg.sender` 所有资产</span><br><span class="line">    /// @dev 触发 ApprovalForAll 事件，合约必须允许每个所有者可以有多个操作员。</span><br><span class="line">    /// @param _operator 要添加到授权操作员列表中的地址</span><br><span class="line">    /// @param _approved True 表示授权, false 表示撤销</span><br><span class="line">    function setApprovalForAll(address _operator, bool _approved) external;</span><br><span class="line"></span><br><span class="line">    /// @notice 获取单个NFT的授权地址</span><br><span class="line">    /// @dev 如果 `_tokenId` 无效，抛出异常。</span><br><span class="line">    /// @param _tokenId ：  token id</span><br><span class="line">    /// @return 返回授权地址， 零地址表示没有。</span><br><span class="line">    function getApproved(uint256 _tokenId) external view returns (address);</span><br><span class="line"></span><br><span class="line">    /// @notice 查询一个地址是否是另一个地址的授权操作员</span><br><span class="line">    /// @param _owner 所有者</span><br><span class="line">    /// @param _operator 代表所有者的授权操作员</span><br><span class="line">    function isApprovedForAll(address _owner, address _operator) external view returns (bool);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析与实现"><a href="#解析与实现" class="headerlink" title="解析与实现"></a>解析与实现</h2><h3 id="Transfer-event"><a href="#Transfer-event" class="headerlink" title="Transfer event"></a>Transfer event</h3><p>当任何NFT的所有权更改时（不管哪种方式），就会触发此事件，即成立为交易（包括创建，转让，销毁）</p>
+<h3 id="Approval-event"><a href="#Approval-event" class="headerlink" title="Approval event"></a>Approval event</h3><p>当更改或确认NFT的<strong>授权</strong>地址时触发。</p>
+<h3 id="ApprovalForAll-event"><a href="#ApprovalForAll-event" class="headerlink" title="ApprovalForAll event"></a>ApprovalForAll event</h3><p>所有者启用或禁用<strong>授权</strong>第三方（操作员）管理时触发。</p>
+<h3 id="balanceOf"><a href="#balanceOf" class="headerlink" title="balanceOf"></a>balanceOf</h3><p>查找owner的资产数量，参数_owner，返回数量</p>
+<h3 id="ownerOf"><a href="#ownerOf" class="headerlink" title="ownerOf"></a>ownerOf</h3><p>查找资产对应所有者，参数资产tokenid，返回拥有者</p>
+<h3 id="safeTransferFrom"><a href="#safeTransferFrom" class="headerlink" title="safeTransferFrom"></a>safeTransferFrom</h3><p>安全的资产所有权转移（修改owner），参数当前所有者、目的所有者、资产tokenid、任意备注（可不带）</p>
+<h3 id="transferFrom"><a href="#transferFrom" class="headerlink" title="transferFrom"></a>transferFrom</h3><p>资产所有权转移，相比safeTransferFrom参数一致</p>
+<h3 id="approve"><a href="#approve" class="headerlink" title="approve"></a>approve</h3><p>更改或确认NFT的授权地址，参数新授权人、资产tokenid</p>
+<h3 id="setApprovalForAll"><a href="#setApprovalForAll" class="headerlink" title="setApprovalForAll"></a>setApprovalForAll</h3><p>所有者启用或禁用授权第三方（操作员）管理，参数要授权的的操作员、启用/禁用布尔值</p>
+<h3 id="getApproved"><a href="#getApproved" class="headerlink" title="getApproved"></a>getApproved</h3><p>获取资产授权地址，参数资产tokenid，返回授权地址</p>
+<h3 id="isApprovedForAll"><a href="#isApprovedForAll" class="headerlink" title="isApprovedForAll"></a>isApprovedForAll</h3><p>查询一个操作员是否是一个所有者的授权操作员，参数所有者、操作员</p>
+<h1 id="链码分析"><a href="#链码分析" class="headerlink" title="链码分析"></a>链码分析</h1><p>资产本身的信息是一组需要区块链记录的结构体，还有每次进行交易时希望对交易信息进行记录则交易信息也设定为一结构体（特殊类型定义为string 设置为宏定义方便转换用）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// NFT资产结构 </span><br><span class="line">type Asset struct &#123; </span><br><span class="line">NftName string `json:&quot;nftName&quot;` //资产token名称 </span><br><span class="line">NftSymbol string `json:&quot;nftSymbol&quot;` //资产token简称 </span><br><span class="line">Owner string `json:&quot;owner&quot;` //资产token创建人 </span><br><span class="line">AssetOf map[address]map[tokenId]url `json:&quot;assetOf&quot;` //资产token的持有人和持有资产的集合 </span><br><span class="line">AssetHistory map[tokenId]map[transTime]address `json:&quot;assetHistory&quot;` //资产token转移记录 </span><br><span class="line">AssetApprove map[tokenId]address `json:&quot;assetApprove&quot;` //资产授权人 </span><br><span class="line">AssetExit map[url]bool `json:&quot;assetExit&quot;` //资产token是否已经存在 </span><br><span class="line">AssetTokenIdExit map[tokenId]bool `json:&quot;assetTokenIdExit&quot;` //资产token是否已经存在 </span><br><span class="line">TotalSupply int `json:&quot;totalSupply,omitempty&quot;` //资产总量0代表不限量NFT 非0 则代表限量版本的NFT </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">// 交易结构 </span><br><span class="line">type TransferAsset struct &#123; </span><br><span class="line">_From address `json:&quot;_from,omitempty&quot;` // 转出人 / 资产owner </span><br><span class="line">_To address `json:&quot;_to&quot;` // 确权/转移到的地址 </span><br><span class="line">_TokenId tokenId `json:&quot;_tokenId&quot;` // 每一个存证确权为一个资产token 每个资产token有唯一的tokenId </span><br><span class="line">_Url url `json:&quot;_url&quot;` // 存证的txid 或者 资产的url </span><br><span class="line">_Data string `json:&quot;_data,omitempty&quot;` // 备注 </span><br><span class="line">_Signature string `json:&quot;_signature,omitempty&quot;` // 签名 </span><br><span class="line">_SignType string `json:&quot;_signType,omitempty&quot;` // 签名类型 </span><br><span class="line">_NftSymbol string `json:&quot;_nftSymbol&quot;` //资产token简称 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>链码功能依靠INVOKE函数进行评定调用对应函数</li>
+<li>开始的address/tokenId/url/transTime类似宏定义</li>
+</ul>
+<h2 id="Invoke"><a href="#Invoke" class="headerlink" title="Invoke"></a>Invoke</h2><p>提供链码函数功能导向</p>
+<h2 id="initLedger资产初始化"><a href="#initLedger资产初始化" class="headerlink" title="initLedger资产初始化"></a>initLedger资产初始化</h2><p>4个参数：资产名称(name)、资产简称(symbol)、资产创始人(owner)、量(totalSupply)<br>返回：创建好的资产结构体<br>会确保无同symbol关键字的在链</p>
+<h2 id="mine资产确权"><a href="#mine资产确权" class="headerlink" title="mine资产确权"></a>mine资产确权</h2><p>6个参数：即向交易结构写入的信息（无备注、且由于只是确权所以to和from是同一个）<br>返回：资产结构体<br>不同于资产初始化，确权是资产正式上链，创建也属于交易。需验证同symbol的是否被创建，调用onlyOwner验签，调用mineOnly进行添加</p>
+<h3 id="mineOnly"><a href="#mineOnly" class="headerlink" title="mineOnly"></a>mineOnly</h3>
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/" rel="tag"># 区块链</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/11/%E5%8C%BA%E5%9D%97%E9%93%BE%E9%A1%B9%E7%9B%AE/qkledu/" rel="prev" title="区块链简单成绩系统实现">
+      <i class="fa fa-chevron-left"></i> 区块链简单成绩系统实现
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/21/%E8%AF%BE/%E7%AC%AC%E4%B8%80%E6%AC%A1%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A-%E7%8E%8B%E4%B8%8E%E7%90%8E-2020090920024/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ERC721"><span class="nav-number">1.</span> <span class="nav-text">ERC721</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ERC721%E6%A0%87%E5%87%86"><span class="nav-number">1.1.</span> <span class="nav-text">ERC721标准</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.</span> <span class="nav-text">解析与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Transfer-event"><span class="nav-number">1.2.1.</span> <span class="nav-text">Transfer event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approval-event"><span class="nav-number">1.2.2.</span> <span class="nav-text">Approval event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ApprovalForAll-event"><span class="nav-number">1.2.3.</span> <span class="nav-text">ApprovalForAll event</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#balanceOf"><span class="nav-number">1.2.4.</span> <span class="nav-text">balanceOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ownerOf"><span class="nav-number">1.2.5.</span> <span class="nav-text">ownerOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#safeTransferFrom"><span class="nav-number">1.2.6.</span> <span class="nav-text">safeTransferFrom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#transferFrom"><span class="nav-number">1.2.7.</span> <span class="nav-text">transferFrom</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#approve"><span class="nav-number">1.2.8.</span> <span class="nav-text">approve</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setApprovalForAll"><span class="nav-number">1.2.9.</span> <span class="nav-text">setApprovalForAll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getApproved"><span class="nav-number">1.2.10.</span> <span class="nav-text">getApproved</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#isApprovedForAll"><span class="nav-number">1.2.11.</span> <span class="nav-text">isApprovedForAll</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%93%BE%E7%A0%81%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">链码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Invoke"><span class="nav-number">2.1.</span> <span class="nav-text">Invoke</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#initLedger%E8%B5%84%E4%BA%A7%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">2.2.</span> <span class="nav-text">initLedger资产初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mine%E8%B5%84%E4%BA%A7%E7%A1%AE%E6%9D%83"><span class="nav-number">2.3.</span> <span class="nav-text">mine资产确权</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mineOnly"><span class="nav-number">2.3.1.</span> <span class="nav-text">mineOnly</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共170.7k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
