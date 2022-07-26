@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2022/04/20/%E8%AF%BE/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F(4)/1650618215534.png">
 <meta property="og:image" content="http://example.com/2022/04/20/%E8%AF%BE/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F(4)/1650619179190.png">
 <meta property="article:published_time" content="2022-04-20T06:51:07.589Z">
-<meta property="article:modified_time" content="2022-05-08T05:33:14.286Z">
+<meta property="article:modified_time" content="2022-06-09T00:44:11.683Z">
 <meta property="article:author" content="dyinjin">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-08 13:33:14" itemprop="dateModified" datetime="2022-05-08T13:33:14+08:00">2022-05-08</time>
+                <time title="修改时间：2022-06-09 08:44:11" itemprop="dateModified" datetime="2022-06-09T08:44:11+08:00">2022-06-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -356,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<p>离散分配没有外零头，且内零头肯定少于一个页面</p>
+<p><strong>离散分配没有外零头，且内零头肯定少于一个页面</strong></p>
 <h4 id="分页存储管理的基本方法"><a href="#分页存储管理的基本方法" class="headerlink" title="分页存储管理的基本方法"></a>分页存储管理的基本方法</h4><p>如何建立程序空间与主存空间的映射——页表<br>如何进行地址变换——从程序逻辑地址到内存物理地址</p>
 <h4 id="页面和物理块"><a href="#页面和物理块" class="headerlink" title="页面和物理块"></a>页面和物理块</h4><ul>
 <li>页面或页(Page)：把每个进程的逻辑地址空间分成一些大小相等的片。</li>
@@ -409,12 +409,12 @@
 </li>
 </ul>
 <p>段页式管理结合：先将用户程序分段，每段内再划分成若干页，每段有段号，每段内部的页有一连续的页号。</p>
-<p>但在段页式存储管理方式中，每访问一次数据，需访问三次内存。 访问段表、访问页表、访问相应数据，大大降低了访问速度。<br>可以设置快表，表项应包括段号、页号、物理块号。</p>
+<p>但在段页式存储管理方式中，每访问一次数据，<strong>需访问三次内存</strong>。 访问段表、访问页表、访问相应数据，大大降低了访问速度。<br>可以设置快表，表项应包括段号、页号、物理块号。</p>
 <p>总结：</p>
 <ul>
 <li>综合了分段和分页技术的优点，既能有效地利用存储空间，又能方便用户进行程序设计</li>
 <li>但是，实现段页式存储管理系统需要增加硬件成本，系统的复杂度和管理开销也大大增加</li>
-<li>因此，段页式存储管理技术适合于大、中型计算机系统，不太适合小型、微型计算机系统</li>
+<li>因此，段页式存储管理技术<strong>适合于大、中型</strong>计算机系统，不太适合小型、微型计算机系统</li>
 </ul>
 <h1 id="虚拟存储器"><a href="#虚拟存储器" class="headerlink" title="虚拟存储器"></a>虚拟存储器</h1><h2 id="虚拟存储器概述"><a href="#虚拟存储器概述" class="headerlink" title="虚拟存储器概述"></a>虚拟存储器概述</h2><p>传统内存管理的一次性和驻留性严重降低内存利用率，减少系统吞吐量<br>当一个程序要求的存储容量超过内存，或大量作业需要内存空间时<br>从物理上增加内存容量，增加系统成本，并且增加是有限的。<br>所以从逻辑上增加内存容量，是虚拟存储技术所要解决的主要问题。</p>
 <p>当进程运行时，先将当前<strong>要运行的部分程序装入内存</strong>，其他部分暂留外存；<br>当要执行的指令不在内存时，处理器发生中断，通知操作系统将所缺部分从外存调入内存，保证程序继续执行；<br>当内存不足时，允许程序部分换入、换出。<br><img src="/2022/04/20/%E8%AF%BE/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F(4)/1650616504120.png" alt="enter description here"></p>
@@ -432,7 +432,7 @@
 </ul>
 <h2 id="请求分页存储管理方式"><a href="#请求分页存储管理方式" class="headerlink" title="请求分页存储管理方式"></a>请求分页存储管理方式</h2><p><strong>工作原理</strong>：作业运行时，只将当前的一部分装入内存其余的放在辅存，一旦发现访问的页不在主存中，则发出缺页中断，由OS将其从辅存调入主存，如果内存无空块，则根据某种算法选择一个页淘汰以便装入新的页面。</p>
 <p>利用这种方法，可使更多的作业处于就绪状态，且能支持比主存容量大的作业在系统中运行。从而提高存储空间利用率。</p>
-<p>为了实现请求调页、页面置换两大功能，系统必须提供如下的硬件支持：</p>
+<p>为了实现请求调页、页面置换两大功能，<strong>请求分页系统</strong>必须提供如下的<strong>硬件支持</strong>：</p>
 <ol>
 <li>请求分页的页表机制。</li>
 <li>缺页中断机构。</li>
@@ -465,7 +465,7 @@
 <h3 id="改进Clock置换算法"><a href="#改进Clock置换算法" class="headerlink" title="改进Clock置换算法"></a>改进Clock置换算法</h3><p>如果该页面驻留内存期间没有被修改过，那么不必把它写回辅存，否则系统必须把它写回辅存。<br><strong>即相对简单CLOCK添加修改位</strong></p>
 <p>由访问位A和修改位M组合四种类型页面：</p>
 <ol>
-<li>类（A=0，M=0：既未彼访问，又未被修改，是最佳淘汰页。</li>
+<li>类（A=0，M=0）：既未彼访问，又未被修改，是最佳淘汰页。</li>
 <li>类（A=0，M=1）：最近未被访问，但已被修改，并不是很好的淘汰页。</li>
 <li>类（A=1，M=0）：最近已被访问，但未被修改：该页有可能再被访问。</li>
 <li>类（A=1，M=1）：最近已被访问且被修改，该页可能再被访问。</li>
@@ -510,7 +510,7 @@
 <li>何谓静态链接？静态链接需要解决两个什么问题</li>
 </ol>
 <ul>
-<li>静态链接：在程序运行之前，先将各目标模块及它们所需的库函数，链接成一个完整的装入模块（又称执行模块），以后不再拆开</li>
+<li>静态链接：在程序运行之前，先将各目标模块及它们所需的库函数，链接成一个完整的装入模块（又称执行模块），<strong>以后不再拆开</strong></li>
 <li>需要解决：将相对地址进行修改；变换外部调用符号</li>
 </ul>
 <ol start="5">
@@ -547,7 +547,7 @@
 </li>
 <li><p>基于离散分配时所用的基本单位不同，可将离散分配分为哪几种？<br>分页存储管理方式、分段存储管理方式、段页式存储管理方式</p>
 </li>
-<li><p>什么是页表？页表的作用是什么？<br>每个进程对应 1 个页表，描述该进程的所需各页面在内存中对应的物理块号。</p>
+<li><p>什么是页表？页表的作用是什么？<br>每个进程对应 1 个页表，<strong>描述该进程的所需各页面在内存中对应的物理块号。</strong></p>
 </li>
 <li><p>为实现分页存储管理。需要哪些硬件支持?<br>页表寄存器、物理地址寄存器和快表寄存器。<br>地址变换机构。</p>
 </li>
@@ -702,7 +702,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">72</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -715,7 +715,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -751,7 +751,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">本博客全站共190.6k字呐~</span>
+  <span class="post-count">本博客全站共202.4k字呐~</span>
 </div>
 
         

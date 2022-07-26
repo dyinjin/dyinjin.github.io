@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":250,"display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":false,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="总结4网络层 选路算法 链路状态选路算法 距离向量算法 层次选路   因特网中的选路协议 内部网关协议：RIP、OSPF、IGRP 外部网关协议：BGP   SDN  概念，用途，架构  5数据链路层 链路层功能、提供的服务 差错检测方法 多路访问链路和协议 局域网技术 以太网技术(链路层和物理层的实现方式) 帧格式 以太网提供无连接、不可靠的服务 以太网采用的CSMA&#x2F;CD原理   集线器和交换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网考点">
+<meta property="og:url" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/index.html">
+<meta property="og:site_name" content="岛屿尽">
+<meta property="og:description" content="总结4网络层 选路算法 链路状态选路算法 距离向量算法 层次选路   因特网中的选路协议 内部网关协议：RIP、OSPF、IGRP 外部网关协议：BGP   SDN  概念，用途，架构  5数据链路层 链路层功能、提供的服务 差错检测方法 多路访问链路和协议 局域网技术 以太网技术(链路层和物理层的实现方式) 帧格式 以太网提供无连接、不可靠的服务 以太网采用的CSMA&#x2F;CD原理   集线器和交换">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655104838517.png">
+<meta property="og:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655102964890.png">
+<meta property="og:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655102917995.png">
+<meta property="og:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655107948089.png">
+<meta property="og:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1644323175596.png">
+<meta property="og:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655109506919.png">
+<meta property="og:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655109520926.png">
+<meta property="article:published_time" content="2022-06-13T02:26:44.976Z">
+<meta property="article:modified_time" content="2022-07-13T14:58:00.851Z">
+<meta property="article:author" content="dyinjin">
+<meta property="article:tag" content="计网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655104838517.png">
+
+<link rel="canonical" href="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="/css/injector/main.css" /><link rel="preload" as="style" href="/css/injector/light.css" /><link rel="preload" as="style" href="/css/injector/dark.css" />
+  <title>计网考点 | 岛屿尽</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">岛屿尽</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">dyingjin</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-cube fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-bookmark fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-cubes fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-server fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="dyinjin">
+      <meta itemprop="description" content="摸鱼窝">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="岛屿尽">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计网考点
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-06-13 10:26:44" itemprop="dateCreated datePublished" datetime="2022-06-13T10:26:44+08:00">2022-06-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-13 22:58:00" itemprop="dateModified" datetime="2022-07-13T22:58:00+08:00">2022-07-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="4网络层"><a href="#4网络层" class="headerlink" title="4网络层"></a>4网络层</h2><ul>
+<li>选路算法<ul>
+<li>链路状态选路算法</li>
+<li>距离向量算法</li>
+<li>层次选路</li>
+</ul>
+</li>
+<li>因特网中的选路协议<ul>
+<li>内部网关协议：RIP、OSPF、IGRP</li>
+<li>外部网关协议：BGP</li>
+</ul>
+</li>
+<li>SDN<br>  概念，用途，架构</li>
+</ul>
+<h2 id="5数据链路层"><a href="#5数据链路层" class="headerlink" title="5数据链路层"></a>5数据链路层</h2><ul>
+<li>链路层功能、提供的服务</li>
+<li>差错检测方法</li>
+<li>多路访问链路和协议</li>
+<li>局域网技术</li>
+<li>以太网技术(链路层和物理层的实现方式)<ul>
+<li>帧格式</li>
+<li>以太网提供无连接、不可靠的服务</li>
+<li>以太网采用的CSMA/CD原理</li>
+</ul>
+</li>
+<li>集线器和交换机</li>
+<li>VLAN</li>
+</ul>
+<h1 id="Cerf-and-Kahn-原则"><a href="#Cerf-and-Kahn-原则" class="headerlink" title="Cerf and Kahn 原则"></a>Cerf and Kahn 原则</h1><ul>
+<li>最简单化,自治原则 – 网络独立运作，与其他网络互连时无须进行内部改动</li>
+<li>尽力服务原则– 提供尽最大努力的端到端服务</li>
+<li>无状态路由器 – 路由器无须维护连接状态信息</li>
+<li>分散式控制</li>
+</ul>
+<h1 id="协议三要素"><a href="#协议三要素" class="headerlink" title="协议三要素"></a>协议三要素</h1><p>网络协议的三个要素及其含义：</p>
+<ol>
+<li>语义，解释控制信息每个部分的意义；</li>
+<li>语法，用户数据与控制信息的结构与格式，以及数据出现的顺序；</li>
+<li>同步/时序，对事件发生顺序的详细说明。<br>简单来说：<strong>语义表示要做什么，语法表示要怎么做，同步/时序表示做的顺序</strong>。</li>
+</ol>
+<h1 id="网络评估"><a href="#网络评估" class="headerlink" title="网络评估"></a>网络评估</h1><p>延迟、丢包、带宽、吞吐量</p>
+<ul>
+<li>发生<strong>丢包</strong>的原因:<br>网络转发节点的队列缓存不足，导致新到的报文无法入队缓存，只能丢弃；<br>报文到达目的地时延过大，导致接收方已不再需要该报文，从效果上看等同于丢包。</li>
+<li>带宽：物理链路理论上能承载的最大吞吐量</li>
+<li>吞吐量：接收端接收到数据的比特速率</li>
+</ul>
+<h1 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h1><h2 id="节点处理时延nodal-processing-delay"><a href="#节点处理时延nodal-processing-delay" class="headerlink" title="节点处理时延nodal processing delay:"></a>节点处理时延nodal processing delay:</h2><p>检查错误位<br>选择输出链路<br>高速路由器处理延迟－微秒级</p>
+<h2 id="排队时延queueing-delay"><a href="#排队时延queueing-delay" class="headerlink" title="排队时延queueing delay:"></a>排队时延queueing delay:</h2><p>等待被发送到输出链路上的时间<br>取决于路由器的拥塞程度</p>
+<h2 id="传输时延Transmission-delay"><a href="#传输时延Transmission-delay" class="headerlink" title="传输时延Transmission delay"></a>传输时延Transmission delay</h2><p>R=链路带宽 (bps)<br>L=分组长度 (bits)<br><strong>发送分组比特流的时间 = L/R</strong></p>
+<h2 id="传播时延Propagation-delay"><a href="#传播时延Propagation-delay" class="headerlink" title="传播时延Propagation delay"></a>传播时延Propagation delay</h2><p>d = 物理链路的长度<br>s = 介质的信号传播速度 (~2x108 m/sec)<br><strong>传播延迟 = d/s</strong></p>
+<h1 id="攻击与病毒"><a href="#攻击与病毒" class="headerlink" title="攻击与病毒"></a>攻击与病毒</h1><p>常见攻击方式：</p>
+<ul>
+<li><strong>植入恶意软件</strong>：病毒、蠕虫(自我传播)、特洛伊木马。共同特征是自我复制、传播、破坏电脑文件</li>
+<li>攻击服务器和网络基础设施：DoS(Denial of Service)</li>
+<li>嗅探分组</li>
+<li>伪装</li>
+<li>修改或删除报文</li>
+</ul>
+<h1 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h1><p>三个端口组<br>| <strong>端口组</strong> | <strong>号码范围</strong> | <strong>描述</strong> |<br>| — | — | — |<br>| <strong>公认端口</strong> | <strong>0到1023</strong> | 这些端口号保留用于常见或流行的服务和应用程序, 例如 Web浏览器, 电子邮件客户端和远程访问 客户端。为常用的服务器应用程序定义的公认端口使 客户端能够轻松识别所需的关联服务。<br>|<br>| <strong>注册端口</strong> | <strong>1024到49151</strong> | IANA将这些端口号分配给请求实体, 以用于特定的进程或应用程序。这些进程主要是用户选择安装的单个 应用程序, 而不是使用公认端口号的 常见应用程序。例如, 思科已为其RADIUS服务器身份验证进程 注册了端口1812。<br>|<br>| <strong>私有</strong>和(或)<strong>动态端口</strong> | <strong>49152 到 65535</strong> | 这些端口也称为 _临时端口_。客户端的操作系统通常在 发起与服务的连接时动态分配端口号。之后即可在通信过程中使用动态端口识别客户端 应用程序。<br>|</p>
+<p>该表显示了一些常用的公认端口号及其相关应用程序。<br>| <strong>端口号</strong> | <strong>协议</strong> | <strong>应用层</strong> |<br>| — | — | — |<br>| <strong>20</strong> | TCP | 文件传输协议 (FTP) - 数据 |<br>| <strong>21</strong> | TCP | 文件传输协议 (FTP) - 控制 |<br>| <strong>22</strong> | TCP | 安全 Shell (SSH) |<br>| <strong>23</strong> | TCP | Telnet |<br>| <strong>25</strong> | TCP | 简单邮件传输协议 (SMTP) |<br>| <strong>53</strong> | UDP(TCP?) | 域名服务 (DNS) |<br>| <strong>67</strong> | UDP | 动态主机配置协议 (DHCP)- 服务器 |<br>| <strong>68</strong> | UDP | 动态主机配置协议-客户端 |<br>| <strong>69</strong> | UDP | 简单文件传输协议 (TFTP) |<br>| <strong>80</strong> | TCP | 超文本传输协议 (HTTP) |<br>| <strong>110</strong> | TCP | 邮局协议第 3 版 (POP3) |<br>| <strong>143</strong> | TCP | 互联网消息访问协议 (IMAP) |<br>| <strong>161</strong> | UDP | 简单网络管理协议 (SNMP) |<br>| <strong>443</strong> | TCP | 安全超文本传输协议 (HTTPS) |</p>
+<h1 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h1><p>TCP提供但UDP不提供的服务包括：<br>可靠传输<br>流量控制<br>拥塞控制</p>
+<ul>
+<li>TCP：可靠传输、流量控制、拥塞控制、面向连接、有序</li>
+<li>UDP：Unreliable, unordered，IP在传输层的扩展</li>
+</ul>
+<p>传输层上<strong>不可用</strong>的服务：<strong>延迟保证、带宽保证</strong></p>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><ul>
+<li>“<strong>尽力而为</strong>”服务，容忍丢包、应用程序自主排序</li>
+<li>无连接:在UDP发送方和接收方之间无握手、每个UDP段的处理独立于其他段</li>
+<li><strong>无连接</strong>创建(它将增加时延)</li>
+<li>简单：在发送方、接收方无连接状态</li>
+<li>段首部小</li>
+<li><strong>无</strong>拥塞控制: UDP能够尽可能快传输</li>
+</ul>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><ul>
+<li><strong>点到点</strong>:一个发送方, 一个接收方； 连接状态与端系统有关，不为路由器所知</li>
+<li><strong>可靠、有序</strong>的字节流:没有 “报文边界”</li>
+<li><strong>流水线</strong>:TCP拥塞和流量控制设置滑动窗口协议</li>
+<li>发送和接收<strong>缓冲区</strong></li>
+<li><strong>全双工</strong>数据:同一连接上的双向数据流、MSS: 最大报文段长度、MTU:最大传输单元</li>
+<li><strong>面向连接</strong>:在进行数据交换前，初始化发送方与接收方状态，进行握手(交换控制信息),</li>
+<li><strong>流量控制</strong>: 发送方不能淹没接收方</li>
+<li><strong>拥塞控制</strong>: 抑止发送方速率来防止过分占用网络资源</li>
+</ul>
+<h3 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h3><p>IP<br><img src="/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655104838517.png" alt="enter description here"><br>UDP<br><img src="/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655102964890.png" alt="enter description here"><br>8字节固定<br>TCP<br><img src="/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655102917995.png" alt="enter description here"></p>
+<h3 id="MSS-MTU"><a href="#MSS-MTU" class="headerlink" title="MSS/MTU"></a>MSS/MTU</h3><p> TCP可从发送缓存中取出并放入报文段(segment)的数据量受限于最大报文段长度MSS。MSS通常根据最初确定的本地发送主机发送的最大链路层帧长度MTU来设置。</p>
+<p><strong>MSS+TCP/IP头部的长度（20+20字节）= MTU</strong><br>以太网和PPP链路中MTU为1500字节，因此MSS通常为1460字节。</p>
+<h3 id="TCP流控"><a href="#TCP流控" class="headerlink" title="TCP流控"></a>TCP流控</h3><p><img src="/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655107948089.png" alt="enter description here"></p>
+<h1 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h1><ul>
+<li>HTTP/1.0: GET POST HEAD<br>要求服务器保持请求的对象不响应</li>
+<li>HTTP/1.1: 除了GET, POST, HEAD 还有<br>PUT 将entity body中的文件上传到URL字段指定的位置<br>DELETE 删除URL字段中指定的文件</li>
+</ul>
+<h2 id="典型的状态码如下："><a href="#典型的状态码如下：" class="headerlink" title="典型的状态码如下："></a>典型的状态码如下：</h2><ul>
+<li>200 OK<br>  request succeeded, requested object later in this msg</li>
+<li>301 Moved Permanently (永久的重定向)<br>  requested object moved, new location specified later in this msg (Location:)</li>
+<li>400 Bad Request<br>  request msg not understood by server</li>
+<li>404 Not Found<br>  requested document not found on this server</li>
+<li>505 HTTP Version Not Supported</li>
+</ul>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1 \r\n</span><br><span class="line">Host: ……</span><br><span class="line">\r\n</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK\r\n</span><br><span class="line">Date:……</span><br><span class="line">\r\n</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<ul>
+<li>GET：GET方法请求一个指定资源的表示形式，使用GET的请求应该只被用于获取数据。</li>
+<li>HEAD：HEAD方法请求一个与GET请求的响应相同的响应，<strong>但没有响应体</strong>。</li>
+<li>POST：POST方法用于将实体<strong>提交</strong>到指定的资源，通常导致在服务器上的状态变化或副作用。</li>
+<li>PUT：PUT方法用请求有效载荷<strong>替换</strong>目标资源的所有当前表示。</li>
+<li>DELETE：DELETE方法删除指定的资源。</li>
+</ul>
+<h1 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h1><p>即插即用<br>DHCP概述：</p>
+<ul>
+<li>主机广播 <code>DHCP DISCOVER</code> 消息</li>
+<li>DHCP 服务器用 <code>DHCP OFFER</code> 消息响应</li>
+<li>主机请求IP地址 <code>DHCP REQUEST</code> 消息</li>
+<li>DHCP 服务器确认 <code>DHCP ACK/NACK</code> 消息</li>
+<li>DHCP 终止租用期 <code>DHCP RELEASE</code> 消息</li>
+</ul>
+<h1 id="各层次"><a href="#各层次" class="headerlink" title="各层次"></a>各层次</h1><p>一般题5层模型：1物理层2数据链路层3网络层4传输层5应用层<br>对应PDU：位/比特，帧，数据包/分组，段，数据</p>
+<h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><h3 id="TCP-IP协议簇"><a href="#TCP-IP协议簇" class="headerlink" title="TCP/IP协议簇"></a>TCP/IP协议簇</h3><p>如今，TCP/IP 协议簇包含许多协议，并且不断发展以支持新服务。<br><img src="/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1644323175596.png" alt="enter description here"><br>TCP/IP是开放的标准的协议簇</p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h4><p>域名系统</p>
+<ul>
+<li>  <strong>DNS</strong> - 域名系统。将域名（例如 cisco.com）转换为 IP 地址。<br>主机配置</li>
+<li>  <strong>DHCPv4</strong> - IPv4动态主机配置协议。DHCPv4 服务器在启动时动态地将 IPv4 编址信息分配给 DHCPv4 客户端，并允许在不再需要时重新使用这些地址。</li>
+<li>  <strong>DHCPv6</strong> - IPv6动态主机配置协议。DHCPv6类似于DHCPv4。DHCPv6服务器在启动时动态地将IPv6编址信息分配给DHCPv6客户端。</li>
+<li>  <strong>SLAAC</strong> - 无状态地址自动配置。一种允许设备在不使用DHCPv6服务器的情况下获得其IPv6编址信息的方法。<br>邮件</li>
+<li>  <strong>SMTP</strong> - 简单邮件传输协议。使<strong>客户端</strong>能够将邮件发送到邮件<strong>服务器</strong>，并使<strong>服务器</strong>能够将邮件发送到其他<strong>服务器</strong>。客发服，服发服</li>
+<li>  <strong>POP3</strong> - 邮局协议第 3 版。使<strong>客户端</strong>能够从邮件<strong>服务器</strong>检索电子邮件并将电子邮件<strong>下载</strong>到<strong>客户端</strong>本地邮件应用程序。下载到客</li>
+<li>  <strong>IMAP</strong> - 互联网消息访问协议。使<strong>客户端</strong>能够<strong>访问</strong>存储在邮件<strong>服务器</strong>上的电子邮件，并在服务器上维护电子邮件。访问服<br>文件传输</li>
+<li>  <strong>FTP</strong> - 文件传输协议。它设置规则，使得一台主机上的用户能够通过网络访问另一台主机或向其传输文件。FTP是一种可靠、面向连接且进行确认的文件传输协议。</li>
+<li>  <strong>SFTP</strong> - SSH文件传输协议。作为安全外壳 (SSH)协议的扩展，SFTP可用于建立安全的文件传输会话，在该会话中对文件传输进行加密。SSH 是一种安全远程登录的方法，通常用于访问设备的命令行。</li>
+<li>  <strong>TFTP</strong> - 简单文件传输协议。这是一个简单的，无连接的文件传输协议，使用尽最大努力、无需确认的文件传输方式。它使用的开销比FTP少。<br>Web和Web服务</li>
+<li>  <strong>HTTP</strong> - 超文本传输协议。这是有关在万维网上交换文本、图形图像、音频、视频以及其他多媒体文件的一组规则集。</li>
+<li>  <strong>HTTPS</strong> - 安全 HTTP。这是一种安全的HTTP形式，它对在万维网上交换的数据进行加密。</li>
+<li>  <strong>REST</strong> - 具象状态传输协议。它使用应用程序编程接口 (API) 和 HTTP 请求创建 Web 应用程序的 Web 服务。</li>
+</ul>
+<h4 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h4><p>面向连接</p>
+<ul>
+<li>  <strong>TCP</strong> - 传输控制协议。它使运行在不同主机上的进程之间能够进行可靠的通信，并提供可靠的、需要确认的传输，以确保传输成功。<br>无连接</li>
+<li>  <strong>UDP</strong> - 用户数据报协议。它允许一台主机上运行的进程向另一台主机上运行的进程发送数据包。但是，UDP不会确认数据报传输是否成功。</li>
+</ul>
+<h4 id="互联网层"><a href="#互联网层" class="headerlink" title="互联网层"></a>互联网层</h4><p>Internet 协议<strong>IP</strong></p>
+<ul>
+<li>  <strong>IPv4</strong> - 互联网协议第 4 版。它接收来自传输层的消息段，将消息打包成数据包，并为通过网络进行端到端传递的数据包进行地址分配。IPv4 使用 32 位地址。</li>
+<li>  <strong>IPv6</strong> - 互联网协议第 6 版。与 IPv4 类似，但使用 128 位地址。</li>
+<li>  <strong>NAT</strong> - 网络地址转换。将私有网络 IPv4 地址转换为全球唯一的公有 IPv4 地址。<br>消息传送<strong>ICMP</strong>运行于IP之上</li>
+<li>  <strong>ICMPv4</strong> - IPv4 互联网控制消息协议。目的主机针对数据包传输中出现的错误，向源主机提供反馈。</li>
+<li>  <strong>ICMPv6</strong> - 用于 IPv6 的ICMP。与 ICMPv4 类似的功能，但用于 IPv6 数据包。</li>
+<li>  <strong>ICMPv6 ND</strong> - IPv6 邻居发现。包括用于地址解析和重复地址检测的四个协议消息。<br>路由协议</li>
+<li>  <strong>OSPF</strong> - 开放最短路径优先协议。它使用基于区域的分层设计的链路状态路由协议。OSPF是一种开放式标准内部路由协议。</li>
+<li>  <strong>EIGRP</strong> — 增强型内部网关路由协议这是一种思科开发的开放标准路由协议，使用基于带宽、延迟、负载和可靠性的复合度量。</li>
+<li>  <strong>BGP</strong> - 边界网关协议。这是一种开放标准的外部网关路由协议，用于互联网服务提供商(ISP)之间。BGP 还通常用于 ISP 与其大型私有客户端之间来交换路由信息。</li>
+</ul>
+<h5 id="主要工作：路由和转发"><a href="#主要工作：路由和转发" class="headerlink" title="主要工作：路由和转发"></a>主要工作：路由和转发</h5><ul>
+<li>转发：将数据包从路由器的输入链接移动到适当的路由器输出链路</li>
+<li>路由：确定数据包从源到目标所采用的路由</li>
+</ul>
+<h5 id="连接和无连接"><a href="#连接和无连接" class="headerlink" title="连接和无连接"></a>连接和无连接</h5><ul>
+<li>数据报 网络提供网络层的无连接 服务</li>
+<li>虚电路 网络提供网络层的 连接 服务</li>
+</ul>
+<ul>
+<li>类比于TCP/UDP的面向连接/ 无连接的传输层服务：<ul>
+<li>任何网络中的网络层只提供两种服务之一，不会同时提供。<br>  虚电路网络：提供连接服务。<br>  数据报网络：提供无连接服务。</li>
+<li>传输层：面向连接服务在<strong>网络边缘</strong>的端系统中实现。</li>
+<li>网络层：面向连接服务在端系统及<strong>网络核心</strong>的路由器中实现。</li>
+</ul>
+</li>
+</ul>
+<h4 id="网络接入层-数据链路层"><a href="#网络接入层-数据链路层" class="headerlink" title="网络接入层/数据链路层"></a>网络接入层/数据链路层</h4><p>地址解析</p>
+<ul>
+<li>  <strong>ARP</strong> - 地址解析协议。提供 IPv4 地址与硬件地址之间的动态地址映射。</li>
+<li>*注意**：您可能会看到其他文档状态，表明 cd 在互联网层（OSI 第 3 层）运行。但是，在本课程中，我们声明 ARP 在网络接入层（OSI 第 2 层）运行，因为它的主要目的是发现目标的 MAC 地址。MAC 地址是第 2 层地址。<br>数据链路协议</li>
+<li>  <strong>以太网</strong> - 为网络接入层的布线和信令标准定义规则。</li>
+<li>  <strong>WLAN</strong> - 无线局域网。定义 2.4 GHz 和 5 GHz 无线电频率的无线信号规则。</li>
+</ul>
+<h1 id="IP及子网计算"><a href="#IP及子网计算" class="headerlink" title="IP及子网计算"></a>IP及子网计算</h1><h1 id="MAC"><a href="#MAC" class="headerlink" title="MAC"></a>MAC</h1><p>6*8=48bit<br>前3字节IEEE后3厂家自行分配</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
+<li>数据封装：帧同步、帧定界，地址确定，错误检测机制</li>
+<li>媒体访问管理：媒体分配，冲突解决</li>
+</ul>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>分布式、层次数据库</p>
+<ul>
+<li>根服务器：在因特网上有13（247：2011）个根服务器,主要维护的是顶级域名服务器的IP地址</li>
+<li>顶级域服务器（TLD）：维护顶级域名的IP地址<br>顶级域名：com、org、net、edu、gov、jp、ca、cn</li>
+<li>权威DNS服务器：由组织机构维护的自己提供的服务器的域名到IP地址映射的DNS服务器。例如我们学校的Web服务器和电子邮件服务器的域名和IP地址的映射由我们学校自己的权威DNS服务器维护。</li>
+</ul>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><ul>
+<li>迭代查询<br><img src="/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655109506919.png" alt="enter description here"></li>
+<li>递归查询<br><img src="/2022/06/13/%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%BD%91%E8%80%83%E7%82%B9/1655109520926.png" alt="enter description here"></li>
+</ul>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><ul>
+<li>A</li>
+<li>CNAME</li>
+<li>NS</li>
+<li>MX</li>
+</ul>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="迪杰斯特拉"><a href="#迪杰斯特拉" class="headerlink" title="迪杰斯特拉"></a>迪杰斯特拉</h2><p>迪杰斯特拉(Dijkstra)算法是典型最短路径算法，用于计算<strong>一个节点到其他节点的最短路径</strong>。<br>它的主要特点是以起始点为中心向外层层扩展(广度优先遍历思想)，直到扩展到终点为止。</p>
+<p>基本思想:</p>
+<ul>
+<li>通过Dijkstra计算图G中的最短路径时，需要指定一个起点D(即从顶点D开始计算)。</li>
+<li>此外，引进两个数组S和U。S的作用是记录已求出最短路径的顶点(以及相应的最短路径长度)，而U则是记录还未求出最短路径的顶点(以及该顶点到起点D的距离)。</li>
+<li>初始时，数组S中只有起点D；数组U中是除起点D之外的顶点，并且数组U中记录各顶点到起点D的距离。如果顶点与起点D不相邻，距离为无穷大。</li>
+<li>然后，从数组U中找出路径最短的顶点K，并将其加入到数组S中；同时，从数组U中移除顶点K。接着，更新数组U中的各顶点到起点D的距离。</li>
+<li>重复第4步操作，直到遍历完所有顶点。</li>
+</ul>
+<h2 id="校验和"><a href="#校验和" class="headerlink" title="校验和"></a>校验和</h2><p>第一步：补零<br>第二部：4位累加，溢出做0001加<br>第三步：二进制<strong>取反</strong></p>
+<h2 id="CRC"><a href="#CRC" class="headerlink" title="CRC"></a>CRC</h2><p>第一步：展开多项式得除数<br>第二步：原数据补零（个数为多项式最高次）<br>第三步：从左向右按位异或（结果为除数长度-1不足补零）</p>
+<h1 id="多路访问协议类型"><a href="#多路访问协议类型" class="headerlink" title="多路访问协议类型"></a>多路访问协议类型</h1><h2 id="信道划分协议"><a href="#信道划分协议" class="headerlink" title="信道划分协议"></a>信道划分协议</h2><p>把信道划分为小“片” (时隙)<br>给节点分配专用的小“片”</p>
+<h3 id="TDMA时分"><a href="#TDMA时分" class="headerlink" title="TDMA时分"></a>TDMA时分</h3><p>避免冲突、公平：每个节点专用速率R/N b/s。<br>节点速率有限：R/N b/s；<br>效率不高：节点必须等待它的传输时隙。</p>
+<h3 id="FDMA频分"><a href="#FDMA频分" class="headerlink" title="FDMA频分"></a>FDMA频分</h3><p>避免冲突、公平：N个节点公平划分带宽；<br>节点带宽有限、效率不高：节点带宽为R/N。</p>
+<h3 id="CDMA-码分"><a href="#CDMA-码分" class="headerlink" title="CDMA 码分"></a>CDMA 码分</h3><p>每个节点分配一个唯一的编码<br>每个节点用它唯一的编码来对它发送的数据进行编码</p>
+<h2 id="随机访问协议"><a href="#随机访问协议" class="headerlink" title="随机访问协议"></a>随机访问协议</h2><p>典型随机访问协议：</p>
+<h3 id="ALOHA协议-纯ALOHA，时隙ALOHA"><a href="#ALOHA协议-纯ALOHA，时隙ALOHA" class="headerlink" title="ALOHA协议(纯ALOHA，时隙ALOHA)"></a>ALOHA协议(纯ALOHA，时隙ALOHA)</h3><p>星型拓扑结构<br>使地理上分散的用户通过无线电来使用中心主机</p>
+<h3 id="载波侦听"><a href="#载波侦听" class="headerlink" title="载波侦听"></a>载波侦听</h3><h3 id="载波监听多路访问CSMA协议"><a href="#载波监听多路访问CSMA协议" class="headerlink" title="载波监听多路访问CSMA协议"></a>载波监听多路访问CSMA协议</h3><ul>
+<li>载波侦听 CS：某个节点在发送之前，先监听信道。<br>  信道忙：有其他节点正往信道发送帧，该节点随机等待（回退）一段时间，然后再侦听信道。<br>  信道空：该节点开始传输整个数据帧。</li>
+<li>冲突检测 CD：边发送边监听，即节点在传输同时侦听信道。<br>  如果检测到有其他节点正在传输帧，发生冲突，立即停止传输，并用某种方法来决定何时再重新传输。</li>
+</ul>
+<h4 id="带冲突检测的载波监听多路访问CSMA-CD"><a href="#带冲突检测的载波监听多路访问CSMA-CD" class="headerlink" title="带冲突检测的载波监听多路访问CSMA/CD"></a>带冲突<strong>检测</strong>的载波监听多路访问CSMA/CD</h4><p>基本原理：传送前侦听<br>    信道忙：延迟传送<br>    信道闲：传送整个帧<br>    发送同时进行冲突检测：一旦检测到冲突就立即停止传输， 尽快重发。</p>
+<h4 id="带冲突避免的载波监听多路访问CSMA-CA"><a href="#带冲突避免的载波监听多路访问CSMA-CA" class="headerlink" title="带冲突避免的载波监听多路访问CSMA/CA"></a>带冲突<strong>避免</strong>的载波监听多路访问CSMA/CA</h4><h2 id="轮流协议"><a href="#轮流协议" class="headerlink" title="轮流协议"></a>轮流协议</h2><ul>
+<li>来自中心站的轮询</li>
+<li>令牌传递</li>
+</ul>
+<h1 id="简单缩写"><a href="#简单缩写" class="headerlink" title="简单缩写"></a>简单缩写</h1><h2 id="ISP-Internet-Service-Provider-互联网服务提供商"><a href="#ISP-Internet-Service-Provider-互联网服务提供商" class="headerlink" title="ISP-Internet Service Provider-互联网服务提供商"></a>ISP-Internet Service Provider-互联网服务提供商</h2><p>Internet Service Provider即互联网服务提供商</p>
+<h2 id="xDSL"><a href="#xDSL" class="headerlink" title="xDSL"></a>xDSL</h2><h3 id="ADSL"><a href="#ADSL" class="headerlink" title="ADSL"></a>ADSL</h3><p>Asymmet-ricaI DigitaI Subscriber Loop<strong>非对称</strong>数字用户线环路<br>在一对铜线上支持上行速率640Kbps到1Mbps，下行速率1Mbps到8Mbps，有效传输距离在3－5公里范围以内。</p>
+<h3 id="SDSL"><a href="#SDSL" class="headerlink" title="SDSL"></a>SDSL</h3><p>Symmetric digital subscriber line<strong>对称</strong>数字用户线路<br>SDSL实现了可在一对普通铜线上，以上下对称的2.3Mbps速率支持有话音伴随达2.4千米的传输距离，无话音伴随情况下传输距离更可达到2.7千米。<br>SDSL具有开通率高、覆盖面积广、传输速率高、性能稳定的特点。</p>
+<h3 id="HDSL"><a href="#HDSL" class="headerlink" title="HDSL"></a>HDSL</h3><p>High-speed Digital Subscriber Line<br>支持<strong>对称</strong>（1.544Mbps/2.048Mbps）传输，有效传输距离为3－4公里，且需要两至四对铜质双绞电话线，适用于商用环境。</p>
+<h3 id="VDSL"><a href="#VDSL" class="headerlink" title="VDSL"></a>VDSL</h3><p>Very-high-bit-rate Digital Subscriber Loop<br>是xDSL技术中最快的一种，在一对铜质双绞电话线上，上行数据的速率为13到52Mbps，下行数据的速率为1.5到2.3 Mbps，但是VDSL的传输距离只在几百米以内。<strong>非对称</strong></p>
+<h2 id="CIDR-Classless-InterDomain-Routing-无类域间路由"><a href="#CIDR-Classless-InterDomain-Routing-无类域间路由" class="headerlink" title="CIDR-Classless InterDomain Routing-无类域间路由"></a>CIDR-Classless InterDomain Routing-无类域间路由</h2><p>无类域间路由CIDR（Classless InterDomain Routing）<br>CIDR的提出：Internet指数增长，IP地址即将用完。基于分类的IP地址空间的组织浪费了大量的地址。B类地址很难申请，C类地址的增多使得路由选择表暴涨</p>
+<h2 id="CDMA-Code-Division-Multiple-Access-码分多址"><a href="#CDMA-Code-Division-Multiple-Access-码分多址" class="headerlink" title="CDMA-Code Division Multiple Access-码分多址"></a>CDMA-Code Division Multiple Access-码分多址</h2><p>Code Division Multiple Access码分多址<br>码分多址的基本思想是靠不同的地址码来区分的地址。每个配有不同的地址码，用户所发射的载波（为同一载波）既受基带数字信号调制，又受地址码调制。</p>
+<h2 id="HTTP-Hyper-Text-Transfer-Protocol-超文本传输协议"><a href="#HTTP-Hyper-Text-Transfer-Protocol-超文本传输协议" class="headerlink" title="HTTP-Hyper Text Transfer Protocol-超文本传输协议"></a>HTTP-Hyper Text Transfer Protocol-超文本传输协议</h2><p>超文本传输协议（Hyper Text Transfer Protocol，HTTP）<br>是一个简单的请求-响应协议，它通常运行在TCP之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII形式给出；而消息内容则具有一个类似MIME的格式。</p>
+<h2 id="HTTPS-Hypertext-Transfer-Protocol-Secure-超文本传输安全协议"><a href="#HTTPS-Hypertext-Transfer-Protocol-Secure-超文本传输安全协议" class="headerlink" title="HTTPS-Hypertext Transfer Protocol Secure-超文本传输安全协议"></a>HTTPS-Hypertext Transfer Protocol Secure-超文本传输安全协议</h2><p>Hypertext Transfer Protocol Secure<br>HTTPS 协议是由 HTTP 加上 TLS /SSL 协议构建的可进行加密传输、身份认证的网络协议，主要通过 数字证书 、 加密算法 、非对称密钥等技术完成互联网数据传输加密，实现互联网传输安全保护。HTTPS 是 HTTP 协议的一种扩展</p>
+<h2 id="SMTP-Simple-Mail-Transfer-Protocol-简单邮件传输协议"><a href="#SMTP-Simple-Mail-Transfer-Protocol-简单邮件传输协议" class="headerlink" title="SMTP-Simple Mail Transfer Protocol-简单邮件传输协议"></a>SMTP-Simple Mail Transfer Protocol-简单邮件传输协议</h2><p>Simple Mail Transfer Protocol简单邮件传输协议是一种提供可靠且有效的电子邮件传输的协议。SMTP是建立在FTP文件传输服务上的一种邮件服务。SMTP独立于特定的传输子系统，且只需要可靠有序的数据流信道支持，SMTP的重要特性之一是其能跨越网络传输邮件，即“SMTP邮件中继”。使用SMTP，可实现相同网络处理进程之间的邮件传输，也可通过中继器或网关实现某处理进程与其他网络之间的邮件传输。</p>
+<h2 id="MIME-Multipurpose-Internet-Mail-Extensions-多用途互联网邮件扩展"><a href="#MIME-Multipurpose-Internet-Mail-Extensions-多用途互联网邮件扩展" class="headerlink" title="MIME-Multipurpose Internet Mail Extensions-多用途互联网邮件扩展"></a>MIME-Multipurpose Internet Mail Extensions-多用途互联网邮件扩展</h2><p>SMTP面向ASCII使用MIME传输非ASCII<br>MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型。是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。</p>
+<h2 id="IMAP-Internet-Message-Access-Protocol-因特网消息访问协议"><a href="#IMAP-Internet-Message-Access-Protocol-因特网消息访问协议" class="headerlink" title="IMAP-Internet Message Access Protocol-因特网消息访问协议"></a>IMAP-Internet Message Access Protocol-因特网消息访问协议</h2><p>IMAP（Internet Message Access Protocol）因特网消息访问协议以前称作交互邮件访问协议（Interactive Mail Access Protocol），是一个应用层协议。它的主要作用是邮件客户端可以通过这种协议从邮件服务器上获取邮件的信息，下载邮件等。</p>
+<h2 id="POP3-Post-Office-Protocol-v3-邮局协议版本3"><a href="#POP3-Post-Office-Protocol-v3-邮局协议版本3" class="headerlink" title="POP3-Post Office Protocol v3-邮局协议版本3"></a>POP3-Post Office Protocol v3-邮局协议版本3</h2><p>POP3，全名为“Post Office Protocol - Version 3”，即“邮局协议版本3”。是TCP/IP协议族中的一员，由RFC1939 定义。本协议主要用于支持使用客户端远程管理在服务器上的电子邮件。</p>
+<h2 id="DHCP-Dynamic-Host-Configuration-Protocol-动态主机配置协议"><a href="#DHCP-Dynamic-Host-Configuration-Protocol-动态主机配置协议" class="headerlink" title="DHCP-Dynamic Host Configuration Protocol-动态主机配置协议"></a>DHCP-Dynamic Host Configuration Protocol-动态主机配置协议</h2><p>Dynamic Host Configuration Protocol（动态主机配置协议）是一个局域网的网络协议。指的是由服务器控制一段IP地址范围，客户机登录服务器时就可以自动获得服务器分配的IP地址和子网掩码。</p>
+<h2 id="FTP-File-Transfer-Protocol-文件传输协议"><a href="#FTP-File-Transfer-Protocol-文件传输协议" class="headerlink" title="FTP-File Transfer Protocol-文件传输协议"></a>FTP-File Transfer Protocol-文件传输协议</h2><p>文件传输协议（File Transfer Protocol，FTP）是用于在网络上进行文件传输的一套标准协议，工作在应用层， 使用 TCP 传输。FTP允许用户以文件操作的方式（如文件的增、删、改、查、传送等）与另一主机相互通信。然而， 用户并不真正登录到自己想要存取的计算机上面而成为完全用户， 可用FTP程序访问远程资源， 实现用户往返传输文件、目录管理以及访问电子邮件等等， 即使双方计算机可能配有不同的操作系统和文件存储方式。</p>
+<h2 id="TCP-Transmission-Control-Protocol-传输控制协议"><a href="#TCP-Transmission-Control-Protocol-传输控制协议" class="headerlink" title="TCP-Transmission Control Protocol-传输控制协议"></a>TCP-Transmission Control Protocol-传输控制协议</h2><p>传输控制协议（TCP，Transmission Control Protocol）是一种面向连接的、可靠的、基于字节流的传输层通信协议</p>
+<h2 id="UDP-User-Datagram-Protocol-用户数据报协议"><a href="#UDP-User-Datagram-Protocol-用户数据报协议" class="headerlink" title="UDP-User Datagram Protocol-用户数据报协议"></a>UDP-User Datagram Protocol-用户数据报协议</h2><p>User Datagram Protocol一种无连接的传输层协议，它主要用于不要求分组顺序到达的传输中，分组传输顺序的检查与排序由应用层完成，提供面向事务的简单不可靠信息传送服务。UDP 协议基本上是IP协议与上层协议的接口。UDP协议适用端口分别运行在同一台设备上的多个应用程序。</p>
+<h2 id="MAC-Media-Access-Control-媒体介入控制层"><a href="#MAC-Media-Access-Control-媒体介入控制层" class="headerlink" title="MAC-Media Access Control-媒体介入控制层"></a>MAC-Media Access Control-媒体介入控制层</h2><p>Media Access Control媒体介入控制层，它定义了数据帧怎样在介质上进行传输。在共享同一个带宽的链路中，对连接介质的访问是“先来先服务”的。物理寻址在此处被定义，逻辑拓扑（信号通过物理拓扑的路径）也在此处被定义。线路控制、出错通知（不纠正）、帧的传递顺序和可选择的流量控制也在这一子层实现。</p>
+<h2 id="ARP-Address-Resolution-Protocol-地址解析协议"><a href="#ARP-Address-Resolution-Protocol-地址解析协议" class="headerlink" title="ARP-Address Resolution Protocol-地址解析协议"></a>ARP-Address Resolution Protocol-地址解析协议</h2><p>Address Resolution Protocol - 地址解析协议。提供 IPv4 地址与硬件地址之间的动态地址映射。</p>
+<h2 id="DNS-Domain-Name-System-域名系统"><a href="#DNS-Domain-Name-System-域名系统" class="headerlink" title="DNS-Domain Name System-域名系统"></a>DNS-Domain Name System-域名系统</h2><p>Domain Name System域名系统是互联网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。DNS使用UDP端53。</p>
+<h2 id="SSL-Secure-Sockets-Layer-安全套接字协议"><a href="#SSL-Secure-Sockets-Layer-安全套接字协议" class="headerlink" title="SSL-Secure Sockets Layer-安全套接字协议"></a>SSL-Secure Sockets Layer-安全套接字协议</h2><p>SSL(Secure Sockets Layer 安全套接字协议),及其继任者传输层安全（Transport Layer Security，TLS）是为网络通信提供安全及数据完整性的一种安全协议。TLS与SSL在传输层与应用层之间对网络连接进行加密。</p>
+<h2 id="TSL-Transport-Layer-Security-传输层安全性协议"><a href="#TSL-Transport-Layer-Security-传输层安全性协议" class="headerlink" title="TSL-Transport Layer Security-传输层安全性协议"></a>TSL-Transport Layer Security-传输层安全性协议</h2><p>传输层安全性协议 Transport Layer Security，TLS 及其前身安全套接层 Secure Sockets Layer，SSL是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。<br>最新版TLS建立在SSL 3.0协议规范之上，是SSL 3.0的后续版本。<br>地位与SSL并列，支持的加密算法不同，TLS与SSL 3.0不能互操作</p>
+<h2 id="VPN-Virtual-Private-Network-虚拟专用网络是"><a href="#VPN-Virtual-Private-Network-虚拟专用网络是" class="headerlink" title="VPN-Virtual Private Network-虚拟专用网络是"></a>VPN-Virtual Private Network-虚拟专用网络是</h2><p>Virtual Private Network虚拟专用网络是，专用网络的延伸，它包含了类似Internet的共享或公共网络链接。通过VPN可以以模拟点对点专用链接的方式通过共享或公共网络在两台计算机之间发送数据。</p>
+<h2 id="DASH-Dynamic-Adaptive-Streaming-over-HTTP-动态自适应流"><a href="#DASH-Dynamic-Adaptive-Streaming-over-HTTP-动态自适应流" class="headerlink" title="DASH-Dynamic Adaptive Streaming over HTTP-动态自适应流"></a>DASH-Dynamic Adaptive Streaming over HTTP-动态自适应流</h2><p>Dynamic Adaptive Streaming over HTTP动态自适应流，主要目标是形成IP网络承载单一格式的流媒体并提供高效与高质量服务的统一方案, 解决多制式传输方案并存格局下的存储与服务能力浪费、运营高成本与复杂度、系统间互操作弱等问题.</p>
+<h2 id="ABR-Area-Border-Router-区域边界路由器"><a href="#ABR-Area-Border-Router-区域边界路由器" class="headerlink" title="ABR-Area Border Router-区域边界路由器"></a>ABR-Area Border Router-区域边界路由器</h2><p>Area Border Router区域边界路由器，ABR被认为同时是OSPF主干和相连区域的成员。因此，它们同时维护着描述主干拓扑和其他区域拓扑的路由选择表。<br>该类路由器可以同时属于两个以上的区域，但其中一个必须是骨干区域。ABR用来连接骨干区域和非骨干区域，它与骨干区域之间既可以是物理连接，也可以是逻辑上的连接。</p>
+<h2 id="OSPF-Open-Shortest-Path-First-开放式最短路径优先"><a href="#OSPF-Open-Shortest-Path-First-开放式最短路径优先" class="headerlink" title="OSPF-Open Shortest Path First-开放式最短路径优先"></a>OSPF-Open Shortest Path First-开放式最短路径优先</h2><p>Open Shortest Path First开放式最短路径优先是广泛使用的一种动态路由协议，它属于链路状态路由协议，具有路由变化收敛速度快、无路由环路、支持变长子网掩码（VLSM）和汇总、层次区域划分等优点。在网络中使用OSPF协议后，大部分路由将由OSPF协议自行计算和生成，无须网络管理员人工配置，当网络拓扑发生变化时，协议可以自动计算、更正路由，极大地方便了网络管理。但如果使用时不结合具体网络应用环境，不做好细致的规划，OSPF协议的使用效果会大打折扣，甚至引发故障。</p>
+<h2 id="RIP-Routing-Information-Protocol-路由信息协议"><a href="#RIP-Routing-Information-Protocol-路由信息协议" class="headerlink" title="RIP-Routing Information Protocol-路由信息协议"></a>RIP-Routing Information Protocol-路由信息协议</h2><p>Routing Information Protocol ，路由信息协议RIP是一种基于距离矢量算法的协议，它使用跳数作为度量值来衡量到达目的地址的距离。<br>是基于UDP，端口520的应用层协议。</p>
+<h2 id="BGP-Border-Gateway-Protocol-边界网关协议"><a href="#BGP-Border-Gateway-Protocol-边界网关协议" class="headerlink" title="BGP-Border Gateway Protocol-边界网关协议"></a>BGP-Border Gateway Protocol-边界网关协议</h2><p>Border Gateway Protocol边界网关协议是运行于 TCP 上的一种自治系统的路由协议。 BGP 是唯一一个用来处理像因特网大小的网络的协议，也是唯一能够妥善处理好不相关路由域间的多路连接的协议。 </p>
+
+    </div>
+
+    
+    
+    
+
+ 
+   <div>
+     <div>
+    
+        <div style="text-align:center;color: #CDBE70;font-size:24px;">---------------THE<i class="fa fa-exclamation-triangle"></i>END---------------</div>
+    
+</div>
+   </div>
+ 
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%BD%91/" rel="tag"># 计网</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/08/%E8%AF%BE/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E8%80%83%E7%82%B9/" rel="prev" title="计算机操作系统考点">
+      <i class="fa fa-chevron-left"></i> 计算机操作系统考点
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/13/MC/modslists/minecraft%5B1.16.5%5D%E7%8E%B0%E7%94%A8%E6%A8%A1%E7%BB%84%E8%A1%A82.0/" rel="next" title="minecraft[1.16.5]现用模组表2.0">
+      minecraft[1.16.5]现用模组表2.0 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">4网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.2.</span> <span class="nav-text">5数据链路层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cerf-and-Kahn-%E5%8E%9F%E5%88%99"><span class="nav-number">2.</span> <span class="nav-text">Cerf and Kahn 原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">协议三要素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E8%AF%84%E4%BC%B0"><span class="nav-number">4.</span> <span class="nav-text">网络评估</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%B6%E5%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">时延</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E5%A4%84%E7%90%86%E6%97%B6%E5%BB%B6nodal-processing-delay"><span class="nav-number">5.1.</span> <span class="nav-text">节点处理时延nodal processing delay:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E9%98%9F%E6%97%B6%E5%BB%B6queueing-delay"><span class="nav-number">5.2.</span> <span class="nav-text">排队时延queueing delay:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E6%97%B6%E5%BB%B6Transmission-delay"><span class="nav-number">5.3.</span> <span class="nav-text">传输时延Transmission delay</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6Propagation-delay"><span class="nav-number">5.4.</span> <span class="nav-text">传播时延Propagation delay</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%BB%E5%87%BB%E4%B8%8E%E7%97%85%E6%AF%92"><span class="nav-number">6.</span> <span class="nav-text">攻击与病毒</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3"><span class="nav-number">7.</span> <span class="nav-text">端口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-UDP"><span class="nav-number">8.</span> <span class="nav-text">TCP&#x2F;UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP"><span class="nav-number">8.1.</span> <span class="nav-text">UDP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP"><span class="nav-number">8.2.</span> <span class="nav-text">TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E6%96%87"><span class="nav-number">8.2.1.</span> <span class="nav-text">报文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MSS-MTU"><span class="nav-number">8.2.2.</span> <span class="nav-text">MSS&#x2F;MTU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP%E6%B5%81%E6%8E%A7"><span class="nav-number">8.2.3.</span> <span class="nav-text">TCP流控</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP"><span class="nav-number">9.</span> <span class="nav-text">HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B8%E5%9E%8B%E7%9A%84%E7%8A%B6%E6%80%81%E7%A0%81%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">9.1.</span> <span class="nav-text">典型的状态码如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">9.2.</span> <span class="nav-text">格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DHCP"><span class="nav-number">10.</span> <span class="nav-text">DHCP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E5%B1%82%E6%AC%A1"><span class="nav-number">11.</span> <span class="nav-text">各层次</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8F%E8%AE%AE"><span class="nav-number">11.1.</span> <span class="nav-text">协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-IP%E5%8D%8F%E8%AE%AE%E7%B0%87"><span class="nav-number">11.1.1.</span> <span class="nav-text">TCP&#x2F;IP协议簇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">11.1.1.1.</span> <span class="nav-text">应用层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="nav-number">11.1.1.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E5%B1%82"><span class="nav-number">11.1.1.3.</span> <span class="nav-text">互联网层</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E5%B7%A5%E4%BD%9C%EF%BC%9A%E8%B7%AF%E7%94%B1%E5%92%8C%E8%BD%AC%E5%8F%91"><span class="nav-number">11.1.1.3.1.</span> <span class="nav-text">主要工作：路由和转发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%97%A0%E8%BF%9E%E6%8E%A5"><span class="nav-number">11.1.1.3.2.</span> <span class="nav-text">连接和无连接</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E5%B1%82-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">11.1.1.4.</span> <span class="nav-text">网络接入层&#x2F;数据链路层</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IP%E5%8F%8A%E5%AD%90%E7%BD%91%E8%AE%A1%E7%AE%97"><span class="nav-number">12.</span> <span class="nav-text">IP及子网计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MAC"><span class="nav-number">13.</span> <span class="nav-text">MAC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">13.1.</span> <span class="nav-text">功能</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS"><span class="nav-number">14.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B"><span class="nav-number">14.1.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2"><span class="nav-number">14.2.</span> <span class="nav-text">查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B0%E5%BD%95"><span class="nav-number">14.3.</span> <span class="nav-text">记录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">15.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%AA%E6%9D%B0%E6%96%AF%E7%89%B9%E6%8B%89"><span class="nav-number">15.1.</span> <span class="nav-text">迪杰斯特拉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="nav-number">15.2.</span> <span class="nav-text">校验和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CRC"><span class="nav-number">15.3.</span> <span class="nav-text">CRC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">16.</span> <span class="nav-text">多路访问协议类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86%E5%8D%8F%E8%AE%AE"><span class="nav-number">16.1.</span> <span class="nav-text">信道划分协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TDMA%E6%97%B6%E5%88%86"><span class="nav-number">16.1.1.</span> <span class="nav-text">TDMA时分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FDMA%E9%A2%91%E5%88%86"><span class="nav-number">16.1.2.</span> <span class="nav-text">FDMA频分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CDMA-%E7%A0%81%E5%88%86"><span class="nav-number">16.1.3.</span> <span class="nav-text">CDMA 码分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE"><span class="nav-number">16.2.</span> <span class="nav-text">随机访问协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ALOHA%E5%8D%8F%E8%AE%AE-%E7%BA%AFALOHA%EF%BC%8C%E6%97%B6%E9%9A%99ALOHA"><span class="nav-number">16.2.1.</span> <span class="nav-text">ALOHA协议(纯ALOHA，时隙ALOHA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%BD%E6%B3%A2%E4%BE%A6%E5%90%AC"><span class="nav-number">16.2.2.</span> <span class="nav-text">载波侦听</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%BD%E6%B3%A2%E7%9B%91%E5%90%AC%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AECSMA%E5%8D%8F%E8%AE%AE"><span class="nav-number">16.2.3.</span> <span class="nav-text">载波监听多路访问CSMA协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%86%B2%E7%AA%81%E6%A3%80%E6%B5%8B%E7%9A%84%E8%BD%BD%E6%B3%A2%E7%9B%91%E5%90%AC%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AECSMA-CD"><span class="nav-number">16.2.3.1.</span> <span class="nav-text">带冲突检测的载波监听多路访问CSMA&#x2F;CD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%A6%E5%86%B2%E7%AA%81%E9%81%BF%E5%85%8D%E7%9A%84%E8%BD%BD%E6%B3%A2%E7%9B%91%E5%90%AC%E5%A4%9A%E8%B7%AF%E8%AE%BF%E9%97%AECSMA-CA"><span class="nav-number">16.2.3.2.</span> <span class="nav-text">带冲突避免的载波监听多路访问CSMA&#x2F;CA</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AE%E6%B5%81%E5%8D%8F%E8%AE%AE"><span class="nav-number">16.3.</span> <span class="nav-text">轮流协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%BC%A9%E5%86%99"><span class="nav-number">17.</span> <span class="nav-text">简单缩写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ISP-Internet-Service-Provider-%E4%BA%92%E8%81%94%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E5%95%86"><span class="nav-number">17.1.</span> <span class="nav-text">ISP-Internet Service Provider-互联网服务提供商</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xDSL"><span class="nav-number">17.2.</span> <span class="nav-text">xDSL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ADSL"><span class="nav-number">17.2.1.</span> <span class="nav-text">ADSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SDSL"><span class="nav-number">17.2.2.</span> <span class="nav-text">SDSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HDSL"><span class="nav-number">17.2.3.</span> <span class="nav-text">HDSL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VDSL"><span class="nav-number">17.2.4.</span> <span class="nav-text">VDSL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CIDR-Classless-InterDomain-Routing-%E6%97%A0%E7%B1%BB%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1"><span class="nav-number">17.3.</span> <span class="nav-text">CIDR-Classless InterDomain Routing-无类域间路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CDMA-Code-Division-Multiple-Access-%E7%A0%81%E5%88%86%E5%A4%9A%E5%9D%80"><span class="nav-number">17.4.</span> <span class="nav-text">CDMA-Code Division Multiple Access-码分多址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-Hyper-Text-Transfer-Protocol-%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.5.</span> <span class="nav-text">HTTP-Hyper Text Transfer Protocol-超文本传输协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS-Hypertext-Transfer-Protocol-Secure-%E8%B6%85%E6%96%87%E6%9C%AC%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.6.</span> <span class="nav-text">HTTPS-Hypertext Transfer Protocol Secure-超文本传输安全协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMTP-Simple-Mail-Transfer-Protocol-%E7%AE%80%E5%8D%95%E9%82%AE%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.7.</span> <span class="nav-text">SMTP-Simple Mail Transfer Protocol-简单邮件传输协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MIME-Multipurpose-Internet-Mail-Extensions-%E5%A4%9A%E7%94%A8%E9%80%94%E4%BA%92%E8%81%94%E7%BD%91%E9%82%AE%E4%BB%B6%E6%89%A9%E5%B1%95"><span class="nav-number">17.8.</span> <span class="nav-text">MIME-Multipurpose Internet Mail Extensions-多用途互联网邮件扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IMAP-Internet-Message-Access-Protocol-%E5%9B%A0%E7%89%B9%E7%BD%91%E6%B6%88%E6%81%AF%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.9.</span> <span class="nav-text">IMAP-Internet Message Access Protocol-因特网消息访问协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POP3-Post-Office-Protocol-v3-%E9%82%AE%E5%B1%80%E5%8D%8F%E8%AE%AE%E7%89%88%E6%9C%AC3"><span class="nav-number">17.10.</span> <span class="nav-text">POP3-Post Office Protocol v3-邮局协议版本3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DHCP-Dynamic-Host-Configuration-Protocol-%E5%8A%A8%E6%80%81%E4%B8%BB%E6%9C%BA%E9%85%8D%E7%BD%AE%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.11.</span> <span class="nav-text">DHCP-Dynamic Host Configuration Protocol-动态主机配置协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTP-File-Transfer-Protocol-%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.12.</span> <span class="nav-text">FTP-File Transfer Protocol-文件传输协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-Transmission-Control-Protocol-%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.13.</span> <span class="nav-text">TCP-Transmission Control Protocol-传输控制协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP-User-Datagram-Protocol-%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%E6%8A%A5%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.14.</span> <span class="nav-text">UDP-User Datagram Protocol-用户数据报协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC-Media-Access-Control-%E5%AA%92%E4%BD%93%E4%BB%8B%E5%85%A5%E6%8E%A7%E5%88%B6%E5%B1%82"><span class="nav-number">17.15.</span> <span class="nav-text">MAC-Media Access Control-媒体介入控制层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP-Address-Resolution-Protocol-%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.16.</span> <span class="nav-text">ARP-Address Resolution Protocol-地址解析协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS-Domain-Name-System-%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F"><span class="nav-number">17.17.</span> <span class="nav-text">DNS-Domain Name System-域名系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSL-Secure-Sockets-Layer-%E5%AE%89%E5%85%A8%E5%A5%97%E6%8E%A5%E5%AD%97%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.18.</span> <span class="nav-text">SSL-Secure Sockets Layer-安全套接字协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TSL-Transport-Layer-Security-%E4%BC%A0%E8%BE%93%E5%B1%82%E5%AE%89%E5%85%A8%E6%80%A7%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.19.</span> <span class="nav-text">TSL-Transport Layer Security-传输层安全性协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN-Virtual-Private-Network-%E8%99%9A%E6%8B%9F%E4%B8%93%E7%94%A8%E7%BD%91%E7%BB%9C%E6%98%AF"><span class="nav-number">17.20.</span> <span class="nav-text">VPN-Virtual Private Network-虚拟专用网络是</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DASH-Dynamic-Adaptive-Streaming-over-HTTP-%E5%8A%A8%E6%80%81%E8%87%AA%E9%80%82%E5%BA%94%E6%B5%81"><span class="nav-number">17.21.</span> <span class="nav-text">DASH-Dynamic Adaptive Streaming over HTTP-动态自适应流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ABR-Area-Border-Router-%E5%8C%BA%E5%9F%9F%E8%BE%B9%E7%95%8C%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">17.22.</span> <span class="nav-text">ABR-Area Border Router-区域边界路由器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSPF-Open-Shortest-Path-First-%E5%BC%80%E6%94%BE%E5%BC%8F%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E4%BC%98%E5%85%88"><span class="nav-number">17.23.</span> <span class="nav-text">OSPF-Open Shortest Path First-开放式最短路径优先</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RIP-Routing-Information-Protocol-%E8%B7%AF%E7%94%B1%E4%BF%A1%E6%81%AF%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.24.</span> <span class="nav-text">RIP-Routing Information Protocol-路由信息协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BGP-Border-Gateway-Protocol-%E8%BE%B9%E7%95%8C%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE"><span class="nav-number">17.25.</span> <span class="nav-text">BGP-Border Gateway Protocol-边界网关协议</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="dyinjin"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">dyinjin</p>
+  <div class="site-description" itemprop="description">摸鱼窝</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dyinjin</span>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">本博客全站共202.4k字呐~</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,120,50' opacity='0.3' zIndex='-2' count='100' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+<div class="moon-menu">
+  <div class="moon-menu-items">
+    
+    <div id="moon-menu-item-back2bottom" class="moon-menu-item">
+      <i class='fas fa-chevron-down'></i>    </div>
+    
+    <div id="moon-menu-item-back2top" class="moon-menu-item">
+      <i class='fas fa-chevron-up'></i>    </div>
+    
+  </div>
+  <div class="moon-menu-button">
+    <svg class="moon-menu-bg">
+      <circle class="moon-menu-cricle" cx="50%" cy="50%" r="44%"></circle>
+      <circle class="moon-menu-border" cx="50%" cy="50%" r="48%"></circle>
+    </svg>
+    <div class="moon-menu-content">
+      <div class="moon-menu-icon"><i class='fas fa-ellipsis-v'></i></div>
+      <div class="moon-menu-text"></div>
+    </div>
+  </div>
+</div><script src="/js/injector.js"></script>
+</body>
+</html>
